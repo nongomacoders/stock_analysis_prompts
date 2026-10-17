@@ -430,8 +430,8 @@
   "prompt": {
     "stage": "12-analyst-reading-brief",
     "version": "1.1.0",
-    "template_sha256": "7a83afb7efed02aecc6dc554ec8e548b17b6c2c0b4a3f79f708ab740762ac87e",
-    "submitted_candidate_sha256": "a1380133be3bffa4c2b41b8fec3738a213e07633190f93911ad4ef96e0718b43",
+    "template_sha256": "35d4c13bc81b955e8dedf42112c42ead9ff9bf03256d20f21e0a37dbb160ffe8",
+    "submitted_candidate_sha256": "095ce62f253baee4f3d3b2ccc380c4a9784180093263f0306306417306feb31d",
     "report_map_sha256": "6aaacb9972f1d74160a4e34b886f0eb6d1b8ff73595d1f5012016d18b2bbd621",
     "report_overview_sha256": "ee8440d8a7f513f452790ab1a6bbe211fbc05d2a9586869a2bd0b0f2a9b86de8",
     "stored_questions_sha256": "b5926d06245f9da6652e7e739210ed01c6a0ca377bcbe77adc292a1053cd3bee"
