@@ -361,6 +361,7 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     window.selection_changed(window.source.capture_area(17, QRectF(20, 60, 380, 300)))
     sub1 = window.save_section()
     assert sub1.name.startswith('01-D005.1-')
+    assert (sub1.parent / f"{sub1.name}.zip").exists()
     sub1_prompt = (sub1 / 'prompt.md').read_text(encoding='utf-8')
     assert 'Section ID: D005.1' in sub1_prompt
     assert 'Section heading: Primary financial statements — Statement of Financial Position' in sub1_prompt

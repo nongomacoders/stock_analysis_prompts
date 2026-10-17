@@ -1,0 +1,34 @@
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| Revenue | 4 | 1,156,451 | 540,033 |
+| Cost of production | 3 | (514,297) | (314,187) |
+| Gross profit |  | 642,154 | 225,846 |
+| Other income |  | 4,596 | 6,529 |
+| Other expenses |  | (85,958) | (36,484) |
+| Bargain purchase gains |  | – | 28,019 |
+| Impairment losses on non-financial assets | 7 | (345) | (2,954) |
+| Royalty costs |  | (14,609) | (5,106) |
+| Profit before finance income and finance costs |  | 545,838 | 215,850 |
+| Finance income | 5 | 5,848 | 1,856 |
+| Finance costs | 5 | (17,318) | (21,073) |
+| Profit before tax |  | 534,368 | 196,633 |
+| Income tax  expense | 6.1 | (177,457) | (56,028) |
+| Profit for the period |  | 356,911 | 140,605 |
+| Other comprehensive income |  |  |  |
+| Items that may be reclassified to profit or loss |  |  |  |
+| Foreign currency translation gain |  | 42,726 | 12,842 |
+| Items that may not be reclassified to profit or loss |  |  |  |
+| Fair value adjustment on investment at fair value through other comprehensive income |  | 1,897 | 2,107 |
+| Tax thereon |  | (569) | – |
+| Other comprehensive income for the period, net of tax |  | 44,054 | 14,949 |
+| Total comprehensive income for the period |  | 400,965 | 155,554 |
+| Profit/(loss) attributable to: |  | 356,911 | 140,605 |
+| Owners of the Company |  | 357,215 | 141,597 |
+| Non-controlling interests |  | (304) | (992) |
+| Total comprehensive income/(loss) attributable to: |  | 400,965 | 155,554 |
+| Owners of the Company |  | 401,446 | 156,597 |
+| Non-controlling interests |  | (481) | (1,043) |
+| Basic and diluted earnings per share (US cents) |  | 17.60 | 7.16 |
+
+The above statement of profit or loss and other comprehensive income should be read in conjunction with the
+accompanying notes.

@@ -1,0 +1,21 @@
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| ASSETS |  |  |  |
+| Non-current assets |  |  |  |
+| Property, plant and equipment | 7 | 1,196,474 | 824,450 |
+| Goodwill |  | 18,438 | 17,098 |
+| Intangible assets |  | 806 | 616 |
+| Deferred tax assets | 6.2 | 1,921 | 2,072 |
+| Long-term inventory | 10 | 11,911 | 25,698 |
+| Investments | 9 | 12,791 | – |
+| Environmental rehabilitation obligation fund |  | 34,617 | 29,118 |
+| Restricted cash |  | 2,612 | – |
+| Total non-current assets |  | 1,279,570 | 899,052 |
+| Current assets |  |  |  |
+| Inventory | 10 | 39,049 | 38,887 |
+| Other receivables | 11 | 41,654 | 15,496 |
+| Current tax assets |  | 1,623 | 1,542 |
+| Short-term investments | 13 | 137,867 | – |
+| Cash and cash equivalents |  | 108,312 | 49,532 |
+| Total current assets |  | 328,505 | 105,457 |
+| Total assets |  | 1,608,075 | 1,004,509 |

@@ -1,0 +1,166 @@
+--- S001 | original physical page 17 | area selection | Table ---
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| ASSETS |  |  |  |
+| Non-current assets |  |  |  |
+| Property, plant and equipment | 7 | 1,196,474 | 824,450 |
+| Goodwill |  | 18,438 | 17,098 |
+| Intangible assets |  | 806 | 616 |
+| Deferred tax assets | 6.2 | 1,921 | 2,072 |
+| Long-term inventory | 10 | 11,911 | 25,698 |
+| Investments | 9 | 12,791 | – |
+| Environmental rehabilitation obligation fund |  | 34,617 | 29,118 |
+| Restricted cash |  | 2,612 | – |
+| Total non-current assets |  | 1,279,570 | 899,052 |
+| Current assets |  |  |  |
+| Inventory | 10 | 39,049 | 38,887 |
+| Other receivables | 11 | 41,654 | 15,496 |
+| Current tax assets |  | 1,623 | 1,542 |
+| Short-term investments | 13 | 137,867 | – |
+| Cash and cash equivalents |  | 108,312 | 49,532 |
+| Total current assets |  | 328,505 | 105,457 |
+| Total assets |  | 1,608,075 | 1,004,509 |
+
+--- S002 | original physical page 17 | area selection | Table ---
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| EQUITY AND LIABILITIES |  |  |  |
+| Share capital | 14.1 | 39,415 | 39,442 |
+| Share premium | 15 | – | 10,877 |
+| Shares to be issued | 14.2 | 148,218 | – |
+| Retained earnings |  | 1,027,194 | 717,642 |
+| Reserves |  | (176,192) | (219,136) |
+| Equity attributable to owners of the Company |  | 1,038,635 | 548,825 |
+| Non-controlling interests |  | (2,638) | (2,157) |
+| Total equity |  | 1,035,997 | 546,668 |
+| Non-current liabilities |  |  |  |
+| Environmental rehabilitation obligation |  | 34,470 | 23,982 |
+| Borrowings | 16 | 38,578 | 103,642 |
+| Lease liabilities |  | 4,594 | 2,607 |
+| Financial liabilities |  | 821 | 936 |
+| Share-based payment obligations | 17 | 20,385 | 10,297 |
+| Deferred tax liabilities | 6.2 | 250,480 | 140,506 |
+| Total non-current liabilities |  | 349,328 | 281,970 |
+| Current liabilities |  |  |  |
+| Trade and other payables | 12 | 142,294 | 72,643 |
+| Borrowings | 16 | 12,957 | 86,335 |
+| Lease liabilities |  | 3,214 | 1,050 |
+| Contract liability | 4 | 8,030 | – |
+| Financial liabilities |  | 418 | 2,370 |
+| Share-based payment obligations | 17 | 43,969 | 11,190 |
+| Derivative financial liability |  | – | 1,848 |
+| Current tax liabilities |  | 11,868 | 435 |
+| Total current liabilities |  | 222,750 | 175,871 |
+| Total equity and liabilities |  | 1,608,075 | 1,004,509 |
+
+--- S003 | original physical page 18 | area selection | Table ---
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| Revenue | 4 | 1,156,451 | 540,033 |
+| Cost of production | 3 | (514,297) | (314,187) |
+| Gross profit |  | 642,154 | 225,846 |
+| Other income |  | 4,596 | 6,529 |
+| Other expenses |  | (85,958) | (36,484) |
+| Bargain purchase gains |  | – | 28,019 |
+| Impairment losses on non-financial assets | 7 | (345) | (2,954) |
+| Royalty costs |  | (14,609) | (5,106) |
+| Profit before finance income and finance costs |  | 545,838 | 215,850 |
+| Finance income | 5 | 5,848 | 1,856 |
+| Finance costs | 5 | (17,318) | (21,073) |
+| Profit before tax |  | 534,368 | 196,633 |
+| Income tax  expense | 6.1 | (177,457) | (56,028) |
+| Profit for the period |  | 356,911 | 140,605 |
+| Other comprehensive income |  |  |  |
+| Items that may be reclassified to profit or loss |  |  |  |
+| Foreign currency translation gain |  | 42,726 | 12,842 |
+| Items that may not be reclassified to profit or loss |  |  |  |
+| Fair value adjustment on investment at fair value through other comprehensive income |  | 1,897 | 2,107 |
+| Tax thereon |  | (569) | – |
+| Other comprehensive income for the period, net of tax |  | 44,054 | 14,949 |
+| Total comprehensive income for the period |  | 400,965 | 155,554 |
+| Profit/(loss) attributable to: |  | 356,911 | 140,605 |
+| Owners of the Company |  | 357,215 | 141,597 |
+| Non-controlling interests |  | (304) | (992) |
+| Total comprehensive income/(loss) attributable to: |  | 400,965 | 155,554 |
+| Owners of the Company |  | 401,446 | 156,597 |
+| Non-controlling interests |  | (481) | (1,043) |
+| Basic and diluted earnings per share (US cents) |  | 17.60 | 7.16 |
+
+The above statement of profit or loss and other comprehensive income should be read in conjunction with the
+accompanying notes.
+
+--- S004 | original physical page 18 | area selection | Table ---
+| US$ thousand | Notes | FY26 | FY25 |
+| --- | --- | --- | --- |
+| Cash flows from operating activities |  |  |  |
+| Net cash from operating activities before dividend, tax, royalties and net finance costs | 19 | 712,119 | 223,184 |
+| Dividend paid[^1] |  | (58,540) | (23,675) |
+| Income tax  paid |  | (74,135) | (20,147) |
+| Royalties paid |  | (12,112) | (4,887) |
+| Finance costs paid |  | (14,987) | (21,439) |
+| Finance income received |  | 4,646 | 1,824 |
+| Net cash generated from  operating activities |  | 556,991 | 154,860 |
+| Cash flows from investing activities |  |  |  |
+| Payments for property, plant and equipment |  | (189,723) | (153,989) |
+| Payments for exploration assets |  | (26,030) | (3,921) |
+| Proceeds from disposal of property, plant and equipment |  | 1,720 | 133 |
+| Payments for other intangible assets |  | (390) | (710) |
+| Cash acquired on acquisitions | 18 | 12,796 | 9,689 |
+| Contribution to environmental rehabilitation obligation fund |  | (1,689) | (1,187) |
+| Withdrawal from environmental rehabilitation obligation fund |  | 316 | 134 |
+| Payment for investment | 9 | (11,265) | – |
+| Increase in restricted cash |  | (1,293) | – |
+| Contributions to short-term investments | 13 | (188,286) | – |
+| Withdrawals from short-term investments | 13 | 51,700 | – |
+| Net cash  used in   investing activities |  | (352,144) | (149,851) |
+| Cash flows from financing activities |  |  |  |
+| Share buy-back |  | (1,314) | – |
+| Proceeds from borrowings |  | – | 139,526 |
+| Repayment of borrowings |  | (149,311) | (117,199) |
+| Repayment of lease liabilities |  | (2,705) | (1,028) |
+| Repayment of financial liabilities |  | (2,544) | (3,842) |
+| Net cash (used in)/from financing activities |  | (155,874) | 17,457 |
+| Net increase  in cash and cash equivalents |  | 48,973 | 22,466 |
+| Cash and cash equivalents as at 1 July |  | 49,532 | 26,332 |
+| Effect of foreign exchange rate changes |  | 9,807 | 734 |
+| Cash and cash equivalents as at 30 June |  | 108,312 | 49,532 |
+
+[^1] T he Group changed the presentation of reciprocal dividend cash flows from gross to net during the current reporting period. The
+comparative figures have been re-presented accordingly.
+
+--- S005 | original physical page 19 | area selection | Table ---
+|  |  |  |  |  |  |  |  | Equity attri- butable to the |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  | Shares |  |  | owners |  |  |  |  |  |  |  | Non- |  |  |  |  |  |  |  |
+|  | Share Share |  |  |  | to be |  |  | Retained of the controlling |  |  |  |  |  |  |  |  |  | Total |  |  |  |  |  |
+| US$ thousand | capital premium |  |  |  | issued Reserves |  |  | earnings Company |  |  |  |  |  |  |  | interests |  | equity |  |  |  |  |  |
+| Balance as at |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 1 July 2024 | 38,002  235,063 |  |  |  | – | (272,505) |  | 364,657  365,217 |  |  |  |  |  |  |  | (1,114) 364,103 |  |  |  |  |  |  |  |
+| Total comprehensive income | – – |  |  |  | – | 15,000  141,597  156,597 |  |  |  |  |  |  |  |  |  | (1,043) 155,554 |  |  |  |  |  |  |  |
+| Profit for the period | – – |  |  |  | – | – |  | 141,597  141,597 |  |  |  |  |  |  |  | (992) 140,605 |  |  |  |  |  |  |  |
+| Other comprehensive income | – – |  |  |  | – | 15,000 |  | – 15,000 |  |  |  |  |  |  |  | (51) |  | 14,949 |  |  |  |  |  |
+| Dividend paid | – – |  |  |  | – | – |  | (27,459) (27,459) |  |  |  |  |  |  |  | – |  | (27,459) |  |  |  |  |  |
+| Reciprocal dividend |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| – PAR Gold[^1] | – – |  |  |  | – | – |  | 3,784 3,784 |  |  |  |  |  |  |  | – |  | 3,784 |  |  |  |  |  |
+| Capital reduction[^2] | – (235,063) |  |  |  | – | – |  | 235,063 – |  |  |  |  |  |  |  | – |  | – |  |  |  |  |  |
+| Shares issued[^3] | 1,440 10,877 |  |  |  | – | 38,369 |  | – 50,686 |  |  |  |  |  |  |  | – |  | 50,686 |  |  |  |  |  |
+| Balance as at |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 30 June 2025 | 39,442 10,877 |  |  |  | – (219,136) 717,642  548,825 |  |  |  |  |  |  |  |  |  |  | (2,157) 546,668 |  |  |  |  |  |  |  |
+| Total comprehensive income | – – |  |  |  | – | 44,231  357,215  401,446 |  |  |  |  |  |  |  |  |  | (481) 400,965 |  |  |  |  |  |  |  |
+| Profit for the period | – – |  |  |  | – | – |  | 357,215  357,215 |  |  |  |  |  |  |  | (304) 356,911 |  |  |  |  |  |  |  |
+| Other comprehensive income | – – |  |  |  | – | 44,231 |  | – 44,231 |  |  |  |  |  |  |  | (177) |  | 44,054 |  |  |  |  |  |
+| Dividends paid | – – |  |  |  | – | – |  | (67,387) (67,387) |  |  |  |  |  |  |  | – |  | (67,387) |  |  |  |  |  |
+| Reciprocal dividend |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| – PAR Gold[^1] | – – |  |  |  | – | – |  | 8,847 8,847 |  |  |  |  |  |  |  | – |  | 8,847 |  |  |  |  |  |
+| Capital reduction[^2] | – (10,877) |  |  |  | – | – |  | 10,877 – |  |  |  |  |  |  |  | – |  | – |  |  |  |  |  |
+| Share buy-back[^3] | (27) – |  |  |  | – | (1,287) |  | – (1,314) |  |  |  |  |  |  |  | – |  | (1,314) |  |  |  |  |  |
+| Shares to be issued[^3] | – – |  |  |  | 148,218 | – |  | – 148,218 |  |  |  |  |  |  |  | – |  | 148,218 |  |  |  |  |  |
+
+Balance as at
+30 June 2026 39,415 – 148,218  (176,192) 1,027,194 1,038,635 (2,638) 1,035,997
+[^1]  Reciprocal dividend – PAR Gold Proprietary Limited (PAR Gold) refers to the intra-Group transaction which relates to the dividend received
+on the treasury shares held by PAR Group in the Company. PAR Gold holds 13.1% (FY25: 13.1%) of the issued share capital of the
+Company. Refer to note 22 in respect of the related party transaction.
+[^3] Refer to note 15.
+[^4] Refer to note 14.
+The above statement of changes in equity should be read in conjunction with the accompanying notes.

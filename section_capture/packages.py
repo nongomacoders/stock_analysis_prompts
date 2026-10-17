@@ -34,7 +34,7 @@ def sha256(path: Path) -> str:
 
 
 def _matching_stored_questions(stored_questions: str, section_ids: list[str]) -> list[str]:
-    """Return question lines whose Target (or text) matches any current section or parent section ID."""
+    """Return question lines whose Target column/tag (or text) matches any current section or parent section ID."""
     if not stored_questions or not section_ids:
         return []
     target_ids = []
@@ -51,7 +51,13 @@ def _matching_stored_questions(stored_questions: str, section_ids: list[str]) ->
         if not line or line.startswith("#"):
             continue
         target_match = re.search(r"Target\s*:\s*([^\]\n]+)", line, re.IGNORECASE)
-        haystack = target_match.group(1) if target_match else line
+        if target_match:
+            haystack = target_match.group(1)
+        elif line.startswith("|") and line.count("|") >= 4:
+            cells = [c.strip() for c in line.split("|")]
+            haystack = cells[3] if len(cells) > 3 else line
+        else:
+            haystack = line
         if any(pat.search(haystack) for pat in patterns):
             matched.append(line)
     return matched
@@ -241,7 +247,7 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
         os.replace(folder, target)
         # Folder is already a complete durable save if moving its ZIP fails.
         try:
-            os.replace(archive, target.with_suffix(".zip"))
+            os.replace(archive, target.parent / f"{target.name}.zip")
         except OSError:
             # Preserve the copy in the completed folder instead of losing it.
             os.replace(archive, target / "upload.zip")
