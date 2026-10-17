@@ -1,8 +1,6 @@
-# Local scratch, caches, and saved captures; keep prompt templates and source reports visible.
+# Local scratch and Python environment; keep captures, maps, questions, and source reports tracked for multi-computer use.
 /tmp/
 /.venv/
-/captures/
-/documents/
 __pycache__/
 *.py[cod]
 .pytest_cache/

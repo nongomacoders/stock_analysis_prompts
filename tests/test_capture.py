@@ -297,3 +297,37 @@ def test_gui_editable_preview_updates_pending_and_added_captures(qapp, pdf_path,
     assert 'Analyst note: verify H2 ramp-up.' in saved_text
     assert 'Analyst note: verify H2 ramp-up.' in (folder / 'prompt.md').read_text(encoding='utf-8')
     window.close()
+
+
+def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp, pdf_path, tmp_path):
+    from section_capture.map_dialog import QuestionsLedgerDialog
+    window = CaptureWindow(tmp_path)
+    window.show()
+    assert window.open_pdf(pdf_path)
+    assert window.questions_button.text() == 'Stored questions (none)'
+
+    # First section export without stored questions
+    window.heading_edit.setText('Section 1 Highlights')
+    window.selection_changed(window.source.capture_area(4, QRectF(20, 175, 385, 153)))
+    first_pack = window.save_section()
+    first_prompt = (first_pack / 'prompt.md').read_text(encoding='utf-8')
+    assert 'None supplied (first section capture)' in first_prompt
+    assert not (first_pack / 'stored-questions.md').exists()
+
+    # Store questions via clipboard in QuestionsLedgerDialog
+    qapp.clipboard().setText('Q1 [Target: D008 APMs]: Verify AISC bridge and Sheba/Consort unit costs.\nQ2 [Target: D006 Notes]: Reconcile 2,436m dividend shares vs 2,029.6m weighted shares.')
+    dialog = QuestionsLedgerDialog(window.source, window)
+    dialog.replace_from_clipboard()
+    dialog.close()
+    window._update_actions()
+    assert '2 lines' in window.questions_button.text()
+
+    # Second section export embeds the stored questions
+    window.heading_edit.setText('Section 2 APMs')
+    window.selection_changed(window.source.capture_area(38, QRectF(20, 60, 380, 300)))
+    second_pack = window.save_section()
+    second_prompt = (second_pack / 'prompt.md').read_text(encoding='utf-8')
+    assert 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS' in second_prompt
+    assert 'Q1 [Target: D008 APMs]: Verify AISC bridge' in second_prompt
+    assert (second_pack / 'stored-questions.md').exists()
+    window.close()

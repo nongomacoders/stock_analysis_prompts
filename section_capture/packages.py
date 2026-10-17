@@ -42,6 +42,19 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
         context.append('\n' + report_overview(mapping, manifest['selections']))
     else:
         context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
+    stored_questions = (manifest.get('stored_questions') or '').strip()
+    if stored_questions:
+        context.extend([
+            '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
+            'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
+            stored_questions,
+            'END STORED QUESTIONS FROM EARLIER SECTIONS',
+        ])
+    else:
+        context.append(
+            '\nSTORED QUESTIONS FROM EARLIER SECTIONS: None supplied (first section capture). '
+            'Do not write narrative commentary; unpack footnotes with commentary and draw up verification questions for upcoming sections.'
+        )
     for part, selected_text in zip(manifest["selections"], selected_texts, strict=True):
         kind = part.get('content_type', 'unspecified')
         context.extend([
@@ -68,6 +81,7 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
     mapping = copy.deepcopy(source.report_map)
     if mapping:
         validate_map(mapping, source.sha256, source.page_count)
+    stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     root = Path(output_root).resolve()
     root.mkdir(parents=True, exist_ok=True)
     package_id = "section-" + uuid.uuid4().hex
@@ -78,6 +92,7 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
         "task": "analyst_reading_brief", "response_format": "markdown",
         "created_at": datetime.now(timezone.utc).isoformat(), "heading": heading,
         "analyst_question": question.strip() or None,
+        "stored_questions": stored_questions,
         "source": {"filename": source.path.name, "original_path": str(source.path), "sha256": source.sha256,
                    "byte_size": len(source.data), "physical_page_count": source.page_count},
         "document_map": mapping,
@@ -124,6 +139,9 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
             (folder / 'report-overview.md').write_text(report_overview(mapping, manifest['selections']), encoding='utf-8')
             manifest['prompt']['report_map_sha256'] = sha256(folder / 'report-map.json')
             manifest['prompt']['report_overview_sha256'] = sha256(folder / 'report-overview.md')
+        if stored_questions:
+            (folder / 'stored-questions.md').write_text(stored_questions + '\n', encoding='utf-8')
+            manifest['prompt']['stored_questions_sha256'] = sha256(folder / 'stored-questions.md')
         (folder / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         (folder / "UPLOAD.md").write_text(
             "# Use this section in an online model\n\n"

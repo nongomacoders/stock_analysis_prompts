@@ -1,0 +1,30 @@
+SUMMARY OF SALIENT FEATURES
+
+| Salient features | Unit | FY26 | FY25 | Movement change % |
+| --- | --- | --- | --- | --- |
+| Gold produced | oz | 272,310 | 196,527 | 38.6 |
+| Gold sold | oz | 272,373 | 196,926 | 38.3 |
+| Revenue | US$ million | 1,156.5 | 540.0 | 114.2 |
+| Average gold price received | US$/oz | 4,235 | 2,735 | 54.8 |
+|  | ZAR/kg | 2,308,329 | 1,595,761 | 44.7 |
+| Cash costs | US$/oz | 1,600 | 1,426 | 12.2 |
+|  | ZAR/kg | 860,706 | 835,034 | 3.1 |
+| AISC | US$/oz | 1,867 | 1,600 | 16.7 |
+|  | ZAR/kg | 985,551 | 934,517 | 5.5 |
+| All-in costs | US$/oz | 2,576 | 2,383 | 8.1 |
+|  | ZAR/kg | 1,271,855 | 1,287,842 | 1.2 |
+| Adjusted EBITDA | US$ million | 609.4 | 226.6 | 168.9 |
+| Attributable earnings – owners of the Company | US$ million | 357.2 | 141.6 | 152.3 |
+| Headline earnings | US$ million | 358.0 | 116.6 | 207.0 |
+| EPS | US cents | 17.60 | 7.16 | 145.8 |
+| HEPS | US cents | 17.64 | 5.89 | 199.5 |
+| Cash flows from operating activities | US$ million | 557.0 | 154.9 | 259.6 |
+| Net (cash)/debt | US$ million | (185.7) | 150.5 | 223.4 |
+| Total sustaining capital expenditure | US$ million | 21.8 | 11.7 | 86.3 |
+| Total capital expenditure | US$ million | 224.0 | 168.0 | 33.3 |
+| Net asset value per share | US cents | 51.1 | 26.9 | 90.0 |
+| Weighted average number of shares in issue | million | 2,029.6 | 1,978.9 | 2.6 |
+| Average exchange rate | US$/ZAR | 16.90 | 18.17 | 7.0 |
+| Closing exchange rate | US$/ZAR | 16.46 | 17.75 | 7.3 |
+| Average exchange rate | US$/A$ | 1.47 | 1.54 | 4.6 |
+| Closing exchange rate | US$/A$ | 1.45 | 1.52 | 4.6 |

@@ -12,7 +12,7 @@ import pdfplumber
 from PySide6.QtCore import QPointF, QRect, QRectF, QSize
 from PySide6.QtGui import QColor, QImage, QPainter, QPainterPath, QPolygonF
 from PySide6.QtPdf import QPdfDocument
-from .report_map import load_cached_map
+from .report_map import load_cached_map, load_questions_ledger
 
 
 def extract_structured_text(crop) -> str:
@@ -244,6 +244,7 @@ class PdfSource:
             self.document.close()
             raise
         self.report_map = load_cached_map(self.sha256, self.page_count)
+        self.questions_ledger = load_questions_ledger(self.sha256)
 
     @property
     def page_count(self) -> int:

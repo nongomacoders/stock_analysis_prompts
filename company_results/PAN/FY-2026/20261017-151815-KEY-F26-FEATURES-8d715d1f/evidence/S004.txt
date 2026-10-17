@@ -1,0 +1,12 @@
+| Operation | Production range oz | FY27H1 oz | FY27H2 oz |
+| --- | --- | --- | --- |
+| Elikhulu | 49,000 – 52,000 | 25,000 – 26,000 | 24,000 – 26,000 |
+| MTR operation[^1] | 49,000 – 54,000 | 19,000 – 22,000 | 30,000 – 32,000 |
+| BTRP | 12,000 – 14,000 | 6,000 – 7,000 | 6,000 – 7,000 |
+| Tennant Mines | 48,000 – 52,000 | 22,000 – 24,000 | 26,000 – 28,000 |
+| Barberton Mines underground | 72,000 – 75,000 | 36,000 – 37,000 | 36,000 – 38,000 |
+| Evander Mines underground | 50,000 – 55,000 | 22,000 – 25,000 | 28,000 – 30,000 |
+| Total | 280,000 – 302,000 | 130,000 – 141,000 | 150,000 – 161,000 |
+
+[^1] Expected production from MTR takes into account treatment of final calcine elements, whereafter annual production is forecast to increase
+to over 60,000oz per year.

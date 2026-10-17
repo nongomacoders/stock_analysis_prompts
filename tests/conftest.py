@@ -30,8 +30,11 @@ def pdf_path():
 @pytest.fixture(scope="session", autouse=True)
 def isolated_map_cache(qapp, pdf_path, tmp_path_factory):
     cache_dir = tmp_path_factory.mktemp("map-cache")
+    questions_dir = tmp_path_factory.mktemp("questions-cache")
     original_cache = report_map_mod.CACHE_ROOT
+    original_questions = report_map_mod.QUESTIONS_ROOT
     report_map_mod.CACHE_ROOT = cache_dir
+    report_map_mod.QUESTIONS_ROOT = questions_dir
     opened = PdfSource(pdf_path)
     try:
         mapping = scan_report(opened)
@@ -40,6 +43,7 @@ def isolated_map_cache(qapp, pdf_path, tmp_path_factory):
         opened.close()
     yield cache_dir
     report_map_mod.CACHE_ROOT = original_cache
+    report_map_mod.QUESTIONS_ROOT = original_questions
 
 
 @pytest.fixture(autouse=True)
@@ -56,5 +60,6 @@ def clean_windows(qapp):
 @pytest.fixture
 def source(qapp, pdf_path):
     opened = PdfSource(pdf_path)
+    opened.questions_ledger = ""
     yield opened
     opened.close()

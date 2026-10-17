@@ -14,7 +14,7 @@ from .packages import PROJECT_ROOT, save_package
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
 from .content_types import CONTENT_TYPES
-from .map_dialog import ReportMapDialog
+from .map_dialog import QuestionsLedgerDialog, ReportMapDialog
 from .report_map import save_map, scan_report
 
 
@@ -75,6 +75,8 @@ class CaptureWindow(QMainWindow):
         self.full_page_action.triggered.connect(self.canvas.select_full_page)
         self.map_action = toolbar.addAction('Report map')
         self.map_action.triggered.connect(self.show_report_map)
+        self.questions_action = toolbar.addAction('Stored questions')
+        self.questions_action.triggered.connect(self.show_questions_ledger)
         save_action = QAction("Save section", self)
         save_action.setShortcut(QKeySequence.StandardKey.Save)
         save_action.triggered.connect(self.save_section)
@@ -153,6 +155,10 @@ class CaptureWindow(QMainWindow):
         row.addWidget(remove)
         row.addWidget(new)
         side.addLayout(row)
+        self.questions_button = QPushButton("Stored questions (none)")
+        self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
+        self.questions_button.clicked.connect(self.show_questions_ledger)
+        side.addWidget(self.questions_button)
         self.save_button = QPushButton("Save section + upload ZIP")
         self.save_button.setObjectName("primary")
         self.save_button.clicked.connect(self.save_section)
@@ -196,6 +202,14 @@ class CaptureWindow(QMainWindow):
         self.mode_combo.setEnabled(has_pdf)
         self.full_page_action.setEnabled(has_pdf)
         self.map_action.setEnabled(has_pdf)
+        self.questions_action.setEnabled(has_pdf)
+        self.questions_button.setEnabled(has_pdf)
+        q_text = (getattr(self.source, "questions_ledger", "") or "").strip() if has_pdf else ""
+        if q_text:
+            q_lines = len([ln for ln in q_text.splitlines() if ln.strip()])
+            self.questions_button.setText(f"Stored questions ({q_lines} lines)")
+        else:
+            self.questions_button.setText("Stored questions (none)")
         self.add_button.setEnabled(self.pending is not None)
         self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
         self.save_button.setEnabled(bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending))
@@ -303,6 +317,11 @@ class CaptureWindow(QMainWindow):
     def show_report_map(self):
         if self.source:
             ReportMapDialog(self.source, self.scan_report_map, self).exec()
+
+    def show_questions_ledger(self):
+        if self.source:
+            QuestionsLedgerDialog(self.source, self).exec()
+            self._update_actions()
 
     def change_page(self, page):
         if self.source:

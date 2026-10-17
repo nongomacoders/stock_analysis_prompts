@@ -1,19 +1,19 @@
-# Analyst reading and verification workflow
+# Progressive Section Question-Ledger & Footnote Workflow
 
-Instead of feeding an entire company PDF to an LLM at once, this workflow scans the PDF's major sections first, then feeds captured sections one by one. For each section, the LLM summarizes key points, questions consequential claims, and advises what to verify in upcoming sections.
+Instead of feeding an entire company PDF to an LLM at once—or letting the LLM write generic narrative commentary on each section—this workflow uses the LLM as a **sequential verification and question engine**:
 
-## Intended LLM response
-
-1. **What this section is saying**: Concise summary of the important message, key figures, and qualifications, citing selection IDs and physical PDF pages (e.g., `[S003, physical PDF p. 7]`).
-2. **What to check**: Prioritized list (high/medium/low) of consequential claims or questions, why each matters, what specific evidence or reconciliation to inspect, and whether it is supported here, shows a visible discrepancy, or is `Pending: [section]` for a later section.
-3. **Where to read next**: Which upcoming report sections, notes, APM reconciliations, or operating tables to capture next and what question each will resolve.
-
-The prompt adapts guidance based on each selection's analyst-tagged data type (`Commentary`, `Table`, `Financial note`, or `Mixed / unspecified`).
-
-## Step-by-step usage
-
-1. Open the PDF in the capture app (`Run Capture.cmd`). The app automatically scans native headings to build a coarse major-section map.
-2. Optionally click **Report map → Copy overview** and paste it into a fresh LLM chat to orient the model before uploading the first section.
-3. Select the relevant text or area regions for a section, tag their data types, and click **Save section + upload ZIP**.
-4. Click **Open saved folder**, attach the PNG images from `evidence/` to your LLM chat, and paste **Copy reading prompt** (`prompt.md`).
-5. Review the model's summary and pending verification questions, then capture the next recommended section (e.g., CEO commentary, primary financial statements, financial notes, APMs, or operating tables) to resolve those pending checks.
+1. **Capture Section 1**:
+   - The LLM does **not** write general summary commentary.
+   - It scrutinizes every footnote (`[^1]`, `*`, etc.) and qualification that contains operational, accounting, or forecast commentary.
+   - It draws up specific verification questions to check in future sections (tagged by Report Map section ID, e.g., `D003`, `D005`, `D006`, `D008`, `D009`) and outputs an **Open Questions Ledger** block plus compact baseline numbers for forecasting.
+   - You copy that open-questions block and click **Stored questions → Replace from clipboard & Save** in the app.
+2. **Capture Section 2 (and subsequent sections)**:
+   - When you save the next section, the app **automatically embeds your Stored Questions Ledger** into `prompt.md`.
+   - The LLM:
+     1. **Answers ONLY the stored questions that relate to the current section** (`Resolved`, `Partially resolved`, or `Contradicted`, citing `[S00X, physical PDF p. Y]`).
+     2. **Unpacks footnotes with commentary** in the current section.
+     3. **Draws up new verification questions** from the current section for remaining upcoming sections.
+     4. **Outputs an Updated Open Questions Ledger** (carrying forward unanswered questions for other sections + new questions from this section), ready to copy into **Stored questions → Replace from clipboard & Save** for Section 3.
+     5. **Lists compact hard forecast inputs** captured or verified in this section.
+3. **Sync across computers via Git**:
+   - Saved captures, cached report maps (`documents/maps/`), and stored question ledgers (`documents/questions/`) are tracked in Git so you can commit, push, and continue on another computer seamlessly.

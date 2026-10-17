@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_ROOT = ROOT / 'documents/maps'
+QUESTIONS_ROOT = ROOT / 'documents/questions'
 ORIENTATION_PATH = ROOT/'prompts/mining/00-report-orientation/v1.0.0/prompt.md'
 KINDS = [
     ('financial_notes', 'Financial notes', r'NOTES TO (?:THE )?(?:SUMMARISED )?CONSOLIDATED (?:ANNUAL )?FINANCIAL STATEMENTS'),
@@ -221,3 +222,26 @@ def report_overview(mapping, selections=()):
         lines.append(f"\nNative-scan issues: {len(mapping['issues'])}; consult the saved map details. These areas need checking.")
     lines.extend(['\nMap limits:'] + ['- ' + note for note in mapping['limitations']])
     return '\n'.join(lines) + '\n'
+
+
+def load_questions_ledger(source_sha256: str, questions_root: Path | None = None) -> str:
+    if not re.fullmatch(r'[0-9a-f]{64}', source_sha256):
+        return ""
+    path = (Path(questions_root) if questions_root else QUESTIONS_ROOT) / source_sha256 / 'questions-ledger.md'
+    if path.exists():
+        try:
+            return path.read_text(encoding='utf-8').strip()
+        except OSError:
+            return ""
+    return ""
+
+
+def save_questions_ledger(source_sha256: str, text: str, questions_root: Path | None = None) -> Path:
+    if not re.fullmatch(r'[0-9a-f]{64}', source_sha256):
+        raise ValueError('Invalid source SHA-256 for questions ledger.')
+    folder = (Path(questions_root) if questions_root else QUESTIONS_ROOT) / source_sha256
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / 'questions-ledger.md'
+    cleaned = text.strip()
+    path.write_text((cleaned + '\n') if cleaned else '', encoding='utf-8')
+    return path
