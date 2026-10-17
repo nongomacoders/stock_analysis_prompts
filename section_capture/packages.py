@@ -34,7 +34,7 @@ def sha256(path: Path) -> str:
 
 
 def _matching_stored_questions(stored_questions: str, section_ids: list[str]) -> list[str]:
-    """Return question lines whose Target column/tag (or text) matches any current section or parent section ID."""
+    """Return question lines whose Target column/tag/heading (or text) matches any current section or parent section ID."""
     if not stored_questions or not section_ids:
         return []
     target_ids = []
@@ -46,16 +46,22 @@ def _matching_stored_questions(stored_questions: str, section_ids: list[str]) ->
             target_ids.append(sid)
     patterns = [re.compile(rf"\b{re.escape(tid)}\b", re.IGNORECASE) for tid in target_ids]
     matched = []
+    current_heading = ""
     for raw_line in stored_questions.splitlines():
         line = raw_line.strip()
-        if not line or line.startswith("#"):
+        if not line:
+            continue
+        if line.startswith("#"):
+            current_heading = line.lstrip("#").strip()
             continue
         target_match = re.search(r"Target\s*:\s*([^\]\n]+)", line, re.IGNORECASE)
         if target_match:
-            haystack = target_match.group(1)
+            haystack = f"{current_heading} {target_match.group(1)}"
         elif line.startswith("|") and line.count("|") >= 4:
             cells = [c.strip() for c in line.split("|")]
             haystack = cells[3] if len(cells) > 3 else line
+        elif current_heading:
+            haystack = current_heading
         else:
             haystack = line
         if any(pat.search(haystack) for pat in patterns):
