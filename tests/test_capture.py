@@ -266,3 +266,34 @@ def test_gui_type_per_selection_retag_and_save_pending(qapp, pdf_path, tmp_path)
     assert window.content_type_combo.currentData() == 'unspecified'
     assert not window.apply_type_button.isEnabled()
     window.close()
+
+
+def test_table_crop_formats_markdown_columns_and_superscript_footnotes(source):
+    prod_table = source.capture_area(4, QRectF(20, 175, 385, 153))
+    assert '| Operation | Production range oz | FY27H1 oz | FY27H2 oz |' in prod_table.text
+    assert '| MTR operation[^1] | 49,000 – 54,000 | 19,000 – 22,000 | 30,000 – 32,000 |' in prod_table.text
+    assert '[^1] Expected production from MTR takes into account treatment of final calcine elements' in prod_table.text
+
+    salient = source.capture_area(4, QRectF(438, 175, 383, 373))
+    assert '| Salient features | Unit | FY26 | FY25 | Movement change % |' in salient.text
+    assert '|  | ZAR/kg | 2,308,329 | 1,595,761 | 44.7 |' in salient.text
+
+
+def test_gui_editable_preview_updates_pending_and_added_captures(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(tmp_path)
+    window.show()
+    assert window.open_pdf(pdf_path)
+    window.heading_edit.setText('FY27 guidance')
+    cap = window.source.capture_area(4, QRectF(20, 175, 385, 153))
+    window.selection_changed(cap)
+    window.preview.setPlainText('### FY27 Production Guidance\n' + window.preview.toPlainText())
+    assert window.pending.text.startswith('### FY27 Production Guidance')
+    window.add_selection()
+    window.parts.setCurrentRow(0)
+    window.preview.setPlainText(window.preview.toPlainText() + '\nAnalyst note: verify H2 ramp-up.')
+    folder = window.save_section()
+    saved_text = (folder / 'evidence/S001.txt').read_text(encoding='utf-8')
+    assert saved_text.startswith('### FY27 Production Guidance')
+    assert 'Analyst note: verify H2 ramp-up.' in saved_text
+    assert 'Analyst note: verify H2 ramp-up.' in (folder / 'prompt.md').read_text(encoding='utf-8')
+    window.close()

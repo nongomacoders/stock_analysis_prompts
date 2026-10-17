@@ -124,9 +124,9 @@ class CaptureWindow(QMainWindow):
         self.selection_label.setWordWrap(True)
         side.addWidget(self.selection_label)
         self.preview = QPlainTextEdit()
-        self.preview.setReadOnly(True)
-        self.preview.setPlaceholderText("Selected native text will appear here. Images are also saved.")
+        self.preview.setPlaceholderText("Selected native text will appear here (editable before saving). Images are also saved.")
         self.preview.setFixedHeight(90)
+        self.preview.textChanged.connect(self._preview_edited)
         side.addWidget(self.preview, 2)
         self.warning_label = QLabel()
         self.warning_label.setObjectName("warning")
@@ -210,13 +210,22 @@ class CaptureWindow(QMainWindow):
         self.pending = capture
         if not hasattr(self, "preview"):
             return
+        self.preview.blockSignals(True)
         self.preview.setPlainText(capture.text if capture else "")
+        self.preview.blockSignals(False)
         self.warning_label.setText("\n".join(capture.warnings) if capture else "")
         if capture:
             self.selection_label.setText(f"Page {capture.page} · {capture.mode} selection · {len(capture.text):,} text characters")
         else:
             self.selection_label.setText("Drag to select evidence. Added selections stay in the list when you change pages.")
         self._update_actions()
+
+    def _preview_edited(self):
+        edited = self.preview.toPlainText()
+        if self.pending is not None:
+            self.pending.text = edited
+        elif 0 <= self.parts.currentRow() < len(self.captures):
+            self.captures[self.parts.currentRow()].text = edited
 
     def choose_pdf(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Open company report", str(PROJECT_ROOT / "company_results"), "PDF documents (*.pdf)")
@@ -321,7 +330,9 @@ class CaptureWindow(QMainWindow):
     def preview_part(self, row):
         if 0 <= row < len(self.captures):
             cap = self.captures[row]
+            self.preview.blockSignals(True)
             self.preview.setPlainText(cap.text)
+            self.preview.blockSignals(False)
             self.warning_label.setText("\n".join(cap.warnings))
             self.selection_label.setText(f"Added selection {row + 1} · original page {cap.page} · {cap.mode} · {CONTENT_TYPES[cap.content_type]}")
         self._update_actions()
