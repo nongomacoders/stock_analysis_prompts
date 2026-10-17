@@ -5,24 +5,22 @@ Last updated: 2026-10-17 (Africa/Johannesburg).
 ## Objective and boundary
 
 Analyze and forecast from company presentations and reports section by section without whole-PDF inaccuracies or narrative fluff:
-1. Scan the PDF locally for major sections (`section_capture/report_map.py`).
-2. Capture a section in the PySide6 app (`section_capture/`). The LLM gives **no narrative commentary**—instead, it deeply scrutinizes footnotes that contain commentary, draws up verification questions for future sections (`D001`–`D013`), and records compact baseline forecast numbers.
-3. Store those open questions in the app's **Stored questions** ledger (`documents/questions/<sha256>/questions-ledger.md`).
-4. Capture the next section: the app automatically embeds the stored questions into `prompt.md`, and the LLM answers **only** the stored questions that relate to that section, draws up new questions from that section (and its footnotes), and outputs an updated open-questions ledger for the next section.
+1. Scan the PDF locally for major sections (`section_capture/report_map.py`) and store the report metadata, section map, and open questions ledger in the central SQLite database (`documents/analysis.sqlite`).
+2. Capture a section in the PySide6 app (`section_capture/`). Saving stores `selected_text`, `selections_json`, `stored_questions_snapshot`, `prompt`, and `manifest_json` directly in SQLite (with no `.png` image crops, section folders, or `.zip` archives) and automatically copies `prompt` to the system clipboard.
+3. Paste the prompt into the LLM. The LLM gives **no narrative commentary**—it answers only stored questions targeting the current section, scrutinizes footnotes with commentary (`[^1]`, etc.), draws up verification questions for future sections (`D001`–`D013`), and outputs an **Updated Open Questions Ledger**.
+4. Store the LLM response in **Saved sections / LLM response** (`SavedSectionsDialog` in `section_capture/map_dialog.py`) or update **Stored questions** directly; pasting the LLM response automatically extracts Section 4 (`Updated Open Questions Ledger`) into `reports.questions_ledger` in SQLite for the next section capture.
 
 ## Completed
 
-- **Implemented progressive Stored Questions Ledger & deep footnote scrutiny**:
-  - Updated `prompts/mining/12-analyst-reading-brief/v1.1.0/prompt.md` and `prompts/mining/00-report-orientation/v1.0.0/prompt.md` to eliminate narrative commentary essays, enforce high-effort analysis of footnotes with commentary (`[^1]`, etc.), answer only stored questions relating to the current section, and output a copy-ready **Updated Open Questions Ledger**.
-  - Added `QuestionsLedgerDialog` (`section_capture/map_dialog.py`), `load_questions_ledger` / `save_questions_ledger` (`section_capture/report_map.py`), toolbar/sidebar **Stored questions** controls (`section_capture/window.py`), and automatic embedding of `stored_questions` into `prompt.md` and `stored-questions.md` (`section_capture/packages.py`).
-  - Pre-populated and updated the PAN FY2026 questions ledger (`documents/questions/62b10bcd.../questions-ledger.md`) after Section 1 (`01-D002-KEY-F26-FEATURES-...`) and Section 2 (`02-D003-Chief-executive-officer-s-statement-...`).
-  - Defaulted `CaptureWindow` save folder to the opened PDF's parent directory (`candidate.path.parent`) and prefixed saved section folders/ZIPs with the sequential capture number and report map section ID (`01-D002-...`, `02-D003-...`, `03-D005.1-...`).
-  - Removed all `.png` and `S00X` image filenames from `prompt.md` and `report-overview.md`; all evidence references use only the **Section ID** (`D002`, `D005.1`, etc.) and **physical PDF page number**.
-  - Added optional **Sub-heading** support (`register_subsection` in `section_capture/report_map.py`) to divide large sections into numbered subsections (`D005.1`, `D005.2`, etc.) and update the report map automatically on save.
-  - Updated `save_package` and `build_prompt` (`section_capture/packages.py`) to automatically reload `questions-ledger.md` from disk on save and extract/highlight the stored questions targeting the current section or parent section ID (`QUESTIONS SPECIFICALLY TARGETING THIS SECTION (D005)`) at the top of the prompt.
-  - Removed `/captures/` and `/documents/` from `.gitignore` so all captures, section maps, and stored question ledgers stay tracked in Git across computers.
+- **Central SQLite persistence (`documents/analysis.sqlite`)**:
+  - Created `section_capture/db.py` with `reports` and `sections` tables storing `report_map_json`, `questions_ledger`, `selected_text`, `selections_json`, `stored_questions_snapshot`, `prompt`, `llm_response`, and `manifest_json`.
+  - Updated `section_capture/report_map.py`, `section_capture/packages.py`, `section_capture/map_dialog.py`, and `section_capture/window.py` to persist all maps, questions ledgers, captured sections, prompts, and LLM responses exclusively in SQLite without writing `.png` or `.zip` files.
+  - Added `SavedSectionsDialog` (`Saved sections / LLM response`) to inspect any captured section's prompt, paste/save the LLM response in SQLite, and automatically extract Section 4 (`Updated Open Questions Ledger`) into `reports.questions_ledger`.
+  - Added editable `HeadingComboBox` dropdown for **Section heading**, retained the main heading after saving a subsection (`D005.1`, `D006.1`), and blocked saving a blank `Sub-heading` once a section has subsections.
+  - Migrated PAN FY2026 report map, 16-question open ledger, and all 4 captured sections (`01-D002`, `02-D003`, `03-D005.1`, `04-D006.1`) into `documents/analysis.sqlite` and removed legacy filesystem capture folders, `.png` crops, `.zip` archives, `documents/maps/`, and `documents/questions/`.
 
 ## Next steps
 
-1. Open `Run Capture.cmd` and load `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf`—the save folder automatically defaults to `company_results/PAN/FY-2026/` and `Stored questions` holds the 14 open questions after Section 2 (`D003`).
-2. Capture Section 3 (e.g., `D005` with a Sub-heading like `Statement of Financial Position` $\rightarrow$ `03-D005.1-...`, or `D008 Alternative performance measures`); the app will automatically highlight the questions targeting that section in `prompt.md`.
+1. Open `Run Capture.cmd` and load `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf`—the app loads the report map, existing sections (`01-D002` through `04-D006.1`), and the 16 open questions from `documents/analysis.sqlite`.
+2. Continue capturing `Financial notes` subsections (`D006.2`, `D006.3`, etc., e.g. Note 3+, Note 6 tax, Note 13/16 cash & debt, Note 14/15/18 shares & Emmerson acquisition) or `D008 Alternative performance measures`.
+

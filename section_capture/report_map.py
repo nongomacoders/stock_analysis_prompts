@@ -7,6 +7,8 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
+from .db import get_questions_ledger, get_report_map, upsert_report
+
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_ROOT = ROOT / 'documents/maps'
 QUESTIONS_ROOT = ROOT / 'documents/questions'
@@ -163,29 +165,25 @@ def validate_map(mapping, source_sha256, page_count):
 def load_cached_map(source_sha256, page_count, cache_root=None):
     if not re.fullmatch(r'[0-9a-f]{64}', source_sha256):
         return None
-    folder = (Path(cache_root) if cache_root else CACHE_ROOT)/source_sha256
-    for path in sorted(folder.glob('*-map.json'), reverse=True):
+    mapping = get_report_map(source_sha256, db_path=cache_root)
+    if mapping is not None:
         try:
-            mapping = json.loads(path.read_text(encoding='utf-8'))
             validate_map(mapping, source_sha256, page_count)
             return mapping
-        except (ValueError, KeyError, TypeError, OSError):
-            continue
+        except (ValueError, KeyError, TypeError):
+            return None
     return None
 
 
 def save_map(mapping, cache_root=None):
     validate_map(mapping, mapping['source_sha256'], mapping['physical_page_count'])
-    folder = (Path(cache_root) if cache_root else CACHE_ROOT)/mapping['source_sha256']
-    folder.mkdir(parents=True, exist_ok=True)
-    stem = datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S-%f') + '-' + mapping['map_id'][-8:]
-    path = folder/(stem + '-map.json')
-    # New name per scan; no existing map or export is modified.
-    with path.open('x', encoding='utf-8') as stream:
-        json.dump(mapping, stream, ensure_ascii=False, indent=2)
-        stream.write('\n')
-    path.with_name(stem + '-overview.md').write_text(report_overview(mapping), encoding='utf-8')
-    return path
+    return upsert_report(
+        sha256=mapping['source_sha256'],
+        filename=mapping.get('source_filename', ''),
+        physical_page_count=mapping['physical_page_count'],
+        report_map=mapping,
+        db_path=cache_root,
+    )
 
 
 def _range(section):
@@ -348,21 +346,14 @@ def report_overview(mapping, selections=()):
 def load_questions_ledger(source_sha256: str, questions_root: Path | None = None) -> str:
     if not re.fullmatch(r'[0-9a-f]{64}', source_sha256):
         return ""
-    path = (Path(questions_root) if questions_root else QUESTIONS_ROOT) / source_sha256 / 'questions-ledger.md'
-    if path.exists():
-        try:
-            return path.read_text(encoding='utf-8').strip()
-        except OSError:
-            return ""
-    return ""
+    return get_questions_ledger(source_sha256, db_path=questions_root)
 
 
 def save_questions_ledger(source_sha256: str, text: str, questions_root: Path | None = None) -> Path:
     if not re.fullmatch(r'[0-9a-f]{64}', source_sha256):
         raise ValueError('Invalid source SHA-256 for questions ledger.')
-    folder = (Path(questions_root) if questions_root else QUESTIONS_ROOT) / source_sha256
-    folder.mkdir(parents=True, exist_ok=True)
-    path = folder / 'questions-ledger.md'
-    cleaned = text.strip()
-    path.write_text((cleaned + '\n') if cleaned else '', encoding='utf-8')
-    return path
+    return upsert_report(
+        sha256=source_sha256,
+        questions_ledger=text.strip(),
+        db_path=questions_root,
+    )

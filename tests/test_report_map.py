@@ -61,7 +61,8 @@ def test_cancelled_scan_does_not_claim_complete_coverage():
 def test_cache_rejects_wrong_document_incomplete_ranges_and_false_confirmation(source, tmp_path):
     mapping = copy.deepcopy(source.report_map)
     assert mapping is not None
-    first = save_map(mapping, tmp_path)
+    db_file = save_map(mapping, tmp_path)
+    assert db_file.name == 'analysis.sqlite'
     assert load_cached_map(source.sha256, source.page_count, tmp_path)['map_id'] == mapping['map_id']
     assert load_cached_map('b'*64, source.page_count, tmp_path) is None
     assert load_cached_map(source.sha256, source.page_count-1, tmp_path) is None
@@ -73,9 +74,6 @@ def test_cache_rejects_wrong_document_incomplete_ranges_and_false_confirmation(s
     bad['status'] = 'source_verified'
     with pytest.raises(ValueError, match='status'):
         validate_map(bad, source.sha256, source.page_count)
-    # A broken newer cache must not replace the last usable map.
-    (first.parent/'9999-map.json').write_text('{broken', encoding='utf-8')
-    assert load_cached_map(source.sha256, source.page_count, tmp_path)['map_id'] == mapping['map_id']
 
 
 def test_request_context_uses_crop_region_not_page_alone(source):
@@ -95,12 +93,12 @@ def test_request_context_uses_crop_region_not_page_alone(source):
 
 def test_export_snapshots_map_and_marks_later_content_not_supplied(source, tmp_path):
     cap = source.capture_area(3, QRectF(20, 65, 190, 475))
-    folder = save_package(source, 'Highlights', '', [cap], tmp_path)
-    manifest = json.loads((folder/'manifest.json').read_text())
+    saved = save_package(source, 'Highlights', '', [cap], tmp_path)
+    manifest = saved.manifest
     assert manifest['document_map']['source_sha256'] == source.sha256
-    assert hashlib.sha256((folder/'report-map.json').read_bytes()).hexdigest() == manifest['prompt']['report_map_sha256']
-    assert hashlib.sha256((folder/'report-overview.md').read_bytes()).hexdigest() == manifest['prompt']['report_overview_sha256']
-    prompt = (folder/'prompt.md').read_text(encoding='utf-8')
+    assert len(manifest['prompt']['report_map_sha256']) == 64
+    assert len(manifest['prompt']['report_overview_sha256']) == 64
+    prompt = saved.prompt
     assert '| Highlights | 2 full – 4 full | Partial selected evidence: D002 (p. 3)' in prompt
     assert '| Financial notes | 19 right – 36 full | Not included here' in prompt
     assert manifest['review']['model_brief'] == 'not_run'
@@ -110,9 +108,9 @@ def test_export_snapshots_map_and_marks_later_content_not_supplied(source, tmp_p
 def test_export_without_map_is_explicit_not_a_fake_outline(source, tmp_path):
     source.report_map = None
     cap = source.capture_area(3, QRectF(20, 65, 190, 475))
-    folder = save_package(source, 'Highlights', '', [cap], tmp_path)
-    assert not (folder/'report-map.json').exists()
-    assert 'No report map is supplied' in (folder/'prompt.md').read_text(encoding='utf-8')
+    saved = save_package(source, 'Highlights', '', [cap], tmp_path)
+    assert saved.manifest['document_map'] is None
+    assert 'No report map is supplied' in saved.prompt
 
 
 def test_map_dialog_copy_is_navigation_only_and_preserves_pending_capture(qapp, pdf_path, tmp_path):
@@ -160,10 +158,11 @@ def test_open_uncached_report_scans_before_export(qapp, pdf_path, tmp_path, monk
         return copy.deepcopy(reference)
     monkeypatch.setattr('section_capture.window.PdfSource', opened_without_cache)
     monkeypatch.setattr('section_capture.window.scan_report', scanned)
-    monkeypatch.setattr('section_capture.window.save_map', lambda mapping: save_map(mapping, tmp_path/'maps'))
+    monkeypatch.setattr('section_capture.window.save_map', lambda mapping, root=None: save_map(mapping, tmp_path/'maps'))
     window = CaptureWindow(tmp_path/'packs')
     assert window.open_pdf(pdf_path)
     assert calls == [window.source.sha256]
     assert window.source.report_map['status'] == 'automatic_draft'
-    assert list((tmp_path/'maps').rglob('*-map.json'))
+    assert (tmp_path/'maps'/'analysis.sqlite').exists()
     window.close()
+

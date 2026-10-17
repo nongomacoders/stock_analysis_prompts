@@ -79,14 +79,16 @@ def test_boundary_crossing_is_disclosed(source):
     assert any("boundary crosses text" in w for w in cap.warnings)
 
 
-def test_multi_page_package_is_durable_source_linked_and_zip_matches(source, tmp_path):
+def test_multi_page_package_is_saved_in_sqlite_without_png_or_zip_files(source, tmp_path):
     width, height = source.size(3)
     first = source.capture_area(3, QRectF(0, 0, width/2, height))
     first.printed_label = "2"
     second = source.capture_area(6, QRectF(0, 0, width/2, height))
     output = save_package(source, "../Production: costs / FY26", "What changed and why?", [first, second], tmp_path)
-    assert output.parent == tmp_path.resolve()
-    manifest = json.loads((output/'manifest.json').read_text(encoding='utf-8'))
+    assert output.db_path == (tmp_path / "analysis.sqlite").resolve()
+    assert not list(tmp_path.rglob("*.png"))
+    assert not list(tmp_path.rglob("*.zip"))
+    manifest = output.manifest
     assert [p['physical_page'] for p in manifest['selections']] == [3, 6]
     assert manifest['source']['sha256'] == source.sha256
     assert manifest['selections'][0]['printed_label_origin'] == 'user_entered_unverified'
@@ -96,24 +98,17 @@ def test_multi_page_package_is_durable_source_linked_and_zip_matches(source, tmp
     assert manifest['task'] == 'analyst_reading_brief'
     assert manifest['response_format'] == 'markdown'
     assert 'output_schema_sha256' not in manifest['prompt']
-    assert not (output/'output.schema.json').exists()
     for part in manifest['selections']:
-        assert hashlib.sha256((output/part['image']).read_bytes()).hexdigest() == part['image_sha256']
-        assert not QImage(str(output/part['image'])).isNull()
-        assert hashlib.sha256((output/part['text']).read_bytes()).hexdigest() == part['text_sha256']
-    prompt = (output/'prompt.md').read_text(encoding='utf-8')
+        assert 'image' not in part
+        assert len(part['text_sha256']) == 64
+    prompt = output.prompt
     assert manifest['package_id'] in prompt and 'Section D002' in prompt and 'Section D003' in prompt
     assert 'S001' not in prompt and '.png' not in prompt
     assert "What changed and why?" in prompt
     assert 'physical PDF page 3' in prompt and source.path.name in prompt
-    assert not list(tmp_path.glob('.section-staging-*'))
-    with zipfile.ZipFile(output.with_suffix('.zip')) as z:
-        assert z.read('prompt.md') == (output/'prompt.md').read_bytes()
-        assert z.read('manifest.json') == (output/'manifest.json').read_bytes()
-        assert set(z.namelist()) == {p.relative_to(output).as_posix() for p in output.rglob('*') if p.is_file()}
-    # New save is a new version, never an overwrite.
+    # New save is a new row in SQLite, never an overwrite.
     again = save_package(source, "../Production: costs / FY26", "", [first], tmp_path)
-    assert again != output and output.exists()
+    assert again.package_id != output.package_id and again.section_number == 2
 
 
 def test_missing_heading_or_selection_does_not_create_pack(source, tmp_path):
@@ -137,14 +132,6 @@ def test_changed_source_is_rejected_before_any_export(qapp, pdf_path, tmp_path):
         assert not (tmp_path/'out').exists()
     finally:
         opened.close()
-
-
-def test_failed_image_write_leaves_no_completed_pack(source, tmp_path, monkeypatch):
-    cap = source.capture_area(3, QRectF(20, 20, 150, 100))
-    monkeypatch.setattr(QImage, 'save', lambda *args: False)
-    with pytest.raises(OSError, match="image"):
-        save_package(source, "Title", "", [cap], tmp_path)
-    assert list(tmp_path.iterdir()) == []
 
 
 @pytest.mark.parametrize('zoom', [0.8, 1.25])
@@ -180,7 +167,7 @@ def test_gui_drag_maps_through_zoom_without_losing_added_selections(qapp, pdf_pa
     window.close()
 
 
-def test_gui_text_drag_and_save_current_selection(qapp, pdf_path, tmp_path):
+def test_gui_text_drag_and_save_current_selection_copies_prompt_automatically(qapp, pdf_path, tmp_path):
     window = CaptureWindow(tmp_path)
     window.show()
     assert window.open_pdf(pdf_path)
@@ -196,10 +183,12 @@ def test_gui_text_drag_and_save_current_selection(qapp, pdf_path, tmp_path):
     window.heading_edit.setText('Growth projects')
     assert window.save_button.isEnabled()
     output = window.save_section()
-    assert output is not None and (output/'manifest.json').exists()
+    assert output is not None and output.manifest['package_id'] == output.package_id
     assert not window.captures and window.pending is None
+    # Save automatically copies prompt to clipboard
+    assert qapp.clipboard().text() == output.prompt
     window.copy_prompt()
-    assert qapp.clipboard().text() == (output/'prompt.md').read_text(encoding='utf-8')
+    assert qapp.clipboard().text() == output.prompt
     assert window.copy_button.isEnabled()
     window.close()
 
@@ -210,13 +199,13 @@ def test_mixed_types_reach_each_sources_metadata_and_prompt(source, tmp_path):
         cap = source.capture_area(4, QRectF(20, 160, 385, 165))
         cap.content_type = kind
         captures.append(cap)
-    folder = save_package(source, 'Mixed evidence', '', captures, tmp_path)
-    manifest = json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
+    saved = save_package(source, 'Mixed evidence', '', captures, tmp_path)
+    manifest = saved.manifest
     assert manifest['prompt']['stage'] == '12-analyst-reading-brief'
     assert manifest['prompt']['version'] == '1.1.0'
     assert [s['content_type'] for s in manifest['selections']] == [c.content_type for c in captures]
     assert [s['content_type_origin'] for s in manifest['selections']] == ['user_selected'] * 3 + ['not_specified']
-    prompt = (folder/'prompt.md').read_text(encoding='utf-8')
+    prompt = saved.prompt
     for source_id, label, cap in zip(['S001', 'S002', 'S003', 'S004'],
                                     ['Commentary', 'Table', 'Financial note', 'Mixed / unspecified'], captures):
         assert f'### Section D002 | physical PDF page 4 | {label}' in prompt
@@ -225,13 +214,13 @@ def test_mixed_types_reach_each_sources_metadata_and_prompt(source, tmp_path):
         assert f'evidence/{source_id}.png' not in prompt
         assert cap.text in prompt
     assert 'not_reviewed' == manifest['review']['source_verification']
-    assert 'Financial note' in (folder/'selected-text.txt').read_text(encoding='utf-8')
+    assert 'Financial note' in saved.selected_text
 
 
 def test_data_type_is_explicit_not_inferred_and_invalid_type_rejected(source, tmp_path):
     cap = source.capture_area(4, QRectF(20, 160, 385, 165))
-    folder = save_package(source, 'Financial note table', '', [cap], tmp_path)
-    part = json.loads((folder/'manifest.json').read_text(encoding='utf-8'))['selections'][0]
+    saved = save_package(source, 'Financial note table', '', [cap], tmp_path)
+    part = saved.manifest['selections'][0]
     assert part['content_type'] == 'unspecified'
     assert part['content_type_origin'] == 'not_specified'
     cap.content_type = 'guessed_from_heading'
@@ -263,8 +252,8 @@ def test_gui_type_per_selection_retag_and_save_pending(qapp, pdf_path, tmp_path)
     assert 'Financial note' in window.parts.item(0).text()
     window.content_type_combo.setCurrentIndex(window.content_type_combo.findData('table'))
     window.selection_changed(window.source.capture_area(4, QRectF(20, 160, 385, 165)))
-    folder = window.save_section()
-    selections = json.loads((folder/'manifest.json').read_text(encoding='utf-8'))['selections']
+    saved = window.save_section()
+    selections = saved.manifest['selections']
     assert [p['content_type'] for p in selections] == ['financial_note', 'table']
     assert window.content_type_combo.currentData() == 'unspecified'
     assert not window.apply_type_button.isEnabled()
@@ -294,16 +283,15 @@ def test_gui_editable_preview_updates_pending_and_added_captures(qapp, pdf_path,
     window.add_selection()
     window.parts.setCurrentRow(0)
     window.preview.setPlainText(window.preview.toPlainText() + '\nAnalyst note: verify H2 ramp-up.')
-    folder = window.save_section()
-    saved_text = (folder / 'evidence/S001.txt').read_text(encoding='utf-8')
-    assert saved_text.startswith('### FY27 Production Guidance')
-    assert 'Analyst note: verify H2 ramp-up.' in saved_text
-    assert 'Analyst note: verify H2 ramp-up.' in (folder / 'prompt.md').read_text(encoding='utf-8')
+    saved = window.save_section()
+    assert '### FY27 Production Guidance' in saved.selected_text
+    assert 'Analyst note: verify H2 ramp-up.' in saved.selected_text
+    assert 'Analyst note: verify H2 ramp-up.' in saved.prompt
     window.close()
 
 
-def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp, pdf_path, tmp_path):
-    from section_capture.map_dialog import QuestionsLedgerDialog
+def test_stored_questions_and_llm_response_auto_update_in_sqlite(qapp, pdf_path, tmp_path):
+    from section_capture.map_dialog import QuestionsLedgerDialog, SavedSectionsDialog
     window = CaptureWindow(tmp_path)
     window.show()
     assert window.open_pdf(pdf_path)
@@ -314,16 +302,22 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     window.selection_changed(window.source.capture_area(4, QRectF(20, 175, 385, 153)))
     first_pack = window.save_section()
     assert first_pack.name.startswith('01-D002-')
-    assert first_pack.with_suffix('.zip').exists()
-    first_prompt = (first_pack / 'prompt.md').read_text(encoding='utf-8')
-    assert 'None supplied (first section capture)' in first_prompt
-    assert not (first_pack / 'stored-questions.md').exists()
+    assert 'None supplied (first section capture)' in first_pack.prompt
+    assert first_pack.stored_questions is None
 
-    # Store questions via clipboard in QuestionsLedgerDialog
-    qapp.clipboard().setText('Q1 [Target: D008 APMs]: Verify AISC bridge and Sheba/Consort unit costs.\nQ2 [Target: D006 Notes]: Reconcile 2,436m dividend shares vs 2,029.6m weighted shares.')
-    dialog = QuestionsLedgerDialog(window.source, window)
-    dialog.replace_from_clipboard()
-    dialog.close()
+    # Store LLM response via SavedSectionsDialog and verify Section 4 auto-updates questions_ledger
+    llm_reply = (
+        "### 1. Answers to Stored Questions for This Section\nNone.\n\n"
+        "### 4. Updated Open Questions Ledger (Copy to App)\n"
+        "```markdown\n"
+        "Q1 [Target: D008 APMs]: Verify AISC bridge and Sheba/Consort unit costs.\n"
+        "Q2 [Target: D006 Notes]: Reconcile 2,436m dividend shares vs 2,029.6m weighted shares.\n"
+        "```\n"
+    )
+    qapp.clipboard().setText(llm_reply)
+    sec_dialog = SavedSectionsDialog(window.source, window, window.output_root)
+    sec_dialog.paste_llm_response_from_clipboard()
+    sec_dialog.close()
     window._update_actions()
     assert '2 lines' in window.questions_button.text()
 
@@ -332,22 +326,15 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     window.selection_changed(window.source.capture_area(38, QRectF(20, 60, 380, 300)))
     second_pack = window.save_section()
     assert second_pack.name.startswith('02-D008-')
-    assert second_pack.with_suffix('.zip').exists()
-    second_prompt = (second_pack / 'prompt.md').read_text(encoding='utf-8')
+    second_prompt = second_pack.prompt
     assert 'QUESTIONS SPECIFICALLY TARGETING THIS SECTION (D008)' in second_prompt
     target_block = second_prompt.split('QUESTIONS SPECIFICALLY TARGETING THIS SECTION (D008)')[1].split('BEGIN STORED QUESTIONS')[0]
     assert 'Q1 [Target: D008 APMs]: Verify AISC bridge' in target_block
     assert 'Q2 [Target: D006 Notes]' not in target_block
     assert 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS' in second_prompt
     assert 'Q2 [Target: D006 Notes]: Reconcile 2,436m dividend shares' in second_prompt
-    assert (second_pack / 'stored-questions.md').exists()
+    assert 'Q1 [Target: D008 APMs]' in second_pack.stored_questions
     window.close()
-
-    # Default save folder is where the PDF is opened when no custom output_root is supplied
-    default_window = CaptureWindow()
-    assert default_window.open_pdf(pdf_path)
-    assert default_window.output_root == pdf_path.resolve().parent
-    default_window.close()
 
 
 def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_path):
@@ -362,8 +349,7 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     window.selection_changed(window.source.capture_area(17, QRectF(20, 60, 380, 300)))
     sub1 = window.save_section()
     assert sub1.name.startswith('01-D005.1-')
-    assert (sub1.parent / f"{sub1.name}.zip").exists()
-    sub1_prompt = (sub1 / 'prompt.md').read_text(encoding='utf-8')
+    sub1_prompt = sub1.prompt
     assert 'Section ID: D005.1' in sub1_prompt
     assert 'Section heading: Primary financial statements — Statement of Financial Position' in sub1_prompt
     assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Partial selected evidence: D005.1 (p. 17) |' in sub1_prompt
@@ -381,9 +367,10 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     assert window.save_button.isEnabled()
     sub2 = window.save_section()
     assert sub2.name.startswith('02-D005.2-')
-    sub2_prompt = (sub2 / 'prompt.md').read_text(encoding='utf-8')
+    sub2_prompt = sub2.prompt
     assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Subsection recorded in map; not included in this request |' in sub2_prompt
     assert '| D005.2 | ↳ Statement of Profit or Loss | 18 left – 18 left | Partial selected evidence: D005.2 (p. 18) |' in sub2_prompt
     window.close()
+
 
 

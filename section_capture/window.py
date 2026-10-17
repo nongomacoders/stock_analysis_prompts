@@ -1,21 +1,21 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
-from PySide6.QtCore import Qt, QUrl
-from PySide6.QtGui import QAction, QDesktopServices, QKeySequence
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QAction, QKeySequence
 from PySide6.QtWidgets import (
     QApplication, QComboBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
     QLineEdit, QListWidget, QMainWindow, QMessageBox, QPlainTextEdit,
     QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QToolBar, QVBoxLayout, QWidget,
 )
 
+from .content_types import CONTENT_TYPES
+from .db import SavedSection, list_sections, resolve_db_path
+from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
 from .packages import PROJECT_ROOT, save_package
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
-from .content_types import CONTENT_TYPES
-from .map_dialog import QuestionsLedgerDialog, ReportMapDialog
 from .report_map import save_map, scan_report, section_requires_subheading
 
 
@@ -61,9 +61,8 @@ class CaptureWindow(QMainWindow):
         self.source: PdfSource | None = None
         self.pending: Capture | None = None
         self.captures: list[Capture] = []
-        self._custom_output_root = output_root is not None
-        self.output_root = Path(output_root) if output_root else PROJECT_ROOT / "captures"
-        self.last_package: Path | None = None
+        self.output_root: Path | None = Path(output_root) if output_root else None
+        self.last_package: SavedSection | None = None
         self.setWindowTitle("Report Section Capture")
         self.resize(1440, 940)
         self.setMinimumSize(1000, 680)
@@ -72,7 +71,7 @@ class CaptureWindow(QMainWindow):
         self.canvas.problem.connect(self.show_problem)
         self._build_toolbar()
         self._build_body()
-        self.statusBar().showMessage("Open a PDF. Your source stays unchanged; saved packs remain on this computer.")
+        self.statusBar().showMessage("Open a PDF. Your source stays unchanged; sections are saved to SQLite.")
         self._update_actions()
 
     def _build_toolbar(self):
@@ -115,6 +114,8 @@ class CaptureWindow(QMainWindow):
         self.map_action.triggered.connect(self.show_report_map)
         self.questions_action = toolbar.addAction('Stored questions')
         self.questions_action.triggered.connect(self.show_questions_ledger)
+        self.sections_action = toolbar.addAction('Saved sections')
+        self.sections_action.triggered.connect(self.show_saved_sections)
         save_action = QAction("Save section", self)
         save_action.setShortcut(QKeySequence.StandardKey.Save)
         save_action.triggered.connect(self.save_section)
@@ -127,7 +128,7 @@ class CaptureWindow(QMainWindow):
         self.document_label = QLabel("No report open")
         self.document_label.setObjectName("documentTitle")
         layout.addWidget(self.document_label)
-        hint = QLabel("1  Open report     2  Name your section     3  Select evidence     4  Save for your model")
+        hint = QLabel("1  Open report     2  Name your section     3  Select evidence     4  Save to SQLite & copy prompt")
         hint.setObjectName("muted")
         layout.addWidget(hint)
         splitter = QSplitter()
@@ -170,7 +171,7 @@ class CaptureWindow(QMainWindow):
         self.selection_label.setWordWrap(True)
         side.addWidget(self.selection_label)
         self.preview = QPlainTextEdit()
-        self.preview.setPlaceholderText("Selected native text will appear here (editable before saving). Images are also saved.")
+        self.preview.setPlaceholderText("Selected native text will appear here (editable before saving).")
         self.preview.setFixedHeight(90)
         self.preview.textChanged.connect(self._preview_edited)
         side.addWidget(self.preview, 2)
@@ -203,22 +204,21 @@ class CaptureWindow(QMainWindow):
         self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
         self.questions_button.clicked.connect(self.show_questions_ledger)
         side.addWidget(self.questions_button)
-        self.save_button = QPushButton("Save section + upload ZIP")
+        self.save_button = QPushButton("Save section & copy prompt")
         self.save_button.setObjectName("primary")
         self.save_button.clicked.connect(self.save_section)
         side.addWidget(self.save_button)
-        self.export_label = QLabel("Choose where your saved sections go.")
+        db_file = resolve_db_path(self.output_root)
+        self.export_label = QLabel(f"SQLite DB: {db_file.name}")
+        self.export_label.setToolTip(str(db_file))
         self.export_label.setWordWrap(True)
         self.export_label.setObjectName("muted")
         side.addWidget(self.export_label)
-        choose_output = QPushButton("Choose save folder…")
-        choose_output.clicked.connect(self.choose_output)
-        side.addWidget(choose_output)
         actions = QHBoxLayout()
         self.copy_button = QPushButton("Copy reading prompt")
         self.copy_button.clicked.connect(self.copy_prompt)
-        self.folder_button = QPushButton("Open saved folder")
-        self.folder_button.clicked.connect(self.open_saved_folder)
+        self.folder_button = QPushButton("Saved sections / LLM response")
+        self.folder_button.clicked.connect(self.show_saved_sections)
         actions.addWidget(self.copy_button)
         actions.addWidget(self.folder_button)
         side.addLayout(actions)
@@ -258,25 +258,15 @@ class CaptureWindow(QMainWindow):
                 seen.add(cleaned.lower())
                 options.append(cleaned)
 
-        if self.source and self.output_root.exists():
-            for pack in sorted(self.output_root.iterdir()):
-                manifest_path = pack / "manifest.json"
-                if pack.is_dir() and not pack.name.startswith(".section-staging-") and manifest_path.exists():
-                    try:
-                        m = json.loads(manifest_path.read_text(encoding="utf-8"))
-                    except (OSError, ValueError):
-                        continue
-                    if (m.get("source") or {}).get("sha256") != self.source.sha256:
-                        continue
-                    h = (m.get("heading") or "").strip()
-                    if h:
-                        _add(h)
-                    if m.get("subheading") and self.source.report_map:
-                        sids = m.get("section_ids") or []
-                        parent_ids = {sid.split(".")[0] for sid in sids if "." in sid}
-                        for sec in self.source.report_map.get("sections", []):
-                            if sec.get("section_id") in parent_ids and not sec.get("parent_heading") and h:
-                                sec["parent_heading"] = h
+        if self.source:
+            for saved in list_sections(self.source.sha256, db_path=self.output_root):
+                if saved.heading:
+                    _add(saved.heading)
+                if saved.subheading and self.source.report_map and "." in saved.section_id:
+                    parent_id = saved.section_id.split(".")[0]
+                    for sec in self.source.report_map.get("sections", []):
+                        if sec.get("section_id") == parent_id and not sec.get("parent_heading") and saved.heading:
+                            sec["parent_heading"] = saved.heading
 
         if self.source and self.source.report_map:
             for sec in self.source.report_map.get("sections", []):
@@ -301,6 +291,7 @@ class CaptureWindow(QMainWindow):
         self.full_page_action.setEnabled(has_pdf)
         self.map_action.setEnabled(has_pdf)
         self.questions_action.setEnabled(has_pdf)
+        self.sections_action.setEnabled(has_pdf)
         self.questions_button.setEnabled(has_pdf)
         q_text = (getattr(self.source, "questions_ledger", "") or "").strip() if has_pdf else ""
         if q_text:
@@ -322,7 +313,7 @@ class CaptureWindow(QMainWindow):
             bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending) and not needs_subheading
         )
         self.copy_button.setEnabled(self.last_package is not None)
-        self.folder_button.setEnabled(self.last_package is not None)
+        self.folder_button.setEnabled(has_pdf)
 
     def show_problem(self, message: str):
         self.warning_label.setText(message)
@@ -375,10 +366,9 @@ class CaptureWindow(QMainWindow):
             return False
         old = self.source
         self.source = candidate
-        if not self._custom_output_root:
-            self.output_root = candidate.path.parent
-            self.export_label.setText(str(self.output_root))
-            self.export_label.setToolTip(str(self.output_root))
+        db_file = resolve_db_path(self.output_root)
+        self.export_label.setText(f"SQLite DB: {db_file.name}")
+        self.export_label.setToolTip(str(db_file))
         self._reset_section()
         self._refresh_heading_options()
         self.page_spin.blockSignals(True)
@@ -415,7 +405,7 @@ class CaptureWindow(QMainWindow):
             self.source.verify_unchanged()
             mapping = scan_report(self.source, update)
             self.source.verify_unchanged()
-            save_map(mapping)
+            save_map(mapping, self.output_root)
             self.source.report_map = mapping
             self._refresh_heading_options()
             self._update_actions()
@@ -435,7 +425,12 @@ class CaptureWindow(QMainWindow):
 
     def show_questions_ledger(self):
         if self.source:
-            QuestionsLedgerDialog(self.source, self).exec()
+            QuestionsLedgerDialog(self.source, self, db_path=self.output_root).exec()
+            self._update_actions()
+
+    def show_saved_sections(self):
+        if self.source:
+            SavedSectionsDialog(self.source, self, db_path=self.output_root).exec()
             self._update_actions()
 
     def change_page(self, page):
@@ -510,16 +505,6 @@ class CaptureWindow(QMainWindow):
         if self._can_discard():
             self._reset_section()
 
-    def choose_output(self):
-        chosen = QFileDialog.getExistingDirectory(self, "Save sections in", str(self.output_root))
-        if chosen:
-            self._custom_output_root = True
-            self.output_root = Path(chosen)
-            self.export_label.setText(str(self.output_root))
-            self.export_label.setToolTip(str(self.output_root))
-            self._refresh_heading_options()
-            self._update_actions()
-
     def save_section(self):
         if not self.source or not self.heading_edit.text().strip():
             self.show_problem("Open a PDF and enter a section heading first.")
@@ -533,7 +518,7 @@ class CaptureWindow(QMainWindow):
         had_subheading = bool(self.subheading_edit.text().strip())
         saved_heading = self.heading_edit.text().strip()
         try:
-            folder = save_package(
+            saved = save_package(
                 self.source,
                 self.heading_edit.text(),
                 self.question_edit.toPlainText(),
@@ -544,28 +529,22 @@ class CaptureWindow(QMainWindow):
         except Exception as exc:
             QMessageBox.warning(self, "Could not save section", str(exc))
             return None
-        self.last_package = folder
+        self.last_package = saved
+        QApplication.clipboard().setText(saved.prompt)
         self._reset_section()
         self._refresh_heading_options()
         if had_subheading:
             self.heading_edit.setText(saved_heading)
-        self.export_label.setText(f"Saved: {folder.name}")
-        self.export_label.setToolTip(str(folder))
-        self.statusBar().showMessage("Saved. Upload the PNGs and paste the reading prompt for a summary and suggested checks.")
+        self.export_label.setText(f"Saved in SQLite: {saved.name}")
+        self.export_label.setToolTip(str(saved.db_path))
+        self.statusBar().showMessage("Saved in SQLite and prompt copied to clipboard. Paste directly into your model chat.")
         self._update_actions()
-        return folder
+        return saved
 
     def copy_prompt(self):
         if self.last_package:
-            try:
-                QApplication.clipboard().setText((self.last_package / "prompt.md").read_text(encoding="utf-8"))
-                self.statusBar().showMessage("Prompt copied. Attach the saved evidence PNGs in your model chat.")
-            except OSError as exc:
-                self.show_problem(str(exc))
-
-    def open_saved_folder(self):
-        if self.last_package:
-            QDesktopServices.openUrl(QUrl.fromLocalFile(str(self.last_package)))
+            QApplication.clipboard().setText(self.last_package.prompt)
+            self.statusBar().showMessage("Prompt copied to clipboard.")
 
     def closeEvent(self, event):
         if self._can_discard():
@@ -575,3 +554,4 @@ class CaptureWindow(QMainWindow):
             event.accept()
         else:
             event.ignore()
+
