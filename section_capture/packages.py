@@ -20,6 +20,7 @@ from .report_map import (
     register_subsection,
     report_overview,
     save_map,
+    section_requires_subheading,
     validate_map,
 )
 
@@ -128,7 +129,7 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
 
 
 def save_package(source: PdfSource, heading: str, question: str, captures: list[Capture], output_root: str | Path, subheading: str = "") -> Path:
-    heading = heading.strip()
+    heading = re.sub(r"^D\d{3}\s*[—:\-]\s*", "", (heading or "").strip(), flags=re.IGNORECASE).strip()
     subheading = (subheading or "").strip()
     if not heading:
         raise ValueError("Enter a section heading before saving.")
@@ -146,8 +147,12 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
     sub_ids = []
     if source.report_map is not None:
         validate_map(source.report_map, source.sha256, source.page_count)
-        if subheading:
-            sub_ids = register_subsection(source.report_map, subheading, selection_previews)
+        if not subheading:
+            req = section_requires_subheading(source.report_map, heading, selection_previews)
+            if req:
+                raise ValueError(f"Section {req} already has subsections. Enter a sub-heading before saving.")
+        else:
+            sub_ids = register_subsection(source.report_map, subheading, selection_previews, heading=heading)
             save_map(source.report_map)
     mapping = copy.deepcopy(source.report_map)
     disk_questions = load_questions_ledger(source.sha256)

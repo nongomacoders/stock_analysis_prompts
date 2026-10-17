@@ -354,6 +354,7 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     window = CaptureWindow(tmp_path)
     window.show()
     assert window.open_pdf(pdf_path)
+    assert window.heading_edit.count() > 0
 
     # First subsection inside D005 Primary financial statements (page 17 left)
     window.heading_edit.setText('Primary financial statements')
@@ -367,14 +368,22 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     assert 'Section heading: Primary financial statements — Statement of Financial Position' in sub1_prompt
     assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Partial selected evidence: D005.1 (p. 17) |' in sub1_prompt
 
-    # Second subsection inside D005 Primary financial statements (page 18 left)
-    window.heading_edit.setText('Primary financial statements')
-    window.subheading_edit.setText('Statement of Profit or Loss')
+    # Main heading stays selected after saving a subsection, and blank sub-heading is blocked
+    assert window.heading_edit.text() == 'Primary financial statements'
+    assert window.subheading_edit.text() == ''
     window.selection_changed(window.source.capture_area(18, QRectF(20, 60, 380, 300)))
+    assert not window.save_button.isEnabled()
+    assert window.save_section() is None
+    assert 'already has subsections' in window.warning_label.text()
+
+    # Entering the second sub-heading enables saving D005.2
+    window.subheading_edit.setText('Statement of Profit or Loss')
+    assert window.save_button.isEnabled()
     sub2 = window.save_section()
     assert sub2.name.startswith('02-D005.2-')
     sub2_prompt = (sub2 / 'prompt.md').read_text(encoding='utf-8')
     assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Subsection recorded in map; not included in this request |' in sub2_prompt
     assert '| D005.2 | ↳ Statement of Profit or Loss | 18 left – 18 left | Partial selected evidence: D005.2 (p. 18) |' in sub2_prompt
     window.close()
+
 

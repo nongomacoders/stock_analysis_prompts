@@ -204,9 +204,10 @@ def _part_location(part) -> str:
     return 'full'
 
 
-def register_subsection(mapping, subheading: str, selections=()) -> list[str]:
+def register_subsection(mapping, subheading: str, selections=(), heading: str = "") -> list[str]:
     """Add or update a subsection under the matched major section in mapping and return its subsection ID(s)."""
     subheading = (subheading or '').strip()
+    heading = (heading or '').strip()
     if not mapping or not subheading or not selections:
         return []
     matched_sections = []
@@ -221,6 +222,8 @@ def register_subsection(mapping, subheading: str, selections=()) -> list[str]:
     if not matched_sections:
         return []
     parent = matched_sections[0]
+    if heading:
+        parent['parent_heading'] = heading
     subs = parent.setdefault('subsections', [])
     sorted_parts = sorted(selections, key=lambda p: (p['physical_page'], p['bbox'][0], p['bbox'][1]))
     first_part, last_part = sorted_parts[0], sorted_parts[-1]
@@ -245,6 +248,41 @@ def register_subsection(mapping, subheading: str, selections=()) -> list[str]:
         'end': end_ep,
     })
     return [sub_id]
+
+
+def _norm_heading(text: str) -> str:
+    return re.sub(r'[^a-z0-9]+', ' ', (text or '').lower()).strip()
+
+
+def section_requires_subheading(mapping, heading: str = "", selections=()) -> str | None:
+    """If the matched section or main heading already has subsections, return a label like 'D006 (D006.1)'."""
+    if not mapping:
+        return None
+    norm_h = _norm_heading(re.sub(r'^D\d{3}\s*[—:\-]\s*', '', (heading or '').strip(), flags=re.IGNORECASE))
+    for section in mapping.get('sections', []):
+        subs = section.get('subsections') or []
+        if not subs:
+            continue
+        overlaps = False
+        for part in selections:
+            width = part['page_size_points'][0]
+            start = part['physical_page'] - 1 + part['bbox'][0] / width
+            end = part['physical_page'] - 1 + part['bbox'][2] / width
+            if start < _position(section['end'], True) and end > _position(section['start']):
+                overlaps = True
+                break
+        heading_matches = False
+        if norm_h:
+            candidates = [
+                _norm_heading(section.get('title', '')),
+                _norm_heading(section.get('parent_heading', '')),
+                *[_norm_heading(ev.get('heading', '')) for ev in section.get('heading_evidence', [])],
+            ]
+            heading_matches = any(c and (norm_h == c or norm_h in c or c in norm_h) for c in candidates)
+        if overlaps or heading_matches:
+            sub_list = ', '.join(s['subsection_id'] for s in subs)
+            return f"{section['section_id']} ({sub_list})"
+    return None
 
 
 def matching_section_ids(mapping, selections=()) -> list[str]:

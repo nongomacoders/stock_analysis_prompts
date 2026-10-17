@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from PySide6.QtCore import Qt, QUrl
@@ -15,7 +16,43 @@ from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
 from .content_types import CONTENT_TYPES
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog
-from .report_map import save_map, scan_report
+from .report_map import save_map, scan_report, section_requires_subheading
+
+
+class HeadingComboBox(QComboBox):
+    """Editable dropdown for main section headings that stays API-compatible with QLineEdit."""
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setEditable(True)
+        self.setInsertPolicy(QComboBox.InsertPolicy.NoInsert)
+
+    @property
+    def textChanged(self):
+        return self.lineEdit().textChanged
+
+    def text(self) -> str:
+        return self.currentText()
+
+    def setText(self, value: str):
+        self.setEditText(value)
+
+    def clear(self):
+        self.lineEdit().clear()
+
+    def setPlaceholderText(self, text: str):
+        self.lineEdit().setPlaceholderText(text)
+
+    def set_options(self, options: list[str]):
+        current = self.lineEdit().text()
+        self.blockSignals(True)
+        self.lineEdit().blockSignals(True)
+        super().clear()
+        for opt in options:
+            self.addItem(opt)
+        self.setEditText(current)
+        self.lineEdit().blockSignals(False)
+        self.blockSignals(False)
 
 
 class CaptureWindow(QMainWindow):
@@ -106,13 +143,16 @@ class CaptureWindow(QMainWindow):
         side.addWidget(title)
         form = QFormLayout()
         form.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapAllRows)
-        self.heading_edit = QLineEdit()
-        self.heading_edit.setPlaceholderText("e.g. Primary financial statements")
+        self.heading_edit = HeadingComboBox()
+        self.heading_edit.setPlaceholderText("Select from dropdown or type section heading")
         self.heading_edit.textChanged.connect(self._update_actions)
+        self.heading_edit.currentIndexChanged.connect(lambda _: self._update_actions())
         form.addRow("Section heading", self.heading_edit)
+        self.subheading_label = QLabel("Sub-heading (optional)")
         self.subheading_edit = QLineEdit()
         self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
-        form.addRow("Sub-heading (optional)", self.subheading_edit)
+        self.subheading_edit.textChanged.connect(self._update_actions)
+        form.addRow(self.subheading_label, self.subheading_edit)
         self.question_edit = QPlainTextEdit()
         self.question_edit.setPlaceholderText("Optional: which claim or concern should the model examine?")
         self.question_edit.setFixedHeight(56)
@@ -196,6 +236,60 @@ class CaptureWindow(QMainWindow):
         layout.addWidget(splitter, 1)
         self.setCentralWidget(body)
 
+    def _subheading_required_for_current(self) -> str | None:
+        if not self.source or not self.source.report_map:
+            return None
+        active = [*self.captures, *([self.pending] if self.pending else [])]
+        previews = [
+            {"physical_page": c.page, "bbox": list(c.bbox), "page_size_points": list(c.page_size)}
+            for c in active
+        ]
+        return section_requires_subheading(self.source.report_map, self.heading_edit.text(), previews)
+
+    def _refresh_heading_options(self):
+        if not hasattr(self, "heading_edit"):
+            return
+        options: list[str] = []
+        seen: set[str] = set()
+
+        def _add(val: str):
+            cleaned = " ".join((val or "").split()).strip()
+            if cleaned and cleaned.lower() not in seen:
+                seen.add(cleaned.lower())
+                options.append(cleaned)
+
+        if self.source and self.output_root.exists():
+            for pack in sorted(self.output_root.iterdir()):
+                manifest_path = pack / "manifest.json"
+                if pack.is_dir() and not pack.name.startswith(".section-staging-") and manifest_path.exists():
+                    try:
+                        m = json.loads(manifest_path.read_text(encoding="utf-8"))
+                    except (OSError, ValueError):
+                        continue
+                    if (m.get("source") or {}).get("sha256") != self.source.sha256:
+                        continue
+                    h = (m.get("heading") or "").strip()
+                    if h:
+                        _add(h)
+                    if m.get("subheading") and self.source.report_map:
+                        sids = m.get("section_ids") or []
+                        parent_ids = {sid.split(".")[0] for sid in sids if "." in sid}
+                        for sec in self.source.report_map.get("sections", []):
+                            if sec.get("section_id") in parent_ids and not sec.get("parent_heading") and h:
+                                sec["parent_heading"] = h
+
+        if self.source and self.source.report_map:
+            for sec in self.source.report_map.get("sections", []):
+                if sec.get("kind") == "unclassified":
+                    continue
+                if sec.get("parent_heading"):
+                    _add(sec["parent_heading"])
+                _add(sec.get("title", ""))
+                for ev in sec.get("heading_evidence", []):
+                    _add(ev.get("heading", ""))
+
+        self.heading_edit.set_options(options)
+
     def _update_actions(self):
         if not hasattr(self, "save_button"):
             return
@@ -214,9 +308,19 @@ class CaptureWindow(QMainWindow):
             self.questions_button.setText(f"Stored questions ({q_lines} lines)")
         else:
             self.questions_button.setText("Stored questions (none)")
+        req = self._subheading_required_for_current()
+        if req:
+            self.subheading_label.setText(f"Sub-heading (required for {req})")
+            self.subheading_edit.setPlaceholderText(f"Required — {req} already has subsections")
+        else:
+            self.subheading_label.setText("Sub-heading (optional)")
+            self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
+        needs_subheading = bool(req and not self.subheading_edit.text().strip())
         self.add_button.setEnabled(self.pending is not None)
         self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
-        self.save_button.setEnabled(bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending))
+        self.save_button.setEnabled(
+            bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending) and not needs_subheading
+        )
         self.copy_button.setEnabled(self.last_package is not None)
         self.folder_button.setEnabled(self.last_package is not None)
 
@@ -276,6 +380,7 @@ class CaptureWindow(QMainWindow):
             self.export_label.setText(str(self.output_root))
             self.export_label.setToolTip(str(self.output_root))
         self._reset_section()
+        self._refresh_heading_options()
         self.page_spin.blockSignals(True)
         self.page_spin.setMaximum(candidate.page_count)
         self.page_spin.setValue(1)
@@ -312,6 +417,8 @@ class CaptureWindow(QMainWindow):
             self.source.verify_unchanged()
             save_map(mapping)
             self.source.report_map = mapping
+            self._refresh_heading_options()
+            self._update_actions()
             self.statusBar().showMessage('Draft report map ready. Reading prompts will show sections still to come.')
             return True
         except InterruptedError as exc:
@@ -410,13 +517,21 @@ class CaptureWindow(QMainWindow):
             self.output_root = Path(chosen)
             self.export_label.setText(str(self.output_root))
             self.export_label.setToolTip(str(self.output_root))
+            self._refresh_heading_options()
+            self._update_actions()
 
     def save_section(self):
         if not self.source or not self.heading_edit.text().strip():
             self.show_problem("Open a PDF and enter a section heading first.")
             return None
+        req = self._subheading_required_for_current()
+        if req and not self.subheading_edit.text().strip():
+            self.show_problem(f"Enter a sub-heading first: section {req} already has subsections.")
+            return None
         if self.pending:
             self.add_selection()
+        had_subheading = bool(self.subheading_edit.text().strip())
+        saved_heading = self.heading_edit.text().strip()
         try:
             folder = save_package(
                 self.source,
@@ -431,6 +546,9 @@ class CaptureWindow(QMainWindow):
             return None
         self.last_package = folder
         self._reset_section()
+        self._refresh_heading_options()
+        if had_subheading:
+            self.heading_edit.setText(saved_heading)
         self.export_label.setText(f"Saved: {folder.name}")
         self.export_label.setToolTip(str(folder))
         self.statusBar().showMessage("Saved. Upload the PNGs and paste the reading prompt for a summary and suggested checks.")
