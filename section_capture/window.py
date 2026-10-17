@@ -267,6 +267,9 @@ class CaptureWindow(QMainWindow):
             return False
         old = self.source
         self.source = candidate
+        if (PROJECT_ROOT / "company_results") in candidate.path.parents and self.output_root == (PROJECT_ROOT / "captures"):
+            self.output_root = candidate.path.parent
+            self.output_label.setText(str(self.output_root))
         self._reset_section()
         self.page_spin.blockSignals(True)
         self.page_spin.setMaximum(candidate.page_count)
