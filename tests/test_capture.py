@@ -218,8 +218,9 @@ def test_mixed_types_reach_each_sources_metadata_and_prompt(source, tmp_path):
     prompt = (folder/'prompt.md').read_text(encoding='utf-8')
     for source_id, label, cap in zip(['S001', 'S002', 'S003', 'S004'],
                                     ['Commentary', 'Table', 'Financial note', 'Mixed / unspecified'], captures):
-        assert f'### {source_id} | physical PDF page 4 | {label}' in prompt
-        assert f'attached image: evidence/{source_id}.png' in prompt
+        assert f'### {source_id} | Section D002 | physical PDF page 4 | {label}' in prompt
+        assert f'Selection ID: {source_id}; Section ID: D002' in prompt
+        assert f'evidence/{source_id}.png' not in prompt
         assert cap.text in prompt
     assert 'not_reviewed' == manifest['review']['source_verification']
     assert 'Financial note' in (folder/'selected-text.txt').read_text(encoding='utf-8')

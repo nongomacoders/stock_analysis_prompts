@@ -429,8 +429,8 @@
   "prompt": {
     "stage": "12-analyst-reading-brief",
     "version": "1.1.0",
-    "template_sha256": "cfc85cf889700303251380db535c1a73288bf028c10c2a10bdcabb1d67e13075",
-    "submitted_candidate_sha256": "4e409ba592853d8e4f6d18e0207a2182cb561196a9a50bff37f6f423da23a543",
+    "template_sha256": "7a83afb7efed02aecc6dc554ec8e548b17b6c2c0b4a3f79f708ab740762ac87e",
+    "submitted_candidate_sha256": "54ddf5a881e0d34a9333cecb2ae0531b69046b8e4dba07c74e8aeec76dcb17f2",
     "report_map_sha256": "6aaacb9972f1d74160a4e34b886f0eb6d1b8ff73595d1f5012016d18b2bbd621",
     "report_overview_sha256": "ef8160edc2e99033cb897331fc8bc59f873f5678f99b608c8d4410ae005b3f32"
   },
@@ -11317,5 +11317,9 @@
       "warnings": []
     }
   ],
-  "stored_questions": null
+  "stored_questions": null,
+  "section_number": 1,
+  "section_ids": [
+    "D002"
+  ]
 }

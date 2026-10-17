@@ -430,8 +430,8 @@
   "prompt": {
     "stage": "12-analyst-reading-brief",
     "version": "1.1.0",
-    "template_sha256": "cfc85cf889700303251380db535c1a73288bf028c10c2a10bdcabb1d67e13075",
-    "submitted_candidate_sha256": "6b7a3bf7050e3609a21f2afeb63bcba140e46410f0ec5d95e6a9b0425edd53d6",
+    "template_sha256": "7a83afb7efed02aecc6dc554ec8e548b17b6c2c0b4a3f79f708ab740762ac87e",
+    "submitted_candidate_sha256": "56b66397edd7736e6805989a0c4c2adb256cbf60e0137a145434ddcc046bc46a",
     "report_map_sha256": "6aaacb9972f1d74160a4e34b886f0eb6d1b8ff73595d1f5012016d18b2bbd621",
     "report_overview_sha256": "779c2a1d16b8674aabdfe3265fbff7780abdeed9bdb9dadcaef8184fa6f7c273",
     "stored_questions_sha256": "b5926d06245f9da6652e7e739210ed01c6a0ca377bcbe77adc292a1053cd3bee"
@@ -46780,5 +46780,9 @@
         "Native PDF text order may differ from visual reading order; check the image."
       ]
     }
+  ],
+  "section_number": 2,
+  "section_ids": [
+    "D003"
   ]
 }
