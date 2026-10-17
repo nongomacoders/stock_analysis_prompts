@@ -1,0 +1,93 @@
+1. BASIS OF PREPARATION
+The accounting policies applied in compiling the 
+summarised consolidated financial statements, 
+in accordance with IFRS Accounting Standards as 
+issued by the IASB, are consistent with those applied in 
+preparing the Group’s financial statements for the year 
+ended 30 June 2025. There are no material differences 
+between UK-adopted International Accounting Standards 
+and IFRS Accounting Standards as applied to these 
+financial statements.
+The financial information set out in this announcement 
+does not constitute the Company’s statutory accounts 
+for the period ended 30 June 2026. 
+Furthermore, these financial statements have 
+been prepared in accordance with the SAICA 
+Financial Reporting Guidelines as issued by the 
+Accounting Practices Committee, Financial Reporting 
+Pronouncements as issued by the Financial Reporting 
+Standards Council, the UK Listing Rules, the JSE Listings 
+Requirements and the UK Companies Act 2006.
+Going concern
+The Group closely monitors and manages its liquidity 
+risk by means of a centralised treasury function. Cash 
+forecasts are regularly produced and sensitivities run for 
+different scenarios including, but not limited to, changes 
+in commodity prices and different production profiles 
+from the Group’s producing assets. The Group had 
+US$78.9 million (FY25: US$50.2 million) of available debt 
+facilities and US$246.2 million (FY25: US$49.5 million) of 
+cash and cash equivalents and short-term investments 
+as at 30 June 2026. The Group has considered the 
+going concern forecast through to 30 June 2028, using 
+a semi-static gold price in the base case scenario. 
+The base case scenario assumes an initial gold price of 
+US$4,600/oz increasing to US$4,900/oz for the next 
+reporting period. For the downside scenario, a gold 
+price of US$3,680/oz was applied, together with a 10% 
+reduction in production. The Group’s forecasts, based 
+on the board-approved budgets (with production in line 
+with production guidance announced), demonstrate it will 
+have sufficient liquidity headroom to meet its obligations, 
+under both scenarios.
+The board has a reasonable expectation that the Group 
+has adequate resources to continue in operational 
+existence for the foreseeable future. Accordingly, the 
+Group continues to adopt the going concern basis 
+of accounting in preparation of the 30 June 2026 
+financial statements.
+Alternative performance measures
+The Group makes reference to APMs, in conjunction with 
+IFRS Accounting Standards measures, when assessing 
+its reported financial performance, financial position and 
+cash flows. APMs should be considered in addition to, 
+and not as a substitute for or superior to, measures of 
+financial performance, financial position or cash flows 
+reported in accordance with IFRS Accounting Standards. 
+Further information on APMs is provided on page 72.
+2. JUDGEMENTS AND ESTIMATES
+The preparation of the financial statements in accordance 
+with UK-adopted International Accounting Standards 
+and IFRS Accounting Standards requires management to 
+make judgements, estimates and assumptions that may 
+materially affect the application of the Group’s accounting 
+policies and the reported amounts of assets, liabilities, 
+income and expenses.
+These judgements and estimates are based on 
+management’s best knowledge of the relevant facts 
+and circumstances, historical experience, current and 
+expected future economic conditions and other factors. 
+Actual results may differ from the amounts included in 
+the financial statements.
+The estimates and underlying assumptions are reviewed 
+on an ongoing basis. Revisions to accounting estimates 
+are recognised prospectively.
+Significant assumptions and estimates
+The following areas contain information about significant 
+assumptions and other sources of estimation uncertainty 
+as at 30 June 2026 that have a significant risk of resulting 
+in a material adjustment to the carrying amounts of 
+assets and liabilities in the next reporting period.
+Deferred tax rates applied within the Group
+South African income tax on gold mining income is 
+determined according to the gold formula that takes 
+into account the taxable income and revenue from 
+gold mining operations. Judgement was applied in 
+determining the future expected deferred tax rates of 
+the Group’s mining operations.
+Deferred tax is calculated at the tax rates that are 
+expected to apply to the period when the asset is 
+realised, or the liability is settled, based on tax rates and 
+laws that have been enacted or substantively enacted by 
+the reporting date. The rates used to calculate deferred 
+tax are based on the current estimate of future profitability 
