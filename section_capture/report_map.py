@@ -194,6 +194,21 @@ def _range(section):
     return label(section['start']) + ' – ' + label(section['end'])
 
 
+def matching_section_ids(mapping, selections=()) -> list[str]:
+    if not mapping or not selections:
+        return []
+    matched = []
+    for section in mapping.get('sections', []):
+        for part in selections:
+            width = part['page_size_points'][0]
+            start = part['physical_page'] - 1 + part['bbox'][0] / width
+            end = part['physical_page'] - 1 + part['bbox'][2] / width
+            if start < _position(section['end'], True) and end > _position(section['start']):
+                matched.append(section['section_id'])
+                break
+    return matched
+
+
 def report_overview(mapping, selections=()):
     lines = [ORIENTATION_PATH.read_text(encoding='utf-8'), '\n## Report navigation context',
              f"Report: {mapping['source_filename']}", f"Physical PDF pages: {mapping['physical_page_count']}",

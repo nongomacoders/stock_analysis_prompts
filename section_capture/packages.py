@@ -14,7 +14,7 @@ from pathlib import Path
 
 from .pdf_source import Capture, PdfSource
 from .content_types import CONTENT_TYPES
-from .report_map import report_overview, validate_map
+from .report_map import matching_section_ids, report_overview, validate_map
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROMPT_VERSION = "1.1.0"
@@ -84,11 +84,24 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     root = Path(output_root).resolve()
     root.mkdir(parents=True, exist_ok=True)
+    existing_packs = [
+        p for p in root.iterdir()
+        if p.is_dir() and not p.name.startswith(".section-staging-") and (p / "manifest.json").exists()
+    ]
+    seq_num = len(existing_packs) + 1
+    selection_previews = [
+        {"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}
+        for cap in captures
+    ]
+    section_ids = matching_section_ids(mapping, selection_previews) if mapping else []
+    section_tag = "-".join(section_ids)
+    prefix = f"{seq_num:02d}-{section_tag}" if section_tag else f"{seq_num:02d}"
     package_id = "section-" + uuid.uuid4().hex
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", heading).strip("-")[:55] or "section"
-    target = root / f"{datetime.now():%Y%m%d-%H%M%S}-{slug}-{package_id[-8:]}"
+    target = root / f"{prefix}-{slug}-{datetime.now():%Y%m%d-%H%M%S}-{package_id[-8:]}"
     manifest = {
         "schema_version": "section_reading_package_v1", "package_id": package_id,
+        "section_number": seq_num, "section_ids": section_ids,
         "task": "analyst_reading_brief", "response_format": "markdown",
         "created_at": datetime.now(timezone.utc).isoformat(), "heading": heading,
         "analyst_question": question.strip() or None,

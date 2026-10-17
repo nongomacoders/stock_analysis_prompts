@@ -310,6 +310,8 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     window.heading_edit.setText('Section 1 Highlights')
     window.selection_changed(window.source.capture_area(4, QRectF(20, 175, 385, 153)))
     first_pack = window.save_section()
+    assert first_pack.name.startswith('01-D002-')
+    assert first_pack.with_suffix('.zip').exists()
     first_prompt = (first_pack / 'prompt.md').read_text(encoding='utf-8')
     assert 'None supplied (first section capture)' in first_prompt
     assert not (first_pack / 'stored-questions.md').exists()
@@ -326,8 +328,16 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     window.heading_edit.setText('Section 2 APMs')
     window.selection_changed(window.source.capture_area(38, QRectF(20, 60, 380, 300)))
     second_pack = window.save_section()
+    assert second_pack.name.startswith('02-D008-')
+    assert second_pack.with_suffix('.zip').exists()
     second_prompt = (second_pack / 'prompt.md').read_text(encoding='utf-8')
     assert 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS' in second_prompt
     assert 'Q1 [Target: D008 APMs]: Verify AISC bridge' in second_prompt
     assert (second_pack / 'stored-questions.md').exists()
     window.close()
+
+    # Default save folder is where the PDF is opened when no custom output_root is supplied
+    default_window = CaptureWindow()
+    assert default_window.open_pdf(pdf_path)
+    assert default_window.output_root == pdf_path.resolve().parent
+    default_window.close()

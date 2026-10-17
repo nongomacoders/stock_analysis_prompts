@@ -24,6 +24,7 @@ class CaptureWindow(QMainWindow):
         self.source: PdfSource | None = None
         self.pending: Capture | None = None
         self.captures: list[Capture] = []
+        self._custom_output_root = output_root is not None
         self.output_root = Path(output_root) if output_root else PROJECT_ROOT / "captures"
         self.last_package: Path | None = None
         self.setWindowTitle("Report Section Capture")
@@ -267,9 +268,10 @@ class CaptureWindow(QMainWindow):
             return False
         old = self.source
         self.source = candidate
-        if (PROJECT_ROOT / "company_results") in candidate.path.parents and self.output_root == (PROJECT_ROOT / "captures"):
+        if not self._custom_output_root:
             self.output_root = candidate.path.parent
-            self.output_label.setText(str(self.output_root))
+            self.export_label.setText(str(self.output_root))
+            self.export_label.setToolTip(str(self.output_root))
         self._reset_section()
         self.page_spin.blockSignals(True)
         self.page_spin.setMaximum(candidate.page_count)
@@ -400,8 +402,10 @@ class CaptureWindow(QMainWindow):
     def choose_output(self):
         chosen = QFileDialog.getExistingDirectory(self, "Save sections in", str(self.output_root))
         if chosen:
+            self._custom_output_root = True
             self.output_root = Path(chosen)
             self.export_label.setText(str(self.output_root))
+            self.export_label.setToolTip(str(self.output_root))
 
     def save_section(self):
         if not self.source or not self.heading_edit.text().strip():
