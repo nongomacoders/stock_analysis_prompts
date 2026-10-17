@@ -1,0 +1,10 @@
+# Local scratch and Python artifacts; keep prompts and source reports visible.
+/tmp/
+/.venv/
+/captures/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
