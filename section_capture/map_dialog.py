@@ -154,12 +154,16 @@ class SavedSectionsDialog(QDialog):
 
         self.sections = list_sections(self.source.sha256, db_path=self.db_path)
         for sec in self.sections:
-            title = f"{sec.heading} — {sec.subheading}" if sec.subheading else sec.heading
-            status = "✓ LLM response saved" if sec.llm_response else "pending LLM response"
-            self.section_combo.addItem(f"{sec.section_number:02d}-{sec.section_id} · {title} ({status})", sec.package_id)
+            self.section_combo.addItem(self._combo_label(sec), sec.package_id)
         if self.sections:
             self.section_combo.setCurrentIndex(len(self.sections) - 1)
             self._load_selected_section()
+
+    @staticmethod
+    def _combo_label(sec) -> str:
+        title = f"{sec.heading} — {sec.subheading}" if sec.subheading else sec.heading
+        status = "✓ LLM response saved" if sec.llm_response else "pending LLM response"
+        return f"{sec.section_number:02d}-{sec.section_id} · {title} ({status})"
 
     def _current_section(self):
         idx = self.section_combo.currentIndex()
@@ -174,8 +178,9 @@ class SavedSectionsDialog(QDialog):
             self.status_label.setText('No sections saved in SQLite for this report yet.')
             return
         self.response_edit.setPlainText(sec.llm_response or '')
+        status_tag = "✓ LLM response saved" if sec.llm_response else "pending LLM response"
         self.status_label.setText(
-            f"Package: {sec.package_id}  ·  Section ID: {sec.section_id}  ·  "
+            f"Status: {status_tag}  ·  Package: {sec.package_id}  ·  Section ID: {sec.section_id}  ·  "
             f"Prompt: {len(sec.prompt):,} chars  ·  Selected text: {len(sec.selected_text):,} chars"
         )
 
@@ -204,11 +209,15 @@ class SavedSectionsDialog(QDialog):
         if updated:
             idx = self.section_combo.currentIndex()
             self.sections[idx] = updated
+            self.section_combo.setItemText(idx, self._combo_label(updated))
             if extracted:
                 self.source.questions_ledger = extracted
                 self.status_label.setText(
-                    f"Saved LLM response for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
+                    f"✓ Saved LLM response for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
                 )
             else:
-                self.status_label.setText(f"Saved LLM response for {updated.section_number:02d}-{updated.section_id} in SQLite.")
+                self.status_label.setText(f"✓ Saved LLM response for {updated.section_number:02d}-{updated.section_id} in SQLite.")
+            if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
+                self.parent()._update_actions()
+
 
