@@ -107,9 +107,12 @@ class CaptureWindow(QMainWindow):
         form = QFormLayout()
         form.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapAllRows)
         self.heading_edit = QLineEdit()
-        self.heading_edit.setPlaceholderText("e.g. Production and operating costs")
+        self.heading_edit.setPlaceholderText("e.g. Primary financial statements")
         self.heading_edit.textChanged.connect(self._update_actions)
         form.addRow("Section heading", self.heading_edit)
+        self.subheading_edit = QLineEdit()
+        self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
+        form.addRow("Sub-heading (optional)", self.subheading_edit)
         self.question_edit = QPlainTextEdit()
         self.question_edit.setPlaceholderText("Optional: which claim or concern should the model examine?")
         self.question_edit.setFixedHeight(56)
@@ -389,6 +392,7 @@ class CaptureWindow(QMainWindow):
         self.parts.clear()
         self.canvas.clear_selection()
         self.heading_edit.clear()
+        self.subheading_edit.clear()
         self.question_edit.clear()
         self.content_type_combo.setCurrentIndex(0)
         self.label_edit.clear()
@@ -414,7 +418,14 @@ class CaptureWindow(QMainWindow):
         if self.pending:
             self.add_selection()
         try:
-            folder = save_package(self.source, self.heading_edit.text(), self.question_edit.toPlainText(), self.captures, self.output_root)
+            folder = save_package(
+                self.source,
+                self.heading_edit.text(),
+                self.question_edit.toPlainText(),
+                self.captures,
+                self.output_root,
+                subheading=self.subheading_edit.text(),
+            )
         except Exception as exc:
             QMessageBox.warning(self, "Could not save section", str(exc))
             return None

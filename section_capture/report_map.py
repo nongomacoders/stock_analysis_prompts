@@ -194,6 +194,59 @@ def _range(section):
     return label(section['start']) + ' – ' + label(section['end'])
 
 
+def _part_location(part) -> str:
+    width = part['page_size_points'][0]
+    x0, x1 = part['bbox'][0], part['bbox'][2]
+    if x1 <= width * 0.55:
+        return 'left'
+    if x0 >= width * 0.45:
+        return 'right'
+    return 'full'
+
+
+def register_subsection(mapping, subheading: str, selections=()) -> list[str]:
+    """Add or update a subsection under the matched major section in mapping and return its subsection ID(s)."""
+    subheading = (subheading or '').strip()
+    if not mapping or not subheading or not selections:
+        return []
+    matched_sections = []
+    for section in mapping.get('sections', []):
+        for part in selections:
+            width = part['page_size_points'][0]
+            start = part['physical_page'] - 1 + part['bbox'][0] / width
+            end = part['physical_page'] - 1 + part['bbox'][2] / width
+            if start < _position(section['end'], True) and end > _position(section['start']):
+                matched_sections.append(section)
+                break
+    if not matched_sections:
+        return []
+    parent = matched_sections[0]
+    subs = parent.setdefault('subsections', [])
+    sorted_parts = sorted(selections, key=lambda p: (p['physical_page'], p['bbox'][0], p['bbox'][1]))
+    first_part, last_part = sorted_parts[0], sorted_parts[-1]
+    start_loc = _part_location(first_part)
+    end_loc = _part_location(last_part)
+    if first_part['physical_page'] == last_part['physical_page'] and start_loc != end_loc:
+        start_loc = end_loc = 'full'
+    start_ep = {'physical_page': first_part['physical_page'], 'location': start_loc, 'printed_label': None}
+    end_ep = {'physical_page': last_part['physical_page'], 'location': end_loc, 'printed_label': None}
+    for existing in subs:
+        if existing.get('title', '').strip().lower() == subheading.lower():
+            existing['title'] = subheading
+            existing['start'] = start_ep
+            existing['end'] = end_ep
+            return [existing['subsection_id']]
+    sub_id = f"{parent['section_id']}.{len(subs) + 1}"
+    subs.append({
+        'subsection_id': sub_id,
+        'parent_id': parent['section_id'],
+        'title': subheading,
+        'start': start_ep,
+        'end': end_ep,
+    })
+    return [sub_id]
+
+
 def matching_section_ids(mapping, selections=()) -> list[str]:
     if not mapping or not selections:
         return []
@@ -229,6 +282,19 @@ def report_overview(mapping, selections=()):
         status = f"Partial selected evidence: {section['section_id']} ({', '.join(overlaps)})" if overlaps else 'Not included here; available for possible later reading'
         title = section['title'].replace('|', '\\|').replace('\n', ' ')
         lines.append(f"| {section['section_id']} | {title} | {_range(section)} | {status} |")
+        for sub in section.get('subsections', []):
+            sub_overlaps = []
+            for part in selections:
+                width = part['page_size_points'][0]
+                start = part['physical_page'] - 1 + part['bbox'][0] / width
+                end = part['physical_page'] - 1 + part['bbox'][2] / width
+                if start < _position(sub['end'], True) and end > _position(sub['start']):
+                    page_ref = f"p. {part['physical_page']}"
+                    if page_ref not in sub_overlaps:
+                        sub_overlaps.append(page_ref)
+            sub_status = f"Partial selected evidence: {sub['subsection_id']} ({', '.join(sub_overlaps)})" if sub_overlaps else 'Subsection recorded in map; not included in this request'
+            sub_title = sub['title'].replace('|', '\\|').replace('\n', ' ')
+            lines.append(f"| {sub['subsection_id']} | ↳ {sub_title} | {_range(sub)} | {sub_status} |")
     if mapping['primary_statement_sightings']:
         lines.append('\nPrimary-statement heading sightings (draft navigation, not inspected statement values):')
         for item in mapping['primary_statement_sightings']:

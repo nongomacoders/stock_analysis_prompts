@@ -344,3 +344,32 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     assert default_window.open_pdf(pdf_path)
     assert default_window.output_root == pdf_path.resolve().parent
     default_window.close()
+
+
+def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(tmp_path)
+    window.show()
+    assert window.open_pdf(pdf_path)
+
+    # First subsection inside D005 Primary financial statements (page 17 left)
+    window.heading_edit.setText('Primary financial statements')
+    window.subheading_edit.setText('Statement of Financial Position')
+    window.selection_changed(window.source.capture_area(17, QRectF(20, 60, 380, 300)))
+    sub1 = window.save_section()
+    assert sub1.name.startswith('01-D005.1-')
+    sub1_prompt = (sub1 / 'prompt.md').read_text(encoding='utf-8')
+    assert 'Section ID: D005.1' in sub1_prompt
+    assert 'Section heading: Primary financial statements — Statement of Financial Position' in sub1_prompt
+    assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Partial selected evidence: D005.1 (p. 17) |' in sub1_prompt
+
+    # Second subsection inside D005 Primary financial statements (page 18 left)
+    window.heading_edit.setText('Primary financial statements')
+    window.subheading_edit.setText('Statement of Profit or Loss')
+    window.selection_changed(window.source.capture_area(18, QRectF(20, 60, 380, 300)))
+    sub2 = window.save_section()
+    assert sub2.name.startswith('02-D005.2-')
+    sub2_prompt = (sub2 / 'prompt.md').read_text(encoding='utf-8')
+    assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Subsection recorded in map; not included in this request |' in sub2_prompt
+    assert '| D005.2 | ↳ Statement of Profit or Loss | 18 left – 18 left | Partial selected evidence: D005.2 (p. 18) |' in sub2_prompt
+    window.close()
+
