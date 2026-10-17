@@ -7,7 +7,9 @@ import pytest
 from PySide6.QtCore import QCoreApplication, QEvent
 from PySide6.QtWidgets import QApplication
 
+import section_capture.report_map as report_map_mod
 from section_capture.pdf_source import PdfSource
+from section_capture.report_map import save_map, scan_report
 from section_capture.__main__ import apply_theme
 
 
@@ -20,6 +22,26 @@ def qapp():
     app.processEvents()
 
 
+@pytest.fixture(scope="session")
+def pdf_path():
+    return Path(__file__).resolve().parents[1] / "company_results/PAN/FY-2026/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
+
+
+@pytest.fixture(scope="session", autouse=True)
+def isolated_map_cache(qapp, pdf_path, tmp_path_factory):
+    cache_dir = tmp_path_factory.mktemp("map-cache")
+    original_cache = report_map_mod.CACHE_ROOT
+    report_map_mod.CACHE_ROOT = cache_dir
+    opened = PdfSource(pdf_path)
+    try:
+        mapping = scan_report(opened)
+        save_map(mapping, cache_dir)
+    finally:
+        opened.close()
+    yield cache_dir
+    report_map_mod.CACHE_ROOT = original_cache
+
+
 @pytest.fixture(autouse=True)
 def clean_windows(qapp):
     yield
@@ -29,11 +51,6 @@ def clean_windows(qapp):
         window.deleteLater()
     QCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)
     qapp.processEvents()
-
-
-@pytest.fixture
-def pdf_path():
-    return Path(__file__).resolve().parents[1] / "company_results/PAN/FY-2026/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
 
 
 @pytest.fixture

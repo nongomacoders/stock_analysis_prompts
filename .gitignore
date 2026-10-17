@@ -1,7 +1,8 @@
-# Local scratch and Python artifacts; keep prompts and source reports visible.
+# Local scratch, caches, and saved captures; keep prompt templates and source reports visible.
 /tmp/
 /.venv/
 /captures/
+/documents/
 __pycache__/
 *.py[cod]
 .pytest_cache/

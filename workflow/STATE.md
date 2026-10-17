@@ -11,14 +11,12 @@ Provide a clean, focused workflow for analyzing and forecasting from company pre
 
 ## Completed
 
-- **Cleaned repository to core functionality only**:
-  - Removed legacy whole-PDF page-inventory prompts/schemas (`01-page-inventory`), JSON fact-extraction prompts/schemas (`11-selected-section`), superseded v1.0.0 reading prompt, old evaluation/run folders (`runs/`, `evaluations/`, `templates/`), obsolete research/design docs, `prepared_prompts/`, `section_capture/prepare_prompt.py`, and temporary test directories.
-  - Upgraded the existing 11-selection capture pack (`captures/20261017-115429-KEY-F26-FEATURES-7f02fcb4` and its `.zip`) in-place to the current `section_reading_package_v1` format with the embedded PAN FY2026 report map and `12-analyst-reading-brief/v1.1.0` prompt.
-  - Streamlined `README.md`, `AGENTS.md`, `prompts/README.md`, `docs/CAPTURE_APP.md`, `docs/REPORT_MAP.md`, `docs/READING_BRIEF_WORKFLOW.md`, and `workflow/WORKFLOW.md`.
-- **Verified test suite**:
-  - Ran `.venv/Scripts/python.exe -m pytest tests -q -p no:cacheprovider --basetemp=tmp/pytest-clean` across all 26 unit and offscreen GUI tests covering PDF rendering, left/right panel isolation, native text & area capture, content types, native major-section scanning, report map caching/validation, and section package export.
+- **Cleaned repository to core functionality and reset for a fresh PAN capture**:
+  - Removed all previous PAN captures and generated prompts (`captures/`), cached PAN section maps and document registry (`documents/`), legacy prompts/schemas (`01-page-inventory`, `11-selected-section`, `12-analyst-reading-brief/v1.0.0`), old evaluation/run folders (`runs/`, `evaluations/`, `templates/`, `prepared_prompts/`), obsolete design docs, and temporary directories.
+  - Isolated the test suite's map cache in a temporary directory (`tests/conftest.py`) so running tests never creates or relies on pre-baked map files in `documents/`.
+  - Verified all 26 automated unit and offscreen GUI tests pass (`EXIT_CODE=0`).
 
 ## Next steps
 
-1. Use `captures/20261017-115429-KEY-F26-FEATURES-7f02fcb4/` (or capture new sections via `Run Capture.cmd`) to run section-by-section analysis in your LLM chat.
-2. Follow the `Pending: [section]` verification pointers in the LLM's response to capture the next relevant sections (CEO commentary, primary financial statements, financial notes, APMs, and operating/production tables) before building a forecast.
+1. Launch the app via `Run Capture.cmd` and open `company_results/PAN/FY-2026/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf` to start a completely fresh section scan and capture session.
+2. Follow the `Pending: [section]` verification pointers in the LLM's response as you capture and feed each section sequentially.

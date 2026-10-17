@@ -14,7 +14,7 @@ On a fresh checkout, run `./setup.ps1` first to create the local Python 3.12 `.v
 
 ## Workflow
 
-1. **Open PDF**: The app automatically scans native titles and running headings across all physical pages to build a coarse major-section map (cached in `documents/maps/<sha256>/`).
+1. **Open PDF**: The app automatically scans native titles and running headings across all physical pages to build a coarse major-section map (cached locally under `documents/maps/<sha256>/`).
 2. **Orient the chat (optional)**: Click **Report map → Copy overview** to paste the report outline into your LLM chat before sending the first section.
 3. **Capture a section**:
    - Enter a **Section heading** and optional **Analyst question**.
@@ -33,11 +33,9 @@ app.py                                    Application entry point
 Run Capture.cmd                           Windows launcher
 setup.ps1                                 Environment setup script (uv)
 section_capture/                          PySide6 PDF section scanner, canvas, and pack exporter
-prompts/mining/00-report-orientation/     Report map orientation prompt (v1.0.0)
-prompts/mining/12-analyst-reading-brief/  Section analysis & upcoming-verification prompt (v1.1.0)
+prompts/mining/00-report-orientation/     Report map orientation prompt template (v1.0.0)
+prompts/mining/12-analyst-reading-brief/  Section analysis & upcoming-verification prompt template (v1.1.0)
 company_results/<ticker>/<period>/        Original PDF reports
-documents/                                Source document registry and cached section maps
-captures/                                 Local saved section packs and upload ZIPs (Git-ignored)
 docs/                                     App, report map, and reading workflow guides
 tests/                                    Automated offscreen Qt, crop, map, and export tests
 workflow/                                 Project state and workflow notes
