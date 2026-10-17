@@ -14,7 +14,14 @@ from pathlib import Path
 
 from .pdf_source import Capture, PdfSource
 from .content_types import CONTENT_TYPES
-from .report_map import matching_section_ids, register_subsection, report_overview, save_map, validate_map
+from .report_map import (
+    load_questions_ledger,
+    matching_section_ids,
+    register_subsection,
+    report_overview,
+    save_map,
+    validate_map,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROMPT_VERSION = "1.1.0"
@@ -24,6 +31,30 @@ PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/p
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _matching_stored_questions(stored_questions: str, section_ids: list[str]) -> list[str]:
+    """Return question lines whose Target (or text) matches any current section or parent section ID."""
+    if not stored_questions or not section_ids:
+        return []
+    target_ids = []
+    for sid in section_ids:
+        base = sid.split(".")[0]
+        if base not in target_ids:
+            target_ids.append(base)
+        if sid not in target_ids:
+            target_ids.append(sid)
+    patterns = [re.compile(rf"\b{re.escape(tid)}\b", re.IGNORECASE) for tid in target_ids]
+    matched = []
+    for raw_line in stored_questions.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        target_match = re.search(r"Target\s*:\s*([^\]\n]+)", line, re.IGNORECASE)
+        haystack = target_match.group(1) if target_match else line
+        if any(pat.search(haystack) for pat in patterns):
+            matched.append(line)
+    return matched
 
 
 def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
@@ -49,6 +80,12 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
         context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
     stored_questions = (manifest.get('stored_questions') or '').strip()
     if stored_questions:
+        relevant_lines = _matching_stored_questions(stored_questions, section_ids)
+        if relevant_lines:
+            context.extend([
+                f"\nQUESTIONS SPECIFICALLY TARGETING THIS SECTION ({section_id_label}) — Answer or partially resolve these first if the selected evidence addresses them:",
+                *relevant_lines,
+            ])
         context.extend([
             '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
             'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
@@ -101,6 +138,9 @@ def save_package(source: PdfSource, heading: str, question: str, captures: list[
             sub_ids = register_subsection(source.report_map, subheading, selection_previews)
             save_map(source.report_map)
     mapping = copy.deepcopy(source.report_map)
+    disk_questions = load_questions_ledger(source.sha256)
+    if disk_questions:
+        source.questions_ledger = disk_questions
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     root = Path(output_root).resolve()
     root.mkdir(parents=True, exist_ok=True)

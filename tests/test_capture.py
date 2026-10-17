@@ -327,15 +327,19 @@ def test_stored_questions_ledger_persists_and_embeds_in_next_section_prompt(qapp
     window._update_actions()
     assert '2 lines' in window.questions_button.text()
 
-    # Second section export embeds the stored questions
+    # Second section export embeds the stored questions and highlights D008-specific questions
     window.heading_edit.setText('Section 2 APMs')
     window.selection_changed(window.source.capture_area(38, QRectF(20, 60, 380, 300)))
     second_pack = window.save_section()
     assert second_pack.name.startswith('02-D008-')
     assert second_pack.with_suffix('.zip').exists()
     second_prompt = (second_pack / 'prompt.md').read_text(encoding='utf-8')
+    assert 'QUESTIONS SPECIFICALLY TARGETING THIS SECTION (D008)' in second_prompt
+    target_block = second_prompt.split('QUESTIONS SPECIFICALLY TARGETING THIS SECTION (D008)')[1].split('BEGIN STORED QUESTIONS')[0]
+    assert 'Q1 [Target: D008 APMs]: Verify AISC bridge' in target_block
+    assert 'Q2 [Target: D006 Notes]' not in target_block
     assert 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS' in second_prompt
-    assert 'Q1 [Target: D008 APMs]: Verify AISC bridge' in second_prompt
+    assert 'Q2 [Target: D006 Notes]: Reconcile 2,436m dividend shares' in second_prompt
     assert (second_pack / 'stored-questions.md').exists()
     window.close()
 

@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (
     QPlainTextEdit, QPushButton, QTextBrowser, QVBoxLayout,
 )
 
-from .report_map import report_overview, save_questions_ledger
+from .report_map import load_questions_ledger, report_overview, save_questions_ledger
 
 
 class ReportMapDialog(QDialog):
@@ -76,6 +76,9 @@ class QuestionsLedgerDialog(QDialog):
             'Paste the "Updated Open Questions Ledger" from your LLM response here.\n'
             'Leave empty when capturing the very first section of a report.'
         )
+        disk_questions = load_questions_ledger(self.source.sha256)
+        if disk_questions:
+            self.source.questions_ledger = disk_questions
         self.editor.setPlainText(self.source.questions_ledger or '')
         layout.addWidget(self.editor, 1)
 

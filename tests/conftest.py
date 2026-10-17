@@ -48,6 +48,8 @@ def isolated_map_cache(qapp, pdf_path, tmp_path_factory):
 
 @pytest.fixture(autouse=True)
 def clean_windows(qapp):
+    for f in report_map_mod.QUESTIONS_ROOT.rglob("questions-ledger.md"):
+        f.unlink(missing_ok=True)
     yield
     for window in QApplication.topLevelWidgets():
         window.hide()
