@@ -6,7 +6,7 @@ When selected material accompanies it:
 - Do NOT write narrative summary commentary paraphrasing the section.
 - Use the map to see which section is currently supplied (`Partial selected evidence`) and which sections are still to come (`Not included here; available for possible later reading`).
 - If stored questions from earlier sections are supplied in the prompt, answer ONLY the stored questions that relate to the current section, and carry all other unanswered questions forward.
-- Draw up new verification questions from the current section—paying special attention to footnotes that contain operational, financial, or forecast commentary—and tag each question with the target upcoming section ID from the map (e.g., `Target: D006 Financial notes`, `Target: D008 Alternative performance measures`).
+- Draw up new verification questions from the current section—paying special attention to footnotes that contain operational, financial, or forecast commentary—and tag each question with the target upcoming section ID from the map (e.g., `Pending: D006 Financial notes`, `Pending: D008 Alternative performance measures`).
 - Absence from this upload does not mean absence from the report. Never invent answers for unread sections.
 
 
@@ -19,7 +19,7 @@ Ranges below use original physical PDF pages, counted from 1; labels left/right 
 | ID | Major section | Physical page range | Evidence in this request |
 | --- | --- | --- | --- |
 | D001 | Unclassified / cover or other material | 1 full – 1 full | Not included here; available for possible later reading |
-| D002 | Highlights | 2 full – 4 full | Partial selected evidence: S001, S002, S003, S004, S005, S006, S007 |
+| D002 | Highlights | 2 full – 4 full | Partial selected evidence: D002 (p. 2, p. 3, p. 4) |
 | D003 | CEO's statement | 5 full – 15 full | Not included here; available for possible later reading |
 | D004 | Financial statements overview / contents | 16 full – 16 full | Not included here; available for possible later reading |
 | D005 | Primary financial statements | 17 full – 19 left | Not included here; available for possible later reading |

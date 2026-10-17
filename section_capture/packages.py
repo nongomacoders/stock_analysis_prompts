@@ -60,9 +60,11 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
         )
     for part, selected_text in zip(manifest["selections"], selected_texts, strict=True):
         kind = part.get('content_type', 'unspecified')
+        part_sections = matching_section_ids(mapping, [part]) if mapping else []
+        part_sec_label = ', '.join(part_sections) if part_sections else section_id_label
         context.extend([
-            f"\n### {part['source_id']} | Section {section_id_label} | physical PDF page {part['physical_page']} | {CONTENT_TYPES.get(kind, 'Mixed / unspecified')}",
-            f"Selection method: {part['selection_mode']}; Selection ID: {part['source_id']}; Section ID: {section_id_label}",
+            f"\n### Section {part_sec_label} | physical PDF page {part['physical_page']} | {CONTENT_TYPES.get(kind, 'Mixed / unspecified')}",
+            f"Selection method: {part['selection_mode']}; Section ID: {part_sec_label}; physical PDF page: {part['physical_page']}",
             f"Printed page label (user-entered, unverified): {part.get('printed_page_label') or 'not supplied'}",
             "Capture warnings: " + ('; '.join(part.get('warnings', [])) or 'none recorded; this is not source verification'),
             "BEGIN SELECTED REPORT EVIDENCE", selected_text, "END SELECTED REPORT EVIDENCE",

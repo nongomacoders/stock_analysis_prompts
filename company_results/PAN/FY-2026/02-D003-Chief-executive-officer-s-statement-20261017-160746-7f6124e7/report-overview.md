@@ -20,7 +20,7 @@ Ranges below use original physical PDF pages, counted from 1; labels left/right 
 | --- | --- | --- | --- |
 | D001 | Unclassified / cover or other material | 1 full – 1 full | Not included here; available for possible later reading |
 | D002 | Highlights | 2 full – 4 full | Not included here; available for possible later reading |
-| D003 | CEO's statement | 5 full – 15 full | Partial selected evidence: S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021 |
+| D003 | CEO's statement | 5 full – 15 full | Partial selected evidence: D003 (p. 5, p. 6, p. 7, p. 8, p. 9, p. 10, p. 11, p. 12, p. 13, p. 14, p. 15) |
 | D004 | Financial statements overview / contents | 16 full – 16 full | Not included here; available for possible later reading |
 | D005 | Primary financial statements | 17 full – 19 left | Not included here; available for possible later reading |
 | D006 | Financial notes | 19 right – 36 full | Not included here; available for possible later reading |

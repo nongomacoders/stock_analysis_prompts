@@ -88,7 +88,7 @@ Ranges below use original physical PDF pages, counted from 1; labels left/right 
 | --- | --- | --- | --- |
 | D001 | Unclassified / cover or other material | 1 full – 1 full | Not included here; available for possible later reading |
 | D002 | Highlights | 2 full – 4 full | Not included here; available for possible later reading |
-| D003 | CEO's statement | 5 full – 15 full | Partial selected evidence: S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021 |
+| D003 | CEO's statement | 5 full – 15 full | Partial selected evidence: D003 (p. 5, p. 6, p. 7, p. 8, p. 9, p. 10, p. 11, p. 12, p. 13, p. 14, p. 15) |
 | D004 | Financial statements overview / contents | 16 full – 16 full | Not included here; available for possible later reading |
 | D005 | Primary financial statements | 17 full – 19 left | Not included here; available for possible later reading |
 | D006 | Financial notes | 19 right – 36 full | Not included here; available for possible later reading |
@@ -129,8 +129,8 @@ BEGIN STORED QUESTIONS FROM EARLIER SECTIONS
 | Q8 | Low-Medium | D007/D008 Salient features & APMs | In S007, All-in costs in ZAR/kg decreased from 1,287,842 (FY25) to 1,271,855 (FY26), but the Movement % column shows +1.2% [S007, p. 4] | Check D008 APM reconciliations to confirm whether the +1.2% sign is a favorable-variance convention or a table sign error, and verify the US$224.0m total capex split between sustaining (US$21.8m) and growth capex. |
 END STORED QUESTIONS FROM EARLIER SECTIONS
 
-### S001 | Section D003 | physical PDF page 5 | Commentary
-Selection method: text; Selection ID: S001; Section ID: D003
+### Section D003 | physical PDF page 5 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 5
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -247,8 +247,8 @@ jurisdiction, offering exceptional potential for
 sustained growth.
 END SELECTED REPORT EVIDENCE
 
-### S002 | Section D003 | physical PDF page 6 | Commentary
-Selection method: text; Selection ID: S002; Section ID: D003
+### Section D003 | physical PDF page 6 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 6
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -267,8 +267,8 @@ in line with FY26 production guidance of 275,000oz to
 292,000oz, with the gold production split as follows:
 END SELECTED REPORT EVIDENCE
 
-### S003 | Section D003 | physical PDF page 6 | Table
-Selection method: area; Selection ID: S003; Section ID: D003
+### Section D003 | physical PDF page 6 | Table
+Selection method: area; Section ID: D003; physical PDF page: 6
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: none recorded; this is not source verification
 BEGIN SELECTED REPORT EVIDENCE
@@ -285,8 +285,8 @@ BEGIN SELECTED REPORT EVIDENCE
 | Total ounces produced | 272,310 | 196,527 |
 END SELECTED REPORT EVIDENCE
 
-### S004 | Section D003 | physical PDF page 6 | Commentary
-Selection method: text; Selection ID: S004; Section ID: D003
+### Section D003 | physical PDF page 6 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 6
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -335,8 +335,8 @@ December 2024, with production of 51,927oz in FY26
 (FY25: US$1,282/oz).
 END SELECTED REPORT EVIDENCE
 
-### S005 | Section D003 | physical PDF page 6 | Commentary
-Selection method: text; Selection ID: S005; Section ID: D003
+### Section D003 | physical PDF page 6 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 6
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -637,8 +637,8 @@ continue to yield the bulk of the ore tonnage to be
 processed at Evander Mines in FY27
 END SELECTED REPORT EVIDENCE
 
-### S006 | Section D003 | physical PDF page 7 | Commentary
-Selection method: text; Selection ID: S006; Section ID: D003
+### Section D003 | physical PDF page 7 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 7
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1027,8 +1027,8 @@ footprint. Ore will be processed through the existing
 BTRP, allowing Royal Sheba to leverage established 
 END SELECTED REPORT EVIDENCE
 
-### S007 | Section D003 | physical PDF page 8 | Commentary
-Selection method: text; Selection ID: S007; Section ID: D003
+### Section D003 | physical PDF page 8 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 8
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1401,8 +1401,8 @@ synergistic benefits associated with the development
 of these projects, among other matters
 END SELECTED REPORT EVIDENCE
 
-### S008 | Section D003 | physical PDF page 9 | Commentary
-Selection method: text; Selection ID: S008; Section ID: D003
+### Section D003 | physical PDF page 9 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 9
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1671,8 +1671,8 @@ mainly driven by the rescheduling of the underground
 development projects at Tennant Mines
 END SELECTED REPORT EVIDENCE
 
-### S009 | Section D003 | physical PDF page 9 | Table
-Selection method: area; Selection ID: S009; Section ID: D003
+### Section D003 | physical PDF page 9 | Table
+Selection method: area; Section ID: D003; physical PDF page: 9
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: none recorded; this is not source verification
 BEGIN SELECTED REPORT EVIDENCE
@@ -1693,8 +1693,8 @@ Preliminary capital expenditure for FY28 is also guided below and is focused on 
 | Total | 21 | 201 | 36 | 294 | 25 | 278 |
 END SELECTED REPORT EVIDENCE
 
-### S010 | Section D003 | physical PDF page 10 | Commentary
-Selection method: text; Selection ID: S010; Section ID: D003
+### Section D003 | physical PDF page 10 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 10
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1793,8 +1793,8 @@ capitalisation of qualifying working costs associated
 with the development.
 END SELECTED REPORT EVIDENCE
 
-### S011 | Section D003 | physical PDF page 10 | Commentary
-Selection method: text; Selection ID: S011; Section ID: D003
+### Section D003 | physical PDF page 10 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 10
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1807,8 +1807,8 @@ Resources of 45.22Moz and Mineral Reserves of 13.04Moz at 30 June 2026, in compl
 SAMREC Code, are summarised as follows
 END SELECTED REPORT EVIDENCE
 
-### S012 | Section D003 | physical PDF page 10 | Table
-Selection method: area; Selection ID: S012; Section ID: D003
+### Section D003 | physical PDF page 10 | Table
+Selection method: area; Section ID: D003; physical PDF page: 10
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: none recorded; this is not source verification
 BEGIN SELECTED REPORT EVIDENCE
@@ -1826,8 +1826,8 @@ Mineral Reserve increases were recorded at Tennant Mines, Evander Mines and Barb
 mainly due to mining depletion, were recorded at Elikhulu and the MTR operation.
 END SELECTED REPORT EVIDENCE
 
-### S013 | Section D003 | physical PDF page 10 | Commentary
-Selection method: text; Selection ID: S013; Section ID: D003
+### Section D003 | physical PDF page 10 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 10
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -1926,8 +1926,8 @@ rehabilitation, tailings stewardship and the development
 of our host communities.
 END SELECTED REPORT EVIDENCE
 
-### S014 | Section D003 | physical PDF page 10 | Commentary
-Selection method: text; Selection ID: S014; Section ID: D003
+### Section D003 | physical PDF page 10 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 10
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -2028,8 +2028,8 @@ provider is completed by June 2027 and the final
 investment decision has been taken by the board. 
 END SELECTED REPORT EVIDENCE
 
-### S015 | Section D003 | physical PDF page 11 | Commentary
-Selection method: text; Selection ID: S015; Section ID: D003
+### Section D003 | physical PDF page 11 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 11
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -2398,8 +2398,8 @@ with pertinent figures disclosed in the body of this
 commentary
 END SELECTED REPORT EVIDENCE
 
-### S016 | Section D003 | physical PDF page 12 | Commentary
-Selection method: text; Selection ID: S016; Section ID: D003
+### Section D003 | physical PDF page 12 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 12
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -2662,8 +2662,8 @@ fund the capital expansion activities and working capital
 requirements
 END SELECTED REPORT EVIDENCE
 
-### S017 | Section D003 | physical PDF page 13 | Commentary
-Selection method: text; Selection ID: S017; Section ID: D003
+### Section D003 | physical PDF page 13 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 13
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -2710,8 +2710,8 @@ The dividend is subject to approval by shareholders at the AGM, which is to be c
 Assuming shareholders approve the final dividend, the following salient dates would apply
 END SELECTED REPORT EVIDENCE
 
-### S018 | Section D003 | physical PDF page 13 | Table
-Selection method: area; Selection ID: S018; Section ID: D003
+### Section D003 | physical PDF page 13 | Table
+Selection method: area; Section ID: D003; physical PDF page: 13
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: none recorded; this is not source verification
 BEGIN SELECTED REPORT EVIDENCE
@@ -2735,8 +2735,8 @@ BEGIN SELECTED REPORT EVIDENCE
  on Friday, 4 December 2026, will be permitted.       
 END SELECTED REPORT EVIDENCE
 
-### S019 | Section D003 | physical PDF page 13 | Commentary
-Selection method: text; Selection ID: S019; Section ID: D003
+### Section D003 | physical PDF page 13 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 13
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -2925,8 +2925,8 @@ The Company intends to cancel those shares acquired
 pursuant to the programme. 
 END SELECTED REPORT EVIDENCE
 
-### S020 | Section D003 | physical PDF page 14 | Commentary
-Selection method: text; Selection ID: S020; Section ID: D003
+### Section D003 | physical PDF page 14 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 14
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -3305,8 +3305,8 @@ in this summarised audited results report has not been
 reviewed or reported on by the Group’s external auditors.
 END SELECTED REPORT EVIDENCE
 
-### S021 | Section D003 | physical PDF page 15 | Commentary
-Selection method: text; Selection ID: S021; Section ID: D003
+### Section D003 | physical PDF page 15 | Commentary
+Selection method: text; Section ID: D003; physical PDF page: 15
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE

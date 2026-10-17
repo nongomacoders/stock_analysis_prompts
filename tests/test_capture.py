@@ -102,7 +102,8 @@ def test_multi_page_package_is_durable_source_linked_and_zip_matches(source, tmp
         assert not QImage(str(output/part['image'])).isNull()
         assert hashlib.sha256((output/part['text']).read_bytes()).hexdigest() == part['text_sha256']
     prompt = (output/'prompt.md').read_text(encoding='utf-8')
-    assert manifest['package_id'] in prompt and 'S001' in prompt and 'S002' in prompt
+    assert manifest['package_id'] in prompt and 'Section D002' in prompt and 'Section D003' in prompt
+    assert 'S001' not in prompt and '.png' not in prompt
     assert "What changed and why?" in prompt
     assert 'physical PDF page 3' in prompt and source.path.name in prompt
     assert not list(tmp_path.glob('.section-staging-*'))
@@ -218,8 +219,9 @@ def test_mixed_types_reach_each_sources_metadata_and_prompt(source, tmp_path):
     prompt = (folder/'prompt.md').read_text(encoding='utf-8')
     for source_id, label, cap in zip(['S001', 'S002', 'S003', 'S004'],
                                     ['Commentary', 'Table', 'Financial note', 'Mixed / unspecified'], captures):
-        assert f'### {source_id} | Section D002 | physical PDF page 4 | {label}' in prompt
-        assert f'Selection ID: {source_id}; Section ID: D002' in prompt
+        assert f'### Section D002 | physical PDF page 4 | {label}' in prompt
+        assert 'Section ID: D002; physical PDF page: 4' in prompt
+        assert source_id not in prompt
         assert f'evidence/{source_id}.png' not in prompt
         assert cap.text in prompt
     assert 'not_reviewed' == manifest['review']['source_verification']

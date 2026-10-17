@@ -85,7 +85,7 @@ Ranges below use original physical PDF pages, counted from 1; labels left/right 
 | ID | Major section | Physical page range | Evidence in this request |
 | --- | --- | --- | --- |
 | D001 | Unclassified / cover or other material | 1 full – 1 full | Not included here; available for possible later reading |
-| D002 | Highlights | 2 full – 4 full | Partial selected evidence: S001, S002, S003, S004, S005, S006, S007 |
+| D002 | Highlights | 2 full – 4 full | Partial selected evidence: D002 (p. 2, p. 3, p. 4) |
 | D003 | CEO's statement | 5 full – 15 full | Not included here; available for possible later reading |
 | D004 | Financial statements overview / contents | 16 full – 16 full | Not included here; available for possible later reading |
 | D005 | Primary financial statements | 17 full – 19 left | Not included here; available for possible later reading |
@@ -115,8 +115,8 @@ Map limits:
 
 STORED QUESTIONS FROM EARLIER SECTIONS: None supplied (first section capture). Do not write narrative commentary; unpack footnotes with commentary and draw up verification questions for upcoming sections.
 
-### S001 | Section D002 | physical PDF page 2 | Commentary
-Selection method: text; Selection ID: S001; Section ID: D002
+### Section D002 | physical PDF page 2 | Commentary
+Selection method: text; Section ID: D002; physical PDF page: 2
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -205,8 +205,8 @@ savings of US$1.4 million per year
 from reduced third-party water use.
 END SELECTED REPORT EVIDENCE
 
-### S002 | Section D002 | physical PDF page 3 | Commentary
-Selection method: text; Selection ID: S002; Section ID: D002
+### Section D002 | physical PDF page 3 | Commentary
+Selection method: text; Section ID: D002; physical PDF page: 3
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -595,8 +595,8 @@ the total dividend for the year is ZAR 1,863.6 million
 per share (US 4.69385 cents; 3.53321 pence)
 END SELECTED REPORT EVIDENCE
 
-### S003 | Section D002 | physical PDF page 4 | Commentary
-Selection method: text; Selection ID: S003; Section ID: D002
+### Section D002 | physical PDF page 4 | Commentary
+Selection method: text; Section ID: D002; physical PDF page: 4
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -621,8 +621,8 @@ Group production for FY27 is expected to be between 280,000oz and 302,000oz, as 
 expected to increase in the second half of the year. 
 END SELECTED REPORT EVIDENCE
 
-### S004 | Section D002 | physical PDF page 4 | Table
-Selection method: area; Selection ID: S004; Section ID: D002
+### Section D002 | physical PDF page 4 | Table
+Selection method: area; Section ID: D002; physical PDF page: 4
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: The boundary crosses text. Enlarge the area to include full characters, headings and footnotes.
 BEGIN SELECTED REPORT EVIDENCE
@@ -640,8 +640,8 @@ BEGIN SELECTED REPORT EVIDENCE
 to over 60,000oz per year.
 END SELECTED REPORT EVIDENCE
 
-### S005 | Section D002 | physical PDF page 4 | Commentary
-Selection method: text; Selection ID: S005; Section ID: D002
+### Section D002 | physical PDF page 4 | Commentary
+Selection method: text; Section ID: D002; physical PDF page: 4
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -742,8 +742,8 @@ capacity to 6ML/day, was completed in
 March 2026
 END SELECTED REPORT EVIDENCE
 
-### S006 | Section D002 | physical PDF page 4 | Commentary
-Selection method: text; Selection ID: S006; Section ID: D002
+### Section D002 | physical PDF page 4 | Commentary
+Selection method: text; Section ID: D002; physical PDF page: 4
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: Native PDF text order may differ from visual reading order; check the image.
 BEGIN SELECTED REPORT EVIDENCE
@@ -768,8 +768,8 @@ programmes being implemented at all Group
 mining sites.
 END SELECTED REPORT EVIDENCE
 
-### S007 | Section D002 | physical PDF page 4 | Table
-Selection method: area; Selection ID: S007; Section ID: D002
+### Section D002 | physical PDF page 4 | Table
+Selection method: area; Section ID: D002; physical PDF page: 4
 Printed page label (user-entered, unverified): not supplied
 Capture warnings: none recorded; this is not source verification
 BEGIN SELECTED REPORT EVIDENCE

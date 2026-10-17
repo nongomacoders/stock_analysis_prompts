@@ -85,12 +85,12 @@ def test_request_context_uses_crop_region_not_page_alone(source):
     text = report_overview(source.report_map, [left])
     statements = next(line for line in text.splitlines() if '| Primary financial statements |' in line)
     notes = next(line for line in text.splitlines() if '| Financial notes |' in line)
-    assert 'Partial selected evidence: S001' in statements
+    assert 'Partial selected evidence: D005 (p. 19)' in statements
     assert 'Not included here' in notes
     right = {**left, 'bbox':[width/2,0,width,height]}
     text = report_overview(source.report_map, [right])
     notes = next(line for line in text.splitlines() if '| Financial notes |' in line)
-    assert 'Partial selected evidence: S001' in notes
+    assert 'Partial selected evidence: D006 (p. 19)' in notes
 
 
 def test_export_snapshots_map_and_marks_later_content_not_supplied(source, tmp_path):
@@ -101,7 +101,7 @@ def test_export_snapshots_map_and_marks_later_content_not_supplied(source, tmp_p
     assert hashlib.sha256((folder/'report-map.json').read_bytes()).hexdigest() == manifest['prompt']['report_map_sha256']
     assert hashlib.sha256((folder/'report-overview.md').read_bytes()).hexdigest() == manifest['prompt']['report_overview_sha256']
     prompt = (folder/'prompt.md').read_text(encoding='utf-8')
-    assert '| Highlights | 2 full – 4 full | Partial selected evidence: S001' in prompt
+    assert '| Highlights | 2 full – 4 full | Partial selected evidence: D002 (p. 3)' in prompt
     assert '| Financial notes | 19 right – 36 full | Not included here' in prompt
     assert manifest['review']['model_brief'] == 'not_run'
     assert manifest['review']['source_verification'] == 'not_reviewed'

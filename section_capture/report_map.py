@@ -223,8 +223,10 @@ def report_overview(mapping, selections=()):
             start = part['physical_page']-1 + part['bbox'][0]/width
             end = part['physical_page']-1 + part['bbox'][2]/width
             if start < _position(section['end'], True) and end > _position(section['start']):
-                overlaps.append(part['source_id'])
-        status = ('Partial selected evidence: ' + ', '.join(overlaps)) if overlaps else 'Not included here; available for possible later reading'
+                page_ref = f"p. {part['physical_page']}"
+                if page_ref not in overlaps:
+                    overlaps.append(page_ref)
+        status = f"Partial selected evidence: {section['section_id']} ({', '.join(overlaps)})" if overlaps else 'Not included here; available for possible later reading'
         title = section['title'].replace('|', '\\|').replace('\n', ' ')
         lines.append(f"| {section['section_id']} | {title} | {_range(section)} | {status} |")
     if mapping['primary_statement_sightings']:
