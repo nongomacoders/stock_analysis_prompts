@@ -370,7 +370,23 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     sub2_prompt = sub2.prompt
     assert '| D005.1 | ↳ Statement of Financial Position | 17 left – 17 left | Subsection recorded in map; not included in this request |' in sub2_prompt
     assert '| D005.2 | ↳ Statement of Profit or Loss | 18 left – 18 left | Partial selected evidence: D005.2 (p. 18) |' in sub2_prompt
+
+    # Adding two selections with two different sub-headings in a single save records both subsections and combines their titles
+    window.subheading_edit.setText('Cash Flow Statement')
+    window.selection_changed(window.source.capture_area(18, QRectF(430, 60, 380, 300)))
+    window.add_selection()
+    assert 'Cash Flow Statement' in window.parts.item(0).text()
+    window.subheading_edit.setText('Changes in Equity')
+    window.selection_changed(window.source.capture_area(19, QRectF(20, 60, 380, 300)))
+    sub34 = window.save_section()
+    assert sub34.name.startswith('03-D005.3-D005.4-')
+    assert sub34.subheading == 'Cash Flow Statement; Changes in Equity'
+    assert '| D005.3 | ↳ Cash Flow Statement | 18 right – 18 right | Partial selected evidence: D005.3 (p. 18) |' in sub34.prompt
+    assert '| D005.4 | ↳ Changes in Equity | 19 left – 19 left | Partial selected evidence: D005.4 (p. 19) |' in sub34.prompt
+    assert '### Section D005.3 | physical PDF page 18 | Mixed / unspecified (Cash Flow Statement)' in sub34.prompt
+    assert '### Section D005.4 | physical PDF page 19 | Mixed / unspecified (Changes in Equity)' in sub34.prompt
     window.close()
+
 
 
 

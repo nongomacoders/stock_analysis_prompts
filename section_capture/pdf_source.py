@@ -221,6 +221,8 @@ class Capture:
     printed_label: str | None = None
     warnings: list[str] = field(default_factory=list)
     content_type: str = "unspecified"
+    subheading: str | None = None
+
 
 
 def rect_tuple(rect: QRectF) -> tuple[float, float, float, float]:

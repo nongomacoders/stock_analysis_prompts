@@ -116,12 +116,14 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
     for part, selected_text in zip(manifest["selections"], selected_texts, strict=True):
         kind = part.get('content_type', 'unspecified')
         if has_subsection_id:
-            part_sec_label = section_id_label
+            part_sec_label = part.get('section_id') or section_id_label
         else:
             part_sections = matching_section_ids(mapping, [part]) if mapping else []
             part_sec_label = ', '.join(part_sections) if part_sections else section_id_label
+        part_sub = part.get('subheading')
+        sub_suffix = f" ({part_sub})" if part_sub else ""
         context.extend([
-            f"\n### Section {part_sec_label} | physical PDF page {part['physical_page']} | {CONTENT_TYPES.get(kind, 'Mixed / unspecified')}",
+            f"\n### Section {part_sec_label} | physical PDF page {part['physical_page']} | {CONTENT_TYPES.get(kind, 'Mixed / unspecified')}{sub_suffix}",
             f"Selection method: {part['selection_mode']}; Section ID: {part_sec_label}; physical PDF page: {part['physical_page']}",
             f"Printed page label (user-entered, unverified): {part.get('printed_page_label') or 'not supplied'}",
             "Capture warnings: " + ('; '.join(part.get('warnings', [])) or 'none recorded; this is not source verification'),
@@ -151,15 +153,31 @@ def save_package(
         {"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}
         for cap in captures
     ]
-    sub_ids = []
+    cap_subheadings = [((getattr(c, "subheading", None) or subheading or "").strip()) for c in captures]
+    distinct_subheadings: list[str] = []
+    for sh in cap_subheadings:
+        if sh and sh not in distinct_subheadings:
+            distinct_subheadings.append(sh)
+    effective_subheading = "; ".join(distinct_subheadings) if distinct_subheadings else subheading
+
+    sub_ids: list[str] = []
+    sub_ids_by_subheading: dict[str, list[str]] = {}
     if source.report_map is not None:
         validate_map(source.report_map, source.sha256, source.page_count)
-        if not subheading:
+        if not distinct_subheadings:
             req = section_requires_subheading(source.report_map, heading, selection_previews)
             if req:
                 raise ValueError(f"Section {req} already has subsections. Enter a sub-heading before saving.")
         else:
-            sub_ids = register_subsection(source.report_map, subheading, selection_previews, heading=heading)
+            for sh in distinct_subheadings:
+                sh_previews = [
+                    p for p, c_sh in zip(selection_previews, cap_subheadings, strict=True) if c_sh == sh
+                ] or selection_previews
+                registered = register_subsection(source.report_map, sh, sh_previews, heading=heading)
+                sub_ids_by_subheading[sh] = registered
+                for sid in registered:
+                    if sid not in sub_ids:
+                        sub_ids.append(sid)
             save_map(source.report_map, cache_root=output_root)
     mapping = copy.deepcopy(source.report_map)
     disk_questions = load_questions_ledger(source.sha256, questions_root=output_root)
@@ -171,7 +189,7 @@ def save_package(
     section_tag = "-".join(section_ids)
     prefix = f"{seq_num:02d}-{section_tag}" if section_tag else f"{seq_num:02d}"
     package_id = "section-" + uuid.uuid4().hex
-    combined_title = f"{heading}-{subheading}" if subheading else heading
+    combined_title = f"{heading}-{effective_subheading}" if effective_subheading else heading
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", combined_title).strip("-")[:55] or "section"
     created_at = datetime.now(timezone.utc).isoformat()
     section_name = f"{prefix}-{slug}-{datetime.now():%Y%m%d-%H%M%S}-{package_id[-8:]}"
@@ -185,7 +203,7 @@ def save_package(
         "response_format": "markdown",
         "created_at": created_at,
         "heading": heading,
-        "subheading": subheading or None,
+        "subheading": effective_subheading or None,
         "analyst_question": question.strip() or None,
         "stored_questions": stored_questions,
         "source": {
@@ -215,11 +233,16 @@ def save_package(
         "selections": [],
     }
     text_parts = []
-    for cap in captures:
-        part_sec_ids = sub_ids or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}]) if mapping else [])
+    for cap, c_sh in zip(captures, cap_subheadings, strict=True):
+        part_sec_ids = (
+            sub_ids_by_subheading.get(c_sh)
+            or sub_ids
+            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}]) if mapping else [])
+        )
         part_sec_label = ", ".join(part_sec_ids) if part_sec_ids else (section_tag or "unmapped")
         manifest["selections"].append({
             "section_id": part_sec_label,
+            "subheading": c_sh or None,
             "physical_page": cap.page,
             "selection_mode": cap.mode,
             "content_type": cap.content_type,
@@ -234,8 +257,9 @@ def save_package(
             "text_sha256": sha256_text(cap.text),
             "warnings": cap.warnings,
         })
+        sub_tag = f" | {c_sh}" if c_sh else ""
         text_parts.append(
-            f"--- Section {part_sec_label} | original physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]} ---\n{cap.text}\n"
+            f"--- Section {part_sec_label} | original physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]}{sub_tag} ---\n{cap.text}\n"
         )
     selected_text = "\n".join(text_parts)
     prompt = build_prompt(manifest, [cap.text for cap in captures])
@@ -253,7 +277,7 @@ def save_package(
         section_id=section_tag or "unmapped",
         name=section_name,
         heading=heading,
-        subheading=subheading or None,
+        subheading=effective_subheading or None,
         analyst_question=question.strip() or None,
         selected_text=selected_text,
         selections=manifest["selections"],

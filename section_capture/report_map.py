@@ -318,13 +318,19 @@ def report_overview(mapping, selections=()):
         status = f"Partial selected evidence: {section['section_id']} ({', '.join(overlaps)})" if overlaps else 'Not included here; available for possible later reading'
         title = section['title'].replace('|', '\\|').replace('\n', ' ')
         lines.append(f"| {section['section_id']} | {title} | {_range(section)} | {status} |")
+        has_explicit_sub_ids = any('.' in (p.get('section_id') or '') for p in selections)
         for sub in section.get('subsections', []):
             sub_overlaps = []
             for part in selections:
-                width = part['page_size_points'][0]
-                start = part['physical_page'] - 1 + part['bbox'][0] / width
-                end = part['physical_page'] - 1 + part['bbox'][2] / width
-                if start < _position(sub['end'], True) and end > _position(sub['start']):
+                part_sids = [s.strip() for s in (part.get('section_id') or '').split(',') if s.strip()]
+                if has_explicit_sub_ids:
+                    is_match = sub['subsection_id'] in part_sids
+                else:
+                    width = part['page_size_points'][0]
+                    start = part['physical_page'] - 1 + part['bbox'][0] / width
+                    end = part['physical_page'] - 1 + part['bbox'][2] / width
+                    is_match = start < _position(sub['end'], True) and end > _position(sub['start'])
+                if is_match:
                     page_ref = f"p. {part['physical_page']}"
                     if page_ref not in sub_overlaps:
                         sub_overlaps.append(page_ref)

@@ -306,7 +306,10 @@ class CaptureWindow(QMainWindow):
         else:
             self.subheading_label.setText("Sub-heading (optional)")
             self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
-        needs_subheading = bool(req and not self.subheading_edit.text().strip())
+        has_any_subheading = bool(self.subheading_edit.text().strip()) or (
+            bool(self.captures) and all(bool(getattr(c, "subheading", None)) for c in self.captures) and self.pending is None
+        )
+        needs_subheading = bool(req and not has_any_subheading)
         self.add_button.setEnabled(self.pending is not None)
         self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
         self.save_button.setEnabled(
@@ -449,6 +452,7 @@ class CaptureWindow(QMainWindow):
         if self.pending:
             self.pending.printed_label = self.label_edit.text().strip() or None
             self.pending.content_type = self.content_type_combo.currentData()
+            self.pending.subheading = self.subheading_edit.text().strip() or None
             self.captures.append(self.pending)
             self.parts.addItem(self.part_label(len(self.captures) - 1))
             self.canvas.clear_selection()
@@ -468,7 +472,8 @@ class CaptureWindow(QMainWindow):
 
     def part_label(self, row):
         cap = self.captures[row]
-        return f"{row + 1:02d}  ·  Page {cap.page}  ·  {CONTENT_TYPES[cap.content_type]}  ·  {cap.mode}"
+        sub = f"  ·  {cap.subheading}" if getattr(cap, "subheading", None) else ""
+        return f"{row + 1:02d}  ·  Page {cap.page}  ·  {CONTENT_TYPES[cap.content_type]}{sub}  ·  {cap.mode}"
 
     def apply_content_type(self):
         row = self.parts.currentRow()
@@ -510,12 +515,15 @@ class CaptureWindow(QMainWindow):
             self.show_problem("Open a PDF and enter a section heading first.")
             return None
         req = self._subheading_required_for_current()
-        if req and not self.subheading_edit.text().strip():
+        has_any_subheading = bool(self.subheading_edit.text().strip()) or (
+            bool(self.captures) and all(bool(getattr(c, "subheading", None)) for c in self.captures) and self.pending is None
+        )
+        if req and not has_any_subheading:
             self.show_problem(f"Enter a sub-heading first: section {req} already has subsections.")
             return None
         if self.pending:
             self.add_selection()
-        had_subheading = bool(self.subheading_edit.text().strip())
+        had_subheading = bool(self.subheading_edit.text().strip()) or any(getattr(c, "subheading", None) for c in self.captures)
         saved_heading = self.heading_edit.text().strip()
         try:
             saved = save_package(

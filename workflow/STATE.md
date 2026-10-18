@@ -17,10 +17,12 @@ Analyze and forecast from company presentations and reports section by section w
   - Updated `section_capture/report_map.py`, `section_capture/packages.py`, `section_capture/map_dialog.py`, and `section_capture/window.py` to persist all maps, questions ledgers, captured sections, prompts, and LLM responses exclusively in SQLite without writing `.png` or `.zip` files.
   - Added `SavedSectionsDialog` (`Saved sections / LLM response`) to inspect any captured section's prompt, paste/save the LLM response in SQLite, and automatically extract Section 4 (`Updated Open Questions Ledger`) into `reports.questions_ledger`.
   - Added editable `HeadingComboBox` dropdown for **Section heading**, retained the main heading after saving a subsection (`D005.1`, `D006.1`), and blocked saving a blank `Sub-heading` once a section has subsections.
-  - Migrated PAN FY2026 report map, 16-question open ledger, and all 4 captured sections (`01-D002`, `02-D003`, `03-D005.1`, `04-D006.1`) into `documents/analysis.sqlite` and removed legacy filesystem capture folders, `.png` crops, `.zip` archives, `documents/maps/`, and `documents/questions/`.
+  - Added per-selection `subheading` tracking (`Capture.subheading` in `section_capture/pdf_source.py`, `section_capture/window.py`, `section_capture/packages.py`) so adding multiple subsections in a single save (e.g. `Note 4. REVENUE` + `Note 5. NET FINANCE COSTS`) registers each subsection (`D006.3`, `D006.4`) in the report map and combines their sub-headings (`Note 4. REVENUE; Note 5. NET FINANCE COSTS`) in the saved section title and prompt.
+  - Migrated PAN FY2026 report map, open questions ledger, and captured sections (`01-D002` through `06-D006.3-D006.4`) into `documents/analysis.sqlite`.
 
 ## Next steps
 
-1. Open `Run Capture.cmd` and load `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf`—the app loads the report map, existing sections (`01-D002` through `04-D006.1`), and the 16 open questions from `documents/analysis.sqlite`.
-2. Continue capturing `Financial notes` subsections (`D006.2`, `D006.3`, etc., e.g. Note 3+, Note 6 tax, Note 13/16 cash & debt, Note 14/15/18 shares & Emmerson acquisition) or `D008 Alternative performance measures`.
+1. Open `Run Capture.cmd` and load `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf`—the app loads the report map, existing sections (`01-D002` through `06-D006.3-D006.4`), and open questions from `documents/analysis.sqlite`.
+2. Continue capturing `Financial notes` subsections (`D006.5+`, e.g. Note 6 tax, Note 7 PP&E, Note 13/16 cash & debt, Note 14/15/18 shares & Emmerson acquisition) or `D008 Alternative performance measures`.
+
 
