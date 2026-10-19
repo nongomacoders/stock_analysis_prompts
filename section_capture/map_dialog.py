@@ -304,9 +304,13 @@ class SavedSectionsDialog(QDialog):
         sec = self._current_section()
         if not sec:
             return
+        cleaned = self.response_edit.toPlainText().strip()
+        if not cleaned:
+            self.status_label.setText("Response text is empty; not saving.")
+            return
         updated, extracted = save_section_llm_response(
             sec.package_id,
-            self.response_edit.toPlainText(),
+            cleaned,
             update_ledger=True,
             response_time_seconds=response_time_seconds,
             cost_usd=cost_usd,
@@ -354,13 +358,19 @@ class SavedSectionsDialog(QDialog):
 
         def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
             stats = stats or {}
+            cleaned = (response_text or "").strip()
+            if not cleaned:
+                self.status_label.setText("Model returned an empty response. Not saved.")
+                self.run_api_btn.setEnabled(True)
+                self._active_worker = None
+                return
             cost_usd = stats.get("cost_usd")
             tokens = {
                 "prompt_tokens": stats.get("prompt_tokens"),
                 "completion_tokens": stats.get("completion_tokens"),
                 "total_tokens": stats.get("total_tokens"),
             }
-            self.response_edit.setPlainText(response_text)
+            self.response_edit.setPlainText(cleaned)
             self.save_current_response(
                 response_time_seconds=elapsed,
                 cost_usd=cost_usd,

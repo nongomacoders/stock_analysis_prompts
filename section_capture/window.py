@@ -737,6 +737,12 @@ class CaptureWindow(QMainWindow):
 
         def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
             stats = stats or {}
+            cleaned = (response_text or "").strip()
+            if not cleaned:
+                self.show_problem("Model returned an empty response. Not saved.")
+                self._active_worker = None
+                self._update_actions()
+                return
             cost_usd = stats.get("cost_usd")
             tokens = {
                 "prompt_tokens": stats.get("prompt_tokens"),
@@ -746,7 +752,7 @@ class CaptureWindow(QMainWindow):
             self.statusBar().showMessage(f"Processing LLM response for {short_name}...")
             updated, extracted = save_section_llm_response(
                 saved_package.package_id,
-                response_text,
+                cleaned,
                 update_ledger=True,
                 response_time_seconds=elapsed,
                 cost_usd=cost_usd,

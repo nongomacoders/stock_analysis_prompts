@@ -136,6 +136,8 @@ def query_openrouter(
             {"role": "user", "content": prompt}
         ],
         "temperature": 0.1,
+        "max_tokens": 16384,
+        "reasoning": {"effort": "none"},
     }
 
     req_data = json.dumps(payload).encode("utf-8")
@@ -159,10 +161,25 @@ def query_openrouter(
             choices = data.get("choices", [])
             if not choices:
                 raise RuntimeError("OpenRouter returned empty choices array.")
-            content = choices[0]["message"]["content"]
+            msg = choices[0].get("message", {})
+            content = (msg.get("content") or "").strip()
+            reasoning = (msg.get("reasoning") or "").strip()
+            finish_reason = choices[0].get("finish_reason")
+            usage = data.get("usage") or {}
+
+            if not content:
+                if finish_reason == "length":
+                    comp_tok = usage.get("completion_tokens", 0)
+                    raise RuntimeError(
+                        f"Model reached completion limit ({comp_tok:,} tokens) before generating response content (finish_reason: length)."
+                    )
+                if reasoning:
+                    content = reasoning
+                else:
+                    raise RuntimeError(f"OpenRouter returned empty response (finish_reason: {finish_reason}).")
+
             if not return_details:
                 return content
-            usage = data.get("usage") or {}
             stats = {
                 "generation_id": data.get("id", ""),
                 "model": active_model,

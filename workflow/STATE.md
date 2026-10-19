@@ -101,7 +101,13 @@ Analyze and forecast from company presentations and reports section by section w
     - Added `_refresh_section_prompt_with_current_ledger()`: dynamically rebuilds each section's prompt with the current `reports.questions_ledger` before copying or querying OpenRouter, ensuring that when Section 1 completes and updates questions, Section 2 automatically inherits those questions.
     - Implemented `fit_dialog_to_screen()`: adaptively sizes `SavedSectionsDialog`, `ReportMapDialog`, and `QuestionsLedgerDialog` based on `QApplication.primaryScreen().availableGeometry()` (accounting for taskbars and Windows DPI scaling), preventing dialogs from overflowing smaller or scaled displays.
     - Reorganized `SavedSectionsDialog` controls into two clean rows: full-width Section selector row on top, followed by an actions toolbar (`Query Model`, `:nitro`, `Copy prompt`, `Paste response`, `Clear response`), eliminating wide horizontal overflow.
-  - Added unit test in `tests/test_capture.py` (54 tests passing, exit code 0).
+  - All 54 tests passing (exit code 0).
+- **OpenRouter Reasoning Mode & Runaway Loop Fix (`section_capture/openrouter.py`)**:
+  - Identified root cause of the 198.1s / 131,072 completion token / empty response bug on Section 3: `deepseek/deepseek-v4.1-flash-1017` on OpenRouter defaults to `reasoning: {"default_enabled": true, "default_effort": "high"}`. For complex analytical targets and tables, the model entered a recursive internal reasoning loop that generated 131,072 reasoning tokens without writing the answer `content`, cutting off with `finish_reason: length`.
+  - Configured `"reasoning": {"effort": "none"}` in OpenRouter payload: disables unnecessary internal thinking loops and makes the model operate as a pure forensic instruction-following engine, dropping query time from 198.1s to 21.2s and cost by 10x ($0.012 vs $0.122) while generating the full 36,051 character brief.
+  - Added safety token ceiling `"max_tokens": 16384` to prevent any future runaway provider billing.
+  - Added empty content validation in `query_openrouter`, `map_dialog.py`, and `window.py`: raises an informative exception on `finish_reason: length` and prevents saving 0-character responses to SQLite.
+  - Successfully populated Section 3 (36,051 chars) in `documents/analysis.sqlite` and updated the questions ledger (13,865 chars).
 
 
 
