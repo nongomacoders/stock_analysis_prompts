@@ -37,6 +37,17 @@ def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def shorten_section_name(name: str | None, max_chars: int = 32) -> str:
+    """Shortens a section identifier string using an ellipsis (...) for compact UI display."""
+    if not name:
+        return ""
+    name_str = str(name).strip()
+    if len(name_str) <= max_chars:
+        return name_str
+    truncated = name_str[: max_chars - 3].rstrip("-._ ")
+    return truncated + "..."
+
+
 def _matching_stored_questions(stored_questions: str, section_ids: list[str]) -> list[str]:
     """Return question lines whose Target column/tag/heading (or text) matches any current section or parent section ID."""
     if not stored_questions or not section_ids:

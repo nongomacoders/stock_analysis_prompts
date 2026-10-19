@@ -8,7 +8,7 @@ from PySide6.QtCore import QPointF, QRectF, Qt
 from PySide6.QtGui import QImage
 from PySide6.QtTest import QTest
 
-from section_capture.packages import clean_single_line_text, save_package
+from section_capture.packages import clean_single_line_text, save_package, shorten_section_name
 from section_capture.pdf_source import PdfSource
 from section_capture.window import CaptureWindow, HeadingComboBox, SanitizedLineEdit
 
@@ -432,5 +432,13 @@ def test_sanitized_line_edit_and_heading_combo_box(qapp):
     combo.deleteLater()
 
 
-
-
+def test_shorten_section_name():
+    assert shorten_section_name("") == ""
+    assert shorten_section_name(None) == ""
+    short = "01-D001-KEY-FEATURES"
+    assert shorten_section_name(short, 32) == short
+    long_name = "04-D002.3-D002.4-D002.5-D002.6-D002.7-D002.8-D002.9-MATERIAL-ISSUES-AND-RISKS-20261019-121220-b7c945b6"
+    shortened = shorten_section_name(long_name, 32)
+    assert len(shortened) <= 32
+    assert shortened.endswith("...")
+    assert shortened == "04-D002.3-D002.4-D002.5-D002..."

@@ -15,7 +15,7 @@ from .content_types import CONTENT_TYPES
 from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
 from .openrouter import OpenRouterWorker
-from .packages import PROJECT_ROOT, clean_single_line_text, save_package
+from .packages import PROJECT_ROOT, clean_single_line_text, save_package, shorten_section_name
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
 from .report_map import save_map, scan_report, section_requires_subheading
@@ -247,10 +247,10 @@ class CaptureWindow(QMainWindow):
         self.questions_button.clicked.connect(self.show_questions_ledger)
         side.addWidget(self.questions_button)
         save_row = QHBoxLayout()
-        self.save_button = QPushButton("Save & copy prompt")
+        self.save_button = QPushButton("Save && copy prompt")
         self.save_button.setToolTip("Save section to SQLite and copy reading prompt to clipboard.")
         self.save_button.clicked.connect(self.save_section)
-        self.save_and_run_button = QPushButton("Save & Run DeepSeek")
+        self.save_and_run_button = QPushButton("Save && Run DeepSeek")
         self.save_and_run_button.setObjectName("primary")
         self.save_and_run_button.setToolTip("Save section to SQLite and automatically query DeepSeek via OpenRouter API.")
         self.save_and_run_button.clicked.connect(self.save_and_run_model)
@@ -265,6 +265,7 @@ class CaptureWindow(QMainWindow):
         side.addWidget(self.export_label)
         actions = QHBoxLayout()
         self.copy_button = QPushButton("Copy reading prompt")
+        self.copy_button.setToolTip("Re-copy the prompt of the last saved section to clipboard.")
         self.copy_button.clicked.connect(self.copy_prompt)
         self.folder_button = QPushButton("Saved sections / LLM response")
         self.folder_button.clicked.connect(self.show_saved_sections)
@@ -595,9 +596,10 @@ class CaptureWindow(QMainWindow):
         self._refresh_heading_options()
         if had_subheading:
             self.heading_edit.setText(saved_heading)
-        self.export_label.setText(f"Saved in SQLite: {saved.name}")
-        self.export_label.setToolTip(str(saved.db_path))
-        self.statusBar().showMessage("Saved in SQLite and prompt copied to clipboard. Paste directly into your model chat.")
+        short_name = shorten_section_name(saved.name)
+        self.export_label.setText(f"Saved in SQLite: {short_name}")
+        self.export_label.setToolTip(f"{saved.name}\n\nDatabase: {saved.db_path}")
+        self.statusBar().showMessage(f"Saved in SQLite: {short_name} (prompt copied to clipboard).")
         self._update_actions()
         return saved
 
@@ -612,13 +614,14 @@ class CaptureWindow(QMainWindow):
             self.show_problem("A model query is already running in the background.")
             return
 
-        self.statusBar().showMessage(f"Querying DeepSeek via OpenRouter for {saved_package.name}...")
+        short_name = shorten_section_name(saved_package.name)
+        self.statusBar().showMessage(f"Querying DeepSeek via OpenRouter for {short_name}...")
         worker = OpenRouterWorker(saved_package.prompt, parent=self)
         self._active_worker = worker
         self._update_actions()
 
         def on_finished(response_text: str, elapsed: float = 0.0):
-            self.statusBar().showMessage(f"Processing LLM response for {saved_package.name}...")
+            self.statusBar().showMessage(f"Processing LLM response for {short_name}...")
             updated, extracted = save_section_llm_response(
                 saved_package.package_id,
                 response_text,
@@ -629,7 +632,7 @@ class CaptureWindow(QMainWindow):
             if extracted and self.source:
                 self.source.questions_ledger = extracted
             time_str = f" in {elapsed:.1f}s" if elapsed > 0 else ""
-            self.statusBar().showMessage(f"✓ DeepSeek responded{time_str} ({len(response_text):,} chars) and ledger updated for {saved_package.name}!")
+            self.statusBar().showMessage(f"✓ DeepSeek responded{time_str} ({len(response_text):,} chars) and ledger updated for {short_name}!")
             self._active_worker = None
             self._update_actions()
 
