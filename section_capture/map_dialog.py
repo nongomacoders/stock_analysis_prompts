@@ -19,13 +19,26 @@ from .packages import build_prompt, detect_sector_from_path
 from .report_map import load_questions_ledger, report_overview, save_questions_ledger
 
 
+def fit_dialog_to_screen(dialog: QDialog, target_w: int, target_h: int, min_w: int = 540, min_h: int = 380):
+    screen = QApplication.primaryScreen()
+    if screen:
+        avail = screen.availableGeometry()
+        w = min(target_w, max(min_w, avail.width() - 60))
+        h = min(target_h, max(min_h, avail.height() - 80))
+        dialog.resize(w, h)
+    else:
+        dialog.resize(min(target_w, 860), min(target_h, 560))
+
+
 class ReportMapDialog(QDialog):
     def __init__(self, source, rescan, parent=None):
         super().__init__(parent)
         self.source, self.rescan = source, rescan
         self.setWindowTitle('Report sections — draft scan')
-        self.resize(1050, 730)
+        fit_dialog_to_screen(self, target_w=920, target_h=620)
         layout = QVBoxLayout(self)
+        layout.setContentsMargins(14, 12, 14, 12)
+        layout.setSpacing(6)
         hint = QLabel('Copy this overview into your model chat first. New reading prompts also include it. '
                       'Check draft boundaries; the scan does not read or verify the section contents.')
         hint.setWordWrap(True)
@@ -61,8 +74,10 @@ class QuestionsLedgerDialog(QDialog):
         self.source = source
         self.db_path = db_path if db_path is not None else getattr(parent, 'output_root', None)
         self.setWindowTitle('Stored verification questions for upcoming sections (SQLite)')
-        self.resize(980, 680)
+        fit_dialog_to_screen(self, target_w=900, target_h=600)
         layout = QVBoxLayout(self)
+        layout.setContentsMargins(14, 12, 14, 12)
+        layout.setSpacing(6)
         hint = QLabel(
             'Store open verification questions from the LLM here (saved in SQLite). When you save the next section, '
             'these stored questions are automatically embedded in the prompt so the LLM answers ONLY '
@@ -131,32 +146,44 @@ class SavedSectionsDialog(QDialog):
         self.source = source
         self.db_path = db_path if db_path is not None else getattr(parent, 'output_root', None)
         self.setWindowTitle('Saved sections & LLM responses (SQLite)')
-        self.resize(1040, 740)
+        fit_dialog_to_screen(self, target_w=920, target_h=620)
         layout = QVBoxLayout(self)
+        layout.setContentsMargins(14, 12, 14, 12)
+        layout.setSpacing(6)
 
-        top = QHBoxLayout()
-        top.addWidget(QLabel('Section:'))
+        section_row = QHBoxLayout()
+        section_row.setSpacing(6)
+        section_row.addWidget(QLabel('Section:'))
         self.section_combo = QComboBox()
         self.section_combo.currentIndexChanged.connect(self._load_selected_section)
-        top.addWidget(self.section_combo, 1)
-        self.copy_prompt_btn = QPushButton('Copy prompt')
-        self.copy_prompt_btn.clicked.connect(self.copy_selected_prompt)
-        self.paste_resp_btn = QPushButton('Paste LLM response && Update questions')
-        self.paste_resp_btn.clicked.connect(self.paste_llm_response_from_clipboard)
+        section_row.addWidget(self.section_combo, 1)
+        layout.addLayout(section_row)
+
+        actions_row = QHBoxLayout()
+        actions_row.setSpacing(6)
         self.run_api_btn = QPushButton('Query Model (OpenRouter)')
+        self.run_api_btn.setObjectName("primary")
         self.run_api_btn.setToolTip('Send reading prompt directly to DeepSeek via OpenRouter API and save response.')
         self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
         self.nitro_checkbox = QCheckBox(":nitro")
         self.nitro_checkbox.setToolTip("Route query via OpenRouter :nitro priority throughput.")
-        self.clear_resp_btn = QPushButton("Clear response")
-        self.clear_resp_btn.setToolTip("Clear the stored LLM response for this section so it can be re-run.")
+        self.copy_prompt_btn = QPushButton('Copy prompt')
+        self.copy_prompt_btn.setToolTip('Copy the formatted reading prompt for this section to clipboard.')
+        self.copy_prompt_btn.clicked.connect(self.copy_selected_prompt)
+        self.paste_resp_btn = QPushButton('Paste response')
+        self.paste_resp_btn.setToolTip('Paste LLM response from clipboard and update the Stored Questions ledger.')
+        self.paste_resp_btn.clicked.connect(self.paste_llm_response_from_clipboard)
+        self.clear_resp_btn = QPushButton('Clear response')
+        self.clear_resp_btn.setToolTip('Clear the stored LLM response for this section so it can be re-run.')
         self.clear_resp_btn.clicked.connect(self.clear_current_response)
-        top.addWidget(self.copy_prompt_btn)
-        top.addWidget(self.paste_resp_btn)
-        top.addWidget(self.run_api_btn)
-        top.addWidget(self.nitro_checkbox)
-        top.addWidget(self.clear_resp_btn)
-        layout.addLayout(top)
+
+        actions_row.addWidget(self.run_api_btn)
+        actions_row.addWidget(self.nitro_checkbox)
+        actions_row.addWidget(self.copy_prompt_btn)
+        actions_row.addWidget(self.paste_resp_btn)
+        actions_row.addWidget(self.clear_resp_btn)
+        actions_row.addStretch(1)
+        layout.addLayout(actions_row)
 
         self.status_label = QLabel()
         self.status_label.setWordWrap(True)

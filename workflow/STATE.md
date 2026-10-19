@@ -99,6 +99,8 @@ Analyze and forecast from company presentations and reports section by section w
   - Upgraded `SavedSectionsDialog` (`section_capture/map_dialog.py`):
     - Added **"Clear response"** button to allow clearing LLM responses directly from the UI.
     - Added `_refresh_section_prompt_with_current_ledger()`: dynamically rebuilds each section's prompt with the current `reports.questions_ledger` before copying or querying OpenRouter, ensuring that when Section 1 completes and updates questions, Section 2 automatically inherits those questions.
+    - Implemented `fit_dialog_to_screen()`: adaptively sizes `SavedSectionsDialog`, `ReportMapDialog`, and `QuestionsLedgerDialog` based on `QApplication.primaryScreen().availableGeometry()` (accounting for taskbars and Windows DPI scaling), preventing dialogs from overflowing smaller or scaled displays.
+    - Reorganized `SavedSectionsDialog` controls into two clean rows: full-width Section selector row on top, followed by an actions toolbar (`Query Model`, `:nitro`, `Copy prompt`, `Paste response`, `Clear response`), eliminating wide horizontal overflow.
   - Added unit test in `tests/test_capture.py` (54 tests passing, exit code 0).
 
 
