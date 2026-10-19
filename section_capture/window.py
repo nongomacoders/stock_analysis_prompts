@@ -576,19 +576,22 @@ class CaptureWindow(QMainWindow):
         self._active_worker = worker
         self._update_actions()
 
-        def on_finished(response_text: str):
+        def on_finished(response_text: str, elapsed: float = 0.0):
             self.statusBar().showMessage(f"Processing LLM response for {saved_package.name}...")
             updated, extracted = save_section_llm_response(
                 saved_package.package_id,
                 response_text,
                 update_ledger=True,
+                response_time_seconds=elapsed,
                 db_path=self.output_root,
             )
             if extracted and self.source:
                 self.source.questions_ledger = extracted
-            self.statusBar().showMessage(f"✓ LLM response saved and Stored Questions updated for {saved_package.name}!")
+            time_str = f" in {elapsed:.1f}s" if elapsed > 0 else ""
+            self.statusBar().showMessage(f"✓ DeepSeek responded{time_str} ({len(response_text):,} chars) and ledger updated for {saved_package.name}!")
             self._active_worker = None
             self._update_actions()
+
 
         def on_error(err_msg: str):
             self.show_problem(f"Model query failed: {err_msg}")

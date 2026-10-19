@@ -134,11 +134,14 @@ def query_openrouter(prompt: str, model: str | None = None, timeout: int = 180) 
         raise RuntimeError(f"OpenRouter connection error ({active_model}): {exc}") from None
 
 
+import time
+
+
 class OpenRouterWorker(QThread):
     """Background worker thread to run OpenRouter completions without freezing the GUI."""
     
     started_query = Signal(str)  # Emits model name
-    finished_query = Signal(str)  # Emits response text
+    finished_query = Signal(str, float)  # Emits (response_text, elapsed_seconds)
     error_query = Signal(str)  # Emits error message
 
     def __init__(self, prompt: str, model: str | None = None, parent=None):
@@ -148,8 +151,11 @@ class OpenRouterWorker(QThread):
 
     def run(self):
         self.started_query.emit(self.model)
+        start_t = time.time()
         try:
             res = query_openrouter(self.prompt, self.model)
-            self.finished_query.emit(res)
+            elapsed = time.time() - start_t
+            self.finished_query.emit(res, elapsed)
         except Exception as exc:
             self.error_query.emit(str(exc))
+

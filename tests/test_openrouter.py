@@ -81,9 +81,12 @@ def test_openrouter_worker_execution(qapp, monkeypatch):
     with patch("section_capture.openrouter.query_openrouter", return_value="### Mocked response"):
         worker = OpenRouterWorker("Test prompt", parent=None)
         results = []
-        worker.finished_query.connect(lambda res: results.append(res))
+        worker.finished_query.connect(lambda res, elapsed: results.append((res, elapsed)))
         worker.start()
         worker.wait(3000)
         qapp.processEvents()
-        assert results == ["### Mocked response"]
+        assert len(results) == 1
+        assert results[0][0] == "### Mocked response"
+        assert results[0][1] >= 0.0
+
 

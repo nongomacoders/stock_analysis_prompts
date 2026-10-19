@@ -328,6 +328,7 @@ def save_section_llm_response(
     package_id: str,
     llm_response: str,
     update_ledger: bool = True,
+    response_time_seconds: float | None = None,
     db_path: str | Path | None = None,
 ) -> tuple[SavedSection | None, str | None]:
     """Save the LLM response onto a section row and optionally auto-extract & update the report's questions ledger."""
@@ -340,11 +341,15 @@ def save_section_llm_response(
         if not row:
             return None, None
         manifest = json.loads(row["manifest_json"])
-        manifest.setdefault("review", {})["model_brief"] = "recorded" if cleaned_resp else "not_run"
+        review = manifest.setdefault("review", {})
+        review["model_brief"] = "recorded" if cleaned_resp else "not_run"
+        if response_time_seconds is not None:
+            review["response_time_seconds"] = round(float(response_time_seconds), 2)
         conn.execute(
             "UPDATE sections SET llm_response = ?, manifest_json = ?, updated_at = ? WHERE package_id = ?",
             (cleaned_resp or None, json.dumps(manifest, ensure_ascii=False), now, package_id),
         )
+
         if extracted_ledger:
             conn.execute(
                 "UPDATE reports SET questions_ledger = ?, updated_at = ? WHERE sha256 = ?",

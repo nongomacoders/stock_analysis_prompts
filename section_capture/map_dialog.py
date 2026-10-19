@@ -201,7 +201,7 @@ class SavedSectionsDialog(QDialog):
             self.response_edit.setPlainText(clip)
             self.save_current_response()
 
-    def save_current_response(self):
+    def save_current_response(self, response_time_seconds: float | None = None):
         sec = self._current_section()
         if not sec:
             return
@@ -209,19 +209,22 @@ class SavedSectionsDialog(QDialog):
             sec.package_id,
             self.response_edit.toPlainText(),
             update_ledger=True,
+            response_time_seconds=response_time_seconds,
             db_path=self.db_path,
         )
         if updated:
             idx = self.section_combo.currentIndex()
             self.sections[idx] = updated
             self.section_combo.setItemText(idx, self._combo_label(updated))
+            time_str = f" in {response_time_seconds:.1f}s" if response_time_seconds else ""
+            chars_str = f" ({len(self.response_edit.toPlainText()):,} chars)"
             if extracted:
                 self.source.questions_ledger = extracted
                 self.status_label.setText(
-                    f"✓ Saved LLM response for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
+                    f"✓ Saved LLM response{time_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
                 )
             else:
-                self.status_label.setText(f"✓ Saved LLM response for {updated.section_number:02d}-{updated.section_id} in SQLite.")
+                self.status_label.setText(f"✓ Saved LLM response{time_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} in SQLite.")
             if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
                 self.parent()._update_actions()
 
@@ -239,9 +242,9 @@ class SavedSectionsDialog(QDialog):
         worker = OpenRouterWorker(sec.prompt, parent=self)
         self._active_worker = worker
 
-        def on_finished(response_text: str):
+        def on_finished(response_text: str, elapsed: float = 0.0):
             self.response_edit.setPlainText(response_text)
-            self.save_current_response()
+            self.save_current_response(response_time_seconds=elapsed)
             self.run_api_btn.setEnabled(True)
             self._active_worker = None
 
@@ -253,5 +256,6 @@ class SavedSectionsDialog(QDialog):
         worker.finished_query.connect(on_finished)
         worker.error_query.connect(on_error)
         worker.start()
+
 
 
