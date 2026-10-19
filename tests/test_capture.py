@@ -514,3 +514,52 @@ def test_window_sector_auto_detect(qapp, tmp_path):
     window.close()
     window.deleteLater()
 
+
+def test_clear_and_delete_section_in_db(tmp_path):
+    from section_capture.db import (
+        clear_section_llm_response,
+        delete_section,
+        get_section,
+        insert_section,
+        save_section_llm_response,
+    )
+
+    db_file = tmp_path / "analysis.sqlite"
+    pkg = insert_section(
+        package_id="test-pkg-clear",
+        report_sha256="test-sha",
+        section_number=1,
+        section_id="01",
+        name="01-test",
+        heading="Test Heading",
+        subheading=None,
+        analyst_question=None,
+        selected_text="Sample text",
+        selections=[{"text": "Sample text"}],
+        stored_questions=None,
+        prompt="Sample prompt",
+        manifest={"package_id": "test-pkg-clear", "review": {"model_brief": "not_run"}},
+        db_path=db_file,
+    )
+    # Save a response
+    saved, _ = save_section_llm_response(
+        "test-pkg-clear",
+        "LLM Response text",
+        response_time_seconds=12.5,
+        cost_usd=0.005,
+        db_path=db_file,
+    )
+    assert saved.llm_response == "LLM Response text"
+    assert saved.response_time_seconds == 12.5
+
+    # Clear response
+    cleared = clear_section_llm_response("test-pkg-clear", db_path=db_file)
+    assert cleared is not None
+    assert cleared.llm_response is None
+    assert cleared.manifest["review"]["model_brief"] == "not_run"
+
+    # Delete section
+    assert delete_section("test-pkg-clear", db_path=db_file) is True
+    assert get_section("test-pkg-clear", db_path=db_file) is None
+
+

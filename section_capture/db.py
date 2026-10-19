@@ -385,3 +385,30 @@ def save_section_llm_response(
             )
         updated_row = conn.execute("SELECT * FROM sections WHERE package_id = ?", (package_id,)).fetchone()
         return _row_to_saved_section(updated_row, resolved), extracted_ledger
+
+
+def clear_section_llm_response(package_id: str, db_path: str | Path | None = None) -> SavedSection | None:
+    """Clear the stored LLM response and review metadata on a section row."""
+    resolved = resolve_db_path(db_path)
+    now = datetime.now(timezone.utc).isoformat()
+    with connect_db(resolved) as conn:
+        row = conn.execute("SELECT * FROM sections WHERE package_id = ?", (package_id,)).fetchone()
+        if not row:
+            return None
+        manifest = json.loads(row["manifest_json"])
+        manifest["review"] = {"model_brief": "not_run"}
+        conn.execute(
+            "UPDATE sections SET llm_response = NULL, manifest_json = ?, updated_at = ? WHERE package_id = ?",
+            (json.dumps(manifest, ensure_ascii=False), now, package_id),
+        )
+        updated_row = conn.execute("SELECT * FROM sections WHERE package_id = ?", (package_id,)).fetchone()
+        return _row_to_saved_section(updated_row, resolved)
+
+
+def delete_section(package_id: str, db_path: str | Path | None = None) -> bool:
+    """Delete a section row from the database."""
+    resolved = resolve_db_path(db_path)
+    with connect_db(resolved) as conn:
+        cur = conn.execute("DELETE FROM sections WHERE package_id = ?", (package_id,))
+        return cur.rowcount > 0
+

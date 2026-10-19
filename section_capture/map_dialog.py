@@ -1,11 +1,21 @@
 """Read-only draft overview, stored-questions ledger, and saved-sections / LLM-response dialogs."""
+import copy
+import json
+
 from PySide6.QtWidgets import (
     QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QHBoxLayout, QLabel,
     QPlainTextEdit, QPushButton, QTextBrowser, QVBoxLayout,
 )
 
-from .db import extract_questions_ledger_from_response, list_sections, save_section_llm_response
+from .db import (
+    clear_section_llm_response,
+    connect_db,
+    extract_questions_ledger_from_response,
+    list_sections,
+    save_section_llm_response,
+)
 from .openrouter import OpenRouterWorker, get_openrouter_model
+from .packages import build_prompt, detect_sector_from_path
 from .report_map import load_questions_ledger, report_overview, save_questions_ledger
 
 
@@ -138,10 +148,14 @@ class SavedSectionsDialog(QDialog):
         self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
         self.nitro_checkbox = QCheckBox(":nitro")
         self.nitro_checkbox.setToolTip("Route query via OpenRouter :nitro priority throughput.")
+        self.clear_resp_btn = QPushButton("Clear response")
+        self.clear_resp_btn.setToolTip("Clear the stored LLM response for this section so it can be re-run.")
+        self.clear_resp_btn.clicked.connect(self.clear_current_response)
         top.addWidget(self.copy_prompt_btn)
         top.addWidget(self.paste_resp_btn)
         top.addWidget(self.run_api_btn)
         top.addWidget(self.nitro_checkbox)
+        top.addWidget(self.clear_resp_btn)
         layout.addLayout(top)
 
         self.status_label = QLabel()
@@ -205,11 +219,47 @@ class SavedSectionsDialog(QDialog):
                 f"Prompt: {len(sec.prompt):,} chars  ·  Selected text: {len(sec.selected_text):,} chars"
             )
 
+    def _refresh_section_prompt_with_current_ledger(self, sec):
+        if not self.source:
+            return
+        current_ledger = (getattr(self.source, "questions_ledger", "") or "").strip() or None
+        manifest = copy.deepcopy(sec.manifest)
+        manifest["stored_questions"] = current_ledger
+        resolved_sector = manifest.get("sector") or detect_sector_from_path(self.source.path)
+        manifest["sector"] = resolved_sector
+        texts = [s.get("text", "") for s in sec.selections]
+        new_prompt = build_prompt(manifest, texts, sector=resolved_sector)
+        if new_prompt != sec.prompt or manifest != sec.manifest:
+            with connect_db(self.db_path) as conn:
+                conn.execute(
+                    "UPDATE sections SET prompt = ?, manifest_json = ? WHERE package_id = ?",
+                    (new_prompt, json.dumps(manifest, ensure_ascii=False), sec.package_id),
+                )
+            sec.prompt = new_prompt
+            sec.manifest = manifest
+
     def copy_selected_prompt(self):
         sec = self._current_section()
         if sec:
+            self._refresh_section_prompt_with_current_ledger(sec)
             QApplication.clipboard().setText(sec.prompt)
             self.status_label.setText(f"Copied prompt for {sec.section_number:02d}-{sec.section_id} to clipboard.")
+
+    def clear_current_response(self):
+        sec = self._current_section()
+        if not sec:
+            return
+        updated = clear_section_llm_response(sec.package_id, db_path=self.db_path)
+        if updated:
+            idx = self.section_combo.currentIndex()
+            self.sections[idx] = updated
+            self.section_combo.setItemText(idx, self._combo_label(updated))
+            self.response_edit.clear()
+            self.status_label.setText(
+                f"✓ Cleared LLM response for {updated.section_number:02d}-{updated.section_id}. Ready to resubmit."
+            )
+            if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
+                self.parent()._update_actions()
 
     def paste_llm_response_from_clipboard(self):
         clip = QApplication.clipboard().text().strip()
@@ -256,7 +306,10 @@ class SavedSectionsDialog(QDialog):
 
     def run_openrouter_for_current(self):
         sec = self._current_section()
-        if not sec or not sec.prompt:
+        if not sec:
+            return
+        self._refresh_section_prompt_with_current_ledger(sec)
+        if not sec.prompt:
             self.status_label.setText("No prompt available for the selected section.")
             return
         if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():

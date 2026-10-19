@@ -90,6 +90,16 @@ Analyze and forecast from company presentations and reports section by section w
     - `Copy prompt` tooltip explains why it is disabled before the first section is saved in a session.
     - `self.selection_label` displays reassuring confirmation and next-step prompt: `"✓ Added X selection(s). Select another area, or choose a Section heading to save."`
   - All 53 tests passing (exit code 0).
+- **Lewis (LEW) Response Reset & Dynamic Prompt Refresh**:
+  - Cleared all recorded LLM responses (`llm_response = NULL`) and review metadata across sections 1–4 for Lewis in `documents/analysis.sqlite`.
+  - Reset Lewis `questions_ledger` on the report row to empty string (`''`) so questions start fresh from Section 1.
+  - Rebuilt stored prompts for all 4 Lewis sections using the dedicated Retail prompt template (`prompts/retail/12-analyst-reading-brief/v1.1.0/prompt.md`).
+  - Removed stale response files (`companies/retail/LEW/briefs/section_02_CEO_Report_nitro_response.md` and `companies/retail/LEW/briefs/FY26/`).
+  - Added `clear_section_llm_response()` and `delete_section()` to `section_capture/db.py`.
+  - Upgraded `SavedSectionsDialog` (`section_capture/map_dialog.py`):
+    - Added **"Clear response"** button to allow clearing LLM responses directly from the UI.
+    - Added `_refresh_section_prompt_with_current_ledger()`: dynamically rebuilds each section's prompt with the current `reports.questions_ledger` before copying or querying OpenRouter, ensuring that when Section 1 completes and updates questions, Section 2 automatically inherits those questions.
+  - Added unit test in `tests/test_capture.py` (54 tests passing, exit code 0).
 
 
 
