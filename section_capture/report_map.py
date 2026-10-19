@@ -37,6 +37,15 @@ STATEMENTS = {
 }
 
 
+def clean_single_line_text(text: str | None) -> str:
+    """Strips tabs, line breaks, non-breaking spaces, and collapses whitespace."""
+    if not text:
+        return ""
+    cleaned = re.sub(r"[\r\n\t\xa0]+", " ", str(text))
+    cleaned = re.sub(r" {2,}", " ", cleaned)
+    return cleaned.strip()
+
+
 def normalized(words):
     text = ' '.join(w['text'] for w in words).upper()
     return re.sub(r'[^A-Z0-9]+', ' ', text).strip()
@@ -204,8 +213,8 @@ def _part_location(part) -> str:
 
 def register_subsection(mapping, subheading: str, selections=(), heading: str = "") -> list[str]:
     """Add or update a subsection under the matched major section in mapping and return its subsection ID(s)."""
-    subheading = (subheading or '').strip()
-    heading = (heading or '').strip()
+    subheading = clean_single_line_text(subheading)
+    heading = clean_single_line_text(heading)
     if not mapping or not subheading or not selections:
         return []
     matched_sections = []
@@ -256,7 +265,7 @@ def section_requires_subheading(mapping, heading: str = "", selections=()) -> st
     """If the matched section or main heading already has subsections, return a label like 'D006 (D006.1)'."""
     if not mapping:
         return None
-    norm_h = _norm_heading(re.sub(r'^D\d{3}\s*[—:\-]\s*', '', (heading or '').strip(), flags=re.IGNORECASE))
+    norm_h = _norm_heading(re.sub(r'^D\d{3}\s*[—:\-]\s*', '', clean_single_line_text(heading), flags=re.IGNORECASE))
     for section in mapping.get('sections', []):
         subs = section.get('subsections') or []
         if not subs:

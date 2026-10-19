@@ -8,9 +8,9 @@ from PySide6.QtCore import QPointF, QRectF, Qt
 from PySide6.QtGui import QImage
 from PySide6.QtTest import QTest
 
-from section_capture.packages import save_package
+from section_capture.packages import clean_single_line_text, save_package
 from section_capture.pdf_source import PdfSource
-from section_capture.window import CaptureWindow
+from section_capture.window import CaptureWindow, HeadingComboBox, SanitizedLineEdit
 
 
 def test_original_identity_and_readable_render(source):
@@ -386,6 +386,50 @@ def test_subheading_divides_section_and_updates_report_map(qapp, pdf_path, tmp_p
     assert '### Section D005.3 | physical PDF page 18 | Mixed / unspecified (Cash Flow Statement)' in sub34.prompt
     assert '### Section D005.4 | physical PDF page 19 | Mixed / unspecified (Changes in Equity)' in sub34.prompt
     window.close()
+
+
+def test_clean_single_line_text():
+    assert clean_single_line_text(None) == ""
+    assert clean_single_line_text("") == ""
+    assert clean_single_line_text("   ") == ""
+    assert clean_single_line_text("STRATEGY AND \nTARGETS") == "STRATEGY AND TARGETS"
+    assert clean_single_line_text("Some\tSubheading\r\nwith\t\tbreaks  ") == "Some Subheading with breaks"
+    assert clean_single_line_text("Non-breaking\xa0space\xa0\xa0test") == "Non-breaking space test"
+
+
+def test_save_package_sanitizes_heading_and_subheadings(source, tmp_path):
+    width, height = source.size(3)
+    cap = source.capture_area(3, QRectF(0, 0, width / 2, height))
+    cap.subheading = "Subheading\twith\nnewlines  "
+    output = save_package(
+        source,
+        "\tSTRATEGY AND \nTARGETS\r\n",
+        "Question",
+        [cap],
+        tmp_path,
+        subheading="Subheading\twith\nnewlines  ",
+    )
+    assert output.manifest["heading"] == "STRATEGY AND TARGETS"
+    assert output.manifest["subheading"] == "Subheading with newlines"
+    assert "STRATEGY AND TARGETS" in output.prompt
+    assert "STRATEGY AND \nTARGETS" not in output.prompt
+
+
+def test_sanitized_line_edit_and_heading_combo_box(qapp):
+    from PySide6.QtWidgets import QApplication
+
+    edit = SanitizedLineEdit()
+    QApplication.clipboard().setText("Pasted\tText\r\nWith\nLine Breaks   ")
+    edit.paste()
+    assert edit.text() == "Pasted Text With Line Breaks"
+    edit.deleteLater()
+
+    combo = HeadingComboBox()
+    QApplication.clipboard().setText("  Main \nHeading\tOptions  ")
+    combo.lineEdit().paste()
+    assert combo.lineEdit().text() == "Main Heading Options"
+    assert combo.currentText() == "Main Heading Options"
+    combo.deleteLater()
 
 
 

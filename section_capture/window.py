@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QAction, QKeySequence
+from PySide6.QtGui import QAction, QKeyEvent, QKeySequence
 from PySide6.QtWidgets import (
     QApplication, QComboBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
     QLineEdit, QListWidget, QMainWindow, QMessageBox, QPlainTextEdit,
@@ -14,10 +15,49 @@ from .content_types import CONTENT_TYPES
 from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
 from .openrouter import OpenRouterWorker
-from .packages import PROJECT_ROOT, save_package
+from .packages import PROJECT_ROOT, clean_single_line_text, save_package
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
 from .report_map import save_map, scan_report, section_requires_subheading
+
+
+class SanitizedLineEdit(QLineEdit):
+    """Single-line text input that automatically strips tabs, line breaks, and collapses whitespace on paste or input."""
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.textChanged.connect(self._on_text_changed)
+
+    def paste(self):
+        text = QApplication.clipboard().text()
+        cleaned = clean_single_line_text(text)
+        self.insert(cleaned)
+
+    def keyPressEvent(self, event: QKeyEvent):
+        if event.matches(QKeySequence.StandardKey.Paste):
+            self.paste()
+            return
+        super().keyPressEvent(event)
+
+    def contextMenuEvent(self, event):
+        menu = self.createStandardContextMenu()
+        for act in menu.actions():
+            if "paste" in act.text().lower():
+                act.triggered.disconnect()
+                act.triggered.connect(self.paste)
+                break
+        menu.exec(event.globalPos())
+
+    def _on_text_changed(self, text: str):
+        if any(c in text for c in "\r\n\t\xa0"):
+            cleaned = re.sub(r"[\r\n\t\xa0]+", " ", text)
+            cleaned = re.sub(r" {2,}", " ", cleaned)
+            pos = self.cursorPosition()
+            self.blockSignals(True)
+            self.setText(cleaned)
+            self.setCursorPosition(min(pos, len(cleaned)))
+            self.blockSignals(False)
+            self.textChanged.emit(cleaned)
 
 
 class HeadingComboBox(QComboBox):
@@ -27,6 +67,7 @@ class HeadingComboBox(QComboBox):
         super().__init__(parent)
         self.setEditable(True)
         self.setInsertPolicy(QComboBox.InsertPolicy.NoInsert)
+        self.setLineEdit(SanitizedLineEdit(self))
 
     @property
     def textChanged(self):
@@ -36,7 +77,7 @@ class HeadingComboBox(QComboBox):
         return self.currentText()
 
     def setText(self, value: str):
-        self.setEditText(value)
+        self.setEditText(clean_single_line_text(value))
 
     def clear(self):
         self.lineEdit().clear()
@@ -50,7 +91,7 @@ class HeadingComboBox(QComboBox):
         self.lineEdit().blockSignals(True)
         super().clear()
         for opt in options:
-            self.addItem(opt)
+            self.addItem(clean_single_line_text(opt))
         self.setEditText(current)
         self.lineEdit().blockSignals(False)
         self.blockSignals(False)
@@ -151,7 +192,7 @@ class CaptureWindow(QMainWindow):
         self.heading_edit.currentIndexChanged.connect(lambda _: self._update_actions())
         form.addRow("Section heading", self.heading_edit)
         self.subheading_label = QLabel("Sub-heading (optional)")
-        self.subheading_edit = QLineEdit()
+        self.subheading_edit = SanitizedLineEdit()
         self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
         self.subheading_edit.textChanged.connect(self._update_actions)
         form.addRow(self.subheading_label, self.subheading_edit)
@@ -164,7 +205,7 @@ class CaptureWindow(QMainWindow):
             self.content_type_combo.addItem(label, key)
         self.content_type_combo.setToolTip("Applies when you add or save a selection. Stays selected for the next region; each added item keeps its own type.")
         form.addRow("Data type for next selection", self.content_type_combo)
-        self.label_edit = QLineEdit()
+        self.label_edit = SanitizedLineEdit()
         self.label_edit.setPlaceholderText("Only if visibly printed; otherwise leave empty")
         form.addRow("Printed page label for next selection (optional)", self.label_edit)
         side.addLayout(form)
@@ -461,9 +502,9 @@ class CaptureWindow(QMainWindow):
 
     def add_selection(self):
         if self.pending:
-            self.pending.printed_label = self.label_edit.text().strip() or None
+            self.pending.printed_label = clean_single_line_text(self.label_edit.text()) or None
             self.pending.content_type = self.content_type_combo.currentData()
-            self.pending.subheading = self.subheading_edit.text().strip() or None
+            self.pending.subheading = clean_single_line_text(self.subheading_edit.text()) or None
             self.captures.append(self.pending)
             self.parts.addItem(self.part_label(len(self.captures) - 1))
             self.canvas.clear_selection()
@@ -535,15 +576,15 @@ class CaptureWindow(QMainWindow):
         if self.pending:
             self.add_selection()
         had_subheading = bool(self.subheading_edit.text().strip()) or any(getattr(c, "subheading", None) for c in self.captures)
-        saved_heading = self.heading_edit.text().strip()
+        saved_heading = clean_single_line_text(self.heading_edit.text())
         try:
             saved = save_package(
                 self.source,
-                self.heading_edit.text(),
+                clean_single_line_text(self.heading_edit.text()),
                 self.question_edit.toPlainText(),
                 self.captures,
                 self.output_root,
-                subheading=self.subheading_edit.text(),
+                subheading=clean_single_line_text(self.subheading_edit.text()),
             )
         except Exception as exc:
             QMessageBox.warning(self, "Could not save section", str(exc))

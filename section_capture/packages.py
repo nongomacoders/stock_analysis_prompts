@@ -13,6 +13,7 @@ from .content_types import CONTENT_TYPES
 from .db import SavedSection, insert_section, next_section_number
 from .pdf_source import Capture, PdfSource
 from .report_map import (
+    clean_single_line_text,
     load_questions_ledger,
     matching_section_ids,
     register_subsection,
@@ -140,8 +141,8 @@ def save_package(
     output_root: str | Path | None = None,
     subheading: str = "",
 ) -> SavedSection:
-    heading = re.sub(r"^D\d{3}\s*[—:\-]\s*", "", (heading or "").strip(), flags=re.IGNORECASE).strip()
-    subheading = (subheading or "").strip()
+    heading = clean_single_line_text(re.sub(r"^D\d{3}\s*[—:\-]\s*", "", clean_single_line_text(heading), flags=re.IGNORECASE))
+    subheading = clean_single_line_text(subheading)
     if not heading:
         raise ValueError("Enter a section heading before saving.")
     if not captures:
@@ -153,12 +154,13 @@ def save_package(
         {"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}
         for cap in captures
     ]
-    cap_subheadings = [((getattr(c, "subheading", None) or subheading or "").strip()) for c in captures]
+    cap_subheadings = [clean_single_line_text(getattr(c, "subheading", None) or subheading) for c in captures]
     distinct_subheadings: list[str] = []
     for sh in cap_subheadings:
         if sh and sh not in distinct_subheadings:
             distinct_subheadings.append(sh)
-    effective_subheading = "; ".join(distinct_subheadings) if distinct_subheadings else subheading
+    effective_subheading = "; ".join(distinct_subheadings) if distinct_subheadings else (subheading or None)
+
 
     sub_ids: list[str] = []
     sub_ids_by_subheading: dict[str, list[str]] = {}

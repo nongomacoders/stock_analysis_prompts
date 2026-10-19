@@ -11,6 +11,14 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Heading & Subheading Input Sanitization**:
+  - Implemented `clean_single_line_text()` across `section_capture/report_map.py`, `section_capture/packages.py`, and `section_capture/window.py` to strip tabs (`\t`), carriage returns (`\r`), line breaks (`\n`), non-breaking spaces (`\xa0`), and collapse multiple whitespace into a single space.
+  - Introduced `SanitizedLineEdit(QLineEdit)` in `section_capture/window.py` that intercepts both keyboard pastes (Ctrl+V) and right-click context menu pastes, as well as live text updates, guaranteeing headings, subheadings, and printed page labels remain clean and single-line without interrupting normal space typing.
+  - Upgraded `HeadingComboBox` to use `SanitizedLineEdit` as its underlying editor.
+  - Sanitized backend logic in `save_package()`, `add_selection()`, and `register_subsection()` to ensure programmatic and manual entries remain clean in SQLite.
+  - Cleaned all contaminated legacy records in `documents/analysis.sqlite` (sections 24 and 25 for Lewis Group and report map subsections).
+  - Added unit and Qt UI tests in `tests/test_capture.py` (all 46 tests pass with exit code 0).
+
 - **OpenRouter Programmatic Capture Integration (Tier 1)**:
   - Built `section_capture/openrouter.py` to securely read `OPENROUTER_API_KEY` in memory from external secrets (`C:\Users\Dion\Desktop\Projects\EXTERNAL_TO_REPOS\credentials\secrets.env`) or environment without ever inspecting or logging the secret value.
   - Configured default model to `deepseek/deepseek-v4.1-flash-1017`.
