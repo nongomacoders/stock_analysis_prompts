@@ -1,11 +1,11 @@
 """Read-only draft overview, stored-questions ledger, and saved-sections / LLM-response dialogs."""
 from PySide6.QtWidgets import (
-    QApplication, QComboBox, QDialog, QDialogButtonBox, QHBoxLayout, QLabel,
+    QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QHBoxLayout, QLabel,
     QPlainTextEdit, QPushButton, QTextBrowser, QVBoxLayout,
 )
 
 from .db import extract_questions_ledger_from_response, list_sections, save_section_llm_response
-from .openrouter import OpenRouterWorker
+from .openrouter import OpenRouterWorker, get_openrouter_model
 from .report_map import load_questions_ledger, report_overview, save_questions_ledger
 
 
@@ -136,9 +136,12 @@ class SavedSectionsDialog(QDialog):
         self.run_api_btn = QPushButton('Query Model (OpenRouter)')
         self.run_api_btn.setToolTip('Send reading prompt directly to DeepSeek via OpenRouter API and save response.')
         self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
+        self.nitro_checkbox = QCheckBox(":nitro")
+        self.nitro_checkbox.setToolTip("Route query via OpenRouter :nitro priority throughput.")
         top.addWidget(self.copy_prompt_btn)
         top.addWidget(self.paste_resp_btn)
         top.addWidget(self.run_api_btn)
+        top.addWidget(self.nitro_checkbox)
         layout.addLayout(top)
 
         self.status_label = QLabel()
@@ -183,11 +186,24 @@ class SavedSectionsDialog(QDialog):
             self.status_label.setText('No sections saved in SQLite for this report yet.')
             return
         self.response_edit.setPlainText(sec.llm_response or '')
-        status_tag = "✓ LLM response saved" if sec.llm_response else "pending LLM response"
-        self.status_label.setText(
-            f"Status: {status_tag}  ·  Package: {sec.package_id}  ·  Section ID: {sec.section_id}  ·  "
-            f"Prompt: {len(sec.prompt):,} chars  ·  Selected text: {len(sec.selected_text):,} chars"
-        )
+        if sec.llm_response:
+            meta = sec.manifest.get("review", {})
+            time_s = meta.get("response_time_seconds")
+            cost_usd = meta.get("cost_usd")
+            tokens = meta.get("tokens", {})
+            model = meta.get("model", "")
+            model_tag = f" · {model}" if model else ""
+            time_info = f" · {time_s:.1f}s" if time_s else ""
+            cost_info = f" · ${cost_usd:.4f}" if cost_usd is not None else ""
+            tok_info = f" · {tokens.get('total_tokens', 0):,} tok" if tokens and tokens.get("total_tokens") else ""
+            self.status_label.setText(
+                f"Status: ✓ Response saved{model_tag}{time_info}{cost_info}{tok_info}  ·  Package: {sec.package_id}"
+            )
+        else:
+            self.status_label.setText(
+                f"Status: pending LLM response  ·  Package: {sec.package_id}  ·  Section ID: {sec.section_id}  ·  "
+                f"Prompt: {len(sec.prompt):,} chars  ·  Selected text: {len(sec.selected_text):,} chars"
+            )
 
     def copy_selected_prompt(self):
         sec = self._current_section()
@@ -201,7 +217,13 @@ class SavedSectionsDialog(QDialog):
             self.response_edit.setPlainText(clip)
             self.save_current_response()
 
-    def save_current_response(self, response_time_seconds: float | None = None):
+    def save_current_response(
+        self,
+        response_time_seconds: float | None = None,
+        cost_usd: float | None = None,
+        tokens: dict | None = None,
+        model: str | None = None,
+    ):
         sec = self._current_section()
         if not sec:
             return
@@ -210,6 +232,9 @@ class SavedSectionsDialog(QDialog):
             self.response_edit.toPlainText(),
             update_ledger=True,
             response_time_seconds=response_time_seconds,
+            cost_usd=cost_usd,
+            tokens=tokens,
+            model=model,
             db_path=self.db_path,
         )
         if updated:
@@ -217,14 +242,15 @@ class SavedSectionsDialog(QDialog):
             self.sections[idx] = updated
             self.section_combo.setItemText(idx, self._combo_label(updated))
             time_str = f" in {response_time_seconds:.1f}s" if response_time_seconds else ""
+            cost_str = f" (${cost_usd:.4f})" if cost_usd is not None else ""
             chars_str = f" ({len(self.response_edit.toPlainText()):,} chars)"
             if extracted:
                 self.source.questions_ledger = extracted
                 self.status_label.setText(
-                    f"✓ Saved LLM response{time_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
+                    f"✓ Saved LLM response{time_str}{cost_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} and updated Stored Questions ledger in SQLite."
                 )
             else:
-                self.status_label.setText(f"✓ Saved LLM response{time_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} in SQLite.")
+                self.status_label.setText(f"✓ Saved LLM response{time_str}{cost_str}{chars_str} for {updated.section_number:02d}-{updated.section_id} in SQLite.")
             if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
                 self.parent()._update_actions()
 
@@ -236,15 +262,31 @@ class SavedSectionsDialog(QDialog):
         if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
             self.status_label.setText("A query is already in progress...")
             return
-        self.status_label.setText(f"Querying DeepSeek via OpenRouter for {sec.section_number:02d}-{sec.section_id}...")
+
+        base_model = get_openrouter_model()
+        model = f"{base_model}:nitro" if self.nitro_checkbox.isChecked() else base_model
+        model_tag = "DeepSeek:nitro" if ":nitro" in model else "DeepSeek"
+        self.status_label.setText(f"Querying {model_tag} via OpenRouter for {sec.section_number:02d}-{sec.section_id}...")
         self.run_api_btn.setEnabled(False)
 
-        worker = OpenRouterWorker(sec.prompt, parent=self)
+        worker = OpenRouterWorker(sec.prompt, model=model, parent=self)
         self._active_worker = worker
 
-        def on_finished(response_text: str, elapsed: float = 0.0):
+        def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
+            stats = stats or {}
+            cost_usd = stats.get("cost_usd")
+            tokens = {
+                "prompt_tokens": stats.get("prompt_tokens"),
+                "completion_tokens": stats.get("completion_tokens"),
+                "total_tokens": stats.get("total_tokens"),
+            }
             self.response_edit.setPlainText(response_text)
-            self.save_current_response(response_time_seconds=elapsed)
+            self.save_current_response(
+                response_time_seconds=elapsed,
+                cost_usd=cost_usd,
+                tokens=tokens,
+                model=model,
+            )
             self.run_api_btn.setEnabled(True)
             self._active_worker = None
 

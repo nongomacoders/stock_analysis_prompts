@@ -6,7 +6,7 @@ from pathlib import Path
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QKeyEvent, QKeySequence
 from PySide6.QtWidgets import (
-    QApplication, QComboBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
+    QApplication, QCheckBox, QComboBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
     QLineEdit, QListWidget, QMainWindow, QMessageBox, QPlainTextEdit,
     QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QToolBar, QVBoxLayout, QWidget,
 )
@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
 from .content_types import CONTENT_TYPES
 from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
-from .openrouter import OpenRouterWorker
+from .openrouter import OpenRouterWorker, get_openrouter_model
 from .packages import PROJECT_ROOT, clean_single_line_text, save_package, shorten_section_name
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
@@ -257,6 +257,10 @@ class CaptureWindow(QMainWindow):
         save_row.addWidget(self.save_button)
         save_row.addWidget(self.save_and_run_button)
         side.addLayout(save_row)
+        self.nitro_checkbox = QCheckBox("Use Nitro throughput (:nitro)")
+        self.nitro_checkbox.setToolTip("Appends :nitro to route via high-throughput priority endpoints when standard response times slow down.")
+        self.nitro_checkbox.toggled.connect(self._update_nitro_tooltip)
+        side.addWidget(self.nitro_checkbox)
         db_file = resolve_db_path(self.output_root)
         self.export_label = QLabel(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
@@ -609,33 +613,60 @@ class CaptureWindow(QMainWindow):
             return
         self.run_model_for_package(saved)
 
+    def _active_model_name(self) -> str:
+        base = get_openrouter_model()
+        if hasattr(self, "nitro_checkbox") and self.nitro_checkbox.isChecked():
+            if not base.endswith(":nitro"):
+                return f"{base}:nitro"
+        return base
+
+    def _update_nitro_tooltip(self):
+        model = self._active_model_name()
+        tag = "priority throughput" if ":nitro" in model else "standard throughput"
+        self.save_and_run_button.setToolTip(f"Save section to SQLite and automatically query {model} ({tag}).")
+
     def run_model_for_package(self, saved_package):
         if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
             self.show_problem("A model query is already running in the background.")
             return
 
+        active_model = self._active_model_name()
         short_name = shorten_section_name(saved_package.name)
-        self.statusBar().showMessage(f"Querying DeepSeek via OpenRouter for {short_name}...")
-        worker = OpenRouterWorker(saved_package.prompt, parent=self)
+        model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
+        self.statusBar().showMessage(f"Querying {model_tag} via OpenRouter for {short_name}...")
+        worker = OpenRouterWorker(saved_package.prompt, model=active_model, parent=self)
         self._active_worker = worker
         self._update_actions()
 
-        def on_finished(response_text: str, elapsed: float = 0.0):
+        def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
+            stats = stats or {}
+            cost_usd = stats.get("cost_usd")
+            tokens = {
+                "prompt_tokens": stats.get("prompt_tokens"),
+                "completion_tokens": stats.get("completion_tokens"),
+                "total_tokens": stats.get("total_tokens"),
+            }
             self.statusBar().showMessage(f"Processing LLM response for {short_name}...")
             updated, extracted = save_section_llm_response(
                 saved_package.package_id,
                 response_text,
                 update_ledger=True,
                 response_time_seconds=elapsed,
+                cost_usd=cost_usd,
+                tokens=tokens,
+                model=active_model,
                 db_path=self.output_root,
             )
             if extracted and self.source:
                 self.source.questions_ledger = extracted
             time_str = f" in {elapsed:.1f}s" if elapsed > 0 else ""
-            self.statusBar().showMessage(f"✓ DeepSeek responded{time_str} ({len(response_text):,} chars) and ledger updated for {short_name}!")
+            cost_str = f" (${cost_usd:.4f})" if cost_usd is not None else ""
+            tok_str = f" [{stats.get('total_tokens', 0):,} tok]" if stats.get("total_tokens") else ""
+            self.statusBar().showMessage(
+                f"✓ {model_tag} responded{time_str}{cost_str}{tok_str} and ledger updated for {short_name}!"
+            )
             self._active_worker = None
             self._update_actions()
-
 
         def on_error(err_msg: str):
             self.show_problem(f"Model query failed: {err_msg}")

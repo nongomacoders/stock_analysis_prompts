@@ -442,3 +442,16 @@ def test_shorten_section_name():
     assert len(shortened) <= 32
     assert shortened.endswith("...")
     assert shortened == "04-D002.3-D002.4-D002.5-D002..."
+
+
+def test_capture_window_nitro_checkbox(qapp, tmp_path):
+    window = CaptureWindow(output_root=tmp_path)
+    assert hasattr(window, "nitro_checkbox")
+    assert not window.nitro_checkbox.isChecked()
+    assert not window._active_model_name().endswith(":nitro")
+    window.nitro_checkbox.setChecked(True)
+    assert window._active_model_name().endswith(":nitro")
+    window.nitro_checkbox.setChecked(False)
+    assert not window._active_model_name().endswith(":nitro")
+    window.close()
+    window.deleteLater()

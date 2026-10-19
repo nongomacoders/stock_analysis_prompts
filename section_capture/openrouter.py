@@ -81,9 +81,47 @@ def get_openrouter_model() -> str:
     return DEFAULT_MODEL
 
 
-def query_openrouter(prompt: str, model: str | None = None, timeout: int = 180) -> str:
+def estimate_cost(model: str, prompt_tokens: int, completion_tokens: int) -> float:
+    """Fallback estimation of query cost based on known OpenRouter rates."""
+    is_nitro = ":nitro" in (model or "").lower()
+    # DeepSeek v4.1 Flash base vs nitro rates
+    p_rate = 0.50 / 1_000_000 if is_nitro else 0.14 / 1_000_000
+    c_rate = 0.90 / 1_000_000 if is_nitro else 0.28 / 1_000_000
+    return round((prompt_tokens * p_rate) + (completion_tokens * c_rate), 6)
+
+
+def fetch_generation_stats(generation_id: str, key: str | None = None, timeout: int = 10) -> dict:
+    """Fetch exact token and billing stats from OpenRouter generation endpoint."""
+    api_key = key or get_openrouter_api_key()
+    if not api_key or not generation_id:
+        return {}
+    url = f"https://openrouter.ai/api/v1/generation?id={generation_id}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "HTTP-Referer": "https://github.com/dion/stock_analysis_prompts",
+            "X-Title": "Stock Analysis Section Capture",
+        },
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+            return body.get("data", {})
+    except Exception:
+        return {}
+
+
+def query_openrouter(
+    prompt: str,
+    model: str | None = None,
+    timeout: int = 180,
+    return_details: bool = False,
+) -> str | tuple[str, dict]:
     """Executes a synchronous completion query via OpenRouter API.
     
+    If return_details is True, returns (content, stats_dict).
     Raises RuntimeError if key is missing or API call fails.
     """
     key = get_openrouter_api_key()
@@ -121,7 +159,19 @@ def query_openrouter(prompt: str, model: str | None = None, timeout: int = 180) 
             choices = data.get("choices", [])
             if not choices:
                 raise RuntimeError("OpenRouter returned empty choices array.")
-            return choices[0]["message"]["content"]
+            content = choices[0]["message"]["content"]
+            if not return_details:
+                return content
+            usage = data.get("usage") or {}
+            stats = {
+                "generation_id": data.get("id", ""),
+                "model": active_model,
+                "prompt_tokens": int(usage.get("prompt_tokens", 0) or 0),
+                "completion_tokens": int(usage.get("completion_tokens", 0) or 0),
+                "total_tokens": int(usage.get("total_tokens", 0) or 0),
+                "cost_usd": None,
+            }
+            return content, stats
     except urllib.error.HTTPError as err:
         try:
             err_body = err.read().decode("utf-8")
@@ -141,21 +191,42 @@ class OpenRouterWorker(QThread):
     """Background worker thread to run OpenRouter completions without freezing the GUI."""
     
     started_query = Signal(str)  # Emits model name
-    finished_query = Signal(str, float)  # Emits (response_text, elapsed_seconds)
+    finished_query = Signal(str, float, object)  # Emits (response_text, elapsed_seconds, stats_dict)
     error_query = Signal(str)  # Emits error message
 
     def __init__(self, prompt: str, model: str | None = None, parent=None):
         super().__init__(parent)
         self.prompt = prompt
         self.model = model or get_openrouter_model()
+        self.last_stats: dict = {}
 
     def run(self):
         self.started_query.emit(self.model)
         start_t = time.time()
         try:
-            res = query_openrouter(self.prompt, self.model)
+            res, stats = query_openrouter(self.prompt, self.model, return_details=True)
             elapsed = time.time() - start_t
-            self.finished_query.emit(res, elapsed)
+            stats["elapsed_seconds"] = round(elapsed, 2)
+            gen_id = stats.get("generation_id")
+            if gen_id:
+                # Brief check on generation endpoint for exact total_cost
+                time.sleep(0.3)
+                gstats = fetch_generation_stats(gen_id)
+                if gstats and gstats.get("total_cost") is not None:
+                    stats["cost_usd"] = float(gstats["total_cost"])
+                    if gstats.get("tokens_prompt"):
+                        stats["prompt_tokens"] = int(gstats["tokens_prompt"])
+                    if gstats.get("tokens_completion"):
+                        stats["completion_tokens"] = int(gstats["tokens_completion"])
+                    stats["total_tokens"] = stats["prompt_tokens"] + stats["completion_tokens"]
+            if stats.get("cost_usd") is None:
+                stats["cost_usd"] = estimate_cost(
+                    self.model,
+                    stats.get("prompt_tokens", 0),
+                    stats.get("completion_tokens", 0),
+                )
+            self.last_stats = stats
+            self.finished_query.emit(res, elapsed, stats)
         except Exception as exc:
             self.error_query.emit(str(exc))
 

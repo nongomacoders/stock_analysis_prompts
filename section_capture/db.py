@@ -65,6 +65,25 @@ class SavedSection:
     created_at: str
     db_path: Path
 
+    @property
+    def response_time_seconds(self) -> float | None:
+        return self.manifest.get("review", {}).get("response_time_seconds")
+
+    @property
+    def cost_usd(self) -> float | None:
+        return self.manifest.get("review", {}).get("cost_usd")
+
+    @property
+    def model_used(self) -> str | None:
+        return self.manifest.get("review", {}).get("model")
+
+    @property
+    def total_tokens(self) -> int | None:
+        t = self.manifest.get("review", {}).get("tokens")
+        if isinstance(t, dict):
+            return t.get("total_tokens")
+        return None
+
 
 def resolve_db_path(db_path: str | Path | None = None) -> Path:
     if db_path is None:
@@ -329,6 +348,9 @@ def save_section_llm_response(
     llm_response: str,
     update_ledger: bool = True,
     response_time_seconds: float | None = None,
+    cost_usd: float | None = None,
+    tokens: dict | None = None,
+    model: str | None = None,
     db_path: str | Path | None = None,
 ) -> tuple[SavedSection | None, str | None]:
     """Save the LLM response onto a section row and optionally auto-extract & update the report's questions ledger."""
@@ -345,6 +367,12 @@ def save_section_llm_response(
         review["model_brief"] = "recorded" if cleaned_resp else "not_run"
         if response_time_seconds is not None:
             review["response_time_seconds"] = round(float(response_time_seconds), 2)
+        if cost_usd is not None:
+            review["cost_usd"] = round(float(cost_usd), 6)
+        if model:
+            review["model"] = model
+        if tokens:
+            review["tokens"] = tokens
         conn.execute(
             "UPDATE sections SET llm_response = ?, manifest_json = ?, updated_at = ? WHERE package_id = ?",
             (cleaned_resp or None, json.dumps(manifest, ensure_ascii=False), now, package_id),

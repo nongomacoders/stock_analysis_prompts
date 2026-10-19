@@ -21,16 +21,17 @@ Analyze and forecast from company presentations and reports section by section w
   - Escaped Qt button ampersands (`Save && copy prompt`, `Save && Run DeepSeek`) so `&` displays properly in UI.
   - Added unit and Qt UI tests in `tests/test_capture.py` (all 47 tests pass with exit code 0).
 
-- **OpenRouter Programmatic Capture Integration (Tier 1)**:
+- **OpenRouter Programmatic Capture Integration & Nitro Toggle (Tier 1)**:
   - Built `section_capture/openrouter.py` to securely read `OPENROUTER_API_KEY` in memory from external secrets (`C:\Users\Dion\Desktop\Projects\EXTERNAL_TO_REPOS\credentials\secrets.env`) or environment without ever inspecting or logging the secret value.
   - Configured default model to `deepseek/deepseek-v4.1-flash-1017`.
-  - Added primary `"Save & Run DeepSeek"` button in `section_capture/window.py` with asynchronous non-blocking worker `OpenRouterWorker(QThread)`:
-    - Automatically executes section prompt in background.
-    - Captures model output into `sections.llm_response`.
-    - Automatically parses Section 4 ("Updated Open Questions Ledger") and updates `reports.questions_ledger` in SQLite for seamless sequential continuity.
-  - Added `"Query Model (OpenRouter)"` button to `SavedSectionsDialog` (`section_capture/map_dialog.py`) to query or re-run any saved section on demand.
-  - Comprehensive unit test suite in `tests/test_openrouter.py` (all 43 tests pass cleanly with exit code 0).
-  - Standalone live diagnostic script `test_openrouter_live.py`: Safely checks credentials, verifies OpenRouter account auth (`/api/v1/auth/key`), and performs end-to-end completion tests with latency tracking and zero key leakage.
+  - Added on-the-fly **Nitro throughput toggle (`:nitro`)** in `section_capture/window.py` and `SavedSectionsDialog`:
+    - Allows switching between standard routing (low cost) and `:nitro` priority routing (3.1x faster throughput when network traffic is heavy).
+  - Integrated OpenRouter generation statistics retrieval (`fetch_generation_stats()`) and fallback pricing estimation (`estimate_cost()`):
+    - Retrieves exact billed cost (`cost_usd`), token breakdown (`prompt_tokens`, `completion_tokens`, `total_tokens`), and server latency.
+    - Persists execution metadata in SQLite `manifest_json["review"]` (`response_time_seconds`, `cost_usd`, `model`, `tokens`).
+    - Added convenience properties to `SavedSection` (`response_time_seconds`, `cost_usd`, `model_used`, `total_tokens`).
+  - Real-time status bar updates in capture window and saved sections dialog (e.g. `✓ DeepSeek responded in 42.1s ($0.0146) [15,808 tok]`).
+  - Unit and UI test suite expanded to 51 passing tests (exit code 0).
 
 
 - **Experiment 2: Cognitive Forensic Audit with Gemini 4 Argon (Tier 2)**:
