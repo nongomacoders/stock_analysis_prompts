@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
 )
 
 from .db import extract_questions_ledger_from_response, list_sections, save_section_llm_response
+from .openrouter import OpenRouterWorker
 from .report_map import load_questions_ledger, report_overview, save_questions_ledger
 
 
@@ -132,8 +133,12 @@ class SavedSectionsDialog(QDialog):
         self.copy_prompt_btn.clicked.connect(self.copy_selected_prompt)
         self.paste_resp_btn = QPushButton('Paste LLM response && Update questions')
         self.paste_resp_btn.clicked.connect(self.paste_llm_response_from_clipboard)
+        self.run_api_btn = QPushButton('Query Model (OpenRouter)')
+        self.run_api_btn.setToolTip('Send reading prompt directly to DeepSeek via OpenRouter API and save response.')
+        self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
         top.addWidget(self.copy_prompt_btn)
         top.addWidget(self.paste_resp_btn)
+        top.addWidget(self.run_api_btn)
         layout.addLayout(top)
 
         self.status_label = QLabel()
@@ -219,5 +224,34 @@ class SavedSectionsDialog(QDialog):
                 self.status_label.setText(f"✓ Saved LLM response for {updated.section_number:02d}-{updated.section_id} in SQLite.")
             if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
                 self.parent()._update_actions()
+
+    def run_openrouter_for_current(self):
+        sec = self._current_section()
+        if not sec or not sec.prompt:
+            self.status_label.setText("No prompt available for the selected section.")
+            return
+        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            self.status_label.setText("A query is already in progress...")
+            return
+        self.status_label.setText(f"Querying DeepSeek via OpenRouter for {sec.section_number:02d}-{sec.section_id}...")
+        self.run_api_btn.setEnabled(False)
+
+        worker = OpenRouterWorker(sec.prompt, parent=self)
+        self._active_worker = worker
+
+        def on_finished(response_text: str):
+            self.response_edit.setPlainText(response_text)
+            self.save_current_response()
+            self.run_api_btn.setEnabled(True)
+            self._active_worker = None
+
+        def on_error(err_msg: str):
+            self.status_label.setText(f"Query failed: {err_msg}")
+            self.run_api_btn.setEnabled(True)
+            self._active_worker = None
+
+        worker.finished_query.connect(on_finished)
+        worker.error_query.connect(on_error)
+        worker.start()
 
 

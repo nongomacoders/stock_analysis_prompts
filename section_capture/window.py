@@ -11,8 +11,9 @@ from PySide6.QtWidgets import (
 )
 
 from .content_types import CONTENT_TYPES
-from .db import SavedSection, list_sections, resolve_db_path
+from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
+from .openrouter import OpenRouterWorker
 from .packages import PROJECT_ROOT, save_package
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
@@ -204,10 +205,17 @@ class CaptureWindow(QMainWindow):
         self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
         self.questions_button.clicked.connect(self.show_questions_ledger)
         side.addWidget(self.questions_button)
-        self.save_button = QPushButton("Save section & copy prompt")
-        self.save_button.setObjectName("primary")
+        save_row = QHBoxLayout()
+        self.save_button = QPushButton("Save & copy prompt")
+        self.save_button.setToolTip("Save section to SQLite and copy reading prompt to clipboard.")
         self.save_button.clicked.connect(self.save_section)
-        side.addWidget(self.save_button)
+        self.save_and_run_button = QPushButton("Save & Run DeepSeek")
+        self.save_and_run_button.setObjectName("primary")
+        self.save_and_run_button.setToolTip("Save section to SQLite and automatically query DeepSeek via OpenRouter API.")
+        self.save_and_run_button.clicked.connect(self.save_and_run_model)
+        save_row.addWidget(self.save_button)
+        save_row.addWidget(self.save_and_run_button)
+        side.addLayout(save_row)
         db_file = resolve_db_path(self.output_root)
         self.export_label = QLabel(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
@@ -312,9 +320,11 @@ class CaptureWindow(QMainWindow):
         needs_subheading = bool(req and not has_any_subheading)
         self.add_button.setEnabled(self.pending is not None)
         self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
-        self.save_button.setEnabled(
-            bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending) and not needs_subheading
-        )
+        is_savable = bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending) and not needs_subheading
+        not_busy = not (hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning())
+        self.save_button.setEnabled(is_savable and not_busy)
+        if hasattr(self, "save_and_run_button"):
+            self.save_and_run_button.setEnabled(is_savable and not_busy)
         self.copy_button.setEnabled(self.last_package is not None)
         self.folder_button.setEnabled(has_pdf)
 
@@ -344,9 +354,10 @@ class CaptureWindow(QMainWindow):
             self.captures[self.parts.currentRow()].text = edited
 
     def choose_pdf(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "Open company report", str(PROJECT_ROOT / "company_results"), "PDF documents (*.pdf)")
+        filename, _ = QFileDialog.getOpenFileName(self, "Open company report", str(PROJECT_ROOT / "companies"), "PDF documents (*.pdf)")
         if filename:
             self.open_pdf(filename)
+
 
     def _can_discard(self):
         if self.captures or self.pending:
@@ -549,12 +560,54 @@ class CaptureWindow(QMainWindow):
         self._update_actions()
         return saved
 
+    def save_and_run_model(self):
+        saved = self.save_section()
+        if not saved:
+            return
+        self.run_model_for_package(saved)
+
+    def run_model_for_package(self, saved_package):
+        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            self.show_problem("A model query is already running in the background.")
+            return
+
+        self.statusBar().showMessage(f"Querying DeepSeek via OpenRouter for {saved_package.name}...")
+        worker = OpenRouterWorker(saved_package.prompt, parent=self)
+        self._active_worker = worker
+        self._update_actions()
+
+        def on_finished(response_text: str):
+            self.statusBar().showMessage(f"Processing LLM response for {saved_package.name}...")
+            updated, extracted = save_section_llm_response(
+                saved_package.package_id,
+                response_text,
+                update_ledger=True,
+                db_path=self.output_root,
+            )
+            if extracted and self.source:
+                self.source.questions_ledger = extracted
+            self.statusBar().showMessage(f"✓ LLM response saved and Stored Questions updated for {saved_package.name}!")
+            self._active_worker = None
+            self._update_actions()
+
+        def on_error(err_msg: str):
+            self.show_problem(f"Model query failed: {err_msg}")
+            self._active_worker = None
+            self._update_actions()
+
+        worker.finished_query.connect(on_finished)
+        worker.error_query.connect(on_error)
+        worker.start()
+
     def copy_prompt(self):
         if self.last_package:
             QApplication.clipboard().setText(self.last_package.prompt)
             self.statusBar().showMessage("Prompt copied to clipboard.")
 
     def closeEvent(self, event):
+        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            self._active_worker.terminate()
+            self._active_worker.wait(1000)
         if self._can_discard():
             self.canvas.source = None
             if self.source:

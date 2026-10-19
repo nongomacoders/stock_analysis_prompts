@@ -13,8 +13,9 @@ Double-click **`Run Capture.cmd`**, or run from the project root:
 To open a specific PDF directly:
 
 ```powershell
-.venv\Scripts\python.exe app.py "company_results\PAN\FY-2026\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
+.venv\Scripts\python.exe app.py "companies\PAN\sources\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
 ```
+
 
 On another machine, install `uv` and run `./setup.ps1` to create `.venv` from `requirements.lock.txt`.
 

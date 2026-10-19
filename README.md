@@ -35,10 +35,11 @@ setup.ps1                                 Environment setup script (uv)
 section_capture/                          PySide6 PDF section scanner, canvas, and pack exporter
 prompts/mining/00-report-orientation/     Report map orientation prompt template (v1.0.0)
 prompts/mining/12-analyst-reading-brief/  Section analysis & upcoming-verification prompt template (v1.1.0)
-company_results/<ticker>/<period>/        Original PDF reports
+companies/<ticker>/                         Multi-company workbench hubs (sources, briefs, models, research)
 docs/                                     App, report map, and reading workflow guides
 tests/                                    Automated offscreen Qt, crop, map, and export tests
-workflow/                                 Project state and workflow notes
+workflow/                                 Project state, workflow notes, and Stage 1/2 export scripts
+
 ```
 
 See [docs/CAPTURE_APP.md](docs/CAPTURE_APP.md), [docs/REPORT_MAP.md](docs/REPORT_MAP.md), and [docs/READING_BRIEF_WORKFLOW.md](docs/READING_BRIEF_WORKFLOW.md) for details.
