@@ -115,19 +115,27 @@ def test_interactive_notebooks(tmp_path):
     from new_company import generate_company_notebook
 
     # 1. PAN Sandbox exists and is valid JSON
-    pan_nb = Path("companies/PAN/models/pan_sandbox.ipynb")
+    pan_nb = Path("companies/mining/PAN/models/pan_sandbox.ipynb")
     assert pan_nb.exists()
     with open(pan_nb, "r", encoding="utf-8") as f:
         data = json.load(f)
     assert data["nbformat"] == 4
     assert len(data["cells"]) >= 6
 
-    # 2. Scaffolding tool generates valid sandbox
+    # 2. Scaffolding tool generates valid sandboxes for mining and retail
     out_nb = tmp_path / "test_sandbox.ipynb"
-    generate_company_notebook("TEST", "Test Mining Ltd", out_nb)
+    generate_company_notebook("TEST", "Test Mining Ltd", "mining", out_nb)
     assert out_nb.exists()
     with open(out_nb, "r", encoding="utf-8") as f:
         test_data = json.load(f)
     assert test_data["nbformat"] == 4
     assert len(test_data["cells"]) >= 4
+
+    out_retail_nb = tmp_path / "retail_sandbox.ipynb"
+    generate_company_notebook("LEW", "Lewis Group Ltd", "retail", out_retail_nb)
+    assert out_retail_nb.exists()
+    with open(out_retail_nb, "r", encoding="utf-8") as f:
+        retail_data = json.load(f)
+    assert retail_data["nbformat"] == 4
+    assert "MERCHANDISE_GROWTH_PCT" in json.dumps(retail_data)
 

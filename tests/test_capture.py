@@ -455,3 +455,62 @@ def test_capture_window_nitro_checkbox(qapp, tmp_path):
     assert not window._active_model_name().endswith(":nitro")
     window.close()
     window.deleteLater()
+
+
+def test_sector_detection_and_prompts():
+    from section_capture.packages import detect_sector_from_path, get_prompt_path
+    from section_capture.report_map import get_orientation_path
+    from companies import find_company_dir
+
+    # 1. Path detection
+    assert detect_sector_from_path("companies/mining/PAN/sources/doc.pdf") == "mining"
+    assert detect_sector_from_path("companies/retail/LEW/sources/lewis-iar-2026.pdf") == "retail"
+    assert detect_sector_from_path("C:\\Projects\\companies\\retail\\TRU\\sources\\TRU.pdf") == "retail"
+    assert detect_sector_from_path("companies/finance/SBK/sources/report.pdf") == "finance"
+    assert detect_sector_from_path("random/path/report.pdf") == "mining"
+
+    # 2. Company directory resolution
+    pan_res = find_company_dir("PAN")
+    assert pan_res is not None
+    assert pan_res[0] == "mining"
+    assert pan_res[1].name == "PAN"
+
+    lew_res = find_company_dir("LEW")
+    assert lew_res is not None
+    assert lew_res[0] == "retail"
+    assert lew_res[1].name == "LEW"
+
+    # 3. Prompt path resolution
+    mining_prompt = get_prompt_path("mining")
+    assert mining_prompt.exists()
+    assert "mining company" in mining_prompt.read_text(encoding="utf-8")
+
+    retail_prompt = get_prompt_path("retail")
+    assert retail_prompt.exists()
+    retail_content = retail_prompt.read_text(encoding="utf-8")
+    assert "retail and consumer credit company" in retail_content
+    assert "merchandise sales" in retail_content.lower()
+
+    # Orientation prompt resolution
+    retail_orient = get_orientation_path("retail")
+    assert retail_orient.exists()
+    assert "retail and consumer goods" in retail_orient.read_text(encoding="utf-8")
+
+
+def test_window_sector_auto_detect(qapp, tmp_path):
+    window = CaptureWindow(output_root=tmp_path)
+    assert hasattr(window, "sector_combo")
+    # Verify supported sectors exist
+    sectors = [window.sector_combo.itemData(i) for i in range(window.sector_combo.count())]
+    assert "mining" in sectors
+    assert "retail" in sectors
+    assert "finance" in sectors
+    assert "telcos" in sectors
+
+    # Verify sector detection when simulated
+    from section_capture.packages import detect_sector_from_path
+    assert detect_sector_from_path("companies/retail/LEW/sources/doc.pdf") == "retail"
+
+    window.close()
+    window.deleteLater()
+

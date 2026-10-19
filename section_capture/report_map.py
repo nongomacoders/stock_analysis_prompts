@@ -12,7 +12,18 @@ from .db import get_questions_ledger, get_report_map, upsert_report
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_ROOT = ROOT / 'documents/maps'
 QUESTIONS_ROOT = ROOT / 'documents/questions'
-ORIENTATION_PATH = ROOT/'prompts/mining/00-report-orientation/v1.0.0/prompt.md'
+ORIENTATION_STAGE = "00-report-orientation"
+ORIENTATION_VERSION = "v1.0.0"
+ORIENTATION_PATH = ROOT / f"prompts/mining/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
+
+
+def get_orientation_path(sector: str = "mining") -> Path:
+    sec = sector.lower().strip() if sector else "mining"
+    custom = ROOT / f"prompts/{sec}/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
+    if custom.exists():
+        return custom
+    return ORIENTATION_PATH
+
 KINDS = [
     ('financial_notes', 'Financial notes', r'NOTES TO (?:THE )?(?:SUMMARISED )?CONSOLIDATED (?:ANNUAL )?FINANCIAL STATEMENTS'),
     ('financial_statements', 'Primary financial statements', r'(?:CONSOLIDATED )?STATEMENT OF (?:FINANCIAL POSITION|PROFIT|CASH FLOWS|CHANGES IN EQUITY|COMPREHENSIVE INCOME)'),
@@ -307,8 +318,9 @@ def matching_section_ids(mapping, selections=()) -> list[str]:
     return matched
 
 
-def report_overview(mapping, selections=()):
-    lines = [ORIENTATION_PATH.read_text(encoding='utf-8'), '\n## Report navigation context',
+def report_overview(mapping, selections=(), sector: str = "mining"):
+    orient_path = get_orientation_path(sector)
+    lines = [orient_path.read_text(encoding='utf-8'), '\n## Report navigation context',
              f"Report: {mapping['source_filename']}", f"Physical PDF pages: {mapping['physical_page_count']}",
              f"Map status: {mapping['status']} — navigation only; not financial analysis or confirmation.",
              'Ranges below use original physical PDF pages, counted from 1; labels left/right describe regions.',

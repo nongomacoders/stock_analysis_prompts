@@ -94,26 +94,38 @@ flowchart TD
 
 ## 4. Multi-Company Workbench Directory Structure
 
-All analytical assets are strictly consolidated under **`companies/<TICKER>/`**:
+All analytical assets are organized under sector-based directories: **`companies/<SECTOR>/<TICKER>/`**:
 
 ```
 companies/
-├── <TICKER>/
-│   ├── sources/        # Original, read-only PDF reports (SHA-256 verified)
-│   ├── research/       # External technical studies, tax memos, macro decks
-│   ├── models/         # Valuation models, thin Jupyter sandbox (<ticker>_sandbox.ipynb)
-│   └── briefs/         # Period-segregated audit briefs and valuation prompts
-│       ├── FY26/
-│       │   ├── <TICKER>_FY26_stage1_forensic_prompt.md
-│       │   ├── <TICKER>_FY26_stage1_audit_response.md
-│       │   └── <TICKER>_FY26_stage2_valuation_prompt.md
-│       └── FY27/       # Subsequent reporting periods
+├── mining/
+│   ├── HAR/                      # Harmony Gold
+│   └── PAN/                      # Pan African Resources
+├── retail/
+│   ├── LEW/                      # Lewis Group (Furniture, appliances, credit & insurance)
+│   └── TRU/                      # Truworths (Fashion, beauty, credit)
+├── finance/                      # Banks, insurers, asset managers
+└── telcos/                       # Telecommunications & digital network operators
+    └── <TICKER>/
+        ├── sources/              # Original, read-only PDF reports (SHA-256 verified)
+        ├── research/             # External technical studies, sector memos
+        ├── models/               # Valuation models, thin Jupyter sandbox (<ticker>_sandbox.ipynb)
+        └── briefs/               # Period-segregated audit briefs and valuation prompts
+            ├── FY26/
+            │   ├── <TICKER>_FY26_stage1_forensic_prompt.md
+            │   ├── <TICKER>_FY26_stage1_audit_response.md
+            │   └── <TICKER>_FY26_stage2_valuation_prompt.md
+            └── FY27/             # Subsequent reporting periods
 ```
+
+### Sector Prompt Templates (`prompts/<SECTOR>/`)
+- `prompts/mining/`: Tailored for throughput, grades, recoveries, AISC, capex cliffs, and Section 36 gold mining tax.
+- `prompts/retail/`: Tailored for merchandise sales, financial services revenue, gross margin %, debtor book quality / IFRS 9 ECL allowances, store footprint dynamics ($m^2$, trading density), and IFRS 16 lease liabilities.
 
 ### Scaffolding New Companies
 To initialize a complete company hub with pre-wired models, directory structure, and Jupyter sandbox in one command:
 ```powershell
-python new_company.py <TICKER> --name "<Full Company Name>"
+python new_company.py <TICKER> --sector <mining|retail|finance|telcos> --name "<Full Company Name>"
 ```
 
 ---

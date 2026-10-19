@@ -15,7 +15,15 @@ from .content_types import CONTENT_TYPES
 from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
 from .openrouter import OpenRouterWorker, get_openrouter_model
-from .packages import PROJECT_ROOT, clean_single_line_text, save_package, shorten_section_name
+from .packages import (
+    DEFAULT_SECTOR,
+    PROJECT_ROOT,
+    SUPPORTED_SECTORS,
+    clean_single_line_text,
+    detect_sector_from_path,
+    save_package,
+    shorten_section_name,
+)
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
 from .report_map import save_map, scan_report, section_requires_subheading
@@ -146,6 +154,12 @@ class CaptureWindow(QMainWindow):
         self.mode_combo.addItem("Text selection", "text")
         self.mode_combo.currentIndexChanged.connect(lambda: self.canvas.set_mode(self.mode_combo.currentData()))
         toolbar.addWidget(self.mode_combo)
+        toolbar.addSeparator()
+        self.sector_combo = QComboBox()
+        for sec in SUPPORTED_SECTORS:
+            self.sector_combo.addItem(f"Sector: {sec.capitalize()}", sec)
+        self.sector_combo.setToolTip("Active analysis sector (determines prompt template and forensic focus)")
+        toolbar.addWidget(self.sector_combo)
         for label, callback in (("Fit page", self.canvas.fit_page), ("−", lambda: self.canvas.zoom(1/1.25)),
                                 ("+", lambda: self.canvas.zoom(1.25)), ("Clear selection", self.canvas.clear_selection)):
             action = toolbar.addAction(label)
@@ -426,6 +440,11 @@ class CaptureWindow(QMainWindow):
             return False
         old = self.source
         self.source = candidate
+        if hasattr(self, "sector_combo"):
+            inferred_sec = detect_sector_from_path(candidate.path)
+            idx = self.sector_combo.findData(inferred_sec)
+            if idx >= 0:
+                self.sector_combo.setCurrentIndex(idx)
         db_file = resolve_db_path(self.output_root)
         self.export_label.setText(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
@@ -582,6 +601,7 @@ class CaptureWindow(QMainWindow):
             self.add_selection()
         had_subheading = bool(self.subheading_edit.text().strip()) or any(getattr(c, "subheading", None) for c in self.captures)
         saved_heading = clean_single_line_text(self.heading_edit.text())
+        current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else None
         try:
             saved = save_package(
                 self.source,
@@ -590,6 +610,7 @@ class CaptureWindow(QMainWindow):
                 self.captures,
                 self.output_root,
                 subheading=clean_single_line_text(self.subheading_edit.text()),
+                sector=current_sector,
             )
         except Exception as exc:
             QMessageBox.warning(self, "Could not save section", str(exc))

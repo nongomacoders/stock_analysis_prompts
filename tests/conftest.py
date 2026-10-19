@@ -26,7 +26,7 @@ def qapp():
 
 @pytest.fixture(scope="session")
 def pdf_path():
-    return Path(__file__).resolve().parents[1] / "companies/PAN/sources/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
+    return Path(__file__).resolve().parents[1] / "companies/mining/PAN/sources/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf"
 
 
 

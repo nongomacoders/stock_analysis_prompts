@@ -54,15 +54,30 @@ Analyze and forecast from company presentations and reports section by section w
 - **Full Report Capture & Verification Suite (19 Sections in SQLite)**:
   - 100% of operational, financial statement, accounting note, APM, and production tables across all 54 physical pages of `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf` persisted in `documents/analysis.sqlite`.
 
-- **Unified Multi-Company Analyst Workbench Hub (`companies/<TICKER>/`)**:
-  - Fully consolidated `company_results/` and `companies/` into a single, unified source of truth:
-    - `companies/PAN/sources/`: Contains `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf` and `Pan-African-Resources-year-end-results-SENS-announcement-2025.pdf`.
-    - `companies/TRU/sources/`: Scaffolding initialized with `new_company.py TRU`, housing `TRU_FY2025_AFS.pdf`.
-    - `companies/HAR/sources/`: Scaffolding initialized with `new_company.py HAR`.
-  - Deleted legacy `company_results/` directory and deprecated `.zip` export files.
-  - Updated file open dialog in `section_capture/window.py` to open `companies/` by default.
-  - Updated pytest fixtures and SQLite database paths to reference `companies/PAN/sources/`.
-  - Added multi-period awareness (`--period FY26`, `--period FY27`) to `workflow/export_stage1.py` and `workflow/generate_stage2.py`, structuring briefs into period subfolders (`companies/<TICKER>/briefs/<PERIOD>/`).
+- **Sector-Based Company Reorganization & Retail Prompt Engine**:
+  - Reorganized `companies/` into sector subdirectories:
+    - `companies/mining/`: Houses `PAN` (Pan African Resources) and `HAR` (Harmony Gold).
+    - `companies/retail/`: Houses `LEW` (Lewis Group) and `TRU` (Truworths).
+    - `companies/finance/` and `companies/telcos/`: Scaffolding packages initialized with sector READMEs.
+  - Implemented sector prompt templates under `prompts/<sector>/`:
+    - `prompts/mining/`: Tailored for mining operations (throughput, recovery, AISC, capex cliffs, Section 36 tax).
+    - `prompts/retail/`: Tailored for retail and consumer credit operations:
+      - `00-report-orientation/v1.0.0`: Major-section map orientation for retail and credit disclosures.
+      - `12-analyst-reading-brief/v1.1.0`: Dedicated forensic prompt focusing on merchandise sales vs financial services/insurance revenue, gross margin bridges, debtors book health & IFRS 9 ECL provisioning, store network dynamics ($m^2$, trading density), and IFRS 16 lease liabilities.
+  - Upgraded PySide6 capture app (`section_capture/`):
+    - Added `SectorComboBox` to the toolbar with supported choices (`Mining`, `Retail`, `Finance`, `Telcos`).
+    - Added auto-detection from file path (`detect_sector_from_path()`), automatically setting the sector when opening reports from `companies/<sector>/<ticker>/sources/`.
+    - Updated `save_package()` and `build_prompt()` to assemble sector-specific prompt templates and store `manifest["sector"]`.
+  - Upgraded scaffolding tool (`new_company.py`):
+    - Added `--sector {mining,retail,finance,telcos}` argument.
+    - Scaffolds company under `companies/<SECTOR>/<TICKER>/` and configures `SECTOR = ...` in `models/config.py`.
+    - Generates sector-tailored Jupyter sandbox (`<ticker>_sandbox.ipynb`).
+  - Upgraded workflow export scripts:
+    - `workflow/export_stage1.py`: Auto-discovers company directory and sector via `find_company_dir()`, directing Gemini 4 Argon as **Senior Forensic Retail & Consumer Credit Accounting Auditor** for retail targets.
+    - `workflow/generate_stage2.py`: Generates retail institutional valuation prompt directing Gemini 4 Argon as **Head of Retail & Consumer Equity Research** for retail targets.
+  - Updated SQLite database (`documents/analysis.sqlite`) report paths to reflect the new sector hierarchy while verifying 100% SHA-256 match.
+  - Expanded test suite to 53 passing tests with exit code 0.
+
 
 
 ## Next steps

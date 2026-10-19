@@ -28,6 +28,34 @@ PROMPT_VERSION = "1.1.0"
 PROMPT_STAGE = "12-analyst-reading-brief"
 PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
 
+SUPPORTED_SECTORS = ["mining", "retail", "finance", "telcos"]
+DEFAULT_SECTOR = "mining"
+
+
+def detect_sector_from_path(path: Path | str | None) -> str:
+    """Infers the company sector from a file path if located under companies/<sector>/..."""
+    if not path:
+        return DEFAULT_SECTOR
+    p = Path(path).resolve()
+    parts = [part.lower() for part in p.parts]
+    if "companies" in parts:
+        idx = parts.index("companies")
+        if idx + 1 < len(parts):
+            candidate = parts[idx + 1]
+            if candidate in SUPPORTED_SECTORS:
+                return candidate
+    return DEFAULT_SECTOR
+
+
+def get_prompt_path(sector: str = DEFAULT_SECTOR, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> Path:
+    """Returns the prompt template path for the given sector, falling back to mining if unavailable."""
+    sec = sector.lower().strip() if sector else DEFAULT_SECTOR
+    custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
+    if custom.exists():
+        return custom
+    return PROMPT_PATH
+
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -84,8 +112,14 @@ def _matching_stored_questions(stored_questions: str, section_ids: list[str]) ->
     return matched
 
 
-def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
+def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None = None) -> str:
     """Human-readable prompt context; JSON remains local metadata only."""
+    resolved_sector = (
+        sector
+        or manifest.get("sector")
+        or detect_sector_from_path(manifest.get("source", {}).get("original_path"))
+    )
+    prompt_file = get_prompt_path(resolved_sector)
     mapping = manifest.get('document_map')
     section_ids = manifest.get('section_ids') or (matching_section_ids(mapping, manifest.get('selections', [])) if mapping else [])
     section_id_label = ', '.join(section_ids) if section_ids else 'unmapped'
@@ -102,7 +136,7 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
     ]
     if mapping:
         validate_map(mapping, manifest['source']['sha256'], manifest['source']['physical_page_count'])
-        context.append('\n' + report_overview(mapping, manifest['selections']))
+        context.append('\n' + report_overview(mapping, manifest['selections'], sector=resolved_sector))
     else:
         context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
     stored_questions = (manifest.get('stored_questions') or '').strip()
@@ -141,7 +175,7 @@ def build_prompt(manifest: dict, selected_texts: list[str]) -> str:
             "Capture warnings: " + ('; '.join(part.get('warnings', [])) or 'none recorded; this is not source verification'),
             "BEGIN SELECTED REPORT EVIDENCE", selected_text, "END SELECTED REPORT EVIDENCE",
         ])
-    return PROMPT_PATH.read_text(encoding="utf-8") + "\n\n" + "\n".join(context) + "\n"
+    return prompt_file.read_text(encoding="utf-8") + "\n\n" + "\n".join(context) + "\n"
 
 
 def save_package(
@@ -151,7 +185,10 @@ def save_package(
     captures: list[Capture],
     output_root: str | Path | None = None,
     subheading: str = "",
+    sector: str | None = None,
 ) -> SavedSection:
+    resolved_sector = sector or detect_sector_from_path(source.path)
+    prompt_file = get_prompt_path(resolved_sector)
     heading = clean_single_line_text(re.sub(r"^D\d{3}\s*[—:\-]\s*", "", clean_single_line_text(heading), flags=re.IGNORECASE))
     subheading = clean_single_line_text(subheading)
     if not heading:
@@ -212,6 +249,7 @@ def save_package(
         "section_name": section_name,
         "section_number": seq_num,
         "section_ids": section_ids,
+        "sector": resolved_sector,
         "task": "analyst_reading_brief",
         "response_format": "markdown",
         "created_at": created_at,
@@ -235,7 +273,8 @@ def save_package(
         "prompt": {
             "stage": PROMPT_STAGE,
             "version": PROMPT_VERSION,
-            "template_sha256": sha256(PROMPT_PATH),
+            "sector": resolved_sector,
+            "template_sha256": sha256(prompt_file),
         },
         "review": {
             "selection_origin": "user_selected",
@@ -275,11 +314,11 @@ def save_package(
             f"--- Section {part_sec_label} | original physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]}{sub_tag} ---\n{cap.text}\n"
         )
     selected_text = "\n".join(text_parts)
-    prompt = build_prompt(manifest, [cap.text for cap in captures])
+    prompt = build_prompt(manifest, [cap.text for cap in captures], sector=resolved_sector)
     manifest["prompt"]["submitted_candidate_sha256"] = sha256_text(prompt)
     if mapping:
         manifest["prompt"]["report_map_sha256"] = sha256_text(json.dumps(mapping, ensure_ascii=False, indent=2) + "\n")
-        manifest["prompt"]["report_overview_sha256"] = sha256_text(report_overview(mapping, manifest["selections"]))
+        manifest["prompt"]["report_overview_sha256"] = sha256_text(report_overview(mapping, manifest["selections"], sector=resolved_sector))
     if stored_questions:
         manifest["prompt"]["stored_questions_sha256"] = sha256_text(stored_questions + "\n")
     source.verify_unchanged()
