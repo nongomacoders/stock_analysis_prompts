@@ -190,16 +190,17 @@ class CaptureWindow(QMainWindow):
         splitter = QSplitter()
         splitter.addWidget(self.canvas)
         panel = QWidget()
-        panel.setMinimumWidth(345)
-        panel.setMaximumWidth(485)
+        panel.setMinimumWidth(350)
+        panel.setMaximumWidth(520)
         side = QVBoxLayout(panel)
-        side.setSpacing(5)
-        side.setContentsMargins(20, 0, 0, 0)
+        side.setSpacing(4)
+        side.setContentsMargins(14, 10, 14, 10)
         title = QLabel("Capture a section")
         title.setObjectName("sectionTitle")
         side.addWidget(title)
         form = QFormLayout()
         form.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapAllRows)
+        form.setVerticalSpacing(3)
         self.heading_edit = HeadingComboBox()
         self.heading_edit.setPlaceholderText("Select from dropdown or type section heading")
         self.heading_edit.textChanged.connect(self._update_actions)
@@ -212,23 +213,40 @@ class CaptureWindow(QMainWindow):
         form.addRow(self.subheading_label, self.subheading_edit)
         self.question_edit = QPlainTextEdit()
         self.question_edit.setPlaceholderText("Optional: which claim or concern should the model examine?")
-        self.question_edit.setFixedHeight(56)
+        self.question_edit.setFixedHeight(44)
         form.addRow("Analyst question (optional)", self.question_edit)
+        side.addLayout(form)
+
+        # Compact combined Data type + Printed page label row
+        type_row = QHBoxLayout()
+        type_row.setSpacing(8)
+        type_box = QVBoxLayout()
+        type_box.setSpacing(2)
+        type_box.addWidget(QLabel("Data type"))
         self.content_type_combo = QComboBox()
         for key, label in CONTENT_TYPES.items():
             self.content_type_combo.addItem(label, key)
-        self.content_type_combo.setToolTip("Applies when you add or save a selection. Stays selected for the next region; each added item keeps its own type.")
-        form.addRow("Data type for next selection", self.content_type_combo)
+        self.content_type_combo.setToolTip("Applies when you add or save a selection. Stays selected for the next region.")
+        type_box.addWidget(self.content_type_combo)
+
+        label_box = QVBoxLayout()
+        label_box.setSpacing(2)
+        label_box.addWidget(QLabel("Printed page label"))
         self.label_edit = SanitizedLineEdit()
-        self.label_edit.setPlaceholderText("Only if visibly printed; otherwise leave empty")
-        form.addRow("Printed page label for next selection (optional)", self.label_edit)
-        side.addLayout(form)
+        self.label_edit.setPlaceholderText("Optional (if printed)")
+        label_box.addWidget(self.label_edit)
+
+        type_row.addLayout(type_box, 3)
+        type_row.addLayout(label_box, 2)
+        side.addLayout(type_row)
+
         self.selection_label = QLabel("Drag on the PDF to select an area. Use Text selection for prose.")
         self.selection_label.setWordWrap(True)
+        self.selection_label.setStyleSheet("font-size: 11px; color: #495d72;")
         side.addWidget(self.selection_label)
         self.preview = QPlainTextEdit()
         self.preview.setPlaceholderText("Selected native text will appear here (editable before saving).")
-        self.preview.setFixedHeight(90)
+        self.preview.setFixedHeight(68)
         self.preview.textChanged.connect(self._preview_edited)
         side.addWidget(self.preview, 2)
         self.warning_label = QLabel()
@@ -241,10 +259,12 @@ class CaptureWindow(QMainWindow):
         self.parts_label = QLabel("Section selections · 0")
         side.addWidget(self.parts_label)
         self.parts = QListWidget()
-        self.parts.setFixedHeight(52)
+        self.parts.setFixedHeight(46)
         self.parts.currentRowChanged.connect(self.preview_part)
         side.addWidget(self.parts, 1)
+
         row = QHBoxLayout()
+        row.setSpacing(6)
         self.apply_type_button = QPushButton("Set type")
         self.apply_type_button.setToolTip("Apply the data type above to the selected added item.")
         self.apply_type_button.clicked.connect(self.apply_content_type)
@@ -256,11 +276,9 @@ class CaptureWindow(QMainWindow):
         row.addWidget(remove)
         row.addWidget(new)
         side.addLayout(row)
-        self.questions_button = QPushButton("Stored questions (none)")
-        self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
-        self.questions_button.clicked.connect(self.show_questions_ledger)
-        side.addWidget(self.questions_button)
+
         save_row = QHBoxLayout()
+        save_row.setSpacing(6)
         self.save_button = QPushButton("Save && copy prompt")
         self.save_button.setToolTip("Save section to SQLite and copy reading prompt to clipboard.")
         self.save_button.clicked.connect(self.save_section)
@@ -271,36 +289,48 @@ class CaptureWindow(QMainWindow):
         save_row.addWidget(self.save_button)
         save_row.addWidget(self.save_and_run_button)
         side.addLayout(save_row)
+
         self.nitro_checkbox = QCheckBox("Use Nitro throughput (:nitro)")
         self.nitro_checkbox.setToolTip("Appends :nitro to route via high-throughput priority endpoints when standard response times slow down.")
         self.nitro_checkbox.toggled.connect(self._update_nitro_tooltip)
         side.addWidget(self.nitro_checkbox)
+
+        # Auxiliary navigation and helper buttons in one compact row
+        aux_row = QHBoxLayout()
+        aux_row.setSpacing(6)
+        self.questions_button = QPushButton("Stored questions")
+        self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
+        self.questions_button.clicked.connect(self.show_questions_ledger)
+        self.copy_button = QPushButton("Copy prompt")
+        self.copy_button.setToolTip("Re-copy the prompt of the last saved section to clipboard.")
+        self.copy_button.clicked.connect(self.copy_prompt)
+        self.folder_button = QPushButton("Saved sections")
+        self.folder_button.setToolTip("Browse and inspect saved sections in SQLite.")
+        self.folder_button.clicked.connect(self.show_saved_sections)
+        aux_row.addWidget(self.questions_button)
+        aux_row.addWidget(self.copy_button)
+        aux_row.addWidget(self.folder_button)
+        side.addLayout(aux_row)
+
         db_file = resolve_db_path(self.output_root)
         self.export_label = QLabel(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
         self.export_label.setWordWrap(True)
         self.export_label.setObjectName("muted")
         side.addWidget(self.export_label)
-        actions = QHBoxLayout()
-        self.copy_button = QPushButton("Copy reading prompt")
-        self.copy_button.setToolTip("Re-copy the prompt of the last saved section to clipboard.")
-        self.copy_button.clicked.connect(self.copy_prompt)
-        self.folder_button = QPushButton("Saved sections / LLM response")
-        self.folder_button.clicked.connect(self.show_saved_sections)
-        actions.addWidget(self.copy_button)
-        actions.addWidget(self.folder_button)
-        side.addLayout(actions)
+
         side.addStretch(1)
         panel_scroll = QScrollArea()
         panel_scroll.setWidgetResizable(True)
         panel_scroll.setFrameShape(QScrollArea.Shape.NoFrame)
-        panel_scroll.setMinimumWidth(365)
-        panel_scroll.setMaximumWidth(510)
+        panel_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        panel_scroll.setMinimumWidth(370)
+        panel_scroll.setMaximumWidth(520)
         panel_scroll.setWidget(panel)
         splitter.addWidget(panel_scroll)
         splitter.setStretchFactor(0, 1)
         splitter.setStretchFactor(1, 0)
-        splitter.setSizes([980, 400])
+        splitter.setSizes([880, 440])
         layout.addWidget(splitter, 1)
         self.setCentralWidget(body)
 
@@ -378,14 +408,57 @@ class CaptureWindow(QMainWindow):
             bool(self.captures) and all(bool(getattr(c, "subheading", None)) for c in self.captures) and self.pending is None
         )
         needs_subheading = bool(req and not has_any_subheading)
-        self.add_button.setEnabled(self.pending is not None)
-        self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
-        is_savable = bool(self.heading_edit.text().strip()) and bool(self.captures or self.pending) and not needs_subheading
+        has_selection = bool(self.captures or self.pending)
+        has_heading = bool(self.heading_edit.text().strip())
+        is_savable = has_heading and has_selection and not needs_subheading
         not_busy = not (hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning())
+
+        self.add_button.setEnabled(self.pending is not None)
+        if self.pending is not None:
+            self.add_button.setToolTip("Add current uncommitted canvas selection to this section.")
+        elif self.captures:
+            self.add_button.setToolTip(f"{len(self.captures)} selection(s) already added below. Select another area on the PDF to add more.")
+        else:
+            self.add_button.setToolTip("Disabled: Drag an area or select text on the PDF canvas first.")
+
+        self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
         self.save_button.setEnabled(is_savable and not_busy)
         if hasattr(self, "save_and_run_button"):
             self.save_and_run_button.setEnabled(is_savable and not_busy)
+
+        # Dynamic tooltips explaining why Save is enabled or disabled
+        if not not_busy:
+            save_tip = "Waiting for model query to finish..."
+        elif not has_selection:
+            save_tip = "Disabled: Select text or area evidence from the PDF first."
+        elif not has_heading:
+            save_tip = "Disabled: Choose or enter a Section heading above first."
+        elif needs_subheading:
+            save_tip = f"Disabled: Section {req} has subsections; enter a sub-heading above."
+        else:
+            save_tip = "Save section to SQLite and copy reading prompt."
+
+        self.save_button.setToolTip(save_tip)
+        if hasattr(self, "save_and_run_button"):
+            self.save_and_run_button.setToolTip(
+                "Save section to SQLite and automatically query DeepSeek via OpenRouter API."
+                if (is_savable and not_busy) else save_tip
+            )
+
+        # Visual guidance in warning_label
+        if has_selection and not has_heading:
+            self.warning_label.setText("⚠ Choose or enter a Section heading above to enable Save")
+        elif needs_subheading:
+            self.warning_label.setText(f"⚠ Enter a sub-heading: Section {req} already has subsections")
+        elif not (self.pending and self.pending.warnings):
+            if self.warning_label.text().startswith("⚠"):
+                self.warning_label.setText("")
+
         self.copy_button.setEnabled(self.last_package is not None)
+        if self.last_package is not None:
+            self.copy_button.setToolTip(f"Re-copy prompt for '{self.last_package.name}' to clipboard.")
+        else:
+            self.copy_button.setToolTip("Disabled: No section has been saved yet in this session.")
         self.folder_button.setEnabled(has_pdf)
 
     def show_problem(self, message: str):
@@ -402,6 +475,8 @@ class CaptureWindow(QMainWindow):
         self.warning_label.setText("\n".join(capture.warnings) if capture else "")
         if capture:
             self.selection_label.setText(f"Page {capture.page} · {capture.mode} selection · {len(capture.text):,} text characters")
+        elif self.captures:
+            self.selection_label.setText(f"{len(self.captures)} selection(s) in list. Drag on PDF to add more, or save section.")
         else:
             self.selection_label.setText("Drag to select evidence. Added selections stay in the list when you change pages.")
         self._update_actions()
@@ -534,6 +609,7 @@ class CaptureWindow(QMainWindow):
             self.canvas.clear_selection()
             self.label_edit.clear()
             self.parts_label.setText(f"Section selections · {len(self.captures)}")
+            self.selection_label.setText(f"✓ Added {len(self.captures)} selection(s). Select another area, or choose a Section heading to save.")
             self._update_actions()
 
     def preview_part(self, row):

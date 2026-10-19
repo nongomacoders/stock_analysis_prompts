@@ -11,17 +11,17 @@ from .window import CaptureWindow
 
 STYLE = """
 QMainWindow, QWidget { background: #f7f9fc; color: #182c40; }
-QToolBar { padding: 9px; spacing: 7px; background: white; border-bottom: 1px solid #dce3eb; }
-QPushButton { padding: 8px 11px; background: white; border: 1px solid #c8d4df; border-radius: 5px; }
+QToolBar { padding: 6px; spacing: 6px; background: white; border-bottom: 1px solid #dce3eb; }
+QPushButton { padding: 6px 10px; background: white; border: 1px solid #c8d4df; border-radius: 5px; }
 QPushButton:hover { border-color: #087e8b; background: #eef8f9; }
 QPushButton:disabled { color: #8b99a8; background: #edf1f5; border-color: #dce3eb; }
-QPushButton#primary { background: #087e8b; color: white; border: none; padding: 12px; font-weight: 600; }
+QPushButton#primary { background: #087e8b; color: white; border: none; padding: 9px 12px; font-weight: 600; }
 QPushButton#primary:disabled { background: #b9d1d4; }
-QLineEdit, QPlainTextEdit, QListWidget, QSpinBox, QComboBox { background: white; border: 1px solid #cbd6e2; border-radius: 4px; padding: 6px; }
-QLabel#documentTitle { font-size: 17px; font-weight: 600; padding-bottom: 4px; }
-QLabel#sectionTitle { font-size: 21px; font-weight: 600; padding: 7px 0; }
-QLabel#muted { color: #64768a; font-size: 12px; padding-bottom: 8px; }
-QLabel#warning { color: #89520a; font-size: 12px; }
+QLineEdit, QPlainTextEdit, QListWidget, QSpinBox, QComboBox { background: white; border: 1px solid #cbd6e2; border-radius: 4px; padding: 5px; }
+QLabel#documentTitle { font-size: 16px; font-weight: 600; padding-bottom: 2px; }
+QLabel#sectionTitle { font-size: 18px; font-weight: 600; padding: 2px 0 4px 0; }
+QLabel#muted { color: #64768a; font-size: 11px; padding-bottom: 4px; }
+QLabel#warning { color: #89520a; font-size: 12px; font-weight: 500; }
 QStatusBar { background: #eaf0f6; padding: 4px; }
 """
 

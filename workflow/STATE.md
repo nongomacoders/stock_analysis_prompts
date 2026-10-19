@@ -76,7 +76,20 @@ Analyze and forecast from company presentations and reports section by section w
     - `workflow/export_stage1.py`: Auto-discovers company directory and sector via `find_company_dir()`, directing Gemini 4 Argon as **Senior Forensic Retail & Consumer Credit Accounting Auditor** for retail targets.
     - `workflow/generate_stage2.py`: Generates retail institutional valuation prompt directing Gemini 4 Argon as **Head of Retail & Consumer Equity Research** for retail targets.
   - Updated SQLite database (`documents/analysis.sqlite`) report paths to reflect the new sector hierarchy while verifying 100% SHA-256 match.
-  - Expanded test suite to 53 passing tests with exit code 0.
+- **Sidebar Layout Overhaul & Dynamic Disabled-State Guidance (section_capture/)**:
+  - Compacted vertical layout to fit comfortably on all screen resolutions without top title clipping or cramped vertical scrollbars:
+    - Reduced panel margins to `(14, 10, 14, 10)` and field spacing to `3-4px`.
+    - Consolidated `Data type` and `Printed page label` onto a single horizontal row (`QHBoxLayout`).
+    - Merged auxiliary actions (`Stored questions`, `Copy prompt`, `Saved sections`) into one compact horizontal row.
+    - Set `setHorizontalScrollBarPolicy(ScrollBarAlwaysOff)` on `panel_scroll` with minimum width 370px and splitter defaults `[880, 440]`.
+    - Tightened CSS padding in `section_capture/__main__.py` (`6px 10px` on standard buttons, `9px 12px` on primary).
+  - Implemented dynamic tooltips and real-time guidance resolving disabled-state confusion:
+    - Dynamic tooltips on `Save & copy prompt` and `Save & Run DeepSeek` specifying exact missing requirement (`"Disabled: Select text or area evidence from the PDF first"`, `"Disabled: Choose or enter a Section heading above first"`, or `"Disabled: Section X has subsections; enter a sub-heading above"`).
+    - Added amber inline warning guidance (`self.warning_label`): `"⚠ Choose or enter a Section heading above to enable Save"` whenever evidence selections exist but heading is empty.
+    - `Add selection` button tooltip clearly explains when a selection is uncommitted vs when it has already been added to the list (`"X selection(s) already added below. Select another area on the PDF to add more"`).
+    - `Copy prompt` tooltip explains why it is disabled before the first section is saved in a session.
+    - `self.selection_label` displays reassuring confirmation and next-step prompt: `"✓ Added X selection(s). Select another area, or choose a Section heading to save."`
+  - All 53 tests passing (exit code 0).
 
 
 
