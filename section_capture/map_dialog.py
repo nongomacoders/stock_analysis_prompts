@@ -176,6 +176,9 @@ class SavedSectionsDialog(QDialog):
         self.clear_resp_btn = QPushButton('Clear response')
         self.clear_resp_btn.setToolTip('Clear the stored LLM response for this section so it can be re-run.')
         self.clear_resp_btn.clicked.connect(self.clear_current_response)
+        self.audit_btn = QPushButton('Audit & Valuation →')
+        self.audit_btn.setToolTip('Proceed to Stage 1 Forensic Audit and Stage 2 Valuation.')
+        self.audit_btn.clicked.connect(self.open_audit_valuation)
 
         actions_row.addWidget(self.run_api_btn)
         actions_row.addWidget(self.nitro_checkbox)
@@ -183,6 +186,7 @@ class SavedSectionsDialog(QDialog):
         actions_row.addWidget(self.paste_resp_btn)
         actions_row.addWidget(self.clear_resp_btn)
         actions_row.addStretch(1)
+        actions_row.addWidget(self.audit_btn)
         layout.addLayout(actions_row)
 
         self.status_label = QLabel()
@@ -287,6 +291,11 @@ class SavedSectionsDialog(QDialog):
             )
             if self.parent() is not None and hasattr(self.parent(), "_update_actions"):
                 self.parent()._update_actions()
+
+    def open_audit_valuation(self):
+        from .audit_dialog import AuditValuationDialog
+        self.accept()
+        AuditValuationDialog(self.source, parent=self.parent(), db_path=self.db_path).exec()
 
     def paste_llm_response_from_clipboard(self):
         clip = QApplication.clipboard().text().strip()

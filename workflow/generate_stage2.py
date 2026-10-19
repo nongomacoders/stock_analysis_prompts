@@ -61,6 +61,13 @@ def generate_stage2_prompt(
             "NET CASH POSITION, SBP EBITDA ADJUSTMENTS, ORGANIC UNIT COSTS / GROSS MARGIN, CAPEX SCENARIOS, AND TAX MECHANICS]"
         )
 
+def build_stage2_prompt_content(
+    stage1_content: str,
+    company_title: str,
+    ticker: str,
+    detected_sector: str,
+) -> str:
+    """Constructs the Stage 2 Markdown prompt text incorporating Stage 1 determinations as 99% confidence prior."""
     md_lines: list[str] = []
     md_lines.append("# STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT")
     md_lines.append(f"**Target Asset:** {company_title} ({ticker})  ")
@@ -82,10 +89,12 @@ def generate_stage2_prompt(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **Audited Ground Truth:** The Stage 1 Forensic Determinations provided below are audited and verified. "
-            "Treat them as authoritative ground truth (e.g. merchandise vs credit revenue split, gross margin bridges, "
+            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
+            "as your 99% confidence baseline (e.g. merchandise vs credit revenue split, gross margin bridges, "
             "debtor costs & IFRS 9 ECL provisioning, store count expansion, and IFRS 16 lease liabilities). Do not revert to "
-            "high-level headline narratives from the PDF where Stage 1 has established an audited reconciliation."
+            "high-level PR narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes "
+            "that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
+            "citing the exact note/table and page from the PDF, and providing your quantitative justification."
         )
         md_lines.append(
             "2. **Primary Reporting & Trading Currency:** South African retail equities trade primarily on the **Johannesburg Stock Exchange (JSE)**. "
@@ -126,10 +135,12 @@ def generate_stage2_prompt(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **Audited Ground Truth:** The Stage 1 Forensic Determinations provided below are audited and verified. "
-            "Treat them as authoritative ground truth (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
-            "organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF "
-            "where Stage 1 has established an audited reconciliation."
+            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
+            "as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
+            "organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. "
+            "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
+            "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
+            "and providing your quantitative justification."
         )
         md_lines.append(
             "2. **Primary Reporting & Trading Currency:** Pan African / South African miners trade primarily on the **Johannesburg Stock Exchange (JSE)**. "
@@ -164,7 +175,58 @@ def generate_stage2_prompt(
         md_lines.append("5. **Forward Valuation Multiples & Sensitivity Matrix:** Target P/E, EV/EBITDA, FCF yield, and 2D sensitivity table (Gold Price vs USD/ZAR).")
         md_lines.append("")
 
-    content = "\n".join(md_lines)
+    return "\n".join(md_lines)
+
+
+def generate_stage2_prompt(
+    ticker: str,
+    company_name: str | None = None,
+    sector: str | None = None,
+    period: str | None = None,
+    stage1_response_path: Path | None = None,
+    output_path: Path | None = None,
+) -> Path:
+    ticker = ticker.upper().strip()
+    period_tag = (period or "FY26").upper()
+
+    # Resolve company directory and sector
+    found = find_company_dir(ticker, sector=sector)
+    if found:
+        detected_sector, company_dir = found
+    else:
+        detected_sector = (sector or "mining").lower()
+        company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
+
+    company_title = company_name or (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources")
+    briefs_dir = company_dir / f"briefs/{period_tag}"
+    root_briefs_dir = company_dir / "briefs"
+
+    if stage1_response_path is None:
+        candidates = [
+            briefs_dir / f"{ticker}_{period_tag}_stage1_audit_response.md",
+            briefs_dir / f"{ticker}_stage1_audit_response.md",
+            root_briefs_dir / f"{ticker}_stage1_audit_response.md",
+            root_briefs_dir / "stage1_audit_response.md",
+        ]
+        for cand in candidates:
+            if cand.exists():
+                stage1_response_path = cand
+                break
+
+    if stage1_response_path and stage1_response_path.exists():
+        stage1_content = stage1_response_path.read_text(encoding="utf-8").strip()
+    else:
+        stage1_content = (
+            "[PASTE STAGE 1 AUDIT DETERMINATIONS HERE — E.G. RECONCILED DILUTED SHARE COUNT, "
+            "NET CASH POSITION, SBP EBITDA ADJUSTMENTS, ORGANIC UNIT COSTS / GROSS MARGIN, CAPEX SCENARIOS, AND TAX MECHANICS]"
+        )
+
+    content = build_stage2_prompt_content(
+        stage1_content=stage1_content,
+        company_title=company_title,
+        ticker=ticker,
+        detected_sector=detected_sector,
+    )
 
     if output_path is None:
         briefs_dir.mkdir(parents=True, exist_ok=True)

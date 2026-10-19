@@ -563,3 +563,108 @@ def test_clear_and_delete_section_in_db(tmp_path):
     assert get_section("test-pkg-clear", db_path=db_file) is None
 
 
+def test_stage1_and_stage2_db_persistence(tmp_path):
+    from section_capture.db import (
+        get_stage1_report,
+        get_stage2_report,
+        save_stage1_report,
+        save_stage2_report,
+        upsert_report,
+    )
+
+    db_file = tmp_path / "analysis.sqlite"
+    upsert_report(
+        sha256="test-sha-pipeline",
+        filename="company-report.pdf",
+        original_path="companies/retail/LEW/sources/company-report.pdf",
+        db_path=db_file,
+    )
+
+    # Initially empty
+    s1_init = get_stage1_report("test-sha-pipeline", db_path=db_file)
+    assert s1_init is not None
+    assert s1_init["stage1_prompt"] is None
+    assert s1_init["stage1_response"] is None
+
+    # Save Stage 1
+    ok1 = save_stage1_report(
+        "test-sha-pipeline",
+        prompt="Stage 1 Forensic Prompt",
+        response="Stage 1 Audit Determinations: Net Cash US$185.7m, Diluted 2,129.95m",
+        db_path=db_file,
+    )
+    assert ok1 is True
+    s1_saved = get_stage1_report("test-sha-pipeline", db_path=db_file)
+    assert s1_saved["stage1_prompt"] == "Stage 1 Forensic Prompt"
+    assert "Net Cash US$185.7m" in s1_saved["stage1_response"]
+    assert s1_saved["stage1_updated_at"] is not None
+
+    # Save Stage 2
+    ok2 = save_stage2_report(
+        "test-sha-pipeline",
+        prompt="Stage 2 Valuation Prompt",
+        response="Stage 2 Valuation Note: Target ZAR 112/share, Buy recommendation",
+        db_path=db_file,
+    )
+    assert ok2 is True
+    s2_saved = get_stage2_report("test-sha-pipeline", db_path=db_file)
+    assert s2_saved["stage2_prompt"] == "Stage 2 Valuation Prompt"
+    assert "Target ZAR 112/share" in s2_saved["stage2_response"]
+    assert s2_saved["stage2_updated_at"] is not None
+
+
+def test_audit_valuation_dialog(qapp, pdf_path, tmp_path, monkeypatch):
+    from PySide6.QtCore import QRectF
+    from section_capture.audit_dialog import AuditValuationDialog
+    from section_capture.db import get_stage1_report, get_stage2_report
+    from PySide6.QtWidgets import QMessageBox
+
+    # Prevent modal QMessageBox popups from blocking test execution
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+
+    window = CaptureWindow(tmp_path)
+    assert window.open_pdf(pdf_path)
+    assert window.audit_action.isEnabled()
+
+    # Save a section so SQLite has sections
+    window.heading_edit.setText("Operational Highlights")
+    window.selection_changed(window.source.capture_area(1, QRectF(20, 50, 300, 150)))
+    saved_pkg = window.save_section()
+    assert saved_pkg is not None
+
+    # Open AuditValuationDialog
+    dialog = AuditValuationDialog(window.source, window, db_path=tmp_path)
+    assert dialog.tabs.count() == 2
+
+    # Stage 1: Compile and Save
+    dialog.compile_stage1_prompt()
+    prompt_text = dialog.s1_prompt_edit.toPlainText()
+    assert "STAGE 1: INDEPENDENT COGNITIVE AUDIT" in prompt_text
+    assert "Operational Highlights" in prompt_text
+
+    dialog.s1_response_edit.setPlainText("Argon Audit Determinations: Debtors book +15.2%, satisfactory-paid 82.6%.")
+    dialog.save_stage1_response()
+
+    s1_db = get_stage1_report(window.source.sha256, db_path=tmp_path)
+    assert "Debtors book +15.2%" in s1_db["stage1_response"]
+
+    # Stage 2: Generate Prompt and Save Report
+    dialog.generate_stage2_prompt()
+    s2_prompt = dialog.s2_prompt_edit.toPlainText()
+    assert "STAGE 2: INSTITUTIONAL 2-YEAR VALUATION" in s2_prompt
+    assert "99% confidence baseline" in s2_prompt
+    assert "Argon Audit Determinations: Debtors book +15.2%" in s2_prompt
+
+    dialog.s2_response_edit.setPlainText("Final Valuation Note: 12-Month Target Price R85.50 per share.")
+    dialog.save_stage2_response()
+
+    s2_db = get_stage2_report(window.source.sha256, db_path=tmp_path)
+    assert "Target Price R85.50" in s2_db["stage2_response"]
+
+    dialog.close()
+    dialog.deleteLater()
+    window.close()
+    window.deleteLater()
+
+

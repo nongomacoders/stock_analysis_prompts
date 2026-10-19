@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS reports (
     physical_page_count INTEGER NOT NULL,
     report_map_json TEXT,
     questions_ledger TEXT NOT NULL DEFAULT '',
+    stage1_prompt TEXT,
+    stage1_response TEXT,
+    stage1_updated_at TEXT,
+    stage2_prompt TEXT,
+    stage2_response TEXT,
+    stage2_updated_at TEXT,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
@@ -98,11 +104,29 @@ def resolve_db_path(db_path: str | Path | None = None) -> Path:
     return target.resolve()
 
 
+def _migrate_schema(conn: sqlite3.Connection):
+    cur = conn.cursor()
+    cols = {row[1] for row in cur.execute("PRAGMA table_info(reports)").fetchall()}
+    new_cols = [
+        ("stage1_prompt", "TEXT"),
+        ("stage1_response", "TEXT"),
+        ("stage1_updated_at", "TEXT"),
+        ("stage2_prompt", "TEXT"),
+        ("stage2_response", "TEXT"),
+        ("stage2_updated_at", "TEXT"),
+    ]
+    for col_name, col_type in new_cols:
+        if col_name not in cols:
+            cur.execute(f"ALTER TABLE reports ADD COLUMN {col_name} {col_type}")
+    conn.commit()
+
+
 def connect_db(db_path: str | Path | None = None) -> sqlite3.Connection:
     path = resolve_db_path(db_path)
     conn = sqlite3.connect(str(path))
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA_SQL)
+    _migrate_schema(conn)
     return conn
 
 
@@ -411,4 +435,82 @@ def delete_section(package_id: str, db_path: str | Path | None = None) -> bool:
     with connect_db(resolved) as conn:
         cur = conn.execute("DELETE FROM sections WHERE package_id = ?", (package_id,))
         return cur.rowcount > 0
+
+
+def save_stage1_report(
+    report_sha256: str,
+    prompt: str | None = None,
+    response: str | None = None,
+    db_path: str | Path | None = None,
+) -> bool:
+    """Save Stage 1 Forensic Audit prompt and/or response on a report row."""
+    resolved = resolve_db_path(db_path)
+    now = datetime.now(timezone.utc).isoformat()
+    with connect_db(resolved) as conn:
+        row = conn.execute("SELECT sha256 FROM reports WHERE sha256 = ?", (report_sha256,)).fetchone()
+        if not row:
+            return False
+        updates = ["stage1_updated_at = ?", "updated_at = ?"]
+        params = [now, now]
+        if prompt is not None:
+            updates.append("stage1_prompt = ?")
+            params.append(prompt)
+        if response is not None:
+            updates.append("stage1_response = ?")
+            params.append(response)
+        params.append(report_sha256)
+        conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", params)
+        return True
+
+
+def get_stage1_report(report_sha256: str, db_path: str | Path | None = None) -> dict | None:
+    """Retrieve Stage 1 Forensic Audit data for a report."""
+    resolved = resolve_db_path(db_path)
+    with connect_db(resolved) as conn:
+        row = conn.execute(
+            "SELECT sha256, filename, stage1_prompt, stage1_response, stage1_updated_at FROM reports WHERE sha256 = ?",
+            (report_sha256,),
+        ).fetchone()
+        if not row:
+            return None
+        return dict(row)
+
+
+def save_stage2_report(
+    report_sha256: str,
+    prompt: str | None = None,
+    response: str | None = None,
+    db_path: str | Path | None = None,
+) -> bool:
+    """Save Stage 2 Institutional Valuation prompt and/or response on a report row."""
+    resolved = resolve_db_path(db_path)
+    now = datetime.now(timezone.utc).isoformat()
+    with connect_db(resolved) as conn:
+        row = conn.execute("SELECT sha256 FROM reports WHERE sha256 = ?", (report_sha256,)).fetchone()
+        if not row:
+            return False
+        updates = ["stage2_updated_at = ?", "updated_at = ?"]
+        params = [now, now]
+        if prompt is not None:
+            updates.append("stage2_prompt = ?")
+            params.append(prompt)
+        if response is not None:
+            updates.append("stage2_response = ?")
+            params.append(response)
+        params.append(report_sha256)
+        conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", params)
+        return True
+
+
+def get_stage2_report(report_sha256: str, db_path: str | Path | None = None) -> dict | None:
+    """Retrieve Stage 2 Institutional Valuation data for a report."""
+    resolved = resolve_db_path(db_path)
+    with connect_db(resolved) as conn:
+        row = conn.execute(
+            "SELECT sha256, filename, stage2_prompt, stage2_response, stage2_updated_at FROM reports WHERE sha256 = ?",
+            (report_sha256,),
+        ).fetchone()
+        if not row:
+            return None
+        return dict(row)
 

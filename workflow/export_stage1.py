@@ -84,7 +84,14 @@ def export_stage1_prompt(
     if not sections:
         raise RuntimeError(f"No sections captured for report SHA: {report_sha}")
 
-    # Build Stage 1 Markdown
+def build_stage1_prompt_content(
+    sections: list,
+    company_title: str,
+    ticker: str,
+    detected_sector: str,
+    filename: str,
+) -> str:
+    """Constructs the Stage 1 Markdown prompt text from section rows."""
     md_lines: list[str] = []
     md_lines.append("# STAGE 1: INDEPENDENT COGNITIVE AUDIT VIA SEQUENTIAL EXTRACTION & QUESTION LEDGER")
     md_lines.append(f"**Target Asset:** {company_title} ({ticker})  ")
@@ -196,7 +203,69 @@ def export_stage1_prompt(
             md_lines.append(sec["llm_response"].strip())
             md_lines.append("")
 
-    content = "\n".join(md_lines)
+    return "\n".join(md_lines)
+
+
+def export_stage1_prompt(
+    ticker: str,
+    company_name: str | None = None,
+    sector: str | None = None,
+    report_sha: str | None = None,
+    period: str | None = None,
+    output_path: Path | None = None,
+) -> Path:
+    ticker = ticker.upper().strip()
+
+    if not DB_PATH.exists():
+        raise FileNotFoundError(f"Database {DB_PATH} not found.")
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+
+    if not report_sha:
+        latest = get_latest_report_sha(conn)
+        if not latest:
+            raise RuntimeError("No reports found in documents/analysis.sqlite.")
+        report_sha, filename = latest
+    else:
+        row = cur.execute(
+            "SELECT filename FROM reports WHERE sha256 = ?", (report_sha,)
+        ).fetchone()
+        filename = row["filename"] if row else "Company Report"
+
+    # Resolve company directory and sector
+    found = find_company_dir(ticker, sector=sector)
+    if found:
+        detected_sector, company_dir = found
+    else:
+        detected_sector = (sector or "mining").lower()
+        company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
+
+    company_title = company_name or (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources")
+
+    # Query all sections
+    sections = cur.execute(
+        """
+        SELECT section_number, section_id, heading, subheading, analyst_question,
+               selected_text, stored_questions_snapshot, llm_response
+        FROM sections
+        WHERE report_sha256 = ?
+        ORDER BY section_number ASC, id ASC
+        """,
+        (report_sha,),
+    ).fetchall()
+
+    if not sections:
+        raise RuntimeError(f"No sections captured for report SHA: {report_sha}")
+
+    content = build_stage1_prompt_content(
+        sections=sections,
+        company_title=company_title,
+        ticker=ticker,
+        detected_sector=detected_sector,
+        filename=filename,
+    )
 
     if output_path is None:
         period_tag = period or "FY26"

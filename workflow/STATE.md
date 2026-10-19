@@ -107,17 +107,44 @@ Analyze and forecast from company presentations and reports section by section w
   - Configured `"reasoning": {"effort": "none"}` in OpenRouter payload: disables unnecessary internal thinking loops and makes the model operate as a pure forensic instruction-following engine, dropping query time from 198.1s to 21.2s and cost by 10x ($0.012 vs $0.122) while generating the full 36,051 character brief.
   - Added safety token ceiling `"max_tokens": 16384` to prevent any future runaway provider billing.
   - Added empty content validation in `query_openrouter`, `map_dialog.py`, and `window.py`: raises an informative exception on `finish_reason: length` and prevents saving 0-character responses to SQLite.
-  - Successfully populated Section 3 (36,051 chars) in `documents/analysis.sqlite` and updated the questions ledger (13,865 chars).
-
-
+- **Automated Sequential Section Resubmission Engine (`workflow/resubmit_sections.py`)**:
+  - Implemented a standalone command-line pipeline to sequentially execute sections through OpenRouter with dynamic questions ledger inheritance:
+    - Automatically clears prior responses and resets questions ledger if `--clear` is passed.
+    - Dynamically rebuilds each section prompt with the latest `reports.questions_ledger` updated by the preceding section.
+    - Captures response time, exact OpenRouter generation stats (cost, prompt/completion tokens), persists outputs to SQLite, and writes formatted markdown briefs to `companies/<sector>/<ticker>/briefs/`.
+    - Handles Windows console UTF-8 reconfigure gracefully.
+  - Successfully executed all 4 Lewis sections sequentially with `deepseek/deepseek-v4.1-flash-1017`:
+    - **Section 01 (Chairman's Report)**: 21.04s | $0.0004 | 8,198 tok | 11,617 chars | Ledger: 2,261 chars
+    - **Section 02 (CEO's Report)**: 53.06s | $0.0022 | 10,460 tok | 18,583 chars | Ledger: 5,374 chars
+    - **Section 03 (Strategy & Targets)**: 38.48s | $0.0024 | 11,209 tok | 21,392 chars | Ledger: 7,586 chars
+- **GUI Integration for Stage 1 (Forensic Audit) & Stage 2 (Valuation Note) and SQLite Persistence**:
+  - **Database Persistence (`section_capture/db.py`)**:
+    - Extended SQLite `reports` table schema with automatic migration:
+      `stage1_prompt`, `stage1_response`, `stage1_updated_at`, `stage2_prompt`, `stage2_response`, `stage2_updated_at`.
+    - Added persistence helpers: `save_stage1_report()`, `get_stage1_report()`, `save_stage2_report()`, `get_stage2_report()`.
+  - **Modularized Workflow Compilation (`workflow/`)**:
+    - Extracted `build_stage1_prompt_content()` in `workflow/export_stage1.py`.
+    - Extracted `build_stage2_prompt_content()` in `workflow/generate_stage2.py` embedding the 99% confidence prior rule.
+  - **Dedicated Workflow Dialog (`section_capture/audit_dialog.py`)**:
+    - Built `AuditValuationDialog` with responsive layout (`fit_dialog_to_screen`) and two tabs:
+      - **Tab 1: Stage 1 Cognitive Forensic Audit**: Side-by-side prompt compilation / preview and response editor. Single-click actions: "Compile from SQLite", "Copy prompt", "Paste from clipboard", "Load from disk", and "Save Response to DB" (persists to SQLite and writes to disk).
+      - **Tab 2: Stage 2 Institutional Valuation**: Side-by-side prompt generation (incorporating Stage 1 ground truth as 99% prior) and final valuation report editor. Actions: "Generate Stage 2 Prompt", "Copy prompt", "Open PDF folder", "Paste from clipboard", "Save Final Report to DB".
+  - **Main Window Integration (`section_capture/window.py` & `map_dialog.py`)**:
+    - Added `"Audit && Valuation"` action to the top toolbar in `window.py`.
+    - Added `"Audit & Valuation →"` action button in `SavedSectionsDialog` to transition directly from section review to Stage 1 & 2 execution.
+  - All 56 tests pass (exit code 0).
 
 ## Next steps
 
-1. **OpenRouter API Key Status**:
-   - The OpenRouter integration is fully tested and operational.
-   - When calling OpenRouter with the current key from `secrets.env`, OpenRouter returns `HTTP 401: User not found.`. The user should verify or refresh their API key at [openrouter.ai/keys](https://openrouter.ai/keys) and update `secrets.env`. Once updated, `"Save & Run DeepSeek"` in the capture app will work immediately without code changes.
-2. **Execute Stage 2 Valuation in Gemini 4 Argon**:
-   - The Stage 2 prompt is prepared at `companies/PAN/briefs/PAN_stage2_valuation_prompt.md`.
-   - Attach `companies/PAN/sources/FY26-year-end-results-SENS-announcement-2026.pdf` together with the prompt in Gemini 4 Argon to generate the final 2-year forecast, SOTP DCF, and JSE equity research note (ZAR per share).
+1. **Lewis Group Workflow Execution**:
+   - All 14 sections are captured and stored in `documents/analysis.sqlite`.
+   - Open the capture app (`Run Capture.cmd`), click **"Audit & Valuation"** on the toolbar.
+   - On **Tab 1**, click **"Compile from SQLite"** -> **"Copy prompt"** -> paste into Gemini 4 Argon **without PDF**.
+   - Paste Argon's verified response on the right and click **"Save Response to DB"**.
+   - Switch to **Tab 2**, click **"Generate Stage 2 Prompt"** -> **"Copy prompt"** -> **"Open PDF folder"** -> attach prompt + PDF in Argon.
+   - Paste the final institutional report on the right and click **"Save Final Report to DB"**.
+2. **Execute Stage 2 Valuation in Gemini 4 Argon for PAN**:
+   - The Stage 2 prompt is prepared at `companies/mining/PAN/briefs/PAN_stage2_valuation_prompt.md`.
+   - Attach `companies/mining/PAN/sources/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf` together with the prompt in Gemini 4 Argon to generate the final 2-year forecast, SOTP DCF, and JSE equity research note (ZAR per share).
 3. **Daily Use on New Companies**:
-   - To analyze another company, run `python new_company.py <TICKER>`, drop the PDF into `companies/<TICKER>/sources/`, capture via `Run Capture.cmd`, and run `python workflow/export_stage1.py <TICKER>` followed by `python workflow/generate_stage2.py <TICKER>`.
+   - To analyze another company, run `python new_company.py <TICKER>`, drop the PDF into `companies/<SECTOR>/<TICKER>/sources/`, capture via `Run Capture.cmd`, review sections, and run the entire pipeline through the `"Audit & Valuation"` dialog.

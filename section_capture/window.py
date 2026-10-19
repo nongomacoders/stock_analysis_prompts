@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
     QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QToolBar, QVBoxLayout, QWidget,
 )
 
+from .audit_dialog import AuditValuationDialog
 from .content_types import CONTENT_TYPES
 from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
@@ -172,6 +173,8 @@ class CaptureWindow(QMainWindow):
         self.questions_action.triggered.connect(self.show_questions_ledger)
         self.sections_action = toolbar.addAction('Saved sections')
         self.sections_action.triggered.connect(self.show_saved_sections)
+        self.audit_action = toolbar.addAction('Audit && Valuation')
+        self.audit_action.triggered.connect(self.show_audit_valuation)
         save_action = QAction("Save section", self)
         save_action.setShortcut(QKeySequence.StandardKey.Save)
         save_action.triggered.connect(self.save_section)
@@ -390,6 +393,7 @@ class CaptureWindow(QMainWindow):
         self.map_action.setEnabled(has_pdf)
         self.questions_action.setEnabled(has_pdf)
         self.sections_action.setEnabled(has_pdf)
+        self.audit_action.setEnabled(has_pdf)
         self.questions_button.setEnabled(has_pdf)
         q_text = (getattr(self.source, "questions_ledger", "") or "").strip() if has_pdf else ""
         if q_text:
@@ -585,6 +589,11 @@ class CaptureWindow(QMainWindow):
     def show_saved_sections(self):
         if self.source:
             SavedSectionsDialog(self.source, self, db_path=self.output_root).exec()
+            self._update_actions()
+
+    def show_audit_valuation(self):
+        if self.source:
+            AuditValuationDialog(self.source, self, db_path=self.output_root).exec()
             self._update_actions()
 
     def change_page(self, page):
