@@ -17,7 +17,7 @@ from companies.sectors import (
 
 def test_sector_registry_defaults():
     codes = get_all_sector_codes()
-    for expected in ["mining", "retail", "reit", "it", "finance", "telcos"]:
+    for expected in ["mining", "retail", "reit", "it", "construction", "finance", "telcos"]:
         assert expected in codes
 
     it_cfg = get_sector_config("it")
@@ -43,6 +43,10 @@ def test_sector_alias_resolution():
     assert resolve_sector_alias("gold") == "mining"
     assert resolve_sector_alias("telecom") == "telcos"
     assert resolve_sector_alias("banking") == "finance"
+    assert resolve_sector_alias("materials") == "construction"
+    assert resolve_sector_alias("building") == "construction"
+    assert resolve_sector_alias("cement") == "construction"
+    assert resolve_sector_alias("infrastructure") == "construction" 
     assert resolve_sector_alias("nonexistent") is None
 
 
@@ -57,4 +61,5 @@ def test_sector_labels():
     assert get_sector_short_label("it") == "IT"
     assert get_sector_short_label("reit") == "REIT"
     assert get_sector_short_label("mining") == "Mining"
+    assert get_sector_short_label("construction") == "Construction" 
     assert "Retail" in get_sector_display("retail")

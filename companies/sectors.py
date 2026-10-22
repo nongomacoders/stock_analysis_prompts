@@ -93,6 +93,18 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         sens_persona="Managing Director & Head of Telecommunications Equity Research",
         aliases=("telecom", "telecoms", "telecommunications"),
     ),
+    "construction": SectorConfig(
+        code="construction",
+        display_name="Construction & Materials",
+        short_label="Construction",
+        badge_bg="#ecfeff",
+        badge_fg="#155e75",
+        badge_border="#a5f3fc",
+        stage1_persona="Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor",
+        stage2_persona="Managing Director & Head of Construction & Materials Equity Research",
+        sens_persona="Managing Director & Head of Construction & Materials Equity Research",
+        aliases=('materials', 'building', 'cement', 'infrastructure', 'engineering'),
+    ),
 }
 
 DEFAULT_SECTOR = "mining"

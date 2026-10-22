@@ -146,6 +146,12 @@ KNOWN_COMPANIES: dict[str, tuple[str, str]] = {
     "EOH": ("iOCO Limited", "it"),
     "ALH": ("Altron Limited", "it"),
     "DTC": ("Datatec Limited", "it"),
+    "WBO": ("Wilson Bayly Holmes-Ovcon", "construction"),
+    "WBHO": ("Wilson Bayly Holmes-Ovcon", "construction"),
+    "RBX": ("Raubex Group", "construction"),
+    "PPC": ("PPC Limited", "construction"),
+    "AFT": ("Afrimat Limited", "construction"),
+    "SSK": ("Stefanutti Stocks", "construction"),
 }
 
 
@@ -166,7 +172,8 @@ def detect_company_meta(path_or_filename: str | Path | None) -> tuple[str, str, 
                 default_title = (
                     f"{cand_ticker} Technologies" if cand_sec == "it"
                     else (f"{cand_ticker} Properties" if cand_sec == "reit"
-                    else (f"{cand_ticker} Group" if cand_sec == "retail" else f"{cand_ticker} Resources"))
+                    else (f"{cand_ticker} Construction" if cand_sec == "construction"
+                    else (f"{cand_ticker} Group" if cand_sec == "retail" else f"{cand_ticker} Resources")))
                 )
                 name = KNOWN_COMPANIES.get(cand_ticker, (default_title, cand_sec))[0]
                 return cand_ticker, name, cand_sec

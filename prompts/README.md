@@ -12,5 +12,7 @@ Prompts are versioned under `prompts/<sector>/<stage>/<version>/prompt.md` and a
 | `reit` | `12-analyst-reading-brief` | `v1.1.0` | Forensic financial analyst reading a REIT report: distributable income/DIPS, LTV & look-through debt, interest rate hedging, WALE, cap rates, and covenant headroom. |
 | `it` | `00-report-orientation` | `v1.0.0` | Orient the LLM with the major-section map of IT & software reports (recurring revenue, contract assets, debt). |
 | `it` | `12-analyst-reading-brief` | `v1.1.0` | Forensic financial analyst reading an IT report: ARR/MRR mix, billable consultant utilization, contract assets/deferred revenue, software capitalization, and legacy dispute provisions. |
+| `construction` | `00-report-orientation` | `v1.0.0` | Orient the LLM with the major-section map of Construction & Materials reports (order books, project claims, plant). |
+| `construction` | `12-analyst-reading-brief` | `v1.1.0` | Forensic financial analyst reading a Construction & Materials report: book-to-bill ratio, percentage-of-completion, contract assets/liabilities, retentions, CPAP escalation, materials inflation, and onerous contracts (IAS 37). |
 | `finance` | `*` | `*` | Falls back to generic reading prompt unless sector-specific prompt is provided. |
 | `telcos` | `*` | `*` | Falls back to generic reading prompt unless sector-specific prompt is provided. |

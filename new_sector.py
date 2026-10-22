@@ -19,6 +19,13 @@ from pathlib import Path
 import re
 import sys
 
+# Ensure UTF-8 output on Windows console
+if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parent
 SECTORS_FILE = ROOT / "companies/sectors.py"
 PROMPTS_DIR = ROOT / "prompts"

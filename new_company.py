@@ -83,7 +83,7 @@ def create_company(ticker: str, name: str | None = None, sector: str = "mining")
     )
 
     # 5. companies/<SECTOR>/<TICKER>/models/config.py
-    reporting_currency = "ZAR" if sector in ["retail", "reit", "it", "finance", "telcos"] else "USD"
+    reporting_currency = "ZAR" if sector in ["retail", "reit", "it", "construction", "finance", "telcos"] else "USD"
     (models_dir / "config.py").write_text(
         f'"""Configuration & baseline parameters for {company_name} ({ticker})."""\n\n'
         f"TICKER = {ticker!r}\n"
@@ -172,6 +172,26 @@ def generate_company_notebook(ticker: str, company_name: str, sector: str, outpu
             "print('[+] REIT analyst assumptions set:')\n"
             "print(f'    * Escalation: {CONTRACTUAL_ESCALATION_PCT*100:.1f}% | Vacancy: {PORTFOLIO_VACANCY_PCT*100:.1f}%')\n"
             "print(f'    * Exit Cap Rate: {EXIT_CAP_RATE_PCT*100:.2f}% | Target LTV: {TARGET_LTV_PCT*100:.1f}% | Payout: {DISTRIBUTION_PAYOUT_PCT*100:.1f}%')\n"
+        )
+    elif sector == "construction":
+        macro_text = (
+            "1. **Tweak Operating & Backlog Assumptions**: Order book replenishment, book-to-bill ratio, revenue burn rate.\n"
+            "2. **Contract Margin & Cost Escalation**: Operating EBIT margin, materials cost pass-through (CPAP formula), diesel/steel inflation.\n"
+            "3. **Working Capital & Cash Flow**: Contract assets / WIP days, retention receivables release, operating cash conversion %.\n"
+            "4. **Valuation Multiples**: EV/EBITDA, P/E multiple, dividend yield, and JSE equity target price upside.\n"
+        )
+        macro_code = (
+            "# ==============================================================================\n"
+            "# [CONTROLS] INTERACTIVE ANALYST CONSTRUCTION & MATERIALS ASSUMPTIONS\n"
+            "# ==============================================================================\n\n"
+            "BOOK_TO_BILL_RATIO = 1.15         # Target book-to-bill ratio (>1.0x indicates backlog growth)\n"
+            "OPERATING_MARGIN_PCT = 0.055      # Target consolidated operating margin (%)\n"
+            "MATERIALS_INFLATION_PCT = 0.060   # Annual building materials input inflation (%)\n"
+            "CASH_CONVERSION_PCT = 0.85        # Operating cash conversion (% of EBITDA)\n"
+            "TARGET_PE_MULTIPLE = 9.0          # Target forward P/E multiple\n\n"
+            "print('[+] Construction & Materials analyst assumptions set:')\n"
+            "print(f'    * Book-to-Bill: {BOOK_TO_BILL_RATIO:.2f}x | EBIT Margin: {OPERATING_MARGIN_PCT*100:.1f}%')\n"
+            "print(f'    * Materials Inflation: {MATERIALS_INFLATION_PCT*100:.1f}% | Cash Conversion: {CASH_CONVERSION_PCT*100:.1f}% | Target P/E: {TARGET_PE_MULTIPLE:.1f}x')\n"
         )
     else:
         macro_text = (

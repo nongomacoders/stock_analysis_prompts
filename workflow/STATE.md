@@ -407,19 +407,32 @@ Analyze and forecast from company presentations and reports section by section w
         - `PART 2: AFS FINANCIAL STATEMENTS & TECHNICAL NOTES`
         - `PART 3: SUBSEQUENT SENS ANNOUNCEMENTS`
     - Added comprehensive unit and GUI tests in `tests/test_multi_report.py`. All 101 tests passing (exit code 0).
+  - **Sequential Batch Submissions & 'Run All Pending' (`workflow/resubmit_sections.py`, `section_capture/map_dialog.py`)**:
+    - Upgraded `workflow/resubmit_sections.py` with `--report` selection and `--missing-only` resume mode, seamlessly threading the questions ledger across pending sections without wiping earlier responses.
+    - Integrated a **`Run All Pending`** 1-click action in `SavedSectionsDialog`, executing automated sequential DeepSeek queries with real-time progress and error handling.
+  - **Construction & Materials Sector Onboarding (`companies/sectors.py`, `prompts/construction/`)**:
+    - Added canonical `construction` sector (`Construction & Materials`) to centralized `SECTOR_REGISTRY` with cyan color palette (`#ecfeff` / `#155e75` / `#a5f3fc`) and aliases (`materials`, `building`, `cement`, `infrastructure`, `engineering`).
+    - Configured Stage 1 persona: `Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor`.
+    - Configured Stage 2 persona: `Managing Director & Head of Construction & Materials Equity Research`.
+    - Authored `prompts/construction/00-report-orientation/v1.0.0/prompt.md` and `prompts/construction/12-analyst-reading-brief/v1.1.0/prompt.md` targeting:
+      1. *Order Book Quality & Revenue Recognition (IFRS 15)*: Book-to-bill ratio, lump-sum vs cost-plus mix, percentage-of-completion, contract assets (unbilled WIP / accrued revenue), contract liabilities (customer advances), unapproved variation claims.
+      2. *Materials Cost Inflation & Margins*: Building materials pass-through (CPAP / Haylett formula), aggregates/cement/bitumen pricing, quarry/kiln capacity utilization, plant/equipment fleet maintenance capex.
+      3. *Working Capital & Retentions*: Retention receivables holdbacks (5-10%), trade receivables aging, municipal payment delays, and cash conversion ratios.
+      4. *Onerous Contracts & Guarantees (IAS 37)*: Onerous contract provisions, performance/advance payment guarantees, bonding line headroom, and delay damages.
+      5. *Balance Sheet & Covenants*: Net Debt to EBITDA, interest cover, and asset finance.
+    - Added construction company mapping in `section_capture/db.py` (`WBO`/`WBHO`, `RBX`, `PPC`, `AFT`, `SSK`).
+    - Updated `new_company.py` with construction parameters (book-to-bill, operating EBIT margin, materials inflation, cash conversion, ZAR reporting currency).
+    - Added test coverage in `tests/test_sectors.py`. All 102 unit and GUI tests passing (exit code 0).
 
 ## Next steps
 
-1. **iOCO Analysis Kickoff**:
-   - Capture strategic sections from `iOCO_Integrated_Annual_Report_2026.pdf` (`[IAR]`).
-   - Capture financial statement and accounting note sections from `iOCO_Annual_Financial_Statements_2026.pdf` (`[AFS]`).
-   - Export unified Stage 1 audit prompt via `python workflow/export_stage1.py IOC`.
-   - Open report in PySide6 capture app (`section_capture/`), scan major sections, and perform section capture.
-2. **Verify Coverage Universe Across All Tabs**:
+1. **Active Coverage Universe (5 Assets Tracked)**:
    - `PAN`: BUY | Target R43.50 | Ref R30.69 (+41.7% upside / +47.6% TSR) | Mining
    - `APF`: SELL | Target R0.42 | Ref R0.60 (-30.0% upside) | REIT
    - `ORN`: HOLD | Target R0.26 | Ref R0.28 (-8.5% upside) | Mining
    - `LEW`: HOLD | Target R84.50 | Ref R79.00 (+6.96% upside / +18.86% TSR) | Retail
-   - `IOC`: In progress (Stage 1 ingestion pending) | IT
+   - `IOC`: BUY | Target R4.90 | Ref R3.96 (+23.7% upside / TSR) | IT
+2. **Construction Sector Deployment**:
+   - Ready to scaffold construction and materials companies (e.g. `python new_company.py WBO --sector construction --name "Wilson Bayly Holmes-Ovcon"` or `RBX` Raubex, `PPC` PPC Ltd, `AFT` Afrimat).
 
 
