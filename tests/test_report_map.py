@@ -201,16 +201,14 @@ def test_build_manual_section_map_contiguous(source):
     ]
     mapping = build_manual_section_map(source, sections_input)
     assert mapping["status"] == "manual_outline"
-    assert len(mapping["sections"]) == 3  # Cover / Overview (1..9), Operations (10..29), Financial (30..54)
-    assert mapping["sections"][0]["title"] == "Cover / Overview"
-    assert mapping["sections"][0]["start"]["physical_page"] == 1
-    assert mapping["sections"][0]["end"]["physical_page"] == 9
-    assert mapping["sections"][1]["title"] == "Operations Review"
-    assert mapping["sections"][1]["start"]["physical_page"] == 10
-    assert mapping["sections"][1]["end"]["physical_page"] == 29
-    assert mapping["sections"][2]["title"] == "Financial Results"
-    assert mapping["sections"][2]["start"]["physical_page"] == 30
-    assert mapping["sections"][2]["end"]["physical_page"] == source.page_count
+    assert len(mapping["sections"]) == 2  # Operations (10..29), Financial (30..54)
+    assert not any(s["title"] == "Cover / Overview" for s in mapping["sections"])
+    assert mapping["sections"][0]["title"] == "Operations Review"
+    assert mapping["sections"][0]["start"]["physical_page"] == 10
+    assert mapping["sections"][0]["end"]["physical_page"] == 29
+    assert mapping["sections"][1]["title"] == "Financial Results"
+    assert mapping["sections"][1]["start"]["physical_page"] == 30
+    assert mapping["sections"][1]["end"]["physical_page"] == source.page_count
 
 
 def test_report_map_dialog_manual_builder(qapp, pdf_path, tmp_path, monkeypatch):
@@ -362,15 +360,16 @@ def test_first_mapping_has_no_ins_and_capture_insert_works(qapp, pdf_path, tmp_p
     dialog.save_manual_map()
     dialog.close()
 
-    # Verify saved report map in source
+    # Verify saved report map in source: Only the 3 explicitly added sections (no auto-added Cover/Overview)
     sids = [s["section_id"] for s in window.source.report_map["sections"]]
-    assert sids == ["D001", "D002", "D003", "D004"]  # D001 is Cover/Overview, D002 is Market context, etc.
+    assert sids == ["D001", "D002", "D003"]
+    assert not any(s["title"] == "Cover / Overview" for s in window.source.report_map["sections"])
 
     # 2. Insert functionality on capture section page: Generates -ins and keeps existing IDs!
     from section_capture.report_map import insert_section_into_report_map, preview_inserted_section_id
     cand_id, desc = preview_inserted_section_id(window.source.report_map, start_page=12, page_count=window.source.page_count)
-    # Page 12 is inside D002 (p. 9-14)
-    assert cand_id == "D002-ins"
+    # Page 12 is inside D001 (Market context, p. 9-14)
+    assert cand_id == "D001-ins"
 
     updated_map, new_id = insert_section_into_report_map(
         window.source.report_map,
@@ -378,13 +377,12 @@ def test_first_mapping_has_no_ins_and_capture_insert_works(qapp, pdf_path, tmp_p
         start_page=12,
         page_count=window.source.page_count,
     )
-    assert new_id == "D002-ins"
-    # D001, D002, D002-ins, D003, D004
+    assert new_id == "D001-ins"
     final_sids = [s["section_id"] for s in updated_map["sections"]]
-    assert final_sids == ["D001", "D002", "D002-ins", "D003", "D004"]
-    # D003 and D004 NEVER shifted!
+    assert final_sids == ["D001", "D001-ins", "D002", "D003"]
+    # Existing IDs D002 and D003 never shifted!
+    assert updated_map["sections"][2]["section_id"] == "D002"
     assert updated_map["sections"][3]["section_id"] == "D003"
-    assert updated_map["sections"][4]["section_id"] == "D004"
 
     # Verify GUI button replaced "New section" with "Insert"
     assert hasattr(window, "insert_btn")

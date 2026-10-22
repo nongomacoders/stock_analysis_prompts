@@ -669,7 +669,11 @@ class CaptureWindow(QMainWindow):
                 if sec.get("parent_heading"):
                     _add(sec["parent_heading"])
                 title = sec.get("title", "")
-                if title and not title.lower().startswith("unclassified"):
+                if (
+                    title
+                    and not title.lower().startswith("unclassified")
+                    and title.lower() not in ("cover / overview", "cover/overview")
+                ):
                     _add(title)
                 for ev in sec.get("heading_evidence", []):
                     _add(ev.get("heading", ""))

@@ -441,6 +441,11 @@ Analyze and forecast from company presentations and reports section by section w
       - Removed duplicated `Saved sections` and `Stored questions` sidebar buttons that were already present in the top toolbar.
       - Streamlined auxiliary row to `[⚡ Run Pending (N)] [Review Sections →] [Copy prompt]`, keeping prompt clipboard copying accessible with 1 click.
     - Added dedicated test coverage in `tests/test_capture.py`. All 104 unit and GUI tests passing (exit code 0).
+  - **Removed Auto-Generated 'Cover / Overview' Sections (`section_capture/report_map.py`, `section_capture/window.py`)**:
+    - Eliminated automatic insertion of dummy `{"title": "Cover / Overview", "start_page": 1}` in `build_manual_section_map()` when manual section outlines start at physical page $> 1$.
+    - Filtered phantom `"Cover / Overview"` entries in `_refresh_heading_options()` in `section_capture/window.py` so only user-defined sections populate the dropdown.
+    - Cleaned legacy report maps in `documents/analysis.sqlite` (Calgro AFS, ORN, APF, and iOCO), re-indexing section IDs contiguously starting at `D001` for the first user-defined section.
+    - Updated `tests/test_report_map.py`. All 104 unit and GUI tests passing (exit code 0).
 
 ## Next steps
 

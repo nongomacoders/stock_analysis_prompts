@@ -341,9 +341,6 @@ def build_manual_section_map(source, sections_data: list[dict]) -> dict:
     cleaned.sort(key=lambda s: s["start_page"])
     if not cleaned:
         cleaned = [{"title": "General Material", "start_page": 1, "section_id": None}]
-    elif cleaned[0]["start_page"] > 1:
-        first_sid = cleaned[0].get("section_id") if cleaned[0]["start_page"] == 1 else None
-        cleaned.insert(0, {"title": "Cover / Overview", "start_page": 1, "section_id": first_sid})
 
     sections = []
     seq_counter = 1
