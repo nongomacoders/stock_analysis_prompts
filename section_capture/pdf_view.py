@@ -18,6 +18,7 @@ class PdfCanvas(QGraphicsView):
         self.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setFrameShape(QGraphicsView.Shape.NoFrame)
+        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.source = None
         self.page = 1
         self.mode = "area"
@@ -73,6 +74,7 @@ class PdfCanvas(QGraphicsView):
         return QPointF(max(0.0, min(rect.width(), mapped.x())), max(0.0, min(rect.height(), mapped.y())))
 
     def mousePressEvent(self, event):
+        self.setFocus()
         if self.source and event.button() == Qt.MouseButton.LeftButton:
             if not self.sceneRect().contains(self.mapToScene(event.position().toPoint())):
                 return

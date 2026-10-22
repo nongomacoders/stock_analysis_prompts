@@ -10,7 +10,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .content_types import CONTENT_TYPES
-from .db import SavedSection, insert_section, next_section_number
+from .db import (
+    SavedSection,
+    connect_db,
+    detect_doc_type_and_date,
+    get_doc_code,
+    insert_section,
+    next_section_number,
+    resolve_db_path,
+)
 from .pdf_source import Capture, PdfSource
 from .report_map import (
     clean_single_line_text,
@@ -28,8 +36,9 @@ PROMPT_VERSION = "1.1.0"
 PROMPT_STAGE = "12-analyst-reading-brief"
 PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
 
-SUPPORTED_SECTORS = ["mining", "retail", "finance", "telcos"]
-DEFAULT_SECTOR = "mining"
+from companies.sectors import DEFAULT_SECTOR, get_all_sector_codes, resolve_sector_alias
+
+SUPPORTED_SECTORS = get_all_sector_codes()
 
 
 def detect_sector_from_path(path: Path | str | None) -> str:
@@ -42,8 +51,18 @@ def detect_sector_from_path(path: Path | str | None) -> str:
         idx = parts.index("companies")
         if idx + 1 < len(parts):
             candidate = parts[idx + 1]
-            if candidate in SUPPORTED_SECTORS:
-                return candidate
+            resolved = resolve_sector_alias(candidate)
+            if resolved:
+                return resolved
+    # Fallback to check path string
+    s = str(p).lower()
+    for code in SUPPORTED_SECTORS:
+        if f"/{code}/" in s or f"\\{code}\\" in s:
+            return code
+    if "/tech/" in s or "\\tech\\" in s:
+        return "it"
+    if "reit" in s:
+        return "reit"
     return DEFAULT_SECTOR
 
 
@@ -189,7 +208,7 @@ def save_package(
 ) -> SavedSection:
     resolved_sector = sector or detect_sector_from_path(source.path)
     prompt_file = get_prompt_path(resolved_sector)
-    heading = clean_single_line_text(re.sub(r"^D\d{3}\s*[—:\-]\s*", "", clean_single_line_text(heading), flags=re.IGNORECASE))
+    heading = clean_single_line_text(re.sub(r"^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*", "", clean_single_line_text(heading), flags=re.IGNORECASE))
     subheading = clean_single_line_text(subheading)
     if not heading:
         raise ValueError("Enter a section heading before saving.")
@@ -236,8 +255,23 @@ def save_package(
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     seq_num = next_section_number(source.sha256, db_path=output_root)
     section_ids = sub_ids or (matching_section_ids(mapping, selection_previews) if mapping else [])
+    if not section_ids:
+        inferred_type, _ = detect_doc_type_and_date(source.path)
+        if inferred_type == "sens":
+            section_ids = [f"SENS-{seq_num:02d}"]
     section_tag = "-".join(section_ids)
     prefix = f"{seq_num:02d}-{section_tag}" if section_tag else f"{seq_num:02d}"
+    db_file = resolve_db_path(output_root)
+    doc_type = None
+    if db_file.exists():
+        with connect_db(db_file) as conn:
+            row = conn.execute("SELECT doc_type FROM reports WHERE sha256 = ?", (source.sha256,)).fetchone()
+            if row and row["doc_type"]:
+                doc_type = row["doc_type"]
+    if not doc_type:
+        doc_type, _ = detect_doc_type_and_date(source.path)
+    doc_code = get_doc_code(doc_type)
+
     package_id = "section-" + uuid.uuid4().hex
     combined_title = f"{heading}-{effective_subheading}" if effective_subheading else heading
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", combined_title).strip("-")[:55] or "section"
@@ -261,6 +295,8 @@ def save_package(
             "filename": source.path.name,
             "original_path": str(source.path),
             "sha256": source.sha256,
+            "doc_type": doc_type,
+            "doc_code": doc_code,
             "byte_size": len(source.data),
             "physical_page_count": source.page_count,
         },
@@ -294,6 +330,9 @@ def save_package(
         part_sec_label = ", ".join(part_sec_ids) if part_sec_ids else (section_tag or "unmapped")
         manifest["selections"].append({
             "section_id": part_sec_label,
+            "doc_code": doc_code,
+            "doc_type": doc_type,
+            "source_filename": source.path.name,
             "subheading": c_sh or None,
             "physical_page": cap.page,
             "selection_mode": cap.mode,
@@ -311,7 +350,7 @@ def save_package(
         })
         sub_tag = f" | {c_sh}" if c_sh else ""
         text_parts.append(
-            f"--- Section {part_sec_label} | original physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]}{sub_tag} ---\n{cap.text}\n"
+            f"--- Section {part_sec_label} | [{doc_code}] physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]}{sub_tag} ---\n{cap.text}\n"
         )
     selected_text = "\n".join(text_parts)
     prompt = build_prompt(manifest, [cap.text for cap in captures], sector=resolved_sector)

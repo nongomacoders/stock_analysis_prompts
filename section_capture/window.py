@@ -1,21 +1,42 @@
 from __future__ import annotations
 
 import re
+import os
 from pathlib import Path
 
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QAction, QKeyEvent, QKeySequence
+from PySide6.QtCore import QEvent, Qt
+from PySide6.QtGui import QAction, QKeyEvent, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
-    QApplication, QCheckBox, QComboBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
+    QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
     QLineEdit, QListWidget, QMainWindow, QMessageBox, QPlainTextEdit,
-    QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QToolBar, QVBoxLayout, QWidget,
+    QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QTextEdit, QToolBar, QVBoxLayout, QWidget,
 )
 
 from .audit_dialog import AuditValuationDialog
 from .content_types import CONTENT_TYPES
-from .db import SavedSection, list_sections, resolve_db_path, save_section_llm_response
+from .db import (
+    DOC_TYPES,
+    SavedSection,
+    auto_link_companion_reports,
+    auto_link_parent_report,
+    connect_db,
+    detect_doc_type_and_date,
+    get_doc_badge,
+    get_doc_code,
+    get_linked_sens_reports,
+    get_parent_report,
+    link_sens_report,
+    list_sections,
+    load_last_opened_dir,
+    resolve_db_path,
+    save_last_opened_dir,
+    save_section_llm_response,
+    set_report_doc_type,
+    upsert_report,
+)
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
 from .openrouter import OpenRouterWorker, get_openrouter_model
+from companies.sectors import get_all_sectors
 from .packages import (
     DEFAULT_SECTOR,
     PROJECT_ROOT,
@@ -27,7 +48,14 @@ from .packages import (
 )
 from .pdf_source import Capture, PdfSource
 from .pdf_view import PdfCanvas
-from .report_map import save_map, scan_report, section_requires_subheading
+from .report_map import (
+    insert_section_into_report_map,
+    load_questions_ledger,
+    preview_inserted_section_id,
+    save_map,
+    scan_report,
+    section_requires_subheading,
+)
 
 
 class SanitizedLineEdit(QLineEdit):
@@ -106,6 +134,150 @@ class HeadingComboBox(QComboBox):
         self.blockSignals(False)
 
 
+class InsertSectionDialog(QDialog):
+    """Dialog to insert a new section at the current page with a '-ins' ID during capture."""
+
+    def __init__(
+        self,
+        parent,
+        report_map: dict | None,
+        current_page: int,
+        page_count: int,
+        initial_title: str = "",
+    ):
+        super().__init__(parent)
+        self.report_map = report_map
+        self.page_count = page_count
+        self.setWindowTitle("Insert Section into Report Map")
+        self.resize(480, 260)
+        self.setMinimumWidth(440)
+        layout = QVBoxLayout(self)
+        layout.setSpacing(12)
+
+        info = QLabel(
+            "Insert a new section into the report outline while capturing.\n"
+            "Existing section IDs will remain stable without shifting."
+        )
+        info.setObjectName("muted")
+        layout.addWidget(info)
+
+        form = QFormLayout()
+        form.setSpacing(10)
+
+        self.title_edit = SanitizedLineEdit(self)
+        self.title_edit.setPlaceholderText("Section heading (e.g. Our three-pillar strategy)")
+        self.title_edit.setText(clean_single_line_text(initial_title))
+        form.addRow("Section heading:", self.title_edit)
+
+        self.page_spin = QSpinBox(self)
+        self.page_spin.setMinimum(1)
+        self.page_spin.setMaximum(max(1, page_count))
+        self.page_spin.setValue(max(1, min(current_page, page_count)))
+        form.addRow("Start page:", self.page_spin)
+
+        self.id_preview_label = QLabel(self)
+        self.id_preview_label.setStyleSheet("font-weight: bold; color: #2e7d32; font-size: 13px;")
+        form.addRow("Assigned ID:", self.id_preview_label)
+
+        self.partition_preview_label = QLabel(self)
+        self.partition_preview_label.setWordWrap(True)
+        form.addRow("Partition:", self.partition_preview_label)
+
+        layout.addLayout(form)
+
+        self.page_spin.valueChanged.connect(self._update_preview)
+        self._update_preview()
+
+        btn_box = QHBoxLayout()
+        btn_box.addStretch(1)
+        self.submit_btn = QPushButton("Insert Section", self)
+        self.submit_btn.setObjectName("primary")
+        self.submit_btn.clicked.connect(self.accept)
+        cancel_btn = QPushButton("Cancel", self)
+        cancel_btn.clicked.connect(self.reject)
+        btn_box.addWidget(cancel_btn)
+        btn_box.addWidget(self.submit_btn)
+        layout.addLayout(btn_box)
+
+        self.title_edit.setFocus()
+        if initial_title:
+            self.title_edit.selectAll()
+
+    def _update_preview(self):
+        page = self.page_spin.value()
+        try:
+            cand_id, desc = preview_inserted_section_id(self.report_map, page, self.page_count)
+            self.id_preview_label.setText(cand_id)
+            self.partition_preview_label.setText(desc)
+            if hasattr(self, "submit_btn"):
+                self.submit_btn.setEnabled(True)
+        except Exception as exc:
+            self.id_preview_label.setText("Invalid")
+            self.partition_preview_label.setText(str(exc))
+            if hasattr(self, "submit_btn"):
+                self.submit_btn.setEnabled(False)
+
+    @property
+    def section_title(self) -> str:
+        return self.title_edit.text().strip()
+
+    @property
+    def start_page(self) -> int:
+        return self.page_spin.value()
+
+
+class DocumentClassifyDialog(QDialog):
+    """Modal dialog prompting the analyst to classify a document role upon opening."""
+
+    def __init__(self, filename: str, initial_type: str = "annual_report", parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Classify Document Role")
+        self.resize(480, 240)
+        self.selected_doc_type = initial_type
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(18, 16, 18, 16)
+        layout.setSpacing(10)
+
+        header = QLabel("Classify Document for Analysis")
+        header.setStyleSheet("font-size: 14px; font-weight: bold; color: #1e293b;")
+        layout.addWidget(header)
+
+        fn_lbl = QLabel(f"Document: <b>{filename}</b>")
+        fn_lbl.setWordWrap(True)
+        fn_lbl.setStyleSheet("color: #475569; font-size: 12px;")
+        layout.addWidget(fn_lbl)
+
+        desc_lbl = QLabel(
+            "Select this document's role to ensure accurate page citations ([IAR p. X] vs [AFS p. Y]) "
+            "and synchronized questions ledger across companion documents:"
+        )
+        desc_lbl.setWordWrap(True)
+        desc_lbl.setStyleSheet("color: #64748b; font-size: 11px;")
+        layout.addWidget(desc_lbl)
+
+        form = QFormLayout()
+        form.setVerticalSpacing(8)
+        self.type_combo = QComboBox()
+        for dt_key, dt_info in DOC_TYPES.items():
+            self.type_combo.addItem(f"{dt_info['badge']} {dt_info['label']}", dt_key)
+
+        idx = self.type_combo.findData(initial_type)
+        if idx >= 0:
+            self.type_combo.setCurrentIndex(idx)
+        form.addRow("Document Role:", self.type_combo)
+        layout.addLayout(form)
+
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
+        btn_box.accepted.connect(self._on_accept)
+        btn_box.rejected.connect(self.reject)
+        layout.addWidget(btn_box)
+
+    def _on_accept(self):
+        self.selected_doc_type = self.type_combo.currentData()
+        self.accept()
+
+
 class CaptureWindow(QMainWindow):
     def __init__(self, output_root: Path | None = None):
         super().__init__()
@@ -114,6 +286,7 @@ class CaptureWindow(QMainWindow):
         self.captures: list[Capture] = []
         self.output_root: Path | None = Path(output_root) if output_root else None
         self.last_package: SavedSection | None = None
+        self.last_opened_dir = load_last_opened_dir(db_path=self.output_root)
         self.setWindowTitle("Report Section Capture")
         self.resize(1440, 940)
         self.setMinimumSize(1000, 680)
@@ -122,6 +295,13 @@ class CaptureWindow(QMainWindow):
         self.canvas.problem.connect(self.show_problem)
         self._build_toolbar()
         self._build_body()
+        self.installEventFilter(self)
+        self.canvas.installEventFilter(self)
+        if self.canvas.viewport():
+            self.canvas.viewport().installEventFilter(self)
+        app = QApplication.instance()
+        if app:
+            app.installEventFilter(self)
         self.statusBar().showMessage("Open a PDF. Your source stays unchanged; sections are saved to SQLite.")
         self._update_actions()
 
@@ -129,6 +309,10 @@ class CaptureWindow(QMainWindow):
         toolbar = QToolBar("PDF controls")
         toolbar.setMovable(False)
         self.addToolBar(toolbar)
+        self.new_action = QAction("New", self)
+        self.new_action.setToolTip("Scaffold a new company hub (ticker, sector, models, sandbox)")
+        self.new_action.triggered.connect(self.show_new_company_dialog)
+        toolbar.addAction(self.new_action)
         open_action = QAction("Open PDF", self)
         open_action.setShortcut(QKeySequence.StandardKey.Open)
         open_action.triggered.connect(self.choose_pdf)
@@ -151,14 +335,18 @@ class CaptureWindow(QMainWindow):
         toolbar.addWidget(self.next_button)
         toolbar.addSeparator()
         self.mode_combo = QComboBox()
-        self.mode_combo.addItem("Area selection", "area")
-        self.mode_combo.addItem("Text selection", "text")
-        self.mode_combo.currentIndexChanged.connect(lambda: self.canvas.set_mode(self.mode_combo.currentData()))
+        self.mode_combo.addItem("Area selection (Alt+A)", "area")
+        self.mode_combo.addItem("Text selection (Alt+T)", "text")
+        self.mode_combo.currentIndexChanged.connect(lambda: self.set_selection_mode(self.mode_combo.currentData()))
         toolbar.addWidget(self.mode_combo)
+        self.area_shortcut = QShortcut(QKeySequence("Alt+A"), self)
+        self.area_shortcut.activated.connect(lambda: self.set_selection_mode("area"))
+        self.text_shortcut = QShortcut(QKeySequence("Alt+T"), self)
+        self.text_shortcut.activated.connect(lambda: self.set_selection_mode("text"))
         toolbar.addSeparator()
         self.sector_combo = QComboBox()
-        for sec in SUPPORTED_SECTORS:
-            self.sector_combo.addItem(f"Sector: {sec.capitalize()}", sec)
+        for s in get_all_sectors():
+            self.sector_combo.addItem(f"Sector: {s.short_label}", s.code)
         self.sector_combo.setToolTip("Active analysis sector (determines prompt template and forensic focus)")
         toolbar.addWidget(self.sector_combo)
         for label, callback in (("Fit page", self.canvas.fit_page), ("−", lambda: self.canvas.zoom(1/1.25)),
@@ -175,6 +363,8 @@ class CaptureWindow(QMainWindow):
         self.sections_action.triggered.connect(self.show_saved_sections)
         self.audit_action = toolbar.addAction('Audit && Valuation')
         self.audit_action.triggered.connect(self.show_audit_valuation)
+        self.portfolio_action = toolbar.addAction('Analyzed Stocks')
+        self.portfolio_action.triggered.connect(self.show_portfolio_dashboard)
         save_action = QAction("Save section", self)
         save_action.setShortcut(QKeySequence.StandardKey.Save)
         save_action.triggered.connect(self.save_section)
@@ -184,8 +374,33 @@ class CaptureWindow(QMainWindow):
         body = QWidget()
         layout = QVBoxLayout(body)
         layout.setContentsMargins(20, 16, 20, 10)
+
+        # Document Switcher, Role Classification & SENS bar
+        doc_bar = QHBoxLayout()
+        doc_bar.setSpacing(8)
+        self.doc_selector = QComboBox()
+        self.doc_selector.setMinimumWidth(320)
+        self.doc_selector.setToolTip("Active document. Switch between reports and companion announcements.")
+        self.doc_selector.currentIndexChanged.connect(self._on_doc_selected)
+        doc_bar.addWidget(self.doc_selector, 1)
+
+        doc_bar.addWidget(QLabel("Role:"))
+        self.doc_type_combo = QComboBox()
+        self.doc_type_combo.setToolTip("Document role / classification (determines [IAR p. X] vs [AFS p. Y] citations and ledger sync).")
+        for dt_key, dt_info in DOC_TYPES.items():
+            self.doc_type_combo.addItem(f"{dt_info['code']} ({dt_info['label'].split('(')[0].strip()})", dt_key)
+        self.doc_type_combo.currentIndexChanged.connect(self._on_doc_type_changed)
+        doc_bar.addWidget(self.doc_type_combo)
+
+        self.add_sens_button = QPushButton("+ Add SENS Notice")
+        self.add_sens_button.setToolTip("Add a subsequent SENS/ASX announcement issued after the Annual Report.")
+        self.add_sens_button.clicked.connect(self.choose_and_add_sens)
+        doc_bar.addWidget(self.add_sens_button)
+        layout.addLayout(doc_bar)
+
         self.document_label = QLabel("No report open")
         self.document_label.setObjectName("documentTitle")
+        self.document_label.setVisible(False)
         layout.addWidget(self.document_label)
         hint = QLabel("1  Open report     2  Name your section     3  Select evidence     4  Save to SQLite & copy prompt")
         hint.setObjectName("muted")
@@ -204,16 +419,41 @@ class CaptureWindow(QMainWindow):
         form = QFormLayout()
         form.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapAllRows)
         form.setVerticalSpacing(3)
+        # Section heading row with [Use text] and [Insert]
+        heading_row = QHBoxLayout()
+        heading_row.setSpacing(4)
         self.heading_edit = HeadingComboBox()
         self.heading_edit.setPlaceholderText("Select from dropdown or type section heading")
         self.heading_edit.textChanged.connect(self._update_actions)
         self.heading_edit.currentIndexChanged.connect(lambda _: self._update_actions())
-        form.addRow("Section heading", self.heading_edit)
+        self.use_text_heading_btn = QPushButton("Use text")
+        self.use_text_heading_btn.setToolTip("Fill Section heading with the text currently selected on the PDF canvas.")
+        self.use_text_heading_btn.clicked.connect(self.use_selected_text_for_heading)
+        self.insert_btn = QPushButton("Insert")
+        self.insert_btn.setToolTip("Insert a new section at the current page with a '-ins' ID into the report map.")
+        self.insert_btn.clicked.connect(self.insert_section)
+        heading_row.addWidget(self.heading_edit, 1)
+        heading_row.addWidget(self.use_text_heading_btn)
+        heading_row.addWidget(self.insert_btn)
+        form.addRow("Section heading", heading_row)
+
+        # Sub-heading row with [Use text] and [New subsection]
+        subheading_row = QHBoxLayout()
+        subheading_row.setSpacing(4)
         self.subheading_label = QLabel("Sub-heading (optional)")
         self.subheading_edit = SanitizedLineEdit()
         self.subheading_edit.setPlaceholderText("Optional: e.g. Statement of Financial Position")
         self.subheading_edit.textChanged.connect(self._update_actions)
-        form.addRow(self.subheading_label, self.subheading_edit)
+        self.use_text_subheading_btn = QPushButton("Use text")
+        self.use_text_subheading_btn.setToolTip("Fill Sub-heading with the text currently selected on the PDF canvas.")
+        self.use_text_subheading_btn.clicked.connect(self.use_selected_text_for_subheading)
+        self.new_subsection_btn = QPushButton("New subsection")
+        self.new_subsection_btn.setToolTip("Keep current Section heading and start a new subsection under it.")
+        self.new_subsection_btn.clicked.connect(self.new_subsection)
+        subheading_row.addWidget(self.subheading_edit, 1)
+        subheading_row.addWidget(self.use_text_subheading_btn)
+        subheading_row.addWidget(self.new_subsection_btn)
+        form.addRow(self.subheading_label, subheading_row)
         self.question_edit = QPlainTextEdit()
         self.question_edit.setPlaceholderText("Optional: which claim or concern should the model examine?")
         self.question_edit.setFixedHeight(44)
@@ -274,7 +514,8 @@ class CaptureWindow(QMainWindow):
         row.addWidget(self.apply_type_button)
         remove = QPushButton("Remove selected")
         remove.clicked.connect(self.remove_part)
-        new = QPushButton("New section")
+        new = QPushButton("Clear draft")
+        new.setToolTip("Clear current uncommitted draft selections and headings.")
         new.clicked.connect(self.new_section)
         row.addWidget(remove)
         row.addWidget(new)
@@ -360,6 +601,16 @@ class CaptureWindow(QMainWindow):
                 options.append(cleaned)
 
         if self.source:
+            doc_t, _ = detect_doc_type_and_date(self.source.path)
+            if doc_t == "sens":
+                stem = self.source.path.stem
+                clean_title = re.sub(r"^\d{8}[-_]?(?:[A-Za-z0-9]+[-_]?){1,3}", "", stem).replace("-", " ").replace("_", " ").strip()
+                if clean_title:
+                    _add(f"SENS: {clean_title}")
+                _add("SENS-01: Key Terms & Offtake Agreements")
+                _add("SENS-02: Operational Milestones & Development Timeline")
+                _add("SENS-03: Cash Flow & Financing CPs")
+
             for saved in list_sections(self.source.sha256, db_path=self.output_root):
                 if saved.heading:
                     _add(saved.heading)
@@ -371,15 +622,160 @@ class CaptureWindow(QMainWindow):
 
         if self.source and self.source.report_map:
             for sec in self.source.report_map.get("sections", []):
-                if sec.get("kind") == "unclassified":
-                    continue
                 if sec.get("parent_heading"):
                     _add(sec["parent_heading"])
-                _add(sec.get("title", ""))
+                title = sec.get("title", "")
+                if title and not title.lower().startswith("unclassified"):
+                    _add(title)
                 for ev in sec.get("heading_evidence", []):
                     _add(ev.get("heading", ""))
 
         self.heading_edit.set_options(options)
+
+    def _refresh_document_selector(self):
+        if not hasattr(self, "doc_selector") or not self.source:
+            return
+        self.doc_selector.blockSignals(True)
+        self.doc_selector.clear()
+
+        current_path = Path(self.source.path).resolve()
+        # Determine company sources directory
+        sources_dir = None
+        if current_path.parent.name.lower() == "sens" and current_path.parent.parent.name.lower() == "sources":
+            sources_dir = current_path.parent.parent
+        elif current_path.parent.name.lower() == "sources":
+            sources_dir = current_path.parent
+
+        items: list[tuple[str, Path, str]] = []  # (label, path, sort_key)
+        seen_paths: set[Path] = set()
+        db_file = resolve_db_path(self.output_root)
+
+        if sources_dir and sources_dir.exists():
+            # 1. Main sources/*.pdf
+            for p in sorted(sources_dir.glob("*.pdf"), key=lambda x: x.name.lower()):
+                p_res = p.resolve()
+                if p_res not in seen_paths:
+                    seen_paths.add(p_res)
+                    doc_t, date_str = detect_doc_type_and_date(p_res)
+                    if db_file.exists():
+                        with connect_db(db_file) as conn:
+                            row = conn.execute("SELECT doc_type, announcement_date FROM reports WHERE (original_path LIKE ? OR filename = ?)", (f"%{p.name}%", p.name)).fetchone()
+                            if row and row["doc_type"]:
+                                doc_t = row["doc_type"]
+                                date_str = row["announcement_date"] or date_str
+                    badge = get_doc_badge(doc_t, date_str)
+                    sort_order = "0_iar" if doc_t in ("iar", "annual_report") else ("1_afs" if doc_t == "afs" else ("2_pres" if doc_t == "presentation" else f"3_sens_{date_str or '9999'}"))
+                    items.append((f"{badge} {p.name}", p_res, sort_order))
+
+            # 2. SENS subfolder: sources/sens/*.pdf
+            sens_sub = sources_dir / "sens"
+            if sens_sub.exists():
+                for p in sorted(sens_sub.glob("*.pdf"), key=lambda x: x.name.lower()):
+                    p_res = p.resolve()
+                    if p_res not in seen_paths:
+                        seen_paths.add(p_res)
+                        doc_t, date_str = detect_doc_type_and_date(p_res)
+                        if db_file.exists():
+                            with connect_db(db_file) as conn:
+                                row = conn.execute("SELECT doc_type, announcement_date FROM reports WHERE (original_path LIKE ? OR filename = ?)", (f"%{p.name}%", p.name)).fetchone()
+                                if row and row["doc_type"]:
+                                    doc_t = row["doc_type"]
+                                    date_str = row["announcement_date"] or date_str
+                        badge = get_doc_badge(doc_t, date_str)
+                        sort_order = f"3_sens_{date_str or '9999'}_{p_res.name}"
+                        items.append((f"{badge} {p.name}", p_res, sort_order))
+
+        # If current document wasn't in sources_dir, include it
+        if current_path not in seen_paths:
+            doc_t, date_str = detect_doc_type_and_date(current_path)
+            if db_file.exists():
+                with connect_db(db_file) as conn:
+                    row = conn.execute("SELECT doc_type, announcement_date FROM reports WHERE (original_path LIKE ? OR filename = ?)", (f"%{current_path.name}%", current_path.name)).fetchone()
+                    if row and row["doc_type"]:
+                        doc_t = row["doc_type"]
+                        date_str = row["announcement_date"] or date_str
+            badge = get_doc_badge(doc_t, date_str)
+            items.append((f"{badge} {current_path.name}", current_path, "0"))
+
+        # Sort: IAR first, then AFS, then Presentation, then SENS by date
+        items.sort(key=lambda x: x[2])
+
+        selected_idx = 0
+        for i, (label, p_path, _) in enumerate(items):
+            self.doc_selector.addItem(label, str(p_path))
+            if p_path == current_path:
+                selected_idx = i
+
+        self.doc_selector.setCurrentIndex(selected_idx)
+        self.doc_selector.blockSignals(False)
+
+    def _on_doc_type_changed(self, index: int):
+        if not hasattr(self, "doc_type_combo") or index < 0 or not self.source:
+            return
+        new_type = self.doc_type_combo.itemData(index)
+        if new_type:
+            set_report_doc_type(self.source.sha256, new_type, self.output_root)
+            self._refresh_document_selector()
+
+    def _on_doc_selected(self, index: int):
+        if not hasattr(self, "doc_selector") or index < 0:
+            return
+        target_path = self.doc_selector.itemData(index)
+        if target_path and self.source:
+            cur = Path(self.source.path).resolve()
+            tgt = Path(target_path).resolve()
+            if cur != tgt and tgt.exists():
+                self.open_pdf(tgt)
+
+    def choose_and_add_sens(self):
+        sources_dir = None
+        if self.source and hasattr(self.source, "path") and self.source.path:
+            p = Path(self.source.path).resolve()
+            if p.parent.name.lower() == "sens" and p.parent.parent.name.lower() == "sources":
+                sources_dir = p.parent.parent
+            elif p.parent.name.lower() == "sources":
+                sources_dir = p.parent
+
+        if not sources_dir or not sources_dir.exists():
+            folder = getattr(self, "last_opened_dir", None)
+            if folder and Path(folder).is_dir():
+                sources_dir = Path(folder)
+            else:
+                sources_dir = PROJECT_ROOT
+
+        sens_dir = sources_dir / "sens" if sources_dir.name.lower() == "sources" else sources_dir
+        sens_dir.mkdir(parents=True, exist_ok=True)
+
+        filename, _ = QFileDialog.getOpenFileName(
+            self,
+            "Select SENS / ASX Notice PDF",
+            str(sens_dir),
+            "PDF documents (*.pdf)",
+        )
+        if not filename:
+            return
+
+        picked = Path(filename).resolve()
+        target_file = picked
+        if not (str(picked).lower().startswith(str(sources_dir).lower())):
+            import shutil
+            dest = sens_dir / picked.name
+            if not dest.exists():
+                shutil.copy2(picked, dest)
+            target_file = dest
+
+        # Track parent report before opening
+        parent_sha = None
+        if self.source:
+            doc_t, _ = detect_doc_type_and_date(self.source.path)
+            if doc_t != "sens":
+                parent_sha = self.source.sha256
+
+        self.open_pdf(target_file)
+        if self.source and parent_sha and self.source.sha256 != parent_sha:
+            link_sens_report(self.source.sha256, parent_sha, db_path=self.output_root)
+            self.source.questions_ledger = load_questions_ledger(self.source.sha256, self.output_root)
+            self._refresh_document_selector()
 
     def _update_actions(self):
         if not hasattr(self, "save_button"):
@@ -393,7 +789,11 @@ class CaptureWindow(QMainWindow):
         self.map_action.setEnabled(has_pdf)
         self.questions_action.setEnabled(has_pdf)
         self.sections_action.setEnabled(has_pdf)
-        self.audit_action.setEnabled(has_pdf)
+        self.audit_action.setEnabled(True)
+        if hasattr(self, "portfolio_action"):
+            self.portfolio_action.setEnabled(True)
+        if hasattr(self, "insert_btn"):
+            self.insert_btn.setEnabled(has_pdf)
         self.questions_button.setEnabled(has_pdf)
         q_text = (getattr(self.source, "questions_ledger", "") or "").strip() if has_pdf else ""
         if q_text:
@@ -493,7 +893,20 @@ class CaptureWindow(QMainWindow):
             self.captures[self.parts.currentRow()].text = edited
 
     def choose_pdf(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "Open company report", str(PROJECT_ROOT / "companies"), "PDF documents (*.pdf)")
+        initial_dir = getattr(self, "last_opened_dir", None)
+        if self.source and hasattr(self.source, "path") and self.source.path:
+            parent_dir = Path(self.source.path).parent
+            if parent_dir.is_dir():
+                initial_dir = parent_dir
+        if not initial_dir or not Path(initial_dir).is_dir():
+            initial_dir = load_last_opened_dir(db_path=self.output_root)
+
+        filename, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open company report",
+            str(initial_dir),
+            "PDF documents (*.pdf)",
+        )
         if filename:
             self.open_pdf(filename)
 
@@ -505,7 +918,7 @@ class CaptureWindow(QMainWindow):
                                         QMessageBox.StandardButton.Cancel) == QMessageBox.StandardButton.Discard
         return True
 
-    def open_pdf(self, filename: str | Path):
+    def open_pdf(self, filename: str | Path, auto_scan: bool = False):
         if not self._can_discard():
             return False
         candidate = None
@@ -519,6 +932,10 @@ class CaptureWindow(QMainWindow):
             return False
         old = self.source
         self.source = candidate
+        folder = Path(candidate.path).parent
+        if folder.is_dir():
+            self.last_opened_dir = folder
+            save_last_opened_dir(folder, db_path=self.output_root)
         if hasattr(self, "sector_combo"):
             inferred_sec = detect_sector_from_path(candidate.path)
             idx = self.sector_combo.findData(inferred_sec)
@@ -527,7 +944,40 @@ class CaptureWindow(QMainWindow):
         db_file = resolve_db_path(self.output_root)
         self.export_label.setText(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
+
+        doc_t, date_val = detect_doc_type_and_date(candidate.path)
+        # Check if already classified in DB or prompt user if interactive
+        if db_file.exists():
+            with connect_db(db_file) as conn:
+                existing_rep = conn.execute("SELECT doc_type FROM reports WHERE sha256 = ?", (candidate.sha256,)).fetchone()
+                if existing_rep and existing_rep["doc_type"]:
+                    doc_t = existing_rep["doc_type"]
+                elif self.isVisible() and not os.environ.get("PYTEST_CURRENT_TEST") and not getattr(self, "_suppress_classification_dialog", False):
+                    dlg = DocumentClassifyDialog(candidate.path.name, initial_type=doc_t, parent=self)
+                    if dlg.exec() == QDialog.DialogCode.Accepted:
+                        doc_t = dlg.selected_doc_type
+
+        upsert_report(
+            sha256=candidate.sha256,
+            filename=candidate.path.name,
+            original_path=str(candidate.path),
+            physical_page_count=candidate.page_count,
+            doc_type=doc_t,
+            announcement_date=date_val,
+            db_path=self.output_root,
+        )
+        auto_link_companion_reports(candidate.sha256, candidate.path, doc_type=doc_t, db_path=self.output_root)
+        candidate.questions_ledger = load_questions_ledger(candidate.sha256, self.output_root)
+
+        if hasattr(self, "doc_type_combo"):
+            self.doc_type_combo.blockSignals(True)
+            dt_idx = self.doc_type_combo.findData(doc_t)
+            if dt_idx >= 0:
+                self.doc_type_combo.setCurrentIndex(dt_idx)
+            self.doc_type_combo.blockSignals(False)
+
         self._reset_section()
+        self._refresh_document_selector()
         self._refresh_heading_options()
         self.page_spin.blockSignals(True)
         self.page_spin.setMaximum(candidate.page_count)
@@ -538,11 +988,12 @@ class CaptureWindow(QMainWindow):
         self.document_label.setToolTip(str(candidate.path))
         self.canvas.fit_enabled = True
         self.canvas.set_source(candidate)
+        self.canvas.setFocus()
         if old:
             old.close()
         self.statusBar().showMessage("Report opened. Page numbers refer to the original physical PDF pages.")
         self._update_actions()
-        if candidate.report_map is None:
+        if auto_scan and candidate.report_map is None:
             self.scan_report_map()
         return True
 
@@ -578,8 +1029,23 @@ class CaptureWindow(QMainWindow):
         return False
 
     def show_report_map(self):
-        if self.source:
-            ReportMapDialog(self.source, self.scan_report_map, self).exec()
+        if not self.source:
+            return
+        if not hasattr(self, "_map_dialog") or self._map_dialog is None:
+            self._map_dialog = ReportMapDialog(self.source, self.scan_report_map, self, db_path=self.output_root)
+            self._map_dialog.finished.connect(self._on_map_dialog_finished)
+        else:
+            self._map_dialog.source = self.source
+            self._map_dialog.db_path = self.output_root
+            self._map_dialog._init_sections_from_source()
+            self._map_dialog.refresh()
+        self._map_dialog.show()
+        self._map_dialog.raise_()
+        self._map_dialog.activateWindow()
+
+    def _on_map_dialog_finished(self):
+        self._refresh_heading_options()
+        self._map_dialog = None
 
     def show_questions_ledger(self):
         if self.source:
@@ -592,9 +1058,44 @@ class CaptureWindow(QMainWindow):
             self._update_actions()
 
     def show_audit_valuation(self):
-        if self.source:
-            AuditValuationDialog(self.source, self, db_path=self.output_root).exec()
-            self._update_actions()
+        AuditValuationDialog(self.source, self, db_path=self.output_root, initial_tab=0).exec()
+        self._update_actions()
+
+    def show_portfolio_dashboard(self):
+        AuditValuationDialog(self.source, self, db_path=self.output_root, initial_tab=2).exec()
+        self._update_actions()
+
+    def show_new_company_dialog(self):
+        from .new_company_dialog import NewCompanyDialog
+        dlg = NewCompanyDialog(self)
+        if dlg.exec() == QDialog.DialogCode.Accepted:
+            if dlg.created_pdf_path and dlg.created_pdf_path.exists():
+                self.open_pdf(dlg.created_pdf_path)
+                if dlg.created_sector and hasattr(self, "sector_combo"):
+                    idx = self.sector_combo.findData(dlg.created_sector)
+                    if idx >= 0:
+                        self.sector_combo.setCurrentIndex(idx)
+            elif dlg.created_company_dir:
+                if dlg.created_sector and hasattr(self, "sector_combo"):
+                    idx = self.sector_combo.findData(dlg.created_sector)
+                    if idx >= 0:
+                        self.sector_combo.setCurrentIndex(idx)
+                sources_dir = dlg.created_company_dir / "sources"
+                if sources_dir.is_dir():
+                    self.last_opened_dir = sources_dir
+                    save_last_opened_dir(sources_dir, db_path=self.output_root)
+                try:
+                    from .audit_dialog import open_folder_and_select
+                    open_folder_and_select(sources_dir)
+                except Exception:
+                    pass
+                QMessageBox.information(
+                    self,
+                    "Company Hub Created",
+                    f"Initialized company hub for {dlg.created_ticker} under {dlg.created_sector.upper()}!\n\n"
+                    f"Sources folder opened at:\n{sources_dir}\n\n"
+                    f"Drop your company PDF report there and click 'Open PDF' to begin.",
+                )
 
     def change_page(self, page):
         if self.source:
@@ -667,9 +1168,169 @@ class CaptureWindow(QMainWindow):
         self.parts_label.setText("Section selections · 0")
         self._update_actions()
 
+    def eventFilter(self, watched, event):
+        try:
+            if event.type() == QEvent.Type.KeyPress:
+                key = event.key()
+                active_win = QApplication.activeWindow()
+                if QApplication.activeModalWidget() is not None or (active_win is not None and active_win is not self):
+                    return False
+
+                is_tab = key in (Qt.Key.Key_Tab, Qt.Key.Key_Backtab)
+                is_pagedown = key in (Qt.Key.Key_PageDown, Qt.Key.Key_PageUp)
+                focus = QApplication.focusWidget()
+                on_canvas = (watched in (self.canvas, self.canvas.viewport())) or (focus in (self.canvas, self.canvas.viewport(), self))
+                is_arrow = key in (Qt.Key.Key_Right, Qt.Key.Key_Left) and on_canvas
+
+                if is_tab or is_pagedown or is_arrow:
+                    # Do not intercept Tab if delivered to or focused on a text input widget
+                    if is_tab:
+                        if isinstance(watched, (QLineEdit, QPlainTextEdit, QTextEdit)):
+                            return False
+                        if isinstance(focus, (QLineEdit, QPlainTextEdit, QTextEdit)) and watched not in (self.canvas, self.canvas.viewport()):
+                            return False
+
+                    if self.source and self.source.page_count > 0:
+                        is_back = (key in (Qt.Key.Key_Backtab, Qt.Key.Key_PageUp, Qt.Key.Key_Left)) or bool(event.modifiers() & Qt.KeyboardModifier.ShiftModifier)
+                        if is_back:
+                            if self.page_spin.value() > 1:
+                                self.page_spin.setValue(self.page_spin.value() - 1)
+                        else:
+                            if self.page_spin.value() < self.page_spin.maximum():
+                                self.page_spin.setValue(self.page_spin.value() + 1)
+                        if hasattr(self, "canvas") and self.canvas:
+                            self.canvas.setFocus()
+                        return True
+        except (RuntimeError, AttributeError):
+            return False
+        return super().eventFilter(watched, event)
+
+    def closeEvent(self, event):
+        app = QApplication.instance()
+        if app:
+            app.removeEventFilter(self)
+        if hasattr(self, "_map_dialog") and self._map_dialog:
+            try:
+                self._map_dialog.close()
+            except (RuntimeError, AttributeError):
+                pass
+            self._map_dialog = None
+        super().closeEvent(event)
+
+    def set_selection_mode(self, mode: str):
+        idx = self.mode_combo.findData(mode)
+        if idx >= 0 and self.mode_combo.currentIndex() != idx:
+            self.mode_combo.blockSignals(True)
+            self.mode_combo.setCurrentIndex(idx)
+            self.mode_combo.blockSignals(False)
+        self.canvas.set_mode(mode)
+        label = "Area selection (Alt+A)" if mode == "area" else "Text selection (Alt+T)"
+        self.statusBar().showMessage(f"Mode switched to: {label}")
+
+    def _get_current_selected_text(self) -> str:
+        """Returns currently selected text on canvas or in preview."""
+        if hasattr(self, "preview") and self.preview.textCursor().hasSelection():
+            sel = self.preview.textCursor().selectedText().strip()
+            if sel:
+                return sel
+        if self.pending and getattr(self.pending, "text", None):
+            return self.pending.text.strip()
+        if hasattr(self, "preview") and self.preview.toPlainText().strip():
+            return self.preview.toPlainText().strip()
+        return ""
+
+    def use_selected_text_for_heading(self):
+        text = self._get_current_selected_text()
+        if text:
+            cleaned = clean_single_line_text(text)
+            self.heading_edit.setText(cleaned)
+            self.statusBar().showMessage(f"Set Section heading from selected text: '{cleaned[:45]}'")
+        else:
+            self.statusBar().showMessage("Select text on the PDF canvas first (press Alt+T for text selection).")
+
+    def use_selected_text_for_subheading(self):
+        text = self._get_current_selected_text()
+        if text:
+            cleaned = clean_single_line_text(text)
+            self.subheading_edit.setText(cleaned)
+            self.statusBar().showMessage(f"Set Sub-heading from selected text: '{cleaned[:45]}'")
+        else:
+            self.statusBar().showMessage("Select text on the PDF canvas first (press Alt+T for text selection).")
+
+    def insert_section(self):
+        if not self.source:
+            QMessageBox.information(self, "No Report Open", "Open a report PDF before inserting a section.")
+            return
+
+        initial_title = ""
+        if hasattr(self, "_get_current_selected_text"):
+            initial_title = clean_single_line_text(self._get_current_selected_text())
+        if not initial_title:
+            initial_title = clean_single_line_text(self.heading_edit.text())
+
+        current_p = self.page_spin.value()
+        dlg = InsertSectionDialog(
+            self,
+            report_map=self.source.report_map,
+            current_page=current_p,
+            page_count=self.source.page_count,
+            initial_title=initial_title,
+        )
+        if dlg.exec() == QDialog.DialogCode.Accepted:
+            title = dlg.section_title
+            start_p = dlg.start_page
+            if not title:
+                QMessageBox.warning(self, "Title Required", "Please enter a section heading.")
+                return
+
+            try:
+                map_to_update = self.source.report_map
+                if not map_to_update:
+                    map_to_update = {
+                        "status": "coarse_report_map_v1",
+                        "source_filename": getattr(self.source, "filename", Path(self.source.path).name if getattr(self.source, "path", None) else "report.pdf"),
+                        "source_sha256": self.source.sha256,
+                        "physical_page_count": self.source.page_count,
+                        "sections": [],
+                    }
+
+                updated_map, new_id = insert_section_into_report_map(
+                    map_to_update,
+                    title=title,
+                    start_page=start_p,
+                    page_count=self.source.page_count,
+                )
+                save_map(updated_map, cache_root=self.output_root)
+                self.source.report_map = updated_map
+                self._refresh_heading_options()
+                self.heading_edit.setText(title)
+                self.subheading_edit.clear()
+                self.statusBar().showMessage(
+                    f"✓ Inserted section '{new_id}: {title}' at page {start_p} into report map."
+                )
+                if hasattr(self, "_map_dialog") and self._map_dialog and self._map_dialog.isVisible():
+                    self._map_dialog.refresh()
+            except Exception as exc:
+                QMessageBox.critical(self, "Error Inserting Section", str(exc))
+
     def new_section(self):
         if self._can_discard():
             self._reset_section()
+            self.heading_edit.setFocus()
+            self.statusBar().showMessage("Ready for new section. Enter section heading and select evidence on the PDF.")
+
+    def new_subsection(self):
+        if self._can_discard():
+            parent_heading = self.heading_edit.text()
+            self.subheading_edit.clear()
+            self.question_edit.clear()
+            self.captures.clear()
+            self.parts.clear()
+            self.canvas.clear_selection()
+            self.parts_label.setText("Section selections · 0")
+            self._update_actions()
+            self.subheading_edit.setFocus()
+            self.statusBar().showMessage(f"Ready for next subsection under '{parent_heading}'. Enter sub-heading and select evidence.")
 
     def save_section(self):
         if not self.source or not self.heading_edit.text().strip():

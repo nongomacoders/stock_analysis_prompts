@@ -3,8 +3,8 @@ import copy
 import json
 
 from PySide6.QtWidgets import (
-    QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QHBoxLayout, QLabel,
-    QPlainTextEdit, QPushButton, QTextBrowser, QVBoxLayout,
+    QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QFrame, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMessageBox, QPlainTextEdit, QPushButton, QSpinBox, QSplitter, QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget,
 )
 
 from .db import (
@@ -15,8 +15,8 @@ from .db import (
     save_section_llm_response,
 )
 from .openrouter import OpenRouterWorker, get_openrouter_model
-from .packages import build_prompt, detect_sector_from_path
-from .report_map import load_questions_ledger, report_overview, save_questions_ledger
+from .packages import build_prompt, clean_single_line_text, detect_sector_from_path
+from .report_map import assign_section_ids, build_manual_section_map, load_questions_ledger, report_overview, save_map, save_questions_ledger
 
 
 def fit_dialog_to_screen(dialog: QDialog, target_w: int, target_h: int, min_w: int = 540, min_h: int = 380):
@@ -31,41 +31,265 @@ def fit_dialog_to_screen(dialog: QDialog, target_w: int, target_h: int, min_w: i
 
 
 class ReportMapDialog(QDialog):
-    def __init__(self, source, rescan, parent=None):
+    def __init__(self, source, rescan, parent=None, db_path=None):
         super().__init__(parent)
+        self.setModal(False)
         self.source, self.rescan = source, rescan
-        self.setWindowTitle('Report sections — draft scan')
-        fit_dialog_to_screen(self, target_w=920, target_h=620)
+        self.db_path = db_path if db_path is not None else getattr(parent, 'output_root', None)
+        self.setWindowTitle('Report Sections & Outline Map')
+        fit_dialog_to_screen(self, target_w=980, target_h=640)
+
+        self._sections_data: list[dict] = []
+        self._init_sections_from_source()
+
+        if parent and hasattr(parent, "page_spin"):
+            parent.page_spin.valueChanged.connect(self._on_parent_page_changed)
+
         layout = QVBoxLayout(self)
         layout.setContentsMargins(14, 12, 14, 12)
-        layout.setSpacing(6)
-        hint = QLabel('Copy this overview into your model chat first. New reading prompts also include it. '
-                      'Check draft boundaries; the scan does not read or verify the section contents.')
+        layout.setSpacing(8)
+
+        hint = QLabel(
+            'Map the major sections of this report manually or from the Table of Contents. '
+            'Mapped sections populate the Section Heading dropdown and guide the Questions Ledger.'
+        )
         hint.setWordWrap(True)
+        hint.setStyleSheet('color: #475569; font-size: 12px;')
         layout.addWidget(hint)
+
+        splitter = QSplitter(self)
+
+        # ---------------- Left Panel: Manual Section Map Builder ----------------
+        left_widget = QWidget()
+        left_layout = QVBoxLayout(left_widget)
+        left_layout.setContentsMargins(0, 0, 8, 0)
+        left_layout.setSpacing(6)
+
+        left_title = QLabel('Mapped Major Sections')
+        left_title.setStyleSheet('font-weight: bold; font-size: 13px; color: #1e293b;')
+        left_layout.addWidget(left_title)
+
+        # Quick Add Row
+        add_box = QHBoxLayout()
+        add_box.setSpacing(4)
+        self.title_input = QLineEdit()
+        self.title_input.setPlaceholderText('Major section heading (e.g. Mineral Resources)')
+        self.page_input = QSpinBox()
+        self.page_input.setMinimum(1)
+        self.page_input.setMaximum(self.source.page_count if self.source else 9999)
+        current_page = getattr(getattr(parent, 'page_spin', None), 'value', lambda: 1)()
+        self.page_input.setValue(current_page)
+        self.page_input.setToolTip('Physical PDF page where this section starts')
+
+        self.add_btn = QPushButton('+ Add')
+        self.add_btn.setToolTip('Add section starting at the specified page')
+        self.add_btn.clicked.connect(self._on_add_clicked)
+
+        add_box.addWidget(self.title_input, 1)
+        add_box.addWidget(QLabel('Page:'))
+        add_box.addWidget(self.page_input)
+        add_box.addWidget(self.add_btn)
+        left_layout.addLayout(add_box)
+
+        # Grab from current canvas selection button
+        self.add_from_canvas_btn = QPushButton('Add from selected text on PDF')
+        self.add_from_canvas_btn.setToolTip('Uses highlighted canvas text as title and current PDF page as start page.')
+        self.add_from_canvas_btn.clicked.connect(self._on_add_from_canvas)
+        left_layout.addWidget(self.add_from_canvas_btn)
+
+        # Table of mapped sections
+        self.table = QTableWidget()
+        self.table.setColumnCount(4)
+        self.table.setHorizontalHeaderLabels(['ID', 'Section Title', 'Start', 'End'])
+        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        left_layout.addWidget(self.table, 1)
+
+        # Action buttons for left panel
+        table_btn_row = QHBoxLayout()
+        table_btn_row.setSpacing(6)
+        self.remove_btn = QPushButton('Remove selected')
+        self.remove_btn.clicked.connect(self._on_remove_clicked)
+        self.save_map_btn = QPushButton('Save Map & Update Dropdown')
+        self.save_map_btn.setObjectName('primary')
+        self.save_map_btn.setStyleSheet('font-weight: bold;')
+        self.save_map_btn.clicked.connect(self.save_manual_map)
+
+        table_btn_row.addWidget(self.remove_btn)
+        table_btn_row.addStretch(1)
+        table_btn_row.addWidget(self.save_map_btn)
+        left_layout.addLayout(table_btn_row)
+
+        splitter.addWidget(left_widget)
+
+        # ---------------- Right Panel: Markdown Overview Preview ----------------
+        right_widget = QWidget()
+        right_layout = QVBoxLayout(right_widget)
+        right_layout.setContentsMargins(8, 0, 0, 0)
+        right_layout.setSpacing(6)
+
+        right_title = QLabel('Overview Markdown (Included in Prompts)')
+        right_title.setStyleSheet('font-weight: bold; font-size: 13px; color: #1e293b;')
+        right_layout.addWidget(right_title)
+
         self.preview = QTextBrowser()
-        layout.addWidget(self.preview)
-        buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
-        self.copy_button = buttons.addButton('Copy overview', QDialogButtonBox.ButtonRole.ActionRole)
+        right_layout.addWidget(self.preview, 1)
+
+        bottom_buttons = QHBoxLayout()
+        bottom_buttons.setSpacing(6)
+        self.copy_button = QPushButton('Copy overview')
         self.copy_button.clicked.connect(self.copy_overview)
-        rescan_button = buttons.addButton('Rescan', QDialogButtonBox.ButtonRole.ActionRole)
+        rescan_button = QPushButton('Rescan (Heuristic)')
+        rescan_button.setToolTip('Run automated pattern search (optional fallback).')
         rescan_button.clicked.connect(self.scan_again)
-        buttons.rejected.connect(self.reject)
-        layout.addWidget(buttons)
+        close_btn = QPushButton('Close')
+        close_btn.clicked.connect(self.accept)
+
+        bottom_buttons.addWidget(self.copy_button)
+        bottom_buttons.addWidget(rescan_button)
+        bottom_buttons.addStretch(1)
+        bottom_buttons.addWidget(close_btn)
+        right_layout.addLayout(bottom_buttons)
+
+        splitter.addWidget(right_widget)
+        splitter.setSizes([480, 500])
+        layout.addWidget(splitter, 1)
+
         self.refresh()
 
+    def _init_sections_from_source(self):
+        self._sections_data = []
+        if self.source and self.source.report_map:
+            for s in self.source.report_map.get('sections', []):
+                title = s.get('title', '')
+                start_p = s.get('start', {}).get('physical_page', 1)
+                sec_id = s.get('section_id')
+                if title:
+                    self._sections_data.append({'title': title, 'start_page': start_p, 'section_id': sec_id})
+
+    def _update_table(self):
+        self._sections_data.sort(key=lambda s: s['start_page'])
+        self.table.setRowCount(len(self._sections_data))
+        page_count = self.source.page_count if self.source else 9999
+        seq_counter = 1
+        for row, item in enumerate(self._sections_data):
+            existing_id = item.get("section_id")
+            if existing_id and "-ins" in existing_id:
+                sec_id = existing_id
+            else:
+                sec_id = f"D{seq_counter:03d}"
+                seq_counter += 1
+            item['section_id'] = sec_id
+            start_p = item['start_page']
+            next_start = None
+            for next_item in self._sections_data[row + 1:]:
+                if next_item['start_page'] > start_p:
+                    next_start = next_item['start_page']
+                    break
+            end_p = (next_start - 1) if next_start is not None else page_count
+            end_p = max(start_p, end_p)
+
+            self.table.setItem(row, 0, QTableWidgetItem(sec_id))
+            self.table.setItem(row, 1, QTableWidgetItem(item['title']))
+            self.table.setItem(row, 2, QTableWidgetItem(f"p. {start_p}"))
+            self.table.setItem(row, 3, QTableWidgetItem(f"p. {end_p}"))
+
+    def _on_add_clicked(self):
+        title = self.title_input.text().strip()
+        p = self.page_input.value()
+        if not title:
+            QMessageBox.warning(self, "Title Required", "Please enter a major section heading.")
+            return
+        self._sections_data.append({'title': title, 'start_page': p, 'section_id': None})
+        self.title_input.clear()
+        self._update_table()
+
+    def _on_parent_page_changed(self, page: int):
+        if hasattr(self, "page_input"):
+            self.page_input.setValue(page)
+
+    def _on_add_from_canvas(self):
+        selected_text = ""
+        parent = self.parent()
+        if parent and hasattr(parent, "_get_current_selected_text"):
+            selected_text = parent._get_current_selected_text()
+        current_page = getattr(getattr(parent, "page_spin", None), "value", lambda: 1)()
+
+        if selected_text:
+            cleaned = clean_single_line_text(selected_text)
+            self._sections_data.append({"title": cleaned, "start_page": current_page, "section_id": None})
+            self._update_table()
+            if parent and hasattr(parent, "canvas") and hasattr(parent.canvas, "clear_selection"):
+                parent.canvas.clear_selection()
+            if parent and hasattr(parent, "statusBar"):
+                parent.statusBar().showMessage(f"Added section '{cleaned[:40]}' (page {current_page}) to map.")
+        else:
+            QMessageBox.information(
+                self,
+                "No Text Selected",
+                "Highlight a section heading on the PDF canvas first (press Alt+T for text selection),\n"
+                "then click this button to add it to the section map.",
+            )
+
+    def closeEvent(self, event):
+        parent = self.parent()
+        if parent and hasattr(parent, "page_spin"):
+            try:
+                parent.page_spin.valueChanged.disconnect(self._on_parent_page_changed)
+            except (RuntimeError, TypeError):
+                pass
+        super().closeEvent(event)
+
+    def _on_remove_clicked(self):
+        row = self.table.currentRow()
+        if 0 <= row < len(self._sections_data):
+            self._sections_data.pop(row)
+            self._update_table()
+
+    def save_manual_map(self):
+        if not self.source:
+            return
+        if not self._sections_data:
+            QMessageBox.warning(self, "No Sections", "Please add at least one section before saving the map.")
+            return
+
+        try:
+            mapping = build_manual_section_map(self.source, self._sections_data)
+            save_map(mapping, cache_root=self.db_path)
+            self.source.report_map = mapping
+            self.refresh()
+            if self.parent() and hasattr(self.parent(), "_refresh_heading_options"):
+                self.parent()._refresh_heading_options()
+            QMessageBox.information(
+                self,
+                "Section Map Saved",
+                f"Successfully saved {len(mapping['sections'])} major sections to SQLite!\n\n"
+                "The Section Heading dropdown in the capture panel has been updated with your sections.",
+            )
+        except Exception as exc:
+            QMessageBox.critical(self, "Error Saving Map", str(exc))
+
     def refresh(self):
-        mapping = self.source.report_map
-        self.preview.setMarkdown(report_overview(mapping) if mapping else 'No section map is available. Rescan to look for major native-text headings.')
+        self._update_table()
+        mapping = self.source.report_map if self.source else None
+        self.preview.setMarkdown(
+            report_overview(mapping) if mapping else "No section map is saved yet. Add major sections on the left and click 'Save Map'."
+        )
         self.copy_button.setEnabled(mapping is not None)
 
     def copy_overview(self):
-        if self.source.report_map:
+        if self.source and self.source.report_map:
             QApplication.clipboard().setText(report_overview(self.source.report_map))
 
     def scan_again(self):
         self.rescan()
+        self._init_sections_from_source()
         self.refresh()
+        if self.parent() and hasattr(self.parent(), "_refresh_heading_options"):
+            self.parent()._refresh_heading_options()
 
 
 class QuestionsLedgerDialog(QDialog):

@@ -167,19 +167,32 @@ def validate_map(mapping, source_sha256, page_count):
         raise ValueError('Invalid source identity/page count for report map.')
     if mapping['schema_version'] != 'coarse_report_map_v1' or mapping['source_sha256'] != source_sha256 or mapping['physical_page_count'] != page_count:
         raise ValueError('Report map does not match this PDF identity/page count.')
-    if mapping['status'] != 'automatic_draft':
-        raise ValueError('Unsupported report-map status; a scan cannot establish review or confirmation.')
+    if mapping['status'] not in ('automatic_draft', 'manual_outline'):
+        raise ValueError('Unsupported report-map status; expected automatic_draft or manual_outline.')
     if mapping['scanned_physical_pages'] != list(range(1, page_count + 1)):
         raise ValueError('Report map scan is incomplete.')
-    cursor, ids = 0, set()
-    for section in mapping['sections']:
-        start, end = _position(section['start']), _position(section['end'], True)
-        if section['section_id'] in ids or start != cursor or end <= start or end > page_count:
-            raise ValueError('Report map has duplicate IDs, gaps, overlaps or invalid boundaries.')
-        ids.add(section['section_id'])
-        cursor = end
-    if cursor != page_count:
-        raise ValueError('Report map does not account for all physical pages.')
+
+    if mapping['status'] == 'automatic_draft':
+        cursor, ids = 0, set()
+        for section in mapping['sections']:
+            start, end = _position(section['start']), _position(section['end'], True)
+            if section['section_id'] in ids or start != cursor or end <= start or end > page_count:
+                raise ValueError('Report map has duplicate IDs, gaps, overlaps or invalid boundaries.')
+            ids.add(section['section_id'])
+            cursor = end
+        if cursor != page_count:
+            raise ValueError('Report map does not account for all physical pages.')
+    else:
+        # manual_outline: allows multiple sections sharing physical pages (e.g. 2-up spreads)
+        ids = set()
+        for section in mapping['sections']:
+            if section['section_id'] in ids:
+                raise ValueError(f"Report map has duplicate ID: {section['section_id']}")
+            ids.add(section['section_id'])
+            start_p = section['start']['physical_page']
+            end_p = section['end']['physical_page']
+            if start_p < 1 or end_p > page_count or end_p < start_p:
+                raise ValueError(f"Section {section['section_id']} has invalid page boundaries ({start_p}–{end_p}).")
 
 
 def load_cached_map(source_sha256, page_count, cache_root=None):
@@ -272,11 +285,270 @@ def _norm_heading(text: str) -> str:
     return re.sub(r'[^a-z0-9]+', ' ', (text or '').lower()).strip()
 
 
+def assign_section_ids(items: list[dict]) -> list[str]:
+    """Assign stable IDs to items, generating <prev_id>-ins for newly inserted items."""
+    has_any_existing = any(bool(item.get("section_id")) for item in items)
+    if not has_any_existing:
+        return [f"D{i+1:03d}" for i in range(len(items))]
+
+    assigned: list[str] = []
+    used_ids: set[str] = {item["section_id"] for item in items if item.get("section_id")}
+
+    for i, item in enumerate(items):
+        sid = item.get("section_id")
+        if sid:
+            assigned.append(sid)
+            continue
+        # Newly inserted section
+        if i > 0 and assigned:
+            prev_id = assigned[i - 1]
+        elif i + 1 < len(items) and items[i + 1].get("section_id"):
+            prev_id = items[i + 1]["section_id"]
+        else:
+            prev_id = "D001"
+
+        base_prefix = re.sub(r"-ins\d*$", "", prev_id)
+        candidate = f"{base_prefix}-ins"
+        counter = 2
+        while candidate in used_ids:
+            candidate = f"{base_prefix}-ins{counter}"
+            counter += 1
+        used_ids.add(candidate)
+        assigned.append(candidate)
+
+    return assigned
+
+
+def build_manual_section_map(source, sections_data: list[dict]) -> dict:
+    """Build a valid contiguous coarse_report_map_v1 from manually captured sections.
+
+    Each item in sections_data must have 'title' and 'start_page' (1-based physical page),
+    and optionally 'section_id' to preserve stable IDs across in-flight edits.
+    Newly inserted sections receive a '-ins' suffix based on their predecessor.
+    """
+    page_count = source.page_count
+    cleaned = []
+    for item in sections_data:
+        title = clean_single_line_text(item.get("title", ""))
+        try:
+            p = int(item.get("start_page", 1))
+        except (ValueError, TypeError):
+            p = 1
+        sid = item.get("section_id")
+        if title and 1 <= p <= page_count:
+            cleaned.append({"title": title, "start_page": p, "section_id": sid})
+
+    cleaned.sort(key=lambda s: s["start_page"])
+    if not cleaned:
+        cleaned = [{"title": "General Material", "start_page": 1, "section_id": None}]
+    elif cleaned[0]["start_page"] > 1:
+        first_sid = cleaned[0].get("section_id") if cleaned[0]["start_page"] == 1 else None
+        cleaned.insert(0, {"title": "Cover / Overview", "start_page": 1, "section_id": first_sid})
+
+    sections = []
+    seq_counter = 1
+    for i, item in enumerate(cleaned):
+        existing_sid = item.get("section_id")
+        if existing_sid and "-ins" in existing_sid:
+            sec_id = existing_sid
+        else:
+            sec_id = f"D{seq_counter:03d}"
+            seq_counter += 1
+        start_p = item["start_page"]
+        # Find next section with a strictly greater start page
+        next_start = None
+        for next_item in cleaned[i + 1:]:
+            if next_item["start_page"] > start_p:
+                next_start = next_item["start_page"]
+                break
+        end_p = (next_start - 1) if next_start is not None else page_count
+        end_p = max(start_p, end_p)
+        sections.append({
+            "section_id": sec_id,
+            "kind": "unclassified",
+            "title": item["title"],
+            "start": {"physical_page": start_p, "location": "full", "printed_label": None},
+            "end": {"physical_page": end_p, "location": "full", "printed_label": None},
+            "subsections": [],
+            "heading_evidence": [],
+            "inferred_continuation_pages": list(range(start_p, end_p + 1)),
+        })
+
+    mapping = {
+        "schema_version": "coarse_report_map_v1",
+        "source_sha256": source.sha256,
+        "source_filename": getattr(source, "filename", Path(source.path).name if getattr(source, "path", None) else "report.pdf"),
+        "physical_page_count": page_count,
+        "status": "manual_outline",
+        "scanned_physical_pages": list(range(1, page_count + 1)),
+        "sections": sections,
+        "primary_statement_sightings": [],
+        "unclassified_physical_pages": [],
+        "issues": [],
+        "limitations": [
+            "Manually recorded outline of major report sections.",
+            "Sections account contiguously for physical PDF pages.",
+        ],
+    }
+    validate_map(mapping, source.sha256, page_count)
+    return mapping
+
+
+def preview_inserted_section_id(
+    mapping: dict | None, start_page: int, page_count: int
+) -> tuple[str, str]:
+    """Calculate the assigned section ID and partition description for a proposed insertion."""
+    if not mapping or not mapping.get("sections"):
+        return "D001", f"Initial section spanning pages {start_page} to {page_count}."
+
+    sections = mapping.get("sections", [])
+    used_ids = {s["section_id"] for s in sections}
+
+    exact_match = None
+    target_idx = -1
+    for i, s in enumerate(sections):
+        if s["start"]["physical_page"] == start_page:
+            exact_match = s
+            target_idx = i
+            break
+        elif s["start"]["physical_page"] < start_page <= s["end"]["physical_page"]:
+            target_idx = i
+
+    if target_idx == -1:
+        if start_page < sections[0]["start"]["physical_page"]:
+            base_prefix = "D001"
+            cand = f"{base_prefix}-ins"
+            counter = 2
+            while cand in used_ids:
+                cand = f"{base_prefix}-ins{counter}"
+                counter += 1
+            first_p = sections[0]["start"]["physical_page"]
+            return cand, f"Inserts before first section: {cand} covers p. {start_page}–{first_p - 1}."
+        else:
+            prev_id = sections[-1]["section_id"]
+            base_prefix = re.sub(r"-ins\d*$", "", prev_id)
+            cand = f"{base_prefix}-ins"
+            counter = 2
+            while cand in used_ids:
+                cand = f"{base_prefix}-ins{counter}"
+                counter += 1
+            return cand, f"Extends outline: {cand} starts at p. {start_page} to p. {page_count}."
+    else:
+        target_sec = sections[target_idx]
+        prev_id = target_sec["section_id"]
+        base_prefix = re.sub(r"-ins\d*$", "", prev_id)
+        cand = f"{base_prefix}-ins"
+        counter = 2
+        while cand in used_ids:
+            cand = f"{base_prefix}-ins{counter}"
+            counter += 1
+        if exact_match is not None:
+            desc = (
+                f"Shares start page {start_page} with {prev_id} ('{target_sec['title']}'): "
+                f"{cand} will cover p. {start_page}–{target_sec['end']['physical_page']}."
+            )
+        else:
+            desc = (
+                f"Splits {prev_id} ('{target_sec['title']}'): {prev_id} will now end at p. {start_page - 1}; "
+                f"{cand} will cover p. {start_page}–{target_sec['end']['physical_page']}."
+            )
+        return cand, desc
+
+
+def insert_section_into_report_map(
+    mapping: dict, title: str, start_page: int, page_count: int
+) -> tuple[dict, str]:
+    """Insert a new section into an existing report map while capturing.
+
+    Assigns a stable ID with '-ins' suffix based on predecessor, preserving all existing IDs.
+    Returns (mapping, assigned_section_id).
+    """
+    clean_title = clean_single_line_text(title)
+    if not clean_title:
+        raise ValueError("Section title cannot be empty.")
+    if start_page < 1 or start_page > page_count:
+        raise ValueError(f"Start page must be between 1 and {page_count}.")
+
+    sections = mapping.setdefault("sections", [])
+    if not sections:
+        new_sec_id = "D001"
+        mapping["sections"] = [{
+            "section_id": new_sec_id,
+            "kind": "unclassified",
+            "title": clean_title,
+            "start": {"physical_page": start_page, "location": "full", "printed_label": None},
+            "end": {"physical_page": page_count, "location": "full", "printed_label": None},
+            "subsections": [],
+            "heading_evidence": [],
+            "inferred_continuation_pages": list(range(start_page, page_count + 1)),
+        }]
+        return mapping, new_sec_id
+
+    used_ids = {s["section_id"] for s in sections}
+
+    exact_match = None
+    target_idx = -1
+    for i, s in enumerate(sections):
+        if s["start"]["physical_page"] == start_page:
+            exact_match = s
+            target_idx = i
+            break
+        elif s["start"]["physical_page"] < start_page <= s["end"]["physical_page"]:
+            target_idx = i
+
+    if target_idx == -1:
+        if start_page < sections[0]["start"]["physical_page"]:
+            base_prefix = "D001"
+            cand = f"{base_prefix}-ins"
+            counter = 2
+            while cand in used_ids:
+                cand = f"{base_prefix}-ins{counter}"
+                counter += 1
+            old_end = sections[0]["start"]["physical_page"] - 1
+        else:
+            prev_id = sections[-1]["section_id"]
+            base_prefix = re.sub(r"-ins\d*$", "", prev_id)
+            cand = f"{base_prefix}-ins"
+            counter = 2
+            while cand in used_ids:
+                cand = f"{base_prefix}-ins{counter}"
+                counter += 1
+            old_end = page_count
+    else:
+        target_sec = sections[target_idx]
+        prev_id = target_sec["section_id"]
+        base_prefix = re.sub(r"-ins\d*$", "", prev_id)
+        cand = f"{base_prefix}-ins"
+        counter = 2
+        while cand in used_ids:
+            cand = f"{base_prefix}-ins{counter}"
+            counter += 1
+        old_end = target_sec["end"]["physical_page"]
+        if exact_match is None:
+            target_sec["end"]["physical_page"] = start_page - 1
+            target_sec["inferred_continuation_pages"] = list(range(target_sec["start"]["physical_page"], start_page))
+
+    new_sec = {
+        "section_id": cand,
+        "kind": "unclassified",
+        "title": clean_title,
+        "start": {"physical_page": start_page, "location": "full", "printed_label": None},
+        "end": {"physical_page": old_end, "location": "full", "printed_label": None},
+        "subsections": [],
+        "heading_evidence": [],
+        "inferred_continuation_pages": list(range(start_page, old_end + 1)),
+    }
+    sections.append(new_sec)
+    sections.sort(key=lambda s: s["start"]["physical_page"])
+    mapping["sections"] = sections
+    return mapping, cand
+
+
 def section_requires_subheading(mapping, heading: str = "", selections=()) -> str | None:
     """If the matched section or main heading already has subsections, return a label like 'D006 (D006.1)'."""
     if not mapping:
         return None
-    norm_h = _norm_heading(re.sub(r'^D\d{3}\s*[—:\-]\s*', '', clean_single_line_text(heading), flags=re.IGNORECASE))
+    norm_h = _norm_heading(re.sub(r'^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*', '', clean_single_line_text(heading), flags=re.IGNORECASE))
     for section in mapping.get('sections', []):
         subs = section.get('subsections') or []
         if not subs:
@@ -297,7 +569,7 @@ def section_requires_subheading(mapping, heading: str = "", selections=()) -> st
                 *[_norm_heading(ev.get('heading', '')) for ev in section.get('heading_evidence', [])],
             ]
             heading_matches = any(c and (norm_h == c or norm_h in c or c in norm_h) for c in candidates)
-        if overlaps or heading_matches:
+        if heading_matches or (not norm_h and overlaps):
             sub_list = ', '.join(s['subsection_id'] for s in subs)
             return f"{section['section_id']} ({sub_list})"
     return None
@@ -358,15 +630,16 @@ def report_overview(mapping, selections=(), sector: str = "mining"):
             sub_status = f"Partial selected evidence: {sub['subsection_id']} ({', '.join(sub_overlaps)})" if sub_overlaps else 'Subsection recorded in map; not included in this request'
             sub_title = sub['title'].replace('|', '\\|').replace('\n', ' ')
             lines.append(f"| {sub['subsection_id']} | ↳ {sub_title} | {_range(sub)} | {sub_status} |")
-    if mapping['primary_statement_sightings']:
+    if mapping.get('primary_statement_sightings'):
         lines.append('\nPrimary-statement heading sightings (draft navigation, not inspected statement values):')
         for item in mapping['primary_statement_sightings']:
             lines.append(f"- {item['kind'].replace('_', ' ')}: physical PDF p. {item['physical_page']}, {item['location']}.")
-    if mapping['unclassified_physical_pages']:
+    if mapping.get('unclassified_physical_pages'):
         lines.append('\nUnclassified physical pages: ' + ', '.join(map(str, mapping['unclassified_physical_pages'])) + '. Their purpose has not been established by the scan.')
-    if mapping['issues']:
+    if mapping.get('issues'):
         lines.append(f"\nNative-scan issues: {len(mapping['issues'])}; consult the saved map details. These areas need checking.")
-    lines.extend(['\nMap limits:'] + ['- ' + note for note in mapping['limitations']])
+    if mapping.get('limitations'):
+        lines.extend(['\nMap limits:'] + ['- ' + note for note in mapping['limitations']])
     return '\n'.join(lines) + '\n'
 
 

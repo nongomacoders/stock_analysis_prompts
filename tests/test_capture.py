@@ -1,11 +1,12 @@
 import hashlib
 import json
+from pathlib import Path
 import shutil
 import zipfile
 
 import pytest
-from PySide6.QtCore import QPointF, QRectF, Qt
-from PySide6.QtGui import QImage
+from PySide6.QtCore import QEvent, QPointF, QRectF, Qt
+from PySide6.QtGui import QImage, QKeyEvent
 from PySide6.QtTest import QTest
 
 from section_capture.packages import clean_single_line_text, save_package, shorten_section_name
@@ -467,6 +468,8 @@ def test_sector_detection_and_prompts():
     assert detect_sector_from_path("companies/retail/LEW/sources/lewis-iar-2026.pdf") == "retail"
     assert detect_sector_from_path("C:\\Projects\\companies\\retail\\TRU\\sources\\TRU.pdf") == "retail"
     assert detect_sector_from_path("companies/finance/SBK/sources/report.pdf") == "finance"
+    assert detect_sector_from_path("companies/reit/GRT/sources/report.pdf") == "reit"
+    assert detect_sector_from_path("companies/property/RDF/sources/report.pdf") == "reit"
     assert detect_sector_from_path("random/path/report.pdf") == "mining"
 
     # 2. Company directory resolution
@@ -496,6 +499,28 @@ def test_sector_detection_and_prompts():
     assert retail_orient.exists()
     assert "retail and consumer goods" in retail_orient.read_text(encoding="utf-8")
 
+    # REIT prompt resolution
+    reit_prompt = get_prompt_path("reit")
+    assert reit_prompt.exists()
+    reit_content = reit_prompt.read_text(encoding="utf-8")
+    assert "Real Estate Investment Trust" in reit_content
+    assert "DIPS" in reit_content or "distributable" in reit_content.lower()
+
+    reit_orient = get_orientation_path("reit")
+    assert reit_orient.exists()
+    assert "Real Estate Investment Trust" in reit_orient.read_text(encoding="utf-8")
+
+    # IT prompt resolution
+    it_prompt = get_prompt_path("it")
+    assert it_prompt.exists()
+    it_content = it_prompt.read_text(encoding="utf-8")
+    assert "Information Technology" in it_content
+    assert "recurring revenue" in it_content.lower()
+
+    it_orient = get_orientation_path("it")
+    assert it_orient.exists()
+    assert "Information Technology" in it_orient.read_text(encoding="utf-8")
+
 
 def test_window_sector_auto_detect(qapp, tmp_path):
     window = CaptureWindow(output_root=tmp_path)
@@ -504,12 +529,15 @@ def test_window_sector_auto_detect(qapp, tmp_path):
     sectors = [window.sector_combo.itemData(i) for i in range(window.sector_combo.count())]
     assert "mining" in sectors
     assert "retail" in sectors
+    assert "reit" in sectors
+    assert "it" in sectors
     assert "finance" in sectors
     assert "telcos" in sectors
 
     # Verify sector detection when simulated
     from section_capture.packages import detect_sector_from_path
     assert detect_sector_from_path("companies/retail/LEW/sources/doc.pdf") == "retail"
+    assert detect_sector_from_path("companies/it/IOC/sources/doc.pdf") == "it"
 
     window.close()
     window.deleteLater()
@@ -633,9 +661,9 @@ def test_audit_valuation_dialog(qapp, pdf_path, tmp_path, monkeypatch):
     saved_pkg = window.save_section()
     assert saved_pkg is not None
 
-    # Open AuditValuationDialog
+    # Open AuditValuationDialog (3 tabs: Stage 1, Stage 2, Analyzed Stocks)
     dialog = AuditValuationDialog(window.source, window, db_path=tmp_path)
-    assert dialog.tabs.count() == 2
+    assert dialog.tabs.count() == 3
 
     # Stage 1: Compile and Save
     dialog.compile_stage1_prompt()
@@ -666,5 +694,449 @@ def test_audit_valuation_dialog(qapp, pdf_path, tmp_path, monkeypatch):
     dialog.deleteLater()
     window.close()
     window.deleteLater()
+
+
+def test_new_company_toolbar_action_and_dialog(qapp, tmp_path, pdf_path, monkeypatch):
+    """Test 'New' action in toolbar and NewCompanyDialog scaffolding and PDF opening."""
+    from section_capture.new_company_dialog import NewCompanyDialog
+    from PySide6.QtWidgets import QDialog, QMessageBox
+    import new_company
+
+    # Isolate companies dir to tmp_path
+    tmp_companies = tmp_path / "companies"
+    monkeypatch.setattr(new_company, "COMPANIES_DIR", tmp_companies)
+
+    # Prevent modal message boxes
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+
+    window = CaptureWindow(tmp_path)
+    try:
+        # Check toolbar has 'New' action
+        assert hasattr(window, "new_action")
+        assert window.new_action.text() == "New"
+        assert "Scaffold a new company" in window.new_action.toolTip()
+
+        # Create dummy PDF in tmp_path
+        dummy_pdf = tmp_path / "Sample_Bank_FY26.pdf"
+        dummy_pdf.write_bytes(pdf_path.read_bytes())
+
+        # Test NewCompanyDialog directly
+        dlg = NewCompanyDialog(window)
+        assert dlg.create_btn.isEnabled() is False  # empty ticker
+
+        # Test lowercase auto-converts to uppercase
+        dlg.ticker_edit.setText("sbk")
+        assert dlg.ticker_edit.text() == "SBK"
+        assert dlg.create_btn.isEnabled() is True
+        assert dlg.create_btn.text() == "Create Company Hub"
+
+        dlg.name_edit.setText("Standard Bank Group Ltd")
+        sec_idx = dlg.sector_combo.findData("finance")
+        assert sec_idx >= 0
+        dlg.sector_combo.setCurrentIndex(sec_idx)
+
+        # Set PDF path
+        dlg.pdf_path_edit.setText(str(dummy_pdf))
+        assert dlg.create_btn.text() == "Create & Open PDF"
+
+        # Execute creation
+        dlg._on_create()
+        assert dlg.created_ticker == "SBK"
+        assert dlg.created_sector == "finance"
+        assert dlg.created_company_dir.exists()
+        assert dlg.created_pdf_path.exists()
+        assert dlg.created_pdf_path.name == "Sample_Bank_FY26.pdf"
+        assert (dlg.created_company_dir / "models" / "config.py").exists()
+        assert (dlg.created_company_dir / "models" / "sbk_sandbox.ipynb").exists()
+
+        # Test show_new_company_dialog with PDF
+        class MockDialogWithPdf:
+            created_ticker = "SBK"
+            created_sector = "finance"
+            created_company_dir = tmp_companies / "finance" / "SBK"
+            created_pdf_path = dlg.created_pdf_path
+            def __init__(self, parent=None): pass
+            def exec(self):
+                return QDialog.DialogCode.Accepted
+
+        monkeypatch.setattr("section_capture.new_company_dialog.NewCompanyDialog", MockDialogWithPdf)
+        window.show_new_company_dialog()
+        assert window.source is not None
+        assert window.source.path.name == "Sample_Bank_FY26.pdf"
+        assert window.sector_combo.currentData() == "finance"
+
+        # Test show_new_company_dialog without PDF (opens sources folder)
+        class MockDialogNoPdf:
+            created_ticker = "MTN"
+            created_sector = "telcos"
+            created_company_dir = tmp_companies / "telcos" / "MTN"
+            created_pdf_path = None
+            def __init__(self, parent=None): pass
+            def exec(self):
+                return QDialog.DialogCode.Accepted
+
+        monkeypatch.setattr("section_capture.new_company_dialog.NewCompanyDialog", MockDialogNoPdf)
+        window.show_new_company_dialog()
+        assert window.sector_combo.currentData() == "telcos"
+
+        dlg.deleteLater()
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+def test_selection_mode_shortcuts_and_switching(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(tmp_path)
+    try:
+        assert window.open_pdf(pdf_path)
+        assert window.canvas.mode == "area"
+
+        # Test switching to text mode
+        window.set_selection_mode("text")
+        assert window.canvas.mode == "text"
+        assert window.mode_combo.currentData() == "text"
+
+        # Test switching back to area mode
+        window.set_selection_mode("area")
+        assert window.canvas.mode == "area"
+        assert window.mode_combo.currentData() == "area"
+
+        # Test shortcut triggers
+        window.text_shortcut.activated.emit()
+        assert window.canvas.mode == "text"
+        assert window.mode_combo.currentData() == "text"
+
+        window.area_shortcut.activated.emit()
+        assert window.canvas.mode == "area"
+        assert window.mode_combo.currentData() == "area"
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+def test_tab_and_backtab_page_navigation(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(tmp_path)
+    try:
+        assert window.open_pdf(pdf_path)
+        assert window.page_spin.value() == 1
+
+        # Simulate Tab key press when focus is on canvas or window (not on editable inputs)
+        tab_event = QKeyEvent(QEvent.Type.KeyPress, Qt.Key.Key_Tab, Qt.KeyboardModifier.NoModifier)
+        window.eventFilter(window, tab_event)
+        assert window.page_spin.value() == 2
+
+        # Another Tab
+        window.eventFilter(window, tab_event)
+        assert window.page_spin.value() == 3
+
+        # Shift+Tab (Backtab)
+        backtab_event = QKeyEvent(QEvent.Type.KeyPress, Qt.Key.Key_Backtab, Qt.KeyboardModifier.ShiftModifier)
+        window.eventFilter(window, backtab_event)
+        assert window.page_spin.value() == 2
+
+        # Test Tab key delivered directly to canvas viewport via application event dispatch
+        window.canvas.setFocus()
+        qapp.processEvents()
+        qapp.notify(window.canvas.viewport(), tab_event)
+        assert window.page_spin.value() == 3
+
+        # Shift+Tab delivered to canvas viewport
+        qapp.notify(window.canvas.viewport(), backtab_event)
+        assert window.page_spin.value() == 2
+
+        # When focus is in an editable text edit, Tab should NOT advance the page
+        window.heading_edit.setFocus()
+        window.heading_edit.lineEdit().setText("Focus in edit")
+        window.eventFilter(window.heading_edit.lineEdit(), tab_event)
+        # Value must remain 2 (not advanced to 3)
+        assert window.page_spin.value() == 2
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+def test_sidebar_text_transfer_and_new_section_buttons(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(tmp_path)
+    try:
+        assert window.open_pdf(pdf_path)
+
+        # Set preview text
+        window.preview.setPlainText("OPERATIONAL HIGHLIGHTS")
+        window.use_selected_text_for_heading()
+        assert window.heading_edit.text() == "OPERATIONAL HIGHLIGHTS"
+
+        window.preview.setPlainText("Barberton Mines")
+        window.use_selected_text_for_subheading()
+        assert window.subheading_edit.text() == "Barberton Mines"
+
+        # New subsection should keep parent heading, clear subheading
+        window.new_subsection()
+        assert window.heading_edit.text() == "OPERATIONAL HIGHLIGHTS"
+        assert window.subheading_edit.text() == ""
+
+        # New section should clear both
+        window.subheading_edit.setText("Evander Mines")
+        window.new_section()
+        assert window.heading_edit.text() == ""
+        assert window.subheading_edit.text() == ""
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+def test_choose_pdf_uses_last_opened_folder(qapp, pdf_path, tmp_path, monkeypatch):
+    captured_paths = []
+    def mock_get_open_file_name(parent, title, initial_dir, filter_str):
+        captured_paths.append(initial_dir)
+        return str(pdf_path), ""
+
+    monkeypatch.setattr("section_capture.window.QFileDialog.getOpenFileName", mock_get_open_file_name)
+
+    window = CaptureWindow(tmp_path)
+    try:
+        # First call: opens and records directory
+        window.choose_pdf()
+        assert len(captured_paths) == 1
+        assert window.source is not None
+        assert window.last_opened_dir == pdf_path.parent
+
+        # Second call: initial_dir passed to QFileDialog must be pdf_path.parent
+        window.choose_pdf()
+        assert len(captured_paths) == 2
+        assert captured_paths[1] == str(pdf_path.parent)
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+
+def test_sens_detection_and_date_parsing():
+    from section_capture.db import detect_doc_type_and_date
+
+    # SENS in sources/sens/ subfolder
+    dt, d = detect_doc_type_and_date("companies/mining/ORN/sources/sens/20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf")
+    assert dt == "sens"
+    assert d == "2026-10-19"
+
+    # SENS announcement with date in filename
+    dt, d = detect_doc_type_and_date("2026-10-28-ORN-SENS-Glencore-Drawdown.pdf")
+    assert dt == "sens"
+    assert d == "2026-10-28"
+
+    # Annual Report with date in filename
+    dt, d = detect_doc_type_and_date("companies/mining/ORN/sources/20260917-ORN-ASX-JSE-Annual-Report-2026.pdf")
+    assert dt == "annual_report"
+    assert d == "2026-09-17"
+
+    # Pan African SENS results announcement (Annual report, not subsequent notice)
+    dt, d = detect_doc_type_and_date("Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf")
+    assert dt == "annual_report"
+
+
+def test_sens_parent_linking_and_questions_ledger_sync(tmp_path):
+    from section_capture.db import (
+        connect_db,
+        get_linked_sens_reports,
+        get_parent_report,
+        insert_section,
+        link_sens_report,
+        save_section_llm_response,
+        upsert_report,
+    )
+
+    db_file = tmp_path / "test_sens.sqlite"
+    parent_sha = "parent" + "0" * 58
+    child_sha = "child1" + "0" * 58
+
+    # 1. Register parent Annual Report with questions ledger
+    upsert_report(
+        sha256=parent_sha,
+        filename="Annual-Report-2026.pdf",
+        original_path="/sources/Annual-Report-2026.pdf",
+        questions_ledger="### Pending: Glencore facility CP satisfaction",
+        db_path=db_file,
+    )
+
+    # 2. Register child SENS report
+    upsert_report(
+        sha256=child_sha,
+        filename="20261019-SENS-Glencore.pdf",
+        original_path="/sources/sens/20261019-SENS-Glencore.pdf",
+        parent_report_sha256=parent_sha,
+        doc_type="sens",
+        announcement_date="2026-10-19",
+        db_path=db_file,
+    )
+
+    # 3. Verify linkage and ledger inheritance
+    linked = get_linked_sens_reports(parent_sha, db_path=db_file)
+    assert len(linked) == 1
+    assert linked[0]["sha256"] == child_sha
+    assert linked[0]["announcement_date"] == "2026-10-19"
+    assert linked[0]["questions_ledger"] == "### Pending: Glencore facility CP satisfaction"
+
+    parent_info = get_parent_report(child_sha, db_path=db_file)
+    assert parent_info is not None
+    assert parent_info["sha256"] == parent_sha
+
+    # 4. Insert a section on child SENS report and save LLM response with updated ledger
+    sec = insert_section(
+        package_id="sec-sens-001",
+        report_sha256=child_sha,
+        section_number=1,
+        section_id="SENS-01",
+        name="SENS-01-Glencore",
+        heading="SENS: Finalisation of Glencore Funding",
+        subheading=None,
+        analyst_question=None,
+        selected_text="US$40M Glencore facility now unconditional.",
+        selections=[{"physical_page": 1, "bbox": [0, 0, 100, 100], "page_size_points": [500, 700]}],
+        stored_questions="### Pending: Glencore facility CP satisfaction",
+        prompt="prompt text",
+        manifest={"schema_version": "1.0"},
+        db_path=db_file,
+    )
+
+    llm_resp = (
+        "## 1. Footnote Verification\n"
+        "All CPs satisfied.\n\n"
+        "## 4. Updated Open Questions Ledger\n\n"
+        "- Q169 [Resolved]: Glencore facility unconditional on 19 Oct 2026.\n"
+        "- Q172 [Resolved]: No covenant breach.\n\n"
+        "## 5. Baseline Forecast Inputs\n"
+        "US$40m debt added."
+    )
+    save_section_llm_response(sec.package_id, llm_resp, db_path=db_file)
+
+    # 5. Verify that parent report's questions ledger was synced with the SENS update!
+    with connect_db(db_file) as conn:
+        parent_q = conn.execute("SELECT questions_ledger FROM reports WHERE sha256 = ?", (parent_sha,)).fetchone()[0]
+        assert "Q169 [Resolved]: Glencore facility unconditional" in parent_q
+
+
+def test_stage1_multi_document_prompt_compilation():
+    from workflow.export_stage1 import build_stage1_prompt_content
+
+    primary_sections = [
+        {
+            "section_number": 1,
+            "section_id": "D001",
+            "heading": "Market context",
+            "subheading": None,
+            "analyst_question": None,
+            "selected_text": "Overview of copper market.",
+            "stored_questions_snapshot": "No questions yet.",
+            "llm_response": "DeepSeek analysis of D001.",
+        }
+    ]
+
+    sens_reports = [
+        {
+            "filename": "20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf",
+            "announcement_date": "2026-10-19",
+            "sections": [
+                {
+                    "section_number": 1,
+                    "section_id": "SENS-01",
+                    "heading": "SENS: Glencore Funding Unconditional",
+                    "subheading": None,
+                    "analyst_question": "Check CP satisfaction.",
+                    "selected_text": "US$40 million funding now unconditional.",
+                    "stored_questions_snapshot": "Pending questions from AR.",
+                    "llm_response": "DeepSeek analysis of SENS 1.",
+                }
+            ],
+        }
+    ]
+
+    prompt = build_stage1_prompt_content(
+        sections=primary_sections,
+        company_title="Orion Minerals (ORN)",
+        ticker="ORN",
+        detected_sector="mining",
+        filename="ORN-Annual-Report-2026.pdf",
+        sens_reports=sens_reports,
+    )
+
+    assert "PART 1: PRIMARY FINANCIAL DISCLOSURE (`ORN-Annual-Report-2026.pdf` — 1 Sections)" in prompt
+    assert "PART 2: SUBSEQUENT SENS & CONTINUOUS DISCLOSURE ANNOUNCEMENTS (1 Announcements)" in prompt
+    assert "SENS ANNOUNCEMENT 1: `20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf` (Date: 2026-10-19 — 1 Sections)" in prompt
+    assert "US$40 million funding now unconditional" in prompt
+    assert "Subsequent SENS Disclosures" in prompt
+
+
+def test_capture_window_document_selector_and_sens_switching(qapp, pdf_path, tmp_path):
+    from section_capture.window import CaptureWindow
+
+    window = CaptureWindow(output_root=tmp_path)
+    try:
+        window.open_pdf(pdf_path)
+        assert hasattr(window, "doc_selector")
+        assert hasattr(window, "add_sens_button")
+        assert window.doc_selector.count() >= 1
+
+        # Check that the opened document is selected
+        curr_text = window.doc_selector.currentText()
+        assert "Annual Report" in curr_text or pdf_path.name in curr_text
+    finally:
+        window.close()
+        window.deleteLater()
+
+
+def test_sens_valuation_update_prompt_generation(tmp_path):
+    from workflow.generate_sens_update import build_sens_update_prompt_content, generate_sens_update_prompt
+    from section_capture.db import save_stage2_report, upsert_report
+
+    db_file = tmp_path / "analysis.sqlite"
+    sha = "testorn" + "0" * 57
+
+    baseline_note = (
+        "# ORION MINERALS (ORN) - FINAL VALUATION NOTE\n"
+        "| **12-Month JSE Target Price** | **R0.21** |\n"
+        "| **Institutional Recommendation** | **SELL** |\n\n"
+        "### Section 6: Actionable Portfolio Monitoring Triggers\n"
+        "- Trigger 1: Glencore US$40M facility closing\n"
+    )
+
+    upsert_report(
+        sha256=sha,
+        filename="20260917-ORN-ASX-JSE-Annual-Report-2026.pdf",
+        original_path="companies/mining/ORN/sources/20260917-ORN-ASX-JSE-Annual-Report-2026.pdf",
+        db_path=db_file,
+    )
+    save_stage2_report(sha, response=baseline_note, db_path=db_file)
+
+    sens_sha = "testsens" + "0" * 56
+    upsert_report(
+        sha256=sens_sha,
+        filename="20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf",
+        original_path="companies/mining/ORN/sources/sens/20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf",
+        parent_report_sha256=sha,
+        doc_type="sens",
+        announcement_date="2026-10-19",
+        db_path=db_file,
+    )
+
+    out_prompt = tmp_path / "ORN_FY26_stage2_sens_update_prompt.md"
+    generate_sens_update_prompt(
+        ticker="ORN",
+        output_path=out_prompt,
+        db_path=db_file,
+    )
+
+    assert out_prompt.exists()
+    content = out_prompt.read_text(encoding="utf-8")
+    assert "STAGE 2-U: INSTITUTIONAL VALUATION SENS UPDATE & RE-RATING" in content
+    assert "20261019-ORN-ASX-JSE-Finalisation-of-Glencore.pdf" in content
+    assert "| **12-Month JSE Target Price** | **R0.21** |" in content
+    assert "We are adding a subsequent" in content
+    assert "new updated valuation report" in content
+
+
+
+
+
+
 
 

@@ -35,6 +35,13 @@ The repository operates a multi-tiered pipeline that completely eliminates narra
 
 ---
 
+## Sector & Company Onboarding
+
+- **Onboard a new sector (< 2 min)**: Run `python new_sector.py <sector> --name "..." --short "..."` per [`docs/SECTOR_ONBOARDING.md`](../docs/SECTOR_ONBOARDING.md). Centralized in `companies/sectors.py`, automatically populating UI dropdowns, badge styles, and Stage 1/2 personas.
+- **Scaffold a company hub**: Run `python new_company.py <TICKER> --sector <sector> --name "..."`. Initialized under `companies/<SECTOR>/<TICKER>/` (`sources/`, `models/`, `research/`, `briefs/`).
+
+---
+
 ## Evidence integrity rules
 
 - Original PDFs in `companies/<TICKER>/sources/` remain read-only; source SHA-256 is verified before every save.
