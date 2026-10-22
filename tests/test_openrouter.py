@@ -166,7 +166,7 @@ def test_save_section_llm_response_with_cost_and_tokens(isolated_map_cache):
         subheading=None,
         analyst_question=None,
         selected_text="Some text",
-        selections=[{"physical_page": 1, "bbox": [0, 0, 100, 100], "page_size_points": [500, 500]}],
+        selections=[{"physical_page": 1, "bbox": [0, 0, 100, 100], "page_size_points": [500, 500], "selection_mode": "text", "text": "Text 1"}],
         stored_questions=None,
         prompt="Test Prompt",
         manifest={"source": {"filename": "test.pdf"}},
@@ -190,3 +190,77 @@ def test_save_section_llm_response_with_cost_and_tokens(isolated_map_cache):
     assert updated.manifest["review"]["model"] == "deepseek/deepseek-v4.1-flash-1017:nitro"
 
 
+
+
+def test_resubmit_sections_missing_only(isolated_map_cache, monkeypatch):
+    from workflow.resubmit_sections import resubmit_sections
+
+    db_path, sha256, tmp_path = isolated_map_cache
+
+    # Insert two sections: sec 1 has response, sec 2 is missing
+    insert_section(
+        package_id="sec-mock-1",
+        report_sha256=sha256,
+        section_number=1,
+        section_id="D001",
+        name="01-D001-Sec1",
+        heading="Section One",
+        subheading=None,
+        analyst_question=None,
+        selected_text="Text 1",
+        selections=[{"physical_page": 1, "bbox": [0, 0, 100, 100], "page_size_points": [500, 500], "selection_mode": "text", "text": "Text 1"}],
+        stored_questions=None,
+        prompt="Prompt 1",
+        manifest={"source": {"filename": "test.pdf"}},
+        db_path=db_path,
+    )
+    save_section_llm_response(
+        package_id="sec-mock-1",
+        llm_response="### Already complete",
+        db_path=db_path,
+    )
+
+    insert_section(
+        package_id="sec-mock-2",
+        report_sha256=sha256,
+        section_number=2,
+        section_id="D002",
+        name="02-D002-Sec2",
+        heading="Section Two",
+        subheading=None,
+        analyst_question=None,
+        selected_text="Text 2",
+        selections=[{"physical_page": 2, "bbox": [0, 0, 100, 100], "page_size_points": [500, 500], "selection_mode": "text", "text": "Text 2"}],
+        stored_questions=None,
+        prompt="Prompt 2",
+        manifest={"source": {"filename": "test.pdf"}},
+        db_path=db_path,
+    )
+
+    # Mock query_openrouter
+    call_counts = []
+
+    def mock_query(prompt, model=None, timeout=180, return_details=False):
+        call_counts.append(prompt)
+        return (
+            "### Section Two Brief\n#### 4. Updated Open Questions Ledger\n- [ ] Pending: [Section 3]",
+            {"prompt_tokens": 500, "completion_tokens": 200, "cost_usd": 0.001, "generation_id": "gen-123"},
+        )
+
+    monkeypatch.setattr("workflow.resubmit_sections.query_openrouter", mock_query)
+    monkeypatch.setattr("workflow.resubmit_sections.fetch_generation_stats", lambda gid: None)
+    monkeypatch.setattr("workflow.resubmit_sections.find_company_dir", lambda t: ("retail", db_path.parent))
+
+    results = resubmit_sections(
+        ticker="LEW",
+        report=sha256,
+        missing_only=True,
+        clear=False,
+        delay_seconds=0.0,
+        db_path=db_path,
+    )
+
+    # Only section 2 should be submitted
+    assert len(results) == 1
+    assert results[0]["section_number"] == 2
+    assert len(call_counts) == 1

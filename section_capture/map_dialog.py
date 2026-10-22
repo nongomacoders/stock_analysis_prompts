@@ -389,6 +389,9 @@ class SavedSectionsDialog(QDialog):
         self.run_api_btn.setObjectName("primary")
         self.run_api_btn.setToolTip('Send reading prompt directly to DeepSeek via OpenRouter API and save response.')
         self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
+        self.run_all_btn = QPushButton('Run All Pending')
+        self.run_all_btn.setToolTip('Sequentially query DeepSeek for all sections that do not yet have an LLM response.')
+        self.run_all_btn.clicked.connect(self.run_openrouter_for_all_pending)
         self.nitro_checkbox = QCheckBox(":nitro")
         self.nitro_checkbox.setToolTip("Route query via OpenRouter :nitro priority throughput.")
         self.copy_prompt_btn = QPushButton('Copy prompt')
@@ -405,6 +408,7 @@ class SavedSectionsDialog(QDialog):
         self.audit_btn.clicked.connect(self.open_audit_valuation)
 
         actions_row.addWidget(self.run_api_btn)
+        actions_row.addWidget(self.run_all_btn)
         actions_row.addWidget(self.nitro_checkbox)
         actions_row.addWidget(self.copy_prompt_btn)
         actions_row.addWidget(self.paste_resp_btn)
@@ -627,5 +631,106 @@ class SavedSectionsDialog(QDialog):
         worker.error_query.connect(on_error)
         worker.start()
 
+    def run_openrouter_for_all_pending(self):
+        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            self.status_label.setText("A query is already in progress...")
+            return
 
+        pending_indices = [
+            i for i, s in enumerate(self.sections)
+            if not s.llm_response or not s.llm_response.strip()
+        ]
+        if not pending_indices:
+            self.status_label.setText("✓ All sections already have saved LLM responses.")
+            return
 
+        self._pending_queue = pending_indices
+        self._total_pending_count = len(pending_indices)
+        self.run_api_btn.setEnabled(False)
+        self.run_all_btn.setEnabled(False)
+        self._process_next_pending()
+
+    def _process_next_pending(self):
+        if not hasattr(self, "_pending_queue") or not self._pending_queue:
+            self.run_api_btn.setEnabled(True)
+            self.run_all_btn.setEnabled(True)
+            self._active_worker = None
+            self.status_label.setText("✓ Finished processing all pending sections!")
+            return
+
+        target_idx = self._pending_queue.pop(0)
+        self.section_combo.setCurrentIndex(target_idx)
+        sec = self.sections[target_idx]
+        self._refresh_section_prompt_with_current_ledger(sec)
+        if not sec.prompt:
+            self._process_next_pending()
+            return
+
+        base_model = get_openrouter_model()
+        model = f"{base_model}:nitro" if self.nitro_checkbox.isChecked() else base_model
+        model_tag = "DeepSeek:nitro" if ":nitro" in model else "DeepSeek"
+        completed = self._total_pending_count - len(self._pending_queue)
+        self.status_label.setText(
+            f"[{completed}/{self._total_pending_count}] Querying {model_tag} for Section {sec.section_number:02d}: {sec.heading}..."
+        )
+
+        worker = OpenRouterWorker(sec.prompt, model=model, parent=self)
+        self._active_worker = worker
+
+        def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
+            stats = stats or {}
+            cleaned = (response_text or "").strip()
+            if cleaned:
+                cost_usd = stats.get("cost_usd")
+                tokens = {
+                    "prompt_tokens": stats.get("prompt_tokens"),
+                    "completion_tokens": stats.get("completion_tokens"),
+                    "total_tokens": stats.get("total_tokens"),
+                }
+                self.response_edit.setPlainText(cleaned)
+                self.save_current_response(
+                    response_time_seconds=elapsed,
+                    cost_usd=cost_usd,
+                    tokens=tokens,
+                    model=model,
+                )
+            self._process_next_pending()
+
+        def on_error(err_msg: str):
+            self.run_api_btn.setEnabled(True)
+            self.run_all_btn.setEnabled(True)
+            self._active_worker = None
+            self.status_label.setText(f"Batch query stopped: {err_msg}")
+            QMessageBox.critical(
+                self,
+                "OpenRouter Query Failed",
+                f"Model query failed on Section {sec.section_number:02d} ({sec.heading}):\n{err_msg}\n\nCheck your OpenRouter key and connectivity, then retry.",
+            )
+
+        worker.finished_query.connect(on_finished)
+        worker.error_query.connect(on_error)
+        worker.start()
+
+    def reject(self):
+        if hasattr(self, "_pending_queue"):
+            self._pending_queue.clear()
+        if hasattr(self, "_active_worker") and self._active_worker:
+            try:
+                self._active_worker.finished_query.disconnect()
+                self._active_worker.error_query.disconnect()
+            except Exception:
+                pass
+            self._active_worker.quit()
+        super().reject()
+
+    def closeEvent(self, event):
+        if hasattr(self, "_pending_queue"):
+            self._pending_queue.clear()
+        if hasattr(self, "_active_worker") and self._active_worker:
+            try:
+                self._active_worker.finished_query.disconnect()
+                self._active_worker.error_query.disconnect()
+            except Exception:
+                pass
+            self._active_worker.quit()
+        super().closeEvent(event)
