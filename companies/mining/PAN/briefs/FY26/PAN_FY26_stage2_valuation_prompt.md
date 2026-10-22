@@ -1,16 +1,17 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
-**Target Asset:** Pan African Resources PLC (PAN)  
+**Target Asset:** PAN Resources (PAN)  
+**Sector:** Mining  
 **Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
-**Target Deliverable:** 2-Year Forecast Model, SOTP DCF Valuation, and JSE Equity Research Note (ZAR per Share)
+**Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
 
 ### INSTRUCTIONS FOR GEMINI 4 ARGON:
 You are acting as an elite **Managing Director & Head of Mining Equity Research** at a premier institutional investment bank.
-You are conducting a definitive 2-year operational and valuation forecast for **Pan African Resources PLC (PAN)**.
+You are conducting a definitive 2-year operational and valuation forecast for **PAN Resources (PAN)**.
 
 ### CORE OPERATING RULES & EVIDENCE HIERARCHY:
-1. **Audited Ground Truth:** The Stage 1 Forensic Determinations provided below are audited and verified. Treat them as authoritative ground truth (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF where Stage 1 has established an audited reconciliation.
+1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, and providing your quantitative justification.
 2. **Primary Reporting & Trading Currency:** Pan African / South African miners trade primarily on the **Johannesburg Stock Exchange (JSE)**. All final valuation targets, earnings per share, and dividends per share must be presented in **ZAR (Rands per share or ZAR cents)**, accompanied by USD conversions where relevant.
 3. **Dual Capex Trajectory Modeling:** Explicitly model and contrast two operational trajectories:
    - **Scenario A (Expedited Growth):** Follows management's forward capital wish-list.
@@ -1143,8 +1144,49 @@ The current local time is: 2026-10-18T19:47:21+02:00.
 
 ## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE
 
-1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share)**
+1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**
+   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:
+     ```json
+     {
+       "ticker": "PAN",
+       "company_name": "PAN Resources",
+       "sector": "mining",
+       "recommendation": "BUY | HOLD | SELL",
+       "reference_price_zar": 0.00,
+       "target_price_zar": 0.00,
+       "implied_upside_pct": 0.0,
+       "forward_dividend_yield_pct": 0.0,
+       "projected_12m_tsr_pct": 0.0
+     }
+     ```
+   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
+     | Metric | Determination | Basis & Key Commentary |
+     | :--- | :---: | :--- |
+     | **Sector** | Mining | [Sub-sector classification] |
+     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
+     | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
+     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
+     | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
+     | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
+     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+   - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.
 3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.
 4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.
 5. **Forward Valuation Multiples & Sensitivity Matrix:** Target P/E, EV/EBITDA, FCF yield, and 2D sensitivity table (Gold Price vs USD/ZAR).
+6. **Actionable Portfolio Monitoring Triggers & Catalysts ('What to Watch For That Will Move the Stock'):**
+   - **Operational & Production Red Lines:** Explicitly list 3-5 specific triggers (e.g. AISC cost breaches, underground grade dilution, water/power disruptions) that would lower the target price.
+   - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb for each catalyst (e.g. 'Every $50/oz move in gold price or R0.50 move in USD/ZAR impacts FCFE by R X million and fair value by R Y/share').
+   - **Expansion & Delivery Catalysts:** Specific milestones required to trigger an upgrade (e.g. MTR / Soweto tailings commercial commissioning, Section 36 capex cliff release).
+   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.
+
+---
+
+## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)
+
+To ensure institutional publication quality and 100% deterministic parsing, you MUST follow these formatting rules:
+1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native float numbers (e.g. `0.42`, `-30.0`), not text descriptions.
+2. **Zero HTML Tags:** DO NOT use any HTML tags (`<br>`, `<br/>`, `<span>`, `<div>`, etc.). Use standard Markdown newlines.
+3. **Single-Line Table Rows:** Every Markdown table row MUST be on a single continuous line starting and ending with `|`. DO NOT insert blank lines (`\n\n`) within table rows or split cells across multiple lines.
+4. **Isolated Numeric Determination Cells:** In the Valuation Summary Card, keep the Determination column strictly limited to the metric value (e.g. `R0.42` or `-30.0%`). Reserve all commentary and secondary notes strictly for the Commentary column.
+5. **No Special Symbols or Arbitrary Code Blocks:** DO NOT wrap ordinary numbers or percentages in backticks (`). Reserve backticks solely for the initial JSON block and formal code/file identifiers.
