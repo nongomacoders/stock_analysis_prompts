@@ -617,6 +617,11 @@ class SavedSectionsDialog(QDialog):
             self.status_label.setText(f"Query failed: {err_msg}")
             self.run_api_btn.setEnabled(True)
             self._active_worker = None
+            QMessageBox.critical(
+                self,
+                "OpenRouter Query Failed",
+                f"The model query failed:\n{err_msg}\n\nCheck your OpenRouter key and connectivity, then retry.",
+            )
 
         worker.finished_query.connect(on_finished)
         worker.error_query.connect(on_error)

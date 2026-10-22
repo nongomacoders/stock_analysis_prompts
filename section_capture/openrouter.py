@@ -16,7 +16,9 @@ from PySide6.QtCore import QThread, Signal
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash-1017"
-EXTERNAL_SECRETS_PATH = Path(r"C:\Users\Dion\Desktop\Projects\EXTERNAL_TO_REPOS\credentials\secrets.env")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_EXTERNAL_SECRETS = REPO_ROOT.parent / "EXTERNAL_TO_REPOS" / "credentials" / "secrets.env"
+EXTERNAL_SECRETS_PATH = Path(os.environ.get("EXTERNAL_SECRETS_PATH", str(DEFAULT_EXTERNAL_SECRETS))).expanduser()
 
 
 def get_openrouter_api_key() -> str:

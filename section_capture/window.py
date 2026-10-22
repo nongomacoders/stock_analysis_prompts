@@ -869,6 +869,10 @@ class CaptureWindow(QMainWindow):
         self.warning_label.setText(message)
         self.statusBar().showMessage(message)
 
+    def show_critical_error(self, title: str, message: str):
+        self.show_problem(message)
+        QMessageBox.critical(self, title, f"{message}\n\nPlease check your OpenRouter key and connectivity, then retry.")
+
     def selection_changed(self, capture):
         self.pending = capture
         if not hasattr(self, "preview"):
@@ -1442,7 +1446,7 @@ class CaptureWindow(QMainWindow):
             self._update_actions()
 
         def on_error(err_msg: str):
-            self.show_problem(f"Model query failed: {err_msg}")
+            self.show_critical_error("OpenRouter Query Failed", f"Model query failed: {err_msg}")
             self._active_worker = None
             self._update_actions()
 
