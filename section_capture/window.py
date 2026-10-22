@@ -17,6 +17,7 @@ from .content_types import CONTENT_TYPES
 from .db import (
     DOC_TYPES,
     SavedSection,
+    _row_to_saved_section,
     auto_link_companion_reports,
     auto_link_parent_report,
     connect_db,
@@ -41,6 +42,7 @@ from .packages import (
     DEFAULT_SECTOR,
     PROJECT_ROOT,
     SUPPORTED_SECTORS,
+    build_prompt,
     clean_single_line_text,
     detect_sector_from_path,
     save_package,
@@ -105,16 +107,32 @@ class HeadingComboBox(QComboBox):
         self.setEditable(True)
         self.setInsertPolicy(QComboBox.InsertPolicy.NoInsert)
         self.setLineEdit(SanitizedLineEdit(self))
+        self.activated.connect(self._on_item_activated)
+
+    def _on_item_activated(self, index: int):
+        raw = self.itemData(index)
+        if raw:
+            self.setEditText(raw)
+        else:
+            txt = self.itemText(index)
+            if txt.startswith("✓ "):
+                self.setEditText(txt[2:].strip())
 
     @property
     def textChanged(self):
         return self.lineEdit().textChanged
 
     def text(self) -> str:
-        return self.currentText()
+        t = self.currentText().strip()
+        if t.startswith("✓ "):
+            return t[2:].strip()
+        return t
 
     def setText(self, value: str):
-        self.setEditText(clean_single_line_text(value))
+        cleaned = clean_single_line_text(value)
+        if cleaned.startswith("✓ "):
+            cleaned = cleaned[2:].strip()
+        self.setEditText(cleaned)
 
     def clear(self):
         self.lineEdit().clear()
@@ -122,13 +140,18 @@ class HeadingComboBox(QComboBox):
     def setPlaceholderText(self, text: str):
         self.lineEdit().setPlaceholderText(text)
 
-    def set_options(self, options: list[str]):
-        current = self.lineEdit().text()
+    def set_options(self, options: list[tuple[str, str] | str]):
+        current = self.text()
         self.blockSignals(True)
         self.lineEdit().blockSignals(True)
         super().clear()
         for opt in options:
-            self.addItem(clean_single_line_text(opt))
+            if isinstance(opt, tuple):
+                disp, raw = opt
+                self.addItem(clean_single_line_text(disp), clean_single_line_text(raw))
+            else:
+                raw_val = opt[2:].strip() if opt.startswith("✓ ") else opt
+                self.addItem(clean_single_line_text(opt), clean_single_line_text(raw_val))
         self.setEditText(current)
         self.lineEdit().blockSignals(False)
         self.blockSignals(False)
@@ -523,12 +546,12 @@ class CaptureWindow(QMainWindow):
 
         save_row = QHBoxLayout()
         save_row.setSpacing(6)
-        self.save_button = QPushButton("Save && copy prompt")
-        self.save_button.setToolTip("Save section to SQLite and copy reading prompt to clipboard.")
+        self.save_button = QPushButton("Save Section")
+        self.save_button.setToolTip("Save section to SQLite (instant, does not wait for AI). Ready for the next section.")
         self.save_button.clicked.connect(self.save_section)
         self.save_and_run_button = QPushButton("Save && Run DeepSeek")
         self.save_and_run_button.setObjectName("primary")
-        self.save_and_run_button.setToolTip("Save section to SQLite and automatically query DeepSeek via OpenRouter API.")
+        self.save_and_run_button.setToolTip("Save section to SQLite and queue for DeepSeek analysis in the background.")
         self.save_and_run_button.clicked.connect(self.save_and_run_model)
         save_row.addWidget(self.save_button)
         save_row.addWidget(self.save_and_run_button)
@@ -539,21 +562,28 @@ class CaptureWindow(QMainWindow):
         self.nitro_checkbox.toggled.connect(self._update_nitro_tooltip)
         side.addWidget(self.nitro_checkbox)
 
-        # Auxiliary navigation and helper buttons in one compact row
+        # Batch execution and review row (clean, non-duplicated)
         aux_row = QHBoxLayout()
         aux_row.setSpacing(6)
-        self.questions_button = QPushButton("Stored questions")
-        self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
-        self.questions_button.clicked.connect(self.show_questions_ledger)
+        self.run_pending_button = QPushButton("⚡ Run Pending (0)")
+        self.run_pending_button.setToolTip("Sequentially process all un-analyzed sections in the background using DeepSeek.")
+        self.run_pending_button.clicked.connect(self.run_all_pending)
+        self.review_button = QPushButton("Review Sections →")
+        self.review_button.setToolTip("Browse and inspect saved sections, prompts, LLM responses, and audit status.")
+        self.review_button.clicked.connect(self.show_saved_sections)
+        self.folder_button = self.review_button  # alias for backwards compatibility
         self.copy_button = QPushButton("Copy prompt")
         self.copy_button.setToolTip("Re-copy the prompt of the last saved section to clipboard.")
         self.copy_button.clicked.connect(self.copy_prompt)
-        self.folder_button = QPushButton("Saved sections")
-        self.folder_button.setToolTip("Browse and inspect saved sections in SQLite.")
-        self.folder_button.clicked.connect(self.show_saved_sections)
-        aux_row.addWidget(self.questions_button)
+        self.copy_button.setEnabled(False)
+
+        self.questions_button = QPushButton("Stored questions (none)")
+        self.questions_button.setToolTip("Store or update open verification questions from previous sections.")
+        self.questions_button.clicked.connect(self.show_questions_ledger)
+
+        aux_row.addWidget(self.run_pending_button, 1)
+        aux_row.addWidget(self.review_button, 1)
         aux_row.addWidget(self.copy_button)
-        aux_row.addWidget(self.folder_button)
         side.addLayout(aux_row)
 
         db_file = resolve_db_path(self.output_root)
@@ -591,14 +621,25 @@ class CaptureWindow(QMainWindow):
     def _refresh_heading_options(self):
         if not hasattr(self, "heading_edit"):
             return
-        options: list[str] = []
+        options: list[tuple[str, str]] = []
         seen: set[str] = set()
+
+        saved_headings: set[str] = set()
+        if self.source:
+            try:
+                for saved in list_sections(self.source.sha256, db_path=self.output_root):
+                    if saved.heading:
+                        saved_headings.add(saved.heading.strip().lower())
+            except Exception:
+                pass
 
         def _add(val: str):
             cleaned = " ".join((val or "").split()).strip()
             if cleaned and cleaned.lower() not in seen:
                 seen.add(cleaned.lower())
-                options.append(cleaned)
+                is_saved = cleaned.lower() in saved_headings
+                disp = f"✓ {cleaned}" if is_saved else cleaned
+                options.append((disp, cleaned))
 
         if self.source:
             doc_t, _ = detect_doc_type_and_date(self.source.path)
@@ -611,14 +652,17 @@ class CaptureWindow(QMainWindow):
                 _add("SENS-02: Operational Milestones & Development Timeline")
                 _add("SENS-03: Cash Flow & Financing CPs")
 
-            for saved in list_sections(self.source.sha256, db_path=self.output_root):
-                if saved.heading:
-                    _add(saved.heading)
-                if saved.subheading and self.source.report_map and "." in saved.section_id:
-                    parent_id = saved.section_id.split(".")[0]
-                    for sec in self.source.report_map.get("sections", []):
-                        if sec.get("section_id") == parent_id and not sec.get("parent_heading") and saved.heading:
-                            sec["parent_heading"] = saved.heading
+            try:
+                for saved in list_sections(self.source.sha256, db_path=self.output_root):
+                    if saved.heading:
+                        _add(saved.heading)
+                    if saved.subheading and self.source.report_map and "." in saved.section_id:
+                        parent_id = saved.section_id.split(".")[0]
+                        for sec in self.source.report_map.get("sections", []):
+                            if sec.get("section_id") == parent_id and not sec.get("parent_heading") and saved.heading:
+                                sec["parent_heading"] = saved.heading
+            except Exception:
+                pass
 
         if self.source and self.source.report_map:
             for sec in self.source.report_map.get("sections", []):
@@ -794,13 +838,19 @@ class CaptureWindow(QMainWindow):
             self.portfolio_action.setEnabled(True)
         if hasattr(self, "insert_btn"):
             self.insert_btn.setEnabled(has_pdf)
-        self.questions_button.setEnabled(has_pdf)
         q_text = (getattr(self.source, "questions_ledger", "") or "").strip() if has_pdf else ""
         if q_text:
             q_lines = len([ln for ln in q_text.splitlines() if ln.strip()])
-            self.questions_button.setText(f"Stored questions ({q_lines} lines)")
+            q_lbl = f"Stored questions ({q_lines} lines)"
         else:
-            self.questions_button.setText("Stored questions (none)")
+            q_lbl = "Stored questions (none)"
+        if hasattr(self, "questions_button"):
+            self.questions_button.setEnabled(has_pdf)
+            self.questions_button.setText(q_lbl)
+        if hasattr(self, "questions_action"):
+            self.questions_action.setText(q_lbl)
+        if hasattr(self, "copy_button"):
+            self.copy_button.setEnabled(self.last_package is not None)
         req = self._subheading_required_for_current()
         if req:
             self.subheading_label.setText(f"Sub-heading (required for {req})")
@@ -815,7 +865,7 @@ class CaptureWindow(QMainWindow):
         has_selection = bool(self.captures or self.pending)
         has_heading = bool(self.heading_edit.text().strip())
         is_savable = has_heading and has_selection and not needs_subheading
-        not_busy = not (hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning())
+        is_worker_running = hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning()
 
         self.add_button.setEnabled(self.pending is not None)
         if self.pending is not None:
@@ -826,27 +876,27 @@ class CaptureWindow(QMainWindow):
             self.add_button.setToolTip("Disabled: Drag an area or select text on the PDF canvas first.")
 
         self.apply_type_button.setEnabled(0 <= self.parts.currentRow() < len(self.captures))
-        self.save_button.setEnabled(is_savable and not_busy)
+        
+        # Local saving is completely decoupled from background query latency!
+        self.save_button.setEnabled(is_savable)
         if hasattr(self, "save_and_run_button"):
-            self.save_and_run_button.setEnabled(is_savable and not_busy)
+            self.save_and_run_button.setEnabled(is_savable)
 
         # Dynamic tooltips explaining why Save is enabled or disabled
-        if not not_busy:
-            save_tip = "Waiting for model query to finish..."
-        elif not has_selection:
+        if not has_selection:
             save_tip = "Disabled: Select text or area evidence from the PDF first."
         elif not has_heading:
             save_tip = "Disabled: Choose or enter a Section heading above first."
         elif needs_subheading:
             save_tip = f"Disabled: Section {req} has subsections; enter a sub-heading above."
         else:
-            save_tip = "Save section to SQLite and copy reading prompt."
+            save_tip = "Save section draft to SQLite (instant, does not wait for AI)."
 
         self.save_button.setToolTip(save_tip)
         if hasattr(self, "save_and_run_button"):
             self.save_and_run_button.setToolTip(
-                "Save section to SQLite and automatically query DeepSeek via OpenRouter API."
-                if (is_savable and not_busy) else save_tip
+                "Save section to SQLite and queue for DeepSeek analysis in the background."
+                if is_savable else save_tip
             )
 
         # Visual guidance in warning_label
@@ -858,12 +908,37 @@ class CaptureWindow(QMainWindow):
             if self.warning_label.text().startswith("⚠"):
                 self.warning_label.setText("")
 
-        self.copy_button.setEnabled(self.last_package is not None)
-        if self.last_package is not None:
-            self.copy_button.setToolTip(f"Re-copy prompt for '{self.last_package.name}' to clipboard.")
-        else:
-            self.copy_button.setToolTip("Disabled: No section has been saved yet in this session.")
-        self.folder_button.setEnabled(has_pdf)
+        # Update batch run button and review button
+        if hasattr(self, "run_pending_button"):
+            pending_count = 0
+            if has_pdf and self.source:
+                try:
+                    with connect_db(self.output_root) as conn:
+                        row = conn.execute(
+                            "SELECT COUNT(*) as cnt FROM sections WHERE report_sha256 = ? AND (llm_response IS NULL OR TRIM(llm_response) = '')",
+                            (self.source.sha256,),
+                        ).fetchone()
+                        if row:
+                            pending_count = row["cnt"]
+                except Exception:
+                    pass
+
+            queue_len = len(getattr(self, "_query_queue", []))
+            if is_worker_running:
+                in_flight = queue_len + 1
+                self.run_pending_button.setText(f"⚡ DeepSeek Running ({in_flight} in queue)")
+                self.run_pending_button.setEnabled(False)
+            elif pending_count > 0:
+                self.run_pending_button.setText(f"⚡ Run Pending ({pending_count})")
+                self.run_pending_button.setEnabled(True)
+            else:
+                self.run_pending_button.setText("⚡ Run Pending (0)")
+                self.run_pending_button.setEnabled(False)
+
+        if hasattr(self, "review_button"):
+            self.review_button.setEnabled(has_pdf)
+        if hasattr(self, "folder_button"):
+            self.folder_button.setEnabled(has_pdf)
 
     def show_problem(self, message: str):
         self.warning_label.setText(message)
@@ -1209,17 +1284,7 @@ class CaptureWindow(QMainWindow):
             return False
         return super().eventFilter(watched, event)
 
-    def closeEvent(self, event):
-        app = QApplication.instance()
-        if app:
-            app.removeEventFilter(self)
-        if hasattr(self, "_map_dialog") and self._map_dialog:
-            try:
-                self._map_dialog.close()
-            except (RuntimeError, AttributeError):
-                pass
-            self._map_dialog = None
-        super().closeEvent(event)
+
 
     def set_selection_mode(self, mode: str):
         idx = self.mode_combo.findData(mode)
@@ -1382,7 +1447,163 @@ class CaptureWindow(QMainWindow):
         saved = self.save_section()
         if not saved:
             return
-        self.run_model_for_package(saved)
+        self.queue_or_run_package(saved.package_id, name=saved.name)
+
+    def queue_or_run_package(self, package_id: str, name: str = ""):
+        if not hasattr(self, "_query_queue"):
+            self._query_queue = []
+
+        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            self._query_queue.append(package_id)
+            pos = len(self._query_queue)
+            short_name = shorten_section_name(name) if name else f"Section {package_id[:8]}"
+            self.statusBar().showMessage(
+                f"✓ Saved {short_name}! Added to DeepSeek background queue (#{pos} in queue)."
+            )
+            self._update_actions()
+            return
+
+        self._start_query_for_package(package_id, name=name)
+
+    def _start_query_for_package(self, package_id: str, name: str = ""):
+        try:
+            with connect_db(self.output_root) as conn:
+                row = conn.execute("SELECT * FROM sections WHERE package_id = ?", (package_id,)).fetchone()
+                if not row:
+                    self._process_next_in_queue()
+                    return
+                sec = _row_to_saved_section(row, self.output_root)
+                curr_rep = conn.execute("SELECT questions_ledger FROM reports WHERE sha256 = ?", (sec.report_sha256,)).fetchone()
+                current_ledger = (curr_rep["questions_ledger"] if curr_rep else "") or ""
+        except Exception as exc:
+            self.show_problem(f"Could not load section from database: {exc}")
+            self._process_next_in_queue()
+            return
+
+        manifest = copy.deepcopy(sec.manifest)
+        if "heading" not in manifest:
+            manifest["heading"] = sec.heading
+        if "subheading" not in manifest and sec.subheading:
+            manifest["subheading"] = sec.subheading
+        if "package_id" not in manifest:
+            manifest["package_id"] = sec.package_id
+        if "source" not in manifest:
+            manifest["source"] = {"filename": getattr(self.source, "filename", "report.pdf"), "sha256": sec.report_sha256}
+        elif "sha256" not in manifest["source"]:
+            manifest["source"]["sha256"] = sec.report_sha256
+        if "selections" not in manifest:
+            manifest["selections"] = sec.selections or []
+
+        manifest["stored_questions"] = current_ledger.strip() or None
+        current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else (manifest.get("sector") or "retail")
+        manifest["sector"] = current_sector
+        texts = [s.get("text", "") for s in sec.selections] if sec.selections else [sec.selected_text or ""]
+        refreshed_prompt = build_prompt(manifest, texts, sector=current_sector)
+
+        with connect_db(self.output_root) as conn:
+            conn.execute(
+                "UPDATE sections SET prompt = ?, manifest_json = ? WHERE package_id = ?",
+                (refreshed_prompt, json.dumps(manifest, ensure_ascii=False), sec.package_id),
+            )
+
+        active_model = self._active_model_name()
+        short_name = shorten_section_name(name or sec.heading)
+        model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
+        queue_count = len(getattr(self, "_query_queue", []))
+        queue_tag = f" [{queue_count} more queued]" if queue_count > 0 else ""
+        self.statusBar().showMessage(f"Querying {model_tag} for {short_name}{queue_tag}...")
+
+        worker = OpenRouterWorker(refreshed_prompt, model=active_model, parent=self)
+        self._active_worker = worker
+        self._update_actions()
+
+        def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
+            stats = stats or {}
+            cleaned = (response_text or "").strip()
+            if cleaned:
+                cost_usd = stats.get("cost_usd")
+                tokens = {
+                    "prompt_tokens": stats.get("prompt_tokens"),
+                    "completion_tokens": stats.get("completion_tokens"),
+                    "total_tokens": stats.get("total_tokens"),
+                }
+                updated, extracted = save_section_llm_response(
+                    sec.package_id,
+                    cleaned,
+                    update_ledger=True,
+                    response_time_seconds=elapsed,
+                    cost_usd=cost_usd,
+                    tokens=tokens,
+                    model=active_model,
+                    db_path=self.output_root,
+                )
+                if extracted and self.source:
+                    self.source.questions_ledger = extracted
+                time_str = f" in {elapsed:.1f}s" if elapsed > 0 else ""
+                cost_str = f" (${cost_usd:.4f})" if cost_usd is not None else ""
+                tok_str = f" [{stats.get('total_tokens', 0):,} tok]" if stats.get("total_tokens") else ""
+                self.statusBar().showMessage(
+                    f"✓ {model_tag} responded{time_str}{cost_str}{tok_str} for {short_name}!"
+                )
+            else:
+                self.show_problem("Model returned an empty response. Not saved.")
+
+            self._process_next_in_queue()
+
+        def on_error(err_msg: str):
+            self.show_critical_error("OpenRouter Query Failed", f"Model query failed for {short_name}:\n{err_msg}")
+            if hasattr(self, "_query_queue"):
+                self._query_queue.clear()
+            self._active_worker = None
+            self._update_actions()
+
+        worker.finished_query.connect(on_finished)
+        worker.error_query.connect(on_error)
+        worker.start()
+
+    def _process_next_in_queue(self):
+        if hasattr(self, "_query_queue") and self._query_queue:
+            next_id = self._query_queue.pop(0)
+            self._start_query_for_package(next_id)
+        else:
+            self._active_worker = None
+            self._update_actions()
+            self.statusBar().showMessage("✓ DeepSeek completed all queued queries!")
+
+    def run_all_pending(self):
+        if not self.source:
+            QMessageBox.information(self, "No Report Open", "Please open a report first.")
+            return
+
+        with connect_db(self.output_root) as conn:
+            rows = conn.execute(
+                "SELECT package_id, heading FROM sections WHERE report_sha256 = ? AND (llm_response IS NULL OR TRIM(llm_response) = '') ORDER BY section_number ASC",
+                (self.source.sha256,),
+            ).fetchall()
+
+        if not rows:
+            QMessageBox.information(self, "No Pending Sections", "All sections in this report already have saved LLM responses.")
+            return
+
+        if not hasattr(self, "_query_queue"):
+            self._query_queue = []
+
+        added = 0
+        for r in rows:
+            pkg_id = r["package_id"]
+            if pkg_id not in self._query_queue:
+                self._query_queue.append(pkg_id)
+                added += 1
+
+        self.statusBar().showMessage(f"Enqueued {added} pending section(s) for DeepSeek processing.")
+        if not (hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning()):
+            self._process_next_in_queue()
+        else:
+            self._update_actions()
+
+    def run_model_for_package(self, saved_package):
+        """Backward compatibility wrapper."""
+        self.queue_or_run_package(saved_package.package_id, name=saved_package.name)
 
     def _active_model_name(self) -> str:
         base = get_openrouter_model()
@@ -1396,73 +1617,31 @@ class CaptureWindow(QMainWindow):
         tag = "priority throughput" if ":nitro" in model else "standard throughput"
         self.save_and_run_button.setToolTip(f"Save section to SQLite and automatically query {model} ({tag}).")
 
-    def run_model_for_package(self, saved_package):
-        if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
-            self.show_problem("A model query is already running in the background.")
-            return
-
-        active_model = self._active_model_name()
-        short_name = shorten_section_name(saved_package.name)
-        model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
-        self.statusBar().showMessage(f"Querying {model_tag} via OpenRouter for {short_name}...")
-        worker = OpenRouterWorker(saved_package.prompt, model=active_model, parent=self)
-        self._active_worker = worker
-        self._update_actions()
-
-        def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
-            stats = stats or {}
-            cleaned = (response_text or "").strip()
-            if not cleaned:
-                self.show_problem("Model returned an empty response. Not saved.")
-                self._active_worker = None
-                self._update_actions()
-                return
-            cost_usd = stats.get("cost_usd")
-            tokens = {
-                "prompt_tokens": stats.get("prompt_tokens"),
-                "completion_tokens": stats.get("completion_tokens"),
-                "total_tokens": stats.get("total_tokens"),
-            }
-            self.statusBar().showMessage(f"Processing LLM response for {short_name}...")
-            updated, extracted = save_section_llm_response(
-                saved_package.package_id,
-                cleaned,
-                update_ledger=True,
-                response_time_seconds=elapsed,
-                cost_usd=cost_usd,
-                tokens=tokens,
-                model=active_model,
-                db_path=self.output_root,
-            )
-            if extracted and self.source:
-                self.source.questions_ledger = extracted
-            time_str = f" in {elapsed:.1f}s" if elapsed > 0 else ""
-            cost_str = f" (${cost_usd:.4f})" if cost_usd is not None else ""
-            tok_str = f" [{stats.get('total_tokens', 0):,} tok]" if stats.get("total_tokens") else ""
-            self.statusBar().showMessage(
-                f"✓ {model_tag} responded{time_str}{cost_str}{tok_str} and ledger updated for {short_name}!"
-            )
-            self._active_worker = None
-            self._update_actions()
-
-        def on_error(err_msg: str):
-            self.show_critical_error("OpenRouter Query Failed", f"Model query failed: {err_msg}")
-            self._active_worker = None
-            self._update_actions()
-
-        worker.finished_query.connect(on_finished)
-        worker.error_query.connect(on_error)
-        worker.start()
-
     def copy_prompt(self):
         if self.last_package:
             QApplication.clipboard().setText(self.last_package.prompt)
             self.statusBar().showMessage("Prompt copied to clipboard.")
 
     def closeEvent(self, event):
+        app = QApplication.instance()
+        if app:
+            app.removeEventFilter(self)
+        if hasattr(self, "_query_queue"):
+            self._query_queue.clear()
         if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():
+            try:
+                self._active_worker.finished_query.disconnect()
+                self._active_worker.error_query.disconnect()
+            except Exception:
+                pass
             self._active_worker.terminate()
             self._active_worker.wait(1000)
+        if hasattr(self, "_map_dialog") and self._map_dialog:
+            try:
+                self._map_dialog.close()
+            except Exception:
+                pass
+            self._map_dialog = None
         if self._can_discard():
             self.canvas.source = None
             if self.source:

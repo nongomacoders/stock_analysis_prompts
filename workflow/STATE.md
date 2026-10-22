@@ -423,6 +423,24 @@ Analyze and forecast from company presentations and reports section by section w
     - Added construction company mapping in `section_capture/db.py` (`WBO`/`WBHO`, `RBX`, `PPC`, `AFT`, `SSK`).
     - Updated `new_company.py` with construction parameters (book-to-bill, operating EBIT margin, materials inflation, cash conversion, ZAR reporting currency).
     - Added test coverage in `tests/test_sectors.py`. All 102 unit and GUI tests passing (exit code 0).
+  - **Asynchronous Capture, DeepSeek FIFO Queue, Batch Pending Runner & Completed Checkmarks (`section_capture/window.py`)**:
+    - **Decoupled Instant Local Save (`Save Section`)**:
+      - Renamed `Save & copy prompt` to `Save Section` to clarify its purpose (instant local SQLite save without waiting for AI response).
+      - Decoupled `save_button` and `save_and_run_button` from `not_busy` state, enabling analysts to rapidly capture and save multiple sections sequentially even while background model queries are in flight.
+    - **FIFO Background DeepSeek Queue (`_query_queue`)**:
+      - `queue_or_run_package()`: Enqueues section package IDs into a FIFO background queue.
+      - Before dispatching each query, automatically refreshes the package's reading prompt from SQLite with the latest `questions_ledger`, ensuring sequential verification questions are passed down accurately.
+    - **1-Click Batch Runner (`⚡ Run Pending (N)`)**:
+      - Integrated directly on the main capture sidebar.
+      - Displays real-time pending count (`⚡ Run Pending (N)`) or in-flight progress (`⚡ DeepSeek Running (N in queue)`).
+      - Enqueues all un-analyzed sections in the active report in section order.
+    - **Completed Section Checkmarks in Heading Dropdown (`HeadingComboBox`)**:
+      - `_refresh_heading_options()` dynamically inspects SQLite and prefixes already-saved sections with `✓ ` (e.g. `✓ 01. Financial Review`).
+      - `HeadingComboBox` handles raw/display tuples and automatically strips `✓ ` upon selection or text editing, ensuring section titles in SQLite and report maps remain clean.
+    - **UI Layout Deduplication**:
+      - Removed duplicated `Saved sections` and `Stored questions` sidebar buttons that were already present in the top toolbar.
+      - Streamlined auxiliary row to `[⚡ Run Pending (N)] [Review Sections →] [Copy prompt]`, keeping prompt clipboard copying accessible with 1 click.
+    - Added dedicated test coverage in `tests/test_capture.py`. All 104 unit and GUI tests passing (exit code 0).
 
 ## Next steps
 

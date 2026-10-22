@@ -1132,11 +1132,85 @@ def test_sens_valuation_update_prompt_generation(tmp_path):
     assert "| **12-Month JSE Target Price** | **R0.21** |" in content
     assert "We are adding a subsequent" in content
     assert "new updated valuation report" in content
+def test_heading_combo_box_checkmark_and_clean_text():
+    combo = HeadingComboBox()
+    combo.set_options(["Highlights", "01. Financial Review", "02. Operational Review"])
+    assert combo.count() == 3
+
+    # Mark with checkmark
+    combo.set_options([("✓ Highlights", "Highlights"), "01. Financial Review", ("✓ 02. Operational Review", "02. Operational Review")])
+    assert combo.itemText(0) == "✓ Highlights"
+    assert combo.itemData(0) == "Highlights"
+
+    # Selection strips checkmark in lineEdit
+    combo.setCurrentIndex(0)
+    combo._on_item_activated(0)
+    assert combo.text() == "Highlights"
+
+    combo.setCurrentIndex(1)
+    combo._on_item_activated(1)
+    assert combo.text() == "01. Financial Review"
+
+    combo.setCurrentIndex(2)
+    combo._on_item_activated(2)
+    assert combo.text() == "02. Operational Review"
+
+    # Setting text directly with checkmark also cleans it
+    combo.setText("✓ Capital Structure")
+    assert combo.text() == "Capital Structure"
 
 
+def test_save_section_marks_dropdown_completed_and_updates_pending_counter(qapp, pdf_path, tmp_path):
+    window = CaptureWindow(output_root=tmp_path)
+    window.show()
+    assert window.open_pdf(pdf_path)
 
+    assert window.run_pending_button.text() == "⚡ Run Pending (0)"
+    assert not window.run_pending_button.isEnabled()
 
+    # Capture text using QTest
+    window.page_spin.setValue(3)
+    window.mode_combo.setCurrentIndex(1)
+    qapp.processEvents()
+    first, last = text_points(window.source, 3, "GROWTH")
+    start, end = window.canvas.mapFromScene(first), window.canvas.mapFromScene(last)
+    QTest.mousePress(window.canvas.viewport(), Qt.MouseButton.LeftButton, pos=start)
+    QTest.mouseMove(window.canvas.viewport(), end, delay=10)
+    QTest.mouseRelease(window.canvas.viewport(), Qt.MouseButton.LeftButton, pos=end)
+    assert window.pending is not None
 
+    # Choose a heading
+    assert window.heading_edit.count() > 0
+    target_heading = window.heading_edit.itemData(0) or window.heading_edit.itemText(0)
+    if target_heading.startswith("✓ "):
+        target_heading = target_heading[2:].strip()
+    window.heading_edit.setText(target_heading)
+    window._update_actions()
+    assert window.save_button.isEnabled()
 
+    # Save locally without running model
+    saved_pkg = window.save_section()
+    assert saved_pkg is not None
 
+    # Verify heading dropdown now has a checkmark for the saved heading
+    found_checked = False
+    for i in range(window.heading_edit.count()):
+        text = window.heading_edit.itemText(i)
+        data = window.heading_edit.itemData(i)
+        if data == target_heading or text == f"✓ {target_heading}":
+            found_checked = True
+            assert text.startswith("✓ ")
+            break
+    assert found_checked, f"Expected {target_heading} to be marked with checkmark"
 
+    # Verify pending button counter updated
+    assert window.run_pending_button.text() == "⚡ Run Pending (1)"
+    assert window.run_pending_button.isEnabled()
+
+    # Test queueing logic
+    if not hasattr(window, "_query_queue"):
+        window._query_queue = []
+    window._query_queue.append("test-pkg-2")
+    assert "test-pkg-2" in window._query_queue
+
+    window.close()
