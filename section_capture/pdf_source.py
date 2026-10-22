@@ -67,18 +67,55 @@ def extract_structured_text(crop) -> str:
                 seg_chars.pop()
             if not seg_chars:
                 continue
-            out = []
-            for i, c in enumerate(seg_chars):
-                txt = c["text"]
-                if i > 0:
-                    prev = seg_chars[i - 1]
-                    if c["x0"] - prev["x1"] > max(1.0, c["size"] * 0.18) and prev["text"] != " " and txt != " ":
-                        out.append(" ")
-                if (c["size"] < msize * 0.75) and txt.strip().isalnum():
-                    out.append(f"[^{txt.strip()}]")
+
+            chunks = []
+            curr_is_small = None
+            curr_chars = []
+            for c in seg_chars:
+                is_small = (c["size"] < msize * 0.75)
+                if curr_is_small is None:
+                    curr_is_small = is_small
+                    curr_chars = [c]
+                elif is_small == curr_is_small:
+                    curr_chars.append(c)
                 else:
-                    out.append(txt)
-            text_val = re.sub(r"\[\^([^\]]+)\]\s*\[\^([^\]]+)\]", r"[^\1\2]", "".join(out).strip())
+                    chunks.append((curr_is_small, curr_chars))
+                    curr_is_small = is_small
+                    curr_chars = [c]
+            if curr_chars:
+                chunks.append((curr_is_small, curr_chars))
+
+            out = []
+            prev_char = None
+            for is_small, chars in chunks:
+                chunk_out = []
+                for i, c in enumerate(chars):
+                    txt = c["text"]
+                    ref_prev = chars[i - 1] if i > 0 else prev_char
+                    if ref_prev and (c["x0"] - ref_prev["x1"] > max(1.0, c["size"] * 0.18)) and ref_prev["text"] != " " and txt != " ":
+                        chunk_out.append(" ")
+                    chunk_out.append(txt)
+                prev_char = chars[-1]
+
+                chunk_str = "".join(chunk_out)
+                stripped = chunk_str.strip()
+                is_footnote = False
+                if is_small and stripped:
+                    if stripped.isdigit() and len(stripped) <= 3:
+                        is_footnote = True
+                    elif all(ch in "*†‡§#" for ch in stripped) and len(stripped) <= 3:
+                        is_footnote = True
+                    elif len(stripped) == 1 and stripped.isalpha():
+                        is_footnote = True
+
+                if is_footnote:
+                    leading_space = " " if chunk_str.startswith(" ") else ""
+                    trailing_space = " " if chunk_str.endswith(" ") else ""
+                    out.append(f"{leading_space}[^{stripped}]{trailing_space}")
+                else:
+                    out.append(chunk_str)
+
+            text_val = "".join(out).strip()
             if text_val:
                 rendered_segs.append({
                     "x0": seg_chars[0]["x0"],

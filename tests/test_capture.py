@@ -1214,3 +1214,17 @@ def test_save_section_marks_dropdown_completed_and_updates_pending_counter(qapp,
     assert "test-pkg-2" in window._query_queue
 
     window.close()
+
+def test_smaller_font_words_not_corrupted_into_superscripts():
+    from section_capture.pdf_source import PdfSource
+    from pathlib import Path
+    from PySide6.QtCore import QRectF
+
+    cgr_pdf = Path('companies/construction/CGR/sources/Calgro-AFS-2026.pdf')
+    if cgr_pdf.exists():
+        src = PdfSource(cgr_pdf)
+        cap = src.capture_area(21, QRectF(20, 60, 400, 500))
+        # '(continued)' must be preserved as clean text, not chopped into [^co][^nt][^in][^ue][^d]
+        assert '1. Segment information (continued)' in cap.text
+        assert '[^co]' not in cap.text
+        assert '[^continued]' not in cap.text

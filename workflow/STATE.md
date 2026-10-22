@@ -446,6 +446,10 @@ Analyze and forecast from company presentations and reports section by section w
     - Filtered phantom `"Cover / Overview"` entries in `_refresh_heading_options()` in `section_capture/window.py` so only user-defined sections populate the dropdown.
     - Cleaned legacy report maps in `documents/analysis.sqlite` (Calgro AFS, ORN, APF, and iOCO), re-indexing section IDs contiguously starting at `D001` for the first user-defined section.
     - Updated `tests/test_report_map.py`. All 104 unit and GUI tests passing (exit code 0).
+  - **Refined Footnote Superscript Detection in PDF Extraction (`section_capture/pdf_source.py`)**:
+    - Fixed an issue where parenthetical continuation labels or subheadings in smaller font (such as `(continued)`) adjacent to larger headers were incorrectly decomposed into markdown superscripts (`([^co][^nt][^in][^ue][^d])`).
+    - Restricted superscript tagging to genuine footnote markers (1–3 digits like `[^1]`, footnote symbols `*`, `†`, or single isolated letters), preserving multi-letter continuation words as clean text.
+    - Added dedicated test in `tests/test_capture.py`. All 105 unit and GUI tests passing (exit code 0).
 
 ## Next steps
 
