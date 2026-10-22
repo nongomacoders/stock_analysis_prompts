@@ -6,20 +6,29 @@ from pathlib import Path
 import sys
 
 PACKAGE_DIR = Path(__file__).resolve().parent
-SECTORS = ["mining", "retail", "finance", "telcos"]
+from companies.sectors import get_all_sector_codes, get_sector_config
+SECTORS = get_all_sector_codes()
 
 
 def find_company_dir(ticker: str, sector: str | None = None) -> tuple[str, Path] | None:
     """Finds the (sector, directory_path) for a given company ticker."""
     ticker_upper = ticker.upper()
+    candidates = [ticker_upper]
+    if ticker_upper == "IOCO":
+        candidates.append("IOC")
+    elif ticker_upper == "IOC":
+        candidates.append("IOCO")
+
     if sector:
-        target = PACKAGE_DIR / sector / ticker_upper
-        if target.exists():
-            return sector, target
+        for cand_t in candidates:
+            target = PACKAGE_DIR / sector / cand_t
+            if target.exists():
+                return sector, target
     for sec in SECTORS:
-        cand = PACKAGE_DIR / sec / ticker_upper
-        if cand.exists():
-            return sec, cand
+        for cand_t in candidates:
+            cand = PACKAGE_DIR / sec / cand_t
+            if cand.exists():
+                return sec, cand
     return None
 
 

@@ -18,9 +18,11 @@ import json
 from pathlib import Path
 import sys
 
+from companies.sectors import get_all_sector_codes
+
 ROOT = Path(__file__).resolve().parent
 COMPANIES_DIR = ROOT / "companies"
-SUPPORTED_SECTORS = ["mining", "retail", "finance", "telcos"]
+SUPPORTED_SECTORS = get_all_sector_codes()
 
 
 def create_company(ticker: str, name: str | None = None, sector: str = "mining") -> Path:
@@ -81,7 +83,7 @@ def create_company(ticker: str, name: str | None = None, sector: str = "mining")
     )
 
     # 5. companies/<SECTOR>/<TICKER>/models/config.py
-    reporting_currency = "ZAR" if sector in ["retail", "finance", "telcos"] else "USD"
+    reporting_currency = "ZAR" if sector in ["retail", "reit", "it", "finance", "telcos"] else "USD"
     (models_dir / "config.py").write_text(
         f'"""Configuration & baseline parameters for {company_name} ({ticker})."""\n\n'
         f"TICKER = {ticker!r}\n"
@@ -149,6 +151,27 @@ def generate_company_notebook(ticker: str, company_name: str, sector: str, outpu
             "print('[+] Retail analyst assumptions set:')\n"
             "print(f'    * Merch Sales Growth: {MERCHANDISE_GROWTH_PCT*100:.1f}% | Gross Margin: {GROSS_PROFIT_MARGIN_PCT*100:.1f}%')\n"
             "print(f'    * Debtor Costs / Debtors: {DEBTOR_COSTS_PCT_DEBTORS*100:.1f}% | Net Stores Planned: {STORE_EXPANSION_NET}')\n"
+        )
+    elif sector == "reit":
+        macro_text = (
+            "1. **Tweak Property Assumptions**: Contractual rental escalations, like-for-like NPI growth, vacancy rates.\n"
+            "2. **Balance Sheet & Cost of Debt**: Loan-to-Value (LTV) ratio, hedging percentage, weighted average cost of debt.\n"
+            "3. **Distributable Income & Payout**: Distributable earnings per share (DIPS), payout ratio on distributable income.\n"
+            "4. **Valuation Multiples**: Exit capitalization rate (cap rate), SOTP NAV per share, forward dividend yield.\n"
+        )
+        macro_code = (
+            "# ==============================================================================\n"
+            "# [CONTROLS] INTERACTIVE ANALYST REIT & PROPERTY ASSUMPTIONS\n"
+            "# ==============================================================================\n\n"
+            "CONTRACTUAL_ESCALATION_PCT = 0.065   # Average contractual lease escalation (%)\n"
+            "PORTFOLIO_VACANCY_PCT = 0.055        # Portfolio-wide vacancy rate (%)\n"
+            "EXIT_CAP_RATE_PCT = 0.0875          # Weighted exit capitalization rate\n"
+            "TARGET_LTV_PCT = 0.380              # Target Look-through Loan-to-Value (LTV)\n"
+            "DISTRIBUTION_PAYOUT_PCT = 0.900     # Payout ratio on Distributable Income\n"
+            "TARGET_DIVIDEND_YIELD_PCT = 0.095   # Target forward distribution yield\n\n"
+            "print('[+] REIT analyst assumptions set:')\n"
+            "print(f'    * Escalation: {CONTRACTUAL_ESCALATION_PCT*100:.1f}% | Vacancy: {PORTFOLIO_VACANCY_PCT*100:.1f}%')\n"
+            "print(f'    * Exit Cap Rate: {EXIT_CAP_RATE_PCT*100:.2f}% | Target LTV: {TARGET_LTV_PCT*100:.1f}% | Payout: {DISTRIBUTION_PAYOUT_PCT*100:.1f}%')\n"
         )
     else:
         macro_text = (
@@ -262,7 +285,7 @@ def generate_company_notebook(ticker: str, company_name: str, sector: str, outpu
 def main():
     parser = argparse.ArgumentParser(description="Create a new company hub in the Analyst Workbench.")
     parser.add_argument("ticker", help="Company ticker symbol (e.g. HAR, LEW, SBK, MTN)")
-    parser.add_argument("--sector", choices=SUPPORTED_SECTORS, default="mining", help="Company sector (mining, retail, finance, telcos)")
+    parser.add_argument("--sector", choices=SUPPORTED_SECTORS, default="mining", help="Company sector (mining, retail, reit, it, finance, telcos)")
     parser.add_argument("--name", help="Full company name", default=None)
 
     args = parser.parse_args()
