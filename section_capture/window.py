@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-import re
+import copy
+import json
 import os
 from pathlib import Path
+import re
 
 from PySide6.QtCore import QEvent, Qt
 from PySide6.QtGui import QAction, QKeyEvent, QKeySequence, QShortcut
@@ -1479,47 +1481,50 @@ class CaptureWindow(QMainWindow):
                 sec = _row_to_saved_section(row, self.output_root)
                 curr_rep = conn.execute("SELECT questions_ledger FROM reports WHERE sha256 = ?", (sec.report_sha256,)).fetchone()
                 current_ledger = (curr_rep["questions_ledger"] if curr_rep else "") or ""
+
+            manifest = copy.deepcopy(sec.manifest)
+            if "heading" not in manifest:
+                manifest["heading"] = sec.heading
+            if "subheading" not in manifest and sec.subheading:
+                manifest["subheading"] = sec.subheading
+            if "package_id" not in manifest:
+                manifest["package_id"] = sec.package_id
+            if "source" not in manifest:
+                manifest["source"] = {"filename": getattr(self.source, "filename", "report.pdf"), "sha256": sec.report_sha256}
+            elif "sha256" not in manifest["source"]:
+                manifest["source"]["sha256"] = sec.report_sha256
+            if "selections" not in manifest:
+                manifest["selections"] = sec.selections or []
+
+            manifest["stored_questions"] = current_ledger.strip() or None
+            current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else (manifest.get("sector") or "retail")
+            manifest["sector"] = current_sector
+            texts = [s.get("text", "") for s in sec.selections] if sec.selections else [sec.selected_text or ""]
+            refreshed_prompt = build_prompt(manifest, texts, sector=current_sector)
+
+            with connect_db(self.output_root) as conn:
+                conn.execute(
+                    "UPDATE sections SET prompt = ?, manifest_json = ? WHERE package_id = ?",
+                    (refreshed_prompt, json.dumps(manifest, ensure_ascii=False), sec.package_id),
+                )
+
+            active_model = self._active_model_name()
+            short_name = shorten_section_name(name or sec.heading)
+            model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
+            queue_count = len(getattr(self, "_query_queue", []))
+            queue_tag = f" [{queue_count} more queued]" if queue_count > 0 else ""
+            self.statusBar().showMessage(f"Querying {model_tag} for {short_name}{queue_tag}...")
+
+            worker = OpenRouterWorker(refreshed_prompt, model=active_model, parent=self)
+            self._active_worker = worker
+            self._update_actions()
         except Exception as exc:
-            self.show_problem(f"Could not load section from database: {exc}")
-            self._process_next_in_queue()
+            self.show_critical_error("DeepSeek Query Failed", f"Could not prepare section for DeepSeek: {exc}")
+            if hasattr(self, "_query_queue"):
+                self._query_queue.clear()
+            self._active_worker = None
+            self._update_actions()
             return
-
-        manifest = copy.deepcopy(sec.manifest)
-        if "heading" not in manifest:
-            manifest["heading"] = sec.heading
-        if "subheading" not in manifest and sec.subheading:
-            manifest["subheading"] = sec.subheading
-        if "package_id" not in manifest:
-            manifest["package_id"] = sec.package_id
-        if "source" not in manifest:
-            manifest["source"] = {"filename": getattr(self.source, "filename", "report.pdf"), "sha256": sec.report_sha256}
-        elif "sha256" not in manifest["source"]:
-            manifest["source"]["sha256"] = sec.report_sha256
-        if "selections" not in manifest:
-            manifest["selections"] = sec.selections or []
-
-        manifest["stored_questions"] = current_ledger.strip() or None
-        current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else (manifest.get("sector") or "retail")
-        manifest["sector"] = current_sector
-        texts = [s.get("text", "") for s in sec.selections] if sec.selections else [sec.selected_text or ""]
-        refreshed_prompt = build_prompt(manifest, texts, sector=current_sector)
-
-        with connect_db(self.output_root) as conn:
-            conn.execute(
-                "UPDATE sections SET prompt = ?, manifest_json = ? WHERE package_id = ?",
-                (refreshed_prompt, json.dumps(manifest, ensure_ascii=False), sec.package_id),
-            )
-
-        active_model = self._active_model_name()
-        short_name = shorten_section_name(name or sec.heading)
-        model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
-        queue_count = len(getattr(self, "_query_queue", []))
-        queue_tag = f" [{queue_count} more queued]" if queue_count > 0 else ""
-        self.statusBar().showMessage(f"Querying {model_tag} for {short_name}{queue_tag}...")
-
-        worker = OpenRouterWorker(refreshed_prompt, model=active_model, parent=self)
-        self._active_worker = worker
-        self._update_actions()
 
         def on_finished(response_text: str, elapsed: float = 0.0, stats: dict | None = None):
             stats = stats or {}

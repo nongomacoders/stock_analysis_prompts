@@ -450,6 +450,9 @@ Analyze and forecast from company presentations and reports section by section w
     - Fixed an issue where parenthetical continuation labels or subheadings in smaller font (such as `(continued)`) adjacent to larger headers were incorrectly decomposed into markdown superscripts (`([^co][^nt][^in][^ue][^d])`).
     - Restricted superscript tagging to genuine footnote markers (1–3 digits like `[^1]`, footnote symbols `*`, `†`, or single isolated letters), preserving multi-letter continuation words as clean text.
     - Added dedicated test in `tests/test_capture.py`. All 105 unit and GUI tests passing (exit code 0).
+  - **Fixed Missing `copy`/`json` Imports in Background Query Dispatcher (`section_capture/window.py`)**:
+    - Fixed a bug where `_start_query_for_package()` crashed silently with `NameError: name 'copy' is not defined` when `Save & Run DeepSeek` or `Run Pending` was invoked.
+    - Added missing standard library imports (`copy`, `json`) and wrapped the query dispatcher in robust `try...except` error handling with user-facing alerts.
 
 ## Next steps
 
