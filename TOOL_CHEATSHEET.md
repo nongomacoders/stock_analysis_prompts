@@ -73,3 +73,10 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
   import sys
   sys.path.insert(0, ".")
   ```
+
+---
+
+### 7. Python 3.12+ Raw String Templates in Scratch Scripts
+* **Warning**: `SyntaxWarning: invalid escape sequence '\d'` or `'\-'` when multi-line string templates in scratch replacement scripts contain unescaped regex patterns.
+* **Rule**:
+  Always use raw triple quotes `r"""..."""` for multi-line replacement blocks containing backslashes or regex patterns (`\d`, `\-`, `\s`).
