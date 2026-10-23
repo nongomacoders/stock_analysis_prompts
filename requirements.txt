@@ -1,3 +1,4 @@
 # Runtime dependencies. Install in the project .venv with uv.
 PySide6>=6.8,<7
 pdfplumber>=0.11,<0.12
+yfinance>=1.7.0

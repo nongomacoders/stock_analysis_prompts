@@ -76,6 +76,16 @@ CREATE TABLE IF NOT EXISTS app_state (
     value TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS market_quotes (
+    ticker TEXT PRIMARY KEY,
+    price_zar REAL NOT NULL,
+    prev_close_zar REAL,
+    currency TEXT NOT NULL,
+    raw_price REAL NOT NULL,
+    change_pct REAL,
+    updated_at TEXT NOT NULL
+);
 """
 
 
@@ -1427,6 +1437,21 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
             """
         ).fetchall()
 
+        cur = conn.cursor()
+        quotes_map: dict[str, dict] = {}
+        has_quotes_table = cur.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='market_quotes'"
+        ).fetchone()
+        if has_quotes_table:
+            q_rows = cur.execute("SELECT ticker, price_zar, prev_close_zar, change_pct, updated_at FROM market_quotes").fetchall()
+            for qr in q_rows:
+                quotes_map[qr["ticker"].upper()] = {
+                    "price_zar": qr["price_zar"],
+                    "prev_close_zar": qr["prev_close_zar"],
+                    "change_pct": qr["change_pct"],
+                    "updated_at": qr["updated_at"],
+                }
+
         results = []
         for r in rows:
             ticker, company_name, sector = detect_company_meta(r["original_path"] or r["filename"])
@@ -1435,6 +1460,18 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
             sector = sector or "unassigned"
             jse_code = get_jse_sector_code(sector, ticker=ticker) if sector in SECTORS else ""
             jse_name = get_jse_sector_name(sector, ticker=ticker) if sector in SECTORS else ""
+
+            quote = quotes_map.get(ticker.upper())
+            live_price = quote["price_zar"] if quote else None
+            live_change = quote["change_pct"] if quote else None
+            quote_updated = quote["updated_at"] if quote else None
+            tp_val = r["target_price_zar"]
+            live_upside = (
+                round(((tp_val - live_price) / live_price) * 100.0, 1)
+                if (tp_val is not None and live_price and live_price > 0)
+                else None
+            )
+
             results.append({
                 "sha256": r["sha256"],
                 "filename": r["filename"],
@@ -1444,8 +1481,12 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 "sector": sector,
                 "jse_sector_code": jse_code,
                 "jse_sector_name": jse_name,
-                "target_price_zar": r["target_price_zar"],
+                "target_price_zar": tp_val,
                 "reference_price_zar": r["reference_price_zar"],
+                "live_price_zar": live_price,
+                "live_price_change_pct": live_change,
+                "live_price_updated_at": quote_updated,
+                "live_upside_pct": live_upside,
                 "recommendation": r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS"),
                 "upside_pct": r["upside_pct"],
                 "dividend_yield_pct": r["dividend_yield_pct"],

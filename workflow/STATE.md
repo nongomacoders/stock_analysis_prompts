@@ -11,6 +11,25 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Live JSE Market Prices Integration via yfinance (`.JO`)**:
+  - Integrated real-time JSE equity market prices into the Analyzed Stocks & Portfolio Coverage screen using Yahoo Finance:
+    - **Market Data Engine (`section_capture/market_data.py`)**:
+      - Formats company tickers to official Yahoo Finance JSE symbols using `.JO` suffix (e.g. `PAN.JO`, `LEW.JO`, `CGR.JO`, `ORN.JO`, `APF.JO`, `IOC.JO`, `HAR.JO`, `AFT.JO`).
+      - Automatically normalizes South African Cents (`ZAc`) to ZAR Rands (`ZAc / 100.0`).
+      - Implemented asynchronous `MarketQuoteWorker(QThread)` with Qt signals (`quote_received`, `all_quotes_ready`, `fetch_failed`) to keep the desktop GUI 100% responsive.
+    - **Persistent SQLite Quote Caching (`section_capture/db.py`)**:
+      - Added `market_quotes` schema in `documents/analysis.sqlite` storing latest price, previous close, change percentage, currency, and update timestamps.
+      - Updated `get_analyzed_stocks()` to join cached quotes, providing `live_price_zar`, `live_price_change_pct`, and recomputing `live_upside_pct` dynamically against 12M target prices.
+    - **Portfolio Coverage Dashboard (`section_capture/portfolio_view.py`)**:
+      - Expanded table to 13 columns distinguishing **Latest JSE Price**, **12M Target**, **Live Upside**, **Note Ref Price**, and **Note Upside**.
+      - Added `"🔄 Fetch Live JSE Prices"` toolbar button with real-time sync status indicator.
+      - Enhanced the stock KPI details banner to contrast Live Market Price and Live Upside alongside Note Reference Price.
+      - Updated Markdown universe exporter (`Copy Universe Table`) to include live prices and live upside.
+    - **Dependencies & Verification**:
+      - Added `yfinance>=1.7.0` to `requirements.txt` and regenerated `requirements.lock.txt`.
+      - Added unit and integration tests in `tests/test_market_data.py`.
+      - Verified full test suite: **117 passed in 26.23s with 0 warnings and 0 failures**.
+
 - **Total Elimination of Defaults Across Entire Workflow**:
   - Completely purged silent fallback defaults, implicit assumptions, and fake placeholder profiles across all layers (CLI, GUI, prompt resolution, database, and pipeline generators):
     - **Sector Registry (`companies/sectors.py`)**: Removed `DEFAULT_SECTOR = "mining"`. `get_sector_config(code)` now strictly raises `ValueError` if code is omitted and `KeyError` if unrecognized. Formatting helpers (`get_jse_sector_code`, `get_jse_sector_name`, `get_sector_badge_style`, `get_sector_short_label`) gracefully handle unassigned/empty inputs without fallback fabrication.

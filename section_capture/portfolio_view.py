@@ -36,12 +36,16 @@ from PySide6.QtWidgets import (
 
 from companies.sectors import get_all_sectors, get_jse_sector_code, get_jse_sector_label, get_jse_sector_name, get_sector_short_label
 
+from datetime import datetime
+import os
+
 from section_capture.db import (
     get_analyzed_stocks,
     get_stage1_report,
     get_stage2_report,
     resolve_db_path,
 )
+from section_capture.market_data import MarketQuoteWorker
 from section_capture.map_dialog import fit_dialog_to_screen
 
 
@@ -188,6 +192,16 @@ class PortfolioView(QWidget):
         self.copy_table_btn.clicked.connect(self._copy_universe_table)
         filter_bar.addWidget(self.copy_table_btn)
 
+        self.fetch_quotes_btn = QPushButton("🔄 Fetch Live JSE Prices")
+        self.fetch_quotes_btn.setToolTip("Fetch latest market prices from Yahoo Finance via yfinance (<TICKER>.JO)")
+        self.fetch_quotes_btn.setStyleSheet("font-weight: bold; color: #0d47a1;")
+        self.fetch_quotes_btn.clicked.connect(self._fetch_live_quotes)
+        filter_bar.addWidget(self.fetch_quotes_btn)
+
+        self.quote_status_label = QLabel()
+        self.quote_status_label.setStyleSheet("font-size: 11px; color: #546e7a;")
+        filter_bar.addWidget(self.quote_status_label)
+
         layout.addLayout(filter_bar)
 
         # ---------------------------------------------------------------------
@@ -203,14 +217,16 @@ class PortfolioView(QWidget):
         table_layout.setSpacing(4)
 
         self.table = QTableWidget()
-        self.table.setColumnCount(11)
+        self.table.setColumnCount(13)
         self.table.setHorizontalHeaderLabels([
             "Ticker",
             "Company Name",
             "Sector",
-            "Current Price",
+            "Latest JSE Price",
             "12M Target",
-            "Implied Upside",
+            "Live Upside",
+            "Note Ref Price",
+            "Note Upside",
             "Div Yield",
             "12M TSR",
             "Rating",
@@ -347,12 +363,25 @@ class PortfolioView(QWidget):
             sec_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(row_idx, 2, sec_item)
 
-            # Current Reference Price
-            ref_val = s["reference_price_zar"]
-            ref_str = f"R{ref_val:,.2f}" if ref_val is not None else "—"
-            ref_item = QTableWidgetItem(ref_str)
-            ref_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
-            self.table.setItem(row_idx, 3, ref_item)
+            # Latest Market Price (from yfinance via SQLite market_quotes)
+            live_val = s.get("live_price_zar")
+            live_change = s.get("live_price_change_pct")
+            if live_val is not None:
+                chg_str = f" ({live_change:+.1f}%)" if live_change is not None else ""
+                live_str = f"R{live_val:,.2f}{chg_str}"
+            else:
+                live_str = "—"
+            live_item = QTableWidgetItem(live_str)
+            live_item.setFont(QFont("Segoe UI", 9, QFont.Weight.Bold))
+            live_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+            if live_change is not None:
+                if live_change > 0:
+                    live_item.setForeground(QColor("#1b5e20"))
+                elif live_change < 0:
+                    live_item.setForeground(QColor("#c62828"))
+            if s.get("live_price_updated_at"):
+                live_item.setToolTip(f"JSE ({s['ticker']}.JO) updated: {s['live_price_updated_at']}")
+            self.table.setItem(row_idx, 3, live_item)
 
             # 12M Target Price
             tp_val = s["target_price_zar"]
@@ -362,7 +391,29 @@ class PortfolioView(QWidget):
             tp_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
             self.table.setItem(row_idx, 4, tp_item)
 
-            # Implied Upside
+            # Live Upside (Recomputed against Live Price)
+            live_up = s.get("live_upside_pct")
+            live_up_str = f"{live_up:+.1f}%" if live_up is not None else "—"
+            live_up_item = QTableWidgetItem(live_up_str)
+            live_up_item.setFont(QFont("Segoe UI", 9, QFont.Weight.Bold))
+            live_up_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+            if live_up is not None:
+                if live_up >= 15.0:
+                    live_up_item.setForeground(QColor("#1b5e20"))
+                elif live_up >= 5.0:
+                    live_up_item.setForeground(QColor("#2e7d32"))
+                elif live_up < 0:
+                    live_up_item.setForeground(QColor("#c62828"))
+            self.table.setItem(row_idx, 5, live_up_item)
+
+            # Note Reference Price (Historical note baseline)
+            ref_val = s["reference_price_zar"]
+            ref_str = f"R{ref_val:,.2f}" if ref_val is not None else "—"
+            ref_item = QTableWidgetItem(ref_str)
+            ref_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+            self.table.setItem(row_idx, 6, ref_item)
+
+            # Note Implied Upside
             up_val = s["upside_pct"]
             up_str = f"{up_val:+.1f}%" if up_val is not None else "—"
             up_item = QTableWidgetItem(up_str)
@@ -372,14 +423,14 @@ class PortfolioView(QWidget):
                     up_item.setForeground(QColor("#2e7d32"))
                 elif up_val < 0:
                     up_item.setForeground(QColor("#c62828"))
-            self.table.setItem(row_idx, 5, up_item)
+            self.table.setItem(row_idx, 7, up_item)
 
             # Dividend Yield
             dy_val = s["dividend_yield_pct"]
             dy_str = f"{dy_val:.1f}%" if dy_val is not None else "—"
             dy_item = QTableWidgetItem(dy_str)
             dy_item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
-            self.table.setItem(row_idx, 6, dy_item)
+            self.table.setItem(row_idx, 8, dy_item)
 
             # 12M TSR
             tsr_val = s["tsr_pct"]
@@ -394,7 +445,7 @@ class PortfolioView(QWidget):
                     tsr_item.setForeground(QColor("#2e7d32"))
                 elif tsr_val < 0:
                     tsr_item.setForeground(QColor("#c62828"))
-            self.table.setItem(row_idx, 7, tsr_item)
+            self.table.setItem(row_idx, 9, tsr_item)
 
             # Recommendation Badge
             rec_str = s["recommendation"] or "—"
@@ -412,7 +463,7 @@ class PortfolioView(QWidget):
                 rec_item.setForeground(QColor("#b71c1c"))
             else:
                 rec_item.setForeground(QColor("#546e7a"))
-            self.table.setItem(row_idx, 8, rec_item)
+            self.table.setItem(row_idx, 10, rec_item)
 
             # Stage 1 / S2 Status
             if s["has_stage2"]:
@@ -423,14 +474,14 @@ class PortfolioView(QWidget):
                 status_str = f"Captured ({s['section_count']} sec)"
             status_item = QTableWidgetItem(status_str)
             status_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
-            self.table.setItem(row_idx, 9, status_item)
+            self.table.setItem(row_idx, 11, status_item)
 
             # Analysis Date
             date_val = s["stage2_updated_at"] or s["updated_at"] or ""
             date_str = date_val.split("T")[0] if date_val else "—"
             date_item = QTableWidgetItem(date_str)
             date_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
-            self.table.setItem(row_idx, 10, date_item)
+            self.table.setItem(row_idx, 12, date_item)
 
         # Select first row if available
         if self.filtered_data:
@@ -469,12 +520,23 @@ class PortfolioView(QWidget):
         sector_str = f"{jse_sec_name} ({jse_sec_code})" if jse_sec_code else get_sector_short_label(s["sector"])
         tp = f"R{s['target_price_zar']:,.2f}" if s["target_price_zar"] is not None else "N/A"
         ref = f"R{s['reference_price_zar']:,.2f}" if s["reference_price_zar"] is not None else "N/A"
+        live_val = s.get("live_price_zar")
+        live_str = f"R{live_val:,.2f}" if live_val is not None else "—"
+        live_change = s.get("live_price_change_pct")
+        change_str = f" ({live_change:+.1f}%)" if live_change is not None else ""
+        live_up = s.get("live_upside_pct")
+        live_up_str = f"{live_up:+.1f}%" if live_up is not None else "—"
         tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "N/A"
         rec = s["recommendation"] or "IN PROGRESS"
 
         self.stock_title_label.setText(f"<b>{name} ({ticker})</b> · Sector: <i>{sector_str}</i>")
         self.kpi_metrics_label.setText(
-            f"<b>Target:</b> {tp}  |  <b>Current:</b> {ref}  |  <b>12M TSR:</b> {tsr}  |  <b>Rating:</b> <b>{rec}</b>"
+            f"<b>Latest JSE:</b> <span style='color: #0d47a1; font-weight: bold;'>{live_str}{change_str}</span>  |  "
+            f"<b>Target:</b> {tp}  |  "
+            f"<b>Live Upside:</b> <span style='font-weight: bold; color: {'#1b5e20' if live_up and live_up > 0 else '#c62828'};'>{live_up_str}</span>  |  "
+            f"<b>Note Ref:</b> {ref}  |  "
+            f"<b>12M TSR:</b> {tsr}  |  "
+            f"<b>Rating:</b> <b>{rec}</b>"
         )
 
         triggers = s.get("monitoring_triggers", "").strip()
@@ -523,6 +585,46 @@ class PortfolioView(QWidget):
             if hasattr(parent_dlg, "tabs"):
                 parent_dlg.tabs.setCurrentIndex(1)
 
+    def _fetch_live_quotes(self):
+        tickers = [
+            s["ticker"]
+            for s in self.stocks_data
+            if s.get("ticker") and s["ticker"] not in {"UNKNOWN", "UNCLASSIFIED", "TARGET", "COMPANY", "NONE"}
+        ]
+        if not tickers:
+            return
+        if hasattr(self, "_quote_worker") and self._quote_worker and self._quote_worker.isRunning():
+            return
+
+        self.fetch_quotes_btn.setEnabled(False)
+        self.fetch_quotes_btn.setText("🔄 Fetching Quotes...")
+        self.quote_status_label.setText("Querying Yahoo Finance (.JO)...")
+
+        self._quote_worker = MarketQuoteWorker(tickers, db_path=self.db_path, parent=self)
+        self._quote_worker.all_quotes_ready.connect(self._on_quotes_fetched)
+        self._quote_worker.fetch_failed.connect(self._on_quotes_failed)
+        self._quote_worker.start()
+
+    def _on_quotes_fetched(self, quotes: dict):
+        self.fetch_quotes_btn.setEnabled(True)
+        self.fetch_quotes_btn.setText("🔄 Fetch Live JSE Prices")
+        now_str = datetime.now().strftime("%H:%M:%S")
+        self.quote_status_label.setText(f"✓ {len(quotes)} JSE quotes updated ({now_str})")
+        # Reload stocks from DB to pick up newly cached quotes
+        current_ticker = self.current_stock["ticker"] if self.current_stock else None
+        self.refresh()
+        if current_ticker:
+            for r in range(self.table.rowCount()):
+                item = self.table.item(r, 0)
+                if item and item.text().upper() == current_ticker.upper():
+                    self.table.selectRow(r)
+                    break
+
+    def _on_quotes_failed(self, err_msg: str):
+        self.fetch_quotes_btn.setEnabled(True)
+        self.fetch_quotes_btn.setText("🔄 Fetch Live JSE Prices")
+        self.quote_status_label.setText(f"⚠️ Quote update failed: {err_msg[:40]}")
+
     def _copy_triggers(self):
         if not self.current_stock:
             return
@@ -537,20 +639,22 @@ class PortfolioView(QWidget):
             return
 
         lines = [
-            "| Ticker | Company Name | Sector | Ref Price (ZAR) | 12M Target (ZAR) | Upside % | Div Yield % | 12M TSR % | Rating | Status |",
-            "| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| Ticker | Company Name | Sector | Latest JSE (ZAR) | 12M Target (ZAR) | Live Upside % | Note Ref (ZAR) | Note Upside % | Div Yield % | 12M TSR % | Rating | Status |",
+            "| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ]
         for s in self.stocks_data:
-            ref = f"R{s['reference_price_zar']:,.2f}" if s["reference_price_zar"] is not None else "—"
+            live = f"R{s['live_price_zar']:,.2f}" if s.get("live_price_zar") is not None else "—"
             tp = f"R{s['target_price_zar']:,.2f}" if s["target_price_zar"] is not None else "—"
-            up = f"{s['upside_pct']:+.1f}%" if s["upside_pct"] is not None else "—"
+            live_up = f"{s['live_upside_pct']:+.1f}%" if s.get("live_upside_pct") is not None else "—"
+            ref = f"R{s['reference_price_zar']:,.2f}" if s["reference_price_zar"] is not None else "—"
+            note_up = f"{s['upside_pct']:+.1f}%" if s["upside_pct"] is not None else "—"
             dy = f"{s['dividend_yield_pct']:.1f}%" if s["dividend_yield_pct"] is not None else "—"
             tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "—"
             rec = s["recommendation"] or "IN PROGRESS"
             status = "Valued" if s["has_stage2"] else ("Audited" if s["has_stage1"] else "Captured")
             sec_display = get_jse_sector_label(s["sector"], ticker=s["ticker"])
             lines.append(
-                f"| **{s['ticker']}** | {s['company_name']} | {sec_display} | {ref} | {tp} | {up} | {dy} | {tsr} | **{rec}** | {status} |"
+                f"| **{s['ticker']}** | {s['company_name']} | {sec_display} | {live} | {tp} | {live_up} | {ref} | {note_up} | {dy} | {tsr} | **{rec}** | {status} |"
             )
 
         md = "\n".join(lines)
