@@ -11,6 +11,16 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Elimination of In-Prompt Questions Duplication in Section Capture (`section_capture/packages.py`)**:
+  - Identified that whenever questions specifically targeting the active section (`QUESTIONS SPECIFICALLY TARGETING THIS SECTION`) were highlighted at the top of the prompt, the exact same lines were being repeated immediately below inside `BEGIN STORED QUESTIONS FROM EARLIER SECTIONS`, wasting ~100k characters across multi-section companies (e.g. 97,233 duplicate characters in CGR alone).
+  - Implemented `partition_stored_questions(stored_questions, section_ids)` in [`section_capture/packages.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/section_capture/packages.py):
+    - Extracts `relevant_lines` targeting the active `section_ids` into the priority focus block.
+    - Excludes those matched lines from the subsequent `STORED QUESTIONS` block, while preserving markdown headings and structure for all other remaining questions.
+    - Automatically prunes empty section headers whose questions were fully matched and migrated into the priority block.
+  - Added unit test coverage in [`tests/test_capture.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/tests/test_capture.py) (`test_partition_stored_questions_eliminates_duplicates`).
+  - Full test suite verified: **118 passed in 25.65s with 0 errors**.
+
+
 - **Stage 1 Prompt Compaction & Questions Ledger Deduplication (`workflow/export_stage1.py`)**:
   - Solved prompt bloat on large, multi-section disclosure captures (e.g. Calgro M3's 41 sections which grew to 2.95 MB / ~700k tokens due to repeated copy-paste question ledgers):
     - **Algorithmic Section Cleaning (`clean_reading_brief`)**: Strips the redundant Section 4 copy-paste ledger block (`### 4. Updated Open Questions Ledger (Copy to App)`) from each intermediate section's LLM response, saving over 800,000 characters of pure duplication across 41 sections while preserving 100% of the financial evidence, tables, answers, footnote deep-dives, baseline inputs, and red flags.

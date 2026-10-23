@@ -334,6 +334,7 @@ def test_stored_questions_and_llm_response_auto_update_in_sqlite(qapp, pdf_path,
     assert 'Q2 [Target: D006 Notes]' not in target_block
     assert 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS' in second_prompt
     assert 'Q2 [Target: D006 Notes]: Reconcile 2,436m dividend shares' in second_prompt
+    assert 'Q1 [Target: D008 APMs]' not in second_prompt.split('BEGIN STORED QUESTIONS')[1]
     assert 'Q1 [Target: D008 APMs]' in second_pack.stored_questions
     window.close()
 
@@ -1228,3 +1229,30 @@ def test_smaller_font_words_not_corrupted_into_superscripts():
         assert '1. Segment information (continued)' in cap.text
         assert '[^co]' not in cap.text
         assert '[^continued]' not in cap.text
+
+
+def test_partition_stored_questions_eliminates_duplicates():
+    from section_capture.packages import partition_stored_questions
+
+    sample_ledger = (
+        "## Open Questions Ledger — after D002\n\n"
+        "### Pending: D003 (Balance Sheet)\n"
+        "- Q1 [High]: Agree actual Total Equity to implied R1,546m. [D002, p.12]\n"
+        "- Q2 [High]: Extract total interest-bearing borrowings. [D002, p.12]\n\n"
+        "### Pending: D005 (Cash Flow)\n"
+        "- Q9 [Medium]: Verify operating cash flow conversion. [D002, p.15]\n"
+        "- Q10 [Low]: Check debt covenants. [D002, p.16]\n"
+    )
+
+    relevant, other = partition_stored_questions(sample_ledger, ["D003"])
+    assert len(relevant) == 2
+    assert "Q1 [High]: Agree actual Total Equity" in relevant[0]
+    assert "Q2 [High]: Extract total interest-bearing borrowings" in relevant[1]
+
+    # Verify that D003 questions are excluded from other, but D005 questions are kept
+    assert "Q1 [High]: Agree actual Total Equity" not in other
+    assert "Q2 [High]: Extract total interest-bearing borrowings" not in other
+    assert "### Pending: D003" not in other
+    assert "### Pending: D005 (Cash Flow)" in other
+    assert "Q9 [Medium]: Verify operating cash flow conversion" in other
+    assert "Q10 [Low]: Check debt covenants" in other

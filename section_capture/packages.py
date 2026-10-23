@@ -155,6 +155,38 @@ def _matching_stored_questions(stored_questions: str, section_ids: list[str]) ->
     return matched
 
 
+def partition_stored_questions(stored_questions: str, section_ids: list[str]) -> tuple[list[str], str]:
+    """Partitions stored_questions into:
+    1. A list of question lines targeting the current section_ids (relevant_lines).
+    2. The remaining text of stored_questions with relevant_lines excluded (other_stored),
+       preserving structure and removing empty section headers whose questions were fully matched.
+    """
+    relevant_lines = _matching_stored_questions(stored_questions, section_ids)
+    if not relevant_lines:
+        return [], stored_questions
+
+    matched_set = {line.strip() for line in relevant_lines if line.strip()}
+    blocks = re.split(r"(?m)^(?=#{1,4}\s)", stored_questions)
+    kept_blocks: list[str] = []
+
+    for b in blocks:
+        b_stripped = b.strip()
+        if not b_stripped:
+            continue
+        lines = b_stripped.splitlines()
+        content_lines = [l for l in lines if not l.strip().startswith("#")]
+        if not content_lines:
+            kept_blocks.append(b_stripped)
+            continue
+        kept_content = [l for l in lines if l.strip().startswith("#") or l.strip() not in matched_set]
+        has_questions = any(not l.strip().startswith("#") and l.strip() for l in kept_content)
+        if has_questions:
+            kept_blocks.append("\n".join(kept_content).strip())
+
+    other_text = "\n\n".join(kept_blocks).strip()
+    return relevant_lines, other_text
+
+
 def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None = None) -> str:
     """Human-readable prompt context; JSON remains local metadata only."""
     resolved_sector = (
@@ -184,18 +216,19 @@ def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None =
         context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
     stored_questions = (manifest.get('stored_questions') or '').strip()
     if stored_questions:
-        relevant_lines = _matching_stored_questions(stored_questions, section_ids)
+        relevant_lines, other_stored = partition_stored_questions(stored_questions, section_ids)
         if relevant_lines:
             context.extend([
                 f"\nQUESTIONS SPECIFICALLY TARGETING THIS SECTION ({section_id_label}) — Answer or partially resolve these first if the selected evidence addresses them:",
                 *relevant_lines,
             ])
-        context.extend([
-            '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
-            'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
-            stored_questions,
-            'END STORED QUESTIONS FROM EARLIER SECTIONS',
-        ])
+        if other_stored:
+            context.extend([
+                '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
+                'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
+                other_stored,
+                'END STORED QUESTIONS FROM EARLIER SECTIONS',
+            ])
     else:
         context.append(
             '\nSTORED QUESTIONS FROM EARLIER SECTIONS: None supplied (first section capture). '
