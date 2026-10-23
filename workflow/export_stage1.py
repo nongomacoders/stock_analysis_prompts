@@ -18,6 +18,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from companies import find_company_dir
 from companies.sectors import get_sector_config
+from section_capture.db import KNOWN_COMPANIES
 
 DB_PATH = Path("documents/analysis.sqlite")
 
@@ -147,6 +148,15 @@ def build_stage1_prompt_content(
             "gross profit margin by line of business, direct technical headcount utilization and labor costs, "
             "contract assets / WIP unbilled revenue and deferred revenue recognition, capitalized software development & IP amortization, "
             "legacy dispute / litigation provisions & contingent liabilities, debt restructuring / deleveraging milestones, and FCFE conversion), "
+            "citing specific notes, tables, and calculations."
+        )
+    elif detected_sector == "construction":
+        md_lines.append(
+            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key construction and infrastructure junction "
+            "(percentage-of-completion [POC] revenue recognition & IFRS 15 timing, gross margin bridge across residential property development vs memorial parks vs infrastructure contracting, "
+            "contract assets / unbilled WIP days vs contract liabilities & customer advances, retentions receivable and trade debtors aging/IFRS 9 ECL, "
+            "joint ventures vs proportionately consolidated joint operations [e.g. BDC / Bankenveld District City], borrowing costs capitalised into construction assets, "
+            "onerous contract provisions & performance guarantee/bonding facilities, DMTN corporate bond and bank debt covenant headroom, and cash tax vs deferred tax), "
             "citing specific notes, tables, and calculations."
         )
     else:
@@ -289,7 +299,13 @@ def export_stage1_prompt(
         detected_sector = (sector or "mining").lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
 
-    company_title = company_name or (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources"))
+    default_title = (
+        f"{ticker} Properties" if detected_sector == "reit"
+        else (f"{ticker} Technologies" if detected_sector == "it"
+        else (f"{ticker} Construction" if detected_sector == "construction"
+        else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources")))
+    )
+    company_title = company_name or KNOWN_COMPANIES.get(ticker, (default_title, detected_sector))[0]
 
     # Query primary sections
     sections = cur.execute(

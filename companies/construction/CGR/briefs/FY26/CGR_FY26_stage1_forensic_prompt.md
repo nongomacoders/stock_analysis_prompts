@@ -1,5 +1,5 @@
 # STAGE 1: INDEPENDENT COGNITIVE AUDIT VIA SEQUENTIAL EXTRACTION & QUESTION LEDGER
-**Target Asset:** CGR Resources (CGR)  
+**Target Asset:** Calgro M3 Holdings (CGR)  
 **Sector:** Construction  
 **Primary Document:** `10023_Calgro-IR-2026_WEB-FA3.pdf` (Integrated Annual Report [IAR] — 5 sections)  
 **Companion Financial Document:** `Calgro-AFS-2026.pdf` (AFS — 36 sections)  
@@ -10,7 +10,7 @@
 
 ### INSTRUCTIONS FOR GEMINI 4 ARGON:
 You are acting as an independent **Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor**. 
-You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of CGR Resources's financial disclosures (41 total sections across primary report and companion disclosures).
+You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of Calgro M3 Holdings's financial disclosures (41 total sections across primary report and companion disclosures).
 
 Notice how this working paper is constructed:
 1. At each stage, specific text, accounting notes, APMs, and operational tables were extracted directly from the report.
@@ -25,7 +25,7 @@ Review the sequential evidence trail below. Trace how the questions evolved from
 
 Please format your response into the following four clear sections:
 1. **Executive Forensic Audit Summary:** Concise synthesis of the group's true economic performance, balance sheet health, post-balance-sheet liquidity runway, and key findings.
-2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key forensic junction (share count, net debt/cash, EBITDA adjustments, unit costs, capex trajectory, tax mechanics, and post-year-end SENS financing milestones), citing specific notes, tables, and calculations.
+2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key construction and infrastructure junction (percentage-of-completion [POC] revenue recognition & IFRS 15 timing, gross margin bridge across residential property development vs memorial parks vs infrastructure contracting, contract assets / unbilled WIP days vs contract liabilities & customer advances, retentions receivable and trade debtors aging/IFRS 9 ECL, joint ventures vs proportionately consolidated joint operations [e.g. BDC / Bankenveld District City], borrowing costs capitalised into construction assets, onerous contract provisions & performance guarantee/bonding facilities, DMTN corporate bond and bank debt covenant headroom, and cash tax vs deferred tax), citing specific notes, tables, and calculations.
 3. **Audit of Common Surface-Reading Pitfalls:** Contrast your findings against the common errors made by naive readers.
 4. **Final Forensic Verification Matrix:** A clean markdown summary table listing each Junction, the Raw Initial Claim, the Resolving Note/SENS Announcement, and your Final Verified Determination.
 
