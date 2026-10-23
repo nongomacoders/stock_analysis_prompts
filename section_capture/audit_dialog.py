@@ -42,6 +42,7 @@ from section_capture.db import (
     get_stage1_report,
     get_stage2_report,
     resolve_db_path,
+    resolve_project_path,
     save_stage1_report,
     save_stage2_report,
 )
@@ -138,9 +139,11 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
 
         # Resolve PDF path
         pdf_path = None
-        if s.get("original_path") and Path(s["original_path"]).exists():
-            pdf_path = Path(s["original_path"])
-        else:
+        if s.get("original_path"):
+            cand = resolve_project_path(s["original_path"])
+            if cand and cand.exists():
+                pdf_path = cand
+        if not pdf_path:
             comp_dir_info = find_company_dir(ticker, sector=sector)
             c_dir = comp_dir_info[1] if comp_dir_info else PROJECT_ROOT / f"companies/{sector}/{ticker}"
             if s.get("filename"):

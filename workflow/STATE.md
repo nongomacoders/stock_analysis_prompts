@@ -11,6 +11,12 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Portable Relative Path & Immediate SHA-256 PDF Registration**:
+  - Implemented `to_relative_project_path()` and `resolve_project_path()` in `section_capture/db.py`.
+  - When opening any PDF in `CaptureWindow.open_pdf()`, the SHA-256 hash is computed immediately and the file path is normalized and stored as a portable forward-slash relative path (`companies/<sector>/<ticker>/sources/<filename>.pdf`) in `reports.original_path`.
+  - Upgraded `discover_available_companies()` and `resolve_project_path()` to handle both relative and foreign absolute paths seamlessly across different developer machines and user account paths (e.g. `diond` vs `Dion`).
+  - Migrated all existing records in `documents/analysis.sqlite` to clean canonical relative paths.
+
 - **Stage 1 Forensic Audit Multi-Document & CGR Resolution**:
   - Resolved "No Sections Found" error when compiling Stage 1 Forensic Audit for Calgro M3 Holdings (`CGR`):
     - Added `"CGR": ("Calgro M3 Holdings", "construction")` and `"CALGRO"` alias to `KNOWN_COMPANIES` in `section_capture/db.py`.

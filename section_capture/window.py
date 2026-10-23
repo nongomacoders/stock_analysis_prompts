@@ -35,6 +35,7 @@ from .db import (
     save_last_opened_dir,
     save_section_llm_response,
     set_report_doc_type,
+    to_relative_project_path,
     upsert_report,
 )
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
@@ -1093,7 +1094,7 @@ class CaptureWindow(QMainWindow):
         upsert_report(
             sha256=candidate.sha256,
             filename=candidate.path.name,
-            original_path=str(candidate.path),
+            original_path=to_relative_project_path(candidate.path),
             physical_page_count=candidate.page_count,
             doc_type=doc_t,
             announcement_date=date_val,

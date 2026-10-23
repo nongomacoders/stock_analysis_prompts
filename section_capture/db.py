@@ -125,6 +125,45 @@ def resolve_db_path(db_path: str | Path | None = None) -> Path:
     return target.resolve()
 
 
+def to_relative_project_path(path: Path | str | None) -> str:
+    """Normalizes a file or folder path as a forward-slash relative path to ROOT if inside it."""
+    if not path:
+        return ""
+    p = Path(path)
+    p_str = str(path).replace("\\", "/")
+    if not p.is_absolute():
+        return p_str
+    try:
+        rel = p.resolve().relative_to(ROOT.resolve())
+        return str(rel).replace("\\", "/")
+    except ValueError:
+        parts = p.parts
+        for i, part in enumerate(parts):
+            if part.lower() == "companies":
+                return "/".join(parts[i:])
+        return p_str
+
+
+def resolve_project_path(path_str: str | Path | None) -> Path | None:
+    """Resolves a stored path string (relative or absolute) to a valid Path on the current machine."""
+    if not path_str:
+        return None
+    p = Path(path_str)
+    if p.is_absolute() and p.exists():
+        return p
+    cand = (ROOT / p).resolve()
+    if cand.exists():
+        return cand
+    if p.is_absolute():
+        parts = p.parts
+        for i, part in enumerate(parts):
+            if part.lower() == "companies":
+                cand2 = (ROOT / Path(*parts[i:])).resolve()
+                if cand2.exists():
+                    return cand2
+    return cand
+
+
 KNOWN_COMPANIES: dict[str, tuple[str, str]] = {
     "LEW": ("Lewis Group Limited", "retail"),
     "PAN": ("Pan African Resources", "mining"),
@@ -837,7 +876,8 @@ def upsert_report(
 ) -> Path:
     now = datetime.now(timezone.utc).isoformat()
     map_json = json.dumps(report_map, ensure_ascii=False) if report_map is not None else None
-    inferred_type, inferred_date = detect_doc_type_and_date(original_path or filename)
+    norm_orig_path = to_relative_project_path(original_path) if original_path else ""
+    inferred_type, inferred_date = detect_doc_type_and_date(norm_orig_path or filename)
     effective_doc_type = doc_type or inferred_type
     effective_date = announcement_date or inferred_date
 
@@ -865,7 +905,7 @@ def upsert_report(
                 (
                     sha256,
                     filename or (report_map or {}).get("source_filename", "") or "report.pdf",
-                    original_path or "",
+                    norm_orig_path,
                     byte_size,
                     physical_page_count or (report_map or {}).get("physical_page_count", 1),
                     map_json,
@@ -879,7 +919,7 @@ def upsert_report(
             )
         else:
             new_filename = filename or existing["filename"]
-            new_orig = original_path or existing["original_path"]
+            new_orig = norm_orig_path or existing["original_path"]
             new_size = byte_size if byte_size > 0 else existing["byte_size"]
             new_pages = physical_page_count if physical_page_count > 1 else existing["physical_page_count"]
             new_map = map_json if map_json is not None else existing["report_map_json"]
