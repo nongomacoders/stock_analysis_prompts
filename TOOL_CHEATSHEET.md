@@ -51,3 +51,25 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
       time.sleep(0.02)
   assert len(results) == 1
   ```
+
+---
+
+### 5. Windows File Locking & SQLite Databases
+* **Locking error**: Running `git restore documents/analysis.sqlite` or `shutil.rmtree(tmp_dir)` on Windows fails with `unable to unlink: Invalid argument` or `PermissionError: [WinError 32] The process cannot access the file because it is being used by another process`.
+* **Causes**:
+  1. The local PySide6 GUI app is actively running on the desktop and holds an open SQLite connection lock on `documents/analysis.sqlite`.
+  2. A scratch Python script didn't explicitly close its SQLite connection or `PdfSource` before attempting to delete a temporary folder.
+* **Rules**:
+  1. Never run `git restore` or `git checkout` on `.sqlite` database files while the desktop application is running. Only stage and commit code/text files (`.py`, `.md`).
+  2. Always explicitly close `conn.close()` and `source.close()` in scratch scripts before calling `shutil.rmtree()`.
+
+---
+
+### 6. Scratch Scripts & `sys.path`
+* **Import error**: `ModuleNotFoundError: No module named 'section_capture'` when executing `python scratch/my_script.py`.
+* **Rule**:
+  Always add workspace root to `sys.path` at the very top of scratch scripts:
+  ```python
+  import sys
+  sys.path.insert(0, ".")
+  ```
