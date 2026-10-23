@@ -6,12 +6,13 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 
 ### 1. PowerShell & Python One-Liners
 * **Quote stripping issue**: PowerShell swallows nested double quotes in `python -c "..."`, causing `SyntaxError: unterminated string literal`.
+* **Bracket / type literal parsing**: PowerShell treats unquoted brackets like `print([c[1] for c in ...])` inside command strings as attribute or type literal expressions, throwing `Missing ] at end of attribute or type literal`.
 * **Multi-line parser error**: Running multi-line `python -c "..."` causes `ScriptBlock should only be specified as a value of the Command parameter`.
 * **Windows Charmap / Unicode error**: PowerShell defaults to `cp1252`. Printing Unicode characters like `⚡`, `✓`, or emojis crashes Python with `UnicodeEncodeError: 'charmap' codec can't encode character...`.
 * **PowerShell Ampersand (`&`) error**: An unquoted or double-quote-nested ampersand (`&`) in PowerShell command lines triggers `The ampersand (&) character is not allowed. The & operator is reserved for future use`.
 * **Rules**:
   1. Never run SQL strings or nested quotes with `python -c "..."`.
-  2. For simple Python one-liners in PowerShell, wrap in single quotes:
+  2. For simple Python one-liners in PowerShell, wrap in single quotes or avoid bracket indexing:
      ```powershell
      python -c 'from section_capture.db import connect_db; print("ok")'
      ```

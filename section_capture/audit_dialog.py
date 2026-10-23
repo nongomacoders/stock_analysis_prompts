@@ -897,11 +897,14 @@ class AuditValuationDialog(QDialog):
         with connect_db(self.db_path) as conn:
             cur = conn.cursor()
             # Resolve primary report SHA (if source is a SENS notice or companion AFS pointing to a parent Annual Report)
-            rep_row = cur.execute("SELECT parent_report_sha256, filename FROM reports WHERE sha256 = ?", (self.source.sha256,)).fetchone()
+            rep_row = cur.execute("SELECT parent_report_sha256, filename, questions_ledger FROM reports WHERE sha256 = ?", (self.source.sha256,)).fetchone()
+            final_questions_ledger = rep_row["questions_ledger"] if rep_row else None
             if rep_row and rep_row["parent_report_sha256"]:
                 primary_sha = rep_row["parent_report_sha256"]
-                p_row = cur.execute("SELECT filename FROM reports WHERE sha256 = ?", (primary_sha,)).fetchone()
+                p_row = cur.execute("SELECT filename, questions_ledger FROM reports WHERE sha256 = ?", (primary_sha,)).fetchone()
                 filename = p_row["filename"] if p_row else getattr(self.source, "filename", Path(self.source.path).name if self.source.path else "report.pdf")
+                if p_row and p_row["questions_ledger"]:
+                    final_questions_ledger = p_row["questions_ledger"]
             else:
                 primary_sha = self.source.sha256
                 filename = getattr(self.source, "filename", Path(self.source.path).name if self.source.path else "report.pdf")
@@ -992,6 +995,8 @@ class AuditValuationDialog(QDialog):
                 filename=filename,
                 companion_reports=companion_reports if companion_reports else None,
                 sens_reports=sens_reports if sens_reports else None,
+                final_questions_ledger=final_questions_ledger,
+                compact=True,
             )
 
         self.s1_prompt_edit.setPlainText(prompt_content)

@@ -11,6 +11,17 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Stage 1 Prompt Compaction & Questions Ledger Deduplication (`workflow/export_stage1.py`)**:
+  - Solved prompt bloat on large, multi-section disclosure captures (e.g. Calgro M3's 41 sections which grew to 2.95 MB / ~700k tokens due to repeated copy-paste question ledgers):
+    - **Algorithmic Section Cleaning (`clean_reading_brief`)**: Strips the redundant Section 4 copy-paste ledger block (`### 4. Updated Open Questions Ledger (Copy to App)`) from each intermediate section's LLM response, saving over 800,000 characters of pure duplication across 41 sections while preserving 100% of the financial evidence, tables, answers, footnote deep-dives, baseline inputs, and red flags.
+    - **Authoritative Master Ledger Embedding**: Omitted the redundant repeating `stored_questions_snapshot` inside all 41 individual sections (saving ~790,000 characters). Instead, embeds the single authoritative, cumulative master `questions_ledger` once at the top of the dossier under `## MASTER WORKING PAPER: CUMULATIVE OPEN QUESTIONS LEDGER`.
+    - **Configurable Compact Pipeline**: `build_stage1_prompt_content` and `export_stage1_prompt` now default to `compact=True`, while allowing `--full` in CLI to output the raw uncompacted prompt if ever required for debugging.
+    - **Desktop GUI Integration (`section_capture/audit_dialog.py`)**: Updated `compile_stage1_prompt` to extract the primary `questions_ledger` and compile using the deduplicated compact format.
+    - **Verified Results**:
+      - `companies/construction/CGR/briefs/FY26/CGR_FY26_stage1_forensic_prompt.md` reduced from **2.95 MB (2,898,191 chars, ~700k tokens)** down to **1.28 MB (1,316,614 chars, ~315k tokens)** — a **54.6% reduction** saving **1.58 million characters** with zero loss of financial substance.
+      - Full test suite verified: **117 passed in 24.89s with 0 errors**.
+
+
 - **Live JSE Market Prices Integration via yfinance (`.JO`)**:
   - Integrated real-time JSE equity market prices into the Analyzed Stocks & Portfolio Coverage screen using Yahoo Finance:
     - **Market Data Engine (`section_capture/market_data.py`)**:

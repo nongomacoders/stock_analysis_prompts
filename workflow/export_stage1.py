@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import re
 import sqlite3
 import sys
 import warnings
@@ -48,6 +49,23 @@ def get_latest_report_sha(conn: sqlite3.Connection, ticker: str | None = None) -
     return None
 
 
+def clean_reading_brief(text: str) -> str:
+    """Strips the redundant Section 4 (Updated Open Questions Ledger) copy-paste block
+    from intermediate section reading briefs when compiling the stage 1 cognitive prompt.
+    Preserves all section observations, financial reconciliations, accounting notes,
+    baseline forecast inputs, and red flags.
+    """
+    if not text:
+        return ""
+    # Matches "### 4. Updated Open Questions Ledger..." up to "### 5." or end of string
+    cleaned = re.sub(
+        r"(?ms)^#{1,4}\s*4\.\s*(?:Updated\s*)?Open Questions Ledger.*?(?=^#{1,4}\s*5\b|\Z)",
+        "",
+        text,
+    )
+    return re.sub(r"\n{3,}", "\n\n", cleaned).strip()
+
+
 def build_stage1_prompt_content(
     sections: list,
     company_title: str,
@@ -56,6 +74,8 @@ def build_stage1_prompt_content(
     filename: str,
     companion_reports: list[dict] | None = None,
     sens_reports: list[dict] | None = None,
+    final_questions_ledger: str | None = None,
+    compact: bool = True,
 ) -> str:
     """Constructs the Stage 1 Markdown prompt text from primary sections, companion annual reports (AFS), and SENS notices."""
     md_lines: list[str] = []
@@ -191,6 +211,36 @@ def build_stage1_prompt_content(
     md_lines.append("---")
     md_lines.append("")
 
+    if compact:
+        # Fallback to last stored_questions_snapshot if final_questions_ledger was not explicitly supplied
+        effective_ledger = (final_questions_ledger or "").strip()
+        if not effective_ledger:
+            all_candidate_secs = list(sections)
+            if companion_reports:
+                for cr in companion_reports:
+                    all_candidate_secs.extend(cr.get("sections", []))
+            if sens_reports:
+                for sr in sens_reports:
+                    all_candidate_secs.extend(sr.get("sections", []))
+            for sec in reversed(all_candidate_secs):
+                snap = sec.get("stored_questions_snapshot") if isinstance(sec, dict) else sec["stored_questions_snapshot"]
+                if snap and str(snap).strip():
+                    effective_ledger = str(snap).strip()
+                    break
+
+        if effective_ledger:
+            md_lines.append("## MASTER WORKING PAPER: CUMULATIVE OPEN QUESTIONS LEDGER")
+            md_lines.append(
+                "> **Cognitive Audit Anchor:** The authoritative ledger below consolidates all priority questions, "
+                "forensic hypotheses, and cross-reference resolutions developed across the entire disclosure set. "
+                "Use this ledger as your reference matrix when auditing the sequential section extractions that follow."
+            )
+            md_lines.append("")
+            md_lines.append(effective_ledger)
+            md_lines.append("")
+            md_lines.append("---")
+            md_lines.append("")
+
     def _render_sections(sec_list: list, prefix_title: str = ""):
         for sec in sec_list:
             sec_num = sec["section_number"] or "?"
@@ -206,10 +256,11 @@ def build_stage1_prompt_content(
             md_lines.append("=" * 80)
             md_lines.append("")
 
-            if sec["stored_questions_snapshot"] and str(sec["stored_questions_snapshot"]).strip():
-                md_lines.append("### [WORKING PAPER: OPEN QUESTIONS LEDGER AT THIS STAGE]")
-                md_lines.append(str(sec["stored_questions_snapshot"]).strip())
-                md_lines.append("")
+            if not compact:
+                if sec["stored_questions_snapshot"] and str(sec["stored_questions_snapshot"]).strip():
+                    md_lines.append("### [WORKING PAPER: OPEN QUESTIONS LEDGER AT THIS STAGE]")
+                    md_lines.append(str(sec["stored_questions_snapshot"]).strip())
+                    md_lines.append("")
 
             if sec["selected_text"] and str(sec["selected_text"]).strip():
                 md_lines.append("### [FORENSIC EXTRACTION: CAPTURED TEXT & FINANCIAL TABLES]")
@@ -222,9 +273,13 @@ def build_stage1_prompt_content(
                 md_lines.append("")
 
             if sec["llm_response"] and str(sec["llm_response"]).strip():
-                md_lines.append("### [SECTION READING RESPONSE / DETERMINATION]")
-                md_lines.append(str(sec["llm_response"]).strip())
-                md_lines.append("")
+                resp_text = str(sec["llm_response"]).strip()
+                if compact:
+                    resp_text = clean_reading_brief(resp_text)
+                if resp_text:
+                    md_lines.append("### [SECTION READING RESPONSE / DETERMINATION]")
+                    md_lines.append(resp_text)
+                    md_lines.append("")
 
     part_idx = 1
     if companion_reports or sens_reports:
@@ -279,6 +334,7 @@ def export_stage1_prompt(
     report_sha: str | None = None,
     period: str | None = None,
     output_path: Path | None = None,
+    compact: bool = True,
 ) -> Path:
     ticker = ticker.upper().strip()
 
@@ -294,19 +350,25 @@ def export_stage1_prompt(
         if not latest:
             raise RuntimeError(f"No reports found in documents/analysis.sqlite for {ticker}.")
         report_sha, filename = latest
+        row = cur.execute(
+            "SELECT parent_report_sha256, filename, questions_ledger FROM reports WHERE sha256 = ?", (report_sha,)
+        ).fetchone()
     else:
         row = cur.execute(
-            "SELECT filename, parent_report_sha256 FROM reports WHERE sha256 = ?", (report_sha,)
+            "SELECT parent_report_sha256, filename, questions_ledger FROM reports WHERE sha256 = ?", (report_sha,)
         ).fetchone()
         filename = row["filename"] if row else "Company Report"
 
+    final_questions_ledger = row["questions_ledger"] if row else None
+
     # If this is a SENS report pointing to a parent Annual Report, resolve parent as primary
-    row = cur.execute("SELECT parent_report_sha256, filename FROM reports WHERE sha256 = ?", (report_sha,)).fetchone()
     if row and row["parent_report_sha256"]:
         primary_sha = row["parent_report_sha256"]
-        p_row = cur.execute("SELECT filename FROM reports WHERE sha256 = ?", (primary_sha,)).fetchone()
+        p_row = cur.execute("SELECT filename, questions_ledger FROM reports WHERE sha256 = ?", (primary_sha,)).fetchone()
         if p_row:
             filename = p_row["filename"]
+            if p_row["questions_ledger"]:
+                final_questions_ledger = p_row["questions_ledger"]
     else:
         primary_sha = report_sha
 
@@ -314,23 +376,15 @@ def export_stage1_prompt(
     found = find_company_dir(ticker, sector=sector)
     if found:
         detected_sector, company_dir = found
-    else:
-        if not sector:
-            warnings.warn(
-                f"Sector for company '{ticker}' could not be automatically detected. Falling back to default 'mining'.",
-                UserWarning,
-                stacklevel=2,
-            )
-        detected_sector = (sector or "mining").lower()
+    elif sector:
+        detected_sector = sector.lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
+    else:
+        raise ValueError(
+            f"Sector for company '{ticker}' could not be automatically detected and was not specified."
+        )
 
-    default_title = (
-        f"{ticker} Properties" if detected_sector == "reit"
-        else (f"{ticker} Technologies" if detected_sector == "it"
-        else (f"{ticker} Construction" if detected_sector == "construction"
-        else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources")))
-    )
-    company_title = company_name or KNOWN_COMPANIES.get(ticker, (default_title, detected_sector))[0]
+    company_title = company_name or KNOWN_COMPANIES.get(ticker, (f"{ticker} Group", detected_sector))[0]
 
     # Query primary sections
     sections = cur.execute(
@@ -418,6 +472,8 @@ def export_stage1_prompt(
         filename=filename,
         companion_reports=companion_reports if companion_reports else None,
         sens_reports=sens_reports if sens_reports else None,
+        final_questions_ledger=final_questions_ledger,
+        compact=compact,
     )
 
     if output_path is None:
@@ -432,12 +488,13 @@ def export_stage1_prompt(
 
 def main():
     parser = argparse.ArgumentParser(description="Export Stage 1 Cognitive Forensic Audit Prompt from SQLite.")
-    parser.add_argument("ticker", help="Company ticker (e.g. PAN, HAR, LEW, TRU)")
-    parser.add_argument("--sector", help="Company sector (mining, retail, finance, telcos)", default=None)
+    parser.add_argument("ticker", help="Company ticker (e.g. PAN, HAR, LEW, TRU, CGR)")
+    parser.add_argument("--sector", help="Company sector (mining, retail, finance, telcos, construction, it, reit)", default=None)
     parser.add_argument("--name", help="Full company name", default=None)
     parser.add_argument("--period", help="Financial period (e.g. FY26, FY27)", default="FY26")
     parser.add_argument("--sha", help="Specific report SHA-256 (defaults to latest)", default=None)
     parser.add_argument("--output", help="Custom output path", default=None)
+    parser.add_argument("--full", action="store_true", help="Generate uncompacted prompt retaining intermediate copy-paste ledgers and snapshots")
 
     args = parser.parse_args()
     out = export_stage1_prompt(
@@ -447,6 +504,7 @@ def main():
         period=args.period.upper() if args.period else None,
         report_sha=args.sha,
         output_path=Path(args.output) if args.output else None,
+        compact=not args.full,
     )
     print(f"Successfully generated Stage 1 Forensic Audit Prompt at: {out}")
 
