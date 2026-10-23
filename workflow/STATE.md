@@ -11,6 +11,21 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Elimination of Silent Defaults & Explicit Prompt Warnings**:
+  - Eliminated silent fallback defaults across the system when sector prompt templates are missing or cannot be resolved:
+    - Scaffolded dedicated prompt template directories for all registered sectors in `prompts/`:
+      - `prompts/finance/00-report-orientation/v1.0.0/prompt.md`
+      - `prompts/finance/12-analyst-reading-brief/v1.1.0/prompt.md`
+      - `prompts/telcos/00-report-orientation/v1.0.0/prompt.md`
+      - `prompts/telcos/12-analyst-reading-brief/v1.1.0/prompt.md`
+      (All 7 sectors: `mining`, `retail`, `reit`, `it`, `construction`, `finance`, `telcos` now have dedicated on-disk orientation and reading brief templates).
+    - Added prompt availability helpers and explicit `UserWarning`s in `section_capture/packages.py` (`has_sector_prompt()`, `get_prompt_path()`, `detect_sector_from_path()`).
+    - Added orientation availability helper and explicit `UserWarning`s in `section_capture/report_map.py` (`has_orientation_prompt()`, `get_orientation_path()`).
+    - Added explicit warnings in `companies/sectors.py` (`get_sector_config()`) when falling back to default sector.
+    - Updated `workflow/export_stage1.py` and `workflow/generate_stage2.py` with explicit `mining` branches and warnings if any unrecognized sector lacks tailored models.
+    - Added visual status bar warning notifications in `CaptureWindow` (`section_capture/window.py`) when selecting a sector or opening a PDF without dedicated prompt templates.
+    - Added unit tests in `tests/test_sectors.py` (`test_missing_sector_prompt_warnings()`). All 110 tests pass.
+
 - **FTSE/JSE ICB Sector Codes & Classifications Integration**:
   - Integrated official FTSE/JSE Industry Classification Benchmark (ICB) sector codes, index codes, and sector names while preserving canonical directory slugs (`mining`, `retail`, `reit`, `it`, `construction`, `finance`, `telcos`):
     - Added `jse_code`, `icb_code`, and `jse_sector_name` to `SectorConfig` in `companies/sectors.py`:

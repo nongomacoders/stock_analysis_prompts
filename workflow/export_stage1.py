@@ -10,6 +10,7 @@ import argparse
 from pathlib import Path
 import sqlite3
 import sys
+import warnings
 
 # Ensure project root is in sys.path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -159,7 +160,19 @@ def build_stage1_prompt_content(
             "onerous contract provisions & performance guarantee/bonding facilities, DMTN corporate bond and bank debt covenant headroom, and cash tax vs deferred tax), "
             "citing specific notes, tables, and calculations."
         )
+    elif detected_sector == "mining":
+        md_lines.append(
+            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key mining junction "
+            "(diluted share count, net debt/cash & SOTP corporate adjustments, organic unit cash costs vs AISC, capex trajectory [sustaining vs growth], "
+            "South African Section 36 capital expenditure deductions & Gold Mining Tax Formula curve, and post-year-end SENS financing milestones), "
+            "citing specific notes, tables, and calculations."
+        )
     else:
+        warnings.warn(
+            f"Sector '{detected_sector}' does not have a dedicated forensic accounting junction specification in Stage 1. Falling back to generic framework.",
+            UserWarning,
+            stacklevel=2,
+        )
         md_lines.append(
             "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key forensic junction "
             "(share count, net debt/cash, EBITDA adjustments, unit costs, capex trajectory, tax mechanics, and post-year-end SENS financing milestones), "
@@ -296,6 +309,12 @@ def export_stage1_prompt(
     if found:
         detected_sector, company_dir = found
     else:
+        if not sector:
+            warnings.warn(
+                f"Sector for company '{ticker}' could not be automatically detected. Falling back to default 'mining'.",
+                UserWarning,
+                stacklevel=2,
+            )
         detected_sector = (sector or "mining").lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
 

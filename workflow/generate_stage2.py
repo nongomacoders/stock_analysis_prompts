@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import sys
+import warnings
 
 # Ensure project root is in sys.path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -308,7 +309,66 @@ def build_stage2_prompt_content(
         md_lines.append("   - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. major infrastructure project award, acceleration of retail land parcel sales, debt de-gearing milestones, dividend resumption).")
         md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. interim/annual results dates, bond coupon dates, AGM) for portfolio managers to mark.")
         md_lines.append("")
+    elif detected_sector == "mining":
+        md_lines.append(
+            "You are acting as an elite **Managing Director & Head of Mining Equity Research** at a premier institutional investment bank."
+        )
+        md_lines.append(
+            f"You are conducting a definitive 2-year operational and valuation forecast for **{company_title} ({ticker})**."
+        )
+        md_lines.append("")
+        md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
+        md_lines.append(
+            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
+            "as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
+            "organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. "
+            "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
+            "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
+            "and providing your quantitative justification."
+        )
+        md_lines.append(
+            "2. **Primary Reporting & Trading Currency:** Pan African / South African miners trade primarily on the **Johannesburg Stock Exchange (JSE)**. "
+            "All final valuation targets, earnings per share, and dividends per share must be presented in **ZAR (Rands per share or ZAR cents)**, "
+            "accompanied by USD conversions where relevant."
+        )
+        md_lines.append(
+            "3. **Dual Capex Trajectory Modeling:** "
+            "Explicitly model and contrast two operational trajectories:\n"
+            "   - **Scenario A (Expedited Growth):** Follows management's forward capital wish-list.\n"
+            "   - **Scenario B (Committed Capex Cliff):** Models technical sustaining and committed brownfield development only, releasing substantial Free Cash Flow to Equity (FCFE)."
+        )
+        md_lines.append(
+            "4. **Tax Mechanics:** Apply the statutory South African Gold Mining Formula ($Y = 33 - 165/X$) or statutory corporate rate, "
+            "reflecting 100% upfront Section 36 capital expenditure deductions."
+        )
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("")
+        md_lines.append(stage1_content)
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
+        md_lines.append("")
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining"))
+        md_lines.append("2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.")
+        md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.")
+        md_lines.append("4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.")
+        md_lines.append("5. **Forward Valuation Multiples & Sensitivity Matrix:** Target P/E, EV/EBITDA, FCF yield, and 2D sensitivity table (Gold Price vs USD/ZAR).")
+        md_lines.append("6. **Actionable Portfolio Monitoring Triggers & Catalysts ('What to Watch For That Will Move the Stock'):**")
+        md_lines.append("   - **Operational & Production Red Lines:** Explicitly list 3-5 specific triggers (e.g. AISC cost breaches, underground grade dilution, water/power disruptions) that would lower the target price.")
+        md_lines.append("   - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb for each catalyst (e.g. 'Every $50/oz move in gold price or R0.50 move in USD/ZAR impacts FCFE by R X million and fair value by R Y/share').")
+        md_lines.append("   - **Expansion & Delivery Catalysts:** Specific milestones required to trigger an upgrade (e.g. MTR / Soweto tailings commercial commissioning, Section 36 capex cliff release).")
+        md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.")
+        md_lines.append("")
     else:
+        warnings.warn(
+            f"Sector '{detected_sector}' does not have a dedicated 2-year operational valuation model in Stage 2. Falling back to generic sector persona.",
+            UserWarning,
+            stacklevel=2,
+        )
         cfg = get_sector_config(detected_sector)
         md_lines.append(
             f"You are acting as an elite **{cfg.stage2_persona}** at a premier institutional investment bank."
@@ -385,6 +445,12 @@ def generate_stage2_prompt(
     if found:
         detected_sector, company_dir = found
     else:
+        if not sector:
+            warnings.warn(
+                f"Sector for company '{ticker}' could not be automatically detected. Falling back to default 'mining'.",
+                UserWarning,
+                stacklevel=2,
+            )
         detected_sector = (sector or "mining").lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
 

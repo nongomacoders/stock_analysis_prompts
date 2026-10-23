@@ -1,6 +1,7 @@
 """Central registry of supported sectors, display labels, styling, and forensic personas."""
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 from typing import Sequence
 
@@ -143,14 +144,26 @@ DEFAULT_SECTOR = "mining"
 
 
 def get_sector_config(code: str | None) -> SectorConfig:
-    """Returns the SectorConfig for the given sector code, or default if not found."""
+    """Returns the SectorConfig for the given sector code, or default with warning if not found."""
     if not code:
+        warnings.warn(
+            f"No sector code provided; falling back to default '{DEFAULT_SECTOR}'.",
+            UserWarning,
+            stacklevel=2,
+        )
         return SECTOR_REGISTRY[DEFAULT_SECTOR]
     normalized = code.lower().strip()
     if normalized in SECTOR_REGISTRY:
         return SECTOR_REGISTRY[normalized]
     alias_match = resolve_sector_alias(normalized)
-    return SECTOR_REGISTRY.get(alias_match or DEFAULT_SECTOR, SECTOR_REGISTRY[DEFAULT_SECTOR])
+    if alias_match and alias_match in SECTOR_REGISTRY:
+        return SECTOR_REGISTRY[alias_match]
+    warnings.warn(
+        f"Unknown sector '{code}'; falling back to default '{DEFAULT_SECTOR}'.",
+        UserWarning,
+        stacklevel=2,
+    )
+    return SECTOR_REGISTRY[DEFAULT_SECTOR]
 
 
 def get_all_sector_codes() -> list[str]:

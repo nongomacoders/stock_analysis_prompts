@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import warnings
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,11 +18,27 @@ ORIENTATION_VERSION = "v1.0.0"
 ORIENTATION_PATH = ROOT / f"prompts/mining/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
 
 
+def has_orientation_prompt(sector: str | None) -> bool:
+    """Returns True if a dedicated orientation prompt file exists on disk for the given sector."""
+    if not sector:
+        return False
+    sec = sector.lower().strip()
+    custom = ROOT / f"prompts/{sec}/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
+    return custom.exists()
+
+
 def get_orientation_path(sector: str = "mining") -> Path:
+    """Returns the orientation prompt path for the given sector, issuing a warning if unavailable."""
     sec = sector.lower().strip() if sector else "mining"
     custom = ROOT / f"prompts/{sec}/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
     if custom.exists():
         return custom
+    warnings.warn(
+        f"No dedicated report orientation prompt template found for sector '{sec}' at {custom}. "
+        f"Falling back to default 'mining' template.",
+        UserWarning,
+        stacklevel=2,
+    )
     return ORIENTATION_PATH
 
 KINDS = [

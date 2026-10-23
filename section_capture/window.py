@@ -48,6 +48,7 @@ from .packages import (
     build_prompt,
     clean_single_line_text,
     detect_sector_from_path,
+    has_sector_prompt,
     save_package,
     shorten_section_name,
 )
@@ -384,6 +385,7 @@ class CaptureWindow(QMainWindow):
         for s in get_all_sectors():
             self.sector_combo.addItem(f"Sector: {s.short_label}", s.code)
         self.sector_combo.setToolTip("Active analysis sector (determines prompt template and forensic focus)")
+        self.sector_combo.currentIndexChanged.connect(self._on_sector_combo_changed)
         nav_toolbar.addWidget(self.sector_combo)
 
         # Break to Row 2
@@ -1075,6 +1077,8 @@ class CaptureWindow(QMainWindow):
             idx = self.sector_combo.findData(inferred_sec)
             if idx >= 0:
                 self.sector_combo.setCurrentIndex(idx)
+            if inferred_sec and not has_sector_prompt(inferred_sec):
+                self.statusBar().showMessage(f"⚠️ Warning: Sector '{inferred_sec}' has no dedicated prompt template on disk. Using default fallback.", 8000)
         db_file = resolve_db_path(self.output_root)
         self.export_label.setText(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
@@ -1679,6 +1683,13 @@ class CaptureWindow(QMainWindow):
         if self.last_package:
             QApplication.clipboard().setText(self.last_package.prompt)
             self.statusBar().showMessage("Prompt copied to clipboard.")
+
+    def _on_sector_combo_changed(self, index: int):
+        if not hasattr(self, "sector_combo") or index < 0:
+            return
+        sec = self.sector_combo.itemData(index)
+        if sec and not has_sector_prompt(sec):
+            self.statusBar().showMessage(f"⚠️ Warning: Sector '{sec}' has no dedicated reading brief prompt template on disk. Using default fallback.", 8000)
 
     def closeEvent(self, event):
         app = QApplication.instance()

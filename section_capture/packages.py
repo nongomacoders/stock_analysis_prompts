@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import warnings
 import json
 import re
 import uuid
@@ -63,15 +64,35 @@ def detect_sector_from_path(path: Path | str | None) -> str:
         return "it"
     if "reit" in s:
         return "reit"
+    warnings.warn(
+        f"Could not infer sector from path '{path}'. Falling back to default '{DEFAULT_SECTOR}'.",
+        UserWarning,
+        stacklevel=2,
+    )
     return DEFAULT_SECTOR
 
 
+def has_sector_prompt(sector: str | None, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> bool:
+    """Returns True if a dedicated prompt file exists on disk for the given sector."""
+    if not sector:
+        return False
+    sec = sector.lower().strip()
+    custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
+    return custom.exists()
+
+
 def get_prompt_path(sector: str = DEFAULT_SECTOR, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> Path:
-    """Returns the prompt template path for the given sector, falling back to mining if unavailable."""
+    """Returns the prompt template path for the given sector, issuing a warning if unavailable and falling back to default."""
     sec = sector.lower().strip() if sector else DEFAULT_SECTOR
     custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
     if custom.exists():
         return custom
+    warnings.warn(
+        f"No dedicated reading brief prompt template found for sector '{sec}' at {custom}. "
+        f"Falling back to default '{DEFAULT_SECTOR}' template.",
+        UserWarning,
+        stacklevel=2,
+    )
     return PROMPT_PATH
 
 
