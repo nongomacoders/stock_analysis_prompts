@@ -187,6 +187,41 @@ def partition_stored_questions(stored_questions: str, section_ids: list[str]) ->
     return relevant_lines, other_text
 
 
+def extract_selection_texts(manifest: dict, selected_text: str | None = None, prompt: str | None = None) -> list[str]:
+    """Extracts per-selection text strings from manifest and fallback evidence.
+
+    1. Checks each selection dict for explicit 'text'.
+    2. Falls back to slicing 'selected_text' using 'text_indices' [start, end].
+    3. Falls back to extracting 'BEGIN SELECTED REPORT EVIDENCE' blocks from existing prompt.
+    4. Falls back to single-element [selected_text].
+    """
+    selections = manifest.get("selections") or []
+    if not selections:
+        return [selected_text or ""]
+
+    texts = []
+    has_any = False
+    for s in selections:
+        txt = (s.get("text") or "").strip()
+        if not txt and s.get("text_indices") and selected_text:
+            idx = s["text_indices"]
+            txt = selected_text[idx[0]:idx[1]].strip()
+        if txt:
+            has_any = True
+        texts.append(txt)
+
+    if not has_any:
+        if prompt:
+            evs = re.findall(r"BEGIN SELECTED REPORT EVIDENCE\n(.*?)\nEND SELECTED REPORT EVIDENCE", prompt, re.DOTALL)
+            if len(evs) == len(selections) and any(e.strip() for e in evs):
+                return evs
+        if selected_text:
+            if len(selections) == 1:
+                return [selected_text]
+
+    return texts
+
+
 def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None = None) -> str:
     """Human-readable prompt context; JSON remains local metadata only."""
     resolved_sector = (

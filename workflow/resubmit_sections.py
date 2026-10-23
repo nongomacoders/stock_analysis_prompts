@@ -41,7 +41,7 @@ from section_capture.openrouter import (
     get_openrouter_model,
     query_openrouter,
 )
-from section_capture.packages import build_prompt, detect_sector_from_path
+from section_capture.packages import build_prompt, detect_sector_from_path, extract_selection_texts
 
 
 def slugify(text: str) -> str:
@@ -50,7 +50,7 @@ def slugify(text: str) -> str:
 
 
 def resubmit_sections(
-    ticker: str = "LEW",
+    ticker: str,
     report: str | None = None,
     missing_only: bool = False,
     clear: bool = False,
@@ -188,7 +188,7 @@ def resubmit_sections(
             manifest["selections"] = sec.selections or []
         manifest["stored_questions"] = current_ledger.strip() or None
         manifest["sector"] = sector
-        texts = [sel.get("text", "") for sel in sec.selections] if sec.selections else [sec.selected_text or ""]
+        texts = extract_selection_texts(manifest, selected_text=sec.selected_text, prompt=sec.prompt)
         refreshed_prompt = build_prompt(manifest, texts, sector=sector)
 
         # Update refreshed prompt in DB
@@ -302,7 +302,7 @@ def resubmit_sections(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Resubmit sections sequentially to OpenRouter.")
-    parser.add_argument("--ticker", default="LEW", help="Company ticker (e.g. LEW, IOC, PAN)")
+    parser.add_argument("ticker", help="Company ticker (e.g. PAN, LEW, CGR, IOC)")
     parser.add_argument("--report", default=None, help="Target specific report filename, doc role (e.g. AFS, IAR), or SHA256")
     parser.add_argument("--missing-only", action="store_true", help="Only submit sections that are missing an LLM response (preserves existing responses and ledger)")
     parser.add_argument("--clear", action="store_true", help="Clear existing LLM responses and reset questions ledger before starting")

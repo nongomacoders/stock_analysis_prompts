@@ -47,6 +47,7 @@ from .packages import (
     build_prompt,
     clean_single_line_text,
     detect_sector_from_path,
+    extract_selection_texts,
     has_sector_prompt,
     save_package,
     shorten_section_name,
@@ -1563,7 +1564,7 @@ class CaptureWindow(QMainWindow):
             if not current_sector:
                 raise ValueError("Sector must be selected before submitting query.")
             manifest["sector"] = current_sector
-            texts = [s.get("text", "") for s in sec.selections] if sec.selections else [sec.selected_text or ""]
+            texts = extract_selection_texts(manifest, selected_text=sec.selected_text, prompt=sec.prompt)
             refreshed_prompt = build_prompt(manifest, texts, sector=current_sector)
 
             with connect_db(self.output_root) as conn:

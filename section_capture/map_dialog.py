@@ -15,7 +15,7 @@ from .db import (
     save_section_llm_response,
 )
 from .openrouter import OpenRouterWorker, get_openrouter_model
-from .packages import build_prompt, clean_single_line_text, detect_sector_from_path
+from .packages import build_prompt, clean_single_line_text, detect_sector_from_path, extract_selection_texts
 from .report_map import assign_section_ids, build_manual_section_map, load_questions_ledger, report_overview, save_map, save_questions_ledger
 
 
@@ -494,7 +494,7 @@ class SavedSectionsDialog(QDialog):
         manifest["stored_questions"] = current_ledger
         resolved_sector = manifest.get("sector") or detect_sector_from_path(self.source.path)
         manifest["sector"] = resolved_sector
-        texts = [s.get("text", "") for s in sec.selections]
+        texts = extract_selection_texts(manifest, selected_text=sec.selected_text, prompt=sec.prompt)
         new_prompt = build_prompt(manifest, texts, sector=resolved_sector)
         if new_prompt != sec.prompt or manifest != sec.manifest:
             with connect_db(self.db_path) as conn:

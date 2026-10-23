@@ -11,6 +11,21 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **PAN FY26 Sequential Section Resubmission & Response Evaluation**:
+  - Successfully resubmitted all 19 captured sections of Pan African Resources PLC (FY26 Year-End Results SENS) sequentially to DeepSeek Flash via OpenRouter with full questions ledger updates:
+    - **Selection Text Extraction Fix (`extract_selection_texts`)**: Fixed a legacy issue where sections captured under older schemas had selection bounding boxes without inline `"text"` keys, causing prompts to generate empty evidence markers. Implemented fallback slicing against `text_indices` and prompt blocks across `packages.py`, `window.py`, `map_dialog.py`, and `resubmit_sections.py`, recovering the complete 79,232 characters of CEO Statement evidence for Section 2.
+    - **Complete Sequential Execution**:
+      - 19 of 19 sections completed and saved to `documents/analysis.sqlite` and `companies/mining/PAN/briefs/`.
+      - Total tokens processed: **342,600 tokens** across all 19 calls (average execution: ~40s/call, total API cost: ~$0.07).
+      - Dynamic questions ledger expanded sequentially from 0 characters at Section 1 to an authoritative 19,246 characters at Section 19.
+    - **Forensic Mining Determinations Evaluated**:
+      - Production: 272,310 oz gold (FY25: 196,527 oz, +38.6%), tracking close to 275k–292k guidance.
+      - Revenue: US$1,156.5m (FY25: US$540.0m) driven by higher average gold prices and Mogale Gold (MTR) ramp-up.
+      - AISC: Total group AISC of US$508.4m; expansion capex US$195.0m; AIC US$703.4m.
+      - Tax note (Note 6): Identified Footnote [^1] restating FY25 comparative deferred tax liabilities from environmental rehabilitation obligations into employee obligations, cash-settled SBP, and ECL.
+    - **Stage 1 Forensic Audit Prompt Compiled**: Generated [`PAN_FY26_stage1_forensic_prompt.md`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/companies/mining/PAN/briefs/FY26/PAN_FY26_stage1_forensic_prompt.md) (0.56 MB, 569,707 characters, ~142k tokens) with full compaction and single master ledger embedding.
+
+
 - **Elimination of In-Prompt Questions Duplication in Section Capture (`section_capture/packages.py`)**:
   - Identified that whenever questions specifically targeting the active section (`QUESTIONS SPECIFICALLY TARGETING THIS SECTION`) were highlighted at the top of the prompt, the exact same lines were being repeated immediately below inside `BEGIN STORED QUESTIONS FROM EARLIER SECTIONS`, wasting ~100k characters across multi-section companies (e.g. 97,233 duplicate characters in CGR alone).
   - Implemented `partition_stored_questions(stored_questions, section_ids)` in [`section_capture/packages.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/section_capture/packages.py):
