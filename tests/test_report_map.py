@@ -336,6 +336,13 @@ def test_disambiguate_company_vs_consolidated_statements():
     assert len(sec_d010['subsections']) == 1
     assert sec_d010['subsections'][0]['title'] == "Company Cash Note 1"
 
+    # When many subsections exist (e.g. 21), it should format as a clean range
+    sec_d005 = next(s for s in mapping['sections'] if s['section_id'] == 'D005')
+    for i in range(2, 22):
+        sec_d005['subsections'].append({'subsection_id': f'D005.{i}', 'title': f'Note {i}'})
+    req_many = section_requires_subheading(mapping, heading="Consolidated statement of cash flows", selections=part_on_p18)
+    assert req_many == "D005 (D005.1 – D005.21)"
+
 
 def test_assign_section_ids_preserves_existing_and_generates_ins_suffix():
     # 1. Initial creation (all new)

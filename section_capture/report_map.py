@@ -639,6 +639,14 @@ def find_matching_section(mapping, heading: str = "", selections=()) -> dict | N
     return candidates[0][1]
 
 
+def _format_sub_list(subs: list[dict]) -> str:
+    if not subs:
+        return ""
+    if len(subs) <= 3:
+        return ', '.join(s['subsection_id'] for s in subs)
+    return f"{subs[0]['subsection_id']} – {subs[-1]['subsection_id']}"
+
+
 def section_requires_subheading(mapping, heading: str = "", selections=()) -> str | None:
     """If the matched section or main heading already has subsections, return a label like 'D006 (D006.1)'."""
     if not mapping:
@@ -647,7 +655,7 @@ def section_requires_subheading(mapping, heading: str = "", selections=()) -> st
     if sec:
         subs = sec.get('subsections') or []
         if subs:
-            sub_list = ', '.join(s['subsection_id'] for s in subs)
+            sub_list = _format_sub_list(subs)
             return f"{sec['section_id']} ({sub_list})"
         return None
     if not heading and selections:
@@ -656,7 +664,7 @@ def section_requires_subheading(mapping, heading: str = "", selections=()) -> st
             if not subs:
                 continue
             if _section_overlaps(section, selections):
-                sub_list = ', '.join(s['subsection_id'] for s in subs)
+                sub_list = _format_sub_list(subs)
                 return f"{section['section_id']} ({sub_list})"
     return None
 

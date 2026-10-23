@@ -25,6 +25,7 @@ Analyze and forecast from company presentations and reports section by section w
     - Tier 5+: Weak loose match or non-overlapping fuzzy match.
   - Updated `section_requires_subheading()` to evaluate the true target section rather than scanning only subdivided sections.
   - Updated `matching_section_ids()` and `register_subsection()` to accept `heading` to accurately resolve sections and parent subsections when multiple statements share physical pages (e.g., page 78 containing both D009 Changes in Equity and D010 Cash Flows).
+  - Formatted subsection lists in warning labels cleanly (`D005 (D005.1 – D005.21)`) rather than dumping all 21 comma-separated IDs across the screen, removing the misconception of concatenation.
   - Added unit test `test_disambiguate_company_vs_consolidated_statements` in `tests/test_report_map.py`. Complete test suite passed (106 tests, exit code 0).
 
 - **Heading & Subheading Input Sanitization**:
