@@ -647,8 +647,10 @@ class CaptureWindow(QMainWindow):
             else:
                 full_val = cleaned
 
-            if full_val.lower() not in seen:
-                seen.add(full_val.lower())
+            norm_key = re.sub(r"^(?:D[a-zA-Z0-9_\-\.]+|SENS(?:-\d+)?)\s*[—:\-]\s*", "", cleaned, flags=re.IGNORECASE).strip().lower()
+
+            if norm_key not in seen:
+                seen.add(norm_key)
                 is_saved = False
                 if sid and sid.upper() in saved_section_ids:
                     is_saved = True
@@ -686,13 +688,15 @@ class CaptureWindow(QMainWindow):
         if self.source:
             try:
                 for saved in list_sections(self.source.sha256, db_path=self.output_root):
-                    if saved.heading:
-                        _add(saved.heading, sid=saved.section_id)
                     if saved.subheading and self.source.report_map and "." in saved.section_id:
                         parent_id = saved.section_id.split(".")[0]
                         for sec in self.source.report_map.get("sections", []):
                             if sec.get("section_id") == parent_id and not sec.get("parent_heading") and saved.heading:
                                 sec["parent_heading"] = saved.heading
+                    elif saved.heading and "." not in (saved.section_id or ""):
+                        clean_saved = re.sub(r"^(?:D[a-zA-Z0-9_\-\.]+|SENS(?:-\d+)?)\s*[—:\-]\s*", "", saved.heading, flags=re.IGNORECASE).strip()
+                        if clean_saved.lower() not in seen:
+                            _add(clean_saved, sid=saved.section_id)
             except Exception:
                 pass
 
