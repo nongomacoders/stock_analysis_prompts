@@ -161,3 +161,19 @@ def resolve_sector_alias(candidate: str | None) -> str | None:
         if c in cfg.aliases:
             return code
     return None
+
+def normalize_sector_code(text: str | None) -> str:
+    """Extracts and normalizes sector code from raw text, display names, or table cell contents."""
+    if not text:
+        return ""
+    t = text.lower().strip()
+    direct = resolve_sector_alias(t)
+    if direct:
+        return direct
+    for code, cfg in SECTOR_REGISTRY.items():
+        if code in t or cfg.short_label.lower() in t or cfg.display_name.lower() in t:
+            return code
+        for a in cfg.aliases:
+            if a in t:
+                return code
+    return ""

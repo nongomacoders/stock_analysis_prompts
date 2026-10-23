@@ -11,6 +11,7 @@ from companies.sectors import (
     get_sector_config,
     get_sector_display,
     get_sector_short_label,
+    normalize_sector_code,
     resolve_sector_alias,
 )
 
@@ -63,3 +64,12 @@ def test_sector_labels():
     assert get_sector_short_label("mining") == "Mining"
     assert get_sector_short_label("construction") == "Construction" 
     assert "Retail" in get_sector_display("retail")
+
+
+def test_normalize_sector_code():
+    assert normalize_sector_code("Mining (Gold)") == "mining"
+    assert normalize_sector_code("JSE Retail") == "retail"
+    assert normalize_sector_code("REIT / Listed Property") == "reit"
+    assert normalize_sector_code("Technology / IT Services") == "it"
+    assert normalize_sector_code("Construction & Materials") == "construction"
+    assert normalize_sector_code("mining") == "mining"

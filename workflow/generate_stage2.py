@@ -16,6 +16,8 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from companies import find_company_dir
+from companies.sectors import get_sector_config
+from section_capture.db import KNOWN_COMPANIES
 
 
 def _format_section1_spec(ticker: str, company_title: str, sector_display: str, sector_code: str | None = None) -> list[str]:
@@ -244,9 +246,61 @@ def build_stage2_prompt_content(
         md_lines.append("   - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. multi-year public/private enterprise contract wins, legacy debt retirement, dividend resumption).")
         md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. interim/annual results dates, AGM, trading updates) for portfolio managers to mark.")
         md_lines.append("")
-    else:
+    elif detected_sector == "construction":
         md_lines.append(
-            "You are acting as an elite **Managing Director & Head of Mining Equity Research** at a premier institutional investment bank."
+            "You are acting as an elite **Managing Director & Head of Construction & Materials Equity Research** at a premier institutional investment bank."
+        )
+        md_lines.append(
+            f"You are conducting a definitive 2-year operational and valuation forecast for **{company_title} ({ticker})**."
+        )
+        md_lines.append("")
+        md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
+        md_lines.append(
+            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
+            "as your 99% confidence baseline (e.g. residential development pipeline units, serviced stands, memorial park plot margins, "
+            "infrastructure contracting order book, percentage of completion (POC) revenue recognition, contract assets / WIP, "
+            "and debt/liquidity covenants). Do not revert to high-level PR narratives from the PDF. If you identify definitive evidence "
+            "in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
+            "citing the exact note/table and page from the PDF, and providing your quantitative justification."
+        )
+        md_lines.append(
+            "2. **Primary Reporting & Trading Currency:** South African construction and materials equities trade primarily on the **Johannesburg Stock Exchange (JSE)**. "
+            "All final valuation targets, headline earnings per share (HEPS), and Net Asset Value (NAV) per share must be presented in **ZAR (Rands per share or ZAR cents)**."
+        )
+        md_lines.append(
+            "3. **Construction & Property Development Operating & Valuation Model:** Model explicit operational drivers across:\n"
+            "   - Residential property development pipeline: Serviced stand roll-out, integrated housing construction volume, and gross profit margin by development project.\n"
+            "   - Memorial parks: Burial plot sales volume, cash collections, and cemetery maintenance fund contributions.\n"
+            "   - Infrastructure contracting: Order book execution, public vs private sector procurement, and POC margin recognition.\n"
+            "   - Working capital efficiency: Contract assets, retentions, inventory land bank valuation, and trade payables.\n"
+            "   - Capital structure & liquidity: Bank term facilities, DMTN corporate bonds, interest cover, and Free Cash Flow to Equity (FCFE)."
+        )
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("")
+        md_lines.append(stage1_content)
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
+        md_lines.append("")
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Construction & Materials", "construction"))
+        md_lines.append("2. **Detailed Development & Operational Forecast (FY27E & FY28E):** Residential unit deliveries, serviced stand sales, memorial park cash collections, order book depletion, and gross margin by segment.")
+        md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, Gross Profit, Operating Expenses, Statutory/Adjusted EBITDA, Net Finance Charges, Tax, HEPS, and Free Cash Flow to Equity.")
+        md_lines.append("4. **Sum-of-the-Parts (SOTP) / DCF Valuation Table:** Project-by-project residential pipeline NAV, memorial parks capitalization, contracting multiple, net debt, and per-share equity value in ZAR.")
+        md_lines.append("5. **Forward Valuation Multiples & Sensitivity Matrix:** Target P/E, EV/EBITDA, Price/NAV, and 2D sensitivity table (Sales Velocity vs Construction Cost Inflation or Exit Multiple).")
+        md_lines.append("6. **Actionable Portfolio Monitoring Triggers & Catalysts ('What to Watch For That Will Move the Stock'):**")
+        md_lines.append("   - **Operational & Balance Sheet Red Lines:** Explicitly list 3-5 specific triggers (e.g. municipal bulk infrastructure handover delays, slow residential unit off-take, contract asset write-downs, liquidity/DMTN covenants).")
+        md_lines.append("   - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb (e.g. 'Every 100 bps shift in gross margin impacts HEPS by X cents and fair value by R Y/share').")
+        md_lines.append("   - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. major infrastructure project award, acceleration of retail land parcel sales, debt de-gearing milestones, dividend resumption).")
+        md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. interim/annual results dates, bond coupon dates, AGM) for portfolio managers to mark.")
+        md_lines.append("")
+    else:
+        cfg = get_sector_config(detected_sector)
+        md_lines.append(
+            f"You are acting as an elite **{cfg.stage2_persona}** at a premier institutional investment bank."
         )
         md_lines.append(
             f"You are conducting a definitive 2-year operational and valuation forecast for **{company_title} ({ticker})**."
@@ -287,7 +341,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining"))
+        cfg = get_sector_config(detected_sector)
+        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, cfg.code))
         md_lines.append("2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.")
@@ -322,7 +377,8 @@ def generate_stage2_prompt(
         detected_sector = (sector or "mining").lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
 
-    company_title = company_name or (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Technologies" if detected_sector == "it" else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources")))
+    default_title = (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Technologies" if detected_sector == "it" else (f"{ticker} Construction" if detected_sector == "construction" else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources"))))
+    company_title = company_name or KNOWN_COMPANIES.get(ticker, (default_title, detected_sector))[0]
     briefs_dir = company_dir / f"briefs/{period_tag}"
     root_briefs_dir = company_dir / "briefs"
 

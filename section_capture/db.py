@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from companies import PACKAGE_DIR, SECTORS
+from companies.sectors import normalize_sector_code
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "documents/analysis.sqlite"
@@ -319,6 +320,11 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
                             res["tsr_pct"] = float(str(tsr).replace("%", "").strip())
                         except (ValueError, TypeError):
                             pass
+                    sec = data.get("sector")
+                    if sec:
+                        s_clean = normalize_sector_code(str(sec)) or str(sec).strip().lower()
+                        if s_clean:
+                            res["sector"] = s_clean
 
                     # Extract triggers if included in JSON
                     if "monitoring_triggers" in data:
@@ -385,8 +391,15 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
             det_cells = cells[1:-1] if len(cells) >= 3 else cells[1:]
             det_text = " ".join(det_cells)
 
+            # 0. Sector
+            if "sector" in metric and "sector" not in res:
+                sec_raw = det_cells[0] if det_cells else ""
+                s_norm = normalize_sector_code(sec_raw)
+                if s_norm:
+                    res["sector"] = s_norm
+
             # 1. Recommendation
-            if "recommendation" in metric and "recommendation" not in res:
+            elif "recommendation" in metric and "recommendation" not in res:
                 for c in reversed(det_cells):
                     m_start = re.search(r'^\*{0,2}(BUY|HOLD|SELL|OVERWEIGHT|UNDERWEIGHT|NEUTRAL)\b', c, re.IGNORECASE)
                     if m_start:
@@ -508,6 +521,13 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
         )
         if prose_rec:
             res["recommendation"] = prose_rec.group(1).upper()
+
+    if "sector" not in res:
+        m_sec = re.search(r'\*\s*\*{0,2}Sector:\*{0,2}\s*([^\n\r]+)', sec1_text, re.IGNORECASE)
+        if m_sec:
+            s_norm = normalize_sector_code(m_sec.group(1))
+            if s_norm:
+                res["sector"] = s_norm
 
     # Monitoring Triggers / Action Plan
     trig_match = re.search(
@@ -1291,6 +1311,10 @@ def save_stage2_report(
             params.append(response)
             summary = parse_valuation_summary(response)
             if summary:
+                if not summary.get("sector") and row:
+                    _, _, detected_sec = detect_company_meta(row["original_path"] or row["filename"])
+                    if detected_sec:
+                        summary["sector"] = detected_sec
                 updates.extend([
                     "target_price_zar = ?",
                     "reference_price_zar = ?",

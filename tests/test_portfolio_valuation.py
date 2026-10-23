@@ -52,6 +52,7 @@ def test_parse_valuation_summary_lewis():
     assert summary.get("upside_pct") == 6.96
     assert summary.get("dividend_yield_pct") == 11.90
     assert summary.get("tsr_pct") == 18.86
+    assert summary.get("sector") == "retail"
 
     triggers = summary.get("monitoring_triggers", "")
     assert "Debtor Cost Migration" in triggers
@@ -91,6 +92,7 @@ Pan African Resources is poised for significant FCF inflection.
     assert summary.get("upside_pct") == 51.7
     assert summary.get("dividend_yield_pct") == 8.5
     assert summary.get("tsr_pct") == 60.2
+    assert summary.get("sector") == "mining"
 
     triggers = summary.get("monitoring_triggers", "")
     assert "MTR Commissioning" in triggers
@@ -128,6 +130,7 @@ def test_parse_valuation_summary_markdown_table_format():
     assert summary.get("dividend_yield_pct") == 0.0
     assert summary.get("tsr_pct") == -26.1
     assert "Glencore Offtake" in summary.get("monitoring_triggers", "")
+    assert summary.get("sector") == "mining"
 
 
 def test_parse_valuation_summary_json_format():
@@ -173,6 +176,7 @@ def test_parse_valuation_summary_json_format():
     assert summary.get("dividend_yield_pct") == 0.0
     assert summary.get("tsr_pct") == -30.0
     assert "KPMG Crescent" in summary.get("monitoring_triggers", "")
+    assert summary.get("sector") == "reit"
 
 
 def test_stage2_prompt_json_specification():

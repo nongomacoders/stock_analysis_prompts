@@ -11,6 +11,17 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Stage 2 Institutional Valuation Sector Normalization & Construction Sector Support**:
+  - Identified and fixed sector tracking in Stage 2 Institutional Valuation notes and database persistence:
+    - Added `normalize_sector_code()` in `companies/sectors.py` to deterministically map raw sector strings, aliases, and Markdown table cell descriptions (e.g. `"Mining (Gold)"`, `"JSE Retail"`, `"REIT / Listed Property"`, `"Technology / IT Services"`) to canonical sector codes (`"mining"`, `"retail"`, `"reit"`, `"it"`, `"construction"`).
+    - Updated `parse_valuation_summary()` in `section_capture/db.py` to extract `"sector"` from both the mandatory JSON summary block (`data.get("sector")`) and Section 1 summary tables / bullet points (`**Sector:** ...`), saving it into `valuation_summary_json`.
+    - Added automatic sector fallback in `save_stage2_report()` using `detect_company_meta()` if the valuation note response omits the sector.
+    - Added dedicated `construction` operating model and persona branch in `workflow/generate_stage2.py` (Head of Construction & Materials Equity Research, residential development pipeline units, serviced stands, memorial park plot margins, infrastructure contracting order book, DMTN bond covenants, and SOTP NAV).
+    - Resolved `CGR` company title fallback to use `KNOWN_COMPANIES` (`"Calgro M3 Holdings"`) instead of `"CGR Resources"`.
+    - Regenerated `companies/construction/CGR/briefs/FY26/CGR_FY26_stage2_valuation_prompt.md`.
+    - Backfilled `reports.valuation_summary_json` in `documents/analysis.sqlite` for all 5 existing reports (`PAN`: mining, `LEW`: retail, `ORN`: mining, `APF`: reit, `IOC`: it).
+    - Added unit test coverage in `tests/test_sectors.py` and `tests/test_portfolio_valuation.py`. All 108 tests pass.
+
 - **Portable Relative Path & Immediate SHA-256 PDF Registration**:
   - Implemented `to_relative_project_path()` and `resolve_project_path()` in `section_capture/db.py`.
   - When opening any PDF in `CaptureWindow.open_pdf()`, the SHA-256 hash is computed immediately and the file path is normalized and stored as a portable forward-slash relative path (`companies/<sector>/<ticker>/sources/<filename>.pdf`) in `reports.original_path`.
