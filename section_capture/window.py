@@ -331,65 +331,93 @@ class CaptureWindow(QMainWindow):
         self._update_actions()
 
     def _build_toolbar(self):
-        toolbar = QToolBar("PDF controls")
-        toolbar.setMovable(False)
-        self.addToolBar(toolbar)
+        # Row 1: Document opening, PDF page navigation, Selection mode & Sector
+        nav_toolbar = QToolBar("PDF navigation")
+        nav_toolbar.setMovable(False)
+        self.addToolBar(nav_toolbar)
+
         self.new_action = QAction("New", self)
         self.new_action.setToolTip("Scaffold a new company hub (ticker, sector, models, sandbox)")
         self.new_action.triggered.connect(self.show_new_company_dialog)
-        toolbar.addAction(self.new_action)
+        nav_toolbar.addAction(self.new_action)
+
         open_action = QAction("Open PDF", self)
         open_action.setShortcut(QKeySequence.StandardKey.Open)
         open_action.triggered.connect(self.choose_pdf)
-        toolbar.addAction(open_action)
-        toolbar.addSeparator()
+        nav_toolbar.addAction(open_action)
+        nav_toolbar.addSeparator()
+
         self.previous_button = QPushButton("Previous")
         self.previous_button.clicked.connect(lambda: self.page_spin.setValue(self.page_spin.value() - 1))
-        toolbar.addWidget(self.previous_button)
-        toolbar.addWidget(QLabel("  Page "))
+        nav_toolbar.addWidget(self.previous_button)
+        nav_toolbar.addWidget(QLabel("  Page "))
+
         self.page_spin = QSpinBox()
         self.page_spin.setMinimum(1)
         self.page_spin.setMaximum(1)
         self.page_spin.setToolTip("Original physical PDF page, counted from 1")
         self.page_spin.valueChanged.connect(self.change_page)
-        toolbar.addWidget(self.page_spin)
+        nav_toolbar.addWidget(self.page_spin)
+
         self.page_total = QLabel(" of 0  ")
-        toolbar.addWidget(self.page_total)
+        nav_toolbar.addWidget(self.page_total)
+
         self.next_button = QPushButton("Next")
         self.next_button.clicked.connect(lambda: self.page_spin.setValue(self.page_spin.value() + 1))
-        toolbar.addWidget(self.next_button)
-        toolbar.addSeparator()
+        nav_toolbar.addWidget(self.next_button)
+        nav_toolbar.addSeparator()
+
         self.mode_combo = QComboBox()
         self.mode_combo.addItem("Area selection (Alt+A)", "area")
         self.mode_combo.addItem("Text selection (Alt+T)", "text")
         self.mode_combo.currentIndexChanged.connect(lambda: self.set_selection_mode(self.mode_combo.currentData()))
-        toolbar.addWidget(self.mode_combo)
+        nav_toolbar.addWidget(self.mode_combo)
+
         self.area_shortcut = QShortcut(QKeySequence("Alt+A"), self)
         self.area_shortcut.activated.connect(lambda: self.set_selection_mode("area"))
         self.text_shortcut = QShortcut(QKeySequence("Alt+T"), self)
         self.text_shortcut.activated.connect(lambda: self.set_selection_mode("text"))
-        toolbar.addSeparator()
+        nav_toolbar.addSeparator()
+
         self.sector_combo = QComboBox()
         for s in get_all_sectors():
             self.sector_combo.addItem(f"Sector: {s.short_label}", s.code)
         self.sector_combo.setToolTip("Active analysis sector (determines prompt template and forensic focus)")
-        toolbar.addWidget(self.sector_combo)
+        nav_toolbar.addWidget(self.sector_combo)
+
+        # Break to Row 2
+        self.addToolBarBreak(Qt.ToolBarArea.TopToolBarArea)
+
+        # Row 2: Zoom/View controls, Canvas selection tools, Report navigation & Dialogs
+        tools_toolbar = QToolBar("Tools and analysis")
+        tools_toolbar.setMovable(False)
+        self.addToolBar(tools_toolbar)
+
         for label, callback in (("Fit page", self.canvas.fit_page), ("−", lambda: self.canvas.zoom(1/1.25)),
                                 ("+", lambda: self.canvas.zoom(1.25)), ("Clear selection", self.canvas.clear_selection)):
-            action = toolbar.addAction(label)
+            action = tools_toolbar.addAction(label)
             action.triggered.connect(callback)
-        self.full_page_action = toolbar.addAction("Select page")
+
+        self.full_page_action = tools_toolbar.addAction("Select page")
         self.full_page_action.triggered.connect(self.canvas.select_full_page)
-        self.map_action = toolbar.addAction('Report map')
+        tools_toolbar.addSeparator()
+
+        self.map_action = tools_toolbar.addAction("Report map")
         self.map_action.triggered.connect(self.show_report_map)
-        self.questions_action = toolbar.addAction('Stored questions')
+
+        self.questions_action = tools_toolbar.addAction("Stored questions")
         self.questions_action.triggered.connect(self.show_questions_ledger)
-        self.sections_action = toolbar.addAction('Saved sections')
+
+        self.sections_action = tools_toolbar.addAction("Saved sections")
         self.sections_action.triggered.connect(self.show_saved_sections)
-        self.audit_action = toolbar.addAction('Audit && Valuation')
+        tools_toolbar.addSeparator()
+
+        self.audit_action = tools_toolbar.addAction("Audit && Valuation")
         self.audit_action.triggered.connect(self.show_audit_valuation)
-        self.portfolio_action = toolbar.addAction('Analyzed Stocks')
+
+        self.portfolio_action = tools_toolbar.addAction("Analyzed Stocks")
         self.portfolio_action.triggered.connect(self.show_portfolio_dashboard)
+
         save_action = QAction("Save section", self)
         save_action.setShortcut(QKeySequence.StandardKey.Save)
         save_action.triggered.connect(self.save_section)

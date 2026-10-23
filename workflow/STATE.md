@@ -11,6 +11,13 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Two-Row Responsive Toolbar Layout (section_capture/window.py)**:
+  - Addressed toolbar horizontal overflow on standard screen resolutions where right-hand action buttons (`Stored questions`, `Saved sections`, `Audit & Valuation`, `Analyzed Stocks`) collapsed into Qt's `...` overflow menu.
+  - Split the single toolbar into two dedicated, non-movable toolbars via `self.addToolBarBreak(Qt.ToolBarArea.TopToolBarArea)`:
+    - **Row 1 (`nav_toolbar: "PDF navigation"`)**: Document opening (`New`, `Open PDF`), physical PDF page navigation (`Previous`, `Page [N] of M`, `Next`), Selection mode (`Area (Alt+A)` / `Text (Alt+T)`), and Sector dropdown.
+    - **Row 2 (`tools_toolbar: "Tools and analysis"`)**: Zoom & view controls (`Fit page`, `−`, `+`), canvas selection actions (`Clear selection`, `Select page`), and dialog access buttons (`Report map`, `Stored questions`, `Saved sections`, `Audit & Valuation`, `Analyzed Stocks`).
+  - Guarantees all controls remain directly visible without button crowding or overflow menus at standard desktop resolutions (>= 1000px width).
+
 - **Company vs Consolidated Statement Disambiguation & Subheading Requirement Fix**:
   - Resolved heading and section collision where `"Statement of cash flows"` (Company statement on page 78, D010) was incorrectly matched by loose substring against `"Consolidated statement of cash flows"` (Group statement on pages 18–76, D005), which already had subsections.
   - Prefixed report map sections in `HeadingComboBox` with their unique section ID (`D005 — Consolidated statement of cash flows`, `D010 — Statement of cash flows`), guaranteeing complete visual clarity and direct, deterministic reverse lookup.
