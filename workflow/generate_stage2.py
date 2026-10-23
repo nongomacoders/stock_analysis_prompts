@@ -363,11 +363,47 @@ def build_stage2_prompt_content(
         md_lines.append("   - **Expansion & Delivery Catalysts:** Specific milestones required to trigger an upgrade (e.g. MTR / Soweto tailings commercial commissioning, Section 36 capex cliff release).")
         md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.")
         md_lines.append("")
+    elif detected_sector in {"finance", "telcos"}:
+        cfg = get_sector_config(detected_sector)
+        md_lines.append(
+            f"You are acting as an elite **{cfg.stage2_persona}** at a premier institutional investment bank."
+        )
+        md_lines.append(
+            f"You are conducting a definitive 2-year operational and valuation forecast for **{company_title} ({ticker})**."
+        )
+        md_lines.append("")
+        md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
+        md_lines.append(
+            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
+            "as your 99% confidence baseline. Do not revert to high-level headline narratives from the PDF. "
+            "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
+            "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
+            "and providing your quantitative justification."
+        )
+        md_lines.append(
+            f"2. **Primary Reporting & Trading Currency:** {ticker} trades on the **Johannesburg Stock Exchange (JSE)**. "
+            "All final valuation targets, earnings per share, and dividends per share must be presented in **ZAR (Rands per share or ZAR cents)**."
+        )
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("")
+        md_lines.append(stage1_content)
+        md_lines.append("")
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
+        md_lines.append("")
+        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, detected_sector))
+        md_lines.append("2. **Detailed Operational & Segment Forecast (FY27E & FY28E):** Segment drivers, margins, and operational KPIs.")
+        md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Income statement, balance sheet, and equity free cash flow.")
+        md_lines.append("4. **Institutional Valuation Table:** Intrinsic valuation methodology, multiples, and target price in ZAR.")
+        md_lines.append("5. **Forward Valuation Multiples & Sensitivity Matrix:** Target multiples and sensitivity analysis.")
+        md_lines.append("6. **Actionable Portfolio Monitoring Triggers & Catalysts:** Red lines, sensitivity impacts, and reporting dates.")
     else:
-        warnings.warn(
-            f"Sector '{detected_sector}' does not have a dedicated 2-year operational valuation model in Stage 2. Falling back to generic sector persona.",
-            UserWarning,
-            stacklevel=2,
+        raise ValueError(
+            f"Sector '{detected_sector}' does not have a dedicated Stage 2 valuation model implemented."
         )
         cfg = get_sector_config(detected_sector)
         md_lines.append(

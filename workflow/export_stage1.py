@@ -167,16 +167,22 @@ def build_stage1_prompt_content(
             "South African Section 36 capital expenditure deductions & Gold Mining Tax Formula curve, and post-year-end SENS financing milestones), "
             "citing specific notes, tables, and calculations."
         )
-    else:
-        warnings.warn(
-            f"Sector '{detected_sector}' does not have a dedicated forensic accounting junction specification in Stage 1. Falling back to generic framework.",
-            UserWarning,
-            stacklevel=2,
-        )
+    elif detected_sector == "finance":
         md_lines.append(
-            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key forensic junction "
-            "(share count, net debt/cash, EBITDA adjustments, unit costs, capex trajectory, tax mechanics, and post-year-end SENS financing milestones), "
+            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key banking and financial services junction "
+            "(net interest margin [NIM] vs credit impairment charges, stage 3 ECL coverage & non-performing loans [NPL], CET1 regulatory capital ratio & CAR, "
+            "trading vs non-interest revenue, and Basel III liquidity coverage/NSFR ratios), citing specific notes, tables, and calculations."
+        )
+    elif detected_sector == "telcos":
+        md_lines.append(
+            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key telecommunications junction "
+            "(service revenue vs device financing, ARPU trajectory & subscriber churn, tower lease commitments & IFRS 16 liabilities, "
+            "spectrum auction capex vs network modernization capex, and foreign exchange remeasurement/hyperinflation adjustments), "
             "citing specific notes, tables, and calculations."
+        )
+    else:
+        raise ValueError(
+            f"Sector '{detected_sector}' does not have dedicated Stage 1 forensic audit rules implemented."
         )
 
     md_lines.append("3. **Audit of Common Surface-Reading Pitfalls:** Contrast your findings against the common errors made by naive readers.")

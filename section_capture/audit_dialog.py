@@ -268,14 +268,14 @@ class AuditValuationDialog(QDialog):
             initial_data = self.available_companies[0]
         else:
             initial_data = {
-                "ticker": "TARGET",
-                "company_title": "Target Asset",
-                "sector": "mining",
+                "ticker": "NONE",
+                "company_title": "No Companies Available",
+                "sector": "",
                 "sha256": "",
-                "filename": "report.pdf",
+                "filename": "",
                 "pdf_path": None,
                 "status": "No reports",
-                "display_text": "TARGET — Target Asset [No reports]",
+                "display_text": "No analyzed reports found in database",
             }
             self.available_companies.append(initial_data)
 
@@ -380,7 +380,9 @@ class AuditValuationDialog(QDialog):
 
         comp_info = find_company_dir(self.ticker, sector=self.sector)
         self.company_dir = comp_info[1] if comp_info else PROJECT_ROOT / f"companies/{self.sector}/{self.ticker}"
-        if self.db_path.resolve() != resolve_db_path(None):
+        prod_db = (PROJECT_ROOT / "documents/analysis.sqlite").resolve()
+        is_isolated_test_db = self.db_path.resolve() != prod_db and self.db_path.resolve() != resolve_db_path(None)
+        if is_isolated_test_db:
             self.briefs_dir = self.db_path.parent / "briefs" / self.period
         else:
             self.briefs_dir = self.company_dir / f"briefs/{self.period}"

@@ -11,20 +11,27 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
-- **Elimination of Silent Defaults & Explicit Prompt Warnings**:
-  - Eliminated silent fallback defaults across the system when sector prompt templates are missing or cannot be resolved:
-    - Scaffolded dedicated prompt template directories for all registered sectors in `prompts/`:
-      - `prompts/finance/00-report-orientation/v1.0.0/prompt.md`
-      - `prompts/finance/12-analyst-reading-brief/v1.1.0/prompt.md`
-      - `prompts/telcos/00-report-orientation/v1.0.0/prompt.md`
-      - `prompts/telcos/12-analyst-reading-brief/v1.1.0/prompt.md`
-      (All 7 sectors: `mining`, `retail`, `reit`, `it`, `construction`, `finance`, `telcos` now have dedicated on-disk orientation and reading brief templates).
-    - Added prompt availability helpers and explicit `UserWarning`s in `section_capture/packages.py` (`has_sector_prompt()`, `get_prompt_path()`, `detect_sector_from_path()`).
-    - Added orientation availability helper and explicit `UserWarning`s in `section_capture/report_map.py` (`has_orientation_prompt()`, `get_orientation_path()`).
-    - Added explicit warnings in `companies/sectors.py` (`get_sector_config()`) when falling back to default sector.
-    - Updated `workflow/export_stage1.py` and `workflow/generate_stage2.py` with explicit `mining` branches and warnings if any unrecognized sector lacks tailored models.
-    - Added visual status bar warning notifications in `CaptureWindow` (`section_capture/window.py`) when selecting a sector or opening a PDF without dedicated prompt templates.
-    - Added unit tests in `tests/test_sectors.py` (`test_missing_sector_prompt_warnings()`). All 110 tests pass.
+- **Total Elimination of Defaults Across Entire Workflow**:
+  - Completely purged silent fallback defaults, implicit assumptions, and fake placeholder profiles across all layers (CLI, GUI, prompt resolution, database, and pipeline generators):
+    - **Sector Registry (`companies/sectors.py`)**: Removed `DEFAULT_SECTOR = "mining"`. `get_sector_config(code)` now strictly raises `ValueError` if code is omitted and `KeyError` if unrecognized. Formatting helpers (`get_jse_sector_code`, `get_jse_sector_name`, `get_sector_badge_style`, `get_sector_short_label`) gracefully handle unassigned/empty inputs without fallback fabrication.
+    - **Prompt Resolution (`section_capture/packages.py` & `report_map.py`)**:
+      - `detect_sector_from_path()` returns `None` for ambiguous or unclassified paths without guessing or falling back to a default sector.
+      - `get_prompt_path()` and `get_orientation_path()` strictly require explicit `sector: str` and raise `FileNotFoundError` if prompt templates are missing on disk, and `ValueError` if sector is empty.
+      - `save_package()` raises `ValueError` if sector cannot be inferred and is not provided.
+    - **Database & Metadata (`section_capture/db.py` & `audit_dialog.py`)**:
+      - `detect_company_meta()` returns `(None, None, None)` for unclassifiable files instead of fabricating `"TARGET"`, `"Unknown Asset"`, and `"retail"`.
+      - `get_analyzed_stocks()` categorizes unclassified documents as `UNCLASSIFIED` / `unassigned` rather than defaulting to `retail`.
+      - `AuditValuationDialog` uses explicit `prod_db` resolution to isolate test databases without creating stray folders or defaulting empty states to `mining`.
+    - **Pipeline Generators & Scaffolding (`export_stage1.py`, `generate_stage2.py`, `generate_sens_update.py`, `new_company.py`)**:
+      - Replaced `(sector or "mining")` with strict resolution: if company directory is not found and `--sector` is not provided, CLI tools raise `ValueError` requiring explicit `--sector`.
+      - Scaffolding tool `new_company.py` requires `--sector` as a mandatory non-default argument.
+      - `build_stage1_prompt_content` and `build_stage2_prompt_content` added dedicated accounting junctions and operating models for `finance` and `telcos`, and raise `ValueError` on unsupported sectors.
+    - **Desktop GUI (`section_capture/window.py` & `new_company_dialog.py`)**:
+      - Added `"Select Sector..."` unselected placeholder in toolbar combo. If path inference fails on PDF open, window prompts the user and prevents capture or AI queries until a valid sector is selected.
+      - `new_company_dialog` validates selection against `get_all_sector_codes()`.
+    - **Test Suite Alignment**:
+      - Updated `tests/test_sectors.py`, `tests/test_capture.py`, `tests/test_report_map.py`, and `tests/test_portfolio_valuation.py` for strict exception checking (`KeyError`, `ValueError`, `FileNotFoundError`) and `None` returns.
+      - Verified full test suite: **110 passed in 23.85s with 0 warnings and 0 failures**.
 
 - **FTSE/JSE ICB Sector Codes & Classifications Integration**:
   - Integrated official FTSE/JSE Industry Classification Benchmark (ICB) sector codes, index codes, and sector names while preserving canonical directory slugs (`mining`, `retail`, `reit`, `it`, `construction`, `finance`, `telcos`):

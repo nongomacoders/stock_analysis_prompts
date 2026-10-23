@@ -27,19 +27,18 @@ def has_orientation_prompt(sector: str | None) -> bool:
     return custom.exists()
 
 
-def get_orientation_path(sector: str = "mining") -> Path:
-    """Returns the orientation prompt path for the given sector, issuing a warning if unavailable."""
-    sec = sector.lower().strip() if sector else "mining"
+def get_orientation_path(sector: str) -> Path:
+    """Returns the orientation prompt path for the given sector, raising FileNotFoundError if missing on disk."""
+    if not sector:
+        raise ValueError("Sector must be explicitly specified to resolve orientation prompt; no defaults allowed.")
+    sec = sector.lower().strip()
     custom = ROOT / f"prompts/{sec}/{ORIENTATION_STAGE}/{ORIENTATION_VERSION}/prompt.md"
     if custom.exists():
         return custom
-    warnings.warn(
-        f"No dedicated report orientation prompt template found for sector '{sec}' at {custom}. "
-        f"Falling back to default 'mining' template.",
-        UserWarning,
-        stacklevel=2,
+    raise FileNotFoundError(
+        f"No dedicated report orientation prompt template found on disk for sector '{sec}' at {custom}. "
+        f"A dedicated template must exist for every analyzed sector."
     )
-    return ORIENTATION_PATH
 
 KINDS = [
     ('financial_notes', 'Financial notes', r'NOTES TO (?:THE )?(?:SUMMARISED )?CONSOLIDATED (?:ANNUAL )?FINANCIAL STATEMENTS'),
@@ -704,7 +703,9 @@ def matching_section_ids(mapping, selections=(), heading: str = "") -> list[str]
     return matched
 
 
-def report_overview(mapping, selections=(), sector: str = "mining"):
+def report_overview(mapping, selections=(), sector: str | None = None):
+    if not sector:
+        raise ValueError("Sector must be explicitly provided for report_overview; no defaults allowed.")
     orient_path = get_orientation_path(sector)
     lines = [orient_path.read_text(encoding='utf-8'), '\n## Report navigation context',
              f"Report: {mapping['source_filename']}", f"Physical PDF pages: {mapping['physical_page_count']}",

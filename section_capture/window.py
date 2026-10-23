@@ -42,7 +42,6 @@ from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDia
 from .openrouter import OpenRouterWorker, get_openrouter_model
 from companies.sectors import get_all_sectors
 from .packages import (
-    DEFAULT_SECTOR,
     PROJECT_ROOT,
     SUPPORTED_SECTORS,
     build_prompt,
@@ -382,6 +381,7 @@ class CaptureWindow(QMainWindow):
         nav_toolbar.addSeparator()
 
         self.sector_combo = QComboBox()
+        self.sector_combo.addItem("Select Sector...", None)
         for s in get_all_sectors():
             self.sector_combo.addItem(f"Sector: {s.short_label}", s.code)
         self.sector_combo.setToolTip("Active analysis sector (determines prompt template and forensic focus)")
@@ -1074,11 +1074,18 @@ class CaptureWindow(QMainWindow):
             save_last_opened_dir(folder, db_path=self.output_root)
         if hasattr(self, "sector_combo"):
             inferred_sec = detect_sector_from_path(candidate.path)
-            idx = self.sector_combo.findData(inferred_sec)
-            if idx >= 0:
-                self.sector_combo.setCurrentIndex(idx)
-            if inferred_sec and not has_sector_prompt(inferred_sec):
-                self.statusBar().showMessage(f"⚠️ Warning: Sector '{inferred_sec}' has no dedicated prompt template on disk. Using default fallback.", 8000)
+            if inferred_sec:
+                idx = self.sector_combo.findData(inferred_sec)
+                if idx >= 0:
+                    self.sector_combo.setCurrentIndex(idx)
+                if not has_sector_prompt(inferred_sec):
+                    self.statusBar().showMessage(f"⚠️ Warning: Sector '{inferred_sec}' has no dedicated prompt template on disk.", 8000)
+            else:
+                self.sector_combo.setCurrentIndex(0)
+                self.statusBar().showMessage(
+                    "⚠️ Sector could not be inferred from file path. Please select the active Sector in the toolbar.",
+                    10000,
+                )
         db_file = resolve_db_path(self.output_root)
         self.export_label.setText(f"SQLite DB: {db_file.name}")
         self.export_label.setToolTip(str(db_file))
@@ -1550,7 +1557,11 @@ class CaptureWindow(QMainWindow):
                 manifest["selections"] = sec.selections or []
 
             manifest["stored_questions"] = current_ledger.strip() or None
-            current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else (manifest.get("sector") or "retail")
+            current_sector = self.sector_combo.currentData() if hasattr(self, "sector_combo") else manifest.get("sector")
+            if not current_sector:
+                current_sector = detect_sector_from_path(getattr(self.source, "path", None))
+            if not current_sector:
+                raise ValueError("Sector must be selected before submitting query.")
             manifest["sector"] = current_sector
             texts = [s.get("text", "") for s in sec.selections] if sec.selections else [sec.selected_text or ""]
             refreshed_prompt = build_prompt(manifest, texts, sector=current_sector)
@@ -1688,8 +1699,10 @@ class CaptureWindow(QMainWindow):
         if not hasattr(self, "sector_combo") or index < 0:
             return
         sec = self.sector_combo.itemData(index)
-        if sec and not has_sector_prompt(sec):
-            self.statusBar().showMessage(f"⚠️ Warning: Sector '{sec}' has no dedicated reading brief prompt template on disk. Using default fallback.", 8000)
+        if not sec:
+            return
+        if not has_sector_prompt(sec):
+            self.statusBar().showMessage(f"⚠️ Warning: Sector '{sec}' has no dedicated reading brief prompt template on disk.", 8000)
 
     def closeEvent(self, event):
         app = QApplication.instance()

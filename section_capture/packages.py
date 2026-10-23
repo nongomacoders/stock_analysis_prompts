@@ -37,15 +37,15 @@ PROMPT_VERSION = "1.1.0"
 PROMPT_STAGE = "12-analyst-reading-brief"
 PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
 
-from companies.sectors import DEFAULT_SECTOR, get_all_sector_codes, resolve_sector_alias
+from companies.sectors import get_all_sector_codes, resolve_sector_alias
 
 SUPPORTED_SECTORS = get_all_sector_codes()
 
 
-def detect_sector_from_path(path: Path | str | None) -> str:
-    """Infers the company sector from a file path if located under companies/<sector>/..."""
+def detect_sector_from_path(path: Path | str | None) -> str | None:
+    """Infers the company sector from a file path if located under companies/<sector>/... Returns None if unresolved."""
     if not path:
-        return DEFAULT_SECTOR
+        return None
     p = Path(path).resolve()
     parts = [part.lower() for part in p.parts]
     if "companies" in parts:
@@ -55,7 +55,7 @@ def detect_sector_from_path(path: Path | str | None) -> str:
             resolved = resolve_sector_alias(candidate)
             if resolved:
                 return resolved
-    # Fallback to check path string
+    # Check path string for sector keywords
     s = str(p).lower()
     for code in SUPPORTED_SECTORS:
         if f"/{code}/" in s or f"\\{code}\\" in s:
@@ -64,12 +64,16 @@ def detect_sector_from_path(path: Path | str | None) -> str:
         return "it"
     if "reit" in s:
         return "reit"
-    warnings.warn(
-        f"Could not infer sector from path '{path}'. Falling back to default '{DEFAULT_SECTOR}'.",
-        UserWarning,
-        stacklevel=2,
-    )
-    return DEFAULT_SECTOR
+    for sec, aliases in [("mining", ["gold", "platinum", "minerals", "resources"]),
+                         ("retail", ["consumer", "store", "fashion", "apparel"]),
+                         ("reit", ["real_estate", "property", "reits"]),
+                         ("it", ["tech", "software", "ict"]),
+                         ("construction", ["materials", "building", "infrastructure"]),
+                         ("finance", ["bank", "banking", "insurance"]),
+                         ("telcos", ["telecom", "telecommunications", "cellular"])]:
+        if any(a in s for a in aliases):
+            return sec
+    return None
 
 
 def has_sector_prompt(sector: str | None, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> bool:
@@ -81,19 +85,18 @@ def has_sector_prompt(sector: str | None, stage: str = PROMPT_STAGE, version: st
     return custom.exists()
 
 
-def get_prompt_path(sector: str = DEFAULT_SECTOR, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> Path:
-    """Returns the prompt template path for the given sector, issuing a warning if unavailable and falling back to default."""
-    sec = sector.lower().strip() if sector else DEFAULT_SECTOR
+def get_prompt_path(sector: str, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> Path:
+    """Returns the prompt template path for the given sector, raising FileNotFoundError if missing on disk."""
+    if not sector:
+        raise ValueError("Sector must be explicitly specified to resolve prompt template; no defaults allowed.")
+    sec = sector.lower().strip()
     custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
     if custom.exists():
         return custom
-    warnings.warn(
-        f"No dedicated reading brief prompt template found for sector '{sec}' at {custom}. "
-        f"Falling back to default '{DEFAULT_SECTOR}' template.",
-        UserWarning,
-        stacklevel=2,
+    raise FileNotFoundError(
+        f"No dedicated reading brief prompt template found on disk for sector '{sec}' at {custom}. "
+        f"A dedicated template must exist for every analyzed sector."
     )
-    return PROMPT_PATH
 
 
 
@@ -228,6 +231,11 @@ def save_package(
     sector: str | None = None,
 ) -> SavedSection:
     resolved_sector = sector or detect_sector_from_path(source.path)
+    if not resolved_sector:
+        raise ValueError(
+            f"Sector could not be inferred from source path '{source.path}'. "
+            f"An explicit sector must be selected before saving sections."
+        )
     prompt_file = get_prompt_path(resolved_sector)
     raw_heading = clean_single_line_text(heading)
     if raw_heading.startswith("✓ "):

@@ -91,13 +91,13 @@ def test_request_context_uses_crop_region_not_page_alone(source):
     width, height = source.size(19)
     left = {'source_id':'S001','physical_page':19,'page_size_points':[width,height],
             'bbox':[0,0,width/2,height]}
-    text = report_overview(source.report_map, [left])
+    text = report_overview(source.report_map, [left], sector='mining')
     statements = next(line for line in text.splitlines() if '| Primary financial statements |' in line)
     notes = next(line for line in text.splitlines() if '| Financial notes |' in line)
     assert 'Partial selected evidence: D005 (p. 19)' in statements
     assert 'Not included here' in notes
     right = {**left, 'bbox':[width/2,0,width,height]}
-    text = report_overview(source.report_map, [right])
+    text = report_overview(source.report_map, [right], sector='mining')
     notes = next(line for line in text.splitlines() if '| Financial notes |' in line)
     assert 'Partial selected evidence: D006 (p. 19)' in notes
 

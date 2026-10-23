@@ -40,6 +40,9 @@ class ReportMapDialog(QDialog):
         fit_dialog_to_screen(self, target_w=980, target_h=640)
 
         self._sections_data: list[dict] = []
+        sec_combo = getattr(parent, "sector_combo", None)
+        parent_sec = sec_combo.currentData() if sec_combo else None
+        self.sector = parent_sec or detect_sector_from_path(getattr(source, "path", None))
         self._init_sections_from_source()
 
         if parent and hasattr(parent, "page_spin"):
@@ -275,14 +278,19 @@ class ReportMapDialog(QDialog):
     def refresh(self):
         self._update_table()
         mapping = self.source.report_map if self.source else None
-        self.preview.setMarkdown(
-            report_overview(mapping) if mapping else "No section map is saved yet. Add major sections on the left and click 'Save Map'."
-        )
-        self.copy_button.setEnabled(mapping is not None)
+        if mapping and self.sector:
+            self.preview.setMarkdown(report_overview(mapping, sector=self.sector))
+        elif mapping and not self.sector:
+            self.preview.setMarkdown(
+                "⚠️ No active sector selected. Please select a Sector in the main window toolbar to preview orientation map."
+            )
+        else:
+            self.preview.setMarkdown("No section map is saved yet. Add major sections on the left and click 'Save Map'.")
+        self.copy_button.setEnabled(mapping is not None and bool(self.sector))
 
     def copy_overview(self):
-        if self.source and self.source.report_map:
-            QApplication.clipboard().setText(report_overview(self.source.report_map))
+        if self.source and self.source.report_map and self.sector:
+            QApplication.clipboard().setText(report_overview(self.source.report_map, sector=self.sector))
 
     def scan_again(self):
         self.rescan()

@@ -470,7 +470,7 @@ def test_sector_detection_and_prompts():
     assert detect_sector_from_path("companies/finance/SBK/sources/report.pdf") == "finance"
     assert detect_sector_from_path("companies/reit/GRT/sources/report.pdf") == "reit"
     assert detect_sector_from_path("companies/property/RDF/sources/report.pdf") == "reit"
-    assert detect_sector_from_path("random/path/report.pdf") == "mining"
+    assert detect_sector_from_path("random/path/report.pdf") is None
 
     # 2. Company directory resolution
     pan_res = find_company_dir("PAN")

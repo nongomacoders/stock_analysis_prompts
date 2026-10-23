@@ -178,10 +178,13 @@ class NewCompanyDialog(QDialog):
 
         ticker = self.ticker_edit.text().strip().upper()
         name = self.name_edit.text().strip() or ticker
-        sector = self.sector_combo.currentData() or "mining"
+        sector = self.sector_combo.currentData()
+        if not sector:
+            QMessageBox.warning(self, "Sector Required", "Please select a valid sector.")
+            return
 
         try:
-            company_dir = create_company(ticker=ticker, name=name, sector=sector)
+            company_dir = create_company(ticker=ticker, sector=sector, name=name)
         except Exception as exc:
             QMessageBox.critical(self, "Error Scaffolding Company", str(exc))
             return

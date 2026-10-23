@@ -140,30 +140,18 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
     ),
 }
 
-DEFAULT_SECTOR = "mining"
-
-
 def get_sector_config(code: str | None) -> SectorConfig:
-    """Returns the SectorConfig for the given sector code, or default with warning if not found."""
+    """Returns the SectorConfig for the given sector code, raising an error if missing or unknown."""
     if not code:
-        warnings.warn(
-            f"No sector code provided; falling back to default '{DEFAULT_SECTOR}'.",
-            UserWarning,
-            stacklevel=2,
-        )
-        return SECTOR_REGISTRY[DEFAULT_SECTOR]
+        raise ValueError("Sector code must be explicitly provided; no defaults are permitted.")
     normalized = code.lower().strip()
     if normalized in SECTOR_REGISTRY:
         return SECTOR_REGISTRY[normalized]
     alias_match = resolve_sector_alias(normalized)
     if alias_match and alias_match in SECTOR_REGISTRY:
         return SECTOR_REGISTRY[alias_match]
-    warnings.warn(
-        f"Unknown sector '{code}'; falling back to default '{DEFAULT_SECTOR}'.",
-        UserWarning,
-        stacklevel=2,
-    )
-    return SECTOR_REGISTRY[DEFAULT_SECTOR]
+    available = ", ".join(sorted(SECTOR_REGISTRY.keys()))
+    raise KeyError(f"Unknown sector '{code}'. Available registered sectors: {available}")
 
 
 def get_all_sector_codes() -> list[str]:
@@ -192,8 +180,13 @@ def get_jse_sector_code(code: str | None, ticker: str | None = None) -> str:
         t_up = ticker.strip().upper()
         if t_up in TICKER_JSE_OVERRIDES:
             return TICKER_JSE_OVERRIDES[t_up][0]
-    cfg = get_sector_config(code)
-    return cfg.jse_code or cfg.code.upper()
+    if not code:
+        return ""
+    try:
+        cfg = get_sector_config(code)
+        return cfg.jse_code or cfg.code.upper()
+    except Exception:
+        return ""
 
 
 def get_icb_code(code: str | None, ticker: str | None = None) -> str:
@@ -202,8 +195,13 @@ def get_icb_code(code: str | None, ticker: str | None = None) -> str:
         t_up = ticker.strip().upper()
         if t_up in TICKER_JSE_OVERRIDES:
             return TICKER_JSE_OVERRIDES[t_up][1]
-    cfg = get_sector_config(code)
-    return cfg.icb_code
+    if not code:
+        return ""
+    try:
+        cfg = get_sector_config(code)
+        return cfg.icb_code
+    except Exception:
+        return ""
 
 
 def get_jse_sector_name(code: str | None, ticker: str | None = None) -> str:
@@ -212,24 +210,55 @@ def get_jse_sector_name(code: str | None, ticker: str | None = None) -> str:
         t_up = ticker.strip().upper()
         if t_up in TICKER_JSE_OVERRIDES:
             return TICKER_JSE_OVERRIDES[t_up][2]
-    cfg = get_sector_config(code)
-    return cfg.jse_sector_name or cfg.display_name
+    if not code:
+        return ""
+    try:
+        cfg = get_sector_config(code)
+        return cfg.jse_sector_name or cfg.display_name
+    except Exception:
+        return ""
 
 
 def get_jse_sector_label(code: str | None, ticker: str | None = None) -> str:
     """Returns a combined badge/label with short name and JSE code, e.g. 'Mining (JS5513)'."""
-    cfg = get_sector_config(code)
-    jse_c = get_jse_sector_code(code, ticker=ticker)
-    return f"{cfg.short_label} ({jse_c})" if jse_c else cfg.short_label
+    if not code:
+        return ""
+    try:
+        cfg = get_sector_config(code)
+        jse_c = get_jse_sector_code(code, ticker=ticker)
+        return f"{cfg.short_label} ({jse_c})" if jse_c else cfg.short_label
+    except Exception:
+        return str(code).upper()
 
 
 def get_sector_badge_style(code: str | None) -> str:
     """Returns the CSS stylesheet string for rendering the sector badge."""
-    cfg = get_sector_config(code)
-    return (
-        f"padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; "
-        f"background-color: {cfg.badge_bg}; color: {cfg.badge_fg}; border: 1px solid {cfg.badge_border};"
-    )
+    if not code:
+        return "padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; background-color: #6c757d; color: #ffffff; border: 1px solid #5a6268;"
+    try:
+        cfg = get_sector_config(code)
+        return (
+            f"padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; "
+            f"background-color: {cfg.badge_bg}; color: {cfg.badge_fg}; border: 1px solid {cfg.badge_border};"
+        )
+    except Exception:
+        return "padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; background-color: #6c757d; color: #ffffff; border: 1px solid #5a6268;"
+
+def get_sector_short_label(code: str | None) -> str:
+    if not code:
+        return ""
+    try:
+        return get_sector_config(code).short_label
+    except Exception:
+        return str(code).upper()
+
+def get_sector_display(code: str | None) -> str:
+    if not code:
+        return ""
+    try:
+        return get_sector_config(code).display_name
+    except Exception:
+        return str(code).capitalize()
 
 
 def resolve_sector_alias(candidate: str | None) -> str | None:

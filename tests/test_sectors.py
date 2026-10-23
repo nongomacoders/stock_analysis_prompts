@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import pytest
 from companies.sectors import (
-    DEFAULT_SECTOR,
     SECTOR_REGISTRY,
     get_all_sector_codes,
     get_all_sectors,
@@ -46,9 +45,10 @@ def test_sector_registry_defaults():
     assert const_cfg.icb_code == "501010"
     assert const_cfg.jse_sector_name == "Construction and Materials"
 
-    with pytest.warns(UserWarning, match="Unknown sector"):
-        unknown = get_sector_config("unknown_sector_xyz")
-    assert unknown.code == DEFAULT_SECTOR
+    with pytest.raises(KeyError, match="Unknown sector"):
+        get_sector_config("unknown_sector_xyz")
+    with pytest.raises(ValueError, match="Sector code must be explicitly provided"):
+        get_sector_config("")
 
 
 def test_sector_alias_resolution():
@@ -122,35 +122,36 @@ def test_jse_sector_helpers_and_ticker_overrides():
     assert get_jse_sector_label("retail", ticker="LEW") == "Retail (JS4041)"
 
 
-def test_missing_sector_prompt_warnings():
+def test_missing_sector_prompt_strict_errors():
     from section_capture.packages import get_prompt_path, has_sector_prompt, detect_sector_from_path
     from section_capture.report_map import get_orientation_path, has_orientation_prompt
 
     # 1. has_sector_prompt check
-    assert has_sector_prompt("mining") is True
-    assert has_sector_prompt("retail") is True
-    assert has_sector_prompt("construction") is True
-    assert has_sector_prompt("finance") is True
-    assert has_sector_prompt("telcos") is True
-    assert has_sector_prompt("nonexistent_sector_xyz") is False
-    assert has_sector_prompt("") is False
+    assert has_sector_prompt('mining') is True
+    assert has_sector_prompt('retail') is True
+    assert has_sector_prompt('construction') is True
+    assert has_sector_prompt('finance') is True
+    assert has_sector_prompt('telcos') is True
+    assert has_sector_prompt('nonexistent_sector_xyz') is False
+    assert has_sector_prompt('') is False
 
-    # 2. get_prompt_path warning on missing prompt
-    with pytest.warns(UserWarning, match="No dedicated reading brief prompt template found"):
-        path = get_prompt_path("nonexistent_sector_xyz")
-        assert path.exists()
+    # 2. get_prompt_path raises FileNotFoundError on missing template, ValueError on empty
+    with pytest.raises(FileNotFoundError, match='No dedicated reading brief prompt template found'):
+        get_prompt_path('nonexistent_sector_xyz')
+    with pytest.raises(ValueError, match='Sector must be explicitly specified'):
+        get_prompt_path('')
 
     # 3. has_orientation_prompt check
-    assert has_orientation_prompt("mining") is True
-    assert has_orientation_prompt("finance") is True
-    assert has_orientation_prompt("nonexistent_sector_xyz") is False
+    assert has_orientation_prompt('mining') is True
+    assert has_orientation_prompt('finance') is True
+    assert has_orientation_prompt('nonexistent_sector_xyz') is False
 
-    # 4. get_orientation_path warning on missing prompt
-    with pytest.warns(UserWarning, match="No dedicated report orientation prompt template found"):
-        orient_path = get_orientation_path("nonexistent_sector_xyz")
-        assert orient_path.exists()
+    # 4. get_orientation_path raises FileNotFoundError on missing template, ValueError on empty
+    with pytest.raises(FileNotFoundError, match='No dedicated report orientation prompt template found'):
+        get_orientation_path('nonexistent_sector_xyz')
+    with pytest.raises(ValueError, match='Sector must be explicitly specified'):
+        get_orientation_path('')
 
-    # 5. detect_sector_from_path warning on unidentifiable path
-    with pytest.warns(UserWarning, match="Could not infer sector from path"):
-        sec = detect_sector_from_path("unrecognized/random/document.pdf")
-        assert sec == "mining"
+    # 5. detect_sector_from_path returns None on unidentifiable path (no default fallback)
+    sec = detect_sector_from_path('unrecognized/random/document.pdf')
+    assert sec is None

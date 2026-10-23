@@ -25,10 +25,12 @@ COMPANIES_DIR = ROOT / "companies"
 SUPPORTED_SECTORS = get_all_sector_codes()
 
 
-def create_company(ticker: str, name: str | None = None, sector: str = "mining") -> Path:
+def create_company(ticker: str, sector: str, name: str | None = None) -> Path:
     ticker = ticker.upper().strip()
     company_name = name or ticker
-    sector = (sector or "mining").lower().strip()
+    if not sector:
+        raise ValueError("Sector must be explicitly provided; no default sector is permitted.")
+    sector = sector.lower().strip()
 
     if sector not in SUPPORTED_SECTORS:
         raise ValueError(f"Invalid sector {sector!r}. Choose from: {SUPPORTED_SECTORS}")
@@ -305,11 +307,11 @@ def generate_company_notebook(ticker: str, company_name: str, sector: str, outpu
 def main():
     parser = argparse.ArgumentParser(description="Create a new company hub in the Analyst Workbench.")
     parser.add_argument("ticker", help="Company ticker symbol (e.g. HAR, LEW, SBK, MTN)")
-    parser.add_argument("--sector", choices=SUPPORTED_SECTORS, default="mining", help="Company sector (mining, retail, reit, it, finance, telcos)")
+    parser.add_argument("--sector", choices=SUPPORTED_SECTORS, required=True, help="Company sector (mining, retail, reit, it, construction, finance, telcos)")
     parser.add_argument("--name", help="Full company name", default=None)
 
     args = parser.parse_args()
-    create_company(args.ticker, args.name, sector=args.sector)
+    create_company(args.ticker, sector=args.sector, name=args.name)
 
 
 if __name__ == "__main__":

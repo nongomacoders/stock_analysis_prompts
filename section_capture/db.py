@@ -1430,6 +1430,11 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
         results = []
         for r in rows:
             ticker, company_name, sector = detect_company_meta(r["original_path"] or r["filename"])
+            ticker = ticker or "UNCLASSIFIED"
+            company_name = company_name or "Unclassified Document"
+            sector = sector or "unassigned"
+            jse_code = get_jse_sector_code(sector, ticker=ticker) if sector in SECTORS else ""
+            jse_name = get_jse_sector_name(sector, ticker=ticker) if sector in SECTORS else ""
             results.append({
                 "sha256": r["sha256"],
                 "filename": r["filename"],
@@ -1437,8 +1442,8 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 "ticker": ticker,
                 "company_name": company_name,
                 "sector": sector,
-                "jse_sector_code": get_jse_sector_code(sector, ticker=ticker),
-                "jse_sector_name": get_jse_sector_name(sector, ticker=ticker),
+                "jse_sector_code": jse_code,
+                "jse_sector_name": jse_name,
                 "target_price_zar": r["target_price_zar"],
                 "reference_price_zar": r["reference_price_zar"],
                 "recommendation": r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS"),
