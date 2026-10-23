@@ -8,6 +8,7 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 * **Quote stripping issue**: PowerShell swallows nested double quotes in `python -c "..."`, causing `SyntaxError: unterminated string literal`.
 * **Multi-line parser error**: Running multi-line `python -c "..."` causes `ScriptBlock should only be specified as a value of the Command parameter`.
 * **Windows Charmap / Unicode error**: PowerShell defaults to `cp1252`. Printing Unicode characters like `⚡`, `✓`, or emojis crashes Python with `UnicodeEncodeError: 'charmap' codec can't encode character...`.
+* **PowerShell Ampersand (`&`) error**: An unquoted or double-quote-nested ampersand (`&`) in PowerShell command lines triggers `The ampersand (&) character is not allowed. The & operator is reserved for future use`.
 * **Rules**:
   1. Never run SQL strings or nested quotes with `python -c "..."`.
   2. For simple Python one-liners in PowerShell, wrap in single quotes:
@@ -80,3 +81,9 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 * **Warning**: `SyntaxWarning: invalid escape sequence '\d'` or `'\-'` when multi-line string templates in scratch replacement scripts contain unescaped regex patterns.
 * **Rule**:
   Always use raw triple quotes `r"""..."""` for multi-line replacement blocks containing backslashes or regex patterns (`\d`, `\-`, `\s`).
+
+---
+
+### 8. Tool Absolute Path Requirements
+* **Tool path error**: Calling `read_file`, `write_file`, or `edit_file` with a relative path (e.g. `companies/sectors.py`) causes `failed to parse path: ... must be an absolute path: path is not absolute`.
+* **Rule**: Always pass absolute paths (e.g. `c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/...`) to file inspection and editing tools.
