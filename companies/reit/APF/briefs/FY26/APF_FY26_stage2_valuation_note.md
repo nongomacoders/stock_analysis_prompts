@@ -8,6 +8,22 @@
 
 ---
 
+```json
+{
+  "ticker": "APF",
+  "company_name": "Accelerate Property Fund Limited",
+  "sector": "reit",
+  "jse_sector_code": "JS3512",
+  "jse_sector_name": "Real Estate Investment Trusts",
+  "recommendation": "SELL",
+  "reference_price_zar": 0.60,
+  "target_price_zar": 0.42,
+  "implied_upside_pct": -30.0,
+  "forward_dividend_yield_pct": 0.0,
+  "projected_12m_tsr_pct": -30.0
+}
+```
+
 ## 1. Executive Investment Thesis & 12-Month JSE Price Target (ZAR/Share)
 
 

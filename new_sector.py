@@ -98,10 +98,14 @@ def register_sector(
     stage1_persona: str | None = None,
     stage2_persona: str | None = None,
     aliases: list[str] | None = None,
+    jse_code: str = "",
+    icb_code: str = "",
+    jse_sector_name: str = "",
 ) -> None:
     code = code.lower().strip()
     display_name = name.strip()
     short_label = short.strip() if short else code.capitalize()
+    jse_sec_name = jse_sector_name.strip() or display_name
     
     # Pick a distinct badge color palette
     from companies.sectors import SECTOR_REGISTRY
@@ -129,6 +133,9 @@ def register_sector(
         stage2_persona="{s2_persona}",
         sens_persona="{sens_persona}",
         aliases={repr(alias_tuple)},
+        jse_code="{jse_code}",
+        icb_code="{icb_code}",
+        jse_sector_name="{jse_sec_name}",
     ),\n"""
 
     content = SECTORS_FILE.read_text(encoding="utf-8")
@@ -153,13 +160,19 @@ def scaffold_sector(
     stage1_persona: str | None = None,
     stage2_persona: str | None = None,
     aliases: list[str] | None = None,
+    jse_code: str = "",
+    icb_code: str = "",
+    jse_sector_name: str = "",
 ) -> None:
     code = code.lower().strip()
     display_name = name.strip()
     short_label = short.strip() if short else code.capitalize()
 
     # 1. Register in sectors.py
-    register_sector(code, display_name, short_label, stage1_persona, stage2_persona, aliases)
+    register_sector(
+        code, display_name, short_label, stage1_persona, stage2_persona,
+        aliases, jse_code=jse_code, icb_code=icb_code, jse_sector_name=jse_sector_name,
+    )
 
     # 2. Scaffold companies/<sector>/
     sector_hub = COMPANIES_DIR / code
@@ -196,6 +209,9 @@ def main():
     parser.add_argument("--stage1-persona", default=None, help="Auditor persona for Stage 1 prompt")
     parser.add_argument("--stage2-persona", default=None, help="Equity research persona for Stage 2 prompt")
     parser.add_argument("--aliases", nargs="*", default=None, help="Path or name aliases for automatic detection")
+    parser.add_argument("--jse-code", default="", help="FTSE/JSE Index Code (e.g. 'JS5011')")
+    parser.add_argument("--icb-code", default="", help="ICB numeric sector code (e.g. '501010')")
+    parser.add_argument("--jse-name", default="", help="Official FTSE/JSE ICB sector name")
 
     args = parser.parse_args()
     scaffold_sector(
@@ -205,6 +221,9 @@ def main():
         stage1_persona=args.stage1_persona,
         stage2_persona=args.stage2_persona,
         aliases=args.aliases,
+        jse_code=args.jse_code,
+        icb_code=args.icb_code,
+        jse_sector_name=args.jse_name,
     )
 
 

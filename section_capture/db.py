@@ -10,7 +10,12 @@ from pathlib import Path
 from typing import Any
 
 from companies import PACKAGE_DIR, SECTORS
-from companies.sectors import normalize_sector_code
+from companies.sectors import (
+    get_icb_code,
+    get_jse_sector_code,
+    get_jse_sector_name,
+    normalize_sector_code,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "documents/analysis.sqlite"
@@ -320,11 +325,20 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
                             res["tsr_pct"] = float(str(tsr).replace("%", "").strip())
                         except (ValueError, TypeError):
                             pass
-                    sec = data.get("sector")
+                    sec = data.get("sector") or data.get("jse_sector_code") or data.get("jse_sector_name")
                     if sec:
                         s_clean = normalize_sector_code(str(sec)) or str(sec).strip().lower()
                         if s_clean:
                             res["sector"] = s_clean
+                    jse_c = data.get("jse_sector_code")
+                    if jse_c and str(jse_c).strip():
+                        res["jse_sector_code"] = str(jse_c).strip().upper()
+                    jse_n = data.get("jse_sector_name")
+                    if jse_n and str(jse_n).strip():
+                        res["jse_sector_name"] = str(jse_n).strip()
+                    t_json = data.get("ticker")
+                    if t_json and str(t_json).strip():
+                        res["_ticker"] = str(t_json).strip().upper()
 
                     # Extract triggers if included in JSON
                     if "monitoring_triggers" in data:
@@ -537,6 +551,16 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
     )
     if trig_match:
         res["monitoring_triggers"] = trig_match.group(0).strip()
+
+    t_hint = res.pop("_ticker", None)
+    if not t_hint:
+        if "orion minerals" in sec1_text.lower() or "(jse: orn" in sec1_text.lower() or "base metals mining" in sec1_text.lower():
+            t_hint = "ORN"
+    if "sector" in res:
+        if "jse_sector_code" not in res:
+            res["jse_sector_code"] = get_jse_sector_code(res["sector"], ticker=t_hint)
+        if "jse_sector_name" not in res:
+            res["jse_sector_name"] = get_jse_sector_name(res["sector"], ticker=t_hint)
 
     return res
 
@@ -1311,10 +1335,15 @@ def save_stage2_report(
             params.append(response)
             summary = parse_valuation_summary(response)
             if summary:
-                if not summary.get("sector") and row:
-                    _, _, detected_sec = detect_company_meta(row["original_path"] or row["filename"])
-                    if detected_sec:
+                if row:
+                    det_ticker, _, detected_sec = detect_company_meta(row["original_path"] or row["filename"])
+                    if not summary.get("sector") and detected_sec:
                         summary["sector"] = detected_sec
+                    if summary.get("sector"):
+                        if not summary.get("jse_sector_code"):
+                            summary["jse_sector_code"] = get_jse_sector_code(summary["sector"], ticker=det_ticker)
+                        if not summary.get("jse_sector_name"):
+                            summary["jse_sector_name"] = get_jse_sector_name(summary["sector"], ticker=det_ticker)
                 updates.extend([
                     "target_price_zar = ?",
                     "reference_price_zar = ?",
@@ -1408,6 +1437,8 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 "ticker": ticker,
                 "company_name": company_name,
                 "sector": sector,
+                "jse_sector_code": get_jse_sector_code(sector, ticker=ticker),
+                "jse_sector_name": get_jse_sector_name(sector, ticker=ticker),
                 "target_price_zar": r["target_price_zar"],
                 "reference_price_zar": r["reference_price_zar"],
                 "recommendation": r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS"),

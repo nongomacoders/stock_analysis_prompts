@@ -6,6 +6,22 @@
 
 ---
 
+```json
+{
+  "ticker": "ORN",
+  "company_name": "Orion Minerals Limited",
+  "sector": "mining",
+  "jse_sector_code": "JS5512",
+  "jse_sector_name": "Industrial Metals and Mining",
+  "recommendation": "HOLD",
+  "reference_price_zar": 0.28,
+  "target_price_zar": 0.26,
+  "implied_upside_pct": -8.5,
+  "forward_dividend_yield_pct": 0.0,
+  "projected_12m_tsr_pct": -8.5
+}
+```
+
 ## 1. Executive Investment Thesis & 12-Month JSE Price Target (ZAR/Share)
 
 ### Executive Valuation Summary Card

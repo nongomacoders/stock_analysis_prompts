@@ -18,6 +18,17 @@ class SectorConfig:
     stage2_persona: str
     sens_persona: str
     aliases: tuple[str, ...] = ()
+    jse_code: str = ""
+    icb_code: str = ""
+    jse_sector_name: str = ""
+
+
+# Per-ticker FTSE/JSE ICB subsector overrides when a sector folder houses multiple JSE subsectors
+# Maps TICKER -> (jse_code, icb_code, jse_sector_name)
+TICKER_JSE_OVERRIDES: dict[str, tuple[str, str, str]] = {
+    "ORN": ("JS5512", "551020", "Industrial Metals and Mining"),
+    "AFT": ("JS5512", "551020", "Industrial Metals and Mining"),
+}
 
 
 SECTOR_REGISTRY: dict[str, SectorConfig] = {
@@ -31,7 +42,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Mining Accounting Auditor",
         stage2_persona="Managing Director & Head of Mining Equity Research",
         sens_persona="Managing Director & Head of Mining Equity Research",
-        aliases=("resources", "gold", "minerals", "metals"),
+        aliases=("resources", "gold", "minerals", "metals", "js5513", "js5512", "551030", "551020", "precious metals", "industrial metals", "basic materials"),
+        jse_code="JS5513",
+        icb_code="551030",
+        jse_sector_name="Precious Metals and Mining",
     ),
     "retail": SectorConfig(
         code="retail",
@@ -43,7 +57,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Retail & Consumer Credit Accounting Auditor",
         stage2_persona="Managing Director & Head of Retail & Consumer Equity Research",
         sens_persona="Managing Director & Head of Retail & Consumer Equity Research",
-        aliases=("consumer", "credit_retail", "merchandise"),
+        aliases=("consumer", "credit_retail", "merchandise", "retailers", "js4041", "404010", "consumer discretionary"),
+        jse_code="JS4041",
+        icb_code="404010",
+        jse_sector_name="Retailers",
     ),
     "reit": SectorConfig(
         code="reit",
@@ -55,7 +72,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Listed Property & REIT Financial Auditor",
         stage2_persona="Managing Director & Head of Listed Property & REIT Equity Research",
         sens_persona="Managing Director & Head of Listed Property & REIT Equity Research",
-        aliases=("property", "real_estate", "realestate", "reits"),
+        aliases=("property", "real_estate", "realestate", "reits", "js3512", "351020", "real estate investment trusts"),
+        jse_code="JS3512",
+        icb_code="351020",
+        jse_sector_name="Real Estate Investment Trusts",
     ),
     "it": SectorConfig(
         code="it",
@@ -67,7 +87,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Technology & IT Services Financial Auditor",
         stage2_persona="Managing Director & Head of Technology & IT Services Equity Research",
         sens_persona="Managing Director & Head of Technology & IT Services Equity Research",
-        aliases=("tech", "technology", "information_technology"),
+        aliases=("tech", "technology", "information_technology", "js1011", "101010", "software and computer services", "software"),
+        jse_code="JS1011",
+        icb_code="101010",
+        jse_sector_name="Software and Computer Services",
     ),
     "finance": SectorConfig(
         code="finance",
@@ -79,7 +102,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Banking & Financial Institutions Auditor",
         stage2_persona="Managing Director & Head of Banking & Financial Institutions Equity Research",
         sens_persona="Managing Director & Head of Banking & Financial Institutions Equity Research",
-        aliases=("bank", "banking", "financial_services"),
+        aliases=("bank", "banking", "financial_services", "banks", "js3011", "301010", "financials"),
+        jse_code="JS3011",
+        icb_code="301010",
+        jse_sector_name="Banks & Financial Services",
     ),
     "telcos": SectorConfig(
         code="telcos",
@@ -91,7 +117,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Telecommunications Financial Auditor",
         stage2_persona="Managing Director & Head of Telecommunications Equity Research",
         sens_persona="Managing Director & Head of Telecommunications Equity Research",
-        aliases=("telecom", "telecoms", "telecommunications"),
+        aliases=("telecom", "telecoms", "telecommunications", "js1512", "151020", "telecommunications service providers"),
+        jse_code="JS1512",
+        icb_code="151020",
+        jse_sector_name="Telecommunications Service Providers",
     ),
     "construction": SectorConfig(
         code="construction",
@@ -103,7 +132,10 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         stage1_persona="Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor",
         stage2_persona="Managing Director & Head of Construction & Materials Equity Research",
         sens_persona="Managing Director & Head of Construction & Materials Equity Research",
-        aliases=('materials', 'building', 'cement', 'infrastructure', 'engineering'),
+        aliases=("materials", "building", "cement", "infrastructure", "engineering", "js5011", "501010", "construction and materials", "js3511", "351010"),
+        jse_code="JS5011",
+        icb_code="501010",
+        jse_sector_name="Construction and Materials",
     ),
 }
 
@@ -141,6 +173,43 @@ def get_sector_short_label(code: str | None) -> str:
     return get_sector_config(code).short_label
 
 
+def get_jse_sector_code(code: str | None, ticker: str | None = None) -> str:
+    """Returns the official FTSE/JSE index code (e.g. 'JS5513', 'JS4041', 'JS5011')."""
+    if ticker:
+        t_up = ticker.strip().upper()
+        if t_up in TICKER_JSE_OVERRIDES:
+            return TICKER_JSE_OVERRIDES[t_up][0]
+    cfg = get_sector_config(code)
+    return cfg.jse_code or cfg.code.upper()
+
+
+def get_icb_code(code: str | None, ticker: str | None = None) -> str:
+    """Returns the official ICB numeric sector code (e.g. '551030', '404010', '501010')."""
+    if ticker:
+        t_up = ticker.strip().upper()
+        if t_up in TICKER_JSE_OVERRIDES:
+            return TICKER_JSE_OVERRIDES[t_up][1]
+    cfg = get_sector_config(code)
+    return cfg.icb_code
+
+
+def get_jse_sector_name(code: str | None, ticker: str | None = None) -> str:
+    """Returns the official FTSE/JSE ICB sector name (e.g. 'Precious Metals and Mining', 'Retailers')."""
+    if ticker:
+        t_up = ticker.strip().upper()
+        if t_up in TICKER_JSE_OVERRIDES:
+            return TICKER_JSE_OVERRIDES[t_up][2]
+    cfg = get_sector_config(code)
+    return cfg.jse_sector_name or cfg.display_name
+
+
+def get_jse_sector_label(code: str | None, ticker: str | None = None) -> str:
+    """Returns a combined badge/label with short name and JSE code, e.g. 'Mining (JS5513)'."""
+    cfg = get_sector_config(code)
+    jse_c = get_jse_sector_code(code, ticker=ticker)
+    return f"{cfg.short_label} ({jse_c})" if jse_c else cfg.short_label
+
+
 def get_sector_badge_style(code: str | None) -> str:
     """Returns the CSS stylesheet string for rendering the sector badge."""
     cfg = get_sector_config(code)
@@ -151,19 +220,22 @@ def get_sector_badge_style(code: str | None) -> str:
 
 
 def resolve_sector_alias(candidate: str | None) -> str | None:
-    """Resolves a raw sector candidate or path slug to canonical sector code."""
+    """Resolves a raw sector candidate, JSE code, ICB code, or path slug to canonical sector code."""
     if not candidate:
         return None
     c = candidate.lower().strip()
     if c in SECTOR_REGISTRY:
         return c
     for code, cfg in SECTOR_REGISTRY.items():
+        if c == cfg.jse_code.lower() or c == cfg.icb_code.lower() or c == cfg.jse_sector_name.lower():
+            return code
         if c in cfg.aliases:
             return code
     return None
 
+
 def normalize_sector_code(text: str | None) -> str:
-    """Extracts and normalizes sector code from raw text, display names, or table cell contents."""
+    """Extracts and normalizes sector code from raw text, JSE codes, display names, or table cell contents."""
     if not text:
         return ""
     t = text.lower().strip()
@@ -171,7 +243,14 @@ def normalize_sector_code(text: str | None) -> str:
     if direct:
         return direct
     for code, cfg in SECTOR_REGISTRY.items():
-        if code in t or cfg.short_label.lower() in t or cfg.display_name.lower() in t:
+        if (
+            code in t
+            or cfg.short_label.lower() in t
+            or cfg.display_name.lower() in t
+            or (cfg.jse_code and cfg.jse_code.lower() in t)
+            or (cfg.icb_code and cfg.icb_code.lower() in t)
+            or (cfg.jse_sector_name and cfg.jse_sector_name.lower() in t)
+        ):
             return code
         for a in cfg.aliases:
             if a in t:

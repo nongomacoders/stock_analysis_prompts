@@ -16,13 +16,22 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from companies import find_company_dir
-from companies.sectors import get_sector_config
+from companies.sectors import (
+    get_icb_code,
+    get_jse_sector_code,
+    get_jse_sector_name,
+    get_sector_config,
+)
 from section_capture.db import KNOWN_COMPANIES
 
 
 def _format_section1_spec(ticker: str, company_title: str, sector_display: str, sector_code: str | None = None) -> list[str]:
     """Generates standardized Section 1 instructions with mandatory JSON block and Markdown table scaffold."""
     sec_code = (sector_code or sector_display).lower()
+    jse_code = get_jse_sector_code(sec_code, ticker=ticker)
+    icb_code = get_icb_code(sec_code, ticker=ticker)
+    jse_name = get_jse_sector_name(sec_code, ticker=ticker)
+    table_sec = f"{sector_display} ({jse_name} — {jse_code} / ICB {icb_code})" if jse_code and icb_code else sector_display
     return [
         "1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**",
         "   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:",
@@ -31,6 +40,8 @@ def _format_section1_spec(ticker: str, company_title: str, sector_display: str, 
         f'       "ticker": "{ticker}",',
         f'       "company_name": "{company_title}",',
         f'       "sector": "{sec_code}",',
+        f'       "jse_sector_code": "{jse_code}",',
+        f'       "jse_sector_name": "{jse_name}",',
         '       "recommendation": "BUY | HOLD | SELL",',
         '       "reference_price_zar": 0.00,',
         '       "target_price_zar": 0.00,',
@@ -42,7 +53,7 @@ def _format_section1_spec(ticker: str, company_title: str, sector_display: str, 
         "   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:",
         "     | Metric | Determination | Basis & Key Commentary |",
         "     | :--- | :---: | :--- |",
-        f"     | **Sector** | {sector_display} | [Sub-sector classification] |",
+        f"     | **Sector** | {table_sec} | [Sub-sector classification] |",
         "     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |",
         "     | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |",
         "     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |",
@@ -81,7 +92,7 @@ def build_stage2_prompt_content(
     md_lines: list[str] = []
     md_lines.append("# STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT")
     md_lines.append(f"**Target Asset:** {company_title} ({ticker})  ")
-    md_lines.append(f"**Sector:** {detected_sector.capitalize()}  ")
+    md_lines.append(f"**Sector:** {get_jse_sector_name(detected_sector, ticker=ticker)} ({get_jse_sector_code(detected_sector, ticker=ticker)} / {detected_sector.capitalize()})  ")
     if sens_announcements:
         sens_str = "; ".join(sens_announcements)
         md_lines.append(f"**Input Mode:** Full Company Results PDF + Subsequent SENS Notices ({sens_str}) + Audited Stage 1 Determinations  ")

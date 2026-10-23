@@ -5,6 +5,8 @@
   "ticker": "IOC",
   "company_name": "iOCO Limited",
   "sector": "it",
+  "jse_sector_code": "JS1011",
+  "jse_sector_name": "Software and Computer Services",
   "recommendation": "BUY",
   "reference_price_zar": 3.96,
   "target_price_zar": 4.90,

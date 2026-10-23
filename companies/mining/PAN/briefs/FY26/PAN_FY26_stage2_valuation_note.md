@@ -3,6 +3,8 @@
   "ticker": "PAN",
   "company_name": "PAN Resources",
   "sector": "mining",
+  "jse_sector_code": "JS5513",
+  "jse_sector_name": "Precious Metals and Mining",
   "recommendation": "BUY",
   "reference_price_zar": 30.69,
   "target_price_zar": 43.50,

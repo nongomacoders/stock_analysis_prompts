@@ -34,7 +34,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from companies.sectors import get_all_sectors, get_sector_short_label
+from companies.sectors import get_all_sectors, get_jse_sector_code, get_jse_sector_label, get_jse_sector_name, get_sector_short_label
 
 from section_capture.db import (
     get_analyzed_stocks,
@@ -341,8 +341,9 @@ class PortfolioView(QWidget):
             self.table.setItem(row_idx, 1, name_item)
 
             # Sector
-            sec_display = get_sector_short_label(s["sector"])
+            sec_display = get_jse_sector_label(s["sector"], ticker=s["ticker"])
             sec_item = QTableWidgetItem(sec_display)
+            sec_item.setToolTip(f"{get_jse_sector_name(s['sector'], ticker=s['ticker'])} ({get_jse_sector_code(s['sector'], ticker=s['ticker'])})")
             sec_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(row_idx, 2, sec_item)
 
@@ -463,13 +464,15 @@ class PortfolioView(QWidget):
     def _render_details(self, s: dict[str, Any]):
         ticker = s["ticker"]
         name = s["company_name"]
-        sector = get_sector_short_label(s["sector"])
+        jse_sec_name = get_jse_sector_name(s["sector"], ticker=ticker)
+        jse_sec_code = get_jse_sector_code(s["sector"], ticker=ticker)
+        sector_str = f"{jse_sec_name} ({jse_sec_code})" if jse_sec_code else get_sector_short_label(s["sector"])
         tp = f"R{s['target_price_zar']:,.2f}" if s["target_price_zar"] is not None else "N/A"
         ref = f"R{s['reference_price_zar']:,.2f}" if s["reference_price_zar"] is not None else "N/A"
         tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "N/A"
         rec = s["recommendation"] or "IN PROGRESS"
 
-        self.stock_title_label.setText(f"<b>{name} ({ticker})</b> · Sector: <i>{sector}</i>")
+        self.stock_title_label.setText(f"<b>{name} ({ticker})</b> · Sector: <i>{sector_str}</i>")
         self.kpi_metrics_label.setText(
             f"<b>Target:</b> {tp}  |  <b>Current:</b> {ref}  |  <b>12M TSR:</b> {tsr}  |  <b>Rating:</b> <b>{rec}</b>"
         )
@@ -545,7 +548,7 @@ class PortfolioView(QWidget):
             tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "—"
             rec = s["recommendation"] or "IN PROGRESS"
             status = "Valued" if s["has_stage2"] else ("Audited" if s["has_stage1"] else "Captured")
-            sec_display = get_sector_short_label(s["sector"])
+            sec_display = get_jse_sector_label(s["sector"], ticker=s["ticker"])
             lines.append(
                 f"| **{s['ticker']}** | {s['company_name']} | {sec_display} | {ref} | {tp} | {up} | {dy} | {tsr} | **{rec}** | {status} |"
             )

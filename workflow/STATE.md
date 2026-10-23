@@ -11,6 +11,25 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **FTSE/JSE ICB Sector Codes & Classifications Integration**:
+  - Integrated official FTSE/JSE Industry Classification Benchmark (ICB) sector codes, index codes, and sector names while preserving canonical directory slugs (`mining`, `retail`, `reit`, `it`, `construction`, `finance`, `telcos`):
+    - Added `jse_code`, `icb_code`, and `jse_sector_name` to `SectorConfig` in `companies/sectors.py`:
+      - `mining`: `JS5513` (Precious Metals and Mining / ICB `551030`) by default, with `JS5512` (Industrial Metals and Mining / ICB `551020`) override for `ORN` (Orion Minerals) and `AFT` (Afrimat).
+      - `retail`: `JS4041` (Retailers / ICB `404010`).
+      - `reit`: `JS3512` (Real Estate Investment Trusts / ICB `351020`).
+      - `it`: `JS1011` (Software and Computer Services / ICB `101010`).
+      - `construction`: `JS5011` (Construction and Materials / ICB `501010`).
+      - `finance`: `JS3011` (Banks & Financial Services / ICB `301010`).
+      - `telcos`: `JS1512` (Telecommunications Service Providers / ICB `151020`).
+    - Added helper functions `get_jse_sector_code()`, `get_icb_code()`, `get_jse_sector_name()`, and `get_jse_sector_label()` (e.g. `"Mining (JS5513)"`, `"Retail (JS4041)"`).
+    - Updated `resolve_sector_alias()` and `normalize_sector_code()` to recognize all FTSE/JSE index codes and ICB numeric codes.
+    - Updated `new_sector.py` CLI to accept `--jse-code`, `--icb-code`, and `--jse-name`.
+    - Updated `workflow/generate_stage2.py` to embed `jse_sector_code` and `jse_sector_name` into the mandatory Stage 2 JSON summary block and Markdown summary table.
+    - Updated `section_capture/db.py` to extract `jse_sector_code` and `jse_sector_name` into `valuation_summary_json` and `get_analyzed_stocks()`.
+    - Updated `section_capture/portfolio_view.py` and `section_capture/audit_dialog.py` to display JSE sector codes on badges, tables, and KPI banners.
+    - Synced all 5 completed Stage 2 valuation markdown notes on disk (`PAN`, `LEW`, `ORN`, `APF`, `IOC`) and backfilled `documents/analysis.sqlite`.
+    - Added unit and integration tests in `tests/test_sectors.py` and `tests/test_portfolio_valuation.py`. All 109 tests pass.
+
 - **Stage 2 Institutional Valuation Sector Normalization & Construction Sector Support**:
   - Identified and fixed sector tracking in Stage 2 Institutional Valuation notes and database persistence:
     - Added `normalize_sector_code()` in `companies/sectors.py` to deterministically map raw sector strings, aliases, and Markdown table cell descriptions (e.g. `"Mining (Gold)"`, `"JSE Retail"`, `"REIT / Listed Property"`, `"Technology / IT Services"`) to canonical sector codes (`"mining"`, `"retail"`, `"reit"`, `"it"`, `"construction"`).

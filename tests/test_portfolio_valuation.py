@@ -177,6 +177,8 @@ def test_parse_valuation_summary_json_format():
     assert summary.get("tsr_pct") == -30.0
     assert "KPMG Crescent" in summary.get("monitoring_triggers", "")
     assert summary.get("sector") == "reit"
+    assert summary.get("jse_sector_code") == "JS3512"
+    assert summary.get("jse_sector_name") == "Real Estate Investment Trusts"
 
 
 def test_stage2_prompt_json_specification():
@@ -192,6 +194,8 @@ def test_stage2_prompt_json_specification():
     assert "MANDATORY JSON SUMMARY BLOCK" in prompt
     assert '"ticker": "LEW"' in prompt
     assert '"target_price_zar": 0.00' in prompt
+    assert '"jse_sector_code": "JS4041"' in prompt
+    assert '"jse_sector_name": "Retailers"' in prompt
     assert "CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)" in prompt
     # Check that constraints are placed at the end of the prompt
     assert prompt.strip().endswith("Reserve backticks solely for the initial JSON block and formal code/file identifiers.")

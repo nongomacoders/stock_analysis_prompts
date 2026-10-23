@@ -34,7 +34,7 @@ from PySide6.QtWidgets import (
 )
 
 from companies import SECTORS, find_company_dir
-from companies.sectors import get_sector_badge_style, get_sector_short_label
+from companies.sectors import get_jse_sector_code, get_jse_sector_label, get_jse_sector_name, get_sector_badge_style, get_sector_short_label
 from section_capture.db import (
     KNOWN_COMPANIES,
     connect_db,
@@ -427,7 +427,9 @@ class AuditValuationDialog(QDialog):
             self._load_initial_data()
 
     def _update_sector_badge(self):
-        self.sector_badge.setText(get_sector_short_label(self.sector))
+        t = getattr(self, "ticker", None)
+        self.sector_badge.setText(get_jse_sector_label(self.sector, ticker=t))
+        self.sector_badge.setToolTip(f"FTSE/JSE ICB Sector: {get_jse_sector_name(self.sector, ticker=t)} ({get_jse_sector_code(self.sector, ticker=t)})")
         self.sector_badge.setStyleSheet(get_sector_badge_style(self.sector))
 
     def _load_selected_into_canvas(self):

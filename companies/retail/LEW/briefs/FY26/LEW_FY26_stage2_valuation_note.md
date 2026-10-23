@@ -20,6 +20,22 @@ Before executing the 2-year operational model and valuation bridge, primary insp
 
 ---
 
+```json
+{
+  "ticker": "LEW",
+  "company_name": "Lewis Group Limited",
+  "sector": "retail",
+  "jse_sector_code": "JS4041",
+  "jse_sector_name": "Retailers",
+  "recommendation": "HOLD",
+  "reference_price_zar": 79.00,
+  "target_price_zar": 84.50,
+  "implied_upside_pct": 6.96,
+  "forward_dividend_yield_pct": 11.90,
+  "projected_12m_tsr_pct": 18.86
+}
+```
+
 ## 1. Executive Investment Thesis & 12-Month JSE Price Target
 
 * **Sector:** JSE Retail (Home Improvement & Credit Furnishers)
