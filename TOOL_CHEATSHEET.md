@@ -6,13 +6,16 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 
 ### 1. PowerShell & Python One-Liners
 * **Quote stripping issue**: PowerShell swallows nested double quotes in `python -c "..."`, causing `SyntaxError: unterminated string literal`.
+* **Multi-line parser error**: Running multi-line `python -c "..."` causes `ScriptBlock should only be specified as a value of the Command parameter`.
+* **Windows Charmap / Unicode error**: PowerShell defaults to `cp1252`. Printing Unicode characters like `⚡`, `✓`, or emojis crashes Python with `UnicodeEncodeError: 'charmap' codec can't encode character...`.
 * **Rules**:
   1. Never run SQL strings or nested quotes with `python -c "..."`.
   2. For simple Python one-liners in PowerShell, wrap in single quotes:
      ```powershell
      python -c 'from section_capture.db import connect_db; print("ok")'
      ```
-  3. If a command needs quotes or multi-line logic, don't fiddle in the shell—execute a simple `.py` file instead.
+  3. Set `$env:PYTHONIOENCODING="utf-8"` whenever printing or inspecting text containing Unicode/emojis.
+  4. Never run multi-line Python code via `-c`. Put multi-line logic in a scratch `.py` file (e.g. `scratch/run.py`) and execute `python scratch/run.py`.
 
 ---
 
