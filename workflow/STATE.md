@@ -11,6 +11,20 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Portfolio Valuation Database Resynchronization (`documents/analysis.sqlite`)**:
+  - Investigated and resolved the root cause of identical valuation numbers (Target R43.50, Ref R30.69, BUY, +41.7% upside) appearing across all stocks (`PAN`, `LEW`, `ORN`, `APF`, `IOC`) on the Analyzed Stocks & Valuation Coverage screen.
+  - **Root Cause**: During an earlier script run to backfill FTSE/JSE ICB sector codes, an update statement accidentally overwrote the `stage2_response` and valuation parameters (`target_price_zar`, `reference_price_zar`, `recommendation`, `upside_pct`, `tsr_pct`) across all database rows with Pan African Resources' note data. The markdown valuation notes on disk in `companies/<sector>/<TICKER>/briefs/FY26/` remained completely authentic and uncorrupted.
+  - **Resolution**:
+    - Created and executed [`workflow/resync_stage2_db.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/workflow/resync_stage2_db.py) to read each company's authentic markdown note and invoke `save_stage2_report()` for its specific report SHA-256 hash.
+    - Successfully restored verified institutional metrics in `documents/analysis.sqlite`:
+      - **PAN**: Target R43.50 | Ref R30.69 | BUY | Note Upside +41.7%
+      - **LEW**: Target R84.50 | Ref R79.00 | HOLD | Note Upside +7.0%
+      - **ORN**: Target R0.26 | Ref R0.28 | HOLD | Note Upside -8.5%
+      - **APF**: Target R0.42 | Ref R0.60 | SELL | Note Upside -30.0%
+      - **IOC**: Target R4.90 | Ref R3.96 | BUY | Note Upside +23.7%
+      - **CGR**: In Progress (Forensic Audit stage, awaiting Stage 2 valuation note)
+  - Full test suite verified: **118 passed in 25.40s with 0 errors**.
+
 - **PAN FY26 Sequential Section Resubmission & Response Evaluation**:
   - Successfully resubmitted all 19 captured sections of Pan African Resources PLC (FY26 Year-End Results SENS) sequentially to DeepSeek Flash via OpenRouter with full questions ledger updates:
     - **Selection Text Extraction Fix (`extract_selection_texts`)**: Fixed a legacy issue where sections captured under older schemas had selection bounding boxes without inline `"text"` keys, causing prompts to generate empty evidence markers. Implemented fallback slicing against `text_indices` and prompt blocks across `packages.py`, `window.py`, `map_dialog.py`, and `resubmit_sections.py`, recovering the complete 79,232 characters of CEO Statement evidence for Section 2.
