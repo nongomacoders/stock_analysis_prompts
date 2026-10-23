@@ -11,6 +11,19 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Company vs Consolidated Statement Disambiguation & Subheading Requirement Fix**:
+  - Resolved heading and section collision where `"Statement of cash flows"` (Company statement on page 78, D010) was incorrectly matched by loose substring against `"Consolidated statement of cash flows"` (Group statement on pages 18–76, D005), which already had subsections.
+  - Previously, `section_requires_subheading()` only evaluated sections with subsections and performed loose substring matching (`norm_h in c or c in norm_h`), ignoring physical page range overlaps. This falsely flagged D010 as D005 requiring a sub-heading and disabled both `Save Section` and `Save & Run DeepSeek`.
+  - Implemented `find_matching_section(mapping, heading, selections)` with rigorous multi-tier priority scoring:
+    - Tier 1: Selection physically overlaps section AND exact heading match (`norm_h == c`).
+    - Tier 2: Non-overlapping / no selections AND exact heading match (`norm_h == c`).
+    - Tier 3: Physical page overlap AND strong fuzzy match (respecting "consolidated" vs separate statement identity).
+    - Tier 4: Physical page overlap with no heading specified.
+    - Tier 5+: Weak loose match or non-overlapping fuzzy match.
+  - Updated `section_requires_subheading()` to evaluate the true target section rather than scanning only subdivided sections.
+  - Updated `matching_section_ids()` and `register_subsection()` to accept `heading` to accurately resolve sections and parent subsections when multiple statements share physical pages (e.g., page 78 containing both D009 Changes in Equity and D010 Cash Flows).
+  - Added unit test `test_disambiguate_company_vs_consolidated_statements` in `tests/test_report_map.py`. Complete test suite passed (106 tests, exit code 0).
+
 - **Heading & Subheading Input Sanitization**:
   - Implemented `clean_single_line_text()` across `section_capture/report_map.py`, `section_capture/packages.py`, and `section_capture/window.py` to strip tabs (`\t`), carriage returns (`\r`), line breaks (`\n`), non-breaking spaces (`\xa0`), and collapse multiple whitespace into a single space.
   - Introduced `SanitizedLineEdit(QLineEdit)` in `section_capture/window.py` that intercepts both keyboard pastes (Ctrl+V) and right-click context menu pastes, as well as live text updates, guaranteeing headings, subheadings, and printed page labels remain clean and single-line without interrupting normal space typing.

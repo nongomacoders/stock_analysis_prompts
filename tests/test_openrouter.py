@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import io
 import json
+import time
 import urllib.error
 from unittest.mock import MagicMock, patch
 
@@ -145,8 +146,12 @@ def test_openrouter_worker_execution(qapp, monkeypatch):
         results = []
         worker.finished_query.connect(lambda res, elapsed, stats: results.append((res, elapsed, stats)))
         worker.start()
-        worker.wait(3000)
-        qapp.processEvents()
+        assert worker.wait(5000)
+        for _ in range(20):
+            qapp.processEvents()
+            if results:
+                break
+            time.sleep(0.02)
         assert len(results) == 1
         assert results[0][0] == "### Mocked response"
         assert results[0][1] >= 0.0

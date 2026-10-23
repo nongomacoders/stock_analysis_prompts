@@ -35,3 +35,19 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 * **Fix the direct issue first**: Make the 1–3 line code fix immediately.
 * **Targeted tests before full suite**: Run `pytest tests/test_specific.py` (~5s) to verify logic before running full suite (~25s).
 * **Avoid unnecessary audits**: Don't query or inspect unrelated historical records unless explicitly asked.
+
+---
+
+### 4. Cross-Thread Qt Testing in PyTest
+* **Issue**: Testing `QThread` workers (e.g. `worker.start()`, `worker.wait()`) can experience race conditions where cross-thread queued signals have posted to the event loop, but a single `qapp.processEvents()` immediately after `wait()` misses delivery under CPU contention across full test suites.
+* **Rule**:
+  Poll `qapp.processEvents()` in a short loop with brief sleeps until the slot receives the signal:
+  ```python
+  assert worker.wait(5000)
+  for _ in range(20):
+      qapp.processEvents()
+      if results:
+          break
+      time.sleep(0.02)
+  assert len(results) == 1
+  ```

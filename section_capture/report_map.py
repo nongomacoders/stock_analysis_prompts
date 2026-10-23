@@ -235,24 +235,49 @@ def _part_location(part) -> str:
     return 'full'
 
 
+def _part_coords(part):
+    if isinstance(part, dict):
+        page = part.get('physical_page') or part.get('page') or 1
+        page_size = part.get('page_size_points') or part.get('page_size') or [1, 1]
+        width = page_size[0] or 1
+        bbox = part.get('bbox') or [0, 0, width, 0]
+        return page, bbox, width
+    page = getattr(part, 'page', getattr(part, 'physical_page', 1)) or 1
+    page_size = getattr(part, 'page_size', getattr(part, 'page_size_points', [1, 1])) or [1, 1]
+    width = page_size[0] or 1
+    bbox = getattr(part, 'bbox', [0, 0, width, 0]) or [0, 0, width, 0]
+    return page, bbox, width
+
+
+def _section_overlaps(sec, selections) -> bool:
+    if not selections or not sec:
+        return False
+    for part in selections:
+        page, bbox, width = _part_coords(part)
+        start = page - 1 + bbox[0] / width
+        end = page - 1 + bbox[2] / width
+        if start < _position(sec['end'], True) and end > _position(sec['start']):
+            return True
+    return False
+
+
 def register_subsection(mapping, subheading: str, selections=(), heading: str = "") -> list[str]:
     """Add or update a subsection under the matched major section in mapping and return its subsection ID(s)."""
     subheading = clean_single_line_text(subheading)
     heading = clean_single_line_text(heading)
     if not mapping or not subheading or not selections:
         return []
-    matched_sections = []
-    for section in mapping.get('sections', []):
-        for part in selections:
-            width = part['page_size_points'][0]
-            start = part['physical_page'] - 1 + part['bbox'][0] / width
-            end = part['physical_page'] - 1 + part['bbox'][2] / width
-            if start < _position(section['end'], True) and end > _position(section['start']):
+    parent = None
+    if heading:
+        parent = find_matching_section(mapping, heading, selections)
+    if not parent:
+        matched_sections = []
+        for section in mapping.get('sections', []):
+            if _section_overlaps(section, selections):
                 matched_sections.append(section)
-                break
-    if not matched_sections:
-        return []
-    parent = matched_sections[0]
+        if not matched_sections:
+            return []
+        parent = matched_sections[0]
     if heading:
         parent['parent_heading'] = heading
     subs = parent.setdefault('subsections', [])
@@ -541,49 +566,105 @@ def insert_section_into_report_map(
     return mapping, cand
 
 
+def find_matching_section(mapping, heading: str = "", selections=()) -> dict | None:
+    """Find the best matching section in mapping using heading and selection page overlap."""
+    if not mapping or not mapping.get('sections'):
+        return None
+    clean_h = clean_single_line_text(heading)
+    if clean_h.startswith("✓ "):
+        clean_h = clean_h[2:].strip()
+    raw_h = clean_h
+    clean_h = re.sub(r'^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*', '', clean_h, flags=re.IGNORECASE).strip()
+    norm_h = _norm_heading(clean_h)
+
+    sections = mapping.get('sections', [])
+    candidates = []
+
+    for sec in sections:
+        overlaps = _section_overlaps(sec, selections)
+        c_list = [
+            _norm_heading(sec.get('title', '')),
+            _norm_heading(sec.get('parent_heading', '')),
+            *[_norm_heading(ev.get('heading', '')) for ev in sec.get('heading_evidence', [])],
+        ]
+        c_list = [c for c in c_list if c]
+
+        is_exact = bool(norm_h and any(norm_h == c for c in c_list))
+        if not is_exact and raw_h.upper() == sec.get('section_id', '').upper():
+            is_exact = True
+
+        is_loose = False
+        if norm_h and not is_exact:
+            for c in c_list:
+                if norm_h in c or c in norm_h:
+                    h_is_cons = 'consolidated' in norm_h
+                    c_is_cons = 'consolidated' in c
+                    if h_is_cons == c_is_cons:
+                        is_loose = True
+                        break
+                    else:
+                        is_loose = 'weak'
+                        break
+
+        if norm_h:
+            if not is_exact and not is_loose:
+                continue
+            if is_exact:
+                priority = 1 if overlaps else 2
+            elif is_loose is True:
+                priority = 3 if overlaps else 5
+            elif is_loose == 'weak':
+                priority = 6 if overlaps else 7
+        else:
+            if not overlaps:
+                continue
+            priority = 4
+
+        candidates.append((priority, sec))
+
+    if not candidates:
+        return None
+    candidates.sort(key=lambda x: x[0])
+    return candidates[0][1]
+
+
 def section_requires_subheading(mapping, heading: str = "", selections=()) -> str | None:
     """If the matched section or main heading already has subsections, return a label like 'D006 (D006.1)'."""
     if not mapping:
         return None
-    norm_h = _norm_heading(re.sub(r'^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*', '', clean_single_line_text(heading), flags=re.IGNORECASE))
-    for section in mapping.get('sections', []):
-        subs = section.get('subsections') or []
-        if not subs:
-            continue
-        overlaps = False
-        for part in selections:
-            width = part['page_size_points'][0]
-            start = part['physical_page'] - 1 + part['bbox'][0] / width
-            end = part['physical_page'] - 1 + part['bbox'][2] / width
-            if start < _position(section['end'], True) and end > _position(section['start']):
-                overlaps = True
-                break
-        heading_matches = False
-        if norm_h:
-            candidates = [
-                _norm_heading(section.get('title', '')),
-                _norm_heading(section.get('parent_heading', '')),
-                *[_norm_heading(ev.get('heading', '')) for ev in section.get('heading_evidence', [])],
-            ]
-            heading_matches = any(c and (norm_h == c or norm_h in c or c in norm_h) for c in candidates)
-        if heading_matches or (not norm_h and overlaps):
+    sec = find_matching_section(mapping, heading, selections)
+    if sec:
+        subs = sec.get('subsections') or []
+        if subs:
             sub_list = ', '.join(s['subsection_id'] for s in subs)
-            return f"{section['section_id']} ({sub_list})"
+            return f"{sec['section_id']} ({sub_list})"
+        return None
+    if not heading and selections:
+        for section in mapping.get('sections', []):
+            subs = section.get('subsections') or []
+            if not subs:
+                continue
+            if _section_overlaps(section, selections):
+                sub_list = ', '.join(s['subsection_id'] for s in subs)
+                return f"{section['section_id']} ({sub_list})"
     return None
 
 
-def matching_section_ids(mapping, selections=()) -> list[str]:
-    if not mapping or not selections:
+def matching_section_ids(mapping, selections=(), heading: str = "") -> list[str]:
+    if not mapping:
+        return []
+    if heading:
+        sec = find_matching_section(mapping, heading, selections)
+        if sec:
+            return [sec['section_id']]
+    if not selections:
         return []
     matched = []
     for section in mapping.get('sections', []):
-        for part in selections:
-            width = part['page_size_points'][0]
-            start = part['physical_page'] - 1 + part['bbox'][0] / width
-            end = part['physical_page'] - 1 + part['bbox'][2] / width
-            if start < _position(section['end'], True) and end > _position(section['start']):
-                matched.append(section['section_id'])
-                break
+        if _section_overlaps(section, selections):
+            sid = section.get('section_id')
+            if sid and sid not in matched:
+                matched.append(sid)
     return matched
 
 

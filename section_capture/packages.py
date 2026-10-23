@@ -140,7 +140,7 @@ def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None =
     )
     prompt_file = get_prompt_path(resolved_sector)
     mapping = manifest.get('document_map')
-    section_ids = manifest.get('section_ids') or (matching_section_ids(mapping, manifest.get('selections', [])) if mapping else [])
+    section_ids = manifest.get('section_ids') or (matching_section_ids(mapping, manifest.get('selections', []), heading=manifest.get('heading', '')) if mapping else [])
     section_id_label = ', '.join(section_ids) if section_ids else 'unmapped'
     subheading = (manifest.get('subheading') or '').strip()
     heading_display = f"{manifest['heading']} — {subheading}" if subheading else manifest['heading']
@@ -254,7 +254,7 @@ def save_package(
         source.questions_ledger = disk_questions
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     seq_num = next_section_number(source.sha256, db_path=output_root)
-    section_ids = sub_ids or (matching_section_ids(mapping, selection_previews) if mapping else [])
+    section_ids = sub_ids or (matching_section_ids(mapping, selection_previews, heading=heading) if mapping else [])
     if not section_ids:
         inferred_type, _ = detect_doc_type_and_date(source.path)
         if inferred_type == "sens":
@@ -325,7 +325,7 @@ def save_package(
         part_sec_ids = (
             sub_ids_by_subheading.get(c_sh)
             or sub_ids
-            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}]) if mapping else [])
+            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}], heading=heading) if mapping else [])
         )
         part_sec_label = ", ".join(part_sec_ids) if part_sec_ids else (section_tag or "unmapped")
         manifest["selections"].append({

@@ -12,6 +12,8 @@ from section_capture.report_map import (
     assign_section_ids,
     build_manual_section_map,
     load_cached_map,
+    matching_section_ids,
+    register_subsection,
     report_overview,
     save_map,
     scan_report,
@@ -274,6 +276,65 @@ def test_section_requires_subheading_refinement(source):
     part_in_d001 = [{'physical_page': 5, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
     req = section_requires_subheading(mapping, heading="Operational Review", selections=part_in_d001)
     assert req == "D001 (D001.1)"
+
+
+def test_disambiguate_company_vs_consolidated_statements():
+    mapping = {
+        'sections': [
+            {
+                'section_id': 'D005',
+                'title': 'Consolidated statement of cash flows',
+                'start': {'physical_page': 18, 'location': 'full'},
+                'end': {'physical_page': 76, 'location': 'full'},
+                'subsections': [
+                    {'subsection_id': 'D005.1', 'title': 'Note 1'}
+                ]
+            },
+            {
+                'section_id': 'D009',
+                'title': 'Statement of changes in equity',
+                'start': {'physical_page': 78, 'location': 'full'},
+                'end': {'physical_page': 78, 'location': 'full'},
+                'subsections': []
+            },
+            {
+                'section_id': 'D010',
+                'title': 'Statement of cash flows',
+                'start': {'physical_page': 78, 'location': 'full'},
+                'end': {'physical_page': 78, 'location': 'full'},
+                'subsections': []
+            }
+        ]
+    }
+    part_on_p78 = [{'physical_page': 78, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
+    part_on_p18 = [{'physical_page': 18, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
+
+    # Capturing page 78 under "Statement of cash flows" should match D010 and NOT require a subheading
+    req_78 = section_requires_subheading(mapping, heading="Statement of cash flows", selections=part_on_p78)
+    assert req_78 is None
+    ids_78 = matching_section_ids(mapping, selections=part_on_p78, heading="Statement of cash flows")
+    assert ids_78 == ['D010']
+
+    # Capturing page 78 with dropdown prefix "✓ Statement of cash flows"
+    assert section_requires_subheading(mapping, heading="✓ Statement of cash flows", selections=part_on_p78) is None
+    assert matching_section_ids(mapping, selections=part_on_p78, heading="✓ Statement of cash flows") == ['D010']
+
+    # Even with empty selections, "Statement of cash flows" should resolve to D010 (not D005)
+    assert section_requires_subheading(mapping, heading="Statement of cash flows", selections=[]) is None
+    assert matching_section_ids(mapping, selections=[], heading="Statement of cash flows") == ['D010']
+
+    # Capturing page 18 under "Consolidated statement of cash flows" should match D005 and require a subheading
+    req_18 = section_requires_subheading(mapping, heading="Consolidated statement of cash flows", selections=part_on_p18)
+    assert req_18 == "D005 (D005.1)"
+    ids_18 = matching_section_ids(mapping, selections=part_on_p18, heading="Consolidated statement of cash flows")
+    assert ids_18 == ['D005']
+
+    # Registering a subsection under "Statement of cash flows" on page 78 should attach to D010, not D009
+    registered = register_subsection(mapping, "Company Cash Note 1", part_on_p78, heading="Statement of cash flows")
+    assert registered == ["D010.1"]
+    sec_d010 = next(s for s in mapping['sections'] if s['section_id'] == 'D010')
+    assert len(sec_d010['subsections']) == 1
+    assert sec_d010['subsections'][0]['title'] == "Company Cash Note 1"
 
 
 def test_assign_section_ids_preserves_existing_and_generates_ins_suffix():
