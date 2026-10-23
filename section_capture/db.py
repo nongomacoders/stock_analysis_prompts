@@ -152,6 +152,8 @@ KNOWN_COMPANIES: dict[str, tuple[str, str]] = {
     "PPC": ("PPC Limited", "construction"),
     "AFT": ("Afrimat Limited", "construction"),
     "SSK": ("Stefanutti Stocks", "construction"),
+    "CGR": ("Calgro M3 Holdings", "construction"),
+    "CALGRO": ("Calgro M3 Holdings", "construction"),
 }
 
 
@@ -186,8 +188,11 @@ def detect_company_meta(path_or_filename: str | Path | None) -> tuple[str, str, 
     # Check known companies
     for ticker, (name, sec) in KNOWN_COMPANIES.items():
         t_low = ticker.lower()
-        if re.search(rf'\b{re.escape(t_low)}\b', fname) or t_low in fname or name.lower() in s_clean:
-            return ticker, name, sec
+        n_words = [w.lower() for w in re.split(r'[\s\-_]+', name) if len(w) >= 4 and w.lower() not in {"group", "limited", "properties", "holdings", "technologies", "resources", "international", "financial"}]
+        name_match = any(w in fname for w in n_words)
+        if re.search(rf'\b{re.escape(t_low)}\b', fname) or t_low in fname or name.lower() in s_clean or name_match:
+            real_ticker = "CGR" if ticker == "CALGRO" else ("IOC" if ticker in {"IOCO", "EOH"} else ticker)
+            return real_ticker, name, sec
 
     # Check company directories on disk
     for sec in SECTORS:
@@ -1331,7 +1336,7 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
 
         results = []
         for r in rows:
-            ticker, company_name, sector = detect_company_meta(r["filename"] or r["original_path"])
+            ticker, company_name, sector = detect_company_meta(r["original_path"] or r["filename"])
             results.append({
                 "sha256": r["sha256"],
                 "filename": r["filename"],

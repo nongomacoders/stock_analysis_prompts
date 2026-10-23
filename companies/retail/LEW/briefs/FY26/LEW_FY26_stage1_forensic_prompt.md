@@ -1,32 +1,32 @@
 # STAGE 1: INDEPENDENT COGNITIVE AUDIT VIA SEQUENTIAL EXTRACTION & QUESTION LEDGER
 **Target Asset:** LEW Group (LEW)  
 **Sector:** Retail  
-**Source Document:** `lewis-iar-2026.pdf`  
+**Primary Document:** `lewis-iar-2026.pdf` (Integrated Annual Report [IAR] — 14 sections)  
 **Input Mode:** Sequential Forensic Working Paper & Dynamic Questions Ledger (No PDF Attached)  
-**Task Directive:** Forensic Reasoning & Conflict Reconciliation Only (No Full Forward Valuation Model Required)
+**Task Directive:** Forensic Reasoning, Conflict Reconciliation & Post-Balance-Sheet Determinations (No Full Forward Valuation Model Required)
 
 ---
 
 ### INSTRUCTIONS FOR GEMINI 4 ARGON:
 You are acting as an independent **Managing Director and Senior Forensic Retail & Consumer Credit Accounting Auditor**. 
-You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of LEW Group's financial results announcement (14 sections).
+You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of LEW Group's financial disclosures (14 total sections across primary report and companion disclosures).
 
 Notice how this working paper is constructed:
 1. At each stage, specific text, accounting notes, APMs, and operational tables were extracted directly from the report.
-2. Across the sections, an **Open Questions Ledger** evolved dynamically: anomalies and high-level management claims in early sections were flagged with priority levels, specific verification instructions, and carried forward as `Pending` until verified against primary financial statements, detailed accounting notes, and segmental summaries.
+2. Across the sections, an **Open Questions Ledger** evolved dynamically: anomalies and high-level management claims in early sections were flagged with priority levels, specific verification instructions, and carried forward as `Pending` until verified against primary financial statements, detailed accounting notes, and subsequent continuous disclosures.
 
 **YOUR MANDATE:**
-Review the sequential evidence trail below. Trace how the questions evolved from initial anomalies to audited reconciliation. **Do not produce a forward equity research forecast or valuation report.** Your role is **forensic reasoning only**: you must evaluate the working papers and independently reach your own definitive determinations on the core accounting, operational, and balance sheet junctions.
+Review the sequential evidence trail below. Trace how the questions evolved from initial anomalies to audited reconciliation. **Do not produce a forward equity research forecast or valuation report.** Your role is **forensic reasoning only**: you must evaluate the working papers and independently reach your own definitive determinations on the core accounting, operational, and balance sheet junctions, explicitly factoring in subsequent SENS disclosures.
 
 ---
 
 ## REQUIRED STRUCTURE OF YOUR AUDIT REPORT
 
 Please format your response into the following four clear sections:
-1. **Executive Forensic Audit Summary:** Concise synthesis of the group's true economic performance, balance sheet health, and key findings.
-2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key retail junction (merchandise vs credit/other revenue, gross profit margin bridge, debtors book health & IFRS 9 ECL provisioning, store network capex and trading density, IFRS 16 lease liability structure, and cash conversion / dividend payout), citing specific notes, tables, and calculations.
+1. **Executive Forensic Audit Summary:** Concise synthesis of the group's true economic performance, balance sheet health, post-balance-sheet liquidity runway, and key findings.
+2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key retail junction (merchandise vs credit/other revenue, gross profit margin bridge, debtors book health & IFRS 9 ECL provisioning, store network capex and trading density, IFRS 16 lease liability structure, post-year-end trading, and cash conversion / dividend payout), citing specific notes, tables, and calculations.
 3. **Audit of Common Surface-Reading Pitfalls:** Contrast your findings against the common errors made by naive readers.
-4. **Final Forensic Verification Matrix:** A clean markdown summary table listing each Junction, the Raw Initial Claim, the Resolving Note/APM, and your Final Verified Determination.
+4. **Final Forensic Verification Matrix:** A clean markdown summary table listing each Junction, the Raw Initial Claim, the Resolving Note/SENS Announcement, and your Final Verified Determination.
 
 ---
 

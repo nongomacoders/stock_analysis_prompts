@@ -11,6 +11,18 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Stage 1 Forensic Audit Multi-Document & CGR Resolution**:
+  - Resolved "No Sections Found" error when compiling Stage 1 Forensic Audit for Calgro M3 Holdings (`CGR`):
+    - Added `"CGR": ("Calgro M3 Holdings", "construction")` and `"CALGRO"` alias to `KNOWN_COMPANIES` in `section_capture/db.py`.
+    - Enhanced `detect_company_meta()` to match company name tokens (e.g. `calgro` in `10023_Calgro-IR-2026_WEB-FA3.pdf`).
+    - Fixed company resolution precedence in `get_analyzed_stocks()` to prefer `r["original_path"]` over `r["filename"]`, correctly utilizing directory structure `companies/<sector>/<ticker>/sources/` rather than guessing from standalone filenames.
+    - Updated `discover_available_companies()` and `AuditValuationDialog._apply_company_data()` to query SQLite for existing PDF report records (`sha256` and section count) rather than leaving discovered company directories in a generic `Scaffolded` state with blank SHA-256.
+    - Upgraded `AuditValuationDialog.compile_stage1_prompt()` to resolve missing report SHAs from SQLite automatically before failing.
+    - Unified companion report (`doc_type IN ('afs', 'presentation')`) and SENS (`doc_type = 'sens'`) extraction across `section_capture/audit_dialog.py` and `workflow/export_stage1.py`:
+      - For CGR, seamlessly compiles all 41 captured sections (5 Integrated Annual Report [IAR] sections + 36 Annual Financial Statements [AFS] companion sections, ~2.9M chars) into the Stage 1 Forensic Audit Prompt.
+    - Cleaned up orphaned code stubs in `workflow/export_stage1.py` and added ticker-specific report resolution in `get_latest_report_sha(conn, ticker=ticker)`.
+    - Added regression test `test_cgr_detection_and_stage1_compile` in `tests/test_portfolio_valuation.py`. All 107 tests in the suite pass with exit code 0.
+
 - **Two-Row Responsive Toolbar Layout (section_capture/window.py)**:
   - Addressed toolbar horizontal overflow on standard screen resolutions where right-hand action buttons (`Stored questions`, `Saved sections`, `Audit & Valuation`, `Analyzed Stocks`) collapsed into Qt's `...` overflow menu.
   - Split the single toolbar into two dedicated, non-movable toolbars via `self.addToolBarBreak(Qt.ToolBarArea.TopToolBarArea)`:

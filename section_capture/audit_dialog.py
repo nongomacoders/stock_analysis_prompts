@@ -198,13 +198,24 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                     if pdfs:
                         pdf_path = pdfs[0]
                 status = "Scaffolded"
+                sha = ""
+                if pdf_path and resolved_db.exists():
+                    with connect_db(resolved_db) as conn:
+                        row = conn.execute(
+                            "SELECT sha256 FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
+                            (str(pdf_path), pdf_path.name),
+                        ).fetchone()
+                        if row:
+                            sha = row["sha256"]
+                            sec_cnt = conn.execute("SELECT COUNT(*) FROM sections WHERE report_sha256 = ?", (sha,)).fetchone()[0]
+                            status = f"Captured ({sec_cnt} sec)" if sec_cnt > 0 else "Registered"
                 sec_lbl = "REIT" if sec == "reit" else ("IT" if sec == "it" else sec.capitalize())
                 display_text = f"{ticker} — {c_name} ({sec_lbl}) [{status}]"
                 items.append({
                     "ticker": ticker,
                     "company_title": c_name,
                     "sector": sec,
-                    "sha256": "",
+                    "sha256": sha,
                     "filename": pdf_path.name if pdf_path else "report.pdf",
                     "pdf_path": pdf_path,
                     "status": status,
@@ -375,17 +386,29 @@ class AuditValuationDialog(QDialog):
         self.setWindowTitle(f"Forensic Audit & Valuation Pipeline — {self.ticker} ({self.sector.capitalize()})")
 
         # Update source reference
-        if data.get("sha256"):
+        sha = data.get("sha256")
+        pdf_path = data.get("pdf_path")
+        if not sha and pdf_path and self.db_path.exists():
+            with connect_db(self.db_path) as conn:
+                row = conn.execute(
+                    "SELECT sha256 FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
+                    (str(pdf_path), Path(pdf_path).name),
+                ).fetchone()
+                if row:
+                    sha = row["sha256"]
+                    data["sha256"] = sha
+
+        if sha:
             self.source = ReportSourceRef(
-                sha256=data["sha256"],
-                path=data.get("pdf_path"),
+                sha256=sha,
+                path=pdf_path,
                 filename=data.get("filename"),
             )
-        elif data.get("pdf_path"):
+        elif pdf_path:
             self.source = ReportSourceRef(
                 sha256="",
-                path=data.get("pdf_path"),
-                filename=Path(data["pdf_path"]).name,
+                path=pdf_path,
+                filename=Path(pdf_path).name,
             )
         else:
             self.source = None
@@ -442,12 +465,19 @@ class AuditValuationDialog(QDialog):
                 "SELECT length(questions_ledger) FROM reports WHERE sha256 = ?", (self.source.sha256,)
             ).fetchone()
             ql_len = rep[0] if rep and rep[0] else 0
-            sens_count = cur.execute(
-                "SELECT COUNT(*) FROM reports WHERE parent_report_sha256 = ?", (self.source.sha256,)
+            comp_count = cur.execute(
+                "SELECT COUNT(s.id) FROM reports r JOIN sections s ON s.report_sha256 = r.sha256 WHERE r.parent_report_sha256 = ? AND r.doc_type IN ('afs', 'presentation')",
+                (self.source.sha256,)
             ).fetchone()[0]
+            sens_count = cur.execute(
+                "SELECT COUNT(*) FROM reports WHERE parent_report_sha256 = ? AND doc_type = 'sens'",
+                (self.source.sha256,)
+            ).fetchone()[0]
+            total_sec = sec_count + comp_count
+            comp_str = f" (+{comp_count} companion)" if comp_count else ""
             sens_str = f"  ·  Linked SENS: <b>{sens_count}</b>" if sens_count else ""
             self.report_info_label.setText(
-                f"SQLite Sections: <b>{sec_count}</b>{sens_str}  ·  Questions Ledger: <b>{ql_len:,} chars</b>"
+                f"SQLite Sections: <b>{total_sec}</b>{comp_str}{sens_str}  ·  Questions Ledger: <b>{ql_len:,} chars</b>"
             )
 
     # =========================================================================
@@ -826,11 +856,40 @@ class AuditValuationDialog(QDialog):
     # =========================================================================
     def compile_stage1_prompt(self):
         if not self.source or not getattr(self.source, "sha256", ""):
+            # Attempt to resolve SHA from SQLite reports table using path, filename, or ticker
+            if self.db_path.exists():
+                with connect_db(self.db_path) as conn:
+                    cur = conn.cursor()
+                    row = None
+                    if self.source and getattr(self.source, "path", None):
+                        row = cur.execute(
+                            "SELECT sha256, filename FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
+                            (str(self.source.path), Path(self.source.path).name),
+                        ).fetchone()
+                    if not row and self.ticker:
+                        row = cur.execute(
+                            "SELECT sha256, filename FROM reports WHERE (original_path LIKE ? OR filename LIKE ?) AND parent_report_sha256 IS NULL ORDER BY updated_at DESC LIMIT 1",
+                            (f"%{self.ticker}%", f"%{self.ticker}%"),
+                        ).fetchone()
+                        if not row:
+                            row = cur.execute(
+                                "SELECT sha256, filename FROM reports WHERE original_path LIKE ? OR filename LIKE ? ORDER BY updated_at DESC LIMIT 1",
+                                (f"%{self.ticker}%", f"%{self.ticker}%"),
+                            ).fetchone()
+                    if row:
+                        self.source = ReportSourceRef(
+                            sha256=row["sha256"],
+                            path=getattr(self.source, "path", None),
+                            filename=row["filename"],
+                        )
+
+        if not self.source or not getattr(self.source, "sha256", ""):
             QMessageBox.warning(self, "No Sections Captured", f"No sections found in SQLite for {self.ticker} yet.")
             return
+
         with connect_db(self.db_path) as conn:
             cur = conn.cursor()
-            # Resolve primary report SHA (if source is a SENS notice pointing to a parent Annual Report)
+            # Resolve primary report SHA (if source is a SENS notice or companion AFS pointing to a parent Annual Report)
             rep_row = cur.execute("SELECT parent_report_sha256, filename FROM reports WHERE sha256 = ?", (self.source.sha256,)).fetchone()
             if rep_row and rep_row["parent_report_sha256"]:
                 primary_sha = rep_row["parent_report_sha256"]
@@ -851,16 +910,43 @@ class AuditValuationDialog(QDialog):
                 (primary_sha,),
             ).fetchall()
 
-            if not sections:
-                QMessageBox.warning(self, "No Sections Captured", "No sections found in SQLite for this report yet.")
-                return
+            # Query companion reports (AFS, Presentation) linked to primary report
+            comp_rows = cur.execute(
+                """
+                SELECT sha256, filename, doc_type
+                FROM reports
+                WHERE parent_report_sha256 = ? AND doc_type IN ('afs', 'presentation')
+                ORDER BY created_at ASC
+                """,
+                (primary_sha,),
+            ).fetchall()
+
+            companion_reports: list[dict] = []
+            for cr in comp_rows:
+                c_sections = cur.execute(
+                    """
+                    SELECT section_number, section_id, heading, subheading, analyst_question,
+                           selected_text, stored_questions_snapshot, llm_response
+                    FROM sections
+                    WHERE report_sha256 = ?
+                    ORDER BY section_number ASC, id ASC
+                    """,
+                    (cr["sha256"],),
+                ).fetchall()
+                if c_sections:
+                    companion_reports.append({
+                        "sha256": cr["sha256"],
+                        "filename": cr["filename"],
+                        "doc_type": cr["doc_type"],
+                        "sections": c_sections,
+                    })
 
             # Query linked SENS notices
             sens_rows = cur.execute(
                 """
                 SELECT sha256, filename, announcement_date
                 FROM reports
-                WHERE parent_report_sha256 = ?
+                WHERE parent_report_sha256 = ? AND doc_type = 'sens'
                 ORDER BY COALESCE(announcement_date, '9999-99-99') ASC, created_at ASC
                 """,
                 (primary_sha,),
@@ -886,19 +972,25 @@ class AuditValuationDialog(QDialog):
                         "sections": s_sections,
                     })
 
+            total_secs = len(sections) + sum(len(cr["sections"]) for cr in companion_reports) + sum(len(sr["sections"]) for sr in sens_reports)
+            if total_secs == 0:
+                QMessageBox.warning(self, "No Sections Captured", "No sections found in SQLite for this report yet.")
+                return
+
             prompt_content = build_stage1_prompt_content(
                 sections=sections,
                 company_title=self.company_title,
                 ticker=self.ticker,
                 detected_sector=self.sector,
                 filename=filename,
+                companion_reports=companion_reports if companion_reports else None,
                 sens_reports=sens_reports if sens_reports else None,
             )
 
-        total_secs = len(sections) + sum(len(sr["sections"]) for sr in sens_reports)
         self.s1_prompt_edit.setPlainText(prompt_content)
+        comp_summary = f" (+ {len(companion_reports)} companion reports)" if companion_reports else ""
         sens_summary = f" (+ {len(sens_reports)} SENS announcements)" if sens_reports else ""
-        self.s1_prompt_status.setText(f"✓ Compiled {total_secs} sections{sens_summary} ({len(prompt_content):,} chars).")
+        self.s1_prompt_status.setText(f"✓ Compiled {total_secs} sections{comp_summary}{sens_summary} ({len(prompt_content):,} chars).")
 
         # Save to DB and disk
         save_stage1_report(primary_sha, prompt=prompt_content, db_path=self.db_path)

@@ -22,8 +22,22 @@ from companies.sectors import get_sector_config
 DB_PATH = Path("documents/analysis.sqlite")
 
 
-def get_latest_report_sha(conn: sqlite3.Connection) -> tuple[str, str] | None:
+def get_latest_report_sha(conn: sqlite3.Connection, ticker: str | None = None) -> tuple[str, str] | None:
     cur = conn.cursor()
+    if ticker:
+        # Prefer primary report for this ticker
+        row = cur.execute(
+            "SELECT sha256, filename FROM reports WHERE (original_path LIKE ? OR filename LIKE ?) AND parent_report_sha256 IS NULL ORDER BY updated_at DESC LIMIT 1",
+            (f"%{ticker}%", f"%{ticker}%"),
+        ).fetchone()
+        if not row:
+            row = cur.execute(
+                "SELECT sha256, filename FROM reports WHERE original_path LIKE ? OR filename LIKE ? ORDER BY updated_at DESC LIMIT 1",
+                (f"%{ticker}%", f"%{ticker}%"),
+            ).fetchone()
+        if row:
+            return row[0], row[1]
+
     row = cur.execute(
         "SELECT sha256, filename FROM reports ORDER BY updated_at DESC LIMIT 1"
     ).fetchone()
@@ -31,59 +45,6 @@ def get_latest_report_sha(conn: sqlite3.Connection) -> tuple[str, str] | None:
         return row[0], row[1]
     return None
 
-
-def export_stage1_prompt(
-    ticker: str,
-    company_name: str | None = None,
-    sector: str | None = None,
-    report_sha: str | None = None,
-    period: str | None = None,
-    output_path: Path | None = None,
-) -> Path:
-    ticker = ticker.upper().strip()
-
-    if not DB_PATH.exists():
-        raise FileNotFoundError(f"Database {DB_PATH} not found.")
-
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cur = conn.cursor()
-
-    if not report_sha:
-        latest = get_latest_report_sha(conn)
-        if not latest:
-            raise RuntimeError("No reports found in documents/analysis.sqlite.")
-        report_sha, filename = latest
-    else:
-        row = cur.execute(
-            "SELECT filename FROM reports WHERE sha256 = ?", (report_sha,)
-        ).fetchone()
-        filename = row["filename"] if row else "Company Report"
-
-    # Resolve company directory and sector
-    found = find_company_dir(ticker, sector=sector)
-    if found:
-        detected_sector, company_dir = found
-    else:
-        detected_sector = (sector or "mining").lower()
-        company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
-
-    company_title = company_name or (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources"))
-
-    # Query all sections
-    sections = cur.execute(
-        """
-        SELECT section_number, section_id, heading, subheading, analyst_question,
-               selected_text, stored_questions_snapshot, llm_response
-        FROM sections
-        WHERE report_sha256 = ?
-        ORDER BY section_number ASC, id ASC
-        """,
-        (report_sha,),
-    ).fetchall()
-
-    if not sections:
-        raise RuntimeError(f"No sections captured for report SHA: {report_sha}")
 
 def build_stage1_prompt_content(
     sections: list,
@@ -300,9 +261,9 @@ def export_stage1_prompt(
     cur = conn.cursor()
 
     if not report_sha:
-        latest = get_latest_report_sha(conn)
+        latest = get_latest_report_sha(conn, ticker=ticker)
         if not latest:
-            raise RuntimeError("No reports found in documents/analysis.sqlite.")
+            raise RuntimeError(f"No reports found in documents/analysis.sqlite for {ticker}.")
         report_sha, filename = latest
     else:
         row = cur.execute(
@@ -341,9 +302,6 @@ def export_stage1_prompt(
         """,
         (primary_sha,),
     ).fetchall()
-
-    if not sections:
-        raise RuntimeError(f"No sections captured for report SHA: {primary_sha}")
 
     # Query companion reports (AFS, Presentation) linked to primary report
     comp_rows = cur.execute(
@@ -406,6 +364,10 @@ def export_stage1_prompt(
                 "announcement_date": sr["announcement_date"],
                 "sections": s_sections,
             })
+
+    total_secs = len(sections) + sum(len(cr["sections"]) for cr in companion_reports) + sum(len(sr["sections"]) for sr in sens_reports)
+    if total_secs == 0:
+        raise RuntimeError(f"No sections captured for report SHA: {primary_sha}")
 
     content = build_stage1_prompt_content(
         sections=sections,

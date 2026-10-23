@@ -607,5 +607,66 @@ def test_normalize_markdown_for_qt(qapp):
     assert "Summary of SENS" in clean_text
     assert "Following disclosure" in clean_text
 
+def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
+    from section_capture.db import detect_company_meta, get_analyzed_stocks
+    from section_capture.audit_dialog import AuditValuationDialog, discover_available_companies
+    from workflow.export_stage1 import export_stage1_prompt
+    from PySide6.QtWidgets import QMessageBox
 
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
 
+    # 1. detect_company_meta
+    orig_path = "companies/construction/CGR/sources/10023_Calgro-IR-2026_WEB-FA3.pdf"
+    fname = "10023_Calgro-IR-2026_WEB-FA3.pdf"
+    t1, n1, s1 = detect_company_meta(orig_path)
+    assert t1 == "CGR"
+    assert "Calgro" in n1
+    assert s1 == "construction"
+
+    t2, n2, s2 = detect_company_meta(fname)
+    assert t2 == "CGR"
+    assert "Calgro" in n2
+    assert s2 == "construction"
+
+    real_db = Path("documents/analysis.sqlite")
+    if real_db.exists():
+        # 2. get_analyzed_stocks
+        stocks = get_analyzed_stocks(real_db)
+        cgr_stock = next((s for s in stocks if s["ticker"] == "CGR"), None)
+        assert cgr_stock is not None
+        assert cgr_stock["section_count"] >= 5
+        assert cgr_stock["sha256"] != ""
+
+        # 3. discover_available_companies
+        companies = discover_available_companies(real_db)
+        cgr_comp = next((c for c in companies if c["ticker"] == "CGR"), None)
+        assert cgr_comp is not None
+        assert cgr_comp["sha256"] == cgr_stock["sha256"]
+
+        # 4. AuditValuationDialog compile_stage1_prompt
+        dlg = AuditValuationDialog(db_path=real_db)
+        try:
+            idx = -1
+            for i in range(dlg.company_combo.count()):
+                if "CGR" in dlg.company_combo.itemText(i):
+                    idx = i
+                    break
+            assert idx != -1
+            dlg.company_combo.setCurrentIndex(idx)
+            assert dlg.ticker == "CGR"
+            assert dlg.source is not None
+            assert dlg.source.sha256 == cgr_stock["sha256"]
+
+            dlg.compile_stage1_prompt()
+            compiled = dlg.s1_prompt_edit.toPlainText()
+            assert len(compiled) > 1000
+            assert "STAGE 1: INDEPENDENT COGNITIVE AUDIT" in compiled
+            assert "Calgro" in compiled or "CGR" in compiled
+        finally:
+            dlg.deleteLater()
+
+        # 5. CLI workflow/export_stage1.py
+        out_file = export_stage1_prompt("CGR")
+        assert out_file.exists()
+        assert out_file.stat().st_size > 1000
