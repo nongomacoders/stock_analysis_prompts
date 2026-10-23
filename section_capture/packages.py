@@ -208,7 +208,12 @@ def save_package(
 ) -> SavedSection:
     resolved_sector = sector or detect_sector_from_path(source.path)
     prompt_file = get_prompt_path(resolved_sector)
-    heading = clean_single_line_text(re.sub(r"^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*", "", clean_single_line_text(heading), flags=re.IGNORECASE))
+    raw_heading = clean_single_line_text(heading)
+    if raw_heading.startswith("✓ "):
+        raw_heading = raw_heading[2:].strip()
+    prefix_match = re.match(r"^(D[a-zA-Z0-9_\-\.]+)\s*[—:\-]\s*", raw_heading, flags=re.IGNORECASE)
+    prefix_id = prefix_match.group(1).upper() if prefix_match else ""
+    heading = clean_single_line_text(re.sub(r"^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*", "", raw_heading, flags=re.IGNORECASE))
     subheading = clean_single_line_text(subheading)
     if not heading:
         raise ValueError("Enter a section heading before saving.")
@@ -254,7 +259,14 @@ def save_package(
         source.questions_ledger = disk_questions
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
     seq_num = next_section_number(source.sha256, db_path=output_root)
-    section_ids = sub_ids or (matching_section_ids(mapping, selection_previews, heading=heading) if mapping else [])
+    if sub_ids:
+        section_ids = sub_ids
+    elif prefix_id:
+        section_ids = [prefix_id]
+    elif mapping:
+        section_ids = matching_section_ids(mapping, selection_previews, heading=raw_heading)
+    else:
+        section_ids = []
     if not section_ids:
         inferred_type, _ = detect_doc_type_and_date(source.path)
         if inferred_type == "sens":
@@ -325,7 +337,8 @@ def save_package(
         part_sec_ids = (
             sub_ids_by_subheading.get(c_sh)
             or sub_ids
-            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}], heading=heading) if mapping else [])
+            or ([prefix_id] if prefix_id else None)
+            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}], heading=raw_heading) if mapping else [])
         )
         part_sec_label = ", ".join(part_sec_ids) if part_sec_ids else (section_tag or "unmapped")
         manifest["selections"].append({

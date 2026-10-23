@@ -13,8 +13,11 @@ Analyze and forecast from company presentations and reports section by section w
 
 - **Company vs Consolidated Statement Disambiguation & Subheading Requirement Fix**:
   - Resolved heading and section collision where `"Statement of cash flows"` (Company statement on page 78, D010) was incorrectly matched by loose substring against `"Consolidated statement of cash flows"` (Group statement on pages 18–76, D005), which already had subsections.
+  - Prefixed report map sections in `HeadingComboBox` with their unique section ID (`D005 — Consolidated statement of cash flows`, `D010 — Statement of cash flows`), guaranteeing complete visual clarity and direct, deterministic reverse lookup.
+  - Enhanced `find_matching_section()` and `save_package()` to recognize section ID prefixes directly, assigning the exact section ID (`D010`) and cleanly storing the stripped heading (`Statement of cash flows`) in SQLite.
   - Previously, `section_requires_subheading()` only evaluated sections with subsections and performed loose substring matching (`norm_h in c or c in norm_h`), ignoring physical page range overlaps. This falsely flagged D010 as D005 requiring a sub-heading and disabled both `Save Section` and `Save & Run DeepSeek`.
   - Implemented `find_matching_section(mapping, heading, selections)` with rigorous multi-tier priority scoring:
+    - Direct: Unique section ID prefix match (`D010 — ...`).
     - Tier 1: Selection physically overlaps section AND exact heading match (`norm_h == c`).
     - Tier 2: Non-overlapping / no selections AND exact heading match (`norm_h == c`).
     - Tier 3: Physical page overlap AND strong fuzzy match (respecting "consolidated" vs separate statement identity).

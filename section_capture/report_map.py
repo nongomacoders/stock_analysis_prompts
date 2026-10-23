@@ -574,6 +574,17 @@ def find_matching_section(mapping, heading: str = "", selections=()) -> dict | N
     if clean_h.startswith("✓ "):
         clean_h = clean_h[2:].strip()
     raw_h = clean_h
+
+    sections = mapping.get('sections', [])
+
+    # If the heading explicitly has a unique section ID prefix, match it directly
+    prefix_match = re.match(r'^(D[a-zA-Z0-9_\-\.]+)\s*[—:\-]\s*', raw_h, flags=re.IGNORECASE)
+    if prefix_match:
+        prefix_id = prefix_match.group(1).upper()
+        for sec in sections:
+            if sec.get('section_id', '').upper() == prefix_id:
+                return sec
+
     clean_h = re.sub(r'^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*', '', clean_h, flags=re.IGNORECASE).strip()
     norm_h = _norm_heading(clean_h)
 

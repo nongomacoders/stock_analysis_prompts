@@ -627,21 +627,35 @@ class CaptureWindow(QMainWindow):
         seen: set[str] = set()
 
         saved_headings: set[str] = set()
+        saved_section_ids: set[str] = set()
         if self.source:
             try:
                 for saved in list_sections(self.source.sha256, db_path=self.output_root):
                     if saved.heading:
                         saved_headings.add(saved.heading.strip().lower())
+                    if saved.section_id:
+                        saved_section_ids.add(saved.section_id.strip().upper())
             except Exception:
                 pass
 
-        def _add(val: str):
+        def _add(val: str, sid: str | None = None):
             cleaned = " ".join((val or "").split()).strip()
-            if cleaned and cleaned.lower() not in seen:
-                seen.add(cleaned.lower())
-                is_saved = cleaned.lower() in saved_headings
-                disp = f"✓ {cleaned}" if is_saved else cleaned
-                options.append((disp, cleaned))
+            if not cleaned:
+                return
+            if sid and not re.match(r"^(?:D[a-zA-Z0-9_\-\.]+|SENS(?:-\d+)?)\s*[—:\-]\s*", cleaned, flags=re.IGNORECASE):
+                full_val = f"{sid} — {cleaned}"
+            else:
+                full_val = cleaned
+
+            if full_val.lower() not in seen:
+                seen.add(full_val.lower())
+                is_saved = False
+                if sid and sid.upper() in saved_section_ids:
+                    is_saved = True
+                elif cleaned.lower() in saved_headings or full_val.lower() in saved_headings:
+                    is_saved = True
+                disp = f"✓ {full_val}" if is_saved else full_val
+                options.append((disp, full_val))
 
         if self.source:
             doc_t, _ = detect_doc_type_and_date(self.source.path)
@@ -654,10 +668,26 @@ class CaptureWindow(QMainWindow):
                 _add("SENS-02: Operational Milestones & Development Timeline")
                 _add("SENS-03: Cash Flow & Financing CPs")
 
+        if self.source and self.source.report_map:
+            for sec in self.source.report_map.get("sections", []):
+                sid = sec.get("section_id")
+                if sec.get("parent_heading"):
+                    _add(sec["parent_heading"], sid=sid)
+                title = sec.get("title", "")
+                if (
+                    title
+                    and not title.lower().startswith("unclassified")
+                    and title.lower() not in ("cover / overview", "cover/overview")
+                ):
+                    _add(title, sid=sid)
+                for ev in sec.get("heading_evidence", []):
+                    _add(ev.get("heading", ""), sid=sid)
+
+        if self.source:
             try:
                 for saved in list_sections(self.source.sha256, db_path=self.output_root):
                     if saved.heading:
-                        _add(saved.heading)
+                        _add(saved.heading, sid=saved.section_id)
                     if saved.subheading and self.source.report_map and "." in saved.section_id:
                         parent_id = saved.section_id.split(".")[0]
                         for sec in self.source.report_map.get("sections", []):
@@ -665,20 +695,6 @@ class CaptureWindow(QMainWindow):
                                 sec["parent_heading"] = saved.heading
             except Exception:
                 pass
-
-        if self.source and self.source.report_map:
-            for sec in self.source.report_map.get("sections", []):
-                if sec.get("parent_heading"):
-                    _add(sec["parent_heading"])
-                title = sec.get("title", "")
-                if (
-                    title
-                    and not title.lower().startswith("unclassified")
-                    and title.lower() not in ("cover / overview", "cover/overview")
-                ):
-                    _add(title)
-                for ev in sec.get("heading_evidence", []):
-                    _add(ev.get("heading", ""))
 
         self.heading_edit.set_options(options)
 

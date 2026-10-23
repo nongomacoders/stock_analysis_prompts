@@ -559,8 +559,9 @@ def test_initial_map_creation_supports_multiple_sections_on_same_page(qapp, pdf_
     # 5. Check capture window dropdown options
     window._refresh_heading_options()
     combo_items = [window.heading_edit.itemText(i) for i in range(window.heading_edit.count())]
-    assert "Consolidated Statement of Profit or Loss and Other Comprehensive Income" in combo_items
-    assert "Consolidated Statement of Financial Position" in combo_items
+    assert any("Consolidated Statement of Profit or Loss and Other Comprehensive Income" in item for item in combo_items)
+    assert any("Consolidated Statement of Financial Position" in item for item in combo_items)
+    assert any(item.startswith("D0") for item in combo_items)
 
     window.close()
 
