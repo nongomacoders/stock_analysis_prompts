@@ -36,6 +36,7 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 ### 3. Workflow Speed & Focus
 * **Fix the direct issue first**: Make the 1–3 line code fix immediately.
 * **Targeted tests before full suite**: Run `pytest tests/test_specific.py` (~5s) to verify logic before running full suite (~25s).
+* **PyTest `--basetemp` parent directory**: On Windows, passing `--basetemp=tmp/<task>` when `tmp/` does not already exist raises `FileNotFoundError: [WinError 3] The system cannot find the path specified`. Always ensure `tmp/` exists (`New-Item -ItemType Directory -Force -Path tmp`) before passing subdirectories as `--basetemp`.
 * **Avoid unnecessary audits**: Don't query or inspect unrelated historical records unless explicitly asked.
 
 ---
