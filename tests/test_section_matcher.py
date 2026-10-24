@@ -148,3 +148,23 @@ def test_auto_capture_matched_sections(pdf_path, qapp, tmp_path, monkeypatch):
     dlg.close()
     dlg.deleteLater()
 
+def test_adopt_app_sections_with_identical_titles(pdf_path, qapp, monkeypatch):
+    from PySide6.QtWidgets import QMessageBox
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+
+    source = PdfSource(pdf_path)
+    user_sections = [
+        {"title": "Financial statements overview", "start_page": 1},
+    ]
+    dlg = SectionComparisonDialog(source=source, user_sections=user_sections, sector="retail")
+    dlg._comparison.app_only = [
+        {"title": "Financial statements overview", "start_page": 4, "end_page": 28},
+        {"title": "Financial statements overview", "start_page": 33, "end_page": 83},
+    ]
+    dlg._on_adopt_all_app_sections()
+    assert len(dlg.user_sections) == 3
+    assert any("p.4" in u["title"] for u in dlg.user_sections)
+    assert any("p.33" in u["title"] for u in dlg.user_sections)
+    dlg.close()
+    dlg.deleteLater()
+

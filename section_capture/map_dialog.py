@@ -515,11 +515,21 @@ class SectionComparisonDialog(QDialog):
         start_p = app_sec.get("start_page", 1)
         if not title:
             return
-        if not any(u.get("title") == title for u in self.user_sections):
-            self.user_sections.append({"title": title, "start_page": start_p, "section_id": None})
+        is_already_present = any(
+            u.get("title") == title and abs(int(u.get("start_page", 1)) - int(start_p)) <= 1
+            for u in self.user_sections
+        )
+        if not is_already_present:
+            # If same title already exists at a different page, qualify with page number
+            display_title = title
+            if any(u.get("title") == title for u in self.user_sections):
+                display_title = f"{title} (p.{start_p})"
+            self.user_sections.append({"title": display_title, "start_page": start_p, "section_id": None})
             self._comparison = compare_section_maps(self.user_sections, self._app_sections)
             self._populate_table()
-            QMessageBox.information(self, "Section Added", f"Added '{title}' (p. {start_p}) to your section map.")
+            QMessageBox.information(self, "Section Added", f"Added '{display_title}' (p. {start_p}) to your section map.")
+        else:
+            QMessageBox.information(self, "Section Exists", f"'{title}' at page {start_p} is already in your section map.")
 
     def _on_sync_all_bounds(self):
         count = 0
@@ -539,8 +549,15 @@ class SectionComparisonDialog(QDialog):
         for a in self._comparison.app_only:
             title = a.get("title", "")
             start_p = a.get("start_page", 1)
-            if title and not any(u.get("title") == title for u in self.user_sections):
-                self.user_sections.append({"title": title, "start_page": start_p, "section_id": None})
+            is_already_present = any(
+                u.get("title") == title and abs(int(u.get("start_page", 1)) - int(start_p)) <= 1
+                for u in self.user_sections
+            )
+            if title and not is_already_present:
+                display_title = title
+                if any(u.get("title") == title for u in self.user_sections):
+                    display_title = f"{title} (p.{start_p})"
+                self.user_sections.append({"title": display_title, "start_page": start_p, "section_id": None})
                 added += 1
         if added > 0:
             self._comparison = compare_section_maps(self.user_sections, self._app_sections)
