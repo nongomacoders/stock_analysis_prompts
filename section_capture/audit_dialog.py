@@ -139,6 +139,8 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
         ticker = s["ticker"].upper()
         if ticker in {"COMPANY", "TARGET"}:
             continue
+        if ticker in seen_tickers:
+            continue
         seen_tickers.add(ticker)
         name = s["company_name"]
         sector = s["sector"].lower()

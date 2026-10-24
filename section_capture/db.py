@@ -819,6 +819,22 @@ def auto_link_companion_reports(
                     conn.commit()
                     return parent_sha
 
+            # Fallback: if no IAR exists in sources_dir, link to companion report (e.g. AFS <-> Presentation)
+            for cand_pdf in sources_dir.glob("*.pdf"):
+                cand_name = cand_pdf.name
+                row = cur.execute(
+                    "SELECT sha256, questions_ledger, doc_type, stage2_response FROM reports WHERE (original_path LIKE ? OR filename = ?) AND sha256 != ? AND parent_report_sha256 IS NULL",
+                    (f"%{cand_name}%", cand_name, report_sha256),
+                ).fetchone()
+                if row:
+                    parent_sha = row["sha256"]
+                    cur.execute(
+                        "UPDATE reports SET parent_report_sha256 = ? WHERE sha256 = ?",
+                        (parent_sha, report_sha256),
+                    )
+                    conn.commit()
+                    return parent_sha
+
         elif effective_type in ("iar", "annual_report"):
             # This is a primary report; check if any AFS, presentation, or SENS in sources_dir are unlinked
             cand_files = list(sources_dir.glob("*.pdf"))

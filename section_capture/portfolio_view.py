@@ -318,7 +318,12 @@ class PortfolioView(QWidget):
         selected_rec = self.rec_combo.currentText().upper()
 
         filtered = []
+        seen_tickers = set()
         for s in self.stocks_data:
+            t_up = s["ticker"].upper()
+            if t_up in seen_tickers:
+                continue
+            seen_tickers.add(t_up)
             ticker = s["ticker"].lower()
             name = s["company_name"].lower()
             sector = s["sector"].lower()
