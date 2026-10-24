@@ -200,6 +200,13 @@ def build_stage1_prompt_content(
             "spectrum auction capex vs network modernization capex, and foreign exchange remeasurement/hyperinflation adjustments), "
             "citing specific notes, tables, and calculations."
         )
+    elif detected_sector == "consumer_lending":
+        md_lines.append(
+            "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key consumer lending & credit junction "
+            "(IFRS 9 Stage 1/2/3 ECL migration and qualitative macro overlays, loan book vintage delinquency roll rates, carrying value & estimated remaining collections [ERC] "
+            "of purchased book debts [PBD] and non-performing loan [NPL] portfolios, risk-adjusted net interest margin [NIM] vs credit loss ratio [CLR], "
+            "National Credit Act [NCA] fee and rate caps, and securitization/debt covenant headroom), citing specific notes, tables, and calculations."
+        )
     else:
         raise ValueError(
             f"Sector '{detected_sector}' does not have dedicated Stage 1 forensic audit rules implemented."

@@ -1158,6 +1158,8 @@ class CaptureWindow(QMainWindow):
             db_path=self.output_root,
         )
         auto_link_companion_reports(candidate.sha256, candidate.path, doc_type=doc_t, db_path=self.output_root)
+        candidate.period = period_val
+        candidate.doc_type = doc_t
         candidate.questions_ledger = load_questions_ledger(candidate.sha256, self.output_root)
 
         if hasattr(self, "doc_type_combo"):

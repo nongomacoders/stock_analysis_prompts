@@ -363,7 +363,7 @@ def build_stage2_prompt_content(
         md_lines.append("   - **Expansion & Delivery Catalysts:** Specific milestones required to trigger an upgrade (e.g. MTR / Soweto tailings commercial commissioning, Section 36 capex cliff release).")
         md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.")
         md_lines.append("")
-    elif detected_sector in {"finance", "telcos"}:
+    elif detected_sector in {"finance", "telcos", "consumer_lending"}:
         cfg = get_sector_config(detected_sector)
         md_lines.append(
             f"You are acting as an elite **{cfg.stage2_persona}** at a premier institutional investment bank."
@@ -490,7 +490,7 @@ def generate_stage2_prompt(
         detected_sector = (sector or "mining").lower()
         company_dir = PROJECT_ROOT / f"companies/{detected_sector}/{ticker}"
 
-    default_title = (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Technologies" if detected_sector == "it" else (f"{ticker} Construction" if detected_sector == "construction" else (f"{ticker} Group" if detected_sector == "retail" else f"{ticker} Resources"))))
+    default_title = (f"{ticker} Properties" if detected_sector == "reit" else (f"{ticker} Technologies" if detected_sector == "it" else (f"{ticker} Construction" if detected_sector == "construction" else (f"{ticker} Group" if detected_sector in {"retail", "consumer_lending"} else f"{ticker} Resources"))))
     company_title = company_name or KNOWN_COMPANIES.get(ticker, (default_title, detected_sector))[0]
     briefs_dir = company_dir / f"briefs/{period_tag}"
     root_briefs_dir = company_dir / "briefs"

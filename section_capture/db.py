@@ -210,6 +210,9 @@ KNOWN_COMPANIES: dict[str, tuple[str, str]] = {
     "SSK": ("Stefanutti Stocks", "construction"),
     "CGR": ("Calgro M3 Holdings", "construction"),
     "CALGRO": ("Calgro M3 Holdings", "construction"),
+    "NTU": ("Nutun Limited", "consumer_lending"),
+    "NUTUN": ("Nutun Limited", "consumer_lending"),
+    "TCP": ("Nutun Limited", "consumer_lending"),
 }
 
 
@@ -231,7 +234,7 @@ def detect_company_meta(path_or_filename: str | Path | None) -> tuple[str, str, 
                     f"{cand_ticker} Technologies" if cand_sec == "it"
                     else (f"{cand_ticker} Properties" if cand_sec == "reit"
                     else (f"{cand_ticker} Construction" if cand_sec == "construction"
-                    else (f"{cand_ticker} Group" if cand_sec == "retail" else f"{cand_ticker} Resources")))
+                    else (f"{cand_ticker} Group" if cand_sec in {"retail", "consumer_lending"} else f"{cand_ticker} Resources")))
                 )
                 name = KNOWN_COMPANIES.get(cand_ticker, (default_title, cand_sec))[0]
                 return cand_ticker, name, cand_sec

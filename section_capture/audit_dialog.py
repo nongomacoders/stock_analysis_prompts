@@ -202,7 +202,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                 if ticker in seen_tickers or ticker in {"COMPANY", "TARGET"}:
                     continue
                 seen_tickers.add(ticker)
-                default_title = f"{ticker} Properties" if sec == "reit" else (f"{ticker} Technologies" if sec == "it" else (f"{ticker} Group" if sec == "retail" else f"{ticker} Resources"))
+                default_title = f"{ticker} Properties" if sec == "reit" else (f"{ticker} Technologies" if sec == "it" else (f"{ticker} Group" if sec in {"retail", "consumer_lending"} else f"{ticker} Resources"))
                 c_name = KNOWN_COMPANIES.get(ticker, (default_title, sec))[0]
                 sources_dir = comp_dir / "sources"
                 pdf_path = None
@@ -212,14 +212,17 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                         pdf_path = pdfs[0]
                 status = "Scaffolded"
                 sha = ""
+                period_val = "FY26"
                 if pdf_path and resolved_db.exists():
                     with connect_db(resolved_db) as conn:
                         row = conn.execute(
-                            "SELECT sha256 FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
+                            "SELECT sha256, period FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
                             (str(pdf_path), pdf_path.name),
                         ).fetchone()
+                        period_val = "FY26"
                         if row:
                             sha = row["sha256"]
+                            period_val = row["period"] or "FY26"
                             sec_cnt = conn.execute("SELECT COUNT(*) FROM sections WHERE report_sha256 = ?", (sha,)).fetchone()[0]
                             status = f"Captured ({sec_cnt} sec)" if sec_cnt > 0 else "Registered"
                 sec_lbl = "REIT" if sec == "reit" else ("IT" if sec == "it" else sec.capitalize())
@@ -228,7 +231,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                     "ticker": ticker,
                     "company_title": c_name,
                     "sector": sec,
-                    "period": "FY26",
+                    "period": period_val,
                     "sha256": sha,
                     "filename": pdf_path.name if pdf_path else "report.pdf",
                     "pdf_path": pdf_path,
@@ -257,13 +260,23 @@ class AuditValuationDialog(QDialog):
         if self.source:
             s_sha = getattr(self.source, "sha256", "")
             s_path = getattr(self.source, "path", None)
+            s_period = getattr(self.source, "period", None)
+            if not s_period and s_sha and self.db_path.exists():
+                with connect_db(self.db_path) as conn:
+                    r = conn.execute("SELECT period FROM reports WHERE sha256 = ?", (s_sha,)).fetchone()
+                    if r and r["period"]:
+                        s_period = r["period"]
+            if s_period:
+                self.period = s_period
             init_ticker, init_sector = detect_ticker_and_sector(s_path)
             for comp in self.available_companies:
                 if (s_sha and comp.get("sha256") == s_sha) or (comp.get("ticker") == init_ticker):
                     initial_data = comp
+                    if s_period:
+                        initial_data["period"] = s_period
                     break
             if not initial_data:
-                c_title = KNOWN_COMPANIES.get(init_ticker, (f"{init_ticker} Group" if init_sector == "retail" else f"{init_ticker} Resources", init_sector))[0]
+                c_title = KNOWN_COMPANIES.get(init_ticker, (f"{init_ticker} Group" if init_sector in {"retail", "consumer_lending"} else f"{init_ticker} Resources", init_sector))[0]
                 initial_data = {
                     "ticker": init_ticker,
                     "company_title": c_title,
@@ -1081,17 +1094,21 @@ class AuditValuationDialog(QDialog):
                 QMessageBox.warning(self, "No Sections Captured", "No sections found in SQLite for this report yet.")
                 return
 
-            prompt_content = build_stage1_prompt_content(
-                sections=sections,
-                company_title=self.company_title,
-                ticker=self.ticker,
-                detected_sector=self.sector,
-                filename=filename,
-                companion_reports=companion_reports if companion_reports else None,
-                sens_reports=sens_reports if sens_reports else None,
-                final_questions_ledger=final_questions_ledger,
-                compact=True,
-            )
+            try:
+                prompt_content = build_stage1_prompt_content(
+                    sections=sections,
+                    company_title=self.company_title,
+                    ticker=self.ticker,
+                    detected_sector=self.sector,
+                    filename=filename,
+                    companion_reports=companion_reports if companion_reports else None,
+                    sens_reports=sens_reports if sens_reports else None,
+                    final_questions_ledger=final_questions_ledger,
+                    compact=True,
+                )
+            except Exception as err:
+                QMessageBox.critical(self, "Prompt Compilation Error", f"Failed to compile Stage 1 prompt:\n\n{err}")
+                return
 
         self.s1_prompt_edit.setPlainText(prompt_content)
         comp_summary = f" (+ {len(companion_reports)} companion reports)" if companion_reports else ""

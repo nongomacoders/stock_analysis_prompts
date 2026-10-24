@@ -138,6 +138,21 @@ SECTOR_REGISTRY: dict[str, SectorConfig] = {
         icb_code="501010",
         jse_sector_name="Construction and Materials",
     ),
+    "consumer_lending": SectorConfig(
+        code="consumer_lending",
+        display_name="Consumer Lending",
+        short_label="Lending",
+        badge_bg="#f0fdf4",
+        badge_fg="#166534",
+        badge_border="#bbf7d0",
+        stage1_persona="Managing Director and Senior Forensic Credit & Lending Accounting Auditor",
+        stage2_persona="Managing Director & Head of Consumer Lending & Credit Equity Research",
+        sens_persona="Managing Director & Head of Consumer Lending & Credit Equity Research",
+        aliases=('lending', 'credit', 'consumer-lending', 'credit_services', 'consumer lending', 'js3020', '30201020', 'finance and credit services'),
+        jse_code="JS3020",
+        icb_code="30201020",
+        jse_sector_name="Consumer Lending",
+    ),
 }
 
 def get_sector_config(code: str | None) -> SectorConfig:

@@ -21,8 +21,15 @@ from companies.sectors import (
 
 def test_sector_registry_defaults():
     codes = get_all_sector_codes()
-    for expected in ["mining", "retail", "reit", "it", "construction", "finance", "telcos"]:
+    for expected in ["mining", "retail", "reit", "it", "construction", "finance", "telcos", "consumer_lending"]:
         assert expected in codes
+
+    lending_cfg = get_sector_config("consumer_lending")
+    assert lending_cfg.short_label == "Lending"
+    assert "Consumer Lending" in lending_cfg.display_name
+    assert lending_cfg.jse_code == "JS3020"
+    assert lending_cfg.icb_code == "30201020"
+    assert lending_cfg.jse_sector_name == "Consumer Lending"
 
     it_cfg = get_sector_config("it")
     assert it_cfg.short_label == "IT"
@@ -68,6 +75,11 @@ def test_sector_alias_resolution():
     assert resolve_sector_alias("JS3512") == "reit"
     assert resolve_sector_alias("JS1011") == "it"
     assert resolve_sector_alias("JS5011") == "construction"
+    assert resolve_sector_alias("lending") == "consumer_lending"
+    assert resolve_sector_alias("credit") == "consumer_lending"
+    assert resolve_sector_alias("consumer-lending") == "consumer_lending"
+    assert resolve_sector_alias("credit_services") == "consumer_lending"
+    assert resolve_sector_alias("JS3020") == "consumer_lending"
     assert resolve_sector_alias("nonexistent") is None
 
 
@@ -132,6 +144,7 @@ def test_missing_sector_prompt_strict_errors():
     assert has_sector_prompt('construction') is True
     assert has_sector_prompt('finance') is True
     assert has_sector_prompt('telcos') is True
+    assert has_sector_prompt('consumer_lending') is True
     assert has_sector_prompt('nonexistent_sector_xyz') is False
     assert has_sector_prompt('') is False
 
@@ -144,6 +157,7 @@ def test_missing_sector_prompt_strict_errors():
     # 3. has_orientation_prompt check
     assert has_orientation_prompt('mining') is True
     assert has_orientation_prompt('finance') is True
+    assert has_orientation_prompt('consumer_lending') is True
     assert has_orientation_prompt('nonexistent_sector_xyz') is False
 
     # 4. get_orientation_path raises FileNotFoundError on missing template, ValueError on empty

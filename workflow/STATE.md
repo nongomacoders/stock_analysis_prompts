@@ -11,6 +11,21 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Consumer Lending Sector Onboarding (`consumer_lending` / ICB `30201020`) & Stage 1/2 Integration**:
+  - Registered new sector `consumer_lending` in `companies/sectors.py`:
+    - Code: `consumer_lending`, Short Label: `Lending`, Display: `Consumer Lending`, ICB Code: `30201020`, JSE Code: `JS3020`.
+    - Aliases: `lending`, `credit`, `consumer-lending`, `credit_services`, `consumer lending`, `js3020`, `30201020`, `finance and credit services`.
+    - Distinct badge styling with high-contrast palette (`#fdf2f8` / `#9d174d`).
+    - Specialized personas: Stage 1 `Managing Director and Senior Forensic Credit & Lending Accounting Auditor` and Stage 2 `Managing Director & Head of Consumer Lending & Credit Equity Research`.
+  - Scaffolding & Known Companies:
+    - Initialized `companies/consumer_lending/__init__.py`.
+    - Registered `NTU` (Nutun Limited, formerly Transaction Capital `TCP`) in `KNOWN_COMPANIES` in `section_capture/db.py`.
+  - Forensic Directives & Pipeline Compilation:
+    - Added dedicated forensic credit rules to `workflow/export_stage1.py`: IFRS 9 Stage 1/2/3 ECL migration, qualitative macro overlays, loan vintage roll rates, carrying value & estimated remaining collections (ERC) of purchased book debts (PBD) and non-performing loan (NPL) portfolios, risk-adjusted NIM, and NCA rate caps.
+    - Integrated `consumer_lending` into `workflow/generate_stage2.py`.
+    - Added robust error handling and period preservation across `section_capture/audit_dialog.py`.
+  - Test Suite: Updated `tests/test_sectors.py` and verified full test suite. All 133 tests passing (100%).
+
 - **Automated SENS & PDF Archiving and Reporting Period Detection Engine**:
   - **Reporting Period Auto-Detection**: Implemented `detect_reporting_period()` in `section_capture/db.py` supporting interim and annual patterns (`1H27`, `FY26`, `HY2027`, `1H26`, `2H26`, `FY27`) across filenames and page text.
   - **Unified Document Classification & Period Dialog**: Enhanced `DocumentClassifyDialog` in `section_capture/window.py` to prompt and confirm both Document Role and Reporting Period in a single unified step upon opening new PDFs.
