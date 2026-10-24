@@ -11,6 +11,23 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **DeepSeek Toleration & Automation for Stage 2 Institutional Valuations with Full PDF Ingestion**:
+  - Investigated and verified that complete primary source company PDF reports (e.g. 328-page IAR/AFS) can be ingested alongside Stage 2 valuation prompts directly into DeepSeek Flash (`deepseek/deepseek-v4.1-flash-1017`) via OpenRouter, fully eliminating manual browser copy-pasting.
+  - **Context Toleration & Benchmarks on APF (Accelerate Property Fund)**:
+    - **PDF Text Ingestion**: Extracted all 328 physical pages of `APF_IAR_2026_Combined_V21.pdf` (567,928 characters) in **0.25 seconds** using `pypdfium2`.
+    - **Combined Dossier**: Bundled the Stage 2 prompt + Audited Stage 1 Ground Truth + 8 post-balance sheet SENS notices + complete 328-page PDF text (totaling **645,359 characters / 178,408 prompt tokens**).
+    - **Context Utilization**: Only ~15.4% of DeepSeek's 1,048,576 token (1M) context window (over 84% unused headroom).
+    - **Execution & Cost**: Completed in **23.4 seconds** for **$0.026 USD (~2.6 cents)**.
+  - **Valuation Quality & Deterministic Output**:
+    - Emitted complete publication-grade research note saved to [`companies/reit/APF/briefs/FY26/APF_FY26_stage2_deepseek_valuation_response.md`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/companies/reit/APF/briefs/FY26/APF_FY26_stage2_deepseek_valuation_response.md).
+    - Generated compliant machine-readable JSON summary card and executive table parsed automatically by `parse_valuation_summary()`:
+      - **12M JSE Target Price**: **R0.35** (SELL, implied upside −41.7%, 0% dividend yield).
+      - Reconciled SOTP NAV of R0.47, applying a 25% distressed discount for the March 2027 R3.0bn debt cliff and ICR covenant step-up.
+      - Modeled bottom-up 2-year forecast: FY27E NPI −8.5%, Office vacancy 55%, DIPS 0.10 cps.
+  - **Desktop UI Integration (`section_capture/audit_dialog.py`)**:
+    - Added one-click **`⚡ Run Valuation with DeepSeek`** button to Stage 2 tab. Automatically extracts the primary source PDF text, packages SENS notices, runs asynchronously via `OpenRouterWorker(QThread)`, saves to SQLite and disk, and refreshes the Portfolio Coverage Dashboard.
+    - Added unit test coverage in [`tests/test_portfolio_valuation.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/tests/test_portfolio_valuation.py). All **119 tests pass** in 26.3s.
+
 - **DeepSeek Toleration & Automation for Stage 1 Cognitive Forensic Audits**:
   - Investigated and tested whether DeepSeek via OpenRouter (`deepseek/deepseek-v4.1-flash-1017`) can directly process Stage 1 Forensic Audit prompts, eliminating manual copy-pasting to Gemini web chat.
   - **Context Toleration & Benchmarks on APF (Accelerate Property Fund)**:

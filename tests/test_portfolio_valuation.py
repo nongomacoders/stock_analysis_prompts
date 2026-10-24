@@ -449,6 +449,8 @@ def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path):
     try:
         assert hasattr(dlg, "run_s1_deepseek_btn")
         assert "DeepSeek" in dlg.run_s1_deepseek_btn.text()
+        assert hasattr(dlg, "run_s2_deepseek_btn")
+        assert "DeepSeek" in dlg.run_s2_deepseek_btn.text()
     finally:
         dlg.deleteLater()
 

@@ -719,6 +719,11 @@ class AuditValuationDialog(QDialog):
         self.copy_s2_btn.setToolTip("Copy prompt text to clipboard.")
         self.copy_s2_btn.clicked.connect(self.copy_stage2_prompt)
         row2.addWidget(self.copy_s2_btn)
+        self.run_s2_deepseek_btn = QPushButton("⚡ Run Valuation with DeepSeek")
+        self.run_s2_deepseek_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
+        self.run_s2_deepseek_btn.setToolTip("Execute the Stage 2 Institutional Valuation directly via OpenRouter (DeepSeek Flash) with full PDF ingestion.")
+        self.run_s2_deepseek_btn.clicked.connect(self.run_stage2_deepseek)
+        row2.addWidget(self.run_s2_deepseek_btn)
         left_header.addLayout(row2)
 
         left_layout.addLayout(left_header)
@@ -1345,14 +1350,121 @@ class AuditValuationDialog(QDialog):
             self.s2_response_edit.setPlainText(text)
             self.s2_response_status.setText(f"Loaded {len(text):,} chars from {Path(path).name}.")
 
-    def save_stage2_response(self):
+    def run_stage2_deepseek(self):
+        """Executes Stage 2 Institutional Valuation directly with DeepSeek Flash, ingesting the full PDF report."""
+        base_prompt = self.s2_prompt_edit.toPlainText().strip()
+        if not base_prompt:
+            self.generate_stage2_prompt()
+            base_prompt = self.s2_prompt_edit.toPlainText().strip()
+        if not base_prompt:
+            QMessageBox.warning(self, "No Prompt", "Could not generate Stage 2 prompt. Ensure Stage 1 determinations are saved.")
+            return
+
+        api_key = get_openrouter_api_key()
+        if not api_key:
+            QMessageBox.critical(self, "Missing API Key", "OpenRouter API key not configured in secrets.env or environment.")
+            return
+
+        # Find primary source PDF
+        sources_dir = self.company_dir / "sources"
+        pdf_files = sorted(sources_dir.glob("*.pdf")) if sources_dir.exists() else []
+        if not pdf_files:
+            QMessageBox.warning(self, "PDF Not Found", f"No source PDF found in {sources_dir}.")
+            return
+
+        # Fast page-by-page text extraction via pypdfium2
+        pdf_path = pdf_files[0]
+        self.run_s2_deepseek_btn.setEnabled(False)
+        self.run_s2_deepseek_btn.setText("⏳ Ingesting PDF...")
+        self.s2_prompt_status.setText(f"⏳ Ingesting {pdf_path.name}...")
+        QApplication.processEvents()
+
+        try:
+            import pypdfium2 as pdfium
+            pdf = pdfium.PdfDocument(str(pdf_path))
+            pages_text = []
+            for i, page in enumerate(pdf):
+                t_range = page.get_textpage().get_text_range().strip()
+                pages_text.append(f"--- [PDF Page {i+1} of {len(pdf)}] ---\n{t_range}")
+            pdf_extracted_text = "\n\n".join(pages_text)
+        except Exception as exc:
+            QMessageBox.critical(self, "PDF Extraction Failed", f"Could not extract text from {pdf_path.name}:\n\n{exc}")
+            self.run_s2_deepseek_btn.setEnabled(True)
+            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+            return
+
+        # Load SENS notices if present
+        sens_dir = sources_dir / "sens"
+        sens_notices = []
+        if sens_dir.exists():
+            candidate_files = []
+            if (sens_dir / "completed").exists():
+                candidate_files.extend(sorted((sens_dir / "completed").glob("*.txt")))
+            candidate_files.extend(sorted(f for f in sens_dir.glob("*.txt") if f.is_file()))
+            for f in candidate_files:
+                try:
+                    sens_notices.append(f"### SENS ANNOUNCEMENT: {f.name}\n\n{f.read_text(encoding='utf-8').strip()}")
+                except Exception:
+                    pass
+
+        # Assemble unified prompt package
+        prompt_sections = [base_prompt]
+        if sens_notices:
+            prompt_sections.append(
+                "# SUBSEQUENT SENS ANNOUNCEMENTS & POST-BALANCE SHEET EVENTS\n\n"
+                + "\n\n---\n\n".join(sens_notices)
+            )
+        prompt_sections.append(
+            f"# COMPLETE PRIMARY SOURCE FINANCIAL REPORT DISCLOSURES & AUDITED NOTES\n"
+            f"**Source Document:** {pdf_path.name} (Pages 1 to {len(pdf)})\n\n"
+            + pdf_extracted_text
+        )
+        full_dossier = "\n\n---\n\n".join(prompt_sections)
+
+        model = get_openrouter_model()
+        token_est = len(full_dossier) // 4
+        self.run_s2_deepseek_btn.setText("⏳ Running DeepSeek...")
+        self.s2_prompt_status.setText(f"⏳ Submitting {len(full_dossier):,} chars (~{token_est:,} tokens) to {model} via OpenRouter...")
+
+        self._s2_worker = OpenRouterWorker(full_dossier, model=model, parent=self, timeout=360, max_tokens=16384)
+
+        def on_finished(response_text, elapsed, stats):
+            self.s2_response_edit.setPlainText(response_text)
+            self.save_stage2_response(notify=False)
+            cost_val = stats.get("cost_usd")
+            cost_str = f", ${cost_val:.4f} USD" if cost_val is not None else ""
+            tot_tok = stats.get("total_tokens", 0)
+            status_msg = f"✓ DeepSeek Stage 2 valuation complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
+            self.s2_prompt_status.setText(status_msg)
+            self.s2_response_status.setText(f"✓ DeepSeek completed in {elapsed:.1f}s ({len(response_text):,} chars). Metrics saved.")
+            self.run_s2_deepseek_btn.setEnabled(True)
+            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+
+        def on_error(err_msg):
+            self.s2_prompt_status.setText(f"❌ DeepSeek Stage 2 valuation failed: {err_msg}")
+            QMessageBox.critical(self, "DeepSeek Query Failed", f"Failed to execute Stage 2 Valuation:\n\n{err_msg}")
+            self.run_s2_deepseek_btn.setEnabled(True)
+            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+
+        self._s2_worker.finished_query.connect(on_finished)
+        self._s2_worker.error_query.connect(on_error)
+        self._s2_worker.start()
+
+    def save_stage2_response(self, notify: bool = True):
         text = self.s2_response_edit.toPlainText().strip()
         if not text:
-            QMessageBox.warning(self, "Empty Report", "Please paste or enter the Stage 2 Valuation Report before saving.")
+            if notify:
+                QMessageBox.warning(self, "Empty Report", "Please paste or enter the Stage 2 Valuation Report before saving.")
             return
 
         # Resolve primary report SHA (if source is a SENS notice)
         primary_sha = getattr(self.source, "sha256", "") if self.source else ""
+        if not primary_sha and self.ticker:
+            from workflow.export_stage1 import get_latest_report_sha
+            with connect_db(self.db_path) as conn:
+                pair = get_latest_report_sha(conn, self.ticker)
+                if pair:
+                    primary_sha = pair[0]
         if primary_sha:
             with connect_db(self.db_path) as conn:
                 rep = conn.execute("SELECT parent_report_sha256 FROM reports WHERE sha256 = ?", (primary_sha,)).fetchone()
@@ -1408,9 +1520,10 @@ class AuditValuationDialog(QDialog):
         if hasattr(self, "company_combo"):
             self._populate_company_combo(self.current_company_data)
         self.tab_portfolio.refresh()
-        QMessageBox.information(
-            self,
-            "Valuation Report Saved",
-            f"Valuation Report{sens_msg} successfully saved to SQLite and disk!\n\n"
-            f"Metrics and Monitoring Triggers are updated in your Portfolio Coverage Dashboard.",
-        )
+        if notify:
+            QMessageBox.information(
+                self,
+                "Valuation Report Saved",
+                f"Valuation Report{sens_msg} successfully saved to SQLite and disk!\n\n"
+                f"Metrics and Monitoring Triggers are updated in your Portfolio Coverage Dashboard.",
+            )

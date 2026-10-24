@@ -1,6 +1,6 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
 **Target Asset:** APF Properties (APF)  
-**Sector:** Reit  
+**Sector:** Real Estate Investment Trusts (JS3512 / Reit)  
 **Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
@@ -534,14 +534,32 @@ In the Commercial sector specifically, 4 office buildings (Portside, 73 Hertzog,
 ## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE
 
 1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**
-   - Must begin with a standardized **Executive Valuation Summary Card** containing:
-     * **Sector:** REIT / Listed Property
-     * **Current Reference Share Price:** R[X.XX] (or ZAR cents)
-     * **12-Month JSE Target Price:** **R[X.XX]** (or ZAR cents)
-     * **Implied Capital Upside:** [+/-X.X%]
-     * **Forward Dividend Yield (FY27E):** [X.X%]
-     * **Projected 12-Month Total Shareholder Return (TSR):** **[+/-X.X%]**
-     * **Institutional Recommendation:** **[BUY | HOLD | SELL]**
+   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:
+     ```json
+     {
+       "ticker": "APF",
+       "company_name": "APF Properties",
+       "sector": "reit",
+       "jse_sector_code": "JS3512",
+       "jse_sector_name": "Real Estate Investment Trusts",
+       "recommendation": "BUY | HOLD | SELL",
+       "reference_price_zar": 0.00,
+       "target_price_zar": 0.00,
+       "implied_upside_pct": 0.0,
+       "forward_dividend_yield_pct": 0.0,
+       "projected_12m_tsr_pct": 0.0
+     }
+     ```
+   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
+     | Metric | Determination | Basis & Key Commentary |
+     | :--- | :---: | :--- |
+     | **Sector** | REIT / Listed Property (Real Estate Investment Trusts — JS3512 / ICB 351020) | [Sub-sector classification] |
+     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
+     | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
+     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
+     | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
+     | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
+     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
    - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Property Operating Forecast (FY27E & FY28E):** Like-for-like NPI growth, vacancy rates by sector, contractual escalations, renewal reversions, and WALE.
 3. **Distributable Income (DIPS) & Balance Sheet Bridge:** Reconciliation of IFRS profit to SA REIT distributable earnings, debt schedule, average cost of debt, interest rate hedging %, and LTV trajectory.
@@ -552,3 +570,14 @@ In the Commercial sector specifically, 4 office buildings (Portside, 73 Hertzog,
    - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb (e.g. 'Every 25 bps movement in weighted average cap rate shifts NAV by R X.XX/share; every 50 bps rise in cost of debt impacts DIPS by Y%').
    - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. successful non-core asset disposals, de-gearing milestones, accretive development completions).
    - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. distribution declaration dates, lease expiry cliff dates) for portfolio managers to mark.
+
+---
+
+## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)
+
+To ensure institutional publication quality and 100% deterministic parsing, you MUST follow these formatting rules:
+1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native float numbers (e.g. `0.42`, `-30.0`), not text descriptions.
+2. **Zero HTML Tags:** DO NOT use any HTML tags (`<br>`, `<br/>`, `<span>`, `<div>`, etc.). Use standard Markdown newlines.
+3. **Single-Line Table Rows:** Every Markdown table row MUST be on a single continuous line starting and ending with `|`. DO NOT insert blank lines (`\n\n`) within table rows or split cells across multiple lines.
+4. **Isolated Numeric Determination Cells:** In the Valuation Summary Card, keep the Determination column strictly limited to the metric value (e.g. `R0.42` or `-30.0%`). Reserve all commentary and secondary notes strictly for the Commentary column.
+5. **No Special Symbols or Arbitrary Code Blocks:** DO NOT wrap ordinary numbers or percentages in backticks (`). Reserve backticks solely for the initial JSON block and formal code/file identifiers.
