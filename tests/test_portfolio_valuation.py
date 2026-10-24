@@ -432,6 +432,27 @@ def test_open_prompt_folder_action(qapp, tmp_path, monkeypatch):
         dlg.deleteLater()
 
 
+def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path):
+    """Test that AuditValuationDialog provides the one-click DeepSeek Stage 1 execution action."""
+    test_db = tmp_path / "test_stage1_btn.sqlite"
+    sha = "test_sha_stage1_ds"
+    upsert_report(sha256=sha, filename="APF_IAR_2026.pdf", db_path=test_db)
+
+    class DummySource:
+        filename = "APF_IAR_2026.pdf"
+        sha256 = sha
+        detected_sector = "reit"
+        def get_all_sections(self):
+            return []
+
+    dlg = AuditValuationDialog(DummySource(), db_path=test_db)
+    try:
+        assert hasattr(dlg, "run_s1_deepseek_btn")
+        assert "DeepSeek" in dlg.run_s1_deepseek_btn.text()
+    finally:
+        dlg.deleteLater()
+
+
 def test_audit_dialog_without_loading_pdf_sets_ticker_from_dropdown(qapp, tmp_path):
     """Test that opening AuditValuationDialog with source=None automatically populates company dropdown."""
     test_db = tmp_path / "test_dropdown_no_pdf.sqlite"

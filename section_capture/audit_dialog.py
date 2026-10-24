@@ -51,6 +51,7 @@ from section_capture.packages import PROJECT_ROOT, detect_sector_from_path
 from section_capture.portfolio_view import PortfolioView
 from workflow.export_stage1 import build_stage1_prompt_content
 from workflow.generate_stage2 import build_stage2_prompt_content
+from section_capture.openrouter import OpenRouterWorker, get_openrouter_api_key, get_openrouter_model
 
 
 def open_folder_and_select(file_or_dir: Path | str):
@@ -563,6 +564,11 @@ class AuditValuationDialog(QDialog):
         self.copy_s1_btn.setToolTip("Copy prompt text to clipboard (note: files > 100k chars should be uploaded directly into chat).")
         self.copy_s1_btn.clicked.connect(self.copy_stage1_prompt)
         left_header.addWidget(self.copy_s1_btn)
+        self.run_s1_deepseek_btn = QPushButton("⚡ Run with DeepSeek")
+        self.run_s1_deepseek_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
+        self.run_s1_deepseek_btn.setToolTip("Execute the Stage 1 Forensic Audit directly via OpenRouter (DeepSeek Flash) without manual copy-pasting.")
+        self.run_s1_deepseek_btn.clicked.connect(self.run_stage1_deepseek)
+        left_header.addWidget(self.run_s1_deepseek_btn)
         left_layout.addLayout(left_header)
 
         self.s1_prompt_edit = QPlainTextEdit()
@@ -1054,6 +1060,51 @@ class AuditValuationDialog(QDialog):
             else:
                 self.s1_prompt_status.setText(f"✓ Copied Stage 1 Prompt ({len(text):,} chars) to clipboard. Ready for Argon (no PDF).")
 
+    def run_stage1_deepseek(self):
+        """Executes the compiled Stage 1 Forensic Audit prompt directly with DeepSeek via OpenRouter."""
+        prompt_text = self.s1_prompt_edit.toPlainText().strip()
+        if not prompt_text:
+            self.compile_stage1_prompt()
+            prompt_text = self.s1_prompt_edit.toPlainText().strip()
+        if not prompt_text:
+            QMessageBox.warning(self, "No Prompt", "Could not compile Stage 1 prompt. Ensure sections are captured.")
+            return
+
+        api_key = get_openrouter_api_key()
+        if not api_key:
+            QMessageBox.critical(self, "Missing API Key", "OpenRouter API key not configured in secrets.env or environment.")
+            return
+
+        model = get_openrouter_model()
+        self.run_s1_deepseek_btn.setEnabled(False)
+        self.run_s1_deepseek_btn.setText("⏳ Running DeepSeek...")
+        token_est = len(prompt_text) // 4
+        self.s1_prompt_status.setText(f"⏳ Submitting {len(prompt_text):,} chars (~{token_est:,} tokens) to {model} via OpenRouter...")
+
+        self._s1_worker = OpenRouterWorker(prompt_text, model=model, parent=self, timeout=300, max_tokens=16384)
+
+        def on_finished(response_text, elapsed, stats):
+            self.s1_response_edit.setPlainText(response_text)
+            self.save_stage1_response(notify=False)
+            cost_val = stats.get("cost_usd")
+            cost_str = f", ${cost_val:.4f} USD" if cost_val is not None else ""
+            tot_tok = stats.get("total_tokens", 0)
+            status_msg = f"✓ DeepSeek Stage 1 audit complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
+            self.s1_prompt_status.setText(status_msg)
+            self.s1_response_status.setText(f"✓ DeepSeek completed in {elapsed:.1f}s ({len(response_text):,} chars). Saved.")
+            self.run_s1_deepseek_btn.setEnabled(True)
+            self.run_s1_deepseek_btn.setText("⚡ Run with DeepSeek")
+
+        def on_error(err_msg):
+            self.s1_prompt_status.setText(f"❌ DeepSeek Stage 1 audit failed: {err_msg}")
+            QMessageBox.critical(self, "DeepSeek Query Failed", f"Failed to execute Stage 1 Forensic Audit:\n\n{err_msg}")
+            self.run_s1_deepseek_btn.setEnabled(True)
+            self.run_s1_deepseek_btn.setText("⚡ Run with DeepSeek")
+
+        self._s1_worker.finished_query.connect(on_finished)
+        self._s1_worker.error_query.connect(on_error)
+        self._s1_worker.start()
+
     def paste_stage1_response(self):
         text = QApplication.clipboard().text().strip()
         if text:
@@ -1069,14 +1120,21 @@ class AuditValuationDialog(QDialog):
             self.s1_response_edit.setPlainText(text)
             self.s1_response_status.setText(f"Loaded {len(text):,} chars from {Path(path).name}.")
 
-    def save_stage1_response(self):
+    def save_stage1_response(self, notify: bool = True):
         text = self.s1_response_edit.toPlainText().strip()
         if not text:
-            QMessageBox.warning(self, "Empty Response", "Please paste or enter the Stage 1 response before saving.")
+            if notify:
+                QMessageBox.warning(self, "Empty Response", "Please paste or enter the Stage 1 response before saving.")
             return
 
         # Save to SQLite if registered
         sha = getattr(self.source, "sha256", "") if self.source else ""
+        if not sha and self.ticker:
+            from workflow.export_stage1 import get_latest_report_sha
+            with connect_db(self.db_path) as conn:
+                pair = get_latest_report_sha(conn, self.ticker)
+                if pair:
+                    sha = pair[0]
         if sha:
             save_stage1_report(sha, response=text, db_path=self.db_path)
 
@@ -1087,12 +1145,13 @@ class AuditValuationDialog(QDialog):
         self.s1_response_status.setText(
             f"✓ Saved Stage 1 Response ({len(text):,} chars) to SQLite and {out_file.name}."
         )
-        QMessageBox.information(
-            self,
-            "Stage 1 Response Saved",
-            f"Stage 1 Audit Response successfully saved to SQLite and disk!\n\n"
-            f"Ground truth determinations are now ready for Stage 2 Institutional Valuation.",
-        )
+        if notify:
+            QMessageBox.information(
+                self,
+                "Stage 1 Response Saved",
+                f"Stage 1 Audit Response successfully saved to SQLite and disk!\n\n"
+                f"Ground truth determinations are now ready for Stage 2 Institutional Valuation.",
+            )
 
     # =========================================================================
     # STAGE 2 ACTIONS

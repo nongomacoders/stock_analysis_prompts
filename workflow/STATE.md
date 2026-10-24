@@ -11,6 +11,22 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **DeepSeek Toleration & Automation for Stage 1 Cognitive Forensic Audits**:
+  - Investigated and tested whether DeepSeek via OpenRouter (`deepseek/deepseek-v4.1-flash-1017`) can directly process Stage 1 Forensic Audit prompts, eliminating manual copy-pasting to Gemini web chat.
+  - **Context Toleration & Benchmarks on APF (Accelerate Property Fund)**:
+    - **Compacted Prompt (Deduplicated Master Ledger)**: 961,898 chars (~262,604 tokens). Processed in **17.2 seconds** for **$0.037 USD** (3,182 completion tokens).
+    - **Full Uncompacted Prompt**: 1,779,181 chars (~507,827 tokens — over half a million tokens). Processed in **38.3 seconds** for **$0.073 USD** (8,751 completion tokens, 28,866 chars, 4,264 words).
+    - Both tests ran without network or gateway errors within DeepSeek's 1,048,576 token (1M) context window.
+  - **Forensic Quality Evaluation**:
+    - DeepSeek successfully resolved all 7 key REIT accounting junctions with line-by-line arithmetic proofs, identifying critical nuances: DIPS of 0.09 cps vs FFO of 6.25 cps after R126m capex deductions; FFO and ICR propped up by R166.7m of one-offs (SARS VAT refund + Covid insurance); recurring ICR at ~0.90x breaching the 1.1x bank covenant; 100% of R3.0bn debt maturing 31 March 2027; commercial vacancy surging to 45.2%; and Fourways Mall valuation increasing R196.5m despite NPI collapsing 39.7%.
+    - Result saved to [`companies/reit/APF/briefs/FY26/APF_FY26_stage1_deepseek_response.md`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/companies/reit/APF/briefs/FY26/APF_FY26_stage1_deepseek_response.md).
+  - **Desktop UI Integration & Automation (`section_capture/audit_dialog.py`)**:
+    - Added one-click `"⚡ Run with DeepSeek"` action in the Stage 1 Audit tab.
+    - Added background `OpenRouterWorker` execution with live token, latency, and dollar cost reporting.
+    - Added automated persistence directly to SQLite (`reports.stage1_response`) and disk (`*_stage1_audit_response.md`).
+    - Added unit test `test_audit_dialog_run_stage1_deepseek_btn` in `tests/test_portfolio_valuation.py`.
+    - Full test suite verified: **119 passed in 26.01s with 0 errors**.
+
 - **Portfolio Valuation Database Resynchronization (`documents/analysis.sqlite`)**:
   - Investigated and resolved the root cause of identical valuation numbers (Target R43.50, Ref R30.69, BUY, +41.7% upside) appearing across all stocks (`PAN`, `LEW`, `ORN`, `APF`, `IOC`) on the Analyzed Stocks & Valuation Coverage screen.
   - **Root Cause**: During an earlier script run to backfill FTSE/JSE ICB sector codes, an update statement accidentally overwrote the `stage2_response` and valuation parameters (`target_price_zar`, `reference_price_zar`, `recommendation`, `upside_pct`, `tsr_pct`) across all database rows with Pan African Resources' note data. The markdown valuation notes on disk in `companies/<sector>/<TICKER>/briefs/FY26/` remained completely authentic and uncorrupted.

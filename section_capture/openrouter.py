@@ -120,6 +120,7 @@ def query_openrouter(
     model: str | None = None,
     timeout: int = 180,
     return_details: bool = False,
+    max_tokens: int = 16384,
 ) -> str | tuple[str, dict]:
     """Executes a synchronous completion query via OpenRouter API.
     
@@ -138,7 +139,7 @@ def query_openrouter(
             {"role": "user", "content": prompt}
         ],
         "temperature": 0.1,
-        "max_tokens": 16384,
+        "max_tokens": max_tokens,
         "reasoning": {"effort": "none"},
     }
 
@@ -213,17 +214,19 @@ class OpenRouterWorker(QThread):
     finished_query = Signal(str, float, object)  # Emits (response_text, elapsed_seconds, stats_dict)
     error_query = Signal(str)  # Emits error message
 
-    def __init__(self, prompt: str, model: str | None = None, parent=None):
+    def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens: int = 16384):
         super().__init__(parent)
         self.prompt = prompt
         self.model = model or get_openrouter_model()
+        self.timeout = timeout
+        self.max_tokens = max_tokens
         self.last_stats: dict = {}
 
     def run(self):
         self.started_query.emit(self.model)
         start_t = time.time()
         try:
-            res, stats = query_openrouter(self.prompt, self.model, return_details=True)
+            res, stats = query_openrouter(self.prompt, self.model, timeout=self.timeout, return_details=True, max_tokens=self.max_tokens)
             elapsed = time.time() - start_t
             stats["elapsed_seconds"] = round(elapsed, 2)
             gen_id = stats.get("generation_id")
