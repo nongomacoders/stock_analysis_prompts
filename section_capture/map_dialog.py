@@ -4,7 +4,7 @@ import json
 
 from PySide6.QtWidgets import (
     QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QFrame, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QMessageBox, QPlainTextEdit, QPushButton, QSpinBox, QSplitter, QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget,
+    QLineEdit, QMessageBox, QPlainTextEdit, QProgressBar, QPushButton, QSpinBox, QSplitter, QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget,
 )
 
 from .db import (
@@ -17,6 +17,7 @@ from .db import (
 from .openrouter import OpenRouterWorker, get_openrouter_model
 from .packages import build_prompt, clean_single_line_text, detect_sector_from_path, extract_selection_texts
 from .report_map import assign_section_ids, build_manual_section_map, load_questions_ledger, report_overview, save_map, save_questions_ledger
+from .section_matcher import auto_capture_section, compare_section_maps, extract_all_app_sections
 
 
 def fit_dialog_to_screen(dialog: QDialog, target_w: int, target_h: int, min_w: int = 540, min_h: int = 380):
@@ -116,12 +117,16 @@ class ReportMapDialog(QDialog):
         table_btn_row.setSpacing(6)
         self.remove_btn = QPushButton('Remove selected')
         self.remove_btn.clicked.connect(self._on_remove_clicked)
+        self.compare_btn = QPushButton('🔍 Compare with App Scan')
+        self.compare_btn.setToolTip('Compare your captured major sections against all app-detected sections in the PDF.')
+        self.compare_btn.clicked.connect(self.open_comparison_dialog)
         self.save_map_btn = QPushButton('Save Map & Update Dropdown')
         self.save_map_btn.setObjectName('primary')
         self.save_map_btn.setStyleSheet('font-weight: bold;')
         self.save_map_btn.clicked.connect(self.save_manual_map)
 
         table_btn_row.addWidget(self.remove_btn)
+        table_btn_row.addWidget(self.compare_btn)
         table_btn_row.addStretch(1)
         table_btn_row.addWidget(self.save_map_btn)
         left_layout.addLayout(table_btn_row)
@@ -298,6 +303,321 @@ class ReportMapDialog(QDialog):
         self.refresh()
         if self.parent() and hasattr(self.parent(), "_refresh_heading_options"):
             self.parent()._refresh_heading_options()
+
+    def open_comparison_dialog(self):
+        if not self.source:
+            QMessageBox.warning(self, "No PDF", "Please open a PDF report first.")
+            return
+        dlg = SectionComparisonDialog(
+            source=self.source,
+            user_sections=self._sections_data,
+            parent=self,
+            db_path=self.db_path,
+            sector=self.sector,
+        )
+        if dlg.exec():
+            self._update_table()
+            self.refresh()
+
+
+class SectionComparisonDialog(QDialog):
+    def __init__(self, source, user_sections: list[dict], parent=None, db_path=None, sector=None):
+        super().__init__(parent)
+        self.source = source
+        self.user_sections = user_sections
+        self.db_path = db_path
+        self.sector = sector
+        self.setWindowTitle('Report Sections Alignment & Matching')
+        fit_dialog_to_screen(self, target_w=1080, target_h=680)
+
+        self._app_sections = extract_all_app_sections(self.source)
+        self._comparison = compare_section_maps(self.user_sections, self._app_sections)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(14, 12, 14, 12)
+        layout.setSpacing(8)
+
+        matched_cnt = len(self._comparison.matched)
+        user_only_cnt = len(self._comparison.user_only)
+        app_only_cnt = len(self._comparison.app_only)
+
+        self.summary_label = QLabel(
+            f"<b>Report Map Comparison:</b> {matched_cnt} matching sections identified | "
+            f"{user_only_cnt} analyst custom sections | {app_only_cnt} additional app-discovered sections."
+        )
+        self.summary_label.setStyleSheet("font-size: 13px; color: #1e293b;")
+        layout.addWidget(self.summary_label)
+
+        hint = QLabel(
+            "Review how your captured report map aligns with all sections detected by the app. "
+            "You can synchronize page boundaries, adopt discovered sections, or auto-capture matching sections."
+        )
+        hint.setWordWrap(True)
+        hint.setStyleSheet("color: #64748b; font-size: 11px;")
+        layout.addWidget(hint)
+
+        filter_layout = QHBoxLayout()
+        filter_layout.setSpacing(6)
+        filter_layout.addWidget(QLabel("Filter View:"))
+        self.filter_combo = QComboBox()
+        self.filter_combo.addItems([
+            f"All Sections ({matched_cnt + user_only_cnt + app_only_cnt})",
+            f"🟢 Matched ({matched_cnt})",
+            f"🟡 User-Only ({user_only_cnt})",
+            f"🔵 App-Discovered ({app_only_cnt})",
+        ])
+        self.filter_combo.currentIndexChanged.connect(self._populate_table)
+        filter_layout.addWidget(self.filter_combo)
+        filter_layout.addStretch(1)
+        layout.addLayout(filter_layout)
+
+        self.table = QTableWidget()
+        self.table.setColumnCount(7)
+        self.table.setHorizontalHeaderLabels([
+            "Status", "User Section Title", "User Start", "App Detected Title", "App Pages", "Match Note", "Action"
+        ])
+        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        for col in (0, 2, 4, 5, 6):
+            self.table.horizontalHeader().setSectionResizeMode(col, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        layout.addWidget(self.table, 1)
+
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setVisible(False)
+        layout.addWidget(self.progress_bar)
+        self.status_label = QLabel("")
+        self.status_label.setStyleSheet("font-size: 11px; color: #0284c7;")
+        layout.addWidget(self.status_label)
+
+        btn_layout = QHBoxLayout()
+        btn_layout.setSpacing(8)
+
+        self.auto_capture_btn = QPushButton("⚡ Auto-Capture Matched Sections")
+        self.auto_capture_btn.setObjectName("primary")
+        self.auto_capture_btn.setStyleSheet("font-weight: bold; background-color: #0284c7; color: white; padding: 6px 12px;")
+        self.auto_capture_btn.setToolTip("Extract and save all matched sections into SQLite without manual bounding box drawing.")
+        self.auto_capture_btn.clicked.connect(self._on_auto_capture_clicked)
+
+        self.sync_bounds_btn = QPushButton("Sync Matched Boundaries")
+        self.sync_bounds_btn.setToolTip("Update your captured sections with the app's detected end page bounds.")
+        self.sync_bounds_btn.clicked.connect(self._on_sync_all_bounds)
+
+        self.add_all_app_btn = QPushButton("Adopt All App Sections")
+        self.add_all_app_btn.setToolTip("Add all discovered app sections into your report map.")
+        self.add_all_app_btn.clicked.connect(self._on_adopt_all_app_sections)
+
+        close_btn = QPushButton("Close")
+        close_btn.clicked.connect(self.accept)
+
+        btn_layout.addWidget(self.auto_capture_btn)
+        btn_layout.addWidget(self.sync_bounds_btn)
+        btn_layout.addWidget(self.add_all_app_btn)
+        btn_layout.addStretch(1)
+        btn_layout.addWidget(close_btn)
+        layout.addLayout(btn_layout)
+
+        self._populate_table()
+
+    def _populate_table(self):
+        filter_idx = self.filter_combo.currentIndex()
+        rows_data = []
+
+        # 0: All, 1: Matched, 2: User Only, 3: App Only
+        if filter_idx in (0, 1):
+            for m in self._comparison.matched:
+                rows_data.append(('matched', m))
+        if filter_idx in (0, 2):
+            for u in self._comparison.user_only:
+                rows_data.append(('user_only', u))
+        if filter_idx in (0, 3):
+            for a in self._comparison.app_only:
+                rows_data.append(('app_only', a))
+
+        self.table.setRowCount(len(rows_data))
+        for row, (kind, item) in enumerate(rows_data):
+            if kind == 'matched':
+                m = item
+                status_item = QTableWidgetItem("🟢 Matched")
+                status_item.setToolTip("Matches an app-detected section.")
+                u_title = m.user_section.get("title", "")
+                u_page = f"p. {m.user_section.get('start_page', '?')}"
+                a_title = m.app_section.get("title", "") if m.app_section else ""
+                a_st = m.app_section.get("start_page", "?") if m.app_section else "?"
+                a_en = m.app_section.get("end_page", "?") if m.app_section else "?"
+                a_pages = f"p. {a_st} - p. {a_en}"
+                note = f"{m.match_type} ({m.notes})"
+
+                self.table.setItem(row, 0, status_item)
+                self.table.setItem(row, 1, QTableWidgetItem(u_title))
+                self.table.setItem(row, 2, QTableWidgetItem(u_page))
+                self.table.setItem(row, 3, QTableWidgetItem(a_title))
+                self.table.setItem(row, 4, QTableWidgetItem(a_pages))
+                self.table.setItem(row, 5, QTableWidgetItem(note))
+
+                sync_btn = QPushButton("Sync Bounds")
+                sync_btn.setStyleSheet("font-size: 11px; padding: 2px 6px;")
+                sync_btn.clicked.connect(lambda _, m=m: self._sync_single_match(m))
+                self.table.setCellWidget(row, 6, sync_btn)
+
+            elif kind == 'user_only':
+                u = item
+                status_item = QTableWidgetItem("🟡 User Only")
+                status_item.setToolTip("Section defined by user without corresponding automated scan hit.")
+                u_title = u.get("title", "")
+                u_page = f"p. {u.get('start_page', '?')}"
+
+                self.table.setItem(row, 0, status_item)
+                self.table.setItem(row, 1, QTableWidgetItem(u_title))
+                self.table.setItem(row, 2, QTableWidgetItem(u_page))
+                self.table.setItem(row, 3, QTableWidgetItem("-"))
+                self.table.setItem(row, 4, QTableWidgetItem("-"))
+                self.table.setItem(row, 5, QTableWidgetItem("Analyst custom section"))
+                self.table.setItem(row, 6, QTableWidgetItem("-"))
+
+            elif kind == 'app_only':
+                a = item
+                status_item = QTableWidgetItem("🔵 App Discovered")
+                status_item.setToolTip("Discovered by the app scanner but not in user's captured map.")
+                a_title = a.get("title", "")
+                a_st = a.get("start_page", "?")
+                a_en = a.get("end_page", "?")
+                a_pages = f"p. {a_st} - p. {a_en}"
+                note = f"Source: {a.get('source', 'scan')}"
+
+                self.table.setItem(row, 0, status_item)
+                self.table.setItem(row, 1, QTableWidgetItem("-"))
+                self.table.setItem(row, 2, QTableWidgetItem("-"))
+                self.table.setItem(row, 3, QTableWidgetItem(a_title))
+                self.table.setItem(row, 4, QTableWidgetItem(a_pages))
+                self.table.setItem(row, 5, QTableWidgetItem(note))
+
+                add_btn = QPushButton("+ Add to Map")
+                add_btn.setStyleSheet("font-size: 11px; padding: 2px 6px; color: #0369a1;")
+                add_btn.clicked.connect(lambda _, a=a: self._adopt_single_app_section(a))
+                self.table.setCellWidget(row, 6, add_btn)
+
+    def _sync_single_match(self, match):
+        if not match.app_section:
+            return
+        end_p = match.app_section.get("end_page")
+        if end_p is not None:
+            match.user_section["end_page"] = end_p
+            QMessageBox.information(
+                self,
+                "Boundaries Synchronized",
+                f"Updated '{match.user_section.get('title')}' end page to p. {end_p}."
+            )
+            self._populate_table()
+
+    def _adopt_single_app_section(self, app_sec: dict):
+        title = app_sec.get("title", "")
+        start_p = app_sec.get("start_page", 1)
+        if not title:
+            return
+        if not any(u.get("title") == title for u in self.user_sections):
+            self.user_sections.append({"title": title, "start_page": start_p, "section_id": None})
+            self._comparison = compare_section_maps(self.user_sections, self._app_sections)
+            self._populate_table()
+            QMessageBox.information(self, "Section Added", f"Added '{title}' (p. {start_p}) to your section map.")
+
+    def _on_sync_all_bounds(self):
+        count = 0
+        for m in self._comparison.matched:
+            if m.app_section and m.app_section.get("end_page") is not None:
+                m.user_section["end_page"] = m.app_section["end_page"]
+                count += 1
+        self._populate_table()
+        QMessageBox.information(
+            self,
+            "Boundaries Synchronized",
+            f"Synchronized page boundaries for {count} matched sections."
+        )
+
+    def _on_adopt_all_app_sections(self):
+        added = 0
+        for a in self._comparison.app_only:
+            title = a.get("title", "")
+            start_p = a.get("start_page", 1)
+            if title and not any(u.get("title") == title for u in self.user_sections):
+                self.user_sections.append({"title": title, "start_page": start_p, "section_id": None})
+                added += 1
+        if added > 0:
+            self._comparison = compare_section_maps(self.user_sections, self._app_sections)
+            self._populate_table()
+            QMessageBox.information(self, "Sections Adopted", f"Added {added} app-discovered sections to your map.")
+        else:
+            QMessageBox.information(self, "No New Sections", "All app sections are already in your map.")
+
+    def _on_auto_capture_clicked(self):
+        matched = self._comparison.matched
+        if not matched:
+            QMessageBox.warning(self, "No Matched Sections", "No matched sections available to auto-capture.")
+            return
+
+        reply = QMessageBox.question(
+            self,
+            "Confirm Auto-Capture",
+            f"Auto-capture all {len(matched)} matched sections into SQLite?\n\n"
+            "This will extract page text and tables for each section automatically without manual cropping.",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.Yes,
+        )
+        if reply != QMessageBox.StandardButton.Yes:
+            return
+
+        self.auto_capture_btn.setEnabled(False)
+        self.progress_bar.setVisible(True)
+        self.progress_bar.setRange(0, len(matched))
+        self.progress_bar.setValue(0)
+
+        success = 0
+        errors = []
+
+        for i, m in enumerate(matched):
+            u_sec = m.user_section
+            a_sec = m.app_section or {}
+            title = u_sec.get("title", "")
+            start_p = u_sec.get("start_page") or a_sec.get("start_page", 1)
+            end_p = u_sec.get("end_page") or a_sec.get("end_page", start_p)
+
+            self.status_label.setText(f"Capturing ({i+1}/{len(matched)}): {title} (p.{start_p}-p.{end_p})...")
+            QApplication.processEvents()
+
+            try:
+                auto_capture_section(
+                    source=self.source,
+                    title=title,
+                    start_page=start_p,
+                    end_page=end_p,
+                    sector=self.sector,
+                    output_root=self.db_path,
+                )
+                success += 1
+            except Exception as exc:
+                errors.append(f"{title}: {exc}")
+
+            self.progress_bar.setValue(i + 1)
+            QApplication.processEvents()
+
+        self.auto_capture_btn.setEnabled(True)
+        self.status_label.setText(f"Auto-capture complete: {success} sections captured.")
+
+        if errors:
+            QMessageBox.warning(
+                self,
+                "Auto-Capture Completed with Warnings",
+                f"Successfully captured {success} sections.\n\nErrors encountered:\n" + "\n".join(errors[:5]),
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Auto-Capture Complete",
+                f"Successfully auto-captured {success} major sections directly into SQLite!\n\n"
+                "The sections are now available in your Saved Sections list and SQLite database.",
+            )
+        self.accept()
+
 
 
 class QuestionsLedgerDialog(QDialog):

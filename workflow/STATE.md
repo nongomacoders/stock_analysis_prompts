@@ -11,6 +11,14 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Automated Section Matching & Auto-Capture Engine (explore/auto-section-capture)**:
+  - Implemented section_capture/section_matcher.py with intelligent title normalization (acronym expansion for CEO, CFO, AFS, IAR; stop-word elimination; prefix stripping) and token-proximity scoring.
+  - Implemented extract_all_app_sections() combining PDF bookmarks/outline and heading heuristics to establish comprehensive section boundaries across full PDF reports.
+  - Implemented compare_section_maps() categorizing sections into 🟢 Matched, 🟡 User-Only (analyst custom sections), and 🔵 App-Discovered (detected sections not yet in user map).
+  - Built SectionComparisonDialog in section_capture/map_dialog.py accessible via **🔍 Compare with App Scan** in the Report Map dialog.
+  - Added **⚡ Auto-Capture Matched Sections** action: automatically extracts full page texts and tables across physical page ranges, tags content types (	able, inancial_note, commentary), and saves SavedSection packages directly into SQLite without manual mouse cropping.
+  - Added full test coverage in 	ests/test_section_matcher.py (6 unit and GUI tests). Total test suite expanded to **125 tests passing (100%)**.
+
 - **Multi-PDF Dual-Disclosure Ingestion & Benchmarking (APF, IOC, CGR)**:
   - Enhanced AuditValuationDialog.run_stage2_deepseek() to ingest and tag *all* source PDFs located in companies/<sector>/<TICKER>/sources/ (e.g. Integrated Annual Report + Audited Financial Statements).
   - Validated multi-PDF ingestion on **iOCO (IOC)**: Ingested iOCO-IAR-2026.pdf (164 pages) + iOCO-AFS-July2026.pdf (102 pages) = 266 physical pages (220,123 tokens total) in 21.8s for .032 USD. Result: Target R4.75, BUY (+21.8%), 0% dividend yield, DCF R4.90 (Gemini baseline was Target R4.90, BUY, +23.7%).
