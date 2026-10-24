@@ -11,6 +11,16 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Automated SENS & PDF Archiving and Reporting Period Detection Engine**:
+  - **Reporting Period Auto-Detection**: Implemented `detect_reporting_period()` in `section_capture/db.py` supporting interim and annual patterns (`1H27`, `FY26`, `HY2027`, `1H26`, `2H26`, `FY27`) across filenames and page text.
+  - **Unified Document Classification & Period Dialog**: Enhanced `DocumentClassifyDialog` in `section_capture/window.py` to prompt and confirm both Document Role and Reporting Period in a single unified step upon opening new PDFs.
+  - **SQLite Database Schema Migration**: Added `period TEXT NOT NULL DEFAULT 'FY26'` to `reports` table in `documents/analysis.sqlite`, automatically migrated existing databases in `_migrate_schema()`, and updated `upsert_report()` to persist and retrieve period metadata.
+  - **Dynamic Period Switcher in AuditValuationDialog**: Added a `Period:` editable dropdown selector to the dialog header. Automatically synchronizes `self.briefs_dir` to `companies/<sector>/<TICKER>/briefs/<period>/`, loads existing Stage 1 / Stage 2 briefs, and creates new period subfolders seamlessly.
+  - **Automated SENS Archiving**: `save_stage2_response()` in `section_capture/audit_dialog.py` automatically moves all analyzed SENS announcements from `sources/sens/` into `sources/sens/completed/` upon saving a valuation note.
+  - **Automated Source PDF Archiving**: Implemented `archive_source_pdfs()` in `section_capture/db.py`. Upon saving a Stage 2 valuation note, primary source PDFs in `sources/` are automatically archived to `sources/completed/<period>/`, safely releasing and reloading active Qt/pdfium canvas handles, and updating `reports.original_path` in SQLite.
+  - **Company Hub Scaffolding**: Updated `new_company.py` to scaffold `sources/completed/` across newly created companies, and backfilled `sources/completed/` across all existing company hubs.
+  - **Full Test Suite Passing**: Added comprehensive unit tests in `tests/test_portfolio_valuation.py`. Total test suite expanded to **133 tests passing (100%)**.
+
 - **Dynamic Model-Agnostic UI Architecture & Status Bar Model Indicator**:
   - Eliminated hardcoded model names (DeepSeek) across buttons, status notifications, and dialog tooltips in section_capture/window.py, section_capture/audit_dialog.py, and section_capture/map_dialog.py.
   - Implemented get_model_display_name() and get_model_short_tag() in section_capture/openrouter.py:

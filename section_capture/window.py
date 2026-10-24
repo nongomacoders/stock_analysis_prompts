@@ -24,6 +24,7 @@ from .db import (
     auto_link_parent_report,
     connect_db,
     detect_doc_type_and_date,
+    detect_reporting_period,
     get_doc_badge,
     get_doc_code,
     get_linked_sens_reports,
@@ -259,13 +260,14 @@ class InsertSectionDialog(QDialog):
 
 
 class DocumentClassifyDialog(QDialog):
-    """Modal dialog prompting the analyst to classify a document role upon opening."""
+    """Modal dialog prompting the analyst to classify a document role and reporting period upon opening."""
 
-    def __init__(self, filename: str, initial_type: str = "annual_report", parent=None):
+    def __init__(self, filename: str, initial_type: str = "annual_report", initial_period: str = "FY26", parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Classify Document Role")
-        self.resize(480, 240)
+        self.setWindowTitle("Classify Document Role & Reporting Period")
+        self.resize(480, 270)
         self.selected_doc_type = initial_type
+        self.selected_period = initial_period
 
         layout = QVBoxLayout(self)
         layout.setContentsMargins(18, 16, 18, 16)
@@ -281,8 +283,8 @@ class DocumentClassifyDialog(QDialog):
         layout.addWidget(fn_lbl)
 
         desc_lbl = QLabel(
-            "Select this document's role to ensure accurate page citations ([IAR p. X] vs [AFS p. Y]) "
-            "and synchronized questions ledger across companion documents:"
+            "Select this document's role and reporting period to ensure accurate citations ([IAR p. X] vs [AFS p. Y]), "
+            "synchronized ledgers, and organized valuation briefs:"
         )
         desc_lbl.setWordWrap(True)
         desc_lbl.setStyleSheet("color: #64748b; font-size: 11px;")
@@ -298,6 +300,21 @@ class DocumentClassifyDialog(QDialog):
         if idx >= 0:
             self.type_combo.setCurrentIndex(idx)
         form.addRow("Document Role:", self.type_combo)
+
+        self.period_combo = QComboBox()
+        self.period_combo.setEditable(True)
+        common_periods = ["FY26", "1H27", "FY27", "1H26", "2H26", "FY25", "1H25"]
+        if initial_period not in common_periods:
+            common_periods.insert(0, initial_period)
+        for p in common_periods:
+            self.period_combo.addItem(p)
+        idx_p = self.period_combo.findText(initial_period)
+        if idx_p >= 0:
+            self.period_combo.setCurrentIndex(idx_p)
+        else:
+            self.period_combo.setEditText(initial_period)
+        form.addRow("Reporting Period:", self.period_combo)
+
         layout.addLayout(form)
 
         btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
@@ -307,6 +324,7 @@ class DocumentClassifyDialog(QDialog):
 
     def _on_accept(self):
         self.selected_doc_type = self.type_combo.currentData()
+        self.selected_period = self.period_combo.currentText().strip() or "FY26"
         self.accept()
 
 
@@ -1105,16 +1123,29 @@ class CaptureWindow(QMainWindow):
         self.export_label.setToolTip(str(db_file))
 
         doc_t, date_val = detect_doc_type_and_date(candidate.path)
+        sample_txt = ""
+        try:
+            if candidate.plumber and len(candidate.plumber.pages) > 0:
+                sample_txt = candidate.plumber.pages[0].extract_text() or ""
+        except Exception:
+            pass
+        detected_per = detect_reporting_period(candidate.path, text_sample=sample_txt)
+        period_val = detected_per
+
         # Check if already classified in DB or prompt user if interactive
         if db_file.exists():
             with connect_db(db_file) as conn:
-                existing_rep = conn.execute("SELECT doc_type FROM reports WHERE sha256 = ?", (candidate.sha256,)).fetchone()
-                if existing_rep and existing_rep["doc_type"]:
-                    doc_t = existing_rep["doc_type"]
+                existing_rep = conn.execute("SELECT doc_type, period FROM reports WHERE sha256 = ?", (candidate.sha256,)).fetchone()
+                if existing_rep:
+                    if existing_rep["doc_type"]:
+                        doc_t = existing_rep["doc_type"]
+                    if "period" in existing_rep.keys() and existing_rep["period"]:
+                        period_val = existing_rep["period"]
                 elif self.isVisible() and not os.environ.get("PYTEST_CURRENT_TEST") and not getattr(self, "_suppress_classification_dialog", False):
-                    dlg = DocumentClassifyDialog(candidate.path.name, initial_type=doc_t, parent=self)
+                    dlg = DocumentClassifyDialog(candidate.path.name, initial_type=doc_t, initial_period=detected_per, parent=self)
                     if dlg.exec() == QDialog.DialogCode.Accepted:
                         doc_t = dlg.selected_doc_type
+                        period_val = dlg.selected_period
 
         upsert_report(
             sha256=candidate.sha256,
@@ -1123,6 +1154,7 @@ class CaptureWindow(QMainWindow):
             physical_page_count=candidate.page_count,
             doc_type=doc_t,
             announcement_date=date_val,
+            period=period_val,
             db_path=self.output_root,
         )
         auto_link_companion_reports(candidate.sha256, candidate.path, doc_type=doc_t, db_path=self.output_root)

@@ -48,13 +48,14 @@ def create_company(ticker: str, sector: str, name: str | None = None) -> Path:
 
     # Create directory tree
     sources_dir = company_dir / "sources"
+    sources_completed_dir = sources_dir / "completed"
     sens_dir = sources_dir / "sens"
     sens_completed_dir = sens_dir / "completed"
     models_dir = company_dir / "models"
     research_dir = company_dir / "research"
     briefs_dir = company_dir / "briefs"
 
-    for d in [sources_dir, sens_dir, sens_completed_dir, models_dir, research_dir, briefs_dir]:
+    for d in [sources_dir, sources_completed_dir, sens_dir, sens_completed_dir, models_dir, research_dir, briefs_dir]:
         d.mkdir(parents=True, exist_ok=True)
 
     # 1. companies/<SECTOR>/<TICKER>/__init__.py

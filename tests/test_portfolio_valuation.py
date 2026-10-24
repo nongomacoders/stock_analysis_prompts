@@ -726,3 +726,102 @@ def test_create_company_scaffolds_sens_folder(tmp_path, monkeypatch):
     content = (sens_dir / "README.md").read_text(encoding="utf-8")
     assert "SENS Continuous Disclosures: Test Mining Co Ltd (TEST)" in content
 
+def test_detect_reporting_period():
+    from section_capture.db import detect_reporting_period
+
+    assert detect_reporting_period("fy26-audited-annual-financial-statements-2026.pdf") == "FY26"
+    assert detect_reporting_period("PIK_1H27_results_presentation.pdf") == "1H27"
+    assert detect_reporting_period("PIK_HY2027_interim.pdf") == "1H27"
+    assert detect_reporting_period("interim_report_26.pdf") == "1H26"
+    assert detect_reporting_period("2H26_results.pdf") == "2H26"
+    assert detect_reporting_period("2027-annual-report.pdf") == "FY27"
+    assert detect_reporting_period("generic.pdf", text_sample="for the six months ended 31 August 2026") == "1H26"
+    assert detect_reporting_period("generic.pdf") == "FY26"
+
+
+def test_archive_source_pdfs(tmp_path):
+    from section_capture.db import archive_source_pdfs, connect_db, upsert_report
+
+    comp_dir = tmp_path / "companies/retail/TST"
+    sources_dir = comp_dir / "sources"
+    sources_dir.mkdir(parents=True)
+    pdf1 = sources_dir / "TST_FY26_AFS.pdf"
+    pdf1.write_bytes(b"%PDF-1.4 test AFS")
+    pdf2 = sources_dir / "TST_FY26_Presentation.pdf"
+    pdf2.write_bytes(b"%PDF-1.4 test Pres")
+
+    # SENS file in sens/ should NOT be moved by archive_source_pdfs
+    sens_dir = sources_dir / "sens"
+    sens_dir.mkdir()
+    sens_file = sens_dir / "notice.txt"
+    sens_file.write_text("SENS notice", encoding="utf-8")
+
+    db_path = tmp_path / "test_archive.sqlite"
+    upsert_report(sha256="sha_afs_1", filename=pdf1.name, original_path=str(pdf1), db_path=db_path)
+    upsert_report(sha256="sha_pres_2", filename=pdf2.name, original_path=str(pdf2), db_path=db_path)
+
+    moved = archive_source_pdfs(comp_dir, period="FY26", db_path=db_path)
+    assert len(moved) == 2
+    assert (sources_dir / "completed/FY26/TST_FY26_AFS.pdf").exists()
+    assert (sources_dir / "completed/FY26/TST_FY26_Presentation.pdf").exists()
+    assert not pdf1.exists()
+    assert not pdf2.exists()
+    assert sens_file.exists()  # SENS notice remains intact
+
+    # Verify SQLite original_path updated
+    with connect_db(db_path) as conn:
+        row = conn.execute("SELECT original_path FROM reports WHERE sha256 = 'sha_afs_1'").fetchone()
+        assert "completed" in row["original_path"]
+        assert "FY26" in row["original_path"]
+
+
+def test_audit_dialog_dynamic_period_switching(qapp, tmp_path):
+    from section_capture.audit_dialog import AuditValuationDialog
+    from section_capture.db import upsert_report
+
+    test_db = tmp_path / "test_period_switch.sqlite"
+    sha = "test_sha_period"
+    upsert_report(sha256=sha, filename="PIK_AFS_2026.pdf", period="FY26", db_path=test_db)
+
+    class DummySource:
+        filename = "PIK_AFS_2026.pdf"
+        sha256 = sha
+        detected_sector = "retail"
+        def get_all_sections(self):
+            return []
+
+    dlg = AuditValuationDialog(DummySource(), db_path=test_db)
+    try:
+        assert hasattr(dlg, "period_combo")
+        assert dlg.period == "FY26"
+        assert dlg.period_combo.currentText() == "FY26"
+
+        # Switch period to 1H27
+        dlg.period_combo.setEditText("1H27")
+        assert dlg.period == "1H27"
+        assert "1H27" in str(dlg.briefs_dir)
+
+        # Switch period back to FY26
+        dlg.period_combo.setEditText("FY26")
+        assert dlg.period == "FY26"
+        assert "FY26" in str(dlg.briefs_dir)
+    finally:
+        dlg.deleteLater()
+
+
+def test_document_classify_dialog_period_selection(qapp):
+    from section_capture.window import DocumentClassifyDialog
+
+    dlg = DocumentClassifyDialog("PIK_1H27_Interim.pdf", initial_type="interim", initial_period="1H27")
+    try:
+        assert hasattr(dlg, "period_combo")
+        assert dlg.period_combo.currentText() == "1H27"
+        assert dlg.selected_period == "1H27"
+
+        # Change period
+        dlg.period_combo.setEditText("FY27")
+        dlg._on_accept()
+        assert dlg.selected_period == "FY27"
+    finally:
+        dlg.deleteLater()
+

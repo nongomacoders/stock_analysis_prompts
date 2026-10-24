@@ -181,6 +181,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
             "ticker": ticker,
             "company_title": name,
             "sector": sector,
+            "period": s.get("period", "FY26"),
             "sha256": sha,
             "filename": s.get("filename") or (pdf_path.name if pdf_path else "report.pdf"),
             "pdf_path": pdf_path,
@@ -225,6 +226,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                     "ticker": ticker,
                     "company_title": c_name,
                     "sector": sec,
+                    "period": "FY26",
                     "sha256": sha,
                     "filename": pdf_path.name if pdf_path else "report.pdf",
                     "pdf_path": pdf_path,
@@ -319,6 +321,18 @@ class AuditValuationDialog(QDialog):
         self.load_canvas_btn.setEnabled(bool(initial_data.get("pdf_path") and Path(initial_data["pdf_path"]).exists()))
         header.addWidget(self.load_canvas_btn)
 
+        period_lbl = QLabel("<b>Period:</b>")
+        period_lbl.setStyleSheet("font-size: 12px; margin-left: 6px;")
+        header.addWidget(period_lbl)
+
+        self.period_combo = QComboBox()
+        self.period_combo.setEditable(True)
+        self.period_combo.setMinimumWidth(85)
+        self.period_combo.setStyleSheet("font-size: 12px; font-weight: bold; padding: 2px 4px;")
+        header.addWidget(self.period_combo)
+        self._populate_period_combo()
+        self.period_combo.currentTextChanged.connect(self._on_period_changed)
+
         header.addStretch()
 
         active_model = get_openrouter_model()
@@ -392,11 +406,54 @@ class AuditValuationDialog(QDialog):
                 return True
         return False
 
+    def _populate_period_combo(self):
+        if not hasattr(self, "period_combo"):
+            return
+        self.period_combo.blockSignals(True)
+        current = getattr(self, "period", "FY26")
+        self.period_combo.clear()
+        periods = [current]
+        # Check briefs directory for existing periods
+        b_dir = getattr(self, "company_dir", None)
+        if b_dir and (b_dir / "briefs").exists():
+            for sub in (b_dir / "briefs").iterdir():
+                if sub.is_dir() and sub.name not in periods:
+                    periods.append(sub.name)
+        for preset in ["FY26", "1H27", "FY27", "1H26", "2H26", "FY25"]:
+            if preset not in periods:
+                periods.append(preset)
+        for p in periods:
+            self.period_combo.addItem(p)
+        idx = self.period_combo.findText(current)
+        if idx >= 0:
+            self.period_combo.setCurrentIndex(idx)
+        else:
+            self.period_combo.setEditText(current)
+        self.period_combo.blockSignals(False)
+
+    def _on_period_changed(self, new_text: str):
+        cleaned = new_text.strip()
+        if not cleaned or cleaned == getattr(self, "period", "FY26"):
+            return
+        self.period = cleaned
+        prod_db = (PROJECT_ROOT / "documents/analysis.sqlite").resolve()
+        is_isolated_test_db = self.db_path.resolve() != prod_db and self.db_path.resolve() != resolve_db_path(None)
+        if is_isolated_test_db:
+            self.briefs_dir = self.db_path.parent / "briefs" / self.period
+        else:
+            self.briefs_dir = self.company_dir / f"briefs/{self.period}"
+        self.briefs_dir.mkdir(parents=True, exist_ok=True)
+        self._load_initial_data()
+        self.report_info_label.setText(f"Switched reporting period: <b>{self.period}</b>")
+
     def _apply_company_data(self, data: dict, reload_ui: bool = True):
         self.current_company_data = data
         self.ticker = data["ticker"]
         self.sector = data["sector"]
         self.company_title = data["company_title"]
+
+        if data.get("period"):
+            self.period = data["period"]
 
         comp_info = find_company_dir(self.ticker, sector=self.sector)
         self.company_dir = comp_info[1] if comp_info else PROJECT_ROOT / f"companies/{self.sector}/{self.ticker}"
@@ -407,6 +464,7 @@ class AuditValuationDialog(QDialog):
         else:
             self.briefs_dir = self.company_dir / f"briefs/{self.period}"
         self.briefs_dir.mkdir(parents=True, exist_ok=True)
+        self._populate_period_combo()
 
         self.setWindowTitle(f"Forensic Audit & Valuation Pipeline — {self.ticker} ({self.sector.capitalize()})")
 
@@ -1392,6 +1450,10 @@ class AuditValuationDialog(QDialog):
         # Find primary source PDF
         sources_dir = self.company_dir / "sources"
         pdf_files = sorted(sources_dir.glob("*.pdf")) if sources_dir.exists() else []
+        if not pdf_files and (sources_dir / "completed" / self.period).exists():
+            pdf_files = sorted((sources_dir / "completed" / self.period).glob("*.pdf"))
+        if not pdf_files and (sources_dir / "completed").exists():
+            pdf_files = sorted((sources_dir / "completed").glob("*.pdf"))
         if not pdf_files:
             QMessageBox.warning(self, "PDF Not Found", f"No source PDF found in {sources_dir}.")
             return
@@ -1533,17 +1595,34 @@ class AuditValuationDialog(QDialog):
             dated_file = self.briefs_dir / f"{self.ticker}_{self.period}_stage2_valuation_note_post_sens_{sens_dates[-1].replace('-', '')}.md"
             dated_file.write_text(text, encoding="utf-8")
 
-        # Auto-archive analyzed SENS notices if this was a SENS update
-        s2_prompt_text = self.s2_prompt_edit.toPlainText()
+        # Auto-archive analyzed SENS notices
+        from workflow.generate_sens_update import move_analyzed_sens_files
         moved_sens: list[Path] = []
-        if "STAGE 2-U" in s2_prompt_text or sens_dates:
-            from workflow.generate_sens_update import move_analyzed_sens_files
-            try:
-                moved_sens = move_analyzed_sens_files(self.company_dir)
-            except Exception:
-                pass
+        try:
+            moved_sens = move_analyzed_sens_files(self.company_dir)
+        except Exception:
+            pass
 
-        moved_msg = f" (Moved {len(moved_sens)} SENS notice(s) to completed/)" if moved_sens else ""
+        # Auto-archive source PDFs to sources/completed/<period>/
+        from section_capture.db import archive_source_pdfs
+        moved_pdfs: list[Path] = []
+        try:
+            active_src = getattr(self.parent(), "source", None) if self.parent() else None
+            moved_pdfs = archive_source_pdfs(
+                self.company_dir,
+                period=self.period,
+                db_path=self.db_path,
+                active_source=active_src,
+            )
+        except Exception:
+            pass
+
+        moved_parts = []
+        if moved_sens:
+            moved_parts.append(f"Moved {len(moved_sens)} SENS notice(s)")
+        if moved_pdfs:
+            moved_parts.append(f"Archived {len(moved_pdfs)} source PDF(s) to sources/completed/{self.period}/")
+        moved_msg = f" ({'; '.join(moved_parts)})" if moved_parts else ""
         sens_msg = f" + SENS ({', '.join(sens_dates)})" if sens_dates else ""
         self.s2_response_status.setText(
             f"✓ Saved Final Valuation Report{sens_msg}{moved_msg} ({len(text):,} chars) to SQLite and {out_file.name}."

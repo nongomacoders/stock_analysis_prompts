@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS reports (
     parent_report_sha256 TEXT,
     doc_type TEXT NOT NULL DEFAULT 'annual_report',
     announcement_date TEXT,
+    period TEXT NOT NULL DEFAULT 'FY26',
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
     FOREIGN KEY (parent_report_sha256) REFERENCES reports(sha256)
@@ -663,6 +664,110 @@ def detect_doc_type_and_date(path_or_filename: str | Path | None) -> tuple[str, 
 
     return "annual_report", announcement_date
 
+def detect_reporting_period(path_or_filename: str | Path | None, text_sample: str = "") -> str:
+    """Infers reporting period (e.g. 'FY26', '1H27', 'FY27', '1H26', '2H26') from filename or text."""
+    name = Path(path_or_filename).name if path_or_filename else ""
+    combined = f"{name} {text_sample}".lower()
+
+    # 1. Explicit 1H/2H/HY patterns: e.g. 1H27, 1H26, H1-26, HY2027, HY27, 2H26
+    m = re.search(r"(?:^|[^a-zA-Z0-9])(?:1h|h1|hy)[-_ ]*(?:20)?(\d{2})(?:$|[^a-zA-Z0-9])", combined)
+    if m:
+        return f"1H{m.group(1)}"
+    m = re.search(r"(?:^|[^a-zA-Z0-9])(?:2h|h2)[-_ ]*(?:20)?(\d{2})(?:$|[^a-zA-Z0-9])", combined)
+    if m:
+        return f"2H{m.group(1)}"
+
+    # 2. Interim / Half-year keyword with year
+    m = re.search(r"(?:interim|half[-_ ]*year|six[-_ ]*months|26[-_ ]*weeks)[^\n]{0,50}\b20(\d{2})\b", combined)
+    if m:
+        return f"1H{m.group(1)}"
+    m = re.search(r"(?:interim|half[-_ ]*year|six[-_ ]*months|26[-_ ]*weeks)[^\d\n]{0,30}(\d{2})\b", combined)
+    if m:
+        return f"1H{m.group(1)}"
+
+    # 3. Explicit FY patterns: e.g. FY26, FY2026, FY-26
+    m = re.search(r"(?:^|[^a-zA-Z0-9])fy[-_ ]*(?:20)?(\d{2})(?:$|[^a-zA-Z0-9])", combined)
+    if m:
+        return f"FY{m.group(1)}"
+
+    # 4. Annual / year-end keyword with year
+    m = re.search(r"(?:annual|year[-_ ]*end|integrated)[^0-9\n]{0,20}(?:20)?(\d{2})", combined)
+    if m:
+        return f"FY{m.group(1)}"
+
+    # 5. General 4-digit year (e.g. 2026 -> FY26, 2027 -> FY27)
+    m = re.search(r"(?:^|[^0-9])20(\d{2})(?:$|[^0-9])", combined)
+    if m:
+        return f"FY{m.group(1)}"
+
+    return "FY26"
+
+
+def archive_source_pdfs(
+    company_dir: Path,
+    period: str = "FY26",
+    db_path: Path | str | None = None,
+    active_source: Any | None = None,
+) -> list[Path]:
+    """Moves primary source PDFs from sources/ into sources/completed/<period>/ once valuation is saved."""
+    import shutil
+    sources_dir = Path(company_dir) / "sources"
+    if not sources_dir.exists():
+        return []
+
+    target_dir = sources_dir / "completed" / (period or "FY26")
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    candidate_pdfs = [
+        p for p in sources_dir.glob("*.pdf")
+        if p.is_file() and "sens" not in p.name.lower()
+    ]
+    if not candidate_pdfs:
+        return []
+
+    moved: list[Path] = []
+    active_cand = None
+    if active_source and hasattr(active_source, "path"):
+        try:
+            active_p = Path(active_source.path).resolve()
+            for cand in candidate_pdfs:
+                if cand.resolve() == active_p:
+                    active_cand = cand
+                    active_source.close()
+                    break
+        except Exception:
+            pass
+
+    for pdf_path in candidate_pdfs:
+        try:
+            dest = target_dir / pdf_path.name
+            if dest.exists():
+                dest.unlink()
+            shutil.move(str(pdf_path), str(dest))
+            moved.append(dest)
+
+            if db_path:
+                norm_rel = to_relative_project_path(dest)
+                with connect_db(db_path) as conn:
+                    conn.execute(
+                        "UPDATE reports SET original_path = ? WHERE filename = ?",
+                        (norm_rel, pdf_path.name),
+                    )
+        except Exception:
+            pass
+
+    if active_cand and active_source and hasattr(active_source, "document"):
+        new_dest = target_dir / active_cand.name
+        if new_dest.exists():
+            try:
+                active_source.path = new_dest.resolve()
+                active_source.document.load(str(active_source.path))
+            except Exception:
+                pass
+
+    return moved
+
+
 
 def auto_link_companion_reports(
     report_sha256: str,
@@ -758,6 +863,7 @@ def set_report_doc_type(sha256: str, doc_type: str, db_path: str | Path | None =
             (norm_type, now, sha256),
         )
         row = conn.execute("SELECT original_path FROM reports WHERE sha256 = ?", (sha256,)).fetchone()
+        conn.commit()
         if row and row["original_path"]:
             auto_link_companion_reports(sha256, row["original_path"], doc_type=norm_type, db_path=resolved)
 
@@ -866,10 +972,13 @@ def _migrate_schema(conn: sqlite3.Connection):
         ("sens_updates_json", "TEXT"),
         ("stage2_baseline_response", "TEXT"),
         ("stage2_baseline_updated_at", "TEXT"),
+        ("period", "TEXT NOT NULL DEFAULT 'FY26'"),
     ]
     for col_name, col_type in new_cols:
         if col_name not in cols:
             cur.execute(f"ALTER TABLE reports ADD COLUMN {col_name} {col_type}")
+            if col_name == "period":
+                cur.execute("UPDATE reports SET period = 'FY26' WHERE period IS NULL OR TRIM(period) = ''")
 
     # Backfill valuation summary if missing
     rows = cur.execute(
@@ -926,6 +1035,7 @@ def upsert_report(
     parent_report_sha256: str | None = None,
     doc_type: str | None = None,
     announcement_date: str | None = None,
+    period: str | None = None,
     db_path: str | Path | None = None,
 ) -> Path:
     now = datetime.now(timezone.utc).isoformat()
@@ -948,13 +1058,14 @@ def upsert_report(
                 if parent_row and parent_row["questions_ledger"]:
                     effective_ledger = parent_row["questions_ledger"].strip()
 
+            effective_period = period or detect_reporting_period(norm_orig_path or filename)
             conn.execute(
                 """
                 INSERT INTO reports (
                     sha256, filename, original_path, byte_size, physical_page_count,
                     report_map_json, questions_ledger, parent_report_sha256,
-                    doc_type, announcement_date, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    doc_type, announcement_date, period, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     sha256,
@@ -967,6 +1078,7 @@ def upsert_report(
                     effective_parent,
                     effective_doc_type,
                     effective_date,
+                    effective_period,
                     now,
                     now,
                 ),
@@ -981,6 +1093,7 @@ def upsert_report(
             new_parent = effective_parent if effective_parent is not None else existing["parent_report_sha256"]
             new_type = doc_type if doc_type is not None else (existing["doc_type"] or effective_doc_type)
             new_date = effective_date if effective_date is not None else existing["announcement_date"]
+            new_period = period if period is not None else (existing["period"] if "period" in existing.keys() and existing["period"] else detect_reporting_period(new_orig or new_filename))
 
             if new_type == "sens" and not new_parent and new_orig:
                 new_parent = auto_link_parent_report(sha256, new_orig, db_path=db_path)
@@ -997,10 +1110,11 @@ def upsert_report(
                        parent_report_sha256 = ?,
                        doc_type = ?,
                        announcement_date = ?,
+                       period = ?,
                        updated_at = ?
                  WHERE sha256 = ?
                 """,
-                (new_filename, new_orig, new_size, new_pages, new_map, new_q, new_parent, new_type, new_date, now, sha256),
+                (new_filename, new_orig, new_size, new_pages, new_map, new_q, new_parent, new_type, new_date, new_period, now, sha256),
             )
     return resolve_db_path(db_path)
 
@@ -1421,6 +1535,7 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 r.monitoring_triggers,
                 r.stage1_updated_at,
                 r.stage2_updated_at,
+                r.period,
                 r.created_at,
                 r.updated_at,
                 length(r.stage1_response) AS s1_len,
