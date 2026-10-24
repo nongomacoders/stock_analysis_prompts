@@ -701,3 +701,16 @@ def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
         out_file = export_stage1_prompt("CGR")
         assert out_file.exists()
         assert out_file.stat().st_size > 1000
+
+def test_create_company_scaffolds_sens_folder(tmp_path, monkeypatch):
+    import new_company
+    monkeypatch.setattr(new_company, "COMPANIES_DIR", tmp_path / "companies")
+    company_dir = new_company.create_company("TEST", "mining", "Test Mining Co Ltd")
+    assert company_dir.exists()
+    sens_dir = company_dir / "sources/sens"
+    assert sens_dir.exists()
+    assert (sens_dir / "completed").exists()
+    assert (sens_dir / "README.md").exists()
+    content = (sens_dir / "README.md").read_text(encoding="utf-8")
+    assert "SENS Continuous Disclosures: Test Mining Co Ltd (TEST)" in content
+

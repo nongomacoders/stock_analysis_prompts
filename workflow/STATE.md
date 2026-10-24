@@ -11,6 +11,13 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Automated SENS Directory Scaffolding (sources/sens/)**:
+  - Enhanced 
+ew_company.py:create_company() to automatically scaffold sources/sens/ and sources/sens/completed/ along with a guiding README.md whenever a new company is initialized via CLI or the desktop GUI dialog.
+  - Updated post-creation guidance instructions to prompt analysts to drop SENS announcements into companies/<sector>/<TICKER>/sources/sens/.
+  - Backfilled sources/sens/ and completed/ folders across all active portfolio companies (CGR, IOC, PAN, ORN, HAR, LEW, TRU, APF, PIK).
+  - Added unit test 	est_create_company_scaffolds_sens_folder in 	ests/test_portfolio_valuation.py.
+
 - **Automated Section Matching & Auto-Capture Engine (explore/auto-section-capture)**:
   - Implemented section_capture/section_matcher.py with intelligent title normalization (acronym expansion for CEO, CFO, AFS, IAR; stop-word elimination; prefix stripping) and token-proximity scoring.
   - Implemented extract_all_app_sections() combining PDF bookmarks/outline and heading heuristics to establish comprehensive section boundaries across full PDF reports.

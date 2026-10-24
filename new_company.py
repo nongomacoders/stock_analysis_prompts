@@ -48,11 +48,13 @@ def create_company(ticker: str, sector: str, name: str | None = None) -> Path:
 
     # Create directory tree
     sources_dir = company_dir / "sources"
+    sens_dir = sources_dir / "sens"
+    sens_completed_dir = sens_dir / "completed"
     models_dir = company_dir / "models"
     research_dir = company_dir / "research"
     briefs_dir = company_dir / "briefs"
 
-    for d in [sources_dir, models_dir, research_dir, briefs_dir]:
+    for d in [sources_dir, sens_dir, sens_completed_dir, models_dir, research_dir, briefs_dir]:
         d.mkdir(parents=True, exist_ok=True)
 
     # 1. companies/<SECTOR>/<TICKER>/__init__.py
@@ -66,6 +68,15 @@ def create_company(ticker: str, sector: str, name: str | None = None) -> Path:
         f"# Source Documents: {company_name} ({ticker})\n\n"
         f"Drop original company PDF reports, presentations, and SENS announcements here.\n"
         f"Then open the PDF in the capture app (`Run Capture.cmd` or `python app.py`) to scan sections.\n",
+        encoding="utf-8",
+    )
+
+    # 2b. companies/<SECTOR>/<TICKER>/sources/sens/README.md
+    (sens_dir / "README.md").write_text(
+        f"# SENS Continuous Disclosures: {company_name} ({ticker})\n\n"
+        f"Drop post-balance-sheet SENS announcements (PDF, text, or markdown) here.\n"
+        f"They will automatically be incorporated into Stage 2 Institutional Valuation updates.\n"
+        f"Analyzed notices can be moved to `completed/`.\n",
         encoding="utf-8",
     )
 
@@ -123,6 +134,7 @@ def create_company(ticker: str, sector: str, name: str | None = None) -> Path:
     print(f"    {company_dir}")
     print(f"\nNext Steps:")
     print(f"  1. Copy company PDF to: companies/{sector}/{ticker}/sources/")
+    print(f"     Drop SENS announcements to: companies/{sector}/{ticker}/sources/sens/")
     print(f"  2. Open PDF in capture app: Run Capture.cmd")
     print(f"  3. Open sandbox notebook: companies/{sector}/{ticker}/models/{ticker.lower()}_sandbox.ipynb")
     print(f"  4. Run valuation model: python -m companies.{sector}.{ticker}.models.run")
