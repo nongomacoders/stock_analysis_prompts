@@ -8,7 +8,7 @@
 
 ---
 
-### INSTRUCTIONS FOR GEMINI 4 ARGON:
+### INSTRUCTIONS FOR FORENSIC AUDITOR (LLM):
 You are acting as an independent **Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor**. 
 You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of Calgro M3 Holdings's financial disclosures (41 total sections across primary report and companion disclosures).
 
