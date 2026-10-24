@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-10-18 (Africa/Johannesburg).
+Last updated: 2026-10-24 (Africa/Johannesburg).
 
 ## Objective and boundary
 
@@ -10,6 +10,13 @@ Analyze and forecast from company presentations and reports section by section w
 3. **Tier 3 (Stage 2 Institutional Valuation)**: Automated prompt generation (`workflow/generate_stage2.py`) feeding Argon's Stage 1 synthesis report alongside the PDF back into Gemini 4 Argon for the final 2-year forecast, SOTP DCF, and JSE equity research valuation note (ZAR per share).
 
 ## Completed
+
+- **Multi-PDF Dual-Disclosure Ingestion & Benchmarking (APF, IOC, CGR)**:
+  - Enhanced AuditValuationDialog.run_stage2_deepseek() to ingest and tag *all* source PDFs located in companies/<sector>/<TICKER>/sources/ (e.g. Integrated Annual Report + Audited Financial Statements).
+  - Validated multi-PDF ingestion on **iOCO (IOC)**: Ingested iOCO-IAR-2026.pdf (164 pages) + iOCO-AFS-July2026.pdf (102 pages) = 266 physical pages (220,123 tokens total) in 21.8s for .032 USD. Result: Target R4.75, BUY (+21.8%), 0% dividend yield, DCF R4.90 (Gemini baseline was Target R4.90, BUY, +23.7%).
+  - Validated on **Calgro M3 (CGR)**: Both Calgro-M3-Integrated-Report-2026.pdf (124 pages) + Calgro-M3-AFS-2026.pdf (58 pages) = 182 physical pages (171,468 tokens total) ingested in 21.5s for .025 USD. Emitted Target R6.50, HOLD (+12.8%), 0% dividend yield.
+  - Confirmed latency dynamics: Stage 1 takes longer (~83-91s) when processing 350k+ prompt tokens and generating 8,900+ completion tokens; Stage 2 completes faster (~21-25s) because prompt size is smaller (170k-220k tokens) and output format is structured at ~2,500-3,500 completion tokens.
+  - Published comprehensive application operating manual to [docs/APPLICATION_MANUAL.md](docs/APPLICATION_MANUAL.md).
 
 - **DeepSeek Toleration & Automation for Stage 2 Institutional Valuations with Full PDF Ingestion**:
   - Investigated and verified that complete primary source company PDF reports (e.g. 328-page IAR/AFS) can be ingested alongside Stage 2 valuation prompts directly into DeepSeek Flash (`deepseek/deepseek-v4.1-flash-1017`) via OpenRouter, fully eliminating manual browser copy-pasting.

@@ -1,7 +1,7 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
 **Target Asset:** iOCO Limited (IOC)  
-**Sector:** It  
-**Input Mode:** Full Company Results PDF + Subsequent SENS Notices (`iOCO-AFS-July2026.pdf` (SENS)) + Audited Stage 1 Determinations  
+**Sector:** Software and Computer Services (JS1011 / It)  
+**Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
@@ -588,6 +588,8 @@ A naive reader or surface-level equity analyst relying on the front-half comment
        "ticker": "IOC",
        "company_name": "iOCO Limited",
        "sector": "it",
+       "jse_sector_code": "JS1011",
+       "jse_sector_name": "Software and Computer Services",
        "recommendation": "BUY | HOLD | SELL",
        "reference_price_zar": 0.00,
        "target_price_zar": 0.00,
@@ -599,7 +601,7 @@ A naive reader or surface-level equity analyst relying on the front-half comment
    - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
      | Metric | Determination | Basis & Key Commentary |
      | :--- | :---: | :--- |
-     | **Sector** | Technology / IT Services | [Sub-sector classification] |
+     | **Sector** | Technology / IT Services (Software and Computer Services — JS1011 / ICB 101010) | [Sub-sector classification] |
      | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
      | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
      | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |

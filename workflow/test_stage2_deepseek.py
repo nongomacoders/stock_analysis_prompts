@@ -133,10 +133,11 @@ def main():
             + sens_text
         )
 
+    pdf_names = ", ".join(f.name for f in pdf_files)
     sections.append(
         "# COMPLETE PRIMARY SOURCE FINANCIAL REPORT DISCLOSURES & AUDITED NOTES\n\n"
-        f"The following is the complete, page-by-page text extracted directly from the company's official publication ({pdf_files[0].name}). "
-        "Every balance sheet item, segmental breakdown, property schedule, lease expiry profile, and debt note is available below for your direct forensic inspection and financial modeling:\n\n"
+        f"The following is the complete, page-by-page text extracted directly from the company's official publications ({pdf_names}). "
+        "Every balance sheet item, segmental breakdown, operational KPI, and audited financial note is available below for your direct forensic inspection and financial modeling:\n\n"
         + all_pdf_text
     )
 

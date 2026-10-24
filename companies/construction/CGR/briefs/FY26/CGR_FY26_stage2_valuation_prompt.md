@@ -1,7 +1,7 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
 **Target Asset:** Calgro M3 Holdings (CGR)  
 **Sector:** Construction and Materials (JS5011 / Construction)  
-**Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
+**Input Mode:** Full Company Results PDF + Subsequent SENS Notices (`Calgro-AFS-2026.pdf` (SENS)) + Audited Stage 1 Determinations  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
@@ -24,335 +24,166 @@ You are conducting a definitive 2-year operational and valuation forecast for **
 
 ## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)
 
-### 1. Executive Forensic Audit Summary
-
-Calgro M3 Holdings Limited’s FY2026 financial disclosures present a stark divergence between **headline accounting profitability** and **underlying cash-flow reality**. On the surface, the Group appears resilient: IFRS revenue rose 2.8% to R893.17m, gross profit margin remained above the 20%–25% target range at 27.20%, profit after tax was near-flat at R160.23m (−3.5%), and year-end cash grew 18.7% to R183.72m.
-
-However, sequential forensic extraction across the Integrated Annual Report (IAR) and Consolidated Audited Financial Statements (AFS) reveals that FY2026 earnings and liquidity were sustained by non-operating, non-cash, and debt-funded mechanisms while core working capital absorbed massive liquidity:
-
-* **Severe Cash Burn vs. Accrual Profit:** Despite reporting R171.05m in operating profit and R207.60m in profit before tax, **cash generated from operations collapsed by R122.69m**, swinging from +R107.90m in FY2025 to **−R14.79m** in FY2026. After net cash interest paid of R80.40m (R135.64m paid less R55.24m received) and tax paid of R3.89m, **net cash utilised in operating activities was −R99.07m**. Combined with −R122.43m in net investing cash outflows (driven by R121.21m in loan advances to joint ventures), Free Cash Flow to Equity (FCFE) before financing was **−R221.50m**.
-
-
-* **Debt-Funded Liquidity:** The R29.00m increase in year-end cash (to R183.72m) and the R6.59m dividend payment were entirely funded by **R268.93m in net new borrowings** (R566.43m drawn less R297.50m repaid). Carrying borrowings rose 24.8% to **R1,380.29m**, pushing IFRS net debt up 25.8% to **R1,196.57m** (2.18x the Group's year-end market capitalisation of R548.88m) and Return on Invested Capital (ROIC) down to **4%** (from 5% in FY2025 and 9% in FY2022–FY2023).
-
-
-* **Capitalised Borrowing Cost Distortion:** P&L finance costs fell 27.9% (from R60.30m to R43.49m) even as carrying debt surged by R274.57m. Cash flow statements confirm actual **cash finance costs paid were R135.64m**. The **R92.15m gap** between cash interest paid and P&L interest expensed reflects massive capitalisation of borrowing costs into qualifying construction contract assets (notably Bankenveld District City [BDC]), inflating reported PBT while draining cash.
-
-
-* **Working Capital & BDC Unrecovered Spend:** The Construction Contracts asset surged by **R438.92m (+26.3%) to R2,107.21m**—representing 57.1% of total Group assets and **953 days of Residential segment revenue**. This build includes a **R206m asset** brought onto the balance sheet following the prospective reclassification of BDC from a Joint Venture (JV) to a Joint Operation (JO) (which also triggered a **−R19.25m** direct debit to retained earnings, bypassing the P&L). Crucially, BDC has **no finalised public-sector infrastructure cost recovery agreement** in place and requires a further ~R150m in Phase 1 infrastructure spend before recovery can occur.
-
-
-* **Low-Quality Earnings Boosters:** FY2026 operating profit of R171.05m was flattered by a **R7.69m Expected Credit Loss (ECL) reversal credit** (a +R11.34m positive swing from FY2025's −R3.65m charge) recognized precisely as trade receivables surged 93.0% to R159.62m, alongside a 105.8% jump in Other Income to R19.05m (R16.31m in Memorial Parks) and a **10.60 cps gap between Basic EPS (167.36c) and HEPS (156.76c)** (~R10.15m in non-headline gains).
-
-
+# FORENSIC AUDIT REPORT — CALGRO M3 HOLDINGS (CGR)
+## Independent MD & Senior Forensic Construction/Infrastructure Financial Auditor
 
 ---
 
-### 2. Detailed Forensic Reasoning & Determinations
+# 1. EXECUTIVE FORENSIC AUDIT SUMMARY
 
-*Note on Dossier Completeness:* The supplied working paper dossier concludes at **Part 2, Section 6 (`D005.1` — Note 1: Segment Information, AFS physical page 21)**. Detailed Notes 2 through 40 of the AFS and post-year-end SENS announcements beyond the 15/18 May 2026 dividend declaration are not present in the captured text. All forensic determinations below are rigorously derived from cross-referencing the 5 IAR sections (`D001`–`D005`) against the 6 captured AFS sections (`D002`–`D006` and `D005.1` Note 1).
+**True economic performance.** Calgro M3's FY2026 headline is a mirage of stability. Revenue rose 2.8% to R893.2m and PAT fell only 3.5% to R160.2m — but the composition is deeply compromised. **Group gross margin compressed 223 bps to 27.20%**, driven entirely by Residential Property Development (24.24%, down 341 bps), while Memorial Parks expanded to 54.90%. Critically, **R11.48m of the R19.05m "other income" (60%) is non-cash fair-value gains** (R10.00m investment property + R1.47m FVTPL), and **R7.69m of the profit is a net ECL credit** — both non-recurring. Strip these out and underlying operating profit is materially weaker than reported. The **JV profit collapse of 44.1% (R42.9m → R24.0m)** is the single largest PBT driver, and R11.6m of that R24.0m is the Bankenveld share eliminated on reclassification — **continuing JV profit is only R12.4m**.
 
-#### Junction 1: Share Count, Buybacks, Treasury Shares & Dividend Mechanics
+**Balance sheet health.** The balance sheet is levered and increasingly illiquid in substance. **Borrowings rose 24.8% to R1,380.3m, all unsecured**, while cash rose only to R183.7m — net debt **R1,196.6m, ~2.18x market cap**. The **construction-contract balance ballooned 26.3% to R2,107.2m** — but R852.1m of that is "development cost for future contract assets" (inventory-like, no revenue, **no ECL cushion**), and only R1,270.3m is true contract assets. **Trade receivables grew 93% to R159.6m** on a Belhar land sale, while **trade payables fell R72.2m** — a supplier-credit-to-debt substitution. **R102.1m of borrowing costs were capitalised** (up 60.3%), masking the true finance cost: gross finance cost was R145.6m, P&L only R43.5m.
 
-* **The Anomaly:** Three different share counts are implied across the primary statements and dividend disclosures:
-1. **EPS Denominator:** Attributable profit to owners of the parent of R160,235,004 divided by Basic EPS of 167.36 cents (`D004` AFS p. 16) yields a Weighted Average Number of Shares (WANOS) of **95,742,713 shares** (FY2025: R164,984,085 ÷ 171.72c = **96,077,385 shares**; Diluted FY2026: R160,235,004 ÷ 164.94c = **97,147,450 shares**).
+**Post-balance-sheet liquidity runway.** This is the critical finding. **Cash generated from operations was NEGATIVE R14.8m** (2025: +R107.9m) — a R122.7m swing. **FCFE proxy is −R221.5m**, funded entirely by R250.5m net new debt. The Group's own DSCR of 1.54x is **flattered by including R566.4m of new debt in "available cash flow"** — excluding it, DSCR is deeply sub-1.0x. The parent company's going concern **explicitly relies on a "commitment" from its subsidiary Calgro M3 Developments** to provide liquidity — an undefined, unquantified support letter. **~R173m of DMTN notes mature in FY2027** (CGR 52/53/55/56), and the Group states repayment depends on "refinancing of borrowings." With negative CFO and all debt unsecured, the liquidity runway is **debt-funded, not operationally self-sustaining**.
 
-
-2. **Post-Year-End Dividend Notice (`D002` IAR p. 25):** States that on 18 May 2026, the Company had **113,054,050 gross shares in issue**, of which **17,673,449 were held in treasury**, leaving **95,380,601 net shares** eligible for dividends. However, it states total dividend payable at 8.63703 cps is **R9.76 million**, which equals **113,054,050 × 8.63703c = R9,764,512** (i.e. calculated on *gross* shares including treasury shares).
-
-
-3. **SOCIE & Cash Flow Dividend Paid (`D005` AFS p. 17 & `D006` AFS p. 18):** Both record the actual cash dividend declared and paid during FY2026 (in June 2025 at 8.63703 cps) as **R6,592,427**. Dividing R6,592,427 by 8.63703 cps yields **76,327,476 shares**—creating a ~19.4m share discrepancy against the 95.74m WANOS.
-
-
-
-
-* **Forensic Determination:**
-* During FY2026, Calgro M3 repurchased **1,327,525 shares** (`D004` IAR p. 41) for a total cash consideration of **R6,662,637** (`D005` AFS p. 17; `D006` AFS p. 18), equating to an average buyback price of **R5.02 per share**. Because the buyback occurred late in the financial year, WANOS only declined by 334,672 shares (−0.35%) in FY2026, deferring the full ~1.0m share reduction impact to FY2027.
-
-
-* The R9.76m figure in the May 2026 dividend notice represents the gross distribution before inter-group elimination of dividends on the 17,673,449 treasury shares (which reduces cash outflow by R1.53m to ~R8.24m on 95.38m net shares). The R6.59m cash payment in FY2026 reflects dividends paid on external shares net of treasury shares and shares held by consolidated trusts/entities (such as The Calgro M3 Educational Trust, per Footnote `@` on AFS p. 17).
-
-
-
-
-
-#### Junction 2: Net Debt, Borrowings Reconciliation, Liquidity & Covenants
-
-* **The Anomaly:** Management reports three different borrowings figures (R1,300m in text, R1,358.0m in the debt movement table, and R1,380.29m on the balance sheet), two different cash flow movement numbers for new debt (R567.5m vs R566.425m), and two different liquidity metrics ("Available facilities of R268.75m" vs "Total available liquidity of R283m").
-
-
-* **Forensic Determination:**
-1. **Principal vs. Carrying Borrowings:** Per `D002` (IAR p. 24), the **principal (capital) debt balance** opened at R1,088.0m, added R567.5m in new debt, and repaid R297.5m, closing at **R1,358.0m**. On the AFS Cash Flow Statement (`D006` p. 18), actual cash proceeds from borrowings were **R566,425,000** (reflecting R1,075,000 in debt raising/arrangement fees deducted at source) and repayments were **R297,500,000** (net cash debt raised: **R268,925,000**). The AFS Balance Sheet (`D003` p. 16) carrying value of **R1,380,291,293** (FY2025: R1,105,722,194) comprises the R1,358.0m principal plus **R22,291,293 in accrued interest and unamortised transaction costs** (FY2025: R17,722,194).
-
-
-2. **Segmental Debt Reallocation:** In FY2025 (`D005.1` Note 1 p. 19), borrowings were split between Residential Property Development (R1,088.50m) and Holdings (R17.22m). In FY2026, 100% of Group borrowings (**R1,380.29m**) are allocated to Residential Property Development. Footnote `$` confirms that Memorial Parks is funded via internal capital injections rather than external debt, with notional finance costs of R2.45m allocated internally.
-
-
-3. **Net Debt & Covenant Verification:**
-
-$$\text{IFRS Net Debt} = \text{R1,380,291,293} - \text{R183,722,961} = \text{R1,196,568,332}$$
-
-
-
-Dividing IFRS Net Debt by Total Equity (R1,571,178,648) yields **0.762:1** (and 0.776:1 against Retained Income of R1,541.08m), which would breach management's internal target ceiling of **0.75:1**. However, management reports a Net Debt-to-Equity ratio of **0.74:1** (`D002` IAR p. 24; `D003` IAR p. 28). Reconciling the math:
-
-
-
-$$\frac{\text{Principal Debt (R1,358,000,000)} - \text{Cash (R183,722,961)}}{\text{Total Equity (R1,571,178,648)}} = \frac{\text{R1,174,277,039}}{\text{R1,571,178,648}} = \mathbf{0.7474:1} \ (\approx 0.74:1)$$
-
-
-
-Thus, management's covenant metric uses **principal debt (excluding R22.29m of accrued interest)** divided by Total Equity, keeping the ratio 100 bps below the 0.75:1 internal target and well below the 1.50:1 bank covenant threshold. Note also that excluding the reclassified **R66.33m Memorial Parks Maintenance Provision** (Note 21) and lease liabilities from debt flatters this leverage ratio.
-
-
-4. **Liquidity Reconciliation:** Year-end cash is **R183.72m** (`D003` AFS p. 16), and total available liquidity is **R283.0m** (`D002` IAR p. 17). The difference implies **R99.28m in undrawn committed bank facilities/overdrafts** at year-end. Meanwhile, the "Available facilities of R268.75m" disclosed in `D003` (IAR p. 27) represents total approved revolving/facility limits or cash plus specific facility lines (leaving a R14.25m variance vs. the R283m total liquidity figure).
-
-
-
-
-
-#### Junction 3: Operating Profit, EBITDA Adjustments & Finance Cost Capitalisation
-
-* **The Anomaly:** Operating profit rose 3.2% to R171.05m (`D005.1` AFS p. 21), yet operating cash generation before interest and tax swung from +R107.90m to −R14.79m. Furthermore, P&L finance costs dropped 27.9% to R43.49m despite carrying debt increasing by R274.57m.
-
-
-* **Forensic Determination:**
-1. **Arithmetic Discrepancy in Operating Profit:** Summing the face of the Consolidated Statement of Comprehensive Income (`D004` AFS p. 16) gives:
-
-$$\text{R242,913,300 (GP)} + \text{R19,054,484 (Other Inc)} - \text{R98,610,226 (Admin)} - \text{R257 (Other Exp)} + \text{R7,692,016 (ECL Credit)} = \mathbf{R171,049,317}$$
-
-
-
-This matches Note 1 (`D005.1` AFS p. 21) exactly. However, two non-operating/non-cash items inflated this figure:
-
-
-* **ECL Provision Release (+R7.69m):** In FY2025, ECL was an expense of −R3.65m; in FY2026, management released +R7.69m into profit (99.97% in Residential Property Development) even though Residential trade receivables nearly doubled (+98.2% from R77.92m to R154.41m) and construction contract assets rose 26.3% to R2,107.21m. Stripping out this non-cash release reduces underlying operating profit to **R163.36m**.
-
-
-* **Memorial Parks Other Income (+R16.31m):** Group Other Income jumped 105.8% from R9.26m to R19.05m, driven by a R9.13m surge in Memorial Parks Other Income (from R7.18m to R16.31m). Without this spike, Memorial Parks' reported operating profit growth (+70.8% to R49.05m) would have been +39.0%.
-
-
-
-
-2.  EPS vs. HEPS Non-Headline Gain: Basic EPS (167.36c) exceeded HEPS (156.76c) by **10.60 cents per share** (vs. a 0.36c gap in FY2025). Across 95.74m weighted shares, this equates to **~R10.15m after tax** (~R13.9m pre-tax) of non-headline capital/fair-value gains (such as the R10.00m increase in Memorial Parks Investment Property from R22.49m to R32.50m, or gain on BDC JV-to-JO remeasurement).
-
-
-3. **Finance Cost Capitalisation Bridge:** On the P&L (`D004` AFS p. 16), Finance Costs are only **R43.49m** (down from R60.30m in FY2025), yielding net finance *income* of R12.57m when offset against R56.06m of Finance Income (predominantly interest accrued on JV loans in the Residential segment of R52.72m). However, the Cash Flow Statement (`D006` AFS p. 18) proves that **actual cash finance costs paid were R135,639,469** (FY2025: R134,104,505). The **R92,146,420 difference** (FY2025: R73,801,231) was **capitalised into qualifying construction contract assets** under IAS 23 (specifically cited in `D002` IAR p. 23 as borrowing costs capitalised to BDC infrastructure). Thus, true economic interest expense is ~3.1x the P&L charge, and capitalised interest is gradually inflating the cost base of the R2.11bn construction contracts balance.
-
-
-
-
-
-#### Junction 4: Segmental Margins, Revenue Mix Shift & Pipeline Unit Economics
-
-* **The Anomaly:** Management highlights that the Group gross margin of 27.20% beat its 20%–25% target range due to "past infrastructure costs" and a deliberate shift toward non-core, mid-to-high-end units. Meanwhile, "Combined Revenue" dropped 16.3% from R1,229.10m to R1,028.37m.
-
-
-* **Forensic Determination:**
-1. **Segmental Margin Divergence (`D005.1` Note 1 p. 21):**
-* **Residential Property Development:** Revenue edged up 0.86% from R800.07m to **R806.96m**, but Cost of Sales rose 5.62% from R578.83m to **R611.38m**. Gross profit fell 11.6% from R221.24m to **R195.58m**, compressing segment gross margin by **341 bps from 27.65% to 24.24%** (now inside the 20%–25% target band). Management acknowledges (`D002` IAR p. 18) that trading out of non-core projects (70% of units transferred) exerted margin pressure, cushioned only by historically sunk bulk infrastructure costs on core projects (Fleurhof, Belhar, Jabulani).
-
-
-* **Memorial Parks:** Revenue jumped 25.24% from R68.84m to **R86.21m**, while Cost of Sales rose only 13.15% to R38.88m, expanding gross profit by 37.3% to **R47.33m** and lifting gross margin by **481 bps from 50.09% to 54.90%**.
-
-
-
-
-2. **IFRS 15 Recognition Mix Shift (`D005.1` Note 1 p. 20):** Within Residential Property Development, **Over-Time (POC) revenue dropped 19.9% (−R120.08m)** from R602.08m to **R482.00m**, driven by Fleurhof revenue halving from R543.29m to R257.96m (−52.5%). Conversely, **Point-in-Time residential revenue surged 64.1% (+R126.97m)** from R197.99m to **R324.96m** as completed units in Scottsdene (+108.6% to R135.10m), Belhar (+153.9% to R148.63m), Jabulani (+67.1% to R74.45m), and Mid-to-High projects (+89.4% to R74.92m) were transferred.
-
-
-3. **APM "Combined Revenue" Deconstruction & JV Collapse:** Management’s "Combined Revenue" APM adds 100% of the *gross* uneliminated revenue of JVs to IFRS revenue (`D005.1` p. 20 Footnote `*`). Gross JV revenue collapsed by **62.5% (−R225.00m)** from R360.19m to **R135.19m** because: (a) **Witpoortjie Calgro M3 Development Company** (R83.66m in FY2025) contributed Rnil in FY2026 (moved to Bucket 3 long-term non-core disposal); (b) **South Hills Development Company** dropped 63.9% from R235.64m to R85.08m; and (c) **BDC** (R50.11m vs R40.89m) was reclassified during the year from a JV to a Joint Operation. Correspondingly, equity-accounted Share of Profit of JVs fell **44.1% from R42.87m to R23.98m**.
-
-
-4. **Memorial Parks Cash Coverage Claim (`D002` IAR p. 21 vs `D003` IAR p. 29):** Management claims Memorial Parks cash collections "once again fully cover Group overheads". However, `D002` (p. 21) reports total cash received of **R106.9m explicitly *including VAT*** (and `D003` p. 29 cites R103m). Stripping out 15% South African VAT reduces R106.9m to **~R92.96m ex-VAT** (and R103m to ~R89.57m ex-VAT), whereas Group Administrative Expenses (ex-VAT) were **R98.61m** (`D004` AFS p. 16). Thus, on a like-for-like ex-VAT basis, Memorial Parks cash receipts covered **94.3%** of Group overheads and **0%** of the R135.64m cash interest bill.
-
-
-5. **Pipeline Contingency Qualification (`D002` IAR pp. 17, 22):** Management headlines a combined pipeline of **R31.8 billion** (31,874 residential opportunities ≈ R29.64bn at ~R930k/unit, plus 114,827 burial opportunities = R2,156.62m at R18,781/grave). However, Footnotes `#` and `*` on p. 22 reveal that **R582.77m** (Bloemfontein, 53,077 graves) and **R512.60m** (Rustenburg, 28,128 graves)—totalling **R1,095.37m or 50.8% of the Memorial Parks pipeline value (and 70.7% of grave volume)**—are contingent on unapproved second-phase burial rights and unresolved regulatory matters.
-
-
-
-
-
-#### Junction 5: Capex Trajectory, BDC Joint Operation Reclassification & Working Capital Absorption
-
-* **The Anomaly:** How did cash generated from operations fall to −R14.79m while the Construction Contracts asset jumped by R438.92m, Inventories dropped by R63.20m, and Loans to JVs fell by R85.88m despite the Cash Flow Statement showing R113.74m in net *new* cash loans advanced to JVs?
-* **Forensic Determination:**
-1. **BDC Reclassification (JV to Joint Operation — Note 39 Trigger):** During FY2026, an amended shareholders' agreement converted BDC from an equity-accounted Joint Venture (IFRS 11) to a proportionately consolidated Joint Operation (`D002` IAR p. 23; `D005` AFS p. 17 Footnote `#`). This non-cash transition explains three major balance sheet anomalies simultaneously:
-
-
-* **Direct Equity Debit:** **−R19,252,380** was debited directly to Retained Income (`D005` AFS p. 17) on derecognition of the JV / recognition of the JO net assets.
-
-
-* **Construction Contracts Surge:** Of the R438.92m increase in Construction Contracts (from R1,668.28m to R2,107.21m), **R206.0m** came from bringing Calgro's proportionate share of BDC’s development asset onto the balance sheet (`D002` IAR p. 24), while **R226.4m** (`D003` IAR p. 27) represents current-year cash construction contract investment (leaving ~R6.5m for net capitalised interest/other adjustments).
-
-
-* **JV Loan Reconciliation (~R199.62m Non-Cash Reduction):** On the Balance Sheet (`D003` AFS p. 16), Loans to JVs *decreased* by **R85.88m** (from R473.34m to R387.47m). Yet on the Cash Flow Statement (`D006` AFS p. 18), the Group *advanced* R121.21m and received only R7.47m in repayments—a **net cash outflow of +R113.74m**. Adding the R52.72m in accrued Residential finance income (`D005.1` p. 21) would have increased the loan balance by up to R166.46m. The **~R199.62m to R252.34m non-cash reduction** in Loans to JVs is the elimination/reclassification of Calgro's shareholder loan to BDC upon proportionately consolidating BDC’s assets (the R206m construction asset) and liabilities as a Joint Operation.
-
-
-
-
-2. **BDC Unhedged Capex Commitment:** BDC has **no finalised public-sector infrastructure cost recovery agreement** (`D002` IAR p. 24). Management discloses that an additional **~R150m** is required in FY2027 to complete Phase 1 bulk and link infrastructure, followed by 6–8 months of internal infrastructure installation (completing mid-FY2028 per `D003` IAR p. 29) before top-structure sales can generate cash returns.
-
-
-3. **Maintenance Liability Reclassification (`%` Footnote, AFS pp. 16, 19):** Management reclassified the Memorial Parks "Maintenance liability" out of Trade and Other Payables into a separate IAS 37 **Maintenance Provision** of **R66.33m** (FY2025 restated: **R57.72m**). In Note 1 (`D005.1` p. 19), FY2025 segment payables were printed as R368.65m (which still included the R57.72m) whereas the face of the SFP (`D003` p. 16) correctly restated FY2025 payables to **R310.93m** (R368.65m − R57.72m). Thus, true like-for-like trade payables fell by **−R47.59m (−15.3%)** to R263.33m, absorbing R47.59m of operating cash as construction activity slowed.
-
-
-4. **Physical Capex vs. Subcontracted Model:** Direct PPE additions were minuscule at **R0.83m** (`D006` AFS p. 18), while PPE carrying value fell 12.1% from R25.95m to **R22.80m** (`D003` AFS p. 16) and lease principal repayments were **R5.17m**. As confirmed by the Auditor's KAM (`D002` AFS p. 14), Calgro appoints civil and top-structure contractors on a **fixed-cost basis**, meaning heavy fleetcapex sits with subcontractors while Calgro's capital is tied up in land inventory (R456.37m) and construction contracts WIP (R2,107.21m).
-
-
-
-
-
-#### Junction 6: Tax Mechanics (Effective Tax Rate vs. Cash Tax Paid)
-
-* **The Anomaly:** The P&L tax charge is **R47,370,706** on Profit Before Tax of R207,600,709 (an effective tax rate of **22.82%** vs. South Africa's 27.0% statutory corporate rate), yet **actual cash tax paid on the Cash Flow Statement (`D006` p. 18) is only R3,890,706** (an 8.2% cash tax rate on tax expense, and 1.87% of PBT).
-
-
-* **Forensic Determination:**
-1. **Effective Tax Rate Bridge (22.82% vs. 27.0%):** PBT of R207.60m includes **R23.98m** in Share of Profit of Joint Ventures, which is already stated **net of tax** (`D004` AFS p. 16). Excluding post-tax JV profit leaves pre-tax Group operating/financing profit of **R183,618,303**. Applying theR47.37m tax charge to R183.62m yields an underlying effective tax rate of **25.80%**—within 120 bps of the 27% statutory rate.
-
-
-2. **Cash Tax vs. Deferred Tax Mechanics:** Why did the Group pay only R3.89m in cash tax? Cross-checking the Balance Sheet (`D003` AFS p. 16) reveals that the **Net Deferred Tax Liability (DTL)** surged by **R44,654,229** during FY2026:
-* Deferred Tax Liability rose by **+R43,419,636** (from R366,066,389 to **R409,486,025**, 100% in Residential Property Development per `D005.1` p. 19).
-
-
-* Deferred Tax Asset fell by **−R1,234,593** (from R11,363,028 to **R10,128,435**, 100% in Memorial Parks).
-
-
-* Net Current Tax Asset (Current tax asset R1,743,347 less liability R239,410 = R1,503,937 vs. FY2025 net asset of R230,441) increased by **R1,273,496**.
-
-
-* **Tax Proof:**
-
-$$\text{P\&L Tax (R47,370,706)} = \text{Net DTL Increase (R44,654,229)} + \text{Cash Tax Paid (R3,890,706)} - \text{Net Current Tax Asset Increase (R1,273,496)} + \text{R99,267 (rounding/other)}$$
-
-
-
-In South African construction tax law (Income Tax Act s24C / contract allowances), revenue recognised over time under IFRS 15 (POC) and capitalised borrowing costs (R92.15m) create temporary differences where accounting profit is recognised *ahead* of taxable cash inflows, deferring the tax liability into the R409.49m DTL until units/infrastructure are billed and settled.
-
-
-
-
-
-
-
-#### Junction 7: Debt Maturity Profile & Post-Year-End Financing Milestones
-
-* **The Anomaly:** With −R99.07m in operating cash flow and ~R150m in uncommitted BDC Phase 1 infrastructure spend required in FY2027, how does the Group service its near-term debt maturities and post-year-end commitments?
-* **Forensic Determination:**
-* Per `D002` (IAR p. 24), the Group faces a **FY2027 debt maturity of R240.50m**, followed by **R395.00m in FY2028** and **R450.00m in FY2029** (representing 79.9% of the R1,358.0m principal debt maturing within 36 months).
-
-
-* Subsequent to year-end, on 15/18 May 2026 (`D002` IAR p. 25; `D005` AFS p. 17), the Board passed the Companies Act solvency and liquidity test and declared a final gross dividend of **8.63703 cps** (payable 22 June 2026; gross R9.76m, net ~R8.24m ex-treasury shares).
-
-
-* Management states (`D002` IAR p. 24) that a substantial portion of the R76.92m year-end trade receivables spike (from over-time contracts) was **collected in cash after year-end**, providing immediate post-balance-sheet working capital relief alongside the R183.72m cash balance and R99.28m in undrawn facilities (R283m total liquidity). However, funding both the R240.5m FY2027 debt maturity and the ~R150m BDC Phase 1 capex (total ~R390.5m) requires active facility refinancing (`D002` p. 17) and execution of Bucket 1 non-core asset disposals (Cornubia, Vredehoek, and mid-to-high properties).
-
-
-
-
+**Key findings (definitive):**
+1. **BDC classification is internally contradictory** — Note 48 treats it as a *subsidiary* (49% holding, 100% board control), while Note 39 treats it as a *joint operation* (JV→JO reclassification, R19.25m retained-income debit). This is unresolved and material.
+2. **The R852.1m "future contract asset cost" bucket carries no ECL and no revenue** — a hidden impairment exposure with no provisioning cushion.
+3. **Contract-asset "specific exposure" jumped R393.9m → R938.1m** while the government bucket fell R633.1m → R149.4m — a R544m reclassification into individually-assessed (credit-impaired) status that is **not reflected in the R4.2m ECL charge**.
+4. **The maintenance provision (R66.3m) is only R20.7m funded** by the ring-fenced investment — a ~R45.6m unfunded future cash obligation.
+5. **The dividend/share-count arithmetic does not reconcile** (R9.88m at 8.63703cps implies ~114.4m shares vs 95.4m in issue) — a data-integrity flag.
+6. **The parent's tax credit (ETR −10.18%) is entirely a subsidiary dividend artefact** — not a sustainable operating benefit.
 
 ---
 
-### 3. Audit of Common Surface-Reading Pitfalls
+# 2. DETAILED FORENSIC REASONING & DETERMINATIONS
 
-| Surface-Reading Pitfall (Naive Analyst View) | Forensic Reality (Verified Audit Finding) |
-| --- | --- |
-| **1. "P&L finance costs dropped 28% to R43.5m, proving the Group is deleveraging and improving interest cover."** | **False.** Carrying debt *increased* by R274.57m (+24.8%) to R1,380.29m, and **actual cash interest paid was R135.64m** (`D006` AFS p. 18). P&L finance costs fell only because **R92.15m** of interest was capitalised into construction contract assets (BDC infrastructure). True cash interest cover from operations was negative.
+## 2.1 Percentage-of-Completion (POC) Revenue Recognition & IFRS 15 Timing
 
- |
-| **2. "Cash grew by R29.0m to R183.7m, demonstrating healthy cash generation."** | **False.** Operations burned **−R14.79m** before interest/tax and **−R99.07m** after net interest and tax; investing activities consumed a further **−R122.43m** (net JV loans). The R29.0m cash build was 100% funded by **R268.93m in net new debt drawdowns** (`D006` AFS p. 18).
+**Determination: POC is input-method based on approved feasibilities; revenue mix has structurally shifted from over-time to point-in-time, and the contract-asset build is partly a transfer-timing artefact, not genuine unbilled work.**
 
- |
-| **3. "Memorial Parks cash receipts of R106.9m fully cover Group overheads of R98.6m."** | **False.** The R106.9m table (`D002` IAR p. 21) is explicitly labelled **"Total cash received (including VAT)"**. Removing 15% VAT leaves **~R92.96m ex-VAT** (or ~R89.57m on the R103m cited in `D003`), falling short of the R98.61m ex-VAT Group Administrative Expenses and covering none of the R135.64m cash interest bill.
+- **Method confirmed** (Note 9, Note 23): input method = costs incurred ÷ forecast cost at completion, per Exco-approved feasibility. Contractors are on fixed-cost basis; forecast revenue includes claimable subsidies. The auditor's sole KAM is Residential contract revenue over time — confirming this is the highest-judgement area.
+- **Revenue mix shift** (Note 1, Note 23): over-time (POC) revenue **fell 19.9% to R482.0m** while point-in-time revenue **rose 54.1% to R411.2m**. Infrastructure revenue collapsed 50.7% (R549.5m → R270.8m); subsidised units rose 127% (R176.6m → R401.4m); non-subsidised units rose 103% (R63.1m → R128.4m). This is a **mix shift toward completed-unit sales and away from construction-contract POC** — reducing forward revenue visibility.
+- **Contract-asset build is partly transfer-timing**: Note 3.10.2 commentary confirms "a number of sectional title units in Fleurhof and Jabulani still had to be transferred at year-end" — i.e., revenue recognised, units not yet registered/handed over. This is a **cash-conversion drag, not a margin issue**.
+- **Unbilled revenue days**: gross contract assets R1,270.3m ÷ Residential revenue R807.0m × 365 = **~574 days** (using the true contract-asset base, not the R2,107m headline which includes R852.1m of no-revenue future costs). This is an extraordinarily long unbilled position and a major working-capital red flag.
+- **Cumulative catch-ups**: Note 23 confirms variations are accounted for as contract modifications with cumulative catch-up for over-time contracts. The quantum is **not disclosed** — a gap. The auditor tested "reasonability of changes in forecast costs and revenue from the prior year," implying prior-year feasibilities were revised (margin-restatement risk).
 
- |
-| **4. "Trade payables plunged by R105.3m (from R368.6m to R263.3m), showing massive supplier deleveraging."** | **False.** In Note 1 (`D005.1` p. 19), the FY2025 segment payables total of R368.65m failed to deduct the **R57.72m Memorial Parks Maintenance Provision** reclassified to a separate line item. On the restated SFP face (`D003` p. 16), FY2025 payables were R310.93m, meaning true trade payables fell by **R47.59m (−15.3%)**, not R105.31m.
+## 2.2 Gross Margin Bridge — Residential vs Memorial Parks vs Infrastructure
 
- |
-| **5. "Calgro has a secured R31.8bn order book, including R2.16bn in Memorial Parks."** | **False.** The R31.8bn figure is an uncontracted, multi-decade development pipeline (>15 years for BDC). Moreover, **50.8% (R1,095.37m) of the R2,156.62m Memorial Parks pipeline** (Bloemfontein phase 2 and Rustenburg, per Footnotes `#` and `*` on `D002` p. 22) is contingent on unapproved burial rights and unresolved regulatory matters.
+**Determination: The 27.20% Group margin is a blend of a deteriorating Residential business (24.24%) and a strong Memorial Parks business (54.90%); the Group beat vs the 20–25% target is entirely legacy infrastructure cost, and is normalising downward.**
 
- |
-| **6. "Operating profit grew 3.2% to R171.05m on solid underlying operational improvements."** | **False.** Operating profit was boosted by a **+R7.69m non-cash ECL credit reversal** (a +R11.34m YoY swing despite receivables rising 93%) and a **+R9.13m spike in Memorial Parks Other Income**. Core Residential Property Development gross margin compressed by **341 bps** (from 27.65% to 24.24%) and segment operating profit fell 6.2%.
+| Segment | FY2026 GM | FY2025 GM | Δ |
+|---|---|---|---|
+| Residential Property Development | **24.24%** | 27.65% | **−341 bps** |
+| Memorial Parks | **54.90%** | 50.09% | +481 bps |
+| **Group** | **27.20%** | 29.43% | **−223 bps** |
 
- |
+- **Residential compression driver**: cost of sales +5.6% (R578.8m → R611.4m) on revenue +0.9% (R800.1m → R807.0m). The cost build (Note 24) shows subsidised-unit cost +142% and non-subsidised +138%, while infrastructure cost collapsed −75.7%. The margin drag is **mix-driven** (lower-margin subsidised units replacing higher-margin infrastructure) plus input-cost inflation not passed through.
+- **"Past infrastructure costs"**: management repeatedly attributes the above-target margin to legacy low-cost infrastructure embedded in cost of sales. This is **non-recurring by nature** — as legacy infrastructure is consumed, margin trends toward the 20–25% band. The goodwill impairment test already assumes **23.23% gross margin** (down from 27.45%) — management's own model concedes normalisation.
+- **Memorial Parks quality caveat**: the 54.90% margin is **structurally depressed by the R4.6m non-cash maintenance provision charge** embedded in cost of sales (Note 21/23). Cash gross margin is higher, but the provision is a real future obligation.
+
+## 2.3 Contract Assets / Unbilled WIP Days vs Contract Liabilities & Customer Advances
+
+**Determination: The R2,107.2m "construction contracts" headline is NOT a contract asset. Only R1,270.3m is true contract assets; R852.1m is inventory-like future cost with no revenue and no ECL; contract liabilities are a trivial R15.2m.**
+
+- **Decomposition** (Note 9): gross contract assets R1,270,275,234; ECL provision (R15,192,569); **development cost for future contract assets R852,124,160**; contract liabilities (excess billings) R15,245,364 (in payables). Net SOFP = R1,270.3m − R15.2m + R852.1m = R2,107.2m ✓.
+- **The R852.1m bucket is the critical finding**: it is "a form of inventory but has no related contract with a customer yet," carries **no revenue or profit impact**, is **excluded from POC**, and **carries no ECL**. It grew +R264.9m YoY — the single largest driver of the R439.7m net construction-contract increase. If any underlying development is abandoned before a customer contract is signed, there is **no ECL cushion** — it hits inventory write-down.
+- **Contract liabilities are immaterial** (R15.2m, +29.1%) — the Group has almost no customer advances, meaning it is **funding construction from debt, not customer prepayments**. This is a structural cash-flow weakness.
+- **Specific-exposure anomaly** (Note 3.10.2): contract-asset "specific exposure" (individually assessed/credit-impaired) jumped **R393.9m → R938.1m (+R544.2m)** while the government-institution bucket fell **R633.1m → R149.4m (−R483.7m)**. This is a **massive reclassification of government-linked contract assets into the individually-assessed bucket** — a material deterioration in assessed recoverability that is **not reflected in the headline ECL charge** (contract-asset ECL rose only R4.2m). This is the single most important forensic flag in the contract-asset note.
+
+## 2.4 Retentions Receivable & Trade Debtors Aging / IFRS 9 ECL
+
+**Determination: The R7.7m ECL "credit" is non-recurring and flatters earnings; it comprises a R6.4m trade-receivable release and a R5.5m JV-loan release, offset by a R4.2m contract-asset charge. The release is driven by a government ECL floor-rate cut (1.38%→1.19%) and the Bankenveld deconsolidation, not improved collections.**
+
+- **ECL decomposition** (Note 28): trade receivables **credit R6,413,164**; contract assets **charge R4,203,719**; JV loans **credit R5,482,571**; net credit R7,692,016.
+- **Trade-receivable release drivers** (Note 3.10.2): (i) settlement of prior-year investment-sale receivable (R40.9m MS5 Pennyville); (ii) **government ECL floor rate cut from 1.38% to 1.19%** — a mechanical release; (iii) mix change. **Not** improved collections on the enlarged book.
+- **Receivables growth**: gross trade receivables +91.2% to R157.3m, driven by a **Belhar land-sale receivable** "anticipated to be recovered in the short term." Government exposure fell R29.2m → R0.26m (collected/reclassified). The "<30 days" bucket of R112.0m is implausibly large vs monthly revenue (~R74m) — suggests progress billings reclassified from contract assets on invoicing.
+- **Retentions**: Note 23 asserts retentions are "usually released within three to six months" and are not variable consideration. Retention **creditors** (payable side) are R5.1m (Note 19). Retention **receivables** are not separately disclosed — a gap.
+- **Sustainability**: the R7.7m credit is **non-recurring**. Forward ECL run-rate should be modelled as a **charge** (baseline ~R4.2m contract-asset charge plus any trade-receivable charge), not a credit.
+
+## 2.5 Joint Ventures vs Proportionately Consolidated Joint Operations (BDC / Bankenveld District City)
+
+**Determination: The BDC accounting treatment is internally contradictory and unresolved. Note 39 reclassifies BDC from JV to joint operation (prospective, effective 1 Sep 2025, R19.25m retained-income debit). Note 48 simultaneously treats BDC as a subsidiary (49% holding, 100% board control, chairman casting vote). These cannot both be correct.**
+
+- **Note 39 (JV→JO)**: BDC reclassified from equity-accounted JV to proportionately consolidated joint operation under IFRS 11.20–21, effective 1 September 2025, **prospectively** (no restatement). The transition table is **blank** — no amounts disclosed for assets/liabilities brought on. The R19,252,380 retained-income debit is not visible in Note 39.
+- **Note 48 (subsidiary)**: BDC (Belhar Calgro M3 Development Company) is listed as a **subsidiary** — 49% holding but 100% voting power and 100% board control, chairman casting vote. Carrying amount R49.
+- **Resolution required**: Either (a) BDC is a joint operation (Note 39) and Note 48's subsidiary listing is a legacy/error, or (b) BDC is a subsidiary (Note 48) and Note 39's JO transition is a different entity or mis-stated. The **R19.25m equity debit and the R11.6m JV profit elimination** both point to a real reclassification. This must be resolved before any forecast — it changes consolidated revenue, contract balances, debt, and NCI.
+- **JV profit quality**: reported JV profit R24.0m includes **R11.6m Bankenveld share eliminated on change in control**. Continuing JV profit = **R12.4m** (Witpoortjie R0.1m + South Hills R12.4m + Table View −R0.1m). South Hills revenue fell 63.9% and margin compressed 520 bps — the only revenue-generating JV is maturing.
+- **JV loan exposure**: gross R401.8m, of which **Witpoortjie R360.7m (89.8%)** — against near-zero equity (R0.29m) and **zero FY2026 revenue**. This is a concentrated, unsecured, under-provisioned exposure (ECL only R14.3m = 3.56%).
+
+## 2.6 Borrowing Costs Capitalised into Construction Assets
+
+**Determination: R102.1m of borrowing costs were capitalised in FY2026 (up 60.3% from R63.7m), on general borrowings. This masks the true finance cost — gross finance cost was R145.6m, P&L only R43.5m. If capitalisation normalises, P&L finance cost could rise ~R100m.**
+
+- **Note 30**: gross finance cost R145,636,241; less capitalised to construction contracts R102,143,192; less capitalised to inventory nil (2025: R12.2m); P&L R43,493,049.
+- **Capitalisation rate**: incremental borrowing rate 12.72% (2025: 11.76%). The R102.1m capitalised on general borrowings is a **non-cash P&L benefit** that inflates reported profit and understates the true cost of debt.
+- **Forecast risk**: as construction work completes (or if capitalisation criteria are not met), the R102m+ flows to P&L. This is a **material earnings cliff** not visible in the headline finance cost.
+- **Embedded in contract cost-to-complete**: capitalised interest sits inside the R852.1m future-cost bucket and the contract-asset cost base, affecting POC margin. The R44.9m of employee costs also capitalised (Note 36) compounds this.
+
+## 2.7 Onerous Contract Provisions & Performance Guarantee/Bonding Facilities
+
+**Determination: No onerous-contract provisions are disclosed. No performance-bond or bonding-facility line is disclosed anywhere in the notes — a material disclosure gap for a construction group. The only guarantee disclosed is the DMTN guarantee by Calgro M3 Developments (parent-level Note 63).**
+
+- **Onerous contracts**: Note 9 nets recognised losses within the contract position; no separate IAS 37 onerous-contract provision is disclosed. Note 3.8 states "No contingent assets or liabilities existed at year-end" — a strong representation that must be tested against the DMTN guarantee.
+- **Bonding/guarantees**: The consolidated notes contain **no performance-bond or bonding-facility disclosure** — unusual for a R2.1bn construction book. The parent Note 63 discloses that **Calgro M3 Developments guarantees the DMTN listed debt programme** — a material subsidiary guarantee that should appear as a contingent liability in consolidated Note 21. Its absence is a verification gap.
+- **Contingent liabilities**: Note 3.8's "nil" representation is **contradicted in spirit** by the DMTN guarantee (a subsidiary guarantee of parent debt). This must be reconciled.
+
+## 2.8 DMTN Corporate Bond & Bank Debt Covenant Headroom
+
+**Determination: All R1,380.3m borrowings are unsecured. Covenants are DSCR >1.2x, Net Debt/Equity <1.5:1, liquidity ratio >1.2. The Group asserts no breach, but the DSCR of 1.54x is flattered by including R566.4m of new debt in "available cash flow" — excluding it, DSCR is sub-1.0x. The Net Debt/Equity of 0.74:1 is within the 1.5:1 covenant but above the Group's own 0.75:1 target on a retained-income basis (0.78:1).**
+
+- **Covenant definitions** (Note 4.2): DSCR >1.2x; Net Debt/Equity <1.5:1; liquidity ratio >1.2. Net Debt = interest-bearing borrowings less cash; Equity = total equity excluding SBP reserve.
+- **DSCR quality**: available cash flow includes "new financial indebtedness incurred R566,425,000." Excluding new debt, available cash flow = R17.5m vs debt service R379.9m → **DSCR ~0.05x**. The 1.54x is **not a measure of operating debt-service capacity**.
+- **Net Debt/Equity**: 0.74:1 (Note 4.2) vs 1.5:1 covenant — headroom exists. But on retained-income basis (R1,196.6m ÷ R1,541.1m) = **0.78:1**, above the Group's own 0.75:1 target. The covenant uses total equity (R1,569.5m ex-SBP), giving 0.74:1.
+- **Maturity/refinancing**: Note 20 shows R133.0m within 12 months (carrying) / R224.3m undiscounted; Note 63 shows R224.3m <1yr undiscounted. **~R173m of DMTN notes mature in FY2027** (CGR 52 R50m, CGR 53 R40m, CGR 55 R50m, CGR 56 R33m). The Group states repayment depends on "refinancing of borrowings." This is the **primary liquidity risk**.
+- **JIBAR→ZARONIA**: all borrowings JIBAR-linked (except NHFC Prime+0.5%); JIBAR ceases 31 Dec 2026. Credit adjustment spread unquantified — a repricing risk on R1,093m of debt.
+
+## 2.9 Cash Tax vs Deferred Tax
+
+**Determination: The tax charge is almost entirely deferred (R44.7m of R47.4m), driven by the construction-contract DTL (R437.7m). Cash tax paid was only R3.9m. The parent's tax credit (ETR −10.18%) is entirely a subsidiary-dividend artefact. Recognised tax losses rose sharply to R92.0m — a DTA recognition judgement.**
+
+- **Group** (Note 31): current tax R2.7m; deferred tax R44.7m; total R47.4m; ETR **23.87%** (not 22.82% as earlier flagged — corrected). Deferred driven by construction-contract DTL R437.7m (+R56.5m). Tax paid R3.9m.
+- **Tax losses**: estimated losses available rose to **R91,971,218** (2025: R34,222,876) — a R57.7m increase. Recognised DTA on losses R24.3m. This is a **DTA recognition judgement** dependent on forecast taxable profits; write-down risk if profits disappoint.
+- **Parent** (Note 58): current tax nil; deferred credit R837,540; ETR **−10.18%**, driven by the (39.40%) non-taxable subsidiary dividend. This is **not a sustainable operating tax benefit** — it depends on subsidiary dividend policy.
+- **Note 60 arithmetic discrepancy**: parent tax paid R(38,244) does not tie to opening R77,915 / current nil / closing R(116,159) — a R155,830 gap. Data-integrity flag.
 
 ---
 
-### 4. Final Forensic Verification Matrix
+# 3. AUDIT OF COMMON SURFACE-READING PITFALLS
 
-| Forensic Junction | Raw Initial Claim / Surface Figure | Resolving Note / Statement Reference | Final Verified Forensic Determination |
-| --- | --- | --- | --- |
-| **1. Share Count & Dividend Base** | 113.05m issued / 17.67m treasury; R9.76m dividend (`D002` IAR p. 25) vs. R6.59m paid (`D005` AFS p. 17)
+| Naive Reader Error | Forensic Reality |
+|---|---|
+| "Revenue grew 2.8% and PAT only fell 3.5% — resilient." | PAT is flattered by R11.5m non-cash fair-value gains and a R7.7m non-recurring ECL credit. Underlying operating profit is materially weaker. |
+| "Gross margin 27.20% beats the 20–25% target — strong." | The beat is legacy infrastructure cost, explicitly non-recurring. Residential margin is 24.24% and compressing; management's own goodwill model assumes 23.23%. |
+| "Construction contracts R2.1bn is a huge order book." | Only R1.27bn is contract assets; R852m is inventory-like future cost with no revenue and no ECL. Unbilled days ~574. |
+| "Net Debt/Equity 0.74:1 is comfortably within the 1.5:1 covenant." | The covenant is 1.5:1 but the Group's own target is 0.75:1; on retained income it is 0.78:1. DSCR 1.54x is flattered by including new debt — ex-new-debt it is ~0.05x. |
+| "DSCR 1.54x shows strong debt-service capacity." | Available cash flow includes R566.4m of new borrowings. Operating cash flow was negative R14.8m. |
+| "JV profit R24.0m is a solid contribution." | R11.6m is Bankenveld eliminated on reclassification; continuing JV profit is R12.4m, and the only revenue-generating JV (South Hills) is maturing (−63.9% revenue). |
+| "ECL credit R7.7m shows improving credit quality." | It is a non-recurring release from a government ECL rate cut and the Bankenveld deconsolidation, against a growing receivable book. Contract-asset specific exposure jumped R544m. |
+| "All borrowings unsecured means no asset encumbrance — flexible." | It means no security for lenders and no secured borrowing headroom; the DMTN is guaranteed by the subsidiary, contradicting the "unsecured" label. |
+| "Finance costs fell 27.9% — deleveraging." | Gross finance cost rose to R145.6m; the P&L fall is entirely due to R102.1m capitalised interest. True cost of debt is rising. |
+| "Dividend maintained at 8.63703cps — stable." | The rand amount (R9.88m) implies ~114.4m shares vs 95.4m in issue — an unreconciled arithmetic discrepancy. |
+| "BDC is a joint operation (Note 39)." | Note 48 simultaneously treats BDC as a subsidiary. The classification is internally contradictory and unresolved. |
+| "Tax credit at parent level is a benefit." | It is entirely a subsidiary-dividend artefact (ETR −10.18%); not sustainable. |
+| "No contingent liabilities (Note 3.8)." | The DMTN guarantee by Calgro M3 Developments is a material subsidiary guarantee not reflected in the "nil" representation. |
 
- | `D004` AFS p. 16 (EPS), `D005` AFS p. 17 (SOCIE), `D006` AFS p. 18 (Cash Flow)
+---
 
- | **95,742,713 WANOS** (Basic) / **97,147,450** (Diluted); **95,380,601 net closing shares** after buying back **1,327,525 shares for R6.66m (R5.02/sh)**. R9.76m dividend is stated gross of 17.67m treasury shares; R6.59m paid in FY2026 reflects ~76.33m external shares net of treasury & consolidated Educational Trust holdings.
+# 4. FINAL FORENSIC VERIFICATION MATRIX
 
- |
-| **2. Gross Debt, Net Debt & Gearing Covenant** | Principal debt R1,358.0m & ND/Equity 0.74:1 (`D002` IAR p. 24) vs. Carrying debt R1,380.29m (`D003` AFS p. 16)
+| Junction | Raw Initial Claim | Resolving Note / SENS | Final Verified Determination |
+|---|---|---|---|
+| **POC revenue recognition** | "Input method, approved feasibilities" | Note 9, Note 23; auditor KAM | Input method confirmed; over-time revenue −19.9%, point-in-time +54.1%; contract-asset build partly transfer-timing (Fleurhof/Jabulani); cumulative catch-ups undisclosed. |
+| **Gross margin bridge** | "27.20%, above 20–25% target" | Note 1, Note 24 | Residential 24.24% (−341bps); Memorial Parks 54.90% (+481bps); Group beat is legacy infrastructure, normalising to ~23% per goodwill model. |
+| **Contract assets vs liabilities** | "Construction contracts R2,107.2m" | Note 9 | Only R1,270.3m is contract assets; R852.1m future cost (no revenue, no ECL); contract liabilities R15.2m (trivial). Unbilled days ~574. |
+| **Contract-asset specific exposure** | "ECL charge R4.2m" | Note 3.10.2 | Specific exposure jumped R393.9m→R938.1m (+R544m) while government bucket fell R633.1m→R149.4m — a material reclassification not reflected in ECL. **Highest-priority flag.** |
+| **ECL credit** | "R7.7m credit" | Note 28, Note 3.10.2 | Non-recurring: trade-receivable release R6.4m (govt rate cut 1.38%→1.19%, MS5 settlement) + JV-loan release R5.5m (Bankenveld) − contract-asset charge R4.2m. Forward run-rate is a charge. |
+| **Retentions** | "Released within 3–6 months" | Note 23, Note 19 | Retention creditors R5.1m; retention receivables not separately disclosed — gap. |
+| **BDC classification** | "JV→joint operation (Note 39)" | Note 39 vs Note 48 | **Contradictory**: Note 39 = joint operation (prospective, R19.25m debit); Note 48 = subsidiary (49%/100% board). Unresolved. |
+| **JV profit** | "R24.0m, −44.1%" | Note 11 | R11.6m Bankenveld eliminated; continuing JV profit R12.4m; South Hills revenue −63.9%; Witpoortjie zero revenue, R360.7m loan (89.8% of JV book). |
+| **Borrowing costs capitalised** | "Finance costs −27.9%" | Note 30 | Gross finance cost R145.6m; R102.1m capitalised; P&L R43.5m. Capitalisation masks true cost; normalisation risk ~R100m. |
+| **Onerous contracts / bonding** | "No contingent liabilities" | Note 3.8, Note 63 | No onerous-contract provisions; no bonding-facility disclosure (gap); DMTN guaranteed by Calgro M3 Developments — contradicts "nil" representation. |
+| **Covenant headroom** | "DSCR 1.54x, ND/E 0.74:1, no breach" | Note 4.2, Note 20 | DSCR flattered by R566.4m new debt (ex-new-debt ~0.05x); ND/E 0.74:1 within 1.5:1 but above 0.75:1 target on retained income (0.78:1); ~R173m DMTN matures FY2027, reliant on refinancing. |
+| **Cash tax vs deferred** | "Tax R47.4m" | Note 31, Note 58 | Deferred R44.7m (construction-contract DTL R437.7m); cash tax R3.9m; tax losses R92.0m (DTA judgement); parent ETR −10.18% is subsidiary-dividend artefact. |
+| **Cash flow / liquidity** | "Available liquidity R283m" | Note 32, Note 4.2, Note 65 | CFO −R14.8m; FCFE −R221.5m; funded by R250.5m new debt; parent going concern relies on undefined subsidiary "commitment." |
+| **Maintenance provision** | "R66.3m provision" | Note 21, Note 13 | Only R20.7m funded by ring-fenced investment — ~R45.6m unfunded future obligation. |
+| **Dividend / share count** | "8.63703cps, R9.88m" | Note 50, D010 | R9.88m ÷ 8.63703cps = ~114.4m shares vs 95.4m in issue — unreconciled arithmetic discrepancy. |
+| **Parent tax paid** | "R38,244" | Note 60 | Does not tie to opening R77,915 / current nil / closing R(116,159) — R155,830 gap. Data-integrity flag. |
 
- | `D003` AFS p. 16 (SFP), `D006` AFS p. 18 (Cash Flow), `D005.1` AFS p. 19 (Note 1)
+---
 
- | **IFRS Carrying Debt = R1,380.29m** (R1,358.0m principal + R22.29m accrued interest/fees); **IFRS Net Debt = R1,196.57m** (0.762:1 of Total Equity R1,571.18m). Covenant ND/Equity of **0.74:1** (0.747:1 exact) uses Principal Net Debt (R1,174.28m) ÷ Total Equity, sitting below the 0.75:1 target and 1.50:1 bank covenant.
-
- |
-| **3. Liquidity & Undrawn Facilities** | "Available liquidity R283m" (`D002` IAR p. 17) vs. "Available facilities R268.75m" (`D003` IAR p. 27)
-
- | `D003` AFS p. 16 (SFP Cash), `D006` AFS p. 18 (Cash Flow)
-
- | **Unrestricted Cash = R183.72m** (98.9% in Residential segment) + **Implied Undrawn Facilities = R99.28m** = **R283.00m Total Available Liquidity**. R268.75m represents specific facility limits (R14.25m variance vs. total liquidity).
-
- |
-| **4. Operating Profit, EBITDA Quality & EPS–HEPS Gap** | Operating profit R171.05m (+3.2%); Basic EPS 167.36c vs. HEPS 156.76c (`D005` IAR p. 58)
-
- | `D004` AFS p. 16 (SCI), `D005.1` AFS p. 21 (Note 1 Segment P&L)
-
- | Reported OP of **R171.05m** includes a **+R7.69m non-cash ECL credit release** (+R11.34m YoY swing) and **R16.31m Memorial Parks Other Income** (+127% YoY). Stripping out ECL credit lowers OP to **R163.36m**. The **10.60c EPS–HEPS gap** equals **~R10.15m post-tax** in non-headline capital/fair-value gains.
-
- |
-| **5. Finance Costs & Capitalised Interest** | P&L Finance Costs fell 27.9% to R43.49m (`D002` IAR p. 23) despite debt rising 24.8%
-
- | `D004` AFS p. 16 (SCI) vs. `D006` AFS p. 18 (Cash Flow Statement)
-
- | **Total Cash Finance Costs Paid = R135.64m** (vs. R134.10m in FY2025). Only **R43.49m** was expensed on the P&L; the remaining **R92.15m was capitalised** into Construction Contracts (primarily BDC infrastructure). Net cash interest outflow was **−R80.40m** vs. P&L net finance *income* of +R12.57m.
-
- |
-| **6. Segment Margins & Revenue Recognition Mix** | Group GP margin 27.20% above 20%–25% target (`D002` IAR p. 17); Combined revenue R1,028.37m
-
- | `D005.1` AFS pp. 20–21 (Note 1 Segment Revenue & P&L)
-
- | **Residential GP margin compressed 341 bps** from 27.65% to **24.24%** (GP R195.58m) as non-core projects traded out; **Memorial Parks GP margin expanded 481 bps** to **54.90%** (GP R47.33m). POC (over-time) revenue fell **−19.9% to R482.00m**, while Point-in-Time jumped **+54.1% to R411.17m**. Non-IFRS "Combined Revenue" fell 16.3% due to a **62.5% (−R225.00m) collapse in gross JV revenue**.
-
- |
-| **7. Memorial Parks Overhead Coverage & Pipeline** | Cash receipts of R106.9m "fully cover Group overheads"; R2.16bn Park pipeline (`D002` IAR pp. 21–22)
-
- | `D002` IAR pp. 21–22 Footnotes `#`/`*`, `D004` AFS p. 16 (Admin Expenses)
-
- | R106.9m cash receipts **include 15% VAT** (~R92.96m ex-VAT), covering **94.3%** of Group Admin Expenses (R98.61m ex-VAT) and **0%** of cash interest. **R1,095.37m (50.8%)** of the R2.16bn Memorial Parks pipeline (Bloemfontein & Rustenburg) is **contingent on unapproved regulatory/burial rights**.
-
- |
-| **8. BDC Reclassification, Working Capital & Capex** | Construction contracts +R438.92m to R2,107.21m; JV loans −R85.88m (`D003` AFS p. 16)
-
- | `D002` IAR pp. 23–24, `D005` AFS p. 17 Footnote `#`, `D006` AFS p. 18, `D005.1` AFS p. 19
-
- | BDC reclassification from JV to Joint Operation caused a **−R19.25m direct debit to Retained Income**, added **R206m** to Construction Contracts (plus R226.4m cash WIP spend = **953 unbilled revenue days**), and triggered a **~R199.62m non-cash reduction in JV loans** (offsetting R113.74m in net cash JV loan advances). BDC requires **~R150m in unhedged Phase 1 capex** with no finalised public-sector recovery agreement.
-
- |
-| **9. Tax Rate & Cash Tax Divergence** | P&L Tax R47.37m (22.82% ETR) vs. Cash Tax Paid R3.89m (`D004` & `D006` AFS pp. 16, 18)
-
- | `D003` AFS p. 16 (Deferred Tax), `D004` AFS p. 16, `D006` AFS p. 18
-
- | Excluding post-tax JV profit (R23.98m) from PBT gives an underlying **25.80% ETR** (vs. 27% statutory). Low cash tax of **R3.89m** is explained by a **+R44.65m surge in Net Deferred Tax Liability** (DTL rose to R409.49m) driven by IFRS 15 POC revenue timing and R92.15m of capitalised interest.
-
- |
-| **10. Post-Balance-Sheet Runway & Refinancing** | Clean Going Concern opinion (`D002` AFS p. 15); 8.63703c dividend declared 18 May 2026 (`D002` IAR p. 25)
-
- | `D002` IAR pp. 24–25, `D002` AFS p. 15, `D006` AFS p. 18
-
- | Group faces **R240.5m in FY2027 debt maturities** (and R395m in FY2028) plus **~R150m BDC Phase 1 capex** and ~R8.24m net cash dividend against R283m year-end liquidity (R183.72m cash + R99.28m facilities) and post-year-end receivable collections, making **FY2027 debt refinancing and Bucket 1 non-core asset sales (Cornubia/Vredehoek) mandatory** to sustain liquidity.
-
- |
+**Audit conclusion.** Calgro M3's FY2026 results present a stable surface over a deteriorating operating and liquidity reality. The earnings quality is weak (non-cash fair-value gains, non-recurring ECL credit, capitalised interest, JV profit elimination), the balance sheet is levered and unsecured with a hidden R852m no-ECL exposure and a R544m contract-asset reclassification, and the liquidity runway is debt-funded with a FY2027 refinancing cliff and a parent going concern dependent on an undefined subsidiary commitment. The BDC classification contradiction and the dividend/share-count arithmetic discrepancy are unresolved data-integrity issues that must be closed before any forecast is relied upon.
 
 ---
 

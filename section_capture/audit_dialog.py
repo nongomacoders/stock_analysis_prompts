@@ -1372,23 +1372,29 @@ class AuditValuationDialog(QDialog):
             QMessageBox.warning(self, "PDF Not Found", f"No source PDF found in {sources_dir}.")
             return
 
-        # Fast page-by-page text extraction via pypdfium2
-        pdf_path = pdf_files[0]
+        # Fast page-by-page text extraction via pypdfium2 across all available source PDFs
         self.run_s2_deepseek_btn.setEnabled(False)
-        self.run_s2_deepseek_btn.setText("⏳ Ingesting PDF...")
-        self.s2_prompt_status.setText(f"⏳ Ingesting {pdf_path.name}...")
+        self.run_s2_deepseek_btn.setText("⏳ Ingesting PDFs...")
+        pdf_names = ", ".join(f.name for f in pdf_files)
+        self.s2_prompt_status.setText(f"⏳ Ingesting {len(pdf_files)} PDF(s): {pdf_names}...")
         QApplication.processEvents()
 
+        all_pdf_sections = []
         try:
             import pypdfium2 as pdfium
-            pdf = pdfium.PdfDocument(str(pdf_path))
-            pages_text = []
-            for i, page in enumerate(pdf):
-                t_range = page.get_textpage().get_text_range().strip()
-                pages_text.append(f"--- [PDF Page {i+1} of {len(pdf)}] ---\n{t_range}")
-            pdf_extracted_text = "\n\n".join(pages_text)
+            for pdf_path in pdf_files:
+                doc = pdfium.PdfDocument(str(pdf_path))
+                pages_text = []
+                for i, page in enumerate(doc):
+                    t_range = page.get_textpage().get_text_range().strip()
+                    pages_text.append(f"--- [{pdf_path.name} | Page {i+1} of {len(doc)}] ---\n{t_range}")
+                all_pdf_sections.append(
+                    f"## SOURCE DISCLOSURE FILE: {pdf_path.name} ({len(doc)} Pages)\n\n"
+                    + "\n\n".join(pages_text)
+                )
+            pdf_extracted_text = "\n\n---\n\n".join(all_pdf_sections)
         except Exception as exc:
-            QMessageBox.critical(self, "PDF Extraction Failed", f"Could not extract text from {pdf_path.name}:\n\n{exc}")
+            QMessageBox.critical(self, "PDF Extraction Failed", f"Could not extract text from source PDFs:\n\n{exc}")
             self.run_s2_deepseek_btn.setEnabled(True)
             self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
             return
@@ -1416,7 +1422,7 @@ class AuditValuationDialog(QDialog):
             )
         prompt_sections.append(
             f"# COMPLETE PRIMARY SOURCE FINANCIAL REPORT DISCLOSURES & AUDITED NOTES\n"
-            f"**Source Document:** {pdf_path.name} (Pages 1 to {len(pdf)})\n\n"
+            f"**Source Documents:** {pdf_names}\n\n"
             + pdf_extracted_text
         )
         full_dossier = "\n\n---\n\n".join(prompt_sections)
