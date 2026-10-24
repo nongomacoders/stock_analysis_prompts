@@ -89,3 +89,16 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 ### 8. Tool Absolute Path Requirements
 * **Tool path error**: Calling `read_file`, `write_file`, or `edit_file` with a relative path (e.g. `companies/sectors.py`) causes `failed to parse path: ... must be an absolute path: path is not absolute`.
 * **Rule**: Always pass absolute paths (e.g. `c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/...`) to file inspection and editing tools.
+
+---
+
+### 9. PyTest Fixtures & Dataclass Return Types in `section_capture`
+* **Qt test fixtures**: Use `qapp` (defined in `tests/conftest.py`) instead of `qtbot`.
+* **Modal blocking during headless test runs**: Functions that trigger `QMessageBox.information`, `QMessageBox.warning`, or `QMessageBox.question` will hang the test suite if not monkeypatched. In tests invoking dialog actions:
+  ```python
+  monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+  monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+  monkeypatch.setattr(QMessageBox, "question", lambda *args, **kwargs: QMessageBox.StandardButton.Yes)
+  ```
+* **Dataclass vs Dictionary returns**: `list_sections()` returns dataclass objects of type `SavedSection`. Access attributes directly (`sec.heading`, `sec.selected_text`), never via dictionary indexing (`sec["heading"]`).
+* **Content type enum keys**: `packages.save_package()` validates `capture.content_type in CONTENT_TYPES`. Use lowercase enum keys (`"commentary"`, `"table"`, `"financial_note"`, `"unspecified"`), not display title strings (`"Table"`).
