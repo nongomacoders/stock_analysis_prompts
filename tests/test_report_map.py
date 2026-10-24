@@ -572,8 +572,23 @@ def test_initial_map_creation_supports_multiple_sections_on_same_page(qapp, pdf_
 
     window.close()
 
+def test_capture_window_model_status_bar_and_dynamic_labels(qapp, tmp_path, monkeypatch):
+    monkeypatch.delenv("OPENROUTER_MODEL", raising=False)
+    window = CaptureWindow(tmp_path / "packs")
+    try:
+        assert hasattr(window, "model_status_label")
+        assert "DeepSeek Flash" in window.model_status_label.text()
+        assert "DeepSeek" in window.save_and_run_button.text()
 
+        # Toggle nitro checkbox
+        window.nitro_checkbox.setChecked(True)
+        assert "DeepSeek Flash (nitro)" in window.model_status_label.text()
+        assert "DeepSeek:nitro" in window.save_and_run_button.text()
 
-
-
+        window.nitro_checkbox.setChecked(False)
+        assert "DeepSeek Flash" in window.model_status_label.text()
+        assert "DeepSeek" in window.save_and_run_button.text()
+    finally:
+        window.close()
+        window.deleteLater()
 

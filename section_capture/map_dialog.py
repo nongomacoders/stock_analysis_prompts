@@ -14,7 +14,12 @@ from .db import (
     list_sections,
     save_section_llm_response,
 )
-from .openrouter import OpenRouterWorker, get_openrouter_model
+from .openrouter import (
+    OpenRouterWorker,
+    get_model_display_name,
+    get_model_short_tag,
+    get_openrouter_model,
+)
 from .packages import build_prompt, clean_single_line_text, detect_sector_from_path, extract_selection_texts
 from .report_map import assign_section_ids, build_manual_section_map, load_questions_ledger, report_overview, save_map, save_questions_ledger
 from .section_matcher import auto_capture_section, compare_section_maps, extract_all_app_sections
@@ -730,12 +735,13 @@ class SavedSectionsDialog(QDialog):
 
         actions_row = QHBoxLayout()
         actions_row.setSpacing(6)
+        model_name = get_model_display_name()
         self.run_api_btn = QPushButton('Query Model (OpenRouter)')
         self.run_api_btn.setObjectName("primary")
-        self.run_api_btn.setToolTip('Send reading prompt directly to DeepSeek via OpenRouter API and save response.')
+        self.run_api_btn.setToolTip(f'Send reading prompt directly to {model_name} via OpenRouter API and save response.')
         self.run_api_btn.clicked.connect(self.run_openrouter_for_current)
         self.run_all_btn = QPushButton('Run All Pending')
-        self.run_all_btn.setToolTip('Sequentially query DeepSeek for all sections that do not yet have an LLM response.')
+        self.run_all_btn.setToolTip(f'Sequentially query {model_name} for all sections that do not yet have an LLM response.')
         self.run_all_btn.clicked.connect(self.run_openrouter_for_all_pending)
         self.nitro_checkbox = QCheckBox(":nitro")
         self.nitro_checkbox.setToolTip("Route query via OpenRouter :nitro priority throughput.")
@@ -931,7 +937,7 @@ class SavedSectionsDialog(QDialog):
 
         base_model = get_openrouter_model()
         model = f"{base_model}:nitro" if self.nitro_checkbox.isChecked() else base_model
-        model_tag = "DeepSeek:nitro" if ":nitro" in model else "DeepSeek"
+        model_tag = get_model_short_tag(model)
         self.status_label.setText(f"Querying {model_tag} via OpenRouter for {sec.section_number:02d}-{sec.section_id}...")
         self.run_api_btn.setEnabled(False)
 
@@ -1013,7 +1019,7 @@ class SavedSectionsDialog(QDialog):
 
         base_model = get_openrouter_model()
         model = f"{base_model}:nitro" if self.nitro_checkbox.isChecked() else base_model
-        model_tag = "DeepSeek:nitro" if ":nitro" in model else "DeepSeek"
+        model_tag = get_model_short_tag(model)
         completed = self._total_pending_count - len(self._pending_queue)
         self.status_label.setText(
             f"[{completed}/{self._total_pending_count}] Querying {model_tag} for Section {sec.section_number:02d}: {sec.heading}..."

@@ -39,7 +39,12 @@ from .db import (
     upsert_report,
 )
 from .map_dialog import QuestionsLedgerDialog, ReportMapDialog, SavedSectionsDialog
-from .openrouter import OpenRouterWorker, get_openrouter_model
+from .openrouter import (
+    OpenRouterWorker,
+    get_model_display_name,
+    get_model_short_tag,
+    get_openrouter_model,
+)
 from companies.sectors import get_all_sectors
 from .packages import (
     PROJECT_ROOT,
@@ -329,6 +334,10 @@ class CaptureWindow(QMainWindow):
         app = QApplication.instance()
         if app:
             app.installEventFilter(self)
+        self.model_status_label = QLabel()
+        self.model_status_label.setStyleSheet("padding: 2px 8px; color: #475569; font-size: 11px; font-weight: 500;")
+        self._update_model_status_label()
+        self.statusBar().addPermanentWidget(self.model_status_label)
         self.statusBar().showMessage("Open a PDF. Your source stays unchanged; sections are saved to SQLite.")
         self._update_actions()
 
@@ -583,9 +592,11 @@ class CaptureWindow(QMainWindow):
         self.save_button = QPushButton("Save Section")
         self.save_button.setToolTip("Save section to SQLite (instant, does not wait for AI). Ready for the next section.")
         self.save_button.clicked.connect(self.save_section)
-        self.save_and_run_button = QPushButton("Save && Run DeepSeek")
+        disp_name = get_model_display_name()
+        short_tag = get_model_short_tag()
+        self.save_and_run_button = QPushButton(f"Save && Run {short_tag}")
         self.save_and_run_button.setObjectName("primary")
-        self.save_and_run_button.setToolTip("Save section to SQLite and queue for DeepSeek analysis in the background.")
+        self.save_and_run_button.setToolTip(f"Save section to SQLite and queue for {disp_name} analysis in the background.")
         self.save_and_run_button.clicked.connect(self.save_and_run_model)
         save_row.addWidget(self.save_button)
         save_row.addWidget(self.save_and_run_button)
@@ -600,7 +611,7 @@ class CaptureWindow(QMainWindow):
         aux_row = QHBoxLayout()
         aux_row.setSpacing(6)
         self.run_pending_button = QPushButton("⚡ Run Pending (0)")
-        self.run_pending_button.setToolTip("Sequentially process all un-analyzed sections in the background using DeepSeek.")
+        self.run_pending_button.setToolTip(f"Sequentially process all un-analyzed sections in the background using {disp_name}.")
         self.run_pending_button.clicked.connect(self.run_all_pending)
         self.review_button = QPushButton("Review Sections →")
         self.review_button.setToolTip("Browse and inspect saved sections, prompts, LLM responses, and audit status.")
@@ -952,8 +963,9 @@ class CaptureWindow(QMainWindow):
 
         self.save_button.setToolTip(save_tip)
         if hasattr(self, "save_and_run_button"):
+            active_disp = get_model_display_name(self._active_model_name())
             self.save_and_run_button.setToolTip(
-                "Save section to SQLite and queue for DeepSeek analysis in the background."
+                f"Save section to SQLite and queue for {active_disp} analysis in the background."
                 if is_savable else save_tip
             )
 
@@ -982,9 +994,10 @@ class CaptureWindow(QMainWindow):
                     pass
 
             queue_len = len(getattr(self, "_query_queue", []))
+            short_tag = get_model_short_tag(self._active_model_name())
             if is_worker_running:
                 in_flight = queue_len + 1
-                self.run_pending_button.setText(f"⚡ DeepSeek Running ({in_flight} in queue)")
+                self.run_pending_button.setText(f"⚡ {short_tag} Running ({in_flight} in queue)")
                 self.run_pending_button.setEnabled(False)
             elif pending_count > 0:
                 self.run_pending_button.setText(f"⚡ Run Pending ({pending_count})")
@@ -1524,8 +1537,9 @@ class CaptureWindow(QMainWindow):
             self._query_queue.append(package_id)
             pos = len(self._query_queue)
             short_name = shorten_section_name(name) if name else f"Section {package_id[:8]}"
+            short_tag = get_model_short_tag(self._active_model_name())
             self.statusBar().showMessage(
-                f"✓ Saved {short_name}! Added to DeepSeek background queue (#{pos} in queue)."
+                f"✓ Saved {short_name}! Added to {short_tag} background queue (#{pos} in queue)."
             )
             self._update_actions()
             return
@@ -1575,7 +1589,7 @@ class CaptureWindow(QMainWindow):
 
             active_model = self._active_model_name()
             short_name = shorten_section_name(name or sec.heading)
-            model_tag = "DeepSeek:nitro" if ":nitro" in active_model else "DeepSeek"
+            model_tag = get_model_short_tag(active_model)
             queue_count = len(getattr(self, "_query_queue", []))
             queue_tag = f" [{queue_count} more queued]" if queue_count > 0 else ""
             self.statusBar().showMessage(f"Querying {model_tag} for {short_name}{queue_tag}...")
@@ -1584,7 +1598,8 @@ class CaptureWindow(QMainWindow):
             self._active_worker = worker
             self._update_actions()
         except Exception as exc:
-            self.show_critical_error("DeepSeek Query Failed", f"Could not prepare section for DeepSeek: {exc}")
+            short_tag = get_model_short_tag(self._active_model_name())
+            self.show_critical_error(f"{short_tag} Query Failed", f"Could not prepare section for {short_tag}: {exc}")
             if hasattr(self, "_query_queue"):
                 self._query_queue.clear()
             self._active_worker = None
@@ -1642,7 +1657,8 @@ class CaptureWindow(QMainWindow):
         else:
             self._active_worker = None
             self._update_actions()
-            self.statusBar().showMessage("✓ DeepSeek completed all queued queries!")
+            short_tag = get_model_short_tag(self._active_model_name())
+            self.statusBar().showMessage(f"✓ {short_tag} completed all queued queries!")
 
     def run_all_pending(self):
         if not self.source:
@@ -1669,7 +1685,8 @@ class CaptureWindow(QMainWindow):
                 self._query_queue.append(pkg_id)
                 added += 1
 
-        self.statusBar().showMessage(f"Enqueued {added} pending section(s) for DeepSeek processing.")
+        short_tag = get_model_short_tag(self._active_model_name())
+        self.statusBar().showMessage(f"Enqueued {added} pending section(s) for {short_tag} processing.")
         if not (hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning()):
             self._process_next_in_queue()
         else:
@@ -1689,7 +1706,22 @@ class CaptureWindow(QMainWindow):
     def _update_nitro_tooltip(self):
         model = self._active_model_name()
         tag = "priority throughput" if ":nitro" in model else "standard throughput"
-        self.save_and_run_button.setToolTip(f"Save section to SQLite and automatically query {model} ({tag}).")
+        short_tag = get_model_short_tag(model)
+        if hasattr(self, "save_and_run_button"):
+            self.save_and_run_button.setText(f"Save && Run {short_tag}")
+            self.save_and_run_button.setToolTip(f"Save section to SQLite and automatically query {model} ({tag}).")
+        self._update_model_status_label()
+
+    def _update_model_status_label(self):
+        if not hasattr(self, "model_status_label"):
+            return
+        active_model = self._active_model_name()
+        disp = get_model_display_name(active_model)
+        self.model_status_label.setText(f"🤖 Model: {disp}")
+        self.model_status_label.setToolTip(
+            f"Active OpenRouter model: {active_model}\n"
+            f"Configured via OPENROUTER_MODEL in secrets.env or environment."
+        )
 
     def copy_prompt(self):
         if self.last_package:

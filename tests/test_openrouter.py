@@ -17,6 +17,8 @@ from section_capture.openrouter import (
     OpenRouterWorker,
     estimate_cost,
     fetch_generation_stats,
+    get_model_display_name,
+    get_model_short_tag,
     get_openrouter_api_key,
     get_openrouter_model,
     query_openrouter,
@@ -31,6 +33,44 @@ def test_get_openrouter_model_default(monkeypatch):
 def test_get_openrouter_model_env_override(monkeypatch):
     monkeypatch.setenv("OPENROUTER_MODEL", "deepseek/deepseek-r1")
     assert get_openrouter_model() == "deepseek/deepseek-r1"
+
+
+def test_get_model_display_name_and_short_tag(monkeypatch):
+    # Default model
+    monkeypatch.delenv("OPENROUTER_MODEL", raising=False)
+    with patch("section_capture.openrouter.EXTERNAL_SECRETS_PATH") as mock_path:
+        mock_path.exists.return_value = False
+        assert get_model_display_name() == "DeepSeek Flash"
+        assert get_model_short_tag() == "DeepSeek"
+
+    # With :nitro
+    assert get_model_display_name("deepseek/deepseek-v4.1-flash-1017:nitro") == "DeepSeek Flash (nitro)"
+    assert get_model_short_tag("deepseek/deepseek-v4.1-flash-1017:nitro") == "DeepSeek:nitro"
+
+    # Claude 3.5 Sonnet
+    assert get_model_display_name("anthropic/claude-3.5-sonnet") == "Claude 3.5 Sonnet"
+    assert get_model_short_tag("anthropic/claude-3.5-sonnet") == "Claude"
+
+    # Claude 3.7 Sonnet :nitro
+    assert get_model_display_name("anthropic/claude-3.7-sonnet:nitro") == "Claude 3.7 Sonnet (nitro)"
+    assert get_model_short_tag("anthropic/claude-3.7-sonnet:nitro") == "Claude:nitro"
+
+    # OpenAI GPT-4o
+    assert get_model_display_name("openai/gpt-4o") == "GPT-4o"
+    assert get_model_short_tag("openai/gpt-4o") == "GPT-4o"
+    assert get_model_display_name("openai/gpt-4o-mini") == "GPT-4o Mini"
+
+    # Google Gemini
+    assert get_model_display_name("google/gemini-2.0-flash") == "Gemini 2.0 Flash"
+    assert get_model_short_tag("google/gemini-2.0-flash") == "Gemini"
+
+    # Fallback custom provider
+    assert get_model_display_name("mistralai/mixtral-8x7b-instruct") == "Mixtral 8x7b Instruct"
+    assert get_model_short_tag("mistralai/mixtral-8x7b-instruct") == "Mixtral"
+
+    # Empty string fallback
+    assert get_model_display_name("") == "AI Model"
+    assert get_model_short_tag("") == "AI"
 
 
 def test_get_openrouter_api_key_from_env(monkeypatch):

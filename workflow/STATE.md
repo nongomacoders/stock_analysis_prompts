@@ -11,6 +11,16 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Dynamic Model-Agnostic UI Architecture & Status Bar Model Indicator**:
+  - Eliminated hardcoded model names (DeepSeek) across buttons, status notifications, and dialog tooltips in section_capture/window.py, section_capture/audit_dialog.py, and section_capture/map_dialog.py.
+  - Implemented get_model_display_name() and get_model_short_tag() in section_capture/openrouter.py:
+    - Automatically formats model identifiers from OPENROUTER_MODEL / secrets.env (e.g. deepseek/deepseek-v4.1-flash-1017 -> DeepSeek Flash, anthropic/claude-3.5-sonnet -> Claude 3.5 Sonnet, openai/gpt-4o -> GPT-4o, google/gemini-2.0-flash -> Gemini 2.0 Flash).
+    - Handles :nitro priority throughput tagging cleanly (e.g. DeepSeek Flash (nitro) / DeepSeek:nitro).
+  - Added permanent status bar widget in MainWindow (self.model_status_label = QLabel()) displaying the active OpenRouter model (Model: DeepSeek Flash or Model: DeepSeek Flash (nitro)) with hover tooltips providing the full OpenRouter model ID and configuration path. Dynamically updates when :nitro throughput is toggled.
+  - Added active model badge in AuditValuationDialog header alongside ticker and sector information.
+  - Updated Stage 1 and Stage 2 buttons to dynamically read Run with {display_name} and Run Valuation ({display_name}), with dynamic running text and completion messages.
+  - Added unit and GUI tests in tests/test_openrouter.py, tests/test_portfolio_valuation.py, and tests/test_report_map.py. All 129 tests passing (100%).
+
 - **Model-Agnostic Prompt Architecture & Generic LLM Directives**:
   - Replaced all explicit model references (e.g. INSTRUCTIONS FOR GEMINI 4 ARGON) across prompt generators with model-agnostic directives:
     - Stage 1: ### INSTRUCTIONS FOR FORENSIC AUDITOR (LLM):

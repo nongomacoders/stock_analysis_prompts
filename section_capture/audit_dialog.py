@@ -51,7 +51,13 @@ from section_capture.packages import PROJECT_ROOT, detect_sector_from_path
 from section_capture.portfolio_view import PortfolioView
 from workflow.export_stage1 import build_stage1_prompt_content
 from workflow.generate_stage2 import build_stage2_prompt_content
-from section_capture.openrouter import OpenRouterWorker, get_openrouter_api_key, get_openrouter_model
+from section_capture.openrouter import (
+    OpenRouterWorker,
+    get_model_display_name,
+    get_model_short_tag,
+    get_openrouter_api_key,
+    get_openrouter_model,
+)
 
 
 def open_folder_and_select(file_or_dir: Path | str):
@@ -315,6 +321,19 @@ class AuditValuationDialog(QDialog):
 
         header.addStretch()
 
+        active_model = get_openrouter_model()
+        model_disp = get_model_display_name(active_model)
+        self.model_badge = QLabel(f"🤖 {model_disp}")
+        self.model_badge.setStyleSheet(
+            "font-size: 11px; padding: 2px 7px; background-color: #f1f5f9; "
+            "border: 1px solid #cbd5e1; border-radius: 4px; color: #475569; font-weight: 500;"
+        )
+        self.model_badge.setToolTip(
+            f"Active OpenRouter model: {active_model}\n"
+            f"Configured via OPENROUTER_MODEL in secrets.env or environment."
+        )
+        header.addWidget(self.model_badge)
+
         self.report_info_label = QLabel()
         self.report_info_label.setStyleSheet("color: #666; font-size: 12px;")
         header.addWidget(self.report_info_label)
@@ -564,11 +583,13 @@ class AuditValuationDialog(QDialog):
         self.copy_s1_btn.setToolTip("Copy prompt text to clipboard (note: files > 100k chars should be uploaded directly into chat).")
         self.copy_s1_btn.clicked.connect(self.copy_stage1_prompt)
         left_header.addWidget(self.copy_s1_btn)
-        self.run_s1_deepseek_btn = QPushButton("⚡ Run with DeepSeek")
-        self.run_s1_deepseek_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
-        self.run_s1_deepseek_btn.setToolTip("Execute the Stage 1 Forensic Audit directly via OpenRouter (DeepSeek Flash) without manual copy-pasting.")
-        self.run_s1_deepseek_btn.clicked.connect(self.run_stage1_deepseek)
-        left_header.addWidget(self.run_s1_deepseek_btn)
+        model_name = get_model_display_name()
+        self.run_s1_ai_btn = QPushButton(f"⚡ Run with {model_name}")
+        self.run_s1_deepseek_btn = self.run_s1_ai_btn  # backward compatibility alias
+        self.run_s1_ai_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
+        self.run_s1_ai_btn.setToolTip(f"Execute the Stage 1 Forensic Audit directly via OpenRouter ({model_name}) without manual copy-pasting.")
+        self.run_s1_ai_btn.clicked.connect(self.run_stage1_deepseek)
+        left_header.addWidget(self.run_s1_ai_btn)
         left_layout.addLayout(left_header)
 
         self.s1_prompt_edit = QPlainTextEdit()
@@ -719,11 +740,13 @@ class AuditValuationDialog(QDialog):
         self.copy_s2_btn.setToolTip("Copy prompt text to clipboard.")
         self.copy_s2_btn.clicked.connect(self.copy_stage2_prompt)
         row2.addWidget(self.copy_s2_btn)
-        self.run_s2_deepseek_btn = QPushButton("⚡ Run Valuation with DeepSeek")
-        self.run_s2_deepseek_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
-        self.run_s2_deepseek_btn.setToolTip("Execute the Stage 2 Institutional Valuation directly via OpenRouter (DeepSeek Flash) with full PDF ingestion.")
-        self.run_s2_deepseek_btn.clicked.connect(self.run_stage2_deepseek)
-        row2.addWidget(self.run_s2_deepseek_btn)
+        model_name = get_model_display_name()
+        self.run_s2_ai_btn = QPushButton(f"⚡ Run Valuation ({model_name})")
+        self.run_s2_deepseek_btn = self.run_s2_ai_btn  # backward compatibility alias
+        self.run_s2_ai_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
+        self.run_s2_ai_btn.setToolTip(f"Execute the Stage 2 Institutional Valuation directly via OpenRouter ({model_name}) with full PDF ingestion.")
+        self.run_s2_ai_btn.clicked.connect(self.run_stage2_deepseek)
+        row2.addWidget(self.run_s2_ai_btn)
         left_header.addLayout(row2)
 
         left_layout.addLayout(left_header)
@@ -1081,8 +1104,9 @@ class AuditValuationDialog(QDialog):
             return
 
         model = get_openrouter_model()
-        self.run_s1_deepseek_btn.setEnabled(False)
-        self.run_s1_deepseek_btn.setText("⏳ Running DeepSeek...")
+        model_name = get_model_display_name(model)
+        self.run_s1_ai_btn.setEnabled(False)
+        self.run_s1_ai_btn.setText(f"⏳ Running {model_name}...")
         token_est = len(prompt_text) // 4
         self.s1_prompt_status.setText(f"⏳ Submitting {len(prompt_text):,} chars (~{token_est:,} tokens) to {model} via OpenRouter...")
 
@@ -1094,17 +1118,17 @@ class AuditValuationDialog(QDialog):
             cost_val = stats.get("cost_usd")
             cost_str = f", ${cost_val:.4f} USD" if cost_val is not None else ""
             tot_tok = stats.get("total_tokens", 0)
-            status_msg = f"✓ DeepSeek Stage 1 audit complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
+            status_msg = f"✓ {model_name} Stage 1 audit complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
             self.s1_prompt_status.setText(status_msg)
-            self.s1_response_status.setText(f"✓ DeepSeek completed in {elapsed:.1f}s ({len(response_text):,} chars). Saved.")
-            self.run_s1_deepseek_btn.setEnabled(True)
-            self.run_s1_deepseek_btn.setText("⚡ Run with DeepSeek")
+            self.s1_response_status.setText(f"✓ {model_name} completed in {elapsed:.1f}s ({len(response_text):,} chars). Saved.")
+            self.run_s1_ai_btn.setEnabled(True)
+            self.run_s1_ai_btn.setText(f"⚡ Run with {model_name}")
 
         def on_error(err_msg):
-            self.s1_prompt_status.setText(f"❌ DeepSeek Stage 1 audit failed: {err_msg}")
-            QMessageBox.critical(self, "DeepSeek Query Failed", f"Failed to execute Stage 1 Forensic Audit:\n\n{err_msg}")
-            self.run_s1_deepseek_btn.setEnabled(True)
-            self.run_s1_deepseek_btn.setText("⚡ Run with DeepSeek")
+            self.s1_prompt_status.setText(f"❌ {model_name} Stage 1 audit failed: {err_msg}")
+            QMessageBox.critical(self, f"{model_name} Query Failed", f"Failed to execute Stage 1 Forensic Audit:\n\n{err_msg}")
+            self.run_s1_ai_btn.setEnabled(True)
+            self.run_s1_ai_btn.setText(f"⚡ Run with {model_name}")
 
         self._s1_worker.finished_query.connect(on_finished)
         self._s1_worker.error_query.connect(on_error)
@@ -1372,9 +1396,12 @@ class AuditValuationDialog(QDialog):
             QMessageBox.warning(self, "PDF Not Found", f"No source PDF found in {sources_dir}.")
             return
 
+        model = get_openrouter_model()
+        model_name = get_model_display_name(model)
+
         # Fast page-by-page text extraction via pypdfium2 across all available source PDFs
-        self.run_s2_deepseek_btn.setEnabled(False)
-        self.run_s2_deepseek_btn.setText("⏳ Ingesting PDFs...")
+        self.run_s2_ai_btn.setEnabled(False)
+        self.run_s2_ai_btn.setText("⏳ Ingesting PDFs...")
         pdf_names = ", ".join(f.name for f in pdf_files)
         self.s2_prompt_status.setText(f"⏳ Ingesting {len(pdf_files)} PDF(s): {pdf_names}...")
         QApplication.processEvents()
@@ -1395,8 +1422,8 @@ class AuditValuationDialog(QDialog):
             pdf_extracted_text = "\n\n---\n\n".join(all_pdf_sections)
         except Exception as exc:
             QMessageBox.critical(self, "PDF Extraction Failed", f"Could not extract text from source PDFs:\n\n{exc}")
-            self.run_s2_deepseek_btn.setEnabled(True)
-            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+            self.run_s2_ai_btn.setEnabled(True)
+            self.run_s2_ai_btn.setText(f"⚡ Run Valuation ({model_name})")
             return
 
         # Load SENS notices if present
@@ -1427,9 +1454,8 @@ class AuditValuationDialog(QDialog):
         )
         full_dossier = "\n\n---\n\n".join(prompt_sections)
 
-        model = get_openrouter_model()
         token_est = len(full_dossier) // 4
-        self.run_s2_deepseek_btn.setText("⏳ Running DeepSeek...")
+        self.run_s2_ai_btn.setText(f"⏳ Running {model_name}...")
         self.s2_prompt_status.setText(f"⏳ Submitting {len(full_dossier):,} chars (~{token_est:,} tokens) to {model} via OpenRouter...")
 
         self._s2_worker = OpenRouterWorker(full_dossier, model=model, parent=self, timeout=360, max_tokens=16384)
@@ -1440,17 +1466,17 @@ class AuditValuationDialog(QDialog):
             cost_val = stats.get("cost_usd")
             cost_str = f", ${cost_val:.4f} USD" if cost_val is not None else ""
             tot_tok = stats.get("total_tokens", 0)
-            status_msg = f"✓ DeepSeek Stage 2 valuation complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
+            status_msg = f"✓ {model_name} Stage 2 valuation complete in {elapsed:.1f}s ({tot_tok:,} tokens{cost_str}). Saved to DB & disk."
             self.s2_prompt_status.setText(status_msg)
-            self.s2_response_status.setText(f"✓ DeepSeek completed in {elapsed:.1f}s ({len(response_text):,} chars). Metrics saved.")
-            self.run_s2_deepseek_btn.setEnabled(True)
-            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+            self.s2_response_status.setText(f"✓ {model_name} completed in {elapsed:.1f}s ({len(response_text):,} chars). Metrics saved.")
+            self.run_s2_ai_btn.setEnabled(True)
+            self.run_s2_ai_btn.setText(f"⚡ Run Valuation ({model_name})")
 
         def on_error(err_msg):
-            self.s2_prompt_status.setText(f"❌ DeepSeek Stage 2 valuation failed: {err_msg}")
-            QMessageBox.critical(self, "DeepSeek Query Failed", f"Failed to execute Stage 2 Valuation:\n\n{err_msg}")
-            self.run_s2_deepseek_btn.setEnabled(True)
-            self.run_s2_deepseek_btn.setText("⚡ Run Valuation with DeepSeek")
+            self.s2_prompt_status.setText(f"❌ {model_name} Stage 2 valuation failed: {err_msg}")
+            QMessageBox.critical(self, f"{model_name} Query Failed", f"Failed to execute Stage 2 Valuation:\n\n{err_msg}")
+            self.run_s2_ai_btn.setEnabled(True)
+            self.run_s2_ai_btn.setText(f"⚡ Run Valuation ({model_name})")
 
         self._s2_worker.finished_query.connect(on_finished)
         self._s2_worker.error_query.connect(on_error)

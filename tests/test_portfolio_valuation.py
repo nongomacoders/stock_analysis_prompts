@@ -432,8 +432,8 @@ def test_open_prompt_folder_action(qapp, tmp_path, monkeypatch):
         dlg.deleteLater()
 
 
-def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path):
-    """Test that AuditValuationDialog provides the one-click DeepSeek Stage 1 execution action."""
+def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path, monkeypatch):
+    """Test that AuditValuationDialog provides dynamic AI execution actions for Stage 1 and Stage 2."""
     test_db = tmp_path / "test_stage1_btn.sqlite"
     sha = "test_sha_stage1_ds"
     upsert_report(sha256=sha, filename="APF_IAR_2026.pdf", db_path=test_db)
@@ -451,8 +451,20 @@ def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path):
         assert "DeepSeek" in dlg.run_s1_deepseek_btn.text()
         assert hasattr(dlg, "run_s2_deepseek_btn")
         assert "DeepSeek" in dlg.run_s2_deepseek_btn.text()
+        assert hasattr(dlg, "model_badge")
+        assert "DeepSeek" in dlg.model_badge.text()
     finally:
         dlg.deleteLater()
+
+    # Dynamic model override test
+    monkeypatch.setenv("OPENROUTER_MODEL", "anthropic/claude-3.5-sonnet")
+    dlg2 = AuditValuationDialog(DummySource(), db_path=test_db)
+    try:
+        assert "Claude 3.5 Sonnet" in dlg2.run_s1_ai_btn.text()
+        assert "Claude 3.5 Sonnet" in dlg2.run_s2_ai_btn.text()
+        assert "Claude 3.5 Sonnet" in dlg2.model_badge.text()
+    finally:
+        dlg2.deleteLater()
 
 
 def test_audit_dialog_without_loading_pdf_sets_ticker_from_dropdown(qapp, tmp_path):

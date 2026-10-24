@@ -83,6 +83,59 @@ def get_openrouter_model() -> str:
     return DEFAULT_MODEL
 
 
+def get_model_display_name(model: str | None = None) -> str:
+    """Returns a short, clean, human-readable display name for the configured OpenRouter model."""
+    raw = (model if model is not None else get_openrouter_model()).strip()
+    if not raw:
+        return "AI Model"
+
+    is_nitro = ":nitro" in raw.lower()
+    clean = raw.replace(":nitro", "").replace(":free", "").strip()
+    _, _, model_id = clean.partition("/")
+    if not model_id:
+        model_id = clean
+
+    low_id = model_id.lower()
+    if "deepseek-v4.1-flash" in low_id or "deepseek-flash" in low_id:
+        name = "DeepSeek Flash"
+    elif "deepseek-chat" in low_id or "deepseek-v3" in low_id:
+        name = "DeepSeek Chat"
+    elif "deepseek-r1" in low_id:
+        name = "DeepSeek R1"
+    elif "claude-3-5-sonnet" in low_id or "claude-3.5-sonnet" in low_id:
+        name = "Claude 3.5 Sonnet"
+    elif "claude-3-7-sonnet" in low_id or "claude-3.7-sonnet" in low_id:
+        name = "Claude 3.7 Sonnet"
+    elif "gemini-2.0-flash" in low_id:
+        name = "Gemini 2.0 Flash"
+    elif "gemini-2.5-pro" in low_id:
+        name = "Gemini 2.5 Pro"
+    elif "gpt-4o-mini" in low_id:
+        name = "GPT-4o Mini"
+    elif "gpt-4o" in low_id:
+        name = "GPT-4o"
+    elif "llama-3.3-70b" in low_id:
+        name = "Llama 3.3 70B"
+    elif "qwen-2.5-72b" in low_id:
+        name = "Qwen 2.5 72B"
+    else:
+        parts = [p.capitalize() for p in model_id.replace("_", "-").split("-") if p]
+        name = " ".join(parts) if parts else model_id
+
+    if is_nitro:
+        name += " (nitro)"
+    return name
+
+
+def get_model_short_tag(model: str | None = None) -> str:
+    """Returns a short identifier tag suitable for status lines, buttons, or badges (e.g. DeepSeek, DeepSeek:nitro, Claude)."""
+    raw = (model if model is not None else get_openrouter_model()).strip()
+    is_nitro = ":nitro" in raw.lower()
+    disp = get_model_display_name(raw).replace(" (nitro)", "").strip()
+    first = disp.split()[0] if disp else "AI"
+    return f"{first}:nitro" if is_nitro else first
+
+
 def estimate_cost(model: str, prompt_tokens: int, completion_tokens: int) -> float:
     """Fallback estimation of query cost based on known OpenRouter rates."""
     is_nitro = ":nitro" in (model or "").lower()
