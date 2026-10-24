@@ -11,6 +11,18 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Intelligent Ticker Examination & Stage 1 / Stage 2 Prompt Appropriateness Engine**:
+  - Implemented `section_capture/ticker_lookup.py`:
+    - `examine_ticker_locally()`: Zero-latency check for existing hubs on disk (`companies/<sector>/<ticker>/`) and local registry (`KNOWN_COMPANIES`).
+    - `check_prompt_appropriateness()`: Cross-checks registered sector code against active `00-report-orientation`, `12-analyst-reading-brief`, Stage 1 forensic directives (`workflow/export_stage1.py`), and Stage 2 valuation models (`workflow/generate_stage2.py`).
+    - `build_ticker_examination_prompt()` & `parse_examination_response()`: Structured JSON schema querying OpenRouter for corporate name, JSE/ICB sector, business summary, Stage 1 accounting focus, and Stage 2 valuation model.
+    - `TickerExamineWorker(QThread)`: Non-blocking background worker to query OpenRouter without freezing the Qt UI.
+  - Enhanced `NewCompanyDialog` (`section_capture/new_company_dialog.py`):
+    - Added `🔍 Examine Ticker` button alongside the ticker input, also triggered by pressing `Enter`.
+    - Added styled, expandable assessment frame displaying local hub status or AI evaluation of corporate details, JSE sector, and Stage 1 & Stage 2 prompt fit.
+    - Automatically populates the company name and pre-selects the matched sector in the dropdown.
+  - Test Suite: Created `tests/test_ticker_lookup.py` covering local resolution, un-scaffolded sector guidance, JSON response parsing, and UI assessment card simulation. Expanded full test suite to **140 tests passing (100%)**.
+
 - **UI Streamlining: Elimination of Legacy Manual Web-Chat Controls**:
   - `AuditValuationDialog` (`section_capture/audit_dialog.py`):
     - Removed `Chat instruction:` inputs and `📋 Copy chat text` buttons in Stage 1 and Stage 2 tabs.
