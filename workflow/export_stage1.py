@@ -1,7 +1,7 @@
 """Script to compile sequential section extractions and question ledgers into a Stage 1 Forensic Audit Prompt.
 
 Queries documents/analysis.sqlite and packages the full chronological working paper
-dossier for Gemini 4 Argon to evaluate without an attached PDF.
+dossier for the Auditing LLM to evaluate without an attached PDF.
 """
 
 from __future__ import annotations
@@ -104,7 +104,7 @@ def build_stage1_prompt_content(
     md_lines.append("")
     md_lines.append("---")
     md_lines.append("")
-    md_lines.append("### INSTRUCTIONS FOR GEMINI 4 ARGON:")
+    md_lines.append("### INSTRUCTIONS FOR FORENSIC AUDITOR (LLM):")
 
     persona = get_sector_config(detected_sector).stage1_persona
     md_lines.append(

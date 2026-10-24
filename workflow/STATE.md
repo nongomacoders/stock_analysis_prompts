@@ -11,6 +11,14 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Model-Agnostic Prompt Architecture & Generic LLM Directives**:
+  - Replaced all explicit model references (e.g. INSTRUCTIONS FOR GEMINI 4 ARGON) across prompt generators with model-agnostic directives:
+    - Stage 1: ### INSTRUCTIONS FOR FORENSIC AUDITOR (LLM):
+    - Stage 2 & SENS Update: ### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):
+  - Cleaned all UI headers, status text, and callouts in section_capture/audit_dialog.py to reference generic LLM / Auditing Model rather than specific proprietary models.
+  - Excluded README.md from SENS announcement discovery in workflow/generate_sens_update.py.
+  - All 127 unit and integration tests passing.
+
 - **Automated SENS Directory Scaffolding (sources/sens/)**:
   - Enhanced 
 ew_company.py:create_company() to automatically scaffold sources/sens/ and sources/sens/completed/ along with a guiding README.md whenever a new company is initialized via CLI or the desktop GUI dialog.

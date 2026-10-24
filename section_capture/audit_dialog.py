@@ -1,7 +1,7 @@
 """Forensic Audit & Institutional Valuation Dialog (Stages 1 & 2).
 
 Provides in-GUI compilation and copying of Stage 1 & Stage 2 prompts,
-pasting and verification of Gemini 4 Argon responses, and persistence
+pasting and verification of LLM responses, and persistence
 directly into SQLite (reports table) and disk briefs.
 """
 
@@ -502,11 +502,11 @@ class AuditValuationDialog(QDialog):
         callout.setStyleSheet("background-color: #f4f6f8; border-radius: 4px; padding: 6px;")
         callout_layout = QVBoxLayout(callout)
         callout_layout.setContentsMargins(8, 6, 8, 6)
-        c_title = QLabel("<b>Tier 2 Mandate (Gemini 4 Argon)</b>: Forensic reasoning & conflict reconciliation strictly over working papers.")
-        c_desc = QLabel("<b>IMPORTANT:</b> Upload / drag the compiled prompt file into Gemini 4 Argon <b>WITHOUT attaching the PDF</b> "
+        c_title = QLabel("<b>Tier 2 Mandate (LLM)</b>: Forensic reasoning & conflict reconciliation strictly over working papers.")
+        c_desc = QLabel("<b>IMPORTANT:</b> Upload / drag the compiled prompt file into LLM <b>WITHOUT attaching the PDF</b> "
                         "(working paper prompts are typically 200k–850k chars, which exceed web chat text box limits). "
                         "Click <b>'Open prompt folder'</b> to drag the file directly into chat. "
-                        "Argon will audit credit book health, IFRS 9 ECL provisioning, margin bridges, and resolve contradictions.")
+                        "The auditor will audit credit book health, IFRS 9 ECL provisioning, margin bridges, and resolve contradictions.")
         c_desc.setWordWrap(True)
         callout_layout.addWidget(c_title)
         callout_layout.addWidget(c_desc)
@@ -524,13 +524,13 @@ class AuditValuationDialog(QDialog):
         self.s1_chat_edit.setText(
             f"Please execute the Stage 1 Forensic Audit for {self.company_title} ({self.ticker}) as detailed in the attached prompt file. Follow all instructions, verification rules, and output structures specified in the document."
         )
-        self.s1_chat_edit.setToolTip("Instruction to paste into Gemini 4 Argon chat box when uploading the prompt file.")
+        self.s1_chat_edit.setToolTip("Instruction to paste into LLM chat box when uploading the prompt file.")
 
         self.copy_s1_chat_btn = QPushButton("📋 Copy chat text")
         self.copy_s1_chat_btn.setStyleSheet(
             "font-size: 11px; font-weight: bold; padding: 3px 10px; background-color: #e2e8f0; border: 1px solid #cbd5e1; border-radius: 4px;"
         )
-        self.copy_s1_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into Gemini chat box.")
+        self.copy_s1_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into LLM chat box.")
         self.copy_s1_chat_btn.clicked.connect(self.copy_s1_chat_instruction)
 
         chat_box_layout.addWidget(chat_label)
@@ -557,7 +557,7 @@ class AuditValuationDialog(QDialog):
         self.compile_s1_btn.clicked.connect(self.compile_stage1_prompt)
         left_header.addWidget(self.compile_s1_btn)
         self.open_s1_folder_btn = QPushButton("Open prompt folder")
-        self.open_s1_folder_btn.setToolTip("Open Windows Explorer with the compiled prompt markdown file selected for dragging into Gemini chat.")
+        self.open_s1_folder_btn.setToolTip("Open Windows Explorer with the compiled prompt markdown file selected for dragging into LLM chat.")
         self.open_s1_folder_btn.clicked.connect(self.open_stage1_folder)
         left_header.addWidget(self.open_s1_folder_btn)
         self.copy_s1_btn = QPushButton("Copy text")
@@ -589,7 +589,7 @@ class AuditValuationDialog(QDialog):
         right_layout.setSpacing(6)
 
         right_header = QHBoxLayout()
-        right_title = QLabel("<b>Stage 1 Audit Response (Argon)</b>")
+        right_title = QLabel("<b>Stage 1 Audit Response (LLM)</b>")
         right_header.addWidget(right_title)
         right_header.addStretch()
         self.paste_s1_btn = QPushButton("Paste from clipboard")
@@ -606,8 +606,8 @@ class AuditValuationDialog(QDialog):
 
         self.s1_response_edit = QPlainTextEdit()
         self.s1_response_edit.setPlaceholderText(
-            "Paste the complete Gemini 4 Argon Stage 1 Forensic Audit Report here.\n\n"
-            "Once saved, Argon's verified accounting and credit determinations will be persisted in SQLite "
+            "Paste the complete LLM Stage 1 Forensic Audit Report here.\n\n"
+            "Once saved, the model's verified accounting and credit determinations will be persisted in SQLite "
             "and automatically injected as the 99% ground truth prior into Stage 2."
         )
         right_layout.addWidget(self.s1_response_edit, 1)
@@ -634,10 +634,10 @@ class AuditValuationDialog(QDialog):
         callout.setStyleSheet("background-color: #fdf8e2; border-radius: 4px; padding: 6px;")
         callout_layout = QVBoxLayout(callout)
         callout_layout.setContentsMargins(8, 6, 8, 6)
-        c_title = QLabel("<b>Tier 3 Mandate (Gemini 4 Argon)</b>: Institutional 2-Year Forecast, SOTP DCF, & JSE Valuation Note.")
-        c_desc = QLabel("<b>CORE RULE:</b> Treat Stage 1 Determinations as a <b>99% confidence prior</b>. If Argon finds definitive evidence "
+        c_title = QLabel("<b>Tier 3 Mandate (LLM)</b>: Institutional 2-Year Forecast, SOTP DCF, & JSE Valuation Note.")
+        c_desc = QLabel("<b>CORE RULE:</b> Treat Stage 1 Determinations as a <b>99% confidence prior</b>. If the valuation model finds definitive evidence "
                         "in primary PDF financial notes that disagrees with Stage 1, it must explicitly declare the disagreement, cite the note/page, and explain reasons.\n"
-                        "<b>INPUTS:</b> Upload or drag both the <b>source PDF report</b> and the <b>Stage 2 prompt file</b> into Gemini 4 Argon.")
+                        "<b>INPUTS:</b> Upload or drag both the <b>source PDF report</b> and the <b>Stage 2 prompt file</b> into LLM.")
         c_desc.setWordWrap(True)
         callout_layout.addWidget(c_title)
         callout_layout.addWidget(c_desc)
@@ -655,13 +655,13 @@ class AuditValuationDialog(QDialog):
         self.s2_chat_edit.setText(
             f"Please execute the Stage 2 Institutional Valuation Note for {self.company_title} ({self.ticker}) as detailed in the attached prompt file and accompanying PDF report. Follow all valuation guidelines, forecast models, and output tables specified in the document."
         )
-        self.s2_chat_edit.setToolTip("Instruction to paste into Gemini 4 Argon chat box when uploading prompt and PDF.")
+        self.s2_chat_edit.setToolTip("Instruction to paste into LLM chat box when uploading prompt and PDF.")
 
         self.copy_s2_chat_btn = QPushButton("📋 Copy chat text")
         self.copy_s2_chat_btn.setStyleSheet(
             "font-size: 11px; font-weight: bold; padding: 3px 10px; background-color: #fef9c3; border: 1px solid #fde047; border-radius: 4px;"
         )
-        self.copy_s2_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into Gemini chat box.")
+        self.copy_s2_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into LLM chat box.")
         self.copy_s2_chat_btn.clicked.connect(self.copy_s2_chat_instruction)
 
         chat_box_layout.addWidget(chat_label)
@@ -749,7 +749,7 @@ class AuditValuationDialog(QDialog):
         right_layout.setSpacing(6)
 
         right_header = QHBoxLayout()
-        right_title = QLabel("<b>Final Valuation Report (Argon)</b>")
+        right_title = QLabel("<b>Final Valuation Report (LLM)</b>")
         right_header.addWidget(right_title)
         right_header.addStretch()
         self.paste_s2_btn = QPushButton("Paste from clipboard")
@@ -766,7 +766,7 @@ class AuditValuationDialog(QDialog):
 
         self.s2_response_edit = QPlainTextEdit()
         self.s2_response_edit.setPlaceholderText(
-            "Paste the complete Gemini 4 Argon Stage 2 Institutional Valuation Report here.\n\n"
+            "Paste the complete LLM Stage 2 Institutional Valuation Report here.\n\n"
             "This contains the 2-year forecast model, consolidated statements, DCF multiples, and definitive ZAR target price."
         )
         right_layout.addWidget(self.s2_response_edit, 1)
@@ -1047,7 +1047,7 @@ class AuditValuationDialog(QDialog):
         text = self.s1_chat_edit.text().strip()
         if text:
             QApplication.clipboard().setText(text)
-            self.s1_prompt_status.setText("✓ Copied chat instruction to clipboard. Ready to paste into Gemini chat box alongside prompt file.")
+            self.s1_prompt_status.setText("✓ Copied chat instruction to clipboard. Ready to paste into LLM chat box alongside prompt file.")
             self.copy_s1_chat_btn.setText("✓ Copied!")
             QTimer.singleShot(2000, lambda: self.copy_s1_chat_btn.setText("📋 Copy chat text"))
 
@@ -1063,7 +1063,7 @@ class AuditValuationDialog(QDialog):
                     f"✓ Copied {len(text):,} chars to clipboard. (Notice: >150k chars is too large to paste directly in web chat; click 'Open prompt folder' to upload as a file instead)."
                 )
             else:
-                self.s1_prompt_status.setText(f"✓ Copied Stage 1 Prompt ({len(text):,} chars) to clipboard. Ready for Argon (no PDF).")
+                self.s1_prompt_status.setText(f"✓ Copied Stage 1 Prompt ({len(text):,} chars) to clipboard. Ready for LLM (no PDF).")
 
     def run_stage1_deepseek(self):
         """Executes the compiled Stage 1 Forensic Audit prompt directly with DeepSeek via OpenRouter."""
@@ -1237,7 +1237,7 @@ class AuditValuationDialog(QDialog):
             has_embedded_txt = "## 2. SUBSEQUENT SENS CONTINUOUS DISCLOSURE EVIDENCE" in content
             if has_embedded_txt:
                 self.s2_prompt_status.setText(
-                    f"✓ SENS Update Prompt ready ({len(content):,} chars; SENS text notices embedded). Upload prompt to Gemini 4 Argon."
+                    f"✓ SENS Update Prompt ready ({len(content):,} chars; SENS text notices embedded). Upload prompt to LLM."
                 )
                 if hasattr(self, "s2_chat_edit"):
                     self.s2_chat_edit.setText(
@@ -1245,7 +1245,7 @@ class AuditValuationDialog(QDialog):
                     )
             else:
                 self.s2_prompt_status.setText(
-                    f"✓ SENS Update Prompt ready ({len(content):,} chars). Upload to Gemini 4 Argon to re-rate target price & triggers."
+                    f"✓ SENS Update Prompt ready ({len(content):,} chars). Upload to LLM to re-rate target price & triggers."
                 )
                 if hasattr(self, "s2_chat_edit"):
                     self.s2_chat_edit.setText(
@@ -1301,7 +1301,7 @@ class AuditValuationDialog(QDialog):
         if target_file.exists():
             open_folder_and_select(target_file)
             self.s2_prompt_status.setText(
-                f"✓ Opened folder with {target_file.name} ({len(text):,} chars). Upload into Gemini 4 Argon, then paste the Chat instruction."
+                f"✓ Opened folder with {target_file.name} ({len(text):,} chars). Upload into LLM, then paste the Chat instruction."
             )
         else:
             open_folder_and_select(self.briefs_dir)
@@ -1311,7 +1311,7 @@ class AuditValuationDialog(QDialog):
         text = self.s2_chat_edit.text().strip()
         if text:
             QApplication.clipboard().setText(text)
-            self.s2_prompt_status.setText("✓ Copied chat instruction to clipboard. Ready to paste into Gemini chat box alongside prompt file & PDF.")
+            self.s2_prompt_status.setText("✓ Copied chat instruction to clipboard. Ready to paste into LLM chat box alongside prompt file & PDF.")
             self.copy_s2_chat_btn.setText("✓ Copied!")
             QTimer.singleShot(2000, lambda: self.copy_s2_chat_btn.setText("📋 Copy chat text"))
 

@@ -1,7 +1,7 @@
-"""Script to generate the Stage 2 Institutional Valuation Prompt for Gemini 4 Argon.
+"""Script to generate the Stage 2 Institutional Valuation Prompt for Institutional Valuation (LLM).
 
 Combines the source PDF report with the Stage 1 Forensic Audit Determinations as ground truth,
-directing Argon to produce the final 2-year forecast, DCF/multiples valuation, and JSE equity research valuation note (ZAR per share).
+directing the LLM to produce the final 2-year forecast, DCF/multiples valuation, and JSE equity research valuation note (ZAR per share).
 """
 
 from __future__ import annotations
@@ -103,7 +103,7 @@ def build_stage2_prompt_content(
     md_lines.append("")
     md_lines.append("---")
     md_lines.append("")
-    md_lines.append("### INSTRUCTIONS FOR GEMINI 4 ARGON:")
+    md_lines.append("### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):")
 
     if detected_sector == "retail":
         md_lines.append(
@@ -531,7 +531,7 @@ def generate_stage2_prompt(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate Stage 2 Institutional Valuation Prompt for Gemini 4 Argon.")
+    parser = argparse.ArgumentParser(description="Generate Stage 2 Institutional Valuation Prompt for Institutional Valuation (LLM).")
     parser.add_argument("ticker", help="Company ticker (e.g. PAN, HAR, LEW, TRU)")
     parser.add_argument("--sector", help="Company sector (mining, retail, finance, telcos)", default=None)
     parser.add_argument("--name", help="Full company name", default=None)

@@ -1,7 +1,7 @@
-"""Script to generate a simplified SENS Valuation Update Prompt for Gemini 4 Argon.
+"""Script to generate a simplified SENS Valuation Update Prompt for Valuation Model (LLM).
 
 Combines the established Final Institutional Valuation Report with SENS continuous disclosure notices
-(in PDF or plain text format), directing Argon to generate a new updated valuation report and re-rated monitoring triggers.
+(in PDF or plain text format), directing the LLM to generate a new updated valuation report and re-rated monitoring triggers.
 Also provides utility functions to archive analyzed SENS notices into a completed directory.
 """
 
@@ -60,7 +60,7 @@ def move_analyzed_sens_files(
         # Move all non-directory files in sens_dir with supported extensions
         targets = [
             f for f in sens_dir.iterdir()
-            if f.is_file() and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"}
+            if f.is_file() and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"} and f.name.lower() != "readme.md"
         ]
 
     for f in targets:
@@ -112,7 +112,7 @@ def build_sens_update_prompt_content(
     md_lines.append("")
     md_lines.append("---")
     md_lines.append("")
-    md_lines.append("### INSTRUCTIONS FOR GEMINI 4 ARGON:")
+    md_lines.append("### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):")
 
     persona = get_sector_config(detected_sector).sens_persona
     md_lines.append(
@@ -248,7 +248,7 @@ def generate_sens_update_prompt(
     output_path: Path | None = None,
     db_path: str | Path | None = None,
 ) -> Path:
-    """Generates the simplified SENS Valuation Update prompt for Gemini 4 Argon."""
+    """Generates the simplified SENS Valuation Update prompt for Valuation Model (LLM)."""
     ticker = ticker.upper().strip()
     resolved_db = resolve_db_path(db_path)
     if not resolved_db.exists():
@@ -300,7 +300,7 @@ def generate_sens_update_prompt(
         else:
             # Discover all pending SENS files (exclude subdirectories like completed/)
             pending_files = sorted(
-                [f for f in sens_dir.iterdir() if f.is_file() and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"}],
+                [f for f in sens_dir.iterdir() if f.is_file() and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"} and f.name.lower() != "readme.md"],
                 key=lambda p: p.name,
             )
 
