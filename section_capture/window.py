@@ -486,7 +486,7 @@ class CaptureWindow(QMainWindow):
         self.document_label.setObjectName("documentTitle")
         self.document_label.setVisible(False)
         layout.addWidget(self.document_label)
-        hint = QLabel("1  Open report     2  Name your section     3  Select evidence     4  Save to SQLite & copy prompt")
+        hint = QLabel("1  Open report     2  Name your section     3  Select evidence     4  Save to SQLite & Run Analysis")
         hint.setObjectName("muted")
         layout.addWidget(hint)
         splitter = QSplitter()
@@ -646,7 +646,8 @@ class CaptureWindow(QMainWindow):
 
         aux_row.addWidget(self.run_pending_button, 1)
         aux_row.addWidget(self.review_button, 1)
-        aux_row.addWidget(self.copy_button)
+        aux_row.addWidget(self.questions_button, 1)
+        self.copy_button.setVisible(False)
         side.addLayout(aux_row)
 
         db_file = resolve_db_path(self.output_root)

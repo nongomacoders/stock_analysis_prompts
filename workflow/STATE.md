@@ -11,6 +11,20 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **UI Streamlining: Elimination of Legacy Manual Web-Chat Controls**:
+  - `AuditValuationDialog` (`section_capture/audit_dialog.py`):
+    - Removed `Chat instruction:` inputs and `📋 Copy chat text` buttons in Stage 1 and Stage 2 tabs.
+    - Removed manual `Open prompt folder`, `Open PDF folder`, and `Copy text` buttons in prompt panels.
+    - Removed manual `Paste from clipboard` and `Load from disk` buttons in response panels.
+    - Streamlined prompt header in Stage 2 into a single unified row (`Stage 2 Valuation Prompt` | `Generate Stage 2 Prompt` | `⚡ Generate SENS Update` | `📦 Move SENS to Completed` | `⚡ Run Valuation`).
+    - Retained only the automated execution actions (`Compile from SQLite`, `⚡ Run with [Model]`, `Generate Prompt`, `Save Response to DB`).
+  - `SavedSectionsDialog` (`section_capture/map_dialog.py`):
+    - Removed `Copy prompt` and `Paste response` buttons from the section inspector row; focused on automated direct API evaluation.
+  - `CaptureWindow` (`section_capture/window.py`):
+    - Streamlined auxiliary row (`⚡ Run Pending`, `Review Sections →`, `Stored questions`), removing the redundant `Copy prompt` button.
+    - Updated hint banner to `4 Save to SQLite & Run Analysis`.
+  - Test Suite: Updated `tests/test_portfolio_valuation.py` asserting streamlined automated controls. All 133 tests passing (100%).
+
 - **Consumer Lending Sector Onboarding (`consumer_lending` / ICB `30201020`) & Stage 1/2 Integration**:
   - Registered new sector `consumer_lending` in `companies/sectors.py`:
     - Code: `consumer_lending`, Short Label: `Lending`, Display: `Consumer Lending`, ICB Code: `30201020`, JSE Code: `JS3020`.

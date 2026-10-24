@@ -595,41 +595,10 @@ class AuditValuationDialog(QDialog):
         callout_layout = QVBoxLayout(callout)
         callout_layout.setContentsMargins(8, 6, 8, 6)
         c_title = QLabel("<b>Tier 2 Mandate (LLM)</b>: Forensic reasoning & conflict reconciliation strictly over working papers.")
-        c_desc = QLabel("<b>IMPORTANT:</b> Upload / drag the compiled prompt file into LLM <b>WITHOUT attaching the PDF</b> "
-                        "(working paper prompts are typically 200k–850k chars, which exceed web chat text box limits). "
-                        "Click <b>'Open prompt folder'</b> to drag the file directly into chat. "
-                        "The auditor will audit credit book health, IFRS 9 ECL provisioning, margin bridges, and resolve contradictions.")
+        c_desc = QLabel("Audits credit book health, IFRS 9 ECL provisioning, margin bridges, and operational KPIs directly across sequential working papers.")
         c_desc.setWordWrap(True)
         callout_layout.addWidget(c_title)
         callout_layout.addWidget(c_desc)
-
-        # Chat box instruction row (ready to copy and paste alongside the uploaded prompt file)
-        chat_box_layout = QHBoxLayout()
-        chat_box_layout.setContentsMargins(0, 4, 0, 0)
-        chat_box_layout.setSpacing(6)
-        chat_label = QLabel("<b>Chat instruction:</b>")
-        chat_label.setStyleSheet("font-size: 11px; color: #334155;")
-        self.s1_chat_edit = QLineEdit()
-        self.s1_chat_edit.setStyleSheet(
-            "background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 8px; font-size: 11px; color: #0f172a;"
-        )
-        self.s1_chat_edit.setText(
-            f"Please execute the Stage 1 Forensic Audit for {self.company_title} ({self.ticker}) as detailed in the attached prompt file. Follow all instructions, verification rules, and output structures specified in the document."
-        )
-        self.s1_chat_edit.setToolTip("Instruction to paste into LLM chat box when uploading the prompt file.")
-
-        self.copy_s1_chat_btn = QPushButton("📋 Copy chat text")
-        self.copy_s1_chat_btn.setStyleSheet(
-            "font-size: 11px; font-weight: bold; padding: 3px 10px; background-color: #e2e8f0; border: 1px solid #cbd5e1; border-radius: 4px;"
-        )
-        self.copy_s1_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into LLM chat box.")
-        self.copy_s1_chat_btn.clicked.connect(self.copy_s1_chat_instruction)
-
-        chat_box_layout.addWidget(chat_label)
-        chat_box_layout.addWidget(self.s1_chat_edit, 1)
-        chat_box_layout.addWidget(self.copy_s1_chat_btn)
-        callout_layout.addLayout(chat_box_layout)
-
         layout.addWidget(callout)
 
         # Splitter: Left = Prompt preview, Right = Response editor
@@ -648,26 +617,18 @@ class AuditValuationDialog(QDialog):
         self.compile_s1_btn = QPushButton("Compile from SQLite")
         self.compile_s1_btn.clicked.connect(self.compile_stage1_prompt)
         left_header.addWidget(self.compile_s1_btn)
-        self.open_s1_folder_btn = QPushButton("Open prompt folder")
-        self.open_s1_folder_btn.setToolTip("Open Windows Explorer with the compiled prompt markdown file selected for dragging into LLM chat.")
-        self.open_s1_folder_btn.clicked.connect(self.open_stage1_folder)
-        left_header.addWidget(self.open_s1_folder_btn)
-        self.copy_s1_btn = QPushButton("Copy text")
-        self.copy_s1_btn.setToolTip("Copy prompt text to clipboard (note: files > 100k chars should be uploaded directly into chat).")
-        self.copy_s1_btn.clicked.connect(self.copy_stage1_prompt)
-        left_header.addWidget(self.copy_s1_btn)
         model_name = get_model_display_name()
         self.run_s1_ai_btn = QPushButton(f"⚡ Run with {model_name}")
         self.run_s1_deepseek_btn = self.run_s1_ai_btn  # backward compatibility alias
         self.run_s1_ai_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
-        self.run_s1_ai_btn.setToolTip(f"Execute the Stage 1 Forensic Audit directly via OpenRouter ({model_name}) without manual copy-pasting.")
+        self.run_s1_ai_btn.setToolTip(f"Execute the Stage 1 Forensic Audit directly via OpenRouter ({model_name}).")
         self.run_s1_ai_btn.clicked.connect(self.run_stage1_deepseek)
         left_header.addWidget(self.run_s1_ai_btn)
         left_layout.addLayout(left_header)
 
         self.s1_prompt_edit = QPlainTextEdit()
         self.s1_prompt_edit.setReadOnly(True)
-        self.s1_prompt_edit.setPlaceholderText("Click 'Compile from SQLite' to assemble the Stage 1 Forensic Audit Prompt from all captured sections.")
+        self.s1_prompt_edit.setPlaceholderText("Click 'Compile from SQLite' or '⚡ Run with {model_name}' to assemble the Stage 1 prompt.")
         left_layout.addWidget(self.s1_prompt_edit, 1)
 
         self.s1_prompt_status = QLabel("Prompt not compiled yet.")
@@ -686,12 +647,6 @@ class AuditValuationDialog(QDialog):
         right_title = QLabel("<b>Stage 1 Audit Response (LLM)</b>")
         right_header.addWidget(right_title)
         right_header.addStretch()
-        self.paste_s1_btn = QPushButton("Paste from clipboard")
-        self.paste_s1_btn.clicked.connect(self.paste_stage1_response)
-        right_header.addWidget(self.paste_s1_btn)
-        self.load_s1_btn = QPushButton("Load from disk")
-        self.load_s1_btn.clicked.connect(self.load_stage1_from_disk)
-        right_header.addWidget(self.load_s1_btn)
         self.save_s1_btn = QPushButton("Save Response to DB")
         self.save_s1_btn.setStyleSheet("font-weight: bold;")
         self.save_s1_btn.clicked.connect(self.save_stage1_response)
@@ -700,9 +655,9 @@ class AuditValuationDialog(QDialog):
 
         self.s1_response_edit = QPlainTextEdit()
         self.s1_response_edit.setPlaceholderText(
-            "Paste the complete LLM Stage 1 Forensic Audit Report here.\n\n"
-            "Once saved, the model's verified accounting and credit determinations will be persisted in SQLite "
-            "and automatically injected as the 99% ground truth prior into Stage 2."
+            f"The Stage 1 Forensic Audit Report will automatically appear here upon running {model_name}.\n\n"
+            "Once saved, verified accounting determinations are persisted in SQLite and automatically injected "
+            "as the 99% ground truth prior into Stage 2."
         )
         right_layout.addWidget(self.s1_response_edit, 1)
 
@@ -729,40 +684,10 @@ class AuditValuationDialog(QDialog):
         callout_layout = QVBoxLayout(callout)
         callout_layout.setContentsMargins(8, 6, 8, 6)
         c_title = QLabel("<b>Tier 3 Mandate (LLM)</b>: Institutional 2-Year Forecast, SOTP DCF, & JSE Valuation Note.")
-        c_desc = QLabel("<b>CORE RULE:</b> Treat Stage 1 Determinations as a <b>99% confidence prior</b>. If the valuation model finds definitive evidence "
-                        "in primary PDF financial notes that disagrees with Stage 1, it must explicitly declare the disagreement, cite the note/page, and explain reasons.\n"
-                        "<b>INPUTS:</b> Upload or drag both the <b>source PDF report</b> and the <b>Stage 2 prompt file</b> into LLM.")
+        c_desc = QLabel("<b>CORE RULE:</b> Treats Stage 1 Determinations as a <b>99% confidence prior</b>. Produces institutional forecast, SOTP DCF, target price (ZAR), and monitoring triggers.")
         c_desc.setWordWrap(True)
         callout_layout.addWidget(c_title)
         callout_layout.addWidget(c_desc)
-
-        # Chat box instruction row (ready to copy and paste alongside prompt file & PDF)
-        chat_box_layout = QHBoxLayout()
-        chat_box_layout.setContentsMargins(0, 4, 0, 0)
-        chat_box_layout.setSpacing(6)
-        chat_label = QLabel("<b>Chat instruction:</b>")
-        chat_label.setStyleSheet("font-size: 11px; color: #713f12;")
-        self.s2_chat_edit = QLineEdit()
-        self.s2_chat_edit.setStyleSheet(
-            "background: white; border: 1px solid #fde047; border-radius: 4px; padding: 3px 8px; font-size: 11px; color: #0f172a;"
-        )
-        self.s2_chat_edit.setText(
-            f"Please execute the Stage 2 Institutional Valuation Note for {self.company_title} ({self.ticker}) as detailed in the attached prompt file and accompanying PDF report. Follow all valuation guidelines, forecast models, and output tables specified in the document."
-        )
-        self.s2_chat_edit.setToolTip("Instruction to paste into LLM chat box when uploading prompt and PDF.")
-
-        self.copy_s2_chat_btn = QPushButton("📋 Copy chat text")
-        self.copy_s2_chat_btn.setStyleSheet(
-            "font-size: 11px; font-weight: bold; padding: 3px 10px; background-color: #fef9c3; border: 1px solid #fde047; border-radius: 4px;"
-        )
-        self.copy_s2_chat_btn.setToolTip("Copy this instruction to clipboard to paste directly into LLM chat box.")
-        self.copy_s2_chat_btn.clicked.connect(self.copy_s2_chat_instruction)
-
-        chat_box_layout.addWidget(chat_label)
-        chat_box_layout.addWidget(self.s2_chat_edit, 1)
-        chat_box_layout.addWidget(self.copy_s2_chat_btn)
-        callout_layout.addLayout(chat_box_layout)
-
         layout.addWidget(callout)
 
         # Splitter: Left = Stage 2 Prompt, Right = Final Valuation Report
@@ -774,61 +699,40 @@ class AuditValuationDialog(QDialog):
         left_layout.setContentsMargins(0, 0, 0, 0)
         left_layout.setSpacing(6)
 
-        left_header = QVBoxLayout()
-        left_header.setSpacing(4)
-
-        row1 = QHBoxLayout()
+        left_header = QHBoxLayout()
         left_title = QLabel("<b>Stage 2 Valuation Prompt</b>")
-        row1.addWidget(left_title)
-        row1.addStretch()
+        left_header.addWidget(left_title)
+        left_header.addStretch()
         self.gen_s2_btn = QPushButton("Generate Stage 2 Prompt")
-        self.gen_s2_btn.setToolTip("Full initial valuation prompt (Stage 1 ground truth + PDF report).")
+        self.gen_s2_btn.setToolTip("Assemble initial valuation prompt (Stage 1 ground truth + PDF report).")
         self.gen_s2_btn.clicked.connect(self.generate_stage2_prompt)
-        row1.addWidget(self.gen_s2_btn)
+        left_header.addWidget(self.gen_s2_btn)
 
-        self.gen_sens_update_btn = QPushButton("⚡ Generate SENS Update Prompt")
+        self.gen_sens_update_btn = QPushButton("⚡ Generate SENS Update")
         self.gen_sens_update_btn.setStyleSheet("font-weight: bold; color: #0f5132; background-color: #d1e7dd; border: 1px solid #badbcc; padding: 4px 8px;")
-        self.gen_sens_update_btn.setToolTip("Fast update: Sends entire SENS PDF/text with baseline valuation note to re-rate target price & triggers (no capturing needed).")
+        self.gen_sens_update_btn.setToolTip("Fast update: Combines SENS PDF/notice with baseline valuation note to re-rate target price & triggers.")
         self.gen_sens_update_btn.clicked.connect(self.generate_sens_update_prompt_gui)
-        row1.addWidget(self.gen_sens_update_btn)
+        left_header.addWidget(self.gen_sens_update_btn)
 
         self.move_sens_btn = QPushButton("📦 Move SENS to Completed")
         self.move_sens_btn.setStyleSheet("font-weight: bold; color: #1e293b; background-color: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 8px;")
         self.move_sens_btn.setToolTip("Move analyzed SENS notice(s) from sources/sens/ into sources/sens/completed/.")
         self.move_sens_btn.clicked.connect(self.move_sens_to_completed_gui)
-        row1.addWidget(self.move_sens_btn)
-        left_header.addLayout(row1)
+        left_header.addWidget(self.move_sens_btn)
 
-        row2 = QHBoxLayout()
-        row2.addStretch()
-        self.open_s2_folder_btn = QPushButton("Open prompt folder")
-        self.open_s2_folder_btn.setToolTip("Open folder with the prompt markdown file selected for dragging into chat.")
-        self.open_s2_folder_btn.clicked.connect(self.open_stage2_folder)
-        row2.addWidget(self.open_s2_folder_btn)
-        self.open_pdf_btn = QPushButton("Open PDF folder")
-        self.open_pdf_btn.setToolTip("Open Windows Explorer to the source PDF location for dragging into chat.")
-        self.open_pdf_btn.clicked.connect(self.open_pdf_folder)
-        row2.addWidget(self.open_pdf_btn)
-        self.copy_s2_btn = QPushButton("Copy text")
-        self.copy_s2_btn.setToolTip("Copy prompt text to clipboard.")
-        self.copy_s2_btn.clicked.connect(self.copy_stage2_prompt)
-        row2.addWidget(self.copy_s2_btn)
         model_name = get_model_display_name()
         self.run_s2_ai_btn = QPushButton(f"⚡ Run Valuation ({model_name})")
         self.run_s2_deepseek_btn = self.run_s2_ai_btn  # backward compatibility alias
         self.run_s2_ai_btn.setStyleSheet("font-weight: bold; background-color: #0e639c; color: white;")
         self.run_s2_ai_btn.setToolTip(f"Execute the Stage 2 Institutional Valuation directly via OpenRouter ({model_name}) with full PDF ingestion.")
         self.run_s2_ai_btn.clicked.connect(self.run_stage2_deepseek)
-        row2.addWidget(self.run_s2_ai_btn)
-        left_header.addLayout(row2)
-
+        left_header.addWidget(self.run_s2_ai_btn)
         left_layout.addLayout(left_header)
 
         self.s2_prompt_edit = QPlainTextEdit()
         self.s2_prompt_edit.setReadOnly(True)
         self.s2_prompt_edit.setPlaceholderText(
-            "Click 'Generate Stage 2 Prompt' for the full model prompt, or click '⚡ Generate SENS Update Prompt' "
-            "to automatically combine your baseline valuation report with subsequent SENS notice(s) without capturing."
+            "Click 'Generate Stage 2 Prompt' or '⚡ Generate SENS Update' to assemble the valuation prompt."
         )
         left_layout.addWidget(self.s2_prompt_edit, 1)
 
@@ -848,12 +752,6 @@ class AuditValuationDialog(QDialog):
         right_title = QLabel("<b>Final Valuation Report (LLM)</b>")
         right_header.addWidget(right_title)
         right_header.addStretch()
-        self.paste_s2_btn = QPushButton("Paste from clipboard")
-        self.paste_s2_btn.clicked.connect(self.paste_stage2_response)
-        right_header.addWidget(self.paste_s2_btn)
-        self.load_s2_btn = QPushButton("Load from disk")
-        self.load_s2_btn.clicked.connect(self.load_stage2_from_disk)
-        right_header.addWidget(self.load_s2_btn)
         self.save_s2_btn = QPushButton("Save Final Report to DB")
         self.save_s2_btn.setStyleSheet("font-weight: bold;")
         self.save_s2_btn.clicked.connect(self.save_stage2_response)

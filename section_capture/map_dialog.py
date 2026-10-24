@@ -761,11 +761,11 @@ class SavedSectionsDialog(QDialog):
         actions_row.addWidget(self.run_api_btn)
         actions_row.addWidget(self.run_all_btn)
         actions_row.addWidget(self.nitro_checkbox)
-        actions_row.addWidget(self.copy_prompt_btn)
-        actions_row.addWidget(self.paste_resp_btn)
         actions_row.addWidget(self.clear_resp_btn)
         actions_row.addStretch(1)
         actions_row.addWidget(self.audit_btn)
+        self.copy_prompt_btn.setVisible(False)
+        self.paste_resp_btn.setVisible(False)
         layout.addLayout(actions_row)
 
         self.status_label = QLabel()

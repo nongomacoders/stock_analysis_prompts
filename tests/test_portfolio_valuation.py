@@ -372,7 +372,7 @@ def test_audit_dialog_with_portfolio_tab(qapp, tmp_path):
 
 
 def test_open_prompt_folder_action(qapp, tmp_path, monkeypatch):
-    """Test that open prompt folder actions highlight the prompt markdown file."""
+    """Test that AuditValuationDialog has streamlined automated controls and legacy manual buttons are removed."""
     test_db = tmp_path / "test_open_folder.sqlite"
     sha = "test_sha_folder"
     upsert_report(sha256=sha, filename="lewis-iar-2026.pdf", db_path=test_db)
@@ -383,51 +383,30 @@ def test_open_prompt_folder_action(qapp, tmp_path, monkeypatch):
         page_count = 10
         questions_ledger = ""
 
-    opened_targets = []
-    monkeypatch.setattr(
-        "section_capture.audit_dialog.open_folder_and_select",
-        lambda target: opened_targets.append(str(target)),
-    )
-
-    monkeypatch.setattr(
-        "PySide6.QtWidgets.QMessageBox.warning",
-        lambda *args, **kwargs: None,
-    )
-    monkeypatch.setattr(
-        "PySide6.QtWidgets.QMessageBox.information",
-        lambda *args, **kwargs: None,
-    )
-
     dlg = AuditValuationDialog(DummySource(), db_path=test_db)
     try:
-        assert hasattr(dlg, "open_s1_folder_btn")
-        assert hasattr(dlg, "open_s2_folder_btn")
+        # Automated execution buttons are present
+        assert hasattr(dlg, "compile_s1_btn")
+        assert hasattr(dlg, "run_s1_ai_btn")
+        assert hasattr(dlg, "save_s1_btn")
+        assert hasattr(dlg, "gen_s2_btn")
+        assert hasattr(dlg, "run_s2_ai_btn")
+        assert hasattr(dlg, "save_s2_btn")
+        assert hasattr(dlg, "gen_sens_update_btn")
 
-        dlg.s1_prompt_edit.setPlainText("Sample prompt text")
-        dlg.open_stage1_folder()
-        assert len(opened_targets) >= 1
-        assert "stage1_forensic_prompt.md" in opened_targets[-1] or "briefs" in opened_targets[-1]
-
-        dlg.s2_prompt_edit.setPlainText("Sample Stage 2 prompt")
-        dlg.open_stage2_folder()
-        assert len(opened_targets) >= 2
-        assert "stage2_valuation_prompt.md" in opened_targets[-1] or "briefs" in opened_targets[-1]
-
-        # Verify chat instruction text boxes and copy actions
-        assert hasattr(dlg, "s1_chat_edit")
-        assert hasattr(dlg, "s2_chat_edit")
-        assert hasattr(dlg, "copy_s1_chat_btn")
-        assert hasattr(dlg, "copy_s2_chat_btn")
-        assert "Stage 1 Forensic Audit" in dlg.s1_chat_edit.text()
-        assert "Stage 2 Institutional Valuation Note" in dlg.s2_chat_edit.text()
-
-        dlg.copy_s1_chat_instruction()
-        assert QApplication.clipboard().text() == dlg.s1_chat_edit.text()
-        assert "Copied chat instruction" in dlg.s1_prompt_status.text()
-
-        dlg.copy_s2_chat_instruction()
-        assert QApplication.clipboard().text() == dlg.s2_chat_edit.text()
-        assert "Copied chat instruction" in dlg.s2_prompt_status.text()
+        # Legacy manual buttons are removed from the layout
+        assert not hasattr(dlg, "open_s1_folder_btn")
+        assert not hasattr(dlg, "open_s2_folder_btn")
+        assert not hasattr(dlg, "copy_s1_btn")
+        assert not hasattr(dlg, "copy_s2_btn")
+        assert not hasattr(dlg, "paste_s1_btn")
+        assert not hasattr(dlg, "paste_s2_btn")
+        assert not hasattr(dlg, "load_s1_btn")
+        assert not hasattr(dlg, "load_s2_btn")
+        assert not hasattr(dlg, "s1_chat_edit")
+        assert not hasattr(dlg, "s2_chat_edit")
+        assert not hasattr(dlg, "copy_s1_chat_btn")
+        assert not hasattr(dlg, "copy_s2_chat_btn")
     finally:
         dlg.deleteLater()
 
@@ -504,16 +483,14 @@ def test_audit_dialog_company_dropdown_switching(qapp, tmp_path):
         assert dlg.ticker == "ORN"
         assert dlg.sector == "mining"
         assert "ORN" in dlg.windowTitle()
-        assert "ORN" in dlg.s1_chat_edit.text()
-        assert "ORN" in dlg.s2_chat_edit.text()
+        assert dlg.company_title == "Orion Minerals"
 
         # Switch to LEW
         assert dlg.select_company_by_ticker("LEW") is True
         assert dlg.ticker == "LEW"
         assert dlg.sector == "retail"
         assert "LEW" in dlg.windowTitle()
-        assert "LEW" in dlg.s1_chat_edit.text()
-        assert "LEW" in dlg.s2_chat_edit.text()
+        assert dlg.company_title == "Lewis Group Limited"
     finally:
         dlg.deleteLater()
 
