@@ -93,11 +93,20 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 ---
 
 ### 9. PyTest Fixtures & Dataclass Return Types in `section_capture`
-* **Qt test fixtures**: Use `qapp` (defined in `tests/conftest.py`) instead of `qtbot`.
+* **PyTest Fixtures & SQLite `NOT NULL` schema**:
+  1. Always use `upsert_report()` instead of raw SQL `INSERT INTO reports` in tests to ensure required columns like `original_path` satisfy NOT NULL constraints.
+  2. Use `qapp` (defined in `tests/conftest.py`) instead of `qtbot`.
 * **Modal blocking during headless test runs**: Functions that trigger `QMessageBox.information`, `QMessageBox.warning`, or `QMessageBox.question` will hang the test suite if not monkeypatched. In tests invoking dialog actions:
   ```python
   monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
   monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+  ```
+
+---
+
+### 10. PowerShell `%` Operator Gotcha
+* **Issue**: The `%` character in PowerShell command lines is an alias for `ForEach-Object`. In inline Python scripts or shell strings like `Buy (15% to 30%)`, PowerShell parses `%` as an operator, causing `You must provide a value expression following the '%' operator`.
+* **Rule**: Always write Python scripts to `.py` scratch files or ensure `%` is not fed through the PowerShell parser unescaped.
   monkeypatch.setattr(QMessageBox, "question", lambda *args, **kwargs: QMessageBox.StandardButton.Yes)
   ```
 * **Dataclass vs Dictionary returns**: `list_sections()` returns dataclass objects of type `SavedSection`. Access attributes directly (`sec.heading`, `sec.selected_text`), never via dictionary indexing (`sec["heading"]`).

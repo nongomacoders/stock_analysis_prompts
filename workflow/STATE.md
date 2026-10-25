@@ -11,6 +11,29 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Dynamic Valuation Rating Levels & Live Market Price Evaluation (`Strong Buy`, `Buy`, `Hold`, `Sell`, `Strong Sell`)**:
+  - Enhanced Stage 2 Prompt Generator (`workflow/generate_stage2.py`):
+    - Updated `_format_section1_spec()` to instruct the LLM to output explicit ZAR price boundaries (`strong_buy_max_zar`, `buy_max_zar`, `hold_max_zar`, `sell_max_zar`, `strong_sell_above_zar`) anchored to the 12-month JSE target price in the mandatory Section 1 JSON block.
+    - Added a structured dynamic rating bands row to the visual Executive Summary Markdown table.
+  - Database & Rating Engine (`section_capture/db.py`):
+    - Added `compute_rating_bands_fallback()`: Generates standardized institutional thresholds from the 12-month target price ($>+30\%$ Strong Buy, $+15\%$ to $+30\%$ Buy, $-5\%$ to $+15\%$ Hold, $-5\%$ to $-15\%$ Sell, $<-15\%$ Strong Sell) if explicit bands are not yet present in a note.
+    - Added `evaluate_dynamic_rating()`: Dynamically evaluates the latest market quote against price bands to calculate the live rating.
+    - Updated `parse_valuation_summary()` to parse `rating_bands` and store into `valuation_summary_json`.
+    - Updated `get_analyzed_stocks()` to return `rating_bands`, `dynamic_recommendation`, and preserve `static_recommendation`.
+  - Portfolio Dashboard UI (`section_capture/portfolio_view.py`):
+    - Updated column 10 ("Rating") to display dynamic recommendation badges across 5 tiers:
+      - `STRONG BUY`: Dark emerald badge (`#0d531a` text, `#dcfce7` background)
+      - `BUY`: Forest green badge (`#166534` text, `#e8f5e9` background)
+      - `HOLD`: Amber badge (`#b45309` text, `#fef3c7` background)
+      - `SELL`: Orange-red badge (`#c2410c` text, `#ffedd5` background)
+      - `STRONG SELL`: Deep crimson badge (`#991b1b` text, `#fee2e2` background)
+    - Added rich hover tooltips on the Rating cell showing live dynamic rating vs note static rating and full price threshold ranges.
+    - Updated the Rating filter dropdown to filter across `STRONG BUY`, `BUY`, `HOLD`, `SELL`, and `STRONG SELL`.
+    - Updated stock details KPI strip and markdown table clipboard export.
+  - Test Suite (`tests/test_portfolio_valuation.py`):
+    - Added comprehensive unit tests for JSON rating bands parsing, fallback threshold math, live price transitions, and PortfolioView badge/filter rendering.
+    - Expanded test suite to **145 tests passing (100%)**.
+
 - **Intelligent Ticker Examination & Stage 1 / Stage 2 Prompt Appropriateness Engine**:
   - Implemented `section_capture/ticker_lookup.py`:
     - `examine_ticker_locally()`: Zero-latency check for existing hubs on disk (`companies/<sector>/<ticker>/`) and local registry (`KNOWN_COMPANIES`).

@@ -802,3 +802,241 @@ def test_document_classify_dialog_period_selection(qapp):
     finally:
         dlg.deleteLater()
 
+
+
+def test_parse_valuation_summary_rating_bands():
+    """Verify parsing when Section 1 JSON block includes explicit rating_bands."""
+    from section_capture.db import parse_valuation_summary
+
+    note = """
+# SHOPRITE HOLDINGS LIMITED (JSE: SHP)
+
+## 1. Executive Investment Thesis & 12-Month JSE Price Target (ZAR/Share)
+
+```json
+{
+  "ticker": "SHP",
+  "company_name": "Shoprite Holdings Limited",
+  "sector": "retail",
+  "recommendation": "BUY",
+  "reference_price_zar": 280.00,
+  "target_price_zar": 350.00,
+  "implied_upside_pct": 25.0,
+  "forward_dividend_yield_pct": 3.8,
+  "projected_12m_tsr_pct": 28.8,
+  "rating_bands": {
+    "strong_buy_max_zar": 269.23,
+    "buy_max_zar": 304.35,
+    "hold_max_zar": 368.42,
+    "sell_max_zar": 411.76,
+    "strong_sell_above_zar": 411.76
+  }
+}
+```
+"""
+    summary = parse_valuation_summary(note)
+    assert summary.get("target_price") == 350.00
+    assert summary.get("reference_price") == 280.00
+    assert summary.get("recommendation") == "BUY"
+    assert "rating_bands" in summary
+    bands = summary["rating_bands"]
+    assert bands["strong_buy_max_zar"] == 269.23
+    assert bands["buy_max_zar"] == 304.35
+    assert bands["hold_max_zar"] == 368.42
+    assert bands["sell_max_zar"] == 411.76
+    assert bands["strong_sell_above_zar"] == 411.76
+
+
+def test_compute_rating_bands_fallback():
+    """Verify fallback institutional rating bands computation from target price."""
+    from section_capture.db import compute_rating_bands_fallback
+
+    # Test invalid / empty
+    assert compute_rating_bands_fallback(None) is None
+    assert compute_rating_bands_fallback(0) is None
+    assert compute_rating_bands_fallback(-50) is None
+
+    # Test valid target price R100.00
+    bands = compute_rating_bands_fallback(100.00)
+    assert bands is not None
+    assert bands["strong_buy_max_zar"] == 76.92  # 100 / 1.30
+    assert bands["buy_max_zar"] == 86.96        # 100 / 1.15
+    assert bands["hold_max_zar"] == 105.26      # 100 / 0.95
+    assert bands["sell_max_zar"] == 117.65      # 100 / 0.85
+    assert bands["strong_sell_above_zar"] == 117.65
+
+
+def test_evaluate_dynamic_rating():
+    """Verify dynamic rating transitions across live share prices."""
+    from section_capture.db import evaluate_dynamic_rating
+
+    bands = {
+        "strong_buy_max_zar": 50.00,
+        "buy_max_zar": 65.00,
+        "hold_max_zar": 80.00,
+        "sell_max_zar": 95.00,
+        "strong_sell_above_zar": 95.00,
+    }
+
+    # Deep value / strong upside
+    assert evaluate_dynamic_rating(45.00, bands, fallback_rec="BUY") == "STRONG BUY"
+    assert evaluate_dynamic_rating(50.00, bands, fallback_rec="BUY") == "STRONG BUY"
+
+    # Attractive upside
+    assert evaluate_dynamic_rating(55.00, bands, fallback_rec="BUY") == "BUY"
+    assert evaluate_dynamic_rating(65.00, bands, fallback_rec="BUY") == "BUY"
+
+    # Fair value
+    assert evaluate_dynamic_rating(70.00, bands, fallback_rec="BUY") == "HOLD"
+    assert evaluate_dynamic_rating(80.00, bands, fallback_rec="BUY") == "HOLD"
+
+    # Modest downside
+    assert evaluate_dynamic_rating(85.00, bands, fallback_rec="BUY") == "SELL"
+    assert evaluate_dynamic_rating(95.00, bands, fallback_rec="BUY") == "SELL"
+
+    # Extreme downside / overvalued
+    assert evaluate_dynamic_rating(100.00, bands, fallback_rec="BUY") == "STRONG SELL"
+
+    # Fallback when live price is missing or invalid
+    assert evaluate_dynamic_rating(None, bands, fallback_rec="BUY") == "BUY"
+    assert evaluate_dynamic_rating(0, bands, fallback_rec="BUY") == "BUY"
+    assert evaluate_dynamic_rating(55.00, None, fallback_rec="HOLD") == "HOLD"
+
+
+def test_get_analyzed_stocks_dynamic_ratings(tmp_path):
+    """Verify get_analyzed_stocks calculates dynamic recommendation from live quotes and rating bands."""
+    import json
+    from section_capture.db import connect_db, get_analyzed_stocks, save_stage2_report
+
+    test_db = tmp_path / "test_dyn.sqlite"
+
+    note = """
+# LEWIS GROUP LIMITED (JSE: LEW)
+## 1. Executive Investment Thesis & 12-Month JSE Price Target
+```json
+{
+  "ticker": "LEW",
+  "company_name": "Lewis Group Limited",
+  "sector": "retail",
+  "recommendation": "BUY",
+  "reference_price_zar": 55.00,
+  "target_price_zar": 70.00,
+  "implied_upside_pct": 27.3,
+  "forward_dividend_yield_pct": 5.0,
+  "projected_12m_tsr_pct": 32.3,
+  "rating_bands": {
+    "strong_buy_max_zar": 45.00,
+    "buy_max_zar": 60.00,
+    "hold_max_zar": 75.00,
+    "sell_max_zar": 85.00,
+    "strong_sell_above_zar": 85.00
+  }
+}
+```
+"""
+    sha = "test_sha_lew_dynamic"
+    from section_capture.db import upsert_report
+    upsert_report(sha256=sha, filename="LEW_FY26.pdf", original_path="companies/retail/LEW/sources/LEW_FY26.pdf", period="FY26", db_path=test_db)
+    save_stage2_report(sha, "# Stage 2 Prompt", note, db_path=test_db)
+
+    # 1. No market quote yet -> static recommendation BUY
+    stocks = get_analyzed_stocks(db_path=test_db)
+    assert len(stocks) == 1
+    s = stocks[0]
+    assert s["ticker"] == "LEW"
+    assert s["target_price_zar"] == 70.00
+    assert s["static_recommendation"] == "BUY"
+    assert s["dynamic_recommendation"] == "BUY"
+    assert s["rating_bands"]["buy_max_zar"] == 60.00
+
+    # 2. Market quote drops to R42.00 -> Dynamic rating becomes STRONG BUY
+    with connect_db(test_db) as conn:
+        conn.execute(
+            """INSERT OR REPLACE INTO market_quotes (ticker, price_zar, prev_close_zar, currency, raw_price, change_pct, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, datetime('now'))""",
+            ("LEW", 42.00, 45.00, "ZAC", 4200.0, -6.6, )
+        )
+    stocks = get_analyzed_stocks(db_path=test_db)
+    s = stocks[0]
+    assert s["live_price_zar"] == 42.00
+    assert s["dynamic_recommendation"] == "STRONG BUY"
+    assert s["recommendation"] == "STRONG BUY"
+    assert s["static_recommendation"] == "BUY"
+
+    # 3. Market quote surges to R88.00 -> Dynamic rating becomes STRONG SELL
+    with connect_db(test_db) as conn:
+        conn.execute(
+            """UPDATE market_quotes SET price_zar = 88.00 WHERE ticker = 'LEW'"""
+        )
+    stocks = get_analyzed_stocks(db_path=test_db)
+    s = stocks[0]
+    assert s["live_price_zar"] == 88.00
+    assert s["dynamic_recommendation"] == "STRONG SELL"
+    assert s["static_recommendation"] == "BUY"
+
+
+def test_portfolio_view_dynamic_rating_badges_and_filter(qapp, tmp_path):
+    """Verify PortfolioView table displays dynamic rating badges and filter works."""
+    from section_capture.db import connect_db, save_stage2_report
+    from section_capture.portfolio_view import PortfolioView
+
+    test_db = tmp_path / "test_pv.sqlite"
+
+    note = """
+```json
+{
+  "ticker": "APF",
+  "company_name": "Accelerate Property Fund",
+  "sector": "reit",
+  "recommendation": "SELL",
+  "reference_price_zar": 0.60,
+  "target_price_zar": 0.42,
+  "implied_upside_pct": -30.0,
+  "forward_dividend_yield_pct": 0.0,
+  "projected_12m_tsr_pct": -30.0,
+  "rating_bands": {
+    "strong_buy_max_zar": 0.32,
+    "buy_max_zar": 0.37,
+    "hold_max_zar": 0.44,
+    "sell_max_zar": 0.49,
+    "strong_sell_above_zar": 0.49
+  }
+}
+```
+"""
+    sha = "test_sha_apf_view"
+    from section_capture.db import upsert_report
+    upsert_report(sha256=sha, filename="APF_FY26.pdf", original_path="companies/reit/APF/sources/APF_FY26.pdf", period="FY26", db_path=test_db)
+    with connect_db(test_db) as conn:
+        conn.execute(
+            """INSERT OR REPLACE INTO market_quotes (ticker, price_zar, prev_close_zar, currency, raw_price, change_pct, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, datetime('now'))""",
+            ("APF", 0.55, 0.58, "ZAC", 55.0, -5.1),
+        )
+    save_stage2_report(sha, "# Stage 2 Prompt", note, db_path=test_db)
+
+    pv = PortfolioView(db_path=test_db)
+    try:
+        assert pv.table.rowCount() == 1
+        rec_item = pv.table.item(0, 10)
+        assert rec_item is not None
+        assert rec_item.text() == "STRONG SELL"
+        tooltip = rec_item.toolTip()
+        assert "Dynamic Live Rating: STRONG SELL" in tooltip
+        assert "Note Original Rating: SELL" in tooltip
+        assert "Valuation Rating Bands:" in tooltip
+
+        # Test Filter
+        # 1. Filter "BUY" -> 0 rows
+        pv.rec_combo.setCurrentText("BUY")
+        assert pv.table.rowCount() == 0
+
+        # 2. Filter "STRONG SELL" -> 1 row
+        pv.rec_combo.setCurrentText("STRONG SELL")
+        assert pv.table.rowCount() == 1
+
+        # 3. Filter "All Ratings" -> 1 row
+        pv.rec_combo.setCurrentText("All Ratings")
+        assert pv.table.rowCount() == 1
+    finally:
+        pv.deleteLater()

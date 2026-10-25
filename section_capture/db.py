@@ -282,6 +282,79 @@ def detect_company_meta(path_or_filename: str | Path | None) -> tuple[str, str, 
     return "TARGET", "Target Asset", "retail"
 
 
+def compute_rating_bands_fallback(
+    target_price: float | int | None,
+    reference_price: float | int | None = None,
+) -> dict[str, float] | None:
+    """Computes standardized institutional rating bands from target price.
+
+    Tiers:
+      - Strong Buy: Share price <= target / 1.30 (>= 30% upside / deep margin of safety)
+      - Buy: Share price <= target / 1.15 (15% to 30% upside)
+      - Hold: Share price <= target / 0.95 (-5% to +15% upside / fair value)
+      - Sell: Share price <= target / 0.85 (-15% to -5% downside)
+      - Strong Sell: Share price > target / 0.85 (<-15% downside)
+    """
+    if target_price is None:
+        return None
+    try:
+        tp = float(target_price)
+        if tp <= 0:
+            return None
+    except (ValueError, TypeError):
+        return None
+
+    sb_max = round(tp / 1.30, 2)
+    b_max = round(tp / 1.15, 2)
+    h_max = round(tp / 0.95, 2)
+    s_max = round(tp / 0.85, 2)
+
+    return {
+        "strong_buy_max_zar": sb_max,
+        "buy_max_zar": b_max,
+        "hold_max_zar": h_max,
+        "sell_max_zar": s_max,
+        "strong_sell_above_zar": s_max,
+    }
+
+
+def evaluate_dynamic_rating(
+    live_price: float | int | None,
+    rating_bands: dict[str, Any] | None,
+    fallback_rec: str | None = None,
+) -> str:
+    """Evaluates live market price against rating bands to produce dynamic recommendation."""
+    if live_price is None or not rating_bands:
+        return fallback_rec or "IN PROGRESS"
+    try:
+        lp = float(live_price)
+        if lp <= 0:
+            return fallback_rec or "IN PROGRESS"
+    except (ValueError, TypeError):
+        return fallback_rec or "IN PROGRESS"
+
+    sb_max = rating_bands.get("strong_buy_max_zar")
+    b_max = rating_bands.get("buy_max_zar")
+    h_max = rating_bands.get("hold_max_zar")
+    s_max = rating_bands.get("sell_max_zar")
+    ss_above = rating_bands.get("strong_sell_above_zar", s_max)
+
+    if sb_max is not None and lp <= sb_max:
+        return "STRONG BUY"
+    if b_max is not None and lp <= b_max:
+        return "BUY"
+    if h_max is not None and lp <= h_max:
+        return "HOLD"
+    if s_max is not None and lp <= s_max:
+        return "SELL"
+    if ss_above is not None and lp > ss_above:
+        return "STRONG SELL"
+    if s_max is not None and lp > s_max:
+        return "STRONG SELL"
+
+    return fallback_rec or "HOLD"
+
+
 def parse_valuation_summary(text: str | None) -> dict[str, Any]:
     """Extract executive valuation metrics and monitoring triggers from a Stage 2 note."""
     if not text:
@@ -361,6 +434,20 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
                             res["monitoring_triggers"] = "\n".join(f"- {t}" for t in raw_trig)
                         elif isinstance(raw_trig, str) and raw_trig.strip():
                             res["monitoring_triggers"] = raw_trig.strip()
+
+                    # Extract rating bands if included in JSON
+                    if "rating_bands" in data and isinstance(data["rating_bands"], dict):
+                        rb = data["rating_bands"]
+                        parsed_bands = {}
+                        for k in ("strong_buy_max_zar", "buy_max_zar", "hold_max_zar", "sell_max_zar", "strong_sell_above_zar"):
+                            v = rb.get(k)
+                            if v is not None:
+                                try:
+                                    parsed_bands[k] = float(str(v).replace("R", "").replace(",", "").strip())
+                                except (ValueError, TypeError):
+                                    pass
+                        if parsed_bands:
+                            res["rating_bands"] = parsed_bands
                     break
         except Exception:
             continue
@@ -575,6 +662,11 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
             res["jse_sector_code"] = get_jse_sector_code(res["sector"], ticker=t_hint)
         if "jse_sector_name" not in res:
             res["jse_sector_name"] = get_jse_sector_name(res["sector"], ticker=t_hint)
+
+    if "rating_bands" not in res and "target_price" in res and res["target_price"]:
+        fallback_bands = compute_rating_bands_fallback(res["target_price"], res.get("reference_price"))
+        if fallback_bands:
+            res["rating_bands"] = fallback_bands
 
     return res
 
@@ -1552,6 +1644,7 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 r.dividend_yield_pct,
                 r.tsr_pct,
                 r.monitoring_triggers,
+                r.valuation_summary_json,
                 r.stage1_updated_at,
                 r.stage2_updated_at,
                 r.period,
@@ -1606,6 +1699,22 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 else None
             )
 
+            # Rating bands & dynamic recommendation
+            rating_bands = None
+            raw_summary = r["valuation_summary_json"]
+            if raw_summary:
+                try:
+                    summary_dict = json.loads(raw_summary)
+                    if isinstance(summary_dict, dict) and "rating_bands" in summary_dict:
+                        rating_bands = summary_dict["rating_bands"]
+                except Exception:
+                    pass
+            if not rating_bands and tp_val:
+                rating_bands = compute_rating_bands_fallback(tp_val, r["reference_price_zar"])
+
+            static_rec = r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS")
+            dynamic_rec = evaluate_dynamic_rating(live_price, rating_bands, fallback_rec=static_rec)
+
             results.append({
                 "sha256": r["sha256"],
                 "filename": r["filename"],
@@ -1621,7 +1730,10 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 "live_price_change_pct": live_change,
                 "live_price_updated_at": quote_updated,
                 "live_upside_pct": live_upside,
-                "recommendation": r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS"),
+                "rating_bands": rating_bands,
+                "dynamic_recommendation": dynamic_rec,
+                "static_recommendation": static_rec,
+                "recommendation": dynamic_rec,
                 "upside_pct": r["upside_pct"],
                 "dividend_yield_pct": r["dividend_yield_pct"],
                 "tsr_pct": r["tsr_pct"],

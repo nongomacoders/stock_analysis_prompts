@@ -176,7 +176,7 @@ class PortfolioView(QWidget):
         filter_bar.addWidget(self.sector_combo)
 
         self.rec_combo = QComboBox()
-        self.rec_combo.addItems(["All Ratings", "BUY", "HOLD", "SELL", "IN PROGRESS"])
+        self.rec_combo.addItems(["All Ratings", "STRONG BUY", "BUY", "HOLD", "SELL", "STRONG SELL", "IN PROGRESS"])
         self.rec_combo.currentIndexChanged.connect(self._apply_filters)
         filter_bar.addWidget(self.rec_combo)
 
@@ -334,8 +334,18 @@ class PortfolioView(QWidget):
             if selected_sector != "all sectors" and sector != selected_sector:
                 continue
             if selected_rec != "ALL RATINGS":
-                if selected_rec not in rec:
-                    continue
+                if selected_rec in ("STRONG BUY", "STRONG SELL"):
+                    if rec != selected_rec:
+                        continue
+                elif selected_rec == "BUY":
+                    if rec != "BUY":
+                        continue
+                elif selected_rec == "SELL":
+                    if rec != "SELL":
+                        continue
+                else:
+                    if selected_rec not in rec:
+                        continue
             filtered.append(s)
 
         self.filtered_data = filtered
@@ -452,22 +462,68 @@ class PortfolioView(QWidget):
                     tsr_item.setForeground(QColor("#c62828"))
             self.table.setItem(row_idx, 9, tsr_item)
 
-            # Recommendation Badge
-            rec_str = s["recommendation"] or "—"
+            # Recommendation Badge (Dynamic with Rating Bands Tooltip)
+            rec_str = (s.get("dynamic_recommendation") or s.get("recommendation") or "—").upper()
+            static_rec = (s.get("static_recommendation") or s.get("recommendation") or "—").upper()
             rec_item = QTableWidgetItem(rec_str)
             rec_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             rec_item.setFont(QFont("Segoe UI", 9, QFont.Weight.Bold))
-            if "BUY" in rec_str:
+
+            if "STRONG BUY" in rec_str:
+                rec_item.setBackground(QColor("#dcfce7"))
+                rec_item.setForeground(QColor("#0d531a"))
+            elif "BUY" in rec_str:
                 rec_item.setBackground(QColor("#e8f5e9"))
-                rec_item.setForeground(QColor("#1b5e20"))
+                rec_item.setForeground(QColor("#166534"))
             elif "HOLD" in rec_str:
-                rec_item.setBackground(QColor("#fff3e0"))
-                rec_item.setForeground(QColor("#e65100"))
+                rec_item.setBackground(QColor("#fef3c7"))
+                rec_item.setForeground(QColor("#b45309"))
+            elif "STRONG SELL" in rec_str:
+                rec_item.setBackground(QColor("#fee2e2"))
+                rec_item.setForeground(QColor("#991b1b"))
             elif "SELL" in rec_str:
-                rec_item.setBackground(QColor("#ffebee"))
-                rec_item.setForeground(QColor("#b71c1c"))
+                rec_item.setBackground(QColor("#ffedd5"))
+                rec_item.setForeground(QColor("#c2410c"))
             else:
                 rec_item.setForeground(QColor("#546e7a"))
+
+            bands = s.get("rating_bands") or {}
+            live_price = s.get("live_price_zar")
+            ref_price = s.get("reference_price_zar")
+            tp = s.get("target_price_zar")
+
+            tooltip_lines = [
+                f"Dynamic Live Rating: {rec_str}" + (f" (at live price R{live_price:,.2f})" if live_price is not None else ""),
+                f"Note Original Rating: {static_rec}" + (f" (at reference price R{ref_price:,.2f})" if ref_price is not None else ""),
+            ]
+            if tp is not None:
+                tooltip_lines.append(f"12-Month Target: R{tp:,.2f}")
+            if bands:
+                sb = bands.get("strong_buy_max_zar")
+                b = bands.get("buy_max_zar")
+                h = bands.get("hold_max_zar")
+                sm = bands.get("sell_max_zar")
+                ss = bands.get("strong_sell_above_zar", sm)
+                tooltip_lines.append("")
+                tooltip_lines.append("Valuation Rating Bands:")
+                if sb is not None:
+                    tooltip_lines.append(f"  • Strong Buy:  ≤ R{sb:,.2f}  (>30% upside)")
+                if sb is not None and b is not None:
+                    tooltip_lines.append(f"  • Buy:         R{sb+0.01:,.2f} to R{b:,.2f}  (15% to 30% upside)")
+                elif b is not None:
+                    tooltip_lines.append(f"  • Buy:         ≤ R{b:,.2f}")
+                if b is not None and h is not None:
+                    tooltip_lines.append(f"  • Hold:        R{b+0.01:,.2f} to R{h:,.2f}  (-5% to 15% upside)")
+                elif h is not None:
+                    tooltip_lines.append(f"  • Hold:        ≤ R{h:,.2f}")
+                if h is not None and sm is not None:
+                    tooltip_lines.append(f"  • Sell:        R{h+0.01:,.2f} to R{sm:,.2f}  (-15% to -5% downside)")
+                elif sm is not None:
+                    tooltip_lines.append(f"  • Sell:        ≤ R{sm:,.2f}")
+                if ss is not None:
+                    tooltip_lines.append(f"  • Strong Sell: > R{ss:,.2f}  (<-15% downside)")
+
+            rec_item.setToolTip("\n".join(tooltip_lines))
             self.table.setItem(row_idx, 10, rec_item)
 
             # Stage 1 / S2 Status
@@ -532,7 +588,11 @@ class PortfolioView(QWidget):
         live_up = s.get("live_upside_pct")
         live_up_str = f"{live_up:+.1f}%" if live_up is not None else "—"
         tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "N/A"
-        rec = s["recommendation"] or "IN PROGRESS"
+        rec = s.get("dynamic_recommendation") or s.get("recommendation") or "IN PROGRESS"
+        static_rec = s.get("static_recommendation")
+        rec_display = f"{rec}"
+        if static_rec and static_rec != rec:
+            rec_display += f" <span style='font-size: 8pt; color: #64748b;'>(Note: {static_rec})</span>"
 
         self.stock_title_label.setText(f"<b>{name} ({ticker})</b> · Sector: <i>{sector_str}</i>")
         self.kpi_metrics_label.setText(
@@ -541,7 +601,7 @@ class PortfolioView(QWidget):
             f"<b>Live Upside:</b> <span style='font-weight: bold; color: {'#1b5e20' if live_up and live_up > 0 else '#c62828'};'>{live_up_str}</span>  |  "
             f"<b>Note Ref:</b> {ref}  |  "
             f"<b>12M TSR:</b> {tsr}  |  "
-            f"<b>Rating:</b> <b>{rec}</b>"
+            f"<b>Rating:</b> <b>{rec_display}</b>"
         )
 
         triggers = s.get("monitoring_triggers", "").strip()
@@ -655,11 +715,15 @@ class PortfolioView(QWidget):
             note_up = f"{s['upside_pct']:+.1f}%" if s["upside_pct"] is not None else "—"
             dy = f"{s['dividend_yield_pct']:.1f}%" if s["dividend_yield_pct"] is not None else "—"
             tsr = f"{s['tsr_pct']:+.1f}%" if s["tsr_pct"] is not None else "—"
-            rec = s["recommendation"] or "IN PROGRESS"
+            rec = s.get("dynamic_recommendation") or s.get("recommendation") or "IN PROGRESS"
+            static_rec = s.get("static_recommendation")
+            rec_cell = f"**{rec}**"
+            if static_rec and static_rec != rec:
+                rec_cell += f" *(Note: {static_rec})*"
             status = "Valued" if s["has_stage2"] else ("Audited" if s["has_stage1"] else "Captured")
             sec_display = get_jse_sector_label(s["sector"], ticker=s["ticker"])
             lines.append(
-                f"| **{s['ticker']}** | {s['company_name']} | {sec_display} | {live} | {tp} | {live_up} | {ref} | {note_up} | {dy} | {tsr} | **{rec}** | {status} |"
+                f"| **{s['ticker']}** | {s['company_name']} | {sec_display} | {live} | {tp} | {live_up} | {ref} | {note_up} | {dy} | {tsr} | {rec_cell} | {status} |"
             )
 
         md = "\n".join(lines)
