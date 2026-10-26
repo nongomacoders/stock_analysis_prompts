@@ -204,6 +204,7 @@ def build_sens_update_prompt_content(
         '       }\n'
         "     }\n"
         "     ```\n"
+        "   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output a Markdown table (`### Source Documents & Disclosures Considered`) listing all baseline report documents and the newly incorporated SENS announcement(s) with their filename, document type, period/date, and key evidence considered.\n"
         "   - **Rating Bands Logic:** Set explicit ZAR price boundary levels re-rated for this post-SENS reality: Strong Buy (>30% upside / margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (>15% downside).\n"
         "   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your updated 4-column comparison table:\n"
         "     | Metric | Prior (Stage 2) | Updated (Stage 2-U) | Basis & Post-SENS Commentary |\n"

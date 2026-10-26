@@ -23,7 +23,86 @@ from companies.sectors import (
     get_jse_sector_name,
     get_sector_config,
 )
-from section_capture.db import KNOWN_COMPANIES
+from section_capture.db import DOC_TYPES, KNOWN_COMPANIES
+
+
+def format_documents_considered_table(
+    source_documents: list[dict] | None = None,
+    include_placeholder_roles: bool = False,
+) -> list[str]:
+    """Formats the Markdown table listing all source documents and SENS disclosures considered."""
+    lines = [
+        "### Source Documents & Disclosures Considered",
+        "| # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |",
+        "| :---: | :--- | :---: | :---: | :---: | :--- |",
+    ]
+    if source_documents:
+        for idx, doc in enumerate(source_documents, 1):
+            fname = doc.get("filename", f"Document_{idx}.pdf")
+            dt_key = (doc.get("doc_type") or ("sens" if doc.get("is_sens") else "annual_report")).lower()
+            dt_info = DOC_TYPES.get(dt_key, {"badge": doc.get("badge", "[DOC]"), "label": dt_key.upper()})
+            type_str = f"{dt_info['badge']} {dt_info['label']}"
+            pages = doc.get("page_count")
+            pages_str = str(pages) if pages else "—"
+            period_or_date = doc.get("announcement_date") or doc.get("period") or "—"
+            role = doc.get("role")
+            if not role:
+                if include_placeholder_roles:
+                    if doc.get("is_sens") or dt_key == "sens":
+                        role = "[Summarize post-balance-sheet / trading update evidence incorporated]"
+                    elif dt_key == "presentation":
+                        role = "[Summarize operational KPIs, segment slides & management guidance]"
+                    elif dt_key == "afs":
+                        role = "[Summarize audited/reviewed primary statements, notes & cash flow]"
+                    else:
+                        role = "[Summarize primary financial & operational disclosures]"
+                else:
+                    if doc.get("is_sens") or dt_key == "sens":
+                        role = "Subsequent SENS continuous disclosure & post-balance-sheet event update"
+                    elif dt_key == "presentation":
+                        role = "Results presentation deck, segmental KPIs & management outlook"
+                    elif dt_key == "afs":
+                        role = "Primary financial statements, accounting notes & cash flow reconciliation"
+                    else:
+                        role = "Integrated / annual report financial and operational disclosures"
+            lines.append(f"| {idx} | `{fname}` | {type_str} | {pages_str} | {period_or_date} | {role} |")
+    else:
+        lines.append(
+            "| 1 | `[Report Filename.pdf]` | `[IAR / AFS / PRES]` | [Pages] | [Period] | [Summarize primary financial & operational evidence extracted] |"
+        )
+    return lines
+
+
+def ensure_documents_considered_table(
+    note_markdown: str,
+    source_documents: list[dict] | None = None,
+) -> str:
+    """Ensures the 'Source Documents & Disclosures Considered' table appears at the beginning of the Valuation Note
+    (immediately following the opening JSON summary block).
+    """
+    if not note_markdown or not source_documents:
+        return note_markdown
+
+    # Check if the LLM already included the Source Documents table
+    lower_head = note_markdown[:3500].lower()
+    if "documents & disclosures considered" in lower_head or "documents considered" in lower_head or "| document filename |" in lower_head:
+        return note_markdown
+
+    table_block = "\n".join(format_documents_considered_table(source_documents, include_placeholder_roles=False))
+
+    import re
+    json_match = re.search(r"```json\s*\{.*?\}\s*```", note_markdown, flags=re.DOTALL)
+    if json_match:
+        insert_pos = json_match.end()
+        return (
+            note_markdown[:insert_pos]
+            + "\n\n"
+            + table_block
+            + "\n\n"
+            + note_markdown[insert_pos:].lstrip()
+        )
+
+    return table_block + "\n\n" + note_markdown.lstrip()
 
 
 def _format_section1_spec(
@@ -32,8 +111,9 @@ def _format_section1_spec(
     sector_display: str,
     sector_code: str | None = None,
     reference_price_zar: float | None = None,
+    source_documents: list[dict] | None = None,
 ) -> list[str]:
-    """Generates standardized Section 1 instructions with mandatory JSON block and Markdown table scaffold."""
+    """Generates standardized Section 1 instructions with mandatory JSON block, Documents Considered table, and Valuation Summary Card."""
     sec_code = (sector_code or sector_display).lower()
     jse_code = get_jse_sector_code(sec_code, ticker=ticker)
     icb_code = get_icb_code(sec_code, ticker=ticker)
@@ -78,9 +158,14 @@ def _format_section1_spec(
         lines.append(
             f"   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for {ticker} on the JSE is **R{reference_price_zar:.2f}**. You MUST use `{ref_str}` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R{reference_price_zar:.2f} baseline."
         )
+    lines.append(
+        "   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:"
+    )
+    for tbl_line in format_documents_considered_table(source_documents, include_placeholder_roles=True):
+        lines.append(f"     {tbl_line}")
     lines.extend([
         "   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).",
-        "   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:",
+        "   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:",
         "     | Metric | Determination | Basis & Key Commentary |",
         "     | :--- | :---: | :--- |",
         f"     | **Sector** | {table_sec} | [Sub-sector classification] |",
@@ -120,6 +205,7 @@ def build_stage2_prompt_content(
     detected_sector: str,
     sens_announcements: list[str] | None = None,
     reference_price_zar: float | None = None,
+    source_documents: list[dict] | None = None,
 ) -> str:
     """Constructs the Stage 2 Markdown prompt text incorporating Stage 1 determinations as 99% confidence prior."""
     md_lines: list[str] = []
@@ -177,7 +263,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Retail", "retail", reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Retail", "retail", reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Operational Forecast (FY27E & FY28E):** Merchandise sales, credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.")
         md_lines.append("3. **Consolidated Financial Statements & Cash Flow Bridge:** Revenue, Gross Profit, Operating Expenses, Operating Profit, PAT, HEPS, and Free Cash Flow to Equity (FCFE).")
         md_lines.append("4. **Valuation Multiples & DCF Table:** Forward P/E, EV/EBITDA, dividend yield, and per-share equity value in ZAR.")
@@ -228,7 +314,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "REIT / Listed Property", "reit", reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "REIT / Listed Property", "reit", reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Property Operating Forecast (FY27E & FY28E):** Like-for-like NPI growth, vacancy rates by sector, contractual escalations, renewal reversions, and WALE.")
         md_lines.append("3. **Distributable Income (DIPS) & Balance Sheet Bridge:** Reconciliation of IFRS profit to SA REIT distributable earnings, debt schedule, average cost of debt, interest rate hedging %, and LTV trajectory.")
         md_lines.append("4. **SOTP NAV Valuation & Yield Benchmarks:** Net Asset Value (NAV) per share by sub-sector (Retail, Logistics, Office), capitalization rates, target forward distribution yield, and implied target price in ZAR.")
@@ -279,7 +365,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Technology / IT Services", "it", reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Technology / IT Services", "it", reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Operational & Segmental Forecast (FY27E & FY28E):** Segmental revenue by cluster (Digital, Infrastructure, OT, Resale), recurring ARR %, gross margin % by service line, utilization %, and EBITDA.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, Gross Profit, Operating Expenses, Normalized EBITDA, Amortization of Intangibles/IP, Net Finance Charges, Tax, HEPS, and Free Cash Flow to Equity.")
         md_lines.append("4. **Valuation Multiples & SOTP / DCF Table:** EV/EBITDA, EV/Sales, Forward P/E, FCF yield, and per-share equity value in ZAR.")
@@ -330,7 +416,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Construction & Materials", "construction", reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Construction & Materials", "construction", reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Development & Operational Forecast (FY27E & FY28E):** Residential unit deliveries, serviced stand sales, memorial park cash collections, order book depletion, and gross margin by segment.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, Gross Profit, Operating Expenses, Statutory/Adjusted EBITDA, Net Finance Charges, Tax, HEPS, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) / DCF Valuation Table:** Project-by-project residential pipeline NAV, memorial parks capitalization, contracting multiple, net debt, and per-share equity value in ZAR.")
@@ -384,7 +470,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining", reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining", reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.")
@@ -427,7 +513,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, detected_sector, reference_price_zar=reference_price_zar))
+        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, detected_sector, reference_price_zar=reference_price_zar, source_documents=source_documents))
         md_lines.append("2. **Detailed Operational & Segment Forecast (FY27E & FY28E):** Segment drivers, margins, and operational KPIs.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Income statement, balance sheet, and equity free cash flow.")
         md_lines.append("4. **Institutional Valuation Table:** Intrinsic valuation methodology, multiples, and target price in ZAR.")

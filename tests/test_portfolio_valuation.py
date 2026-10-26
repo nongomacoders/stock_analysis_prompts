@@ -798,3 +798,81 @@ def test_portfolio_view_dynamic_rating_badges_and_filter(qapp, tmp_path):
         assert pv.table.rowCount() == 1
     finally:
         pv.deleteLater()
+
+
+def test_stage2_documents_considered_table():
+    """Verify Stage 2 prompt and valuation note include the Source Documents & Disclosures Considered table."""
+    from section_capture.db import parse_valuation_summary
+    from workflow.generate_stage2 import (
+        build_stage2_prompt_content,
+        ensure_documents_considered_table,
+    )
+
+    docs = [
+        {
+            "filename": "SPAR_GROUP_H1 2026_Results.pdf",
+            "doc_type": "presentation",
+            "badge": "[PRES]",
+            "page_count": 58,
+            "period": "1H26",
+        },
+        {
+            "filename": "Unaudited_interim_results_for_the_26_weeks_ended_27_March_2026.pdf",
+            "doc_type": "afs",
+            "badge": "[AFS]",
+            "page_count": 22,
+            "period": "1H26",
+        },
+        {
+            "filename": "SENS_20260928_S603859.pdf",
+            "doc_type": "sens",
+            "badge": "[SENS]",
+            "page_count": 3,
+            "announcement_date": "2026-09-28",
+            "is_sens": True,
+        },
+    ]
+
+    prompt = build_stage2_prompt_content(
+        stage1_content="# Stage 1 Ground Truth",
+        company_title="SPP Group",
+        ticker="SPP",
+        detected_sector="retail",
+        reference_price_zar=48.31,
+        source_documents=docs,
+    )
+    assert "### Source Documents & Disclosures Considered" in prompt
+    assert "`SPAR_GROUP_H1 2026_Results.pdf`" in prompt
+    assert "`Unaudited_interim_results_for_the_26_weeks_ended_27_March_2026.pdf`" in prompt
+    assert "`SENS_20260928_S603859.pdf`" in prompt
+
+    raw_note = """```json
+{
+  "ticker": "SPP",
+  "company_name": "SPP Group",
+  "sector": "retail",
+  "recommendation": "SELL",
+  "reference_price_zar": 48.31,
+  "target_price_zar": 38.50,
+  "implied_upside_pct": -20.3,
+  "forward_dividend_yield_pct": 0.0,
+  "projected_12m_tsr_pct": -20.3
+}
+```
+
+| Metric | Determination | Basis & Key Commentary |
+| :--- | :---: | :--- |
+| **Current Reference Share Price** | R48.31 | Verified JSE closing price |
+| **12-Month JSE Target Price** | R38.50 | DCF |
+| **Institutional Recommendation** | SELL | Downside |
+"""
+    enriched = ensure_documents_considered_table(raw_note, docs)
+    assert "### Source Documents & Disclosures Considered" in enriched
+    assert "`SPAR_GROUP_H1 2026_Results.pdf`" in enriched
+    assert "`SENS_20260928_S603859.pdf`" in enriched
+
+    # Ensure parse_valuation_summary remains 100% accurate when Documents Considered table is present
+    parsed = parse_valuation_summary(enriched)
+    assert parsed["reference_price"] == 48.31
+    assert parsed["target_price"] == 38.50
+    assert parsed["recommendation"] == "SELL"

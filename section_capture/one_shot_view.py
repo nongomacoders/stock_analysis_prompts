@@ -100,7 +100,10 @@ from workflow.generate_sens_update import (
     build_sens_update_prompt_content,
     move_analyzed_sens_files,
 )
-from workflow.generate_stage2 import build_stage2_prompt_content
+from workflow.generate_stage2 import (
+    build_stage2_prompt_content,
+    ensure_documents_considered_table,
+)
 
 
 def open_folder_and_select(file_or_dir: Path | str):
@@ -1888,6 +1891,26 @@ class OneShotView(QWidget):
             f"💎 [Phase 4/5] Building Stage 2 Institutional Valuation Dossier for {ticker} (Ref: R{ref_price:,.2f})..."
         )
 
+        source_documents_meta: list[dict[str, Any]] = []
+        for d in self._ingested_docs:
+            source_documents_meta.append({
+                "filename": d["filename"],
+                "doc_type": d.get("doc_type", "annual_report"),
+                "badge": d.get("badge", "[AR]"),
+                "page_count": d.get("page_count"),
+                "period": d.get("period") or period,
+                "is_sens": False,
+            })
+        for sd in sens_docs:
+            source_documents_meta.append({
+                "filename": sd["filename"],
+                "doc_type": "sens",
+                "badge": "[SENS]",
+                "page_count": sd.get("page_count"),
+                "announcement_date": sd.get("announcement_date") or period,
+                "is_sens": True,
+            })
+
         base_s2_prompt = build_stage2_prompt_content(
             stage1_content=stage1_response_text,
             company_title=company_title,
@@ -1895,6 +1918,7 @@ class OneShotView(QWidget):
             detected_sector=sector,
             sens_announcements=sens_labels if sens_labels else None,
             reference_price_zar=ref_price,
+            source_documents=source_documents_meta,
         )
 
         s2_prompt_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_prompt.md"
@@ -1978,6 +2002,7 @@ class OneShotView(QWidget):
         def on_s2_done(resp_text: str, elapsed: float, stats: dict):
             if not self._is_running:
                 return
+            resp_text = ensure_documents_considered_table(resp_text, source_documents_meta)
             save_stage2_report(primary_sha, response=resp_text, db_path=self.db_path)
             s2_out_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
             s2_out_file.write_text(resp_text, encoding="utf-8")
