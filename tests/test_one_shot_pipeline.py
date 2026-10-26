@@ -135,6 +135,17 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
             self.finished_query.emit(resp, 0.2, {"total_tokens": 500, "cost_usd": 0.001})
 
     monkeypatch.setattr(osv, "OpenRouterWorker", DummyOpenRouterWorker)
+    monkeypatch.setattr(
+        osv,
+        "fetch_jse_quote",
+        lambda ticker: {
+            "ticker": ticker,
+            "symbol": f"{ticker}.JO",
+            "price_zar": 10.00,
+            "raw_price": 1000.0,
+            "currency": "ZAc",
+        },
+    )
 
     # Set up company folder in tmp_path
     comp_dir = tmp_path / "companies" / "mining" / "TST"
@@ -183,3 +194,58 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
 
     view.close()
     view.deleteLater()
+
+
+def test_obtain_reference_price_live_success(tmp_path, monkeypatch):
+    import section_capture.one_shot_view as osv
+    from section_capture.one_shot_view import OneShotView
+
+    view = OneShotView(db_path=tmp_path)
+    monkeypatch.setattr(
+        osv,
+        "fetch_jse_quote",
+        lambda ticker: {
+            "ticker": ticker,
+            "symbol": f"{ticker}.JO",
+            "price_zar": 48.23,
+            "raw_price": 4823.0,
+            "currency": "ZAc",
+        },
+    )
+
+    price = view._obtain_reference_price("SPP")
+    assert price == 48.23
+    assert "Live Closing Price" in view.log_view.toPlainText()
+    assert "SPP.JO" in view.log_view.toPlainText()
+
+
+def test_obtain_reference_price_yfinance_fail_user_input(tmp_path, monkeypatch):
+    import section_capture.one_shot_view as osv
+    from section_capture.one_shot_view import OneShotView
+    from PySide6.QtWidgets import QInputDialog
+
+    view = OneShotView(db_path=tmp_path)
+    # yfinance fails
+    monkeypatch.setattr(osv, "fetch_jse_quote", lambda ticker: None)
+    # User inputs 52.50
+    monkeypatch.setattr(QInputDialog, "getDouble", lambda *args, **kwargs: (52.50, True))
+
+    price = view._obtain_reference_price("UNKNOWN")
+    assert price == 52.50
+    assert "User Input Received" in view.log_view.toPlainText()
+
+
+def test_obtain_reference_price_yfinance_fail_user_cancel(tmp_path, monkeypatch):
+    import section_capture.one_shot_view as osv
+    from section_capture.one_shot_view import OneShotView
+    from PySide6.QtWidgets import QInputDialog
+
+    view = OneShotView(db_path=tmp_path)
+    # yfinance fails
+    monkeypatch.setattr(osv, "fetch_jse_quote", lambda ticker: None)
+    # User cancels
+    monkeypatch.setattr(QInputDialog, "getDouble", lambda *args, **kwargs: (0.00, False))
+
+    price = view._obtain_reference_price("UNKNOWN")
+    assert price is None
+    assert "Closing price was not provided" in view.log_view.toPlainText()

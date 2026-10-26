@@ -32,6 +32,7 @@ from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QHeaderView,
+    QInputDialog,
     QLabel,
     QMessageBox,
     QPlainTextEdit,
@@ -74,6 +75,7 @@ from section_capture.db import (
     set_report_doc_type,
     upsert_report,
 )
+from section_capture.market_data import fetch_jse_quote, save_market_quotes
 from section_capture.openrouter import (
     OpenRouterWorker,
     get_model_display_name,
@@ -1619,6 +1621,64 @@ class OneShotView(QWidget):
     # =========================================================================
     # PHASE 4: STAGE 2 INSTITUTIONAL VALUATION (OR SENS UPDATE)
     # =========================================================================
+    def _obtain_reference_price(self, ticker: str) -> float | None:
+        """Obtains the verified JSE closing price for the company.
+        Strict rule: Either live price from yfinance (<TICKER>.JO) or explicit user input via dialog.
+        Never uses stale cache values and never guesses.
+        """
+        self.append_log(
+            f"📈 Fetching live JSE closing price for <code>{ticker}.JO</code> via Yahoo Finance (yfinance)..."
+        )
+        ref_quote = None
+        try:
+            ref_quote = fetch_jse_quote(ticker)
+        except Exception as exc:
+            pass
+
+        if ref_quote and ref_quote.get("price_zar") and ref_quote["price_zar"] > 0:
+            price = ref_quote["price_zar"]
+            save_market_quotes({ticker: ref_quote}, self.db_path)
+            self.append_log(
+                f"✓ <b>Live Closing Price:</b> <code>{ticker}.JO</code> is <b>R{price:,.2f}</b> via Yahoo Finance."
+            )
+            return price
+
+        # If yfinance fails: STRICTLY prompt the user (no guessing, no cache)
+        self.append_log(
+            f"⚠️ Yahoo Finance quote unavailable for <code>{ticker}.JO</code>. "
+            f"Prompting user for verified closing price (no guessing)..."
+        )
+        price, ok = QInputDialog.getDouble(
+            self,
+            f"JSE Closing Price Required — {ticker}",
+            f"Could not retrieve the live closing price from Yahoo Finance for '{ticker}.JO'.\n\n"
+            f"Please enter the latest closing share price in ZAR (do not guess):",
+            value=0.00,
+            minValue=0.01,
+            maxValue=1000000.0,
+            decimals=2,
+        )
+        if ok and price > 0:
+            price = round(price, 2)
+            manual_quote = {
+                "ticker": ticker.upper(),
+                "symbol": f"{ticker.upper()}.JO",
+                "price_zar": price,
+                "raw_price": round(price * 100.0, 2),
+                "currency": "ZAc",
+                "updated_at": datetime.now().isoformat(),
+            }
+            save_market_quotes({ticker: manual_quote}, self.db_path)
+            self.append_log(
+                f"✍️ <b>User Input Received:</b> Using confirmed closing price for {ticker}: <b>R{price:,.2f}</b>."
+            )
+            return price
+
+        self.append_log(
+            f"❌ Closing price was not provided for {ticker}. Aborting valuation."
+        )
+        return None
+
     def _run_phase4_stage2(self, stage1_response_text: str):
         if not self._is_running or not self.current_company:
             return
@@ -1644,9 +1704,17 @@ class OneShotView(QWidget):
             f"`{d['filename']}` ({d.get('announcement_date') or 'SENS'})" for d in sens_docs
         ]
 
+        ref_price = self._obtain_reference_price(ticker)
+        if ref_price is None:
+            self._on_pipeline_error(
+                f"Valuation aborted: A verified closing price is required for {ticker}. "
+                f"Please provide the closing price to proceed."
+            )
+            return
+
         self.set_phase_state(3, "Ingesting full PDFs & building dossier...", "active")
         self.live_banner_label.setText(
-            f"💎 [Phase 4/5] Building Stage 2 Institutional Valuation Dossier for {ticker}..."
+            f"💎 [Phase 4/5] Building Stage 2 Institutional Valuation Dossier for {ticker} (Ref: R{ref_price:,.2f})..."
         )
 
         base_s2_prompt = build_stage2_prompt_content(
@@ -1655,6 +1723,7 @@ class OneShotView(QWidget):
             ticker=ticker,
             detected_sector=sector,
             sens_announcements=sens_labels if sens_labels else None,
+            reference_price_zar=ref_price,
         )
 
         s2_prompt_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_prompt.md"
@@ -1799,12 +1868,21 @@ class OneShotView(QWidget):
                     "content": "\n\n".join(s_pages),
                 })
 
+        ref_price = self._obtain_reference_price(ticker)
+        if ref_price is None:
+            self._on_pipeline_error(
+                f"SENS Valuation Update aborted: A verified closing price is required for {ticker}. "
+                f"Please provide the closing price to proceed."
+            )
+            return
+
         sens_prompt = build_sens_update_prompt_content(
             baseline_valuation_report=baseline_note,
             company_title=company_title,
             ticker=ticker,
             detected_sector=sector,
             sens_entries=sens_entries,
+            reference_price_zar=ref_price,
         )
         sens_prompt_file = briefs_dir / f"{ticker}_{period}_stage2_sens_update_prompt.md"
         sens_prompt_file.write_text(sens_prompt, encoding="utf-8")
@@ -1891,9 +1969,9 @@ class OneShotView(QWidget):
         # Parse executive valuation metrics
         summary = parse_valuation_summary(final_valuation_text) or {}
         rec = summary.get("recommendation") or "RATED"
-        target_p = summary.get("target_price_zar")
-        curr_p = summary.get("current_price_zar")
-        upside = summary.get("upside_pct")
+        target_p = summary.get("target_price") or summary.get("target_price_zar")
+        curr_p = summary.get("reference_price") or summary.get("reference_price_zar")
+        upside = summary.get("upside_pct") or summary.get("implied_upside_pct")
 
         target_str = f"R{target_p:,.2f}" if isinstance(target_p, (int, float)) else "N/A"
         curr_str = f"R{curr_p:,.2f}" if isinstance(curr_p, (int, float)) else "N/A"

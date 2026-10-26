@@ -27,6 +27,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QPlainTextEdit,
     QPushButton,
+    QInputDialog,
     QSplitter,
     QTabWidget,
     QVBoxLayout,
@@ -48,6 +49,7 @@ from section_capture.db import (
 )
 from section_capture.map_dialog import fit_dialog_to_screen
 from section_capture.packages import PROJECT_ROOT, detect_sector_from_path
+from section_capture.market_data import fetch_jse_quote, save_market_quotes, to_jse_symbol
 from section_capture.portfolio_view import PortfolioView
 from workflow.export_stage1 import build_stage1_prompt_content
 from workflow.generate_stage2 import build_stage2_prompt_content
@@ -1194,12 +1196,54 @@ class AuditValuationDialog(QDialog):
                 return
             stage1_content = "[PASTE STAGE 1 AUDIT DETERMINATIONS HERE]"
 
+        # Obtain live closing price from Yahoo Finance (<TICKER>.JO) or prompt user
+        ref_price = None
+        jse_sym = to_jse_symbol(self.ticker)
+        try:
+            q = fetch_jse_quote(self.ticker)
+            if q and q.get("price_zar") and q["price_zar"] > 0:
+                ref_price = q["price_zar"]
+                save_market_quotes({self.ticker: q}, self.db_path)
+        except Exception:
+            pass
+
+        if not ref_price:
+            price, ok = QInputDialog.getDouble(
+                self,
+                f"JSE Closing Price Required — {self.ticker}",
+                f"Could not retrieve the live closing price from Yahoo Finance for '{jse_sym}'.\n\n"
+                f"Please enter the latest closing share price in ZAR (do not guess):",
+                value=0.00,
+                minValue=0.01,
+                maxValue=1000000.0,
+                decimals=2,
+            )
+            if ok and price > 0:
+                ref_price = round(price, 2)
+                manual_quote = {
+                    "ticker": self.ticker.upper(),
+                    "symbol": jse_sym,
+                    "price_zar": ref_price,
+                    "raw_price": round(ref_price * 100.0, 2),
+                    "currency": "ZAc",
+                    "updated_at": datetime.now().isoformat(),
+                }
+                save_market_quotes({self.ticker: manual_quote}, self.db_path)
+            else:
+                QMessageBox.warning(
+                    self,
+                    "Closing Price Required",
+                    f"A verified closing price is required for {self.ticker} to generate the Stage 2 Valuation prompt. Aborting.",
+                )
+                return
+
         prompt_content = build_stage2_prompt_content(
             stage1_content=stage1_content,
             company_title=self.company_title,
             ticker=self.ticker,
             detected_sector=self.sector,
             sens_announcements=sens_announcements if sens_announcements else None,
+            reference_price_zar=ref_price,
         )
 
         self.s2_prompt_edit.setPlainText(prompt_content)

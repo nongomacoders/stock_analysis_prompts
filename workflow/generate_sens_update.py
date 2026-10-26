@@ -81,6 +81,7 @@ def build_sens_update_prompt_content(
     detected_sector: str,
     sens_filename: str | None = None,
     sens_entries: list[dict] | None = None,
+    reference_price_zar: float | None = None,
 ) -> str:
     """Constructs the simplified SENS Valuation Update prompt with PDF and/or embedded text notices."""
     md_lines: list[str] = []
@@ -189,7 +190,7 @@ def build_sens_update_prompt_content(
         f'       "jse_sector_code": "{jse_code}",\n'
         f'       "jse_sector_name": "{jse_name}",\n'
         '       "recommendation": "BUY | HOLD | SELL",\n'
-        '       "reference_price_zar": 0.00,\n'
+        f'       "reference_price_zar": {reference_price_zar:.2f},\n' if (reference_price_zar and reference_price_zar > 0) else '       "reference_price_zar": 0.00,\n'
         '       "target_price_zar": 0.00,\n'
         '       "implied_upside_pct": 0.0,\n'
         '       "forward_dividend_yield_pct": 0.0,\n'
@@ -208,7 +209,7 @@ def build_sens_update_prompt_content(
         "     | Metric | Prior (Stage 2) | Updated (Stage 2-U) | Basis & Post-SENS Commentary |\n"
         "     | :--- | :---: | :---: | :--- |\n"
         f"     | **Sector** | {sector_display} | {sector_display} | [Classification] |\n"
-        "     | **Current Reference Share Price** | R[0.00] | R[0.00] | [Closing date & price] |\n"
+        f"     | **Current Reference Share Price** | R[0.00] | R{reference_price_zar:.2f} | [Verified closing price via Yahoo Finance / user input] |\n" if (reference_price_zar and reference_price_zar > 0) else "     | **Current Reference Share Price** | R[0.00] | R[0.00] | [Closing date & price] |\n"
         "     | **12-Month JSE Target Price** | R[0.00] | R[0.00] | [Target price & revision basis] |\n"
         "     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [+/-0.0]% | [Relative to reference price] |\n"
         "     | **Forward Dividend Yield (FY27E)** | [0.0]% | [0.0]% | [Distribution policy & payout] |\n"

@@ -27,9 +27,13 @@ Analyze and forecast from company presentations and reports section by section w
     - Archive & Artifact Synchronization:
       - Processed PDFs archived to `sources/completed/<PERIOD>/` remain excluded from the active document queue.
       - Artifact preview tabs dynamically reload upon period or company change, auto-detecting existing period folders (e.g. `1H26`) and rendering the Questions Ledger, Stage 1 Forensic Audit, and Stage 2 Valuation Note immediately.
+    - Live Closing Price & Strict Anti-Guessing Mechanism:
+      - Before Stage 2 Valuation (or SENS update), queries `fetch_jse_quote(ticker)` via `yfinance` normalized with `.JO` (e.g. `SPP.JO`).
+      - Strict Anti-Guessing Rule: If live `yfinance` fails, prompts the user directly via `QInputDialog` to input the verified closing price. Never falls back to stale cache and never guesses.
+      - Injects the confirmed `reference_price_zar` directly into the Stage 2 JSON block and prompt instructions, forbidding LLM hallucination and enforcing upside calculation and rating bands relative to this exact baseline.
   - Test Suite (`tests/test_one_shot_pipeline.py`):
-    - Added unit tests for document discovery/ordering, UI reordering, and full 5-phase autonomous pipeline execution.
-    - All **151 tests passing (100%)**.
+    - Added unit tests for document discovery/ordering, UI reordering, live quote fetching, and user dialog fallback.
+    - All **154 tests passing (100%)**.
 
 - **LLM Semantic Clustering for Presentation Decks (`extract_all_app_sections`)**:
   - Solved single-slide fragmentation in corporate presentations (`section_capture/section_matcher.py`):

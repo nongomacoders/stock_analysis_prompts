@@ -26,14 +26,29 @@ from companies.sectors import (
 from section_capture.db import KNOWN_COMPANIES
 
 
-def _format_section1_spec(ticker: str, company_title: str, sector_display: str, sector_code: str | None = None) -> list[str]:
+def _format_section1_spec(
+    ticker: str,
+    company_title: str,
+    sector_display: str,
+    sector_code: str | None = None,
+    reference_price_zar: float | None = None,
+) -> list[str]:
     """Generates standardized Section 1 instructions with mandatory JSON block and Markdown table scaffold."""
     sec_code = (sector_code or sector_display).lower()
     jse_code = get_jse_sector_code(sec_code, ticker=ticker)
     icb_code = get_icb_code(sec_code, ticker=ticker)
     jse_name = get_jse_sector_name(sec_code, ticker=ticker)
     table_sec = f"{sector_display} ({jse_name} — {jse_code} / ICB {icb_code})" if jse_code and icb_code else sector_display
-    return [
+
+    ref_str = f"{reference_price_zar:.2f}" if reference_price_zar and reference_price_zar > 0 else "0.00"
+    table_ref_val = f"R{reference_price_zar:.2f}" if reference_price_zar and reference_price_zar > 0 else "R[0.00]"
+    table_ref_comment = (
+        f"Verified closing share price ({ticker}.JO via Yahoo Finance / confirmed input)"
+        if reference_price_zar and reference_price_zar > 0
+        else "[Closing date & reference price baseline]"
+    )
+
+    lines = [
         "1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**",
         "   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:",
         "     ```json",
@@ -44,7 +59,7 @@ def _format_section1_spec(ticker: str, company_title: str, sector_display: str, 
         f'       "jse_sector_code": "{jse_code}",',
         f'       "jse_sector_name": "{jse_name}",',
         '       "recommendation": "BUY | HOLD | SELL",',
-        '       "reference_price_zar": 0.00,',
+        f'       "reference_price_zar": {ref_str},',
         '       "target_price_zar": 0.00,',
         '       "implied_upside_pct": 0.0,',
         '       "forward_dividend_yield_pct": 0.0,',
@@ -58,12 +73,18 @@ def _format_section1_spec(ticker: str, company_title: str, sector_display: str, 
         '       }',
         "     }",
         "     ```",
+    ]
+    if reference_price_zar and reference_price_zar > 0:
+        lines.append(
+            f"   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for {ticker} on the JSE is **R{reference_price_zar:.2f}**. You MUST use `{ref_str}` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R{reference_price_zar:.2f} baseline."
+        )
+    lines.extend([
         "   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).",
         "   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:",
         "     | Metric | Determination | Basis & Key Commentary |",
         "     | :--- | :---: | :--- |",
         f"     | **Sector** | {table_sec} | [Sub-sector classification] |",
-        "     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |",
+        f"     | **Current Reference Share Price** | {table_ref_val} | {table_ref_comment} |",
         "     | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |",
         "     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |",
         "     | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |",
@@ -71,7 +92,8 @@ def _format_section1_spec(ticker: str, company_title: str, sector_display: str, 
         "     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |",
         "     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |",
         "   - Followed by the core institutional thesis and structural headwinds/tailwinds.",
-    ]
+    ])
+    return lines
 
 
 def _format_critical_formatting_constraints() -> list[str]:
@@ -97,6 +119,7 @@ def build_stage2_prompt_content(
     ticker: str,
     detected_sector: str,
     sens_announcements: list[str] | None = None,
+    reference_price_zar: float | None = None,
 ) -> str:
     """Constructs the Stage 2 Markdown prompt text incorporating Stage 1 determinations as 99% confidence prior."""
     md_lines: list[str] = []
@@ -154,7 +177,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Retail", "retail"))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Retail", "retail", reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Operational Forecast (FY27E & FY28E):** Merchandise sales, credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.")
         md_lines.append("3. **Consolidated Financial Statements & Cash Flow Bridge:** Revenue, Gross Profit, Operating Expenses, Operating Profit, PAT, HEPS, and Free Cash Flow to Equity (FCFE).")
         md_lines.append("4. **Valuation Multiples & DCF Table:** Forward P/E, EV/EBITDA, dividend yield, and per-share equity value in ZAR.")
@@ -205,7 +228,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "REIT / Listed Property", "reit"))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "REIT / Listed Property", "reit", reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Property Operating Forecast (FY27E & FY28E):** Like-for-like NPI growth, vacancy rates by sector, contractual escalations, renewal reversions, and WALE.")
         md_lines.append("3. **Distributable Income (DIPS) & Balance Sheet Bridge:** Reconciliation of IFRS profit to SA REIT distributable earnings, debt schedule, average cost of debt, interest rate hedging %, and LTV trajectory.")
         md_lines.append("4. **SOTP NAV Valuation & Yield Benchmarks:** Net Asset Value (NAV) per share by sub-sector (Retail, Logistics, Office), capitalization rates, target forward distribution yield, and implied target price in ZAR.")
@@ -256,7 +279,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Technology / IT Services", "it"))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Technology / IT Services", "it", reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Operational & Segmental Forecast (FY27E & FY28E):** Segmental revenue by cluster (Digital, Infrastructure, OT, Resale), recurring ARR %, gross margin % by service line, utilization %, and EBITDA.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, Gross Profit, Operating Expenses, Normalized EBITDA, Amortization of Intangibles/IP, Net Finance Charges, Tax, HEPS, and Free Cash Flow to Equity.")
         md_lines.append("4. **Valuation Multiples & SOTP / DCF Table:** EV/EBITDA, EV/Sales, Forward P/E, FCF yield, and per-share equity value in ZAR.")
@@ -307,7 +330,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Construction & Materials", "construction"))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Construction & Materials", "construction", reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Development & Operational Forecast (FY27E & FY28E):** Residential unit deliveries, serviced stand sales, memorial park cash collections, order book depletion, and gross margin by segment.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, Gross Profit, Operating Expenses, Statutory/Adjusted EBITDA, Net Finance Charges, Tax, HEPS, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) / DCF Valuation Table:** Project-by-project residential pipeline NAV, memorial parks capitalization, contracting multiple, net debt, and per-share equity value in ZAR.")
@@ -361,7 +384,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining"))
+        md_lines.extend(_format_section1_spec(ticker, company_title, "Mining", "mining", reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.")
@@ -404,7 +427,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
-        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, detected_sector))
+        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, detected_sector, reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Operational & Segment Forecast (FY27E & FY28E):** Segment drivers, margins, and operational KPIs.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Income statement, balance sheet, and equity free cash flow.")
         md_lines.append("4. **Institutional Valuation Table:** Intrinsic valuation methodology, multiples, and target price in ZAR.")
@@ -458,7 +481,7 @@ def build_stage2_prompt_content(
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
         cfg = get_sector_config(detected_sector)
-        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, cfg.code))
+        md_lines.extend(_format_section1_spec(ticker, company_title, cfg.display_name, cfg.code, reference_price_zar=reference_price_zar))
         md_lines.append("2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.")
         md_lines.append("3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.")
         md_lines.append("4. **Sum-of-the-Parts (SOTP) DCF Valuation Table:** Asset-by-asset NAV, unallocated corporate costs, net cash/debt, and per-share equity value in ZAR.")
