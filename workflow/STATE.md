@@ -24,6 +24,9 @@ Analyze and forecast from company presentations and reports section by section w
        - **Phase 5 (Archiving & Portfolio Sync)**: Archives processed PDFs to `sources/completed/<PERIOD>/` and SENS notices to `sources/sens/completed/`, displaying the final Rating Badge and 12m Target Price.
   - Detailed Live Progress Screen:
     - 5-Phase visual stepper cards (`Waiting` $\rightarrow$ `⏳ Active` $\rightarrow$ `✓ Done`), overall progress bar, live document table status column, timestamped telemetry log (`QTextBrowser`), and live artifact preview tabs (`Questions Ledger`, `Stage 1 Forensic Audit`, `Stage 2 Valuation Note`).
+    - Archive & Artifact Synchronization:
+      - Processed PDFs archived to `sources/completed/<PERIOD>/` remain excluded from the active document queue.
+      - Artifact preview tabs dynamically reload upon period or company change, auto-detecting existing period folders (e.g. `1H26`) and rendering the Questions Ledger, Stage 1 Forensic Audit, and Stage 2 Valuation Note immediately.
   - Test Suite (`tests/test_one_shot_pipeline.py`):
     - Added unit tests for document discovery/ordering, UI reordering, and full 5-phase autonomous pipeline execution.
     - All **151 tests passing (100%)**.
