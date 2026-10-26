@@ -1,6 +1,7 @@
 """Read-only draft overview, stored-questions ledger, and saved-sections / LLM-response dialogs."""
 import copy
 import json
+from pathlib import Path
 
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtWidgets import (
@@ -9,12 +10,16 @@ from PySide6.QtWidgets import (
 )
 
 from .db import (
+    auto_link_companion_reports,
     clear_section_llm_response,
     connect_db,
+    detect_doc_type_and_date,
     extract_questions_ledger_from_response,
+    get_doc_badge,
     list_sections,
     save_section_llm_response,
 )
+from .pdf_source import PdfSource
 from .openrouter import (
     OpenRouterWorker,
     get_model_display_name,
@@ -328,6 +333,235 @@ class ReportMapDialog(QDialog):
                 self.close()
 
 
+
+
+def find_companion_source_pdfs(source, period: str | None = None, db_path: str | Path | None = None) -> list[dict]:
+    """Finds all candidate source PDFs for the company associated with the given source."""
+    if not source or not getattr(source, "path", None):
+        return []
+    p = Path(source.path).resolve()
+
+    sources_dir = None
+    for parent in [p.parent, p.parent.parent, p.parent.parent.parent]:
+        if parent.name.lower() == "sources":
+            sources_dir = parent
+            break
+        elif (parent / "sources").exists():
+            sources_dir = parent / "sources"
+            break
+
+    if not sources_dir or not sources_dir.exists():
+        sources_dir = p.parent
+
+    candidate_files: list[Path] = []
+    # 1. Look in sources/ directly
+    for f in sorted(sources_dir.glob("*.pdf")):
+        if f.is_file() and "sens" not in f.name.lower():
+            candidate_files.append(f)
+
+    # 2. Look in completed/<period> and completed/
+    comp_dir = sources_dir / "completed"
+    if comp_dir.exists():
+        search_dirs = [comp_dir]
+        if period and (comp_dir / period).exists():
+            search_dirs.insert(0, comp_dir / period)
+        for sdir in search_dirs:
+            for f in sorted(sdir.glob("*.pdf")):
+                if f.is_file() and "sens" not in f.name.lower():
+                    if f.resolve() not in [cf.resolve() for cf in candidate_files]:
+                        candidate_files.append(f)
+
+    if not candidate_files:
+        candidate_files = [p]
+
+    # Query DB for stored metadata (sha256, doc_type, period)
+    db_info: dict[str, dict] = {}
+    if db_path:
+        try:
+            with connect_db(db_path) as conn:
+                for row in conn.execute("SELECT sha256, filename, doc_type, period, physical_page_count FROM reports"):
+                    db_info[row["filename"]] = dict(row)
+        except Exception:
+            pass
+
+    import pypdfium2 as pdfium
+    import hashlib
+
+    results: list[dict] = []
+    for cand in candidate_files:
+        info = db_info.get(cand.name, {})
+        dt = info.get("doc_type")
+        if not dt:
+            dt, _ = detect_doc_type_and_date(cand)
+        badge = get_doc_badge(dt)
+        page_cnt = info.get("physical_page_count") or 0
+        sha = info.get("sha256")
+        if not sha:
+            try:
+                sha = hashlib.sha256(cand.read_bytes()).hexdigest()
+            except Exception:
+                sha = ""
+
+        if not page_cnt:
+            try:
+                doc = pdfium.PdfDocument(str(cand))
+                page_cnt = len(doc)
+                doc.close()
+            except Exception:
+                page_cnt = 0
+
+        # Sort priority: PRES (1), IAR (2), AR (3), AFS (4), other (5)
+        dt_lower = (dt or "").lower()
+        if "pres" in dt_lower:
+            prio = 1
+        elif "iar" in dt_lower:
+            prio = 2
+        elif "annual" in dt_lower or "ar" in dt_lower:
+            prio = 3
+        elif "afs" in dt_lower or "statement" in dt_lower or "interim" in dt_lower:
+            prio = 4
+        else:
+            prio = 5
+
+        results.append({
+            "path": cand,
+            "filename": cand.name,
+            "doc_type": dt,
+            "badge": badge,
+            "page_count": page_cnt,
+            "priority": prio,
+            "sha256": sha,
+            "is_active": (cand.resolve() == p.resolve()),
+            "enabled": True,
+        })
+
+    # Sort initially by priority
+    results.sort(key=lambda x: (x["priority"], x["filename"].lower()))
+    return results
+
+
+class DocumentOrderDialog(QDialog):
+    """Allows analyst to select and reorder companion documents before batch auto-capture."""
+
+    def __init__(self, documents: list[dict], parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Select Document Processing Order")
+        self.resize(700, 400)
+        self.documents = copy.deepcopy(documents)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(16, 14, 16, 14)
+        layout.setSpacing(10)
+
+        header = QLabel(
+            "<b>Select Document Order for Batch Auto-Capture</b><br>"
+            "<span style='color: #475569; font-size: 9pt;'>"
+            "The Questions Ledger accumulates sequentially across documents. Order the documents so strategic and "
+            "narrative disclosures (e.g. Results Presentation / IAR) are analyzed first, followed by statutory "
+            "accounting statements and notes (e.g. AFS)."
+            "</span>"
+        )
+        header.setWordWrap(True)
+        layout.addWidget(header)
+
+        mid_layout = QHBoxLayout()
+        mid_layout.setSpacing(10)
+
+        self.table = QTableWidget()
+        self.table.setColumnCount(4)
+        self.table.setHorizontalHeaderLabels(["Order", "Type", "Document Filename", "Pages"])
+        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        self.table.verticalHeader().setVisible(False)
+        mid_layout.addWidget(self.table, 1)
+
+        btn_vbox = QVBoxLayout()
+        btn_vbox.setSpacing(6)
+        btn_vbox.addStretch()
+        self.move_up_btn = QPushButton("▲ Move Up")
+        self.move_up_btn.setToolTip("Process this document earlier in the sequence.")
+        self.move_up_btn.clicked.connect(self._on_move_up)
+        btn_vbox.addWidget(self.move_up_btn)
+
+        self.move_down_btn = QPushButton("▼ Move Down")
+        self.move_down_btn.setToolTip("Process this document later in the sequence.")
+        self.move_down_btn.clicked.connect(self._on_move_down)
+        btn_vbox.addWidget(self.move_down_btn)
+        btn_vbox.addStretch()
+        mid_layout.addLayout(btn_vbox)
+
+        layout.addLayout(mid_layout)
+
+        bottom_layout = QHBoxLayout()
+        bottom_layout.addStretch()
+
+        self.cancel_btn = QPushButton("Cancel")
+        self.cancel_btn.clicked.connect(self.reject)
+        bottom_layout.addWidget(self.cancel_btn)
+
+        self.accept_btn = QPushButton("⚡ Auto-Capture in Selected Order")
+        self.accept_btn.setStyleSheet("font-weight: bold; background-color: #0284c7; color: white; padding: 6px 14px;")
+        self.accept_btn.clicked.connect(self.accept)
+        bottom_layout.addWidget(self.accept_btn)
+
+        layout.addLayout(bottom_layout)
+
+        self._populate_table()
+
+    def _populate_table(self):
+        self.table.setRowCount(len(self.documents))
+        for row, doc in enumerate(self.documents):
+            order_item = QTableWidgetItem(f"#{row + 1}")
+            order_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            order_item.setFlags(order_item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            order_item.setCheckState(Qt.CheckState.Checked if doc.get("enabled", True) else Qt.CheckState.Unchecked)
+            self.table.setItem(row, 0, order_item)
+
+            badge_item = QTableWidgetItem(doc.get("badge", "[AR]"))
+            badge_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            self.table.setItem(row, 1, badge_item)
+
+            name_str = doc["filename"]
+            if doc.get("is_active"):
+                name_str += "  (active in canvas)"
+            name_item = QTableWidgetItem(name_str)
+            self.table.setItem(row, 2, name_item)
+
+            pg_item = QTableWidgetItem(f"{doc.get('page_count', 0)} p.")
+            pg_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            self.table.setItem(row, 3, pg_item)
+
+    def _sync_enabled_state(self):
+        for row in range(self.table.rowCount()):
+            item = self.table.item(row, 0)
+            if item:
+                self.documents[row]["enabled"] = (item.checkState() == Qt.CheckState.Checked)
+
+    def _on_move_up(self):
+        row = self.table.currentRow()
+        if row > 0:
+            self._sync_enabled_state()
+            self.documents[row], self.documents[row - 1] = self.documents[row - 1], self.documents[row]
+            self._populate_table()
+            self.table.selectRow(row - 1)
+
+    def _on_move_down(self):
+        row = self.table.currentRow()
+        if 0 <= row < len(self.documents) - 1:
+            self._sync_enabled_state()
+            self.documents[row], self.documents[row + 1] = self.documents[row + 1], self.documents[row]
+            self._populate_table()
+            self.table.selectRow(row + 1)
+
+    def get_ordered_documents(self) -> list[dict]:
+        self._sync_enabled_state()
+        return [d for d in self.documents if d.get("enabled", True)]
+
+
 class SectionComparisonDialog(QDialog):
     def __init__(self, source, user_sections: list[dict], parent=None, db_path=None, sector=None):
         super().__init__(parent)
@@ -580,10 +814,31 @@ class SectionComparisonDialog(QDialog):
             QMessageBox.warning(self, "No Matched Sections", "No matched sections available to auto-capture.")
             return
 
+        companion_docs = find_companion_source_pdfs(self.source, period=getattr(self.source, "period", None), db_path=self.db_path)
+        ordered_docs = []
+        if len(companion_docs) > 1:
+            order_dlg = DocumentOrderDialog(companion_docs, parent=self)
+            if not order_dlg.exec():
+                return
+            ordered_docs = order_dlg.get_ordered_documents()
+            if not ordered_docs:
+                return
+        else:
+            ordered_docs = companion_docs if companion_docs else [{
+                "path": Path(self.source.path),
+                "filename": getattr(self.source, "filename", Path(self.source.path).name),
+                "doc_type": getattr(self.source, "doc_type", "ar"),
+                "badge": "[AR]",
+                "sha256": getattr(self.source, "sha256", ""),
+                "is_active": True,
+            }]
+
+        doc_summary_lines = "\n".join(f"  {idx+1}. {d.get('badge', '[AR]')} {d['filename']}" for idx, d in enumerate(ordered_docs))
         reply = QMessageBox.question(
             self,
             "Confirm Auto-Capture",
-            f"Auto-capture all {len(matched)} matched sections into SQLite?\n\n"
+            f"Auto-capture sections across {len(ordered_docs)} document(s) into SQLite?\n\n"
+            f"Processing Sequence:\n{doc_summary_lines}\n\n"
             "This will extract page text and tables for each section automatically without manual cropping.",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.Yes,
@@ -593,62 +848,95 @@ class SectionComparisonDialog(QDialog):
 
         self.auto_capture_btn.setEnabled(False)
         self.progress_bar.setVisible(True)
-        self.progress_bar.setRange(0, len(matched))
         self.progress_bar.setValue(0)
 
-        success = 0
+        total_extracted = 0
         errors = []
+        ordered_shas = []
 
-        for i, m in enumerate(matched):
-            u_sec = m.user_section
-            a_sec = m.app_section or {}
-            title = u_sec.get("title", "")
-            start_p = u_sec.get("start_page") or a_sec.get("start_page", 1)
-            end_p = u_sec.get("end_page") or a_sec.get("end_page", start_p)
+        for doc_idx, doc_info in enumerate(ordered_docs):
+            doc_path = doc_info["path"]
+            doc_name = doc_info["filename"]
+            dt = doc_info.get("doc_type")
+            is_active_source = (doc_path.resolve() == Path(self.source.path).resolve()) if hasattr(self.source, "path") else False
 
-            self.status_label.setText(f"Capturing ({i+1}/{len(matched)}): {title} (p.{start_p}-p.{end_p})...")
-            QApplication.processEvents()
+            if is_active_source:
+                doc_source = self.source
+                doc_matched = self._comparison.matched
+                doc_sections_to_capture = [
+                    (
+                        m.user_section.get("title", ""),
+                        m.user_section.get("start_page") or (m.app_section or {}).get("start_page", 1),
+                        m.user_section.get("end_page") or (m.app_section or {}).get("end_page", 1),
+                    )
+                    for m in doc_matched
+                ]
+            else:
+                doc_source = PdfSource(doc_path)
+                auto_link_companion_reports(doc_source.sha256, doc_source.path, doc_type=dt, db_path=self.db_path)
+                doc_app_secs = extract_all_app_sections(doc_source)
+                doc_sections_to_capture = [
+                    (
+                        s.get("title", ""),
+                        s.get("start_page", 1),
+                        s.get("end_page", 1),
+                    )
+                    for s in doc_app_secs
+                ]
 
-            try:
-                auto_capture_section(
-                    source=self.source,
-                    title=title,
-                    start_page=start_p,
-                    end_page=end_p,
-                    sector=self.sector,
-                    output_root=self.db_path,
-                )
-                success += 1
-            except Exception as exc:
-                errors.append(f"{title}: {exc}")
+            if getattr(doc_source, "sha256", "") and doc_source.sha256 not in ordered_shas:
+                ordered_shas.append(doc_source.sha256)
 
-            self.progress_bar.setValue(i + 1)
-            QApplication.processEvents()
+            self.progress_bar.setRange(0, len(doc_sections_to_capture) or 1)
+            for i, (title, start_p, end_p) in enumerate(doc_sections_to_capture):
+                self.status_label.setText(f"Doc {doc_idx+1}/{len(ordered_docs)} ({doc_name}): {title} (p.{start_p}-p.{end_p})...")
+                QApplication.processEvents()
+                try:
+                    auto_capture_section(
+                        source=doc_source,
+                        title=title,
+                        start_page=start_p,
+                        end_page=end_p,
+                        sector=self.sector,
+                        output_root=self.db_path,
+                    )
+                    total_extracted += 1
+                except Exception as exc:
+                    errors.append(f"{doc_name} - {title}: {exc}")
+
+                self.progress_bar.setValue(i + 1)
+                QApplication.processEvents()
+
+            if not is_active_source:
+                doc_source.close()
 
         self.auto_capture_btn.setEnabled(True)
-        self.status_label.setText(f"Auto-capture complete: {success} sections captured.")
+        self.status_label.setText(f"Auto-capture complete: {total_extracted} sections captured across {len(ordered_docs)} doc(s).")
 
-        self.auto_captured = (success > 0)
+        self.auto_captured = (total_extracted > 0)
         if errors:
             QMessageBox.warning(
                 self,
                 "Auto-Capture Completed with Warnings",
-                f"Successfully captured {success} sections.\n\nErrors encountered:\n" + "\n".join(errors[:5]),
+                f"Successfully captured {total_extracted} sections across {len(ordered_docs)} document(s).\n\nErrors encountered:\n" + "\n".join(errors[:5]),
             )
         else:
             QMessageBox.information(
                 self,
                 "Auto-Capture Complete",
-                f"Successfully auto-captured {success} major sections directly into SQLite!\n\n"
-                f"Auto-queued all {success} sections for sequential DeepSeek processing and questions ledger construction in the background.",
+                f"Successfully auto-captured {total_extracted} sections across {len(ordered_docs)} document(s) in your selected order!\n\n"
+                f"Auto-queued for sequential DeepSeek processing and questions ledger construction.",
             )
 
-        if success > 0:
+        if total_extracted > 0:
             target = self.parent()
             while target and not hasattr(target, "run_all_pending"):
                 target = target.parent() if hasattr(target, "parent") else None
             if target and hasattr(target, "run_all_pending"):
-                target.run_all_pending()
+                try:
+                    target.run_all_pending(ordered_shas=ordered_shas)
+                except TypeError:
+                    target.run_all_pending()
 
         self.accept()
 

@@ -182,3 +182,120 @@ def test_adopt_app_sections_with_identical_titles(pdf_path, qapp, monkeypatch):
     dlg.close()
     dlg.deleteLater()
 
+
+
+def test_document_order_dialog(qapp):
+    from section_capture.map_dialog import DocumentOrderDialog
+    from PySide6.QtCore import Qt
+
+    docs = [
+        {
+            "path": Path("doc_a.pdf"),
+            "filename": "doc_a.pdf",
+            "doc_type": "presentation",
+            "badge": "[PRES]",
+            "period": "1H26",
+            "page_count": 25,
+            "sha256": "sha_a",
+            "is_active": True,
+        },
+        {
+            "path": Path("doc_b.pdf"),
+            "filename": "doc_b.pdf",
+            "doc_type": "afs",
+            "badge": "[AFS]",
+            "period": "1H26",
+            "page_count": 60,
+            "sha256": "sha_b",
+            "is_active": False,
+        },
+    ]
+
+    dlg = DocumentOrderDialog(docs)
+    assert dlg.table.rowCount() == 2
+
+    ordered = dlg.get_ordered_documents()
+    assert len(ordered) == 2
+    assert ordered[0]["sha256"] == "sha_a"
+    assert ordered[1]["sha256"] == "sha_b"
+
+    # Select row 0 and move down
+    dlg.table.selectRow(0)
+    dlg._on_move_down()
+
+    ordered = dlg.get_ordered_documents()
+    assert ordered[0]["sha256"] == "sha_b"
+    assert ordered[1]["sha256"] == "sha_a"
+
+    # Move back up
+    dlg.table.selectRow(1)
+    dlg._on_move_up()
+    ordered = dlg.get_ordered_documents()
+    assert ordered[0]["sha256"] == "sha_a"
+    assert ordered[1]["sha256"] == "sha_b"
+
+    # Uncheck doc_a
+    item = dlg.table.item(0, 0)
+    item.setCheckState(Qt.CheckState.Unchecked)
+    ordered = dlg.get_ordered_documents()
+    assert len(ordered) == 1
+    assert ordered[0]["sha256"] == "sha_b"
+
+    dlg.close()
+    dlg.deleteLater()
+
+
+def test_auto_capture_multi_document_ordering(pdf_path, qapp, tmp_path, monkeypatch):
+    import shutil
+    from PySide6.QtWidgets import QMessageBox, QDialog, QWidget
+    from section_capture.map_dialog import DocumentOrderDialog
+
+    sources_dir = tmp_path / "companies" / "mining" / "TEST" / "sources"
+    sources_dir.mkdir(parents=True, exist_ok=True)
+    pdf1 = sources_dir / "report1_pres.pdf"
+    pdf2 = sources_dir / "report2_afs.pdf"
+    shutil.copy(pdf_path, pdf1)
+    pdf2.write_bytes(pdf_path.read_bytes() + b"\n%companion_dummy\n")
+
+    source1 = PdfSource(pdf1)
+
+    captured_order = []
+    class MockWindow(QWidget):
+        def run_all_pending(self, ordered_shas=None):
+            captured_order.extend(ordered_shas or [])
+
+    mock_parent = MockWindow()
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args, **kwargs: QMessageBox.StandardButton.Yes)
+
+    def mock_order_exec(dlg_self):
+        dlg_self.table.selectRow(0)
+        dlg_self._on_move_down()
+        return QDialog.DialogCode.Accepted
+
+    monkeypatch.setattr(DocumentOrderDialog, "exec", mock_order_exec)
+
+    user_sections = [{"title": "Highlights", "start_page": 2, "end_page": 2}]
+    dlg = SectionComparisonDialog(
+        source=source1,
+        user_sections=user_sections,
+        sector="mining",
+        db_path=tmp_path,
+        parent=mock_parent,
+    )
+
+    dlg._on_auto_capture_clicked()
+
+    assert len(captured_order) == 2
+    import hashlib
+    sha1 = hashlib.sha256(pdf1.read_bytes()).hexdigest()
+    sha2 = hashlib.sha256(pdf2.read_bytes()).hexdigest()
+    assert captured_order[0] == sha2
+    assert captured_order[1] == sha1
+
+    source1.close()
+    dlg.close()
+    dlg.deleteLater()
+    mock_parent.deleteLater()

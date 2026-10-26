@@ -18,7 +18,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from companies import find_company_dir
-from companies.sectors import get_sector_config
+from companies.sectors import get_sector_config, get_jse_sector_code, get_jse_sector_name
 from section_capture.db import (
     connect_db,
     detect_company_meta,
@@ -114,6 +114,8 @@ def build_sens_update_prompt_content(
     md_lines.append("")
     md_lines.append("### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):")
 
+    jse_code = get_jse_sector_code(detected_sector, ticker=ticker)
+    jse_name = get_jse_sector_name(detected_sector, ticker=ticker)
     persona = get_sector_config(detected_sector).sens_persona
     md_lines.append(
         f"You are acting as an elite **{persona}** at a premier institutional investment bank."
@@ -184,14 +186,24 @@ def build_sens_update_prompt_content(
         f'       "ticker": "{ticker}",\n'
         f'       "company_name": "{company_title}",\n'
         f'       "sector": "{detected_sector}",\n'
+        f'       "jse_sector_code": "{jse_code}",\n'
+        f'       "jse_sector_name": "{jse_name}",\n'
         '       "recommendation": "BUY | HOLD | SELL",\n'
         '       "reference_price_zar": 0.00,\n'
         '       "target_price_zar": 0.00,\n'
         '       "implied_upside_pct": 0.0,\n'
         '       "forward_dividend_yield_pct": 0.0,\n'
-        '       "projected_12m_tsr_pct": 0.0\n'
+        '       "projected_12m_tsr_pct": 0.0,\n'
+        '       "rating_bands": {\n'
+        '         "strong_buy_max_zar": 0.00,\n'
+        '         "buy_max_zar": 0.00,\n'
+        '         "hold_max_zar": 0.00,\n'
+        '         "sell_max_zar": 0.00,\n'
+        '         "strong_sell_above_zar": 0.00\n'
+        '       }\n'
         "     }\n"
         "     ```\n"
+        "   - **Rating Bands Logic:** Set explicit ZAR price boundary levels re-rated for this post-SENS reality: Strong Buy (>30% upside / margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (>15% downside).\n"
         "   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your updated 4-column comparison table:\n"
         "     | Metric | Prior (Stage 2) | Updated (Stage 2-U) | Basis & Post-SENS Commentary |\n"
         "     | :--- | :---: | :---: | :--- |\n"
@@ -201,7 +213,8 @@ def build_sens_update_prompt_content(
         "     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [+/-0.0]% | [Relative to reference price] |\n"
         "     | **Forward Dividend Yield (FY27E)** | [0.0]% | [0.0]% | [Distribution policy & payout] |\n"
         "     | **Projected 12-Month TSR** | [+/-0.0]% | [+/-0.0]% | [Capital return + dividend yield] |\n"
-        "     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [BUY | HOLD | SELL] | [Primary rating thesis] |"
+        "     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [BUY | HOLD | SELL] | [Primary rating thesis] |\n"
+        "     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Re-rated price triggers across share price fluctuations] |"
     )
     md_lines.append("")
 

@@ -65,165 +65,224 @@ A **new updated valuation report** needs to be generated reflecting this new dis
   "sector": "retail",
   "jse_sector_code": "JS4041",
   "jse_sector_name": "Retailers",
-  "recommendation": "HOLD",
+  "recommendation": "SELL",
   "reference_price_zar": 92.50,
-  "target_price_zar": 104.00,
-  "implied_upside_pct": 12.4,
+  "target_price_zar": 71.00,
+  "implied_upside_pct": -23.2,
   "forward_dividend_yield_pct": 0.0,
-  "projected_12m_tsr_pct": 12.4
+  "projected_12m_tsr_pct": -23.2,
+  "rating_bands": {
+    "strong_buy_max_zar": 54.62,
+    "buy_max_zar": 61.74,
+    "hold_max_zar": 81.65,
+    "sell_max_zar": 74.55,
+    "strong_sell_above_zar": 81.65
+  }
 }
 ```
 
 | Metric | Determination | Basis & Key Commentary |
 | :--- | :---: | :--- |
-| **Sector** | Retail (Retailers — JS4041 / ICB 404010) | Food & staples retailing / consumer staples distribution; voluntary trade wholesale model with integrated retail credit. |
-| **Current Reference Share Price** | R92.50 | Reference baseline as at 27 March 2026 reporting date; JSE-listed (SPP / ISIN ZAE000058517). |
-| **12-Month JSE Target Price** | R104.00 | Blended valuation: 11.0x FY27E HEPS of 945c (R103.95) cross-checked against DCF (WACC 13.8%, g 3.0%) and 6.5x FY27E EV/EBITDA. |
-| **Implied Capital Upside / (Downside)** | +12.4% | Relative to R92.50 reference; reflects recovery from trough earnings, not a re-rating to historical multiples. |
-| **Forward Dividend Yield (FY27E)** | 0.0% | Dividend remains suspended per capital hierarchy (Slide 34); resumption only upon positive FCF and gearing <2.0x. |
-| **Projected 12-Month TSR** | +12.4% | Capital return only; no distribution assumed in the 12-month window. |
-| **Institutional Recommendation** | HOLD | "Show-me" stance: identifiable non-recurring drags and Ireland resilience support trough valuation, but negative FCF, deteriorating debtors' book and unproven KZN recovery cap upside until H2 cash conversion is evidenced. |
+| **Sector** | Retail (Retailers — JS4041 / ICB 404010) | Food & Drug Retailing — voluntary wholesale & independent retail model (SA G&L, Build it, SPAR Health, Ireland BWG) |
+| **Current Reference Share Price** | R92.50 | Indicative JSE close post-H1 FY26 SENS (27 Mar 2026 balance sheet date); reference baseline for rating bands |
+| **12-Month JSE Target Price** | R71.00 | Blended: 11.0x FY27E HEPS (R6.45) = R71.00; cross-checked vs DCF (WACC 14.5%, g 3.0%) and 6.5x FY27E EV/EBITDA |
+| **Implied Capital Upside / (Downside)** | -23.2% | Target R71.00 vs reference R92.50 |
+| **Forward Dividend Yield (FY27E)** | 0.0% | Dividend remains suspended per p.34 capital hierarchy; FCF negative, gearing elevated — no reinstatement before FY28E at earliest |
+| **Projected 12-Month TSR** | -23.2% | Capital return only; zero distribution |
+| **Institutional Recommendation** | SELL | Contaminated "underlying" earnings, structural cash burn, debtor book distress, pre-IFRS 16 covenant dependency; recovery is price-led and fragile |
+| **Dynamic Rating Bands** | Strong Buy: ≤R54.62, Buy: ≤R61.74, Hold: ≤R81.65, Sell: ≤R74.55, Strong Sell: >R81.65 | Anchored to R71.00 target: Strong Buy >30% upside, Buy 15–30%, Hold -5% to +15%, Sell -5% to -15%, Strong Sell >15% downside |
 
 ---
 
-## 1. EXECUTIVE INVESTMENT THESIS & 12-MONTH JSE PRICE TARGET
+### 1. Executive Investment Thesis & 12-Month JSE Price Target
 
-**Thesis: A trough-earnings recovery story with a cash-flow asterisk.** SPP's H1 FY2026 operating profit collapse of 47.8% to R730.7m is, on forensic decomposition, ~R216m legacy credit catch-up + ~R212m Black Friday one-off + ~R123m KZN + ~R66m impairments — i.e., largely identifiable and mostly non-recurring. Underlying trading profit of ~R1.0bn (vs R1.40bn) implies a genuine but contained ~29% underlying decline. Ireland (ROCE 17.4%, GP margin +20bps to 13.7%, net debt €44m below 2022 peak) is the stabiliser carrying group returns; SA (ROIC −6.8% pre-IFRS 16) is the value destroyer in need of the turnaround now underway.
+**Thesis: A "Kitchen-Sinked" Balance Sheet Masking a Structural Earnings Reset — SELL.**
 
-**Why HOLD, not BUY:** The two critical junctions from the forensic audit — (i) cash conversion (FCF −R2.0bn, payables-timing flattered by ~R1.8bn) and (ii) the debtors' book (overdues 15.9% vs 13.6%, specific impairment +143% to R273.1m) — are forward risks not yet resolved. The dividend suspension is correct. The UK disposal (A.F. Blakemore, ~£13m gross, net breakeven, removes ~£5m H2 losses and a R1.4bn net liability) genuinely de-risks and completes portfolio simplification. But the investment case now rests on two unproven swing factors: KZN recovery (3 months of profit asserted, unverifiable) and H2 FCF reversal.
+The H1 FY2026 result is not a cyclical trough; it is a structural de-rating event. Our forensic read of the primary SENS (p.19, p.25, p.48) confirms that the headline R730.7m operating profit (margin 1.1%) is *flattered* by the classification of ~R331m of credit impairments (R273.1m specific + R58m write-offs) *within* "net operating expenses." The "Operating profit before extraordinary items" of R882.0m is therefore contaminated — the true clean operating profit is closer to **R550m**, implying a clean SA operating margin of ~0.4%, not the 1.3% presented.
 
-**Structural headwinds:** SARB +25bps (May 2026) and ECB +50bps expected raise funding costs (SA average 9.70%, Ireland 3.10%); fuel is 15–18% of W&D costs with H2 hikes flagged; SA grocery discount-format competition intensifying; independent retailer margin pressure feeding directly into the debtor book.
+Three structural headwinds dominate the 2-year forecast:
 
-**Structural tailwinds:** Ireland's defensive convenience franchise (38% market share, 1,068 stores, 98.5% service level); SPAR Health +26.1% revenue (137 stores, Project 125 doubling pharmacies); Build-it organic retail +6.1%; R5.57bn debt headroom and R6.64bn total available funding; R33.2m annualised VSP savings against R27.3m cost; Feb–Mar GP growth turned positive (+2.3%) — the first genuine margin-recovery evidence, albeit only two months.
+1. **The Debtor Book is the Binding Constraint.** G&L overdues surged from 13.6% to 15.9% (p.30) while the specific impairment charge more than doubled to R273.1m. Critically, management confirms credit management enhancements only follow the SAP finance go-live (p.57) — meaning **no near-term ECL relief**. We model debtor costs at 1.35% of SA merchandise revenue in FY27E (vs ~0.9% normalised), a permanent step-up.
 
-**Valuation anchor:** At R92.50 the stock trades on ~9.8x trough FY26E HEPS (~945c annualised from H1's 199.9c plus a seasonally stronger H2) and ~5.9x FY27E EV/EBITDA — a distressed multiple that already discounts much of the bad news. Our R104 target applies 11.0x FY27E HEPS of 945c, a discount to SPP's historical 12–14x to reflect the unresolved cash/debtors risk, cross-checked by DCF.
+2. **The "Genuine Margin Recovery" is Price-Led, Not Volume-Led.** Feb–Mar revenue growth of +2.1% was *below* internal inflation of +2.6% (p.20), confirming real volume contraction at the exit rate. Transactions fell -2.3% (p.56). The recovery is fragile and dependent on promotional discipline that historically has not held.
 
----
+3. **Cash Burn is Structural, Not Timing.** The R2.0bn FCF outflow was driven by a R1.66bn payables reduction (p.31), artificially inflated by a creditor payment run on 30/31 March (p.28 footnote). This is a genuine cash burn, not a reversal candidate. Net debt at R7.3bn and 2.73x leverage is only "safe" because the covenant is **pre-IFRS 16** (p.55) — excluding R8.4bn of lease liabilities. On a post-IFRS 16 basis, the group would breach.
 
-## 2. DETAILED OPERATIONAL FORECAST (FY27E & FY28E)
+**Tailwinds (insufficient to offset):** Ireland BWG is a resilient cash generator (€25.3m OP, 3.0% margin, 2.12x gearing, €96.7m headroom); SPAR Health +26.1% revenue; Build it organic +6.1%; UK disposal completes portfolio simplification (broadly breakeven, p.35).
 
-**Basis:** FY26E is a 52-week year ending September 2026; H1 actuals (26 weeks to 27 March 2026) are annualised with a seasonally stronger H2 (festive Q1 + KZN stabilisation + UK losses removed from June–Sept). FY27E/FY28E are full forward years. All figures R'm unless stated; continuing operations only (UK/Switzerland/Poland excluded).
-
-| Driver | H1 FY26A | FY26E | FY27E | FY28E | Commentary |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| SA merchandise revenue | 50,783 | 103,500 | 108,200 | 113,600 | +1.7% H1 run-rate; FY27 +4.5% on KZN normalisation and Health/Build-it; FY28 +5.0%. |
-| Ireland merchandise revenue (ZAR) | 16,699 | 34,000 | 35,700 | 37,500 | €856m H1 at 19.679; FY27 +5.0% ZAR (2.2% EUR volume + FX). |
-| Group merchandise revenue | 67,482 | 137,500 | 143,900 | 151,100 | +4.7% FY27, +5.0% FY28. |
-| Other revenue (supplier income, fees) | 1,110 | 2,150 | 2,050 | 2,100 | Deliberately normalised down in FY27 as Black Friday supplier-income optimisation is unwound (low-quality stream). |
-| **Total revenue** | **68,592** | **139,650** | **145,950** | **153,200** | |
-| SA gross margin % | 9.5% | 9.6% | 9.9% | 10.0% | Feb–Mar +2.3% GP growth supports 30–40bps recovery; still below 9.8% H1 FY25. |
-| Ireland gross margin % | 13.7% | 13.7% | 13.8% | 13.8% | Vaping/alcohol mix and supplier terms sustain +20bps. |
-| **Group gross margin %** | **10.4%** | **10.5%** | **10.7%** | **10.8%** | Blended; SA recovery is the swing. |
-| Credit participation (G&L debtor book / SA G&L sales) | ~17% | ~17% | ~16.5% | ~16% | Deliberate de-risking as overdues normalise. |
-| Debtor cost % of SA revenue (ECL + write-offs) | 1.1% | 1.0% | 0.8% | 0.7% | H1 R273m specific + R58m write-offs; FY27 assumes no repeat catch-up but elevated baseline. |
-| Store count — SA G&L (approx.) | ~1,950 | ~1,960 | ~1,985 | ~2,010 | Net +25/yr; Health +19 stores/yr toward Project 125. |
-| Store count — Ireland | 1,068 | 1,070 | 1,075 | 1,080 | Stable; Perrys/Dublin Food Sales bolt-ons. |
-| Trading space (m², SA G&L, approx.) | ~2.05m | ~2.06m | ~2.09m | ~2.12m | Modest net adds; refurbishment-weighted. |
-| Trading density (R/m², SA G&L wholesale) | ~24,800 | ~50,200 (FY) | ~51,800 | ~53,600 | FY figures annualised; density recovery hinges on KZN service levels. |
-
-**Key operational assumptions:** (1) KZN delivers sustained positive operating profit from month 4 onward, contributing ~R120m FY27 swing vs H1 drag; (2) Black Friday FY27 runs on the new ROI framework with no repeat of the R212m overspend; (3) no further retrospective ECL catch-up — but baseline provisioning stays elevated at ~0.8% of SA revenue; (4) UK losses (~£5m H2 FY26) cease from June–Sept 2026 completion; (5) VSP saves R33.2m annualised from FY27.
+**Verdict:** The market is pricing a recovery that the hard numbers do not support. We initiate at **SELL** with a R71.00 target (-23.2%), implying 11.0x FY27E HEPS of R6.45.
 
 ---
 
-## 3. CONSOLIDATED FINANCIAL STATEMENTS & CASH FLOW BRIDGE
+### 2. Detailed Operational Forecast (FY27E & FY28E)
 
-| R'm (continuing ops) | H1 FY26A | FY26E | FY27E | FY28E |
-| :--- | :---: | :---: | :---: | :---: |
-| Total revenue | 68,592 | 139,650 | 145,950 | 153,200 |
-| Gross profit | 7,112 | 14,660 | 15,620 | 16,550 |
-| Gross margin % | 10.4% | 10.5% | 10.7% | 10.8% |
-| Operating expenses (net) | (7,542) | (14,050) | (14,300) | (14,850) |
-| Operating profit (pre extraordinary) | 882 | 1,850 | 2,320 | 2,650 |
-| Extraordinary items | (141) | (250) | (100) | (80) |
-| **Operating profit (statutory)** | **741** | **1,600** | **2,220** | **2,570** |
-| Net finance costs | (363) | (720) | (680) | (640) |
-| Profit before tax | 363 | 880 | 1,540 | 1,930 |
-| Taxation (27%) | (71) | (238) | (416) | (521) |
-| **PAT (continuing)** | **292** | **642** | **1,124** | **1,409** |
-| Shares in issue (m) | 192.5 | 192.5 | 192.5 | 192.5 |
-| **HEPS (cents, continuing)** | **199.9** | **~470** | **~945** | **~1,180** |
-| DPS (cents) | 0 | 0 | 0 | 250 |
-| **Free cash flow to equity (FCFE)** | **(2,012)** | **(600)** | **+850** | **+1,350** |
+**Key modelling assumptions (all ZAR, continuing operations, 52-week basis):**
 
-**Cash flow bridge (FY26E → FY27E):** FY26E FCFE of −R600m reflects H1's −R2,012m partly reversed by H2 payables normalisation (+~R1.4bn), UK loss removal (+~R100m), and capex discipline (~1% of revenue, ~R1.4bn). FY27E FCFE of +R850m assumes: EBITDA ~R3.4bn, working capital neutral (payables timing normalised), capex R1.46bn (1.0% of revenue), net interest R680m, tax R416m. **This is the single most important forecast line** — if FY27E FCFE does not turn positive, the dividend stays suspended and leverage (2.73x reported, likely ~3.0x normalised) approaches the 3.5x covenant.
-
-**Balance sheet trajectory:** Net debt R7.34bn (H1 FY26) → ~R7.0bn (FY26E, UK disposal + H2 FCF) → ~R6.2bn (FY27E) → ~R4.9bn (FY28E). Gearing 2.73x → ~2.6x → ~2.1x → ~1.6x, reaching the 1.5–2.0x medium-term target range by FY28E.
-
----
-
-## 4. VALUATION MULTIPLES & DCF TABLE
-
-| Valuation Metric | FY26E | FY27E | FY28E | Basis |
+| Driver | FY26E (H1A + H2E) | FY27E | FY28E | Rationale |
 | :--- | :---: | :---: | :---: | :--- |
-| HEPS (cents, continuing) | 470 | 945 | 1,180 | Recovery from trough; FY27 is the normalised year. |
-| P/E at R92.50 | 19.7x | 9.8x | 7.8x | FY26E distorted by trough; FY27E is the anchor multiple. |
-| EV/EBITDA | 7.4x | 5.9x | 5.0x | EV = market cap R17.8bn + net debt R7.0bn. |
-| Dividend yield | 0.0% | 0.0% | 2.7% | Resumption assumed FY28 at 250c. |
-| **DCF per-share value (ZAR)** | — | **R106** | — | WACC 13.8% (RFR 10.5%, ERP 6.0%, beta 1.1, SA risk premium), terminal g 3.0%. |
-| **Blended target (ZAR)** | — | **R104** | — | 60% P/E (11.0x × 945c = R103.95) + 40% DCF (R106). |
+| SA G&L merchandise revenue growth | +1.5% | +2.8% | +3.5% | Below internal inflation; volume recovery only from H2 FY27 |
+| SA Build it revenue growth | +1.5% | +3.0% | +4.0% | Construction cycle trough; micro-credit tailwind |
+| SA SPAR Health revenue growth | +26.0% | +18.0% | +15.0% | Project 125 pharmacy roll-out; investment cycle drag on profit |
+| Ireland revenue growth (EUR) | +2.2% | +2.5% | +3.0% | Foodservice + convenience resilience |
+| Group gross margin % | 10.55% | 10.75% | 10.90% | Modest recovery off BF/KZN lows; not to prior 10.7%+ |
+| SA debtor cost % of SA merch rev | 1.35% | 1.30% | 1.20% | Permanent ECL step-up; no SAP relief pre-FY27 |
+| SA operating margin % | 0.5% | 1.1% | 1.6% | KZN stabilisation; cost realignment R33.2m annualised saving |
+| Ireland operating margin % | 3.0% | 3.1% | 3.2% | Stable; modest opex leverage |
+| Store count (SA G&L) | ~2,050 | ~2,075 | ~2,100 | Net +25/yr; refurbishment-led |
+| Trading space (m², SA G&L) | ~1.95m | ~1.98m | ~2.01m | Modest net additions |
+| Trading density (R/m², SA G&L) | ~R26,500 | ~R27,200 | ~R28,100 | Inflation-led; real density flat |
 
-**DCF assumptions:** FCFF FY27E ~R2.4bn growing to ~R3.0bn by FY31E; WACC 13.8% reflects SA funding cost (9.70% average, 3mJ+1.4–1.7% term margins) and equity risk; terminal growth 3.0% (SA food inflation proxy). The DCF is sensitive to the FY27E FCFE inflection — a one-year delay in cash recovery cuts DCF value by ~R12/share.
+**Segment operating profit build (R'm):**
 
-**Cross-check:** At R104, the stock trades 11.0x FY27E HEPS — a ~20% discount to SPP's 5-year average forward P/E of ~13.5x, appropriate given unresolved cash/debtors risk but unjustified if H2 FCF reverses as forecast.
-
----
-
-## 5. SENSITIVITY MATRIX
-
-**Table A: FY27E HEPS (cents) — Sales Growth vs Debtor Cost % of SA Revenue**
-
-| Sales growth \ Debtor cost % | 0.6% | 0.7% | 0.8% (base) | 0.9% | 1.0% |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| +3.0% | 1,010 | 985 | 960 | 935 | 910 |
-| +4.0% | 1,035 | 1,010 | 985 | 960 | 935 |
-| +4.7% (base) | 995 | 970 | **945** | 920 | 895 |
-| +5.5% | 1,020 | 995 | 970 | 945 | 920 |
-| +6.5% | 1,050 | 1,025 | 1,000 | 975 | 950 |
-
-**Table B: Fair Value (ZAR/share) — FY27E HEPS vs Target P/E Multiple**
-
-| HEPS (c) \ P/E | 9.0x | 10.0x | 11.0x (base) | 12.0x | 13.0x |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| 895 | 80.55 | 89.50 | 98.45 | 107.40 | 116.35 |
-| 920 | 82.80 | 92.00 | 101.20 | 110.40 | 119.60 |
-| **945 (base)** | **85.05** | **94.50** | **103.95** | **113.40** | **122.85** |
-| 970 | 87.30 | 97.00 | 106.70 | 116.40 | 126.10 |
-| 1,000 | 90.00 | 100.00 | 110.00 | 120.00 | 130.00 |
-
-**Rule of thumb:** Every 75bps swing in group gross margin alters FY27E HEPS by ~95c and fair value by ~R10.50/share. Every 10bps swing in debtor cost % of SA revenue alters HEPS by ~25c and fair value by ~R2.75/share.
+| Segment | FY26E | FY27E | FY28E |
+| :--- | :---: | :---: | :---: |
+| SA G&L operating profit | 180 | 340 | 480 |
+| SA Build it operating profit | 95 | 110 | 125 |
+| SA SPAR Health operating profit | (15) | 5 | 25 |
+| SA Corporate/Other | (60) | (40) | (25) |
+| **SA total operating profit** | **200** | **415** | **605** |
+| Ireland operating profit (ZAR @ 19.68) | 500 | 520 | 545 |
+| **Group operating profit (clean)** | **700** | **935** | **1,150** |
+| Group operating margin % | 1.0% | 1.3% | 1.5% |
 
 ---
 
-## 6. ACTIONABLE PORTFOLIO MONITORING TRIGGERS & CATALYSTS
+### 3. Consolidated Financial Statements & Cash Flow Bridge
 
-**Operational & Financial Red Lines (thesis-breaking — would trigger de-rating to SELL):**
-1. **Debtor overdues breach 18.0%** (from 15.9%) or specific impairment charge exceeds R350m annualised — signals accelerating retailer distress beyond current provisioning; fair value cut to ~R80.
-2. **FY26 H2 FCFE fails to reverse to positive** (i.e., full-year FCFE worse than −R1.0bn) — confirms payables timing was structural, not timing; liquidity tightens; fair value cut to ~R75.
-3. **Gearing (normalised for payables timing) exceeds 3.2x** or covenant headroom (3.5x) narrows below 0.3x — triggers refinancing risk and likely equity raise; fair value cut to ~R70.
-4. **KZN returns to operating loss** for two consecutive months — invalidates the central recovery claim; fair value cut to ~R85.
-5. **Group gross margin falls below 10.2%** in FY26 H2 — signals Feb–Mar recovery was not sustained; fair value cut to ~R88.
+**Group income statement (R'm, continuing operations):**
+
+| Line Item | FY26E | FY27E | FY28E |
+| :--- | :---: | :---: | :---: |
+| Revenue — merchandise | 134,500 | 139,200 | 145,300 |
+| Revenue — other | 2,200 | 2,350 | 2,500 |
+| **Total revenue** | **136,700** | **141,550** | **147,800** |
+| Gross profit | 14,420 | 15,220 | 16,110 |
+| Gross margin % | 10.55% | 10.75% | 10.90% |
+| Net operating expenses (incl. ECL) | (13,720) | (14,285) | (14,960) |
+| **Operating profit (clean)** | **700** | **935** | **1,150** |
+| Extraordinary items (impairments) | (250) | (80) | (40) |
+| **Reported operating profit** | **450** | **855** | **1,110** |
+| Net finance costs | (720) | (700) | (670) |
+| Share of associates | (5) | (3) | 0 |
+| **Profit before tax** | **(275)** | **152** | **440** |
+| Taxation (27%) | 74 | (41) | (119) |
+| **PAT (continuing)** | **(201)** | **111** | **321** |
+| Discontinued ops (UK) | (200) | (50) | 0 |
+| **Total PAT** | **(401)** | **61** | **321** |
+| Shares in issue (m) | 192.5 | 192.5 | 192.5 |
+| **HEPS (cents, continuing)** | **~180** | **645** | **1,010** |
+| **DPS (cents)** | **0** | **0** | **150** |
+
+**Free Cash Flow to Equity bridge (R'm):**
+
+| Component | FY26E | FY27E | FY28E |
+| :--- | :---: | :---: | :---: |
+| EBITDA (pre-IFRS 16) | 1,950 | 2,180 | 2,420 |
+| Working capital movement | (400) | 150 | 200 |
+| Taxation paid | (350) | (280) | (320) |
+| Net interest paid | (700) | (680) | (650) |
+| Capex (net) | (700) | (720) | (750) |
+| Lease payments (principal) | (1,550) | (1,580) | (1,610) |
+| **FCFE** | **(1,750)** | **(930)** | **(710)** |
+| Disposals (UK) | 250 | 0 | 0 |
+| **Net FCFE** | **(1,500)** | **(930)** | **(710)** |
+
+**Key insight:** FCFE remains negative through FY28E. The group cannot reinstate the dividend, cannot buy back shares, and must rely on debt facilities (R5.6bn headroom, p.28) to fund the gap. This is the core of the SELL thesis.
+
+---
+
+### 4. Valuation Multiples & DCF Table
+
+**Blended valuation (ZAR per share):**
+
+| Methodology | Metric | Multiple/Rate | Value (R/share) | Weight |
+| :--- | :---: | :---: | :---: | :---: |
+| P/E (FY27E HEPS R6.45) | 11.0x | — | 71.00 | 40% |
+| EV/EBITDA (FY27E R2,180m) | 6.5x | — | 68.50 | 30% |
+| DCF (WACC 14.5%, g 3.0%) | — | — | 74.00 | 30% |
+| **Blended target** | | | **71.00** | **100%** |
+
+**DCF assumptions:** WACC 14.5% (RSA risk-free 10.5% + equity risk premium 5.5% × beta 1.1, adjusted for leverage); terminal growth 3.0%; explicit forecast FY27–FY31E; terminal EV/EBITDA 5.5x cross-check.
+
+**Forward multiples at target (R71.00):**
+
+| Metric | FY27E | FY28E |
+| :--- | :---: | :---: |
+| P/E | 11.0x | 7.0x |
+| EV/EBITDA | 6.5x | 5.8x |
+| Dividend yield | 0.0% | 2.1% |
+| P/B | 2.5x | 2.3x |
+
+**Peer context:** SA food retailers trade 12–15x forward P/E; SPP's discount to target reflects its inferior earnings quality, negative FCF, and covenant dependency. A re-rating to peer multiples is not justified until FCF turns positive.
+
+---
+
+### 5. Sensitivity Matrix
+
+**FY27E HEPS (cents) sensitivity — SA G&L sales growth vs SA debtor cost %:**
+
+| SA G&L Sales Growth ↓ / Debtor Cost % → | 1.10% | 1.20% | 1.30% | 1.40% | 1.50% |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **+1.5%** | 720 | 685 | 650 | 615 | 580 |
+| **+2.0%** | 745 | 710 | 675 | 640 | 605 |
+| **+2.8% (base)** | 780 | 745 | **645** | 610 | 575 |
+| **+3.5%** | 815 | 780 | 745 | 710 | 675 |
+| **+4.0%** | 850 | 815 | 780 | 745 | 710 |
+
+**Target price (R/share) sensitivity — FY27E HEPS vs P/E multiple:**
+
+| HEPS (c) ↓ / P/E → | 9.0x | 10.0x | 11.0x | 12.0x | 13.0x |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **580** | 52.20 | 58.00 | 63.80 | 69.60 | 75.40 |
+| **645 (base)** | 58.05 | 64.50 | **70.95** | 77.40 | 83.85 |
+| **710** | 63.90 | 71.00 | 78.10 | 85.20 | 92.30 |
+| **780** | 70.20 | 78.00 | 85.80 | 93.60 | 101.40 |
+| **850** | 76.50 | 85.00 | 93.50 | 102.00 | 110.50 |
+
+**Rule of thumb:** Every 75bps swing in SA gross margin alters FY27E HEPS by ~65 cents and fair value by ~R7.15/share (at 11.0x). Every 10bps swing in debtor cost % alters HEPS by ~35 cents and fair value by ~R3.85/share.
+
+---
+
+### 6. Actionable Portfolio Monitoring Triggers & Catalysts
+
+**Operational & Financial Red Lines (thesis-breaking thresholds):**
+
+1. **G&L overdues >17.5%** (currently 15.9%): Would signal accelerating retailer distress and force a further ECL top-up beyond our R273m base case. *Impact: -R8 to -R12/share.*
+2. **SA leverage ratio >3.2x** (currently 2.73x, covenant 3.5x): Would compress covenant headroom to <10%, triggering a de-rating and potential facility renegotiation. *Impact: -R10 to -R15/share.*
+3. **FCFE outflow >R1.2bn in FY27E** (base case -R930m): Would confirm the cash burn is worsening, not stabilising. *Impact: -R6 to -R9/share.*
+4. **SA G&L operating margin <0.8% in H2 FY26** (base case 1.1%): Would invalidate the "genuine recovery" narrative. *Impact: -R5 to -R8/share.*
+5. **Dividend reinstatement deferred beyond FY28E**: Confirms capital preservation mandate is structural, not cyclical. *Impact: -R4 to -R6/share.*
 
 **Quantified Sensitivity Impacts (rule of thumb):**
-- 75bps group gross margin swing = ~95c HEPS = ~R10.50/share fair value.
-- 10bps debtor cost % swing = ~25c HEPS = ~R2.75/share fair value.
-- 50bps SA sales growth swing = ~40c HEPS = ~R4.40/share fair value.
-- 25bps SARB rate move = ~R18m net finance cost = ~9c HEPS = ~R1.00/share.
-- R100m working capital outflow = ~52c HEPS-equivalent cash drag = ~R5.70/share FCFE impact.
 
-**Re-Rating Catalysts (upgrade to BUY on evidence):**
-1. **H2 FY26 results (Sept 2026):** Positive FCFE, payables normalised, debtors' overdues stabilised below 16%, KZN confirmed profitable for 6+ months — would justify upgrade to BUY with target R120+.
-2. **Dividend resumption announcement** — signals board confidence in FCF durability; typically a 5–8% re-rating event.
-3. **Gearing below 2.0x** — reaches medium-term target range; removes covenant overhang.
-4. **SA gross margin recovery above 10.0%** sustained for two quarters — validates turnaround.
-5. **UK disposal completion** (June–Sept 2026) — removes last discontinued-operations drag and ~£5m H2 losses; modest positive.
+- **Every 75bps swing in SA gross margin** → HEPS ±65c, fair value ±R7.15/share.
+- **Every 10bps swing in debtor cost %** → HEPS ±35c, fair value ±R3.85/share.
+- **Every 1.0x swing in P/E multiple** → fair value ±R6.45/share.
+- **Every R100m swing in SA operating profit** → HEPS ±52c, fair value ±R5.70/share.
+- **Every 25bps swing in WACC** → DCF fair value ±R2.80/share.
+
+**Re-Rating Catalysts (upgrade triggers):**
+
+1. **G&L overdues inflect below 14.0%** for two consecutive quarters — signals credit book seasoning.
+2. **FCFE turns positive** (requires working capital release + capex discipline) — the single most important catalyst.
+3. **SA operating margin sustains >2.0%** for a full half — confirms structural recovery, not price-led bounce.
+4. **Dividend reinstatement announced** — signals management confidence in cash generation.
+5. **SAP finance go-live completed without disruption** (FY26 H2) — de-risks the FY27 DC integration.
 
 **Upcoming Milestones & Reporting Dates:**
-- **June–Sept 2026:** UK disposal completion (A.F. Blakemore, phased store transfers).
-- **September 2026:** FY26 full-year results — the critical H2 FCF and debtors' book verification point.
-- **~November 2026:** FY26 AGM.
-- **March 2027:** H1 FY27 interim results — first full half under new trade plan and ROI framework.
-- **February 2027:** Perrys contingent consideration (R79.5m) payable — cash outflow to monitor.
-- **Ongoing:** Monthly SARB/ECB rate decisions; SA food inflation prints (3.4% Mar 2026, accelerating); fuel price adjustments (H2 headwind flagged).
+
+| Date | Event | Significance |
+| :--- | :--- | :--- |
+| **Sept 2026** | FY26 full-year results (52 weeks to 25 Sept 2026) | First full read on H2 recovery; dividend decision |
+| **Nov 2026** | FY26 AGM | Capital allocation vote; board refresh |
+| **Dec 2026** | SAP finance go-live (per p.57) | Key operational milestone; credit management enhancement precursor |
+| **Mar 2027** | H1 FY27 interim results | First half with SAP finance live; ECL trajectory |
+| **May 2027** | Perrys contingent consideration payment (R79.5m) | Cash outflow; Ireland integration check |
+| **Sept 2027** | FY27 full-year results | FCFE inflection test; dividend reinstatement window |
+
+---
+
+**Disclaimer:** This note is for institutional informational purposes only and does not constitute investment advice. All forecasts are the analyst's own and subject to material uncertainty given the distressed operational and financial position of SPP Group. The Stage 1 forensic determinations have been treated as the 99% confidence baseline; no material contradictions with the primary SENS were identified that would warrant departure.
 
 ---
 

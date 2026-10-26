@@ -1405,19 +1405,30 @@ class AuditValuationDialog(QDialog):
             self.run_s2_ai_btn.setText(f"⚡ Run Valuation ({model_name})")
             return
 
-        # Load SENS notices if present
+        # Load SENS notices if present (support both text/markdown and PDF disclosures)
         sens_dir = sources_dir / "sens"
         sens_notices = []
         if sens_dir.exists():
             candidate_files = []
             if (sens_dir / "completed").exists():
-                candidate_files.extend(sorted((sens_dir / "completed").glob("*.txt")))
-            candidate_files.extend(sorted(f for f in sens_dir.glob("*.txt") if f.is_file()))
+                candidate_files.extend(sorted((sens_dir / "completed").glob("*.*")))
+            candidate_files.extend(sorted(f for f in sens_dir.glob("*.*") if f.is_file()))
             for f in candidate_files:
-                try:
-                    sens_notices.append(f"### SENS ANNOUNCEMENT: {f.name}\n\n{f.read_text(encoding='utf-8').strip()}")
-                except Exception:
-                    pass
+                if f.name.lower() == "readme.md":
+                    continue
+                if f.suffix.lower() in {".txt", ".text", ".md"}:
+                    try:
+                        sens_notices.append(f"### SENS ANNOUNCEMENT: {f.name}\n\n{f.read_text(encoding='utf-8').strip()}")
+                    except Exception:
+                        pass
+                elif f.suffix.lower() == ".pdf":
+                    try:
+                        import pypdfium2 as pdfium
+                        doc_s = pdfium.PdfDocument(str(f))
+                        s_pages = [page.get_textpage().get_text_range().strip() for page in doc_s]
+                        sens_notices.append(f"### SENS ANNOUNCEMENT (PDF): {f.name} ({len(doc_s)} Pages)\n\n" + "\n\n".join(s_pages))
+                    except Exception:
+                        pass
 
         # Assemble unified prompt package
         prompt_sections = [base_prompt]

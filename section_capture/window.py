@@ -1003,9 +1003,16 @@ class CaptureWindow(QMainWindow):
             if has_pdf and self.source:
                 try:
                     with connect_db(self.output_root) as conn:
+                        p_row = conn.execute("SELECT sha256, parent_report_sha256 FROM reports WHERE sha256 = ?", (self.source.sha256,)).fetchone()
+                        primary_sha = p_row["parent_report_sha256"] if (p_row and p_row["parent_report_sha256"]) else self.source.sha256
+                        shas_to_count = [primary_sha]
+                        for cr in conn.execute("SELECT sha256 FROM reports WHERE parent_report_sha256 = ?", (primary_sha,)).fetchall():
+                            if cr["sha256"] not in shas_to_count:
+                                shas_to_count.append(cr["sha256"])
+                        placeholders = ",".join("?" for _ in shas_to_count)
                         row = conn.execute(
-                            "SELECT COUNT(*) as cnt FROM sections WHERE report_sha256 = ? AND (llm_response IS NULL OR TRIM(llm_response) = '')",
-                            (self.source.sha256,),
+                            f"SELECT COUNT(*) as cnt FROM sections WHERE report_sha256 IN ({placeholders}) AND (llm_response IS NULL OR TRIM(llm_response) = '')",
+                            shas_to_count,
                         ).fetchone()
                         if row:
                             pending_count = row["cnt"]
@@ -1695,16 +1702,31 @@ class CaptureWindow(QMainWindow):
             short_tag = get_model_short_tag(self._active_model_name())
             self.statusBar().showMessage(f"✓ {short_tag} completed all queued queries!")
 
-    def run_all_pending(self):
+    def run_all_pending(self, ordered_shas: list[str] | None = None):
         if not self.source:
             QMessageBox.information(self, "No Report Open", "Please open a report first.")
             return
 
         with connect_db(self.output_root) as conn:
-            rows = conn.execute(
-                "SELECT package_id, heading FROM sections WHERE report_sha256 = ? AND (llm_response IS NULL OR TRIM(llm_response) = '') ORDER BY section_number ASC",
-                (self.source.sha256,),
-            ).fetchall()
+            cur = conn.cursor()
+            if ordered_shas:
+                shas_to_query = ordered_shas
+            else:
+                p_row = cur.execute("SELECT sha256, parent_report_sha256 FROM reports WHERE sha256 = ?", (self.source.sha256,)).fetchone()
+                primary_sha = p_row["parent_report_sha256"] if (p_row and p_row["parent_report_sha256"]) else self.source.sha256
+                shas_to_query = [primary_sha]
+                for cr in cur.execute("SELECT sha256 FROM reports WHERE parent_report_sha256 = ?", (primary_sha,)).fetchall():
+                    if cr["sha256"] not in shas_to_query:
+                        shas_to_query.append(cr["sha256"])
+
+            all_rows = []
+            for s_sha in shas_to_query:
+                r_rows = cur.execute(
+                    "SELECT package_id, heading FROM sections WHERE report_sha256 = ? AND (llm_response IS NULL OR TRIM(llm_response) = '') ORDER BY section_number ASC, id ASC",
+                    (s_sha,),
+                ).fetchall()
+                all_rows.extend(r_rows)
+            rows = all_rows
 
         if not rows:
             QMessageBox.information(self, "No Pending Sections", "All sections in this report already have saved LLM responses.")

@@ -100,14 +100,22 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
   ```python
   monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
   monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
+  monkeypatch.setattr(QMessageBox, "question", lambda *args, **kwargs: QMessageBox.StandardButton.Yes)
   ```
+* **Dataclass vs Dictionary returns**: `list_sections()` returns dataclass objects of type `SavedSection`. Access attributes directly (`sec.heading`, `sec.selected_text`), never via dictionary indexing (`sec["heading"]`).
+* **Content type enum keys**: `packages.save_package()` validates `capture.content_type in CONTENT_TYPES`. Use lowercase enum keys (`"commentary"`, `"table"`, `"financial_note"`, `"unspecified"`), not display title strings (`"Table"`).
 
 ---
 
 ### 10. PowerShell `%` Operator Gotcha
 * **Issue**: The `%` character in PowerShell command lines is an alias for `ForEach-Object`. In inline Python scripts or shell strings like `Buy (15% to 30%)`, PowerShell parses `%` as an operator, causing `You must provide a value expression following the '%' operator`.
 * **Rule**: Always write Python scripts to `.py` scratch files or ensure `%` is not fed through the PowerShell parser unescaped.
-  monkeypatch.setattr(QMessageBox, "question", lambda *args, **kwargs: QMessageBox.StandardButton.Yes)
+
+---
+
+### 11. Mock Companion PDFs in Tests (Distinct SHA256)
+* **Issue**: Copying an existing PDF via `shutil.copy(pdf_path, pdf2)` creates an identical duplicate with identical SHA-256. Code deduping reports by SHA-256 will treat them as the same report.
+* **Rule**: Append a trailing comment to create distinct hashes without corrupting PDF format:
+  ```python
+  pdf2.write_bytes(pdf1.read_bytes() + b"\n%companion_dummy\n")
   ```
-* **Dataclass vs Dictionary returns**: `list_sections()` returns dataclass objects of type `SavedSection`. Access attributes directly (`sec.heading`, `sec.selected_text`), never via dictionary indexing (`sec["heading"]`).
-* **Content type enum keys**: `packages.save_package()` validates `capture.content_type in CONTENT_TYPES`. Use lowercase enum keys (`"commentary"`, `"table"`, `"financial_note"`, `"unspecified"`), not display title strings (`"Table"`).

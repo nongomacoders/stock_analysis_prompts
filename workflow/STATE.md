@@ -11,6 +11,21 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Document Order Selection Dialog for Batch Auto-Capture & Sequential Ledger Chaining**:
+  - Implemented `DocumentOrderDialog` (`section_capture/map_dialog.py`):
+    - Discovers all companion reports for the active company and period (presentations `[PRES]`, annual/interim financial statements `[AFS]`, integrated reports `[IAR]`, annual reports `[AR]`).
+    - Interactive dialog modal with checkboxes and `▲ Move Up` / `▼ Move Down` buttons, allowing the user to set the exact document processing sequence.
+  - Sequential Auto-Capture & Cross-Document Ledger Pipeline (`section_capture/map_dialog.py` & `section_capture/window.py`):
+    - Upon clicking `⚡ Auto-Capture Matched Sections` with multiple companion documents present, `DocumentOrderDialog` prompts the user for order confirmation.
+    - Extracts sections sequentially across all selected documents into `analysis.sqlite`, auto-linking sibling/parent reports.
+    - Passes `ordered_shas` to `CaptureWindow.run_all_pending(ordered_shas=ordered_shas)`, ensuring the DeepSeek worker analyzes Document 1 first and Document 2 second so the Questions Ledger accumulates and flows smoothly across reports.
+  - Pending Count Multi-Doc Visibility:
+    - `CaptureWindow._update_actions()` computes total pending sections across all active and companion reports for the company family.
+  - Test Suite (`tests/test_section_matcher.py`):
+    - Added `test_document_order_dialog` (table rendering, order swapping up/down, checkbox exclusion).
+    - Added `test_auto_capture_multi_document_ordering` (validating multi-report sequence execution into `run_all_pending`).
+    - All **147 tests passing (100%)**.
+
 - **Automated Sequential DeepSeek Processing upon Auto-Capture (`run_all_pending`)**:
   - Enhanced Section Comparison & Auto-Capture Dialog (`section_capture/map_dialog.py`):
     - When `⚡ Auto-Capture Matched Sections` completes extracting sections into SQLite, it automatically finds the parent `CaptureWindow` and triggers `run_all_pending()` directly.
