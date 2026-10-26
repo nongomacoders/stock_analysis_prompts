@@ -1,12 +1,12 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
 **Target Asset:** PIK Group (PIK)  
 **Sector:** Retailers (JS4041 / Retail)  
-**Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
+**Input Mode:** Full Company Results PDF + Subsequent SENS Notices (`fy26-audited-annual-financial-statements-2026.pdf` (SENS)) + Audited Stage 1 Determinations  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
 
-### INSTRUCTIONS FOR GEMINI 4 ARGON:
+### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):
 You are acting as an elite **Managing Director & Head of Retail & Consumer Equity Research** at a premier institutional investment bank.
 You are conducting a definitive 2-year operational and valuation forecast for **PIK Group (PIK)**.
 
@@ -24,100 +24,127 @@ You are conducting a definitive 2-year operational and valuation forecast for **
 
 ## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)
 
-**FORENSIC AUDIT REPORT — PIK GROUP (PIK)**
-**Target Asset:** PIK Group | **Sector:** Retail | **Primary Document:** FY26 Financial Results Presentation (52 weeks ended 1 March 2026)
-**Audit Mode:** Sequential Forensic Working Paper Review & Dynamic Questions Ledger Resolution
-**Auditor Role:** Independent Managing Director & Senior Forensic Retail/Consumer Credit Accounting Auditor
+# FORENSIC AUDIT REPORT — PIK GROUP (FY26)
 
 ---
 
-### 1. EXECUTIVE FORENSIC AUDIT SUMMARY
+## 1. EXECUTIVE FORENSIC AUDIT SUMMARY
 
-**True Economic Performance:** PIK Group's FY26 results reveal a **bifurcated business** masking a deteriorating core. Group turnover of R120.3bn (+3.4% proforma, LfL +3.6%) and GP margin expansion of +50bps to 18.8% appear superficially healthy. However, the **Pick n Pay segment is structurally loss-making** (trading loss R1.0bn, TPAL -R2.0bn) and its losses widened by R404m YoY. The entire group's profitability is propped up by **Boxer** (trading profit R2.6bn, +17.3%, ROIC 26.0%) and a **R0.7bn net funding interest swing** from recapitalisation — not from core retail operations. Group trading profit actually *declined* R74m to R1.7bn. Headline loss improved to -R386m only because of the interest benefit and Boxer's growth, not PnP recovery.
+**True economic performance.** PIK Group's FY26 (52 weeks to 1 March 2026) headline of a R120.3bn turnover (+3.4% on a 52/52w proforma basis) masks a **bifurcated business**. Boxer is the engine: turnover +12.3%, trading profit +17.3% to R2,638m, margin +30bps to 5.7%, and a ~R889m net-cash swing to R709m net cash. Pick n Pay is the drag: turnover −1.6% (52/52w), trading loss widened R404m to **R953m**, and the post-lease result (TPAL) deteriorated to **−R2,033m**. Group trading profit fell R74m to R1,685m. The reported **PBT before capital items of +R360m** (vs −R237m) is *not* an operating recovery — it is almost entirely a **R681m net-funding-interest swing** (recapitalisation benefit) offsetting the trading decline. After R442m capital items (R391m impairments + R51m disposals) and a R111m tax charge, the group posted a **R193m net loss**, with **R535m attributable to Boxer's NCI** and **R728m to PIK shareholders**. Headline loss improved 5.4% to R386m; HEPS −52.58c.
 
-**Balance Sheet Health:** Pre-year-end, Group net cash was R3.1bn (down R1.1bn), with PnP net cash R2.4bn (down R2.0bn) and Boxer net cash R709m (swung from R180m net debt). **Critically, the post-balance-sheet Boxer ABB raised R4.7bn gross proceeds**, reducing PIK's stake from 65.6% to 53.1%. This transforms PnP's liquidity runway: PnP net cash is now c.R2.4bn *plus* R4.7bn gross proceeds — a **c.R7.1bn liquidity cushion** to fund the turnaround through FY29 break-even guidance.
+**Balance sheet health.** Group net cash (excl. leases) fell R1.1bn to **R3,077m** (PnP R2,368m + Boxer R709m). Gross debt is now only **R200m** (Boxer's term loan, repaid post-year-end). But the group carries **R18,535m of IFRS 16 lease liabilities**, so net debt *including* leases is **R15,458m** — the "net cash" headline is a pre-lease illusion. Equity is R10,706m, of which NCI is R1,144m. The **R3,236m deferred tax asset** (a KAM) is the single largest recoverability risk, resting on PnP's long-term plan.
 
-**Key Findings:**
-1. **PnP break-even target pushed from FY28 to FY29** — a tacit admission of turnaround slippage.
-2. **s.189 labour process is a binary existential risk** — management explicitly states PnP *cannot* achieve break-even without it.
-3. **Boxer is the crown jewel** — 53.1% ownership post-ABB; ROIC 26.0% (66.7% ex-IFRS 16); 40% dividend payout (140.67c).
-4. **Working capital absorbed R0.4bn** (Boxer inventory investment), but PnP working capital was flat — no liquidity drain from core.
-5. **Capex step-up to R2.6bn gross (R1.9bn net) in FY27** — PnP gross capex forecast R1.7bn (R1.5bn net) to "drive turnaround."
+**Post-balance-sheet liquidity runway.** Two distinct capital events must not be conflated: (i) the **FY25 rights offer** (R4.0bn gross / R3.9bn net, already in FY26 equity) and (ii) the **post-year-end Boxer ABB on 18 May 2026** — 57.3m shares (12.5%) at **R4.7bn gross**, cutting PIK's stake 65.6%→53.1%, a **non-adjusting subsequent event** with no FY26 P&L/asset impact and accounted in FY27 equity as a transaction with owners. PnP's liquidity is therefore ~R2.4bn net cash **plus** R4.7bn gross, against a **s.189A labour restructuring whose financial effect is "not reliably estimable"** and which management states is a **condition precedent to PnP break-even** (now pushed to **FY29** from FY28).
 
-**Verdict:** PIK is a **Boxer-backed turnaround story with a hard FY29 deadline and a labour-restructuring cliff-edge**. The balance sheet is adequately capitalised post-ABB, but the PnP segment remains a cash incinerator until s.189 concludes and LfL expense growth is brought below LfL sales growth.
+**Key findings.** (1) The PBT "improvement" is a financing artefact, not operational. (2) The ECL allowance ratio collapse (14.4%→6.7%) is **structural** (Botswana franchise acquisition converted R366m of receivables to intercompany debt), not a credit-quality improvement — and legal-enforcement write-offs jumped R15m→R167m. (3) The FY25 comparative carries **two separate restatements** (+R439m turnover/COGS gross-up; −R105m commissions/admin) plus a 53rd week, so every reported growth rate is a mixed-basis trap. (4) The amended franchise model **depresses reported turnover and shifts margin into other income** — PnP's −1.6% is partly definitional. (5) The s.189A process is an unquantified binary risk to the entire break-even thesis.
 
 ---
 
-### 2. DETAILED FORENSIC REASONING & DETERMINATIONS
+## 2. DETAILED FORENSIC REASONING & DETERMINATIONS
 
-#### Junction 1: Merchandise vs Credit/Other Revenue — The "Other Income" Mirage
-**Raw Claim (Slide 10):** PnP "Other income R2.5bn, -2.4%" — attributed to "reduced property portfolio and franchise closures."
-**Forensic Determination:** Other income at R2.5bn represents **20% of PnP gross profit** (R12.5bn) — a material non-merchandise earnings stream. The -2.4% decline is *structural*, not cyclical: franchise closures and property disposals are permanent reductions. This income is **low-quality and non-recurring in nature**, yet it props up the PnP P&L. A naive reader sees "only -2.4%" and dismisses it; a forensic reader recognises that **R2.5bn of PnP's R12.5bn GP is not from selling groceries**. Strip it out and PnP's merchandise GP margin collapses to c.13.6% — deeply sub-scale versus Boxer's 21.6%.
-**Verified:** Other income is a **declining annuity** that cannot be relied upon for turnaround funding.
+### 2.1 Merchandise vs Credit/Other Revenue (Note 2, D006)
 
-#### Junction 2: Gross Profit Margin Bridge — The Botswana Corporatisation Distortion
-**Raw Claim (Slide 11):** PnP GP margin +40bps to 17.0%, driven by "investment in franchise, Botswana acquisition, 0.3% underlying improvement."
-**Forensic Determination:** The bridge is **not clean**. The +40bps comprises: +0.3% underlying (category management, waste reduction), **-0.1% investment in franchise**, and **+0.2% Botswana corporatisation**. The Botswana conversion (franchise → corporate, completed end-July 2025) is a **one-off accounting reclassification** — it moves revenue from franchise fees (other income) into merchandise sales, mechanically inflating GP margin without economic improvement. The **true underlying margin improvement is only +30bps**, and even that is partly offset by franchise investment. Boxer's +30bps to 21.6% is genuine (better buying, waste reduction). **PnP's 17.0% margin remains 460bps below Boxer** — the structural gap is the core problem.
-**Verified:** Underlying PnP GP margin improvement is **+30bps, not +40bps**; Botswana is non-recurring.
+The Statement of Comprehensive Income `[AFS p. 29]` and Note 2 `[AFS p. 44]` reconcile cleanly:
+- **Revenue R123,674m** = Turnover R120,290m + Franchise fees R1,173m + Commissions/other R1,571m + Operating lease income R93m + Dividend (cell captive) R25m + Finance income R522m.
+- Implied "other revenue" = R123,674m − R120,290m = **R3,384m**, confirmed.
+- **Other income R2,862m** (segment note `[p. 46]`) = franchise R1,173m + lease R93m + commissions/dividend/other R1,596m, and sits **below gross profit** — it is *not* merchandise margin.
 
-#### Junction 3: Debtors Book Health & IFRS 9 ECL Provisioning — The R0.2bn "Expected Credit Loss" Line
-**Raw Claim (Slide 12):** "Expected credit loss allowance R0.2bn, +12.7%" within trading expenses; PnP trade receivables R3.4bn (down from R3.9bn).
-**Forensic Determination:** The ECL allowance grew **+12.7%** — faster than turnover (-1.6%) and faster than receivables decline (-12.8%). This is a **red flag**: the allowance is rising while the book shrinks, implying **deteriorating credit quality** in the remaining debtor base (likely franchise and wholesale customers). The R0.2bn allowance against R3.4bn receivables implies a **c.5.9% coverage ratio** — not alarming in isolation, but the *direction of travel* (allowance up, book down) suggests management is **provisioning for known franchise stress**. Note the franchise model is being "amended" (Slide 6 footnote: FY26 H1 restated for amended franchise model) — this restatement plus rising ECL is a **coincident warning**. 
-**Verified:** ECL growth of +12.7% against a shrinking book is a **qualitative deterioration signal**; monitor franchise debtor ageing in the AFS notes.
+**Determination:** There is no separate "credit/financial-services" revenue line of the kind the ledger hypothesised. The "other" pool is franchise fees, commissions (payment/bill-payment agency), operating lease income, and a small cell-captive dividend. Finance income R522m (bank R242m, trade receivables R65m, lease receivables R215m) is presented within total revenue but is **excluded from segment "other income."** The R1,596m segment commissions/dividend line reconciles exactly to Note 2's R1,571m + R25m. **No double count.**
 
-#### Junction 4: Store Network Capex & Trading Density — The R1.7bn PnP Bet
-**Raw Claim (Slide 17):** Group gross capex R2.1bn (R1.9bn net); PnP capex R0.9bn (+41.2%); FY27 PnP gross capex forecast R1.7bn (R1.5bn net).
-**Forensic Determination:** PnP capex is **nearly doubling** (R0.9bn → R1.7bn) into a segment with **negative trading margins (-1.3%) and widening losses**. This is a **high-risk capital allocation** — the "Store Estate Reset" (targeting loss-making stores) is complete, yet losses widened. The FY27 capex step-up is therefore **not remediation capex but growth/refresh capex into a loss-making estate**. Trading density cannot be computed from the presentation (no sqm data disclosed), but the **LfL sales +3.1% vs LfL expenses +6.7%** gap means **trading density is deteriorating in real terms** — each store is generating less profit per square metre as costs outpace sales. Boxer, by contrast, delivers +12.3% turnover growth on disciplined capex.
-**Verified:** PnP capex step-up is **turnaround risk capital**, not maintenance; trading density is **negative-leveraging** (expenses > sales).
+**Critical qualification (Appendix 3, `[p. 99]`):** The amended franchise model gives franchisees a **higher purchasing rebate recorded against turnover** in exchange for a **higher royalty recorded in other income**. This structurally **reduces reported PnP turnover** and **shifts margin to other income** — so PnP's −1.6% turnover decline is partly a reclassification, not pure volume loss. This is the single most important revenue-decomposition caveat in the file.
 
-#### Junction 5: IFRS 16 Lease Liability Structure — The R1.1bn Net Lease Interest Anchor
-**Raw Claim (Slide 13):** PnP net lease interest R1.1bn, "flat" YoY; "reflects completion of Store Estate Reset."
-**Forensic Determination:** Net lease interest of **R1.1bn is flat** despite the Store Estate Reset (store closures should reduce lease liabilities). This implies **lease liabilities are not shrinking** — either renewals offset closures, or the reset targeted *operating* leases without extinguishing *finance* lease obligations. The R1.1bn is a **fixed, non-discretionary cash cost** that sits *below* trading profit and is the single largest driver of the TPAL -R2.0bn. Management's claim that it "reflects completion" is **misleading** — flat lease interest means the liability structure is **static, not improving**. Until lease liabilities are genuinely reduced (via store exits or renegotiation), PnP's TPAL break-even is mathematically distant.
-**Verified:** IFRS 16 lease liability is a **R1.1bn annual anchor** with no visible deleveraging; "completion" claim is **not supported by the flat interest line**.
+### 2.2 Gross Profit Margin Bridge (D002/D006)
 
-#### Junction 6: Post-Year-End Trading & Liquidity Runway — The R4.7bn ABB Transformation
-**Raw Claim (Slides 18, 34, 35):** "Post balance sheet date Boxer sale — PnP raised R4.7bn gross proceeds; shareholding reduced 65.6% to 53.1%; PnP net cash now c.R2.4bn plus R4.7bn gross." FY27 YTD LfL sales growth "further improvement on FY26" (week 10).
-**Forensic Determination:** This is the **single most important post-balance-sheet event**. Pre-ABB, PnP net cash was R2.4bn — adequate but tight given R2.0bn operational free cash outflow (Slide 16: FY25 R4.4bn → FY26 R2.4bn, a R2.0bn burn). **Post-ABB, PnP has c.R7.1bn gross liquidity** — a **3.5x coverage of the FY26 burn rate**, giving a **c.3.5-year runway** at current burn, or longer if burn moderates. This directly funds the FY29 break-even timeline. However, the **cost is dilution of the crown jewel**: PIK now owns 53.1% of Boxer (down from 65.6%), and Boxer's 34.4% NCI (Slide 14) means **PIK shareholders forgo 12.5% of Boxer's future growth**. The FY27 YTD LfL "further improvement" is **qualitative only** (no number given) — treat with caution until the FY27 H1 disclosure.
-**Verified:** Liquidity runway is **transformed to c.3.5 years**; but PIK has **sold 12.5% of its best asset** to fund a turnaround with a **pushed-out FY29 deadline**.
+- Group GP **R22,618m**, margin **18.80%** (R22,618m ÷ R120,290m), +50bps.
+- PnP GP R12,546m, margin **17.0%** (+40bps); Boxer GP R10,072m, margin **21.6%** (+30bps).
+- PnP bridge `[PRES p. 11]`: 16.6% → −0.1pt franchise investment → +0.2pt Botswana corporatisation → +0.3pt underlying → 17.0%. **Bridge sums correctly.**
 
-#### Junction 7: Cash Conversion & Dividend Payout — The Boxer 40% Payout vs PnP Cash Burn
-**Raw Claim (Slide 8):** Boxer "95.37c final dividend declared, FY26 total 140.67c (40% payout ratio)." Slide 16: PnP operational free cash flow **-R2.0bn**.
-**Forensic Determination:** Boxer generates **R709m net cash** and pays out **40% of earnings** — a **healthy, sustainable payout** from a cash-generative asset. PnP, by contrast, **burns R2.0bn** and pays **no dividend**. Group cash conversion is therefore **entirely Boxer-dependent**. The 40% payout ratio is **appropriate for Boxer standalone** but **arguably too high at group level** given PnP's cash needs — every rand paid out by Boxer is a rand *not* upstreamed to fund PnP. However, Boxer has a 34.4% NCI, so PIK **cannot unilaterally withhold** Boxer dividends without minority backlash. This is a **structural capital allocation tension**: PIK needs Boxer's cash but only owns 53.1% of it.
-**Verified:** Cash conversion is **Boxer-only**; the 40% payout is **defensible for Boxer but constrains group flexibility**; PnP remains cash-negative.
+**Determination:** The +50bps group margin is genuine but **mix-driven** — Boxer (higher 21.6% margin, growing +11.3%) lifts the weighted average. The PnP +40bps is real but its components are **unquantified in Rands**: the +0.3pt "underlying" is attributed only to "better category management" and "waste reduction – Fresh." Against this, **inventory NRV write-downs rose 23.5% to R425m** and the **shrinkage/obsolescence provision rose to R496m** `[AFS p. 55]` — i.e. the margin gain was achieved *despite* rising markdown pressure, and the "waste reduction" claim sits alongside a *higher* NRV charge. **Diesel R625m (0.8% of turnover) is split between COGS and opex** `[PRES p. 10]`, contaminating both the GP bridge and expense growth; management flags it as a FY27 gross-margin risk `[PRES p. 34]`. The "underlying" label is **not defined** and does not demonstrably exclude the R425m NRV charge.
+
+### 2.3 Debtors Book Health & IFRS 9 ECL Provisioning (Note 11, D008)
+
+- Gross trade & other receivables **R4,060m**; allowance **R248m**; net **R3,812m** `[AFS p. 56]`.
+- Roll-forward: opening R722m − write-offs R338m + additional R270m − reversals R40m − **purchase of operations R366m** = R248m ✓.
+- Net ECL charge R270m − R40m = **R230m**, tying exactly to the P&L line `[AFS p. 29, p. 46]`.
+- Allowance ratio fell **14.4% → 6.7%**.
+
+**Determination — this is the most important credit finding.** The ratio collapse is **overwhelmingly structural, not a credit improvement.** The R366m "purchase of operations" release reflects the **Botswana franchise acquisition**, which converted outstanding franchise receivables into intercompany debt eliminated on consolidation `[AFS p. 56, footnote *]`. Simultaneously, **write-offs still under legal enforcement jumped from R15m to R167m** — a >10x increase signalling genuine credit deterioration in the residual book. Receivables exceeding terms by >14 days fell R638m→R340m, but this is consistent with the portfolio shrinking (franchise closures 697→620, Namibia exit) rather than collections improving. **A naive reader would celebrate a "halving of the bad-debt ratio"; the forensic reality is a portfolio-mix artefact masking rising enforcement-stage delinquency.** The ECL charge is **not a KAM** — a disclosure gap given its R230m size and the R167m enforcement signal.
+
+### 2.4 Store Network Capex & Trading Density (D007/D011)
+
+- Total stores **2,261** (2025: 2,267): 108 opened, 114 closed, 42 converted, net −6 `[AFS p. 103]`.
+- PnP company-owned 992 (+21); PnP franchise **620 (from 697, −77)**; Boxer 576 (+51); TM associate 73.
+- **Namibia: 36 stores → 0** (ceased trading 30 June) `[PRES p. 38, AFS p. 103]`.
+- FY26 net capex **R1.9bn** (gross R2.1bn); PnP R0.9bn (+41.2%); Boxer R1.0bn. **FY27 guidance ~R2.8bn** (PnP R1.7bn gross/R1.5bn net; Boxer R1.1bn) `[AFS p. 27]`.
+
+**Determination:** The store estate is **contracting in PnP and expanding in Boxer** — a deliberate re-mix toward the higher-ROIC discounter. The PnP franchise collapse (−77) is the driver of both the turnover decline and the receivables contraction. **Contradiction flagged:** the p. 17 chart shows an FY27 forecast total of ~R1.1bn (net) while the bullet states PnP alone is R1.5bn net — these cannot both be right; the group FY27 capex figure must be confirmed in D011. Trading density cannot be computed — **no space m² is disclosed anywhere in the captured file**, a material gap for a space-driven revenue forecast.
+
+### 2.5 IFRS 16 Lease Liability Structure (D003/Appendix 1)
+
+- Lease liabilities **R18,535m** (non-current R15,883m + current R2,652m) `[AFS p. 30, p. 95]`.
+- Net lease finance expense **R1,563m** (PnP R1,080m; Boxer R483m) `[AFS p. 46]`.
+- Lease principal paid **R2,684m**; lease interest paid **R1,791m** `[AFS p. 32]`.
+- **Net debt including leases R15,458m** vs net cash excl. leases R3,077m.
+
+**Determination:** The "R3.1bn net cash" headline is **pre-lease and economically misleading** — on an IFRS 16-inclusive basis the group is **R15.5bn net debt**. The PnP net lease interest is **flat at R1.1bn** `[PRES p. 13]`, which **contradicts** the p. 10 "−5.3% to R1.0bn" reading — a R0.1bn reconciliation gap that flows directly into the TPAL bridge. The R260m IFRS 16 lease-termination profit (from store closures) is a **non-recurring occupancy credit** flattering the PnP trading loss; excluding it, occupancy cost *rose* 0.4% `[AFS p. 25]`. Post-year-end, a new logistics contract adds **~R600m ROUA/lease liability in FY27** `[AFS p. 9]`. The lease book is **plateauing, not shrinking** — consistent with "completion of Store Estate Reset."
+
+### 2.6 Post-Year-End Trading & Subsequent Events (D012)
+
+- **9-week post-period PnP SA supermarket LfL "slightly ahead of FY26"** `[AFS p. 27]`; FY27 week-10 franchise LfL chart-estimated ~2.8% `[PRES p. 21]`.
+- **Boxer ABB 18 May 2026: R4.7bn gross, 57.3m shares, 65.6%→53.1%, non-adjusting, no loss of control, equity transaction in FY27** `[AFS p. 9, p. 27]`.
+- **Boxer R200m term loan repaid post-year-end → zero group long-term debt** `[AFS p. 55]`.
+- **s.189A process commenced post-year-end; financial effect "not reliably estimable"** `[AFS p. 9]`.
+- **Break-even pushed FY28→FY29** `[AFS p. 27]`.
+
+**Determination:** The post-year-end trading signal is **directionally positive but unquantified** (no printed LfL %). The Boxer ABB is a **liquidity event, not an earnings event** — it does not change FY26 numbers and, because control is retained at 53.1%, Boxer **remains consolidated** (NCI rises to ~46.9%); the R4.7bn is booked to equity in FY27. The **s.189A is the pivotal unquantified risk**: management explicitly states PnP "cannot achieve break-even without a successful conclusion," making the FY29 target **conditional**. The break-even delay is attributed to "phasing of turnaround elements," not reduced confidence — but a one-year slip with an unquantified restructuring charge is a material negative revision.
+
+### 2.7 Cash Conversion & Dividend Payout (D004)
+
+- Cash generated from operations **R3,737m**; working capital absorbed **R403m** (Boxer R386m inventory build; PnP R17m) `[AFS p. 26, p. 32]`.
+- Capex outflow R1,994m; lease principal R2,684m; lease interest R1,791m.
+- Net decrease in cash **R1,729m** → closing R3,277m.
+- **No parent dividend declared; DPS = 0** `[AFS p. 6, p. 86, p. 91]`. NCI dividends R71m; share buyback R101m `[AFS p. 31–32]`.
+
+**Determination:** Cash conversion is **weak** — trading profit R1,685m converts to R3,737m of operating cash only after adding back R3,890m of D&A, and then R403m of working capital is absorbed (Boxer's inventory range investment). After R2,684m lease principal and R1,994m capex, **operational free cash flow is deeply negative** — the group is funded by the prior-year rights offer and, prospectively, the Boxer ABB. **DPS = 0 is confirmed at both Company and Group level**; the "140.67c dividend / 40% payout" on p. 8 is the **Boxer** dividend (Boxer HEPS positive; PIK Group HEPS is negative, so a 40% payout on Group HEPS is arithmetically impossible). The R101m buyback and R71m NCI dividends are the only shareholder distributions.
 
 ---
 
-### 3. AUDIT OF COMMON SURFACE-READING PITFALLS
+## 3. AUDIT OF COMMON SURFACE-READING PITFALLS
 
-| Pitfall | Naive Reader's Error | Forensic Reality |
-|---|---|---|
-| **"GP margin +50bps = improving business"** | Celebrates 18.8% group GP margin | +50bps is **distorted by Botswana one-off (+20bps)** and Boxer mix; PnP underlying is only +30bps and still 460bps below Boxer. |
-| **"Headline loss improved 5.4%"** | Sees turnaround progress | Improvement is **entirely from R0.7bn net funding interest swing** (recapitalisation) and Boxer growth; PnP trading loss **widened R404m**. |
-| **"PnP net cash R2.4bn = healthy"** | Believes PnP is well-capitalised | Pre-ABB, R2.4bn against **R2.0bn annual burn** = **1.2-year runway** — dangerously tight. Only the **post-ABB R4.7bn** saves it. |
-| **"Store Estate Reset complete = costs contained"** | Assumes lease costs will fall | Net lease interest **flat at R1.1bn** — reset did **not** reduce lease liabilities; TPAL still -R2.0bn. |
-| **"Other income only -2.4% = stable"** | Dismisses the decline | Other income is **20% of PnP GP** and **structurally declining** (franchise closures, property disposals) — low-quality earnings. |
-| **"ECL +12.7% is minor"** | Ignores the line | Allowance rising **while receivables shrink** = **deteriorating credit quality** in franchise/wholesale book; coincides with franchise model restatement. |
-| **"FY29 break-even = on track"** | Trusts management's "absolutely on-track" | Target **pushed from FY28 to FY29** — a **12-month slippage**; and break-even is **contingent on s.189 success**, a binary labour risk. |
-| **"Boxer ABB = pure win"** | Sees R4.7bn cash | Cash comes at cost of **selling 12.5% of the crown jewel**; PIK forgoes future Boxer growth; NCI now 46.9%. |
-
----
-
-### 4. FINAL FORENSIC VERIFICATION MATRIX
-
-| # | Junction | Raw Initial Claim | Resolving Note / SENS Announcement | Final Verified Determination |
-|---|---|---|---|---|
-| 1 | **Merchandise vs Other Revenue** | PnP other income R2.5bn, -2.4% (Slide 10) | Slide 10: "reduced property portfolio and franchise closures" | **Other income = 20% of PnP GP; structurally declining; low-quality, non-recurring. Strip out → merchandise GP margin c.13.6%.** |
-| 2 | **GP Margin Bridge** | PnP GP margin +40bps to 17.0% (Slide 11) | Slide 11 bridge: +0.3% underlying, -0.1% franchise, +0.2% Botswana | **True underlying improvement +30bps; Botswana corporatisation is one-off reclassification; PnP still 460bps below Boxer.** |
-| 3 | **Debtors / IFRS 9 ECL** | ECL allowance R0.2bn, +12.7%; receivables R3.4bn (Slide 12) | Slide 12; Slide 6 footnote (franchise model restated) | **ECL rising while book shrinks = deteriorating credit quality; c.5.9% coverage; franchise stress signal; monitor ageing.** |
-| 4 | **Store Capex & Trading Density** | PnP capex R0.9bn → FY27 R1.7bn; LfL sales +3.1% vs LfL expenses +6.7% (Slides 12, 17) | Slide 17 capex forecast; Slide 12 LfL expense data | **Capex nearly doubling into loss-making segment; trading density negative-leveraging (expenses > sales); high-risk capital allocation.** |
-| 5 | **IFRS 16 Lease Liability** | Net lease interest R1.1bn "flat"; "reflects completion of Store Estate Reset" (Slide 13) | Slide 13 | **Flat lease interest despite reset = no deleveraging; R1.1bn fixed anchor drives TPAL -R2.0bn; "completion" claim unsupported.** |
-| 6 | **Post-Year-End Trading & Liquidity** | Boxer ABB raised R4.7bn gross; stake 65.6% → 53.1%; PnP net cash c.R2.4bn + R4.7bn (Slide 18) | Slide 18 (post-BS event); Slide 16 (FY26 burn R2.0bn); Slide 34 (FY27 YTD "further improvement") | **Liquidity runway transformed to c.3.5 years (R7.1bn / R2.0bn burn); but cost is 12.5% dilution of Boxer; FY27 YTD qualitative only.** |
-| 7 | **Cash Conversion & Dividend** | Boxer 140.67c total dividend (40% payout); PnP FCF -R2.0bn (Slides 8, 16) | Slide 8 (Boxer dividend); Slide 16 (PnP FCF) | **Cash conversion Boxer-only; 40% payout defensible for Boxer but constrains group; PnP cash-negative; NCI limits PIK's ability to redirect Boxer cash.** |
-| 8 | **Break-Even Guidance** | PnP TPAL break-even "moved to FY29 (previously FY28)" (Slide 34) | Slide 34; Slide 35 ("cannot achieve break-even without successful s.189") | **12-month slippage; break-even contingent on binary s.189 labour outcome; "absolutely on-track" claim contradicted by push-out.** |
+| Naive reading | Forensic reality |
+|---|---|
+| "PBT swung +R597m to R360m — the turnaround is working." | The swing is a **R681m net-funding-interest benefit** (recapitalisation), *offsetting* a R74m trading-profit decline. Operating performance **deteriorated**. |
+| "Net cash R3.1bn — fortress balance sheet." | Net cash is **pre-lease**. Including R18.5bn lease liabilities, the group is **R15.5bn net debt**. |
+| "Bad-debt ratio halved 14.4%→6.7% — credit quality transformed." | Driven by the **Botswana acquisition** converting R366m receivables to intercompany debt. Legal-enforcement write-offs **rose 10x to R167m**. |
+| "Turnover +3.4%, so PnP must be roughly flat." | PnP fell **−1.6%** (52/52w) / **−3.7%** (52/53w); the group grew only because Boxer grew +12.3%. |
+| "GP margin +50bps — pricing power." | Mix-driven (Boxer weight); PnP's +40bps achieved *despite* NRV write-downs +23.5% to R425m and provision to R496m. |
+| "140.67c dividend, 40% payout — income stock." | That is the **Boxer** dividend. **PIK Group DPS = 0**; Group HEPS is negative. |
+| "Boxer sale R4.7bn transforms liquidity." | It is a **post-year-end non-adjusting event**, booked to FY27 equity; Boxer **remains consolidated** at 53.1%. Distinct from the FY25 R4.0bn rights offer. |
+| "Break-even 'absolutely on-track'." | Target **slipped FY28→FY29** and is **conditional on an unquantified s.189A** restructuring. |
+| "FY25 base R119.0bn — simple growth math." | FY25 carries a **53rd week** (+R2.7bn), a **+R439m turnover restatement**, and a **−R105m reclass**; only the 52/52w proforma R116.3bn is comparable. |
+| "Franchise LfL +0.9% — franchise stabilising." | The amended franchise model **moved rebate out of turnover into other income**; reported franchise turnover is not like-for-like. |
 
 ---
 
-**FINAL AUDITOR'S OPINION:** PIK Group is a **tale of two retailers**. Boxer is a high-quality, cash-generative, 26% ROIC asset — but PIK has just **sold 12.5% of it** to fund a PnP turnaround that has **slipped a year** and is **contingent on a labour restructuring (s.189) that management itself calls existential**. The post-ABB balance sheet provides a **c.3.5-year liquidity runway**, which is adequate *if* s.189 succeeds and LfL expense growth is brought below LfL sales growth. **If s.189 fails or is delayed, the R4.7bn proceeds will be consumed by PnP's R2.0bn annual burn within c.3.5 years with no second Boxer asset to sell.** The investment case is therefore a **binary bet on labour reform execution**, not a retail recovery story. Forensic rating: **HIGH RISK / SPECULATIVE — monitor s.189 outcome and FY27 H1 LfL expense/sales gap as the two decisive markers.**
+## 4. FINAL FORENSIC VERIFICATION MATRIX
+
+| Junction | Raw Initial Claim | Resolving Note / SENS | Final Verified Determination |
+|---|---|---|---|
+| **Revenue split** | "Merchandise vs credit/other growth" | Note 2 `[AFS p. 44]`; segment `[p. 46]` | Revenue R123,674m = turnover R120,290m + R3,384m other (franchise R1,173m, commissions R1,571m, lease R93m, dividend R25m, finance income R522m). No separate credit line. **Verified.** |
+| **GP margin bridge** | "+50bps to 18.8%; PnP +40bps" | `[PRES p. 11]`; Note 10 `[AFS p. 55]` | Group 18.80% verified; PnP bridge sums (16.6→17.0%). Mix-driven; achieved despite NRV R425m (+23.5%) and provision R496m. "Underlying" undefined. **Verified with caveat.** |
+| **Debtors ECL** | "Allowance ratio 14.4%→6.7% = credit improvement" | Note 11 `[AFS p. 56]` | Ratio drop is **structural** (Botswana R366m release); enforcement write-offs R15m→R167m. ECL charge R230m ties to P&L. **Contradicted — not a credit improvement.** |
+| **Store network / capex** | "Net −6 stores; FY27 capex ~R2.8bn" | `[AFS p. 103, p. 27]`; `[PRES p. 17]` | 2,261 stores (108 open/114 close/42 convert); PnP franchise 697→620; Namibia 36→0. FY27 ~R2.8bn (PnP R1.7bn, Boxer R1.1bn). **Chart-total R1.1bn vs PnP R1.5bn contradiction flagged.** |
+| **IFRS 16 leases** | "Net cash R3.1bn" | `[AFS p. 30, p. 95]`; `[PRES p. 13]` | Lease liabilities R18,535m; net debt incl. leases **R15,458m**. PnP net lease interest **flat R1.1bn** (contradicts p.10 −5.3%). R260m termination profit non-recurring. **Verified — headline misleading.** |
+| **Post-year-end trading** | "9-week LfL ahead; break-even on-track" | `[AFS p. 27]`; `[PRES p. 34–35]` | 9-week LfL "slightly ahead" (unquantified). Break-even **FY28→FY29**, conditional on s.189A. **Verified — guidance downgraded.** |
+| **Cash conversion / dividend** | "DPS 140.67c, 40% payout" | `[AFS p. 6, p. 32, p. 86]`; `[PRES p. 8]` | **PIK Group DPS = 0** (confirmed Company + Group). 140.67c is **Boxer's** dividend. Operational FCF negative after R2,684m lease principal + R1,994m capex. **Contradicted — no PIK dividend.** |
+| **Boxer ABB** | "R4.7bn sale transforms liquidity" | `[AFS p. 9, p. 27]`; `[PRES p. 18]` | Post-year-end **non-adjusting** event; R4.7bn gross, 65.6%→53.1%, **remains consolidated**, booked to FY27 equity. Distinct from FY25 R4.0bn rights offer. **Verified.** |
+| **Restatements / period basis** | "FY25 R119.0bn base" | `[AFS p. 29, p. 95]` | FY25 = **53 weeks** + **+R439m** turnover/COGS gross-up + **−R105m** reclass. Only 52/52w proforma **R116.3bn** is comparable. **Verified — mixed-basis trap.** |
+| **Deferred tax (KAM)** | "DTA R3,236m" | `[AFS p. 12, p. 30]` | DTA up from R2,749m, resting on PnP LTP; tax charge R111m on pre-tax loss R(82)m. **Recoverability risk confirmed as KAM.** |
+| **s.189A restructuring** | "Condition precedent to break-even" | `[AFS p. 9, p. 27]`; `[PRES p. 35]` | Commenced post-year-end; **financial effect not reliably estimable**; no provision raised. **Unquantified binary risk — verified.** |
+
+---
+
+**Bottom line:** PIK FY26 is a **Boxer-funded, rights-offer-sustained, pre-lease-flattered** result in which the only genuine operating improvement (Boxer) is about to be partly monetised and de-risked via the ABB, while the core PnP turnaround has **slipped a year, remains loss-making at the post-lease level (−R2.0bn), and is hostage to an unquantified labour restructuring.** The reported PBT profit is a financing artefact; the reported net-cash is a lease illusion; the reported credit improvement is an acquisition artefact; and the reported dividend belongs to a subsidiary.
 
 ---
 
@@ -137,9 +164,17 @@ You are conducting a definitive 2-year operational and valuation forecast for **
        "target_price_zar": 0.00,
        "implied_upside_pct": 0.0,
        "forward_dividend_yield_pct": 0.0,
-       "projected_12m_tsr_pct": 0.0
+       "projected_12m_tsr_pct": 0.0,
+       "rating_bands": {
+         "strong_buy_max_zar": 0.00,
+         "buy_max_zar": 0.00,
+         "hold_max_zar": 0.00,
+         "sell_max_zar": 0.00,
+         "strong_sell_above_zar": 0.00
+       }
      }
      ```
+   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).
    - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
      | Metric | Determination | Basis & Key Commentary |
      | :--- | :---: | :--- |
@@ -150,6 +185,7 @@ You are conducting a definitive 2-year operational and valuation forecast for **
      | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
      | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
      | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |
    - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Operational Forecast (FY27E & FY28E):** Merchandise sales, credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.
 3. **Consolidated Financial Statements & Cash Flow Bridge:** Revenue, Gross Profit, Operating Expenses, Operating Profit, PAT, HEPS, and Free Cash Flow to Equity (FCFE).

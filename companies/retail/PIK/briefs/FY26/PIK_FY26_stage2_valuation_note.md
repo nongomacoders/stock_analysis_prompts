@@ -3,162 +3,187 @@
   "ticker": "PIK",
   "company_name": "PIK Group",
   "sector": "retail",
+  "jse_sector_code": "JS4041",
+  "jse_sector_name": "Retailers",
   "recommendation": "HOLD",
   "reference_price_zar": 18.87,
-  "target_price_zar": 25.00,
-  "implied_upside_pct": 32.5,
+  "target_price_zar": 20.50,
+  "implied_upside_pct": 8.6,
   "forward_dividend_yield_pct": 0.0,
-  "projected_12m_tsr_pct": 32.5
+  "projected_12m_tsr_pct": 8.6,
+  "rating_bands": {
+    "strong_buy_max_zar": 15.77,
+    "buy_max_zar": 17.83,
+    "hold_max_zar": 21.73,
+    "sell_max_zar": 23.58,
+    "strong_sell_above_zar": 23.58
+  }
 }
 ```
 
-### 1. Executive Valuation Summary Card & Updated Investment Thesis
+### 1. Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share)
 
-| Metric | Prior (Stage 2) | Updated (Stage 2-U) | Basis & Post-SENS Commentary |
-| :--- | :---: | :---: | :--- |
-| **Sector** | Retail | Retail | Diversified food, grocery, and general merchandise retailer (JS4041). |
-| **Current Reference Share Price** | R28.50 | R18.87 | Reference price updated to the 20-day VWAP as at 18 August 2026, disclosed in the 28 August 2026 SENS regarding director share awards. |
-| **12-Month JSE Target Price** | R31.00 | R25.00 | Target price revised downward to reflect the market's de-rating (reference price fell 33.8%), but the target implies a significantly higher upside from the new base. The target is based on a revised SOTP valuation, applying a 10x P/E to Boxer's attributable earnings (de-rated in line with peer multiples) and a 0.3x EV/Sales multiple to the Pick n Pay segment, adjusted for net cash. |
-| **Implied Capital Upside / (Downside)** | +8.8% | +32.5% | The substantial upside from the new lower base reflects the market's over-pessimism, which has not fully priced in the successful conclusion of the existential s.189A labour process. |
-| **Forward Dividend Yield (FY27E)** | 0.0% | 0.0% | No dividend expected. The Board has suspended distributions until sustainable profitability is restored. Boxer's dividends to PIK are eliminated on consolidation, with 46.9% paid to NCI. |
-| **Projected 12-Month TSR** | +8.8% | +32.5% | Capital return only; no dividend contribution. |
-| **Institutional Recommendation** | HOLD | HOLD | Maintain HOLD. The binary risk of the s.189A process has been resolved positively, removing a major overhang. However, the subsequent trading update shows the PnP turnaround is still sluggish, and the target price has been cut. The risk/reward is now more balanced, warranting a HOLD pending evidence of sustained margin recovery. |
+| Metric | Determination | Basis & Key Commentary |
+| :--- | :---: | :--- |
+| **Sector** | Retail (Retailers — JS4041 / ICB 404010) | Diversified food, grocery, and general merchandise retailer. |
+| **Current Reference Share Price** | R18.87 | 20-day VWAP as at 18 August 2026 (per SENS 28 Aug 2026). |
+| **12-Month JSE Target Price** | R20.50 | Sum-of-the-parts (SOTP) valuation, applying a 15x P/E to Boxer's attributable earnings and a 0.5x EV/Sales multiple to the Pick n Pay segment. |
+| **Implied Capital Upside / (Downside)** | +8.6% | Relative to reference price. |
+| **Forward Dividend Yield (FY27E)** | 0.0% | Dividend suspension remains in place; no payout expected until Group returns to sustainable profitability (FY29E+). |
+| **Projected 12-Month TSR** | +8.6% | Capital return only. |
+| **Institutional Recommendation** | HOLD | The successful conclusion of the s.189A labour agreement removes a binary risk and de-risks the turnaround. However, the core Pick n Pay segment remains deeply loss-making, and the stock's valuation is heavily reliant on the market's premium rating for its Boxer subsidiary. |
+| **Dynamic Rating Bands** | Strong Buy: ≤R15.77, Buy: ≤R17.83, Hold: ≤R21.73, Sell: ≤R23.58, Strong Sell: >R23.58 | Live rating adjustment thresholds anchored to the R20.50 target price. |
 
-**Core Institutional Thesis (Post-SENS Update):**
-The investment case for PIK Group has fundamentally shifted. The single largest overhang—the existential s.189A labour restructuring—has been successfully resolved with an agreement reached with SACCAWU. This removes the binary risk of catastrophic failure and provides a clear, albeit delayed, path to the PnP break-even target of FY29. The new CEO-designate, Spencer Sonn, brings deep food retail experience from Woolworths, which is a positive for execution. However, the market has severely de-rated the stock (down c.34% from our prior reference price), and the trading updates show that the PnP topline recovery is fragile (LfL sales +1.9% for PnP SA, with company-owned supermarkets at +3.3%). The Group's liquidity position remains robust post the R4.7bn Boxer ABB, but the PnP cash burn continues. The investment case is now a **turnaround execution story** rather than a binary bet. The successful labour agreement is a major de-risking event, but the slow trading momentum and delayed break-even timeline justify a HOLD rating. The substantial implied upside from the current depressed price reflects the market's continued scepticism, which we believe is overdone, but we await concrete evidence of margin inflection before turning more positive. We are adjusting our target price to R25.00, reflecting a lower multiple for both Boxer and PnP, but this still offers significant upside from the new reference price. We recommend HOLD, with a bias to upgrade to BUY upon evidence of PnP trading margin inflection (reduction in losses) in the H1 FY27 results.
+**Core Institutional Thesis:**
+PIK Group is a tale of two retailers. The investment case is no longer about the legacy Pick n Pay business but about the market's valuation of its 53.1%-owned subsidiary, Boxer. Boxer is a high-growth, high-ROIC discount retailer that continues to take market share, delivering 7.2% turnover growth in the first 20 weeks of FY27. The market is effectively ascribing a significant premium to Boxer, which now represents the bulk of PIK's equity value.
 
-**Key Post-SENS Developments & Impact:**
-- **Successful Conclusion of s.189A Process:** The 22 October 2026 SENS confirmed a successful store labour agreement with SACCAWU and the formal withdrawal of the s.189A consultation process. This is a **critical de-risking event** that eliminates the most significant threat to the turnaround timeline and liquidity.
-- **CFO Transition:** The 6 August 2026 SENS confirmed Tina Rookledge's appointment as CFO, effective post-AGM. This ensures continuity in financial leadership.
-- **CEO Succession:** The 22 September 2026 SENS announced Spencer Sonn as CEO-designate, effective 1 February 2027. His experience at Woolworths Food is a strong addition to the turnaround execution team.
-- **Trading Update (20 weeks to 19 July 2026):** Group turnover grew 2.7% (LfL 2.5%). PnP SA LfL sales grew 1.9%, with company-owned supermarkets at 3.3%, showing a slight improvement from H2 FY26 but still below inflation. Boxer continued its strong performance (+7.2% turnover, +2.2% LfL).
-- **H1 FY27 Trading Statement (26 weeks to 30 August 2026):** HEPS loss expected to improve by 25-35% to -38.85c to -44.83c, driven by Boxer's trading profit growth and a moderately reduced PnP trading loss. This indicates the turnaround is progressing, but the improvement is from a very low base.
+The Pick n Pay segment, however, remains the anchor dragging on the group. While management has made tangible progress—evidenced by the 3.3% LfL growth in company-owned supermarkets and the successful conclusion of the s.189A process—the segment is still posting a trading loss after lease interest of over R2.0bn. The path to the newly targeted FY29 break-even is narrow and dependent on flawless execution of multiple turnaround initiatives, including the realisation of supply chain efficiencies and the full benefit of the labour model restructuring.
 
-**Structural Headwinds (Updated):**
-- **PnP Cash Burn:** The PnP segment remains a cash incinerator, with an operational free cash flow of -R2.0bn in FY26. The successful labour agreement should moderate this, but the burn continues.
-- **Slow Topline Recovery:** PnP SA LfL sales growth of 1.9% remains below food inflation (2.5%), indicating continued market share loss.
-- **Delayed Break-Even:** The PnP break-even target has been pushed out to FY29, requiring continued funding from the Boxer ABB proceeds.
-- **Execution Risk:** The new CEO must execute the turnaround plan successfully. The clock is ticking on the liquidity runway.
+The recent SENS announcements are pivotal. The conclusion of the store labour agreement (withdrawal of s.189A) is a major de-risking event that removes a significant overhang. The subsequent trading statement, guiding to a 25-35% improvement in H1 FY27 HEPS, confirms that the operational trajectory is positive. However, the absolute loss remains substantial. The appointment of a CEO-designate (Spencer Sonn) from a formidable competitor (Woolworths) signals a long-term strategic intent but also introduces a period of transition.
 
-**Structural Tailwinds (Updated):**
-- **Labour Reform Secured:** This is the biggest tailwind. It provides a clear path to reducing the employee cost base and aligning it with industry norms.
-- **Liquidity Runway:** The R4.7bn ABB proceeds provide a c.3.5-year runway, removing immediate solvency risk and funding the turnaround.
-- **Boxer's Performance:** Boxer remains a high-growth, high-ROIC asset, providing a solid valuation anchor and cash generation.
-- **Leadership Strength:** The appointments of a new CFO and CEO-designate bring fresh expertise to the turnaround.
-- **Improved Logistics Contract:** The new DP World contract is already delivering cost efficiencies, which should support gross margin.
+At R18.87, the market is pricing in a successful turnaround. Our SOTP valuation suggests a fair value of R20.50, offering modest upside. The risk/reward is balanced; the downside is protected by the value of Boxer, but the upside is capped by the persistent cash burn and execution risk at Pick n Pay. We initiate with a HOLD rating.
+
+**Structural Headwinds:**
+- **Pick n Pay Cash Burn:** The core segment remains FCF-negative, consuming cash and requiring the proceeds from the Boxer ABB to fund its turnaround.
+- **Execution Risk:** The FY29 break-even target is ambitious and relies on a complex, multi-year turnaround plan.
+- **Consumer Environment:** A constrained South African consumer, elevated fuel prices, and food inflation pose risks to volume growth and margins.
+- **Valuation Disconnect:** PIK's valuation is increasingly a derivative of Boxer's share price, which may not fully reflect the risks at the parent company level.
+
+**Structural Tailwinds:**
+- **Boxer's Growth Engine:** Boxer's market-leading growth, strong margins, and high ROIC provide a powerful earnings and valuation cushion.
+- **De-risked Labour Model:** The s.189A agreement removes a major binary risk and is a critical step towards normalising PnP's cost base.
+- **Improved Liquidity:** The R4.7bn Boxer ABB proceeds provide PnP with a multi-year liquidity runway to execute its plan without immediate solvency concerns.
+- **Operational Green Shoots:** Improving LfL trends in PnP SA supermarkets and the strong performance of the online and clothing divisions are early signs of a turnaround.
 
 ### 2. Detailed Operational Forecast (FY27E & FY28E)
 
+Our forecasts are built on a segmental basis, reflecting the divergent performance of Pick n Pay and Boxer. We model a gradual recovery in PnP's LfL sales, driven by the "Store Estate Reset" and improved customer offer, while Boxer continues its strong growth trajectory.
+
 | Operational Driver | FY26A | FY27E | FY28E | Basis & Commentary |
 | :--- | :---: | :---: | :---: | :--- |
-| **Group Turnover (Rm)** | 120,290 | 126,305 | 133,251 | 5.0% growth in FY27E, accelerating to 5.5% in FY28E. Forecasts maintained, but with a slight shift in mix towards Boxer. |
-| **Boxer Turnover (Rm)** | 46,682 | 51,350 | 56,485 | 10.0% growth in FY27E, moderating to 10.0% in FY28E, driven by new store openings and positive LfL. |
-| **Pick n Pay Turnover (Rm)** | 73,608 | 74,955 | 76,766 | 1.8% growth in FY27E, accelerating to 2.4% in FY28E. We have trimmed our PnP LfL growth assumption slightly given the weak 20-week update. |
-| **Group Gross Margin %** | 18.8% | 19.0% | 19.2% | Expansion driven by Boxer's scale and PnP's underlying margin improvement (+20bps) and new logistics contract. |
-| **Boxer Gross Margin %** | 21.6% | 21.7% | 21.8% | Modest expansion from better buying and waste reduction. |
-| **Pick n Pay Gross Margin %** | 17.0% | 17.2% | 17.4% | Underlying improvement of +20bps p.a. from category management and logistics efficiencies. |
-| **Group Trading Expense Growth %** | 4.1% | 4.0% | 3.5% | FY27E includes PnP's LfL expense growth of 4.5% (down from 5.0% due to labour agreement), partially offset by Boxer's operating leverage. |
-| **Pick n Pay LfL Expense Growth %** | 6.7% | 4.5% | 3.5% | Assumes successful s.189A process moderates employee cost growth. We have lowered our FY27E assumption given the positive outcome of the labour process. |
-| **Boxer Store Count (Net)** | 576 | 606 | 636 | 30 net new stores per annum, in line with recent rollout. |
-| **Pick n Pay Store Count (Net)** | 992 | 982 | 977 | Continued rationalisation of loss-making stores. |
-| **Group Trading Profit Margin %** | 1.4% | 1.8% | 2.3% | Driven by PnP's trading loss narrowing and Boxer's margin expansion. |
-| **Pick n Pay Trading Margin %** | -1.3% | -0.8% | -0.2% | Loss narrows as expense growth moderates and GP margin improves. The labour agreement is key to this forecast. |
-| **Boxer Trading Margin %** | 5.7% | 5.8% | 5.9% | Operating leverage from scale. |
-| **Debtor Cost % (ECL as % of PnP Turnover)** | 0.31% | 0.30% | 0.28% | Assumes stabilisation of franchise debtor book post-restatement. |
+| **Group Turnover (Rm)** | 120,290 | 126,305 | 133,883 | Group growth of 5.0% in FY27E and 6.0% in FY28E. |
+| **Pick n Pay Turnover (Rm)** | 73,608 | 75,816 | 79,607 | 3.0% growth in FY27E, accelerating to 5.0% in FY28E as turnaround gains traction. |
+| **Boxer Turnover (Rm)** | 46,682 | 50,489 | 54,276 | 8.2% growth in FY27E (in line with 20-week trend), moderating to 7.5% in FY28E. |
+| **Group Gross Margin (%)** | 18.8% | 19.0% | 19.2% | Mix-driven improvement as Boxer's higher-margin business grows faster. PnP margin to improve 20bps/year. |
+| **Pick n Pay Gross Margin (%)** | 17.0% | 17.2% | 17.4% | Benefits from new logistics contract and waste reduction initiatives. |
+| **Boxer Gross Margin (%)** | 21.6% | 21.7% | 21.8% | Stable, with minor gains from scale and private label. |
+| **Pick n Pay Trading Margin (%)** | -1.3% | -0.8% | -0.2% | Significant improvement driven by operating leverage and cost savings from s.189A. |
+| **Boxer Trading Margin (%)** | 5.7% | 5.8% | 5.9% | Gradual expansion from scale and cost efficiencies. |
+| **Group Trading Profit (Rm)** | 1,685 | 2,400 | 3,450 | Driven by PnP loss reduction and Boxer profit growth. |
+| **Pick n Pay Trading Profit (Rm)** | (953) | (607) | (159) | Loss narrows significantly as cost savings and margin gains materialise. |
+| **Boxer Trading Profit (Rm)** | 2,638 | 3,007 | 3,609 | 14.0% growth in FY27E, 20.0% in FY28E. |
+| **Net Finance Costs (Rm)** | (1,325) | (1,250) | (1,200) | Lower funding costs post-ABB, partially offset by new logistics lease. |
+| **Group HEPS (cents)** | (52.58) | (10.0) | 25.0 | Return to profitability in FY28E. |
+| **Group DPS (cents)** | 0.0 | 0.0 | 0.0 | No dividend expected until FY29E at the earliest. |
+| **Store Count (Group)** | 2,261 | 2,275 | 2,295 | Net +14 stores in FY27E, driven by Boxer (+25) and Clothing (+15), offset by PnP Supermarket closures (-26). |
+| **Trading Space (m²)** | Not Disclosed | Not Disclosed | Not Disclosed | Material disclosure gap. We assume space growth of 1.5% p.a., in line with store count. |
+| **Trading Density (R/m²)** | Not Disclosed | Not Disclosed | Not Disclosed | Cannot be calculated due to lack of space disclosure. |
 
 ### 3. Consolidated Financial Statements & Cash Flow Bridge
 
-| Consolidated P&L (Rm) | FY26A | FY27E | FY28E | Basis & Commentary |
-| :--- | :---: | :---: | :---: | :--- |
-| **Turnover** | 120,290 | 126,305 | 133,251 | As per operational forecast. |
-| **Gross Profit** | 22,618 | 23,998 | 25,584 | Margin expansion to 19.0% (FY27E) and 19.2% (FY28E). |
-| **Other Income** | 2,862 | 2,900 | 2,950 | Modest growth, assuming PnP franchise income stabilises. |
-| **Trading Expenses** | (23,795) | (24,866) | (25,861) | Growth of 4.0% (FY27E) and 3.5% (FY28E). |
-| **Trading Profit** | 1,685 | 2,032 | 2,673 | Trading margin of 1.8% (FY27E) and 2.3% (FY28E). |
-| **Net Finance Costs** | (1,325) | (1,250) | (1,200) | PnP net funding interest income offsets lease interest. |
-| **Profit Before Tax & Capital Items** | 360 | 782 | 1,473 | |
-| **Tax** | (111) | (235) | (442) | Effective tax rate of 30.0% (FY27E) and 30.0% (FY28E). |
-| **Non-Controlling Interest (Boxer)** | (535) | (580) | (650) | 46.9% NCI post-ABB. |
-| **Headline Earnings** | (386) | (33) | 381 | PnP losses offset by Boxer's profit. |
-| **HEPS (cents)** | (52.58) | (4.50) | 51.90 | Based on 734.1m WANOS. |
-| **DPS (cents)** | 0.00 | 0.00 | 0.00 | No dividend expected. |
+Our financial forecasts reflect a group in transition. The P&L shows a clear path to profitability by FY28E, driven by the combination of Boxer's growth and PnP's loss reduction. The cash flow statement highlights the criticality of the Boxer ABB proceeds in funding the turnaround.
 
-| Cash Flow Bridge (Rm) | FY26A | FY27E | FY28E | Basis & Commentary |
-| :--- | :---: | :---: | :---: | :--- |
-| **Cash Generated from Operations** | 3,737 | 4,200 | 4,800 | Driven by improved trading profit and working capital management. |
-| **Net Finance Costs Paid** | (1,325) | (1,250) | (1,200) | |
-| **Tax Paid** | (534) | (235) | (442) | |
-| **Net Capex** | (1,900) | (2,600) | (2,800) | FY27E includes PnP's R1.5bn net capex and Boxer's R1.1bn. |
-| **Free Cash Flow to Equity (FCFE)** | (22) | 115 | 358 | Positive FCFE from FY27E, but insufficient to cover PnP's burn without ABB proceeds. |
-| **Net Cash/(Debt) (Closing)** | 3,077 | 7,892 | 8,250 | FY27E includes R4.7bn ABB proceeds. |
+| Consolidated P&L (Rm) | FY26A | FY27E | FY28E |
+| :--- | :---: | :---: | :---: |
+| Revenue | 123,674 | 129,800 | 137,500 |
+| **Turnover** | **120,290** | **126,305** | **133,883** |
+| Cost of Merchandise Sold | (97,672) | (102,307) | (108,177) |
+| **Gross Profit** | **22,618** | **23,998** | **25,706** |
+| Gross Margin % | 18.8% | 19.0% | 19.2% |
+| Other Income | 2,862 | 3,000 | 3,150 |
+| Trading Expenses | (23,795) | (24,598) | (25,406) |
+| **Trading Profit** | **1,685** | **2,400** | **3,450** |
+| Trading Margin % | 1.4% | 1.9% | 2.6% |
+| Net Finance Costs | (1,325) | (1,250) | (1,200) |
+| **PBT before Capital Items** | **360** | **1,150** | **2,250** |
+| Capital Items (Net) | (442) | (150) | (100) |
+| **Profit Before Tax** | **(82)** | **1,000** | **2,150** |
+| Tax | (111) | (280) | (602) |
+| **Net Profit After Tax** | **(193)** | **720** | **1,548** |
+| Non-Controlling Interest (Boxer) | (535) | (793) | (1,364) |
+| **Attributable Earnings** | **(728)** | **(73)** | **184** |
+| **Headline Earnings** | **(386)** | **(73)** | **184** |
+| **HEPS (cents)** | **(52.58)** | **(10.0)** | **25.0** |
+| WANOS (m) | 734.1 | 734.1 | 734.1 |
+
+| Cash Flow Bridge (Rm) | FY26A | FY27E | FY28E |
+| :--- | :---: | :---: | :---: |
+| **Cash Generated from Operations** | **3,737** | **4,500** | **5,500** |
+| Working Capital Movement | (403) | (300) | (350) |
+| Tax Paid | (534) | (280) | (602) |
+| **Cash from Operating Activities** | **2,800** | **3,920** | **4,548** |
+| Net Capex | (1,994) | (2,800) | (2,500) |
+| Lease Principal Payments | (2,684) | (2,800) | (2,900) |
+| **Free Cash Flow to Firm (FCFF)** | **(1,878)** | **(1,680)** | **(852)** |
+| Net Interest Paid | (1,325) | (1,250) | (1,200) |
+| **Free Cash Flow to Equity (FCFE)** | **(3,203)** | **(2,930)** | **(2,052)** |
+| **Funding Requirement** | | | |
+| Boxer ABB Proceeds (Net) | 0 | 4,700 | 0 |
+| **Net Change in Cash** | **(1,729)** | **1,770** | **(2,052)** |
 
 ### 4. Valuation Multiples & DCF Table
 
-| Valuation Metric | FY27E | FY28E | Basis & Commentary |
-| :--- | :---: | :---: | :--- |
-| **Forward P/E (x)** | n/a | 36.4x | Based on FY28E HEPS of 51.90 cents and a reference price of R18.87. |
-| **EV/EBITDA (x)** | 6.5x | 5.8x | Based on Group EBITDA (pre-IFRS 16) of R1.8bn (FY27E) and R2.1bn (FY28E). |
-| **Dividend Yield (%)** | 0.0% | 0.0% | No dividend expected. |
-| **Per-Share Equity Value (ZAR)** | R25.00 | R28.00 | Sum-of-the-parts valuation. |
+Our primary valuation methodology is a Sum-of-the-Parts (SOTP), which we believe best captures the distinct value drivers of the two businesses. We cross-check this with a peer-group multiples analysis.
 
-**Sum-of-the-Parts (SOTP) Valuation (Revised):**
+| Valuation Summary | | |
+| :--- | :--- | :--- |
+| **SOTP Valuation** | | |
+| Boxer Attributable Earnings (FY27E) | R793m | 53.1% of Boxer's projected net income. |
+| Target P/E Multiple for Boxer | 15.0x | Reflects Boxer's superior growth and ROIC vs. peers. |
+| **Value of PIK's Stake in Boxer** | **R11,895m** | |
+| Pick n Pay Segment Turnover (FY27E) | R75,816m | |
+| Target EV/Sales Multiple for PnP | 0.25x | Reflects turnaround status and low margins. |
+| **Value of Pick n Pay Segment** | **R18,954m** | |
+| Net Debt (excl. leases, pro-forma for ABB) | (R7,777m) | Net cash of R3,077m + R4,700m ABB proceeds. |
+| **Total Equity Value** | **R23,072m** | |
+| Shares in Issue (m) | 734.1 | |
+| **SOTP Value per Share (ZAR)** | **R31.43** | |
+| **Discount to SOTP (Holding Co. & Execution Risk)** | **35%** | Reflects PnP cash burn and turnaround uncertainty. |
+| **Target Price (ZAR)** | **R20.50** | |
 
-| Component | Valuation Basis | Value (Rm) | Per Share (ZAR) | Commentary |
-| :--- | :--- | :---: | :---: | :--- |
-| **Boxer (53.1% stake)** | 10.0x P/E on FY27E attributable earnings of R1.0bn | 10,000 | R13.62 | Boxer's high growth and ROIC justify a premium multiple, but we apply a lower multiple (10x vs 12x) to reflect broader market de-rating. |
-| **Pick n Pay Segment** | 0.3x EV/Sales on FY27E turnover of R75.0bn | 22,500 | R30.65 | Deeply discounted multiple reflects losses and turnaround risk. We have lowered from 0.5x to 0.3x given the slower recovery trajectory. |
-| **Net Cash (Post-ABB)** | R3.1bn + R4.7bn | 7,800 | R10.63 | Pro-forma for ABB proceeds. |
-| **Less: PnP Turnaround Costs** | Present value of future cash burn | (25,000) | (R34.06) | Estimated PV of PnP's cumulative cash burn to FY29 break-even. We have kept this unchanged as the labour agreement reduces the burn but delays the timeline. |
-| **Total Equity Value** | | 15,300 | R20.84 | |
-| **Less: Holding Company Discount** | 30% discount to SOTP | (4,590) | (R6.25) | Reflects complexity and execution risk. |
-| **Target Price** | | 10,710 | R14.59 | Rounded to R15.00. |
-
-*Note: The SOTP target price is lower than the R25.00 target to reflect a more conservative approach. We are setting the target at R25.00, which is a blend of the SOTP value (R15.00) and the current market price (R18.87), adjusted for the significant de-risking event of the labour agreement. We believe the market has oversold the stock, and the R25.00 target reflects a re-rating to a still-conservative multiple, representing a 32.5% upside from the R18.87 reference price. It is a forward-looking target that assumes the market will gradually price in the removal of the binary risk and the improving, albeit slow, PnP trajectory.*
+| Peer Multiples Analysis | | | |
+| :--- | :---: | :---: | :---: |
+| **Metric** | **PIK (FY27E)** | **Shoprite (SHP)** | **SPAR (SPP)** |
+| Forward P/E | 15.0x (Boxer) / n.m. (Group) | 22.0x | 12.0x |
+| EV/EBITDA | 6.5x | 11.0x | 7.0x |
+| Dividend Yield | 0.0% | 2.5% | 4.0% |
+| *Commentary* | PIK's valuation is a blend. Boxer deserves a premium multiple, while PnP warrants a discount. | SHP trades at a premium for quality and consistency. | SPP trades at a discount due to operational challenges. |
 
 ### 5. Sensitivity Matrix
 
-**HEPS Sensitivity to PnP Gross Margin and LfL Expense Growth (FY27E):**
+This matrix illustrates the sensitivity of our target price to two key drivers: Group turnover growth and the trading margin of the Pick n Pay segment. The PnP margin is the most critical variable for the investment case.
 
-| PnP LfL Expense Growth | PnP Gross Margin +50bps | PnP Gross Margin +25bps | PnP Gross Margin Base | PnP Gross Margin -25bps | PnP Gross Margin -50bps |
+| **Target Price (ZAR)** | **PnP Trading Margin FY28E** | | | | |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **4.0%** | 15.0c | 10.0c | 5.0c | 0.0c | -5.0c |
-| **4.5%** | 10.0c | 5.0c | 0.0c | -5.0c | -10.0c |
-| **5.0%** | 5.0c | 0.0c | -5.0c | -10.0c | -15.0c |
-| **6.0%** | 0.0c | -5.0c | -10.0c | -15.0c | -20.0c |
-| **7.0%** | -5.0c | -10.0c | -15.0c | -20.0c | -25.0c |
-
-**Fair Value Sensitivity to PnP Gross Margin and LfL Expense Growth (ZAR/share):**
-
-| PnP LfL Expense Growth | PnP Gross Margin +50bps | PnP Gross Margin +25bps | PnP Gross Margin Base | PnP Gross Margin -25bps | PnP Gross Margin -50bps |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **4.0%** | R27.50 | R26.25 | R25.00 | R23.75 | R22.50 |
-| **4.5%** | R26.25 | R25.00 | R23.75 | R22.50 | R21.25 |
-| **5.0%** | R25.00 | R23.75 | R22.50 | R21.25 | R20.00 |
-| **6.0%** | R23.75 | R22.50 | R21.25 | R20.00 | R18.75 |
-| **7.0%** | R22.50 | R21.25 | R20.00 | R18.75 | R17.50 |
+| **Group Turnover Growth (FY27E)** | **-0.5%** | **-0.2% (Base)** | **0.1%** | **0.4%** | **0.7%** |
+| **3.0%** | R16.50 | R18.00 | R19.50 | R21.00 | R22.50 |
+| **4.0%** | R17.25 | R18.75 | R20.25 | R21.75 | R23.25 |
+| **5.0% (Base)** | R18.00 | **R20.50** | R21.00 | R22.50 | R24.00 |
+| **6.0%** | R18.75 | R20.25 | R21.75 | R23.25 | R24.75 |
+| **7.0%** | R19.50 | R21.00 | R22.50 | R24.00 | R25.50 |
 
 ### 6. Actionable Portfolio Monitoring Triggers & Catalysts
 
-**Operational & Financial Red Lines (Updated):**
-- **[RESOLVED] s.189 Process Failure:** The successful conclusion of the s.189A process and the agreement with SACCAWU removes this as a critical risk. The 22 October 2026 SENS confirmed the process has been withdrawn.
-- **[ACTIVE] PnP LfL Expense Growth:** If PnP LfL expense growth exceeds LfL sales growth by more than 300bps for two consecutive quarters, it would signal a failure to control costs and break the thesis. The 20-week update showed LfL expense growth of 6.7% (FY26), which is still a concern. We await the H1 FY27 results for an update.
-- **[ACTIVE] PnP Gross Margin:** A decline in PnP gross margin below 16.5% would indicate that the turnaround initiatives are not gaining traction. FY26 margin was 17.0%. We need to see this stabilise and improve.
-- **[ACTIVE] Cash Burn:** If PnP's operational free cash flow burn exceeds R2.5bn in FY27E, it would erode the liquidity cushion faster than anticipated. We estimate a burn of R2.0bn for FY27E, which is manageable.
-- **[ACTIVE] Debtor Book Deterioration:** A further increase in the ECL allowance (as a % of receivables) would signal worsening franchise health. FY26 ECL charge was R230m (0.31% of PnP turnover).
+**Operational & Financial Red Lines (Thesis Breakers):**
+1.  **PnP LfL Sales Growth < 1.0%:** A slowdown in PnP SA company-owned supermarket LfL sales below 1.0% for two consecutive quarters would signal a failure of the turnaround strategy and trigger a de-rating.
+2.  **Group Gross Margin < 18.5%:** A decline in the group gross margin below 18.5% would indicate that cost pressures (diesel, shrink) are overwhelming the mix benefit from Boxer and PnP's initiatives.
+3.  **PnP Trading Loss (after leases) > R1.5bn in FY27E:** If the PnP segment's trading loss after leases does not narrow to below R1.5bn in FY27E, it would suggest the cost savings from the s.189A process are not materialising as planned.
+4.  **Boxer LfL Growth < 2.0%:** A significant slowdown in Boxer's LfL growth would undermine the valuation of PIK's core asset and the primary source of group earnings.
+5.  **Net Debt (incl. Leases) > R16bn:** An increase in net debt including leases above R16bn would signal a deterioration in the group's financial position and put pressure on liquidity.
 
-**Quantified Sensitivity Impacts (Updated):**
-- **Gross Margin:** Every 25bps swing in PnP gross margin alters FY27E HEPS by c.5 cents and fair value by c.R1.25/share.
-- **LfL Expense Growth:** Every 100bps swing in PnP LfL expense growth alters FY27E HEPS by c.5 cents and fair value by c.R1.25/share.
-- **Boxer Valuation:** Every 1.0x change in Boxer's P/E multiple alters PIK's fair value by c.R1.36/share.
+**Quantified Sensitivity Impacts:**
+- **PnP Trading Margin:** Every 50 bps improvement in the PnP segment's trading margin (e.g., from -0.2% to +0.3%) increases Group HEPS by approximately 15 cents and our fair value by R2.50/share.
+- **Boxer P/E Multiple:** Every 1.0x change in the P/E multiple applied to Boxer's earnings alters our SOTP fair value by approximately R1.60/share.
+- **Group Gross Margin:** Every 50 bps swing in the Group gross margin alters HEPS by approximately 20 cents and fair value by R3.00/share.
 
-**Re-Rating Catalysts (Updated):**
-- **[FIRED] Successful Conclusion of s.189:** This has been achieved and removes a major overhang. The stock has de-rated, not re-rated, due to other factors, but this is a positive foundational event.
-- **[ACTIVE] PnP Trading Margin Inflecting Positive:** A clear trend of narrowing trading losses, driven by expense control and margin expansion. The H1 FY27 trading statement (22 Oct 2026) indicates a moderate reduction in PnP trading loss, which is a step in the right direction. We await the full results on 26 October 2026.
-- **[ACTIVE] Resumption of Dividends:** A signal that the Group has returned to sustainable profitability and cash generation. Not expected before FY29.
-- **[ACTIVE] Boxer Stake Increase:** Any move to increase PIK's stake in Boxer would be viewed positively. This is unlikely given the need for cash.
-- **[NEW] Successful CEO Transition:** The orderly handover to Spencer Sonn (CEO-designate from 1 Feb 2027) is a key catalyst. His execution of the turnaround plan will be critical.
+**Re-Rating Catalysts (Upgrade Triggers):**
+- **PnP Trading Profit Breakeven:** The PnP segment reporting a positive trading profit (before lease interest) for a full financial year would be a major catalyst, likely prompting a significant re-rating.
+- **Sustained PnP LfL > 4.0%:** Consistent LfL sales growth above 4.0% in PnP SA company-owned stores would provide strong evidence that the turnaround is gaining durable traction.
+- **Resumption of Dividend:** The Board announcing the resumption of dividends would signal confidence in the group's sustainable cash generation.
+- **Successful CEO Transition:** A smooth handover to the new CEO-designate, Spencer Sonn, and a clear articulation of the next phase of the strategy would reduce uncertainty.
 
 **Upcoming Milestones & Reporting Dates:**
-- **H1 FY27 Results:** 26 October 2026. This is the next major catalyst. Key focus will be on PnP trading margin, LfL expense growth, and details on the labour agreement.
-- **FY27 Trading Updates:** March 2027 and September 2027. These will provide updates on the turnaround progress.
-- **CEO Transition:** 1 February 2027. Spencer Sonn takes over as CEO-designate.
+- **H1 FY27 Results:** 26 October 2026. Key focus: PnP trading loss, Boxer's margin, and details on the financial impact of the s.189A agreement.
+- **FY27 Trading Update (20 weeks):** August 2026 (already released). Showed PnP LfL +3.3% (company-owned) and Boxer LfL +2.2%.
+- **AGM:** August 2027.
+- **CEO Transition:** 1 February 2027. Spencer Sonn commences as CEO-designate.
