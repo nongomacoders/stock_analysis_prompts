@@ -11,6 +11,23 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **One-Shot Autonomous End-to-End Pipeline (`one_shot` branch — `section_capture/one_shot_view.py`)**:
+  - Streamlined User Experience:
+    1. User creates or selects a company (`Ticker` / `Sector`) via `OneShotView`.
+    2. User places PDFs into `sources/` or SENS notices into `sources/sens/` (with one-click `📂 Open sources/` and `📂 Open sources/sens/` buttons).
+    3. UI automatically scans and displays discovered documents (`[PRES]`, `[IAR]`, `[AFS]`, `[SENS]`), page counts, and auto-detected Reporting Period (`FY26`, `1H26`, etc.), with `▲ Move Doc Up` / `▼ Move Doc Down` ordering controls.
+    4. Clicking `🚀 Start Autonomous Analysis` runs all 5 phases automatically end-to-end:
+       - **Phase 1 (PDF Ingestion & Section Mapping)**: `IngestionWorker(QThread)` registers PDFs in SQLite, links companion reports, maps sections (LLM slide clustering for presentations, TOC/Heading scan for AFS/IAR), and auto-captures packages.
+       - **Phase 2 (Sequential Section Audit & Questions Ledger)**: Queues and audits all pending sections across all documents in order, rebuilding each section's prompt with the latest accumulated Questions Ledger.
+       - **Phase 3 (Stage 1 Forensic Audit)**: Compiles primary + companion sections and final Questions Ledger, executes Stage 1 audit via `OpenRouterWorker`, and saves `<TICKER>_<PERIOD>_stage1_audit_response.md`.
+       - **Phase 4 (Stage 2 Institutional Valuation / Smart SENS Update)**: Assembles full PDF + SENS dossier (or runs SENS-only update if baseline valuation already exists), executes SOTP DCF valuation, and saves `<TICKER>_<PERIOD>_stage2_valuation_note.md` + dynamic rating bands.
+       - **Phase 5 (Archiving & Portfolio Sync)**: Archives processed PDFs to `sources/completed/<PERIOD>/` and SENS notices to `sources/sens/completed/`, displaying the final Rating Badge and 12m Target Price.
+  - Detailed Live Progress Screen:
+    - 5-Phase visual stepper cards (`Waiting` $\rightarrow$ `⏳ Active` $\rightarrow$ `✓ Done`), overall progress bar, live document table status column, timestamped telemetry log (`QTextBrowser`), and live artifact preview tabs (`Questions Ledger`, `Stage 1 Forensic Audit`, `Stage 2 Valuation Note`).
+  - Test Suite (`tests/test_one_shot_pipeline.py`):
+    - Added unit tests for document discovery/ordering, UI reordering, and full 5-phase autonomous pipeline execution.
+    - All **151 tests passing (100%)**.
+
 - **LLM Semantic Clustering for Presentation Decks (`extract_all_app_sections`)**:
   - Solved single-slide fragmentation in corporate presentations (`section_capture/section_matcher.py`):
     - Previously, PowerPoint's internal TOC bookmarks (`Slide 1`, `Slide 2`...) caused decks to be sliced into 38 to 61 individual 1-slide sections, generating 38-61 API calls and ballooning the Questions Ledger to 275+ questions.

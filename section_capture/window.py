@@ -11,10 +11,11 @@ from PySide6.QtGui import QAction, QKeyEvent, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QFileDialog, QFormLayout, QHBoxLayout, QLabel,
     QLineEdit, QListWidget, QMainWindow, QMessageBox, QPlainTextEdit,
-    QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QTextEdit, QToolBar, QVBoxLayout, QWidget,
+    QPushButton, QProgressDialog, QScrollArea, QSpinBox, QSplitter, QTabWidget, QTextEdit, QToolBar, QVBoxLayout, QWidget,
 )
 
 from .audit_dialog import AuditValuationDialog
+from .one_shot_view import OneShotView
 from .content_types import CONTENT_TYPES
 from .db import (
     DOC_TYPES,
@@ -670,7 +671,12 @@ class CaptureWindow(QMainWindow):
         splitter.setStretchFactor(1, 0)
         splitter.setSizes([880, 440])
         layout.addWidget(splitter, 1)
-        self.setCentralWidget(body)
+        self.workspace_tabs = QTabWidget()
+        self.one_shot_view = OneShotView(parent=self, db_path=self.output_root)
+        self.workspace_tabs.addTab(self.one_shot_view, "🚀 One-Shot Autonomous Pipeline")
+        self.workspace_tabs.addTab(body, "🔍 Manual Section Inspector & PDF Canvas")
+        self.workspace_tabs.setCurrentIndex(0)
+        self.setCentralWidget(self.workspace_tabs)
 
     def _subheading_required_for_current(self) -> str | None:
         if not self.source or not self.source.report_map:
@@ -1270,6 +1276,8 @@ class CaptureWindow(QMainWindow):
         from .new_company_dialog import NewCompanyDialog
         dlg = NewCompanyDialog(self)
         if dlg.exec() == QDialog.DialogCode.Accepted:
+            if hasattr(self, "one_shot_view") and self.one_shot_view:
+                self.one_shot_view.refresh_companies(select_ticker=getattr(dlg, "created_ticker", None))
             if dlg.created_pdf_path and dlg.created_pdf_path.exists():
                 self.open_pdf(dlg.created_pdf_path)
                 if dlg.created_sector and hasattr(self, "sector_combo"):
@@ -1798,6 +1806,8 @@ class CaptureWindow(QMainWindow):
         app = QApplication.instance()
         if app:
             app.removeEventFilter(self)
+        if hasattr(self, "one_shot_view") and self.one_shot_view and self.one_shot_view._is_running:
+            self.one_shot_view.stop_pipeline()
         if hasattr(self, "_query_queue"):
             self._query_queue.clear()
         if hasattr(self, "_active_worker") and self._active_worker and self._active_worker.isRunning():

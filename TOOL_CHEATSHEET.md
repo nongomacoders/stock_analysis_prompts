@@ -119,3 +119,12 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
   ```python
   pdf2.write_bytes(pdf1.read_bytes() + b"\n%companion_dummy\n")
   ```
+
+---
+
+### 12. Core Function Signatures in `section_capture` & `workflow`
+* **`PdfSource(path)`**: Accepts only `path` in `__init__`. Set `source.doc_type` and `source.period` as attributes after instantiation.
+* **`load_questions_ledger(sha256, questions_root=...)`**: Uses `questions_root` (not `db_path`) to resolve the database directory.
+* **`upsert_report(sha256=..., filename=..., original_path=..., ...)`**: Takes explicit keyword/positional fields (`sha256`, `filename`, `original_path`, `byte_size`, `physical_page_count`, `doc_type`, `period`, `db_path`), not a `PdfSource` object.
+* **`build_stage2_prompt_content(...)`**: Takes `(stage1_content, company_title, ticker, detected_sector, sens_announcements=None)` — does not take `filename`.
+
