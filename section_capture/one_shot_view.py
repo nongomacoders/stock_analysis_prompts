@@ -1667,9 +1667,12 @@ class OneShotView(QWidget):
                 + "\n\n---\n\n".join(sens_blocks)
             )
         pdf_names_str = ", ".join(d["filename"] for d in self._ingested_docs)
+        sens_names_str = (", ".join(d["filename"] for d in sens_docs)) if sens_docs else ""
+        sources_summary = pdf_names_str + (f" + SENS: {sens_names_str}" if sens_names_str else "")
+
         dossier_parts.append(
             f"# COMPLETE PRIMARY SOURCE FINANCIAL REPORT DISCLOSURES & AUDITED NOTES\n"
-            f"**Source Documents:** {pdf_names_str}\n\n"
+            f"**Source Documents:** {sources_summary}\n\n"
             + "\n\n---\n\n".join(all_pdf_blocks)
         )
         full_dossier = "\n\n---\n\n".join(dossier_parts)
@@ -1681,9 +1684,10 @@ class OneShotView(QWidget):
         self.live_banner_label.setText(
             f"💎 [Phase 4/5] Running Stage 2 Institutional Valuation with {model_name} (~{tok_est:,} tokens)..."
         )
+        sens_log = f" + <b>{len(sens_docs)} SENS notice(s)</b> (<code>{sens_names_str}</code>)" if sens_docs else ""
         self.append_log(
             f"💎 <b>Phase 4 (Stage 2 Institutional Valuation):</b> Assembled full PDF + Stage 1 dossier "
-            f"({len(full_dossier):,} chars, ~{tok_est:,} tokens across {pdf_names_str}). "
+            f"{sens_log} ({len(full_dossier):,} chars, ~{tok_est:,} tokens across {sources_summary}). "
             f"Submitting to <b>{model_name}</b>..."
         )
 
