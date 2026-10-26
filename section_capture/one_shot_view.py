@@ -128,31 +128,23 @@ def discover_company_documents(
         except Exception:
             pass
 
-    # 1. Discover primary/companion PDFs in sources/
+    # 1. Discover primary/companion PDFs in sources/ directly (do not re-pull completed/ PDFs)
     active_pdfs = sorted(
         f for f in sources_dir.glob("*.pdf") if f.is_file() and "sens" not in f.name.lower()
     )
-    archived_mode = False
-    if not active_pdfs:
-        # Check completed/<period> or completed/ if user is running SENS update or re-inspecting
+    # If no active PDFs in sources/, auto-detect period from completed/ or briefs/
+    if not active_pdfs and not period:
         comp_root = sources_dir / "completed"
         if comp_root.exists():
-            if period and (comp_root / period).exists():
-                active_pdfs = sorted((comp_root / period).glob("*.pdf"))
-                archived_mode = bool(active_pdfs)
-            if not active_pdfs:
-                subdirs = sorted([d for d in comp_root.iterdir() if d.is_dir()], reverse=True)
-                for sd in subdirs:
-                    cands = sorted(sd.glob("*.pdf"))
-                    if cands:
-                        active_pdfs = cands
-                        archived_mode = True
-                        if not period:
-                            period = sd.name
-                        break
-            if not active_pdfs:
-                active_pdfs = sorted(comp_root.glob("*.pdf"))
-                archived_mode = bool(active_pdfs)
+            subdirs = sorted([d.name for d in comp_root.iterdir() if d.is_dir()], reverse=True)
+            if subdirs:
+                period = subdirs[0]
+        if not period:
+            b_root = company_dir / "briefs"
+            if b_root.exists():
+                bsubdirs = sorted([d.name for d in b_root.iterdir() if d.is_dir()], reverse=True)
+                if bsubdirs:
+                    period = bsubdirs[0]
 
     # 2. Discover SENS files in sources/sens/
     sens_files = sorted(
@@ -223,7 +215,7 @@ def discover_company_documents(
             "page_count": page_cnt,
             "sha256": sha,
             "is_sens": False,
-            "is_archived": archived_mode,
+            "is_archived": False,
             "sec_total": sec_total,
             "sec_done": sec_done,
             "order_prio": order_prio,
@@ -615,6 +607,7 @@ class OneShotView(QWidget):
         self.period_combo.setMinimumWidth(110)
         for p in ["FY26", "1H26", "2H26", "1H27", "FY27", "FY25", "1H25"]:
             self.period_combo.addItem(p)
+        self.period_combo.currentTextChanged.connect(self._on_period_changed)
         row_b.addWidget(self.period_combo)
 
         self.move_up_btn = QPushButton("▲ Move Doc Up")
@@ -917,19 +910,27 @@ class OneShotView(QWidget):
 
         pdf_cnt = sum(1 for d in docs if not d.get("is_sens"))
         sens_cnt = sum(1 for d in docs if d.get("is_sens"))
-        self.docs_header_lbl.setText(
-            f"<b>📄 Discovered Documents for {ticker} ({pdf_cnt} Report PDF(s), {sens_cnt} SENS Notice(s)):</b>"
-        )
         if docs:
+            self.docs_header_lbl.setText(
+                f"<b>📄 Discovered Documents for {ticker} ({pdf_cnt} Report PDF(s), {sens_cnt} SENS Notice(s)):</b>"
+            )
             names = ", ".join(d["filename"] for d in docs)
             self.live_banner_label.setText(
                 f"Ready — Found {len(docs)} document(s) for {ticker} ({self.period_combo.currentText()}): {names}"
             )
+            self.start_btn.setEnabled(True)
+            self.start_btn.setToolTip("Start the 5-phase autonomous pipeline for these documents")
         else:
-            self.live_banner_label.setText(
-                f"No PDFs found in companies/{self.current_company['sector']}/{ticker}/sources/. "
-                f"Click '📂 Open sources/' to drop company PDFs."
+            active_p = self.period_combo.currentText().strip() or "FY26"
+            self.docs_header_lbl.setText(
+                f"<b>✓ All source reports for {ticker} ({active_p}) have been analyzed and moved to <code>sources/completed/{active_p}/</code>.</b>"
             )
+            self.live_banner_label.setText(
+                f"✓ Analysis Complete: All source documents for {ticker} ({active_p}) are archived. "
+                f"Review the Questions Ledger, Stage 1 Audit, and Stage 2 Valuation Note below."
+            )
+            self.start_btn.setEnabled(False)
+            self.start_btn.setToolTip("No pending files in sources/ or sources/sens/. Drop new PDFs or SENS files to analyze.")
 
     def _populate_docs_table(self):
         self.docs_table.setRowCount(len(self.discovered_docs))
@@ -1027,6 +1028,11 @@ class OneShotView(QWidget):
                     selected.append(d)
         return selected
 
+    def _on_period_changed(self, text: str):
+        if getattr(self, "_is_loading_period", False):
+            return
+        self._load_existing_artifacts_preview()
+
     def _load_existing_artifacts_preview(self):
         """Loads any existing Questions Ledger, Stage 1 Audit, and Stage 2 Valuation Note for the active company."""
         self.ledger_preview.clear()
@@ -1041,16 +1047,50 @@ class OneShotView(QWidget):
         period = self.period_combo.currentText().strip() or "FY26"
         briefs_dir = comp_dir / "briefs" / period
 
-        # Check Questions Ledger in DB across discovered PDFs
+        # If current period has no brief files, find if any other period subfolder has them
+        if not (briefs_dir / f"{ticker}_{period}_stage1_audit_response.md").exists() and not (briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md").exists():
+            b_root = comp_dir / "briefs"
+            if b_root.exists():
+                for cand_dir in sorted([d for d in b_root.iterdir() if d.is_dir()], reverse=True):
+                    cand_p = cand_dir.name
+                    cand_s1 = cand_dir / f"{ticker}_{cand_p}_stage1_audit_response.md"
+                    cand_s2 = cand_dir / f"{ticker}_{cand_p}_stage2_valuation_note.md"
+                    if cand_s1.exists() or cand_s2.exists():
+                        period = cand_p
+                        briefs_dir = cand_dir
+                        self._is_loading_period = True
+                        idx = self.period_combo.findText(period)
+                        if idx >= 0:
+                            self.period_combo.setCurrentIndex(idx)
+                        else:
+                            self.period_combo.setEditText(period)
+                        self._is_loading_period = False
+                        break
+
+        # Check Questions Ledger in DB across discovered PDFs or reports table for this ticker
+        ql = ""
         for d in self.discovered_docs:
             sha = d.get("sha256")
             if sha and not d.get("is_sens"):
-                ql = load_questions_ledger(sha, questions_root=self.db_path)
-                if ql and ql.strip():
-                    q_cnt = len(re.findall(r"(?m)^-\s*Q\d+", ql)) or len(ql.splitlines())
-                    self.ledger_preview.setPlainText(ql)
-                    self.output_tabs.setTabText(0, f"📋 Questions Ledger ({q_cnt})")
+                ql = load_questions_ledger(sha, questions_root=self.db_path) or ""
+                if ql.strip():
                     break
+        if not ql:
+            try:
+                with connect_db(self.db_path) as conn:
+                    row = conn.execute(
+                        "SELECT questions_ledger FROM reports WHERE (original_path LIKE ? OR filename LIKE ?) AND questions_ledger IS NOT NULL AND length(questions_ledger) > 0 ORDER BY updated_at DESC LIMIT 1",
+                        (f"%{ticker}%", f"%{ticker}%"),
+                    ).fetchone()
+                    if row:
+                        ql = row["questions_ledger"] or ""
+            except Exception:
+                pass
+
+        if ql and ql.strip():
+            q_cnt = len(re.findall(r"(?m)^-\s*Q\d+", ql)) or len(ql.splitlines())
+            self.ledger_preview.setPlainText(ql)
+            self.output_tabs.setTabText(0, f"📋 Questions Ledger ({q_cnt})")
 
         # Check Stage 1 & Stage 2 files on disk
         s1_file = briefs_dir / f"{ticker}_{period}_stage1_audit_response.md"
