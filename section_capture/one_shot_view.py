@@ -190,10 +190,12 @@ def discover_company_documents(
                 doc = pdfium.PdfDocument(str(pdf_path))
                 page_cnt = len(doc)
                 # Refine presentation detection via landscape aspect ratio
-                if dt in ("annual_report", "iar") and len(doc) > 0:
+                if len(doc) > 0:
                     w, h = doc[0].get_size()
                     if h > 0 and (w / h) >= 1.25:
                         dt = "presentation"
+                    elif dt == "interim":
+                        dt = "afs"
                 doc.close()
             except Exception:
                 page_cnt = 0
