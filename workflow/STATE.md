@@ -11,6 +11,14 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **Automated Sequential DeepSeek Processing upon Auto-Capture (`run_all_pending`)**:
+  - Enhanced Section Comparison & Auto-Capture Dialog (`section_capture/map_dialog.py`):
+    - When `⚡ Auto-Capture Matched Sections` completes extracting sections into SQLite, it automatically finds the parent `CaptureWindow` and triggers `run_all_pending()` directly.
+    - Closes modal comparison and map dialogs, returning the user to the main capture canvas where `⚡ DeepSeek Running (N in queue)` and the status bar immediately display live background processing and questions ledger construction.
+  - Test Suite (`tests/test_section_matcher.py`):
+    - Added test coverage in `test_auto_capture_matched_sections` asserting that `target.run_all_pending()` is invoked automatically upon completing auto-capture.
+    - All 145 tests passing (100%).
+
 - **Dynamic Valuation Rating Levels & Live Market Price Evaluation (`Strong Buy`, `Buy`, `Hold`, `Sell`, `Strong Sell`)**:
   - Enhanced Stage 2 Prompt Generator (`workflow/generate_stage2.py`):
     - Updated `_format_section1_spec()` to instruct the LLM to output explicit ZAR price boundaries (`strong_buy_max_zar`, `buy_max_zar`, `hold_max_zar`, `sell_max_zar`, `strong_sell_above_zar`) anchored to the 12-month JSE target price in the mandatory Section 1 JSON block.

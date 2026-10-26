@@ -126,11 +126,20 @@ def test_auto_capture_matched_sections(pdf_path, qapp, tmp_path, monkeypatch):
     user_sections = [
         {"title": "Highlights", "start_page": 2, "end_page": 2},
     ]
+    from PySide6.QtWidgets import QWidget
+    called = []
+    class DummyWindow(QWidget):
+        def run_all_pending(self):
+            called.append(True)
+
+    dummy_parent = DummyWindow()
+
     dlg = SectionComparisonDialog(
         source=source,
         user_sections=user_sections,
         sector="mining",
         db_path=tmp_path,
+        parent=dummy_parent,
     )
 
     assert len(dlg._comparison.matched) >= 1
@@ -145,8 +154,13 @@ def test_auto_capture_matched_sections(pdf_path, qapp, tmp_path, monkeypatch):
     assert "Highlights" in sections[0].heading
     assert len(sections[0].selected_text) > 0
 
+    # Verify run_all_pending was automatically triggered via timer
+    qapp.processEvents()
+    assert len(called) == 1
+
     dlg.close()
     dlg.deleteLater()
+    dummy_parent.deleteLater()
 
 def test_adopt_app_sections_with_identical_titles(pdf_path, qapp, monkeypatch):
     from PySide6.QtWidgets import QMessageBox

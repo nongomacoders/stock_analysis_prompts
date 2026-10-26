@@ -2,6 +2,7 @@
 import copy
 import json
 
+from PySide6.QtCore import QTimer, Qt
 from PySide6.QtWidgets import (
     QApplication, QCheckBox, QComboBox, QDialog, QDialogButtonBox, QFrame, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QMessageBox, QPlainTextEdit, QProgressBar, QPushButton, QSpinBox, QSplitter, QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget,
@@ -323,6 +324,8 @@ class ReportMapDialog(QDialog):
         if dlg.exec():
             self._update_table()
             self.refresh()
+            if getattr(dlg, "auto_captured", False):
+                self.close()
 
 
 class SectionComparisonDialog(QDialog):
@@ -625,6 +628,7 @@ class SectionComparisonDialog(QDialog):
         self.auto_capture_btn.setEnabled(True)
         self.status_label.setText(f"Auto-capture complete: {success} sections captured.")
 
+        self.auto_captured = (success > 0)
         if errors:
             QMessageBox.warning(
                 self,
@@ -636,8 +640,16 @@ class SectionComparisonDialog(QDialog):
                 self,
                 "Auto-Capture Complete",
                 f"Successfully auto-captured {success} major sections directly into SQLite!\n\n"
-                "The sections are now available in your Saved Sections list and SQLite database.",
+                f"Auto-queued all {success} sections for sequential DeepSeek processing and questions ledger construction in the background.",
             )
+
+        if success > 0:
+            target = self.parent()
+            while target and not hasattr(target, "run_all_pending"):
+                target = target.parent() if hasattr(target, "parent") else None
+            if target and hasattr(target, "run_all_pending"):
+                target.run_all_pending()
+
         self.accept()
 
 
