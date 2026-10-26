@@ -128,3 +128,9 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 * **`upsert_report(sha256=..., filename=..., original_path=..., ...)`**: Takes explicit keyword/positional fields (`sha256`, `filename`, `original_path`, `byte_size`, `physical_page_count`, `doc_type`, `period`, `db_path`), not a `PdfSource` object.
 * **`build_stage2_prompt_content(...)`**: Takes `(stage1_content, company_title, ticker, detected_sector, sens_announcements=None)` — does not take `filename`.
 
+
+---
+
+### 13. `git add` After `git rm` Gotcha
+* **Issue**: Passing a file already deleted via `git rm <path>` into a subsequent `git add <path> <other_files>...` causes `fatal: pathspec '<path>' did not match any files` and aborts staging for all `<other_files>` in that command.
+* **Rule**: Do not re-pass `git rm`-deleted paths to `git add`; only pass modified or untracked files to `git add`.
