@@ -11,6 +11,17 @@ Analyze and forecast from company presentations and reports section by section w
 
 ## Completed
 
+- **LLM Semantic Clustering for Presentation Decks (`extract_all_app_sections`)**:
+  - Solved single-slide fragmentation in corporate presentations (`section_capture/section_matcher.py`):
+    - Previously, PowerPoint's internal TOC bookmarks (`Slide 1`, `Slide 2`...) caused decks to be sliced into 38 to 61 individual 1-slide sections, generating 38-61 API calls and ballooning the Questions Ledger to 275+ questions.
+    - Implemented `is_presentation_deck()`: Detects landscape aspect ratio ($w/h \ge 1.25$), `doc_type == "presentation"`, or PowerPoint slide bookmark patterns.
+    - Implemented `llm_cluster_presentation_sections()`: Ingests a compact slide title/snippet manifest and queries DeepSeek to partition the entire deck into **4 to 7 coherent institutional equity research sections** (e.g. *Executive Overview & Diagnosis*, *Segment Operations*, *Financial Review*, *Balance Sheet & Debt*, *Turnaround Strategy & Outlook*, *Appendices*).
+    - Implemented `heuristic_cluster_presentation_sections()`: Robust pure-Python fallback for offline use using divider slide word count (< 25 words) and speaker transition cues.
+  - Benchmarked on SPP (58 slides $\rightarrow$ 6 multi-slide sections) and PIK (38 slides $\rightarrow$ 5 multi-slide sections), cutting deck turnaround time from ~45 minutes to ~5 minutes.
+  - Test Suite (`tests/test_section_matcher.py`):
+    - Added unit test `test_presentation_clustering` covering detection, heuristic clustering, and mocked LLM clustering.
+    - Expanded test suite to **148 tests passing (100%)**.
+
 - **Document Order Selection Dialog for Batch Auto-Capture & Sequential Ledger Chaining**:
   - Implemented `DocumentOrderDialog` (`section_capture/map_dialog.py`):
     - Discovers all companion reports for the active company and period (presentations `[PRES]`, annual/interim financial statements `[AFS]`, integrated reports `[IAR]`, annual reports `[AR]`).

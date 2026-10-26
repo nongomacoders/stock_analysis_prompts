@@ -299,3 +299,88 @@ def test_auto_capture_multi_document_ordering(pdf_path, qapp, tmp_path, monkeypa
     dlg.close()
     dlg.deleteLater()
     mock_parent.deleteLater()
+
+
+def test_presentation_clustering(pdf_path):
+    from section_capture.section_matcher import (
+        is_presentation_deck,
+        extract_presentation_slide_manifest,
+        heuristic_cluster_presentation_sections,
+        llm_cluster_presentation_sections,
+        extract_all_app_sections,
+    )
+
+    # 1. Non-presentation check (pdf_path is PAN year-end announcement - portrait AFS/SENS)
+    source_pan = PdfSource(pdf_path)
+    assert not is_presentation_deck(source_pan)
+    source_pan.close()
+
+    # 2. Check on synthetic presentation manifest
+    manifest = [
+        {"slide_num": 1, "word_count": 10, "title": "Cover", "snippet": "Results 2026", "raw_lines": ["Cover", "Results 2026"]},
+        {"slide_num": 2, "word_count": 15, "title": "Overview", "snippet": "Highlights", "raw_lines": ["Highlights", "Trading profit up 15%"]},
+        {"slide_num": 3, "word_count": 12, "title": "Financial review - Chief Financial Officer", "snippet": "Financials", "raw_lines": ["Financial review - CFO", "Group results"]},
+        {"slide_num": 4, "word_count": 60, "title": "Income statement", "snippet": "Revenue bridge", "raw_lines": ["Income Statement", "Revenue up 10%"]},
+        {"slide_num": 5, "word_count": 55, "title": "Balance sheet", "snippet": "Debt and gearing", "raw_lines": ["Balance Sheet", "Net debt lower"]},
+        {"slide_num": 6, "word_count": 8, "title": "Looking ahead - Group CEO", "snippet": "Outlook", "raw_lines": ["Looking ahead - Group CEO", "FY27 guidance"]},
+        {"slide_num": 7, "word_count": 50, "title": "Guidance targets", "snippet": "Turnaround milestones", "raw_lines": ["Targets", "Break-even 2028"]},
+        {"slide_num": 8, "word_count": 5, "title": "Appendices", "snippet": "Detailed charts", "raw_lines": ["Appendices"]},
+        {"slide_num": 9, "word_count": 40, "title": "Segment detail", "snippet": "Store estate breakdown", "raw_lines": ["Segment details"]},
+    ]
+
+    h_sections = heuristic_cluster_presentation_sections(manifest, "test_deck.pdf")
+    assert 2 <= len(h_sections) <= 5
+    assert h_sections[0]["start_page"] == 1
+    assert h_sections[-1]["end_page"] == 9
+    for s in h_sections:
+        assert s["end_page"] >= s["start_page"]
+
+    # 3. LLM clustering with mock response
+    import json
+    import io
+
+    mock_llm_json = json.dumps([
+        {"title": "Executive Overview & Group Highlights", "start_page": 1, "end_page": 2},
+        {"title": "Financial Review & Balance Sheet", "start_page": 3, "end_page": 5},
+        {"title": "Strategy & Forward Outlook", "start_page": 6, "end_page": 7},
+        {"title": "Appendices & Segment Information", "start_page": 8, "end_page": 9},
+    ]).encode("utf-8")
+
+    class MockHTTPResponse:
+        def __init__(self, data):
+            self._data = data
+        def read(self):
+            return self._data
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+
+    import urllib.request
+    orig_urlopen = urllib.request.urlopen
+
+    def mock_urlopen(req, timeout=30):
+        resp_payload = {
+            "choices": [{"message": {"content": mock_llm_json.decode("utf-8")}}]
+        }
+        return MockHTTPResponse(json.dumps(resp_payload).encode("utf-8"))
+
+    urllib.request.urlopen = mock_urlopen
+    try:
+        # Pass a mock API key
+        import os
+        orig_key = os.environ.get("OPENROUTER_API_KEY", "")
+        os.environ["OPENROUTER_API_KEY"] = "mock_key_for_test"
+
+        llm_secs = llm_cluster_presentation_sections(manifest, "test_deck.pdf")
+        assert len(llm_secs) == 4
+        assert llm_secs[0]["start_page"] == 1
+        assert llm_secs[0]["end_page"] == 2
+        assert llm_secs[1]["start_page"] == 3
+        assert llm_secs[3]["end_page"] == 9
+    finally:
+        urllib.request.urlopen = orig_urlopen
+        if orig_key:
+            os.environ["OPENROUTER_API_KEY"] = orig_key
+        else:
+            os.environ.pop("OPENROUTER_API_KEY", None)
