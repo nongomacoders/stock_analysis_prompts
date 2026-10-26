@@ -22,9 +22,11 @@ import os
 from pathlib import Path
 import re
 import shutil
+import subprocess
 from typing import Any
 
-from PySide6.QtCore import Qt, QThread, QTimer, Signal
+from PySide6.QtCore import Qt, QThread, QTimer, QUrl, Signal
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -49,11 +51,6 @@ from PySide6.QtWidgets import (
 
 from companies import SECTORS, find_company_dir
 from companies.sectors import get_sector_badge_style, get_sector_short_label
-from section_capture.audit_dialog import (
-    AuditValuationDialog,
-    discover_available_companies,
-    open_folder_and_select,
-)
 from section_capture.db import (
     DOC_TYPES,
     KNOWN_COMPANIES,
@@ -63,12 +60,14 @@ from section_capture.db import (
     detect_doc_type_and_date,
     detect_reporting_period,
     extract_questions_ledger_from_response,
+    get_analyzed_stocks,
     get_doc_badge,
     get_stage1_report,
     get_stage2_report,
     list_sections,
     parse_valuation_summary,
     resolve_db_path,
+    resolve_project_path,
     save_section_llm_response,
     save_stage1_report,
     save_stage2_report,
@@ -85,9 +84,11 @@ from section_capture.openrouter import (
 from section_capture.packages import (
     PROJECT_ROOT,
     build_prompt,
+    detect_sector_from_path,
     extract_selection_texts,
 )
 from section_capture.pdf_source import PdfSource
+from section_capture.portfolio_view import PortfolioCoverageDialog
 from section_capture.report_map import load_questions_ledger
 from section_capture.section_matcher import (
     auto_capture_section,
@@ -100,6 +101,180 @@ from workflow.generate_sens_update import (
     move_analyzed_sens_files,
 )
 from workflow.generate_stage2 import build_stage2_prompt_content
+
+
+def open_folder_and_select(file_or_dir: Path | str):
+    """Opens Windows Explorer with the target file highlighted, or opens the directory."""
+    path = Path(file_or_dir).resolve()
+    if path.is_file():
+        try:
+            if os.name == "nt":
+                subprocess.Popen(["explorer", f"/select,{str(path)}"])
+                return
+        except Exception:
+            pass
+        folder = path.parent
+    else:
+        folder = path
+
+    if folder.exists():
+        QDesktopServices.openUrl(QUrl.fromLocalFile(str(folder)))
+
+
+def detect_ticker_and_sector(source_path: str | Path | None) -> tuple[str, str]:
+    """Detects company ticker and sector from the PDF file path or directory structure."""
+    if not source_path:
+        return "COMPANY", "retail"
+    p = Path(source_path).resolve()
+
+    parts = list(p.parts)
+    for i, part in enumerate(parts):
+        if part.lower() == "companies" and i + 2 < len(parts):
+            cand_sec = parts[i + 1].lower()
+            cand_ticker = parts[i + 2].upper()
+            if cand_sec in SECTORS and not cand_ticker.startswith((".", "_")):
+                return cand_ticker, cand_sec
+
+    for i, part in enumerate(parts):
+        if part.lower() == "sources" and i >= 2:
+            cand_ticker = parts[i - 1].upper()
+            cand_sec = parts[i - 2].lower()
+            if cand_sec in SECTORS:
+                return cand_ticker, cand_sec
+
+    s = str(p).lower()
+    for ticker, (name, sec) in KNOWN_COMPANIES.items():
+        if ticker.lower() in s or name.lower() in s:
+            return ticker, sec
+
+    detected = detect_sector_from_path(source_path)
+    for cand_sec in SECTORS:
+        sec_dir = PROJECT_ROOT / "companies" / cand_sec
+        if sec_dir.exists():
+            for c in sec_dir.iterdir():
+                if c.is_dir() and c.name.lower() in str(p).lower():
+                    return c.name.upper(), cand_sec
+    return "TARGET", detected
+
+
+def discover_available_companies(db_path: Path | str | None = None) -> list[dict]:
+    """Discovers all available companies from SQLite reports table and companies/ filesystem."""
+    resolved_db = resolve_db_path(db_path)
+    stocks = get_analyzed_stocks(resolved_db)
+    items: list[dict] = []
+    seen_tickers: set[str] = set()
+
+    for s in stocks:
+        ticker = s["ticker"].upper()
+        if ticker in {"COMPANY", "TARGET"}:
+            continue
+        if ticker in seen_tickers:
+            continue
+        seen_tickers.add(ticker)
+        name = s["company_name"]
+        sector = s["sector"].lower()
+        sha = s["sha256"]
+
+        pdf_path = None
+        if s.get("original_path"):
+            cand = resolve_project_path(s["original_path"])
+            if cand and cand.exists():
+                pdf_path = cand
+        if not pdf_path:
+            comp_dir_info = find_company_dir(ticker, sector=sector)
+            c_dir = comp_dir_info[1] if comp_dir_info else PROJECT_ROOT / f"companies/{sector}/{ticker}"
+            if s.get("filename"):
+                cand = c_dir / "sources" / s["filename"]
+                if cand.exists():
+                    pdf_path = cand
+            if not pdf_path and (c_dir / "sources").exists():
+                pdfs = [p for p in (c_dir / "sources").glob("*.pdf") if "sens" not in p.name.lower()]
+                if pdfs:
+                    pdf_path = pdfs[0]
+
+        sens_count = s.get("sens_count", 0)
+        sens_str = f" · {sens_count} SENS" if sens_count else ""
+        if s.get("target_price_zar") is not None:
+            rec = f" ({s['recommendation']})" if s.get("recommendation") else ""
+            status = f"Valued · Target: R{s['target_price_zar']:,.2f}{rec}{sens_str}"
+        elif s.get("has_stage1"):
+            status = f"Audited ({s.get('section_count', 0)} sec){sens_str}"
+        elif s.get("section_count", 0) > 0:
+            status = f"Captured ({s['section_count']} sec){sens_str}"
+        else:
+            status = f"Registered{sens_str}"
+
+        sec_display = "REIT" if sector == "reit" else sector.capitalize()
+        display_text = f"{ticker} — {name} ({sec_display}) [{status}]"
+        items.append({
+            "ticker": ticker,
+            "company_title": name,
+            "sector": sector,
+            "period": s.get("period", "FY26"),
+            "sha256": sha,
+            "filename": s.get("filename") or (pdf_path.name if pdf_path else "report.pdf"),
+            "pdf_path": pdf_path,
+            "status": status,
+            "display_text": display_text,
+        })
+
+    for sec in SECTORS:
+        sec_dir = PROJECT_ROOT / "companies" / sec
+        if sec_dir.exists():
+            for comp_dir in sorted(sec_dir.iterdir()):
+                if not comp_dir.is_dir() or comp_dir.name.startswith((".", "_")):
+                    continue
+                ticker = comp_dir.name.upper()
+                if ticker in seen_tickers or ticker in {"COMPANY", "TARGET"}:
+                    continue
+                seen_tickers.add(ticker)
+                default_title = (
+                    f"{ticker} Properties"
+                    if sec == "reit"
+                    else (
+                        f"{ticker} Technologies"
+                        if sec == "it"
+                        else (f"{ticker} Group" if sec in {"retail", "consumer_lending"} else f"{ticker} Resources")
+                    )
+                )
+                c_name = KNOWN_COMPANIES.get(ticker, (default_title, sec))[0]
+                sources_dir = comp_dir / "sources"
+                pdf_path = None
+                if sources_dir.exists():
+                    pdfs = [p for p in sources_dir.glob("*.pdf") if "sens" not in p.name.lower()]
+                    if pdfs:
+                        pdf_path = pdfs[0]
+                status = "Scaffolded"
+                sha = ""
+                period_val = "FY26"
+                if pdf_path and resolved_db.exists():
+                    with connect_db(resolved_db) as conn:
+                        row = conn.execute(
+                            "SELECT sha256, period FROM reports WHERE original_path = ? OR filename = ? LIMIT 1",
+                            (str(pdf_path), pdf_path.name),
+                        ).fetchone()
+                        if row:
+                            sha = row["sha256"]
+                            period_val = row["period"] or "FY26"
+                            sec_cnt = conn.execute(
+                                "SELECT COUNT(*) FROM sections WHERE report_sha256 = ?", (sha,)
+                            ).fetchone()[0]
+                            status = f"Captured ({sec_cnt} sec)" if sec_cnt > 0 else "Registered"
+                sec_lbl = "REIT" if sec == "reit" else ("IT" if sec == "it" else sec.capitalize())
+                display_text = f"{ticker} — {c_name} ({sec_lbl}) [{status}]"
+                items.append({
+                    "ticker": ticker,
+                    "company_title": c_name,
+                    "sector": sec,
+                    "period": period_val,
+                    "sha256": sha,
+                    "filename": pdf_path.name if pdf_path else "report.pdf",
+                    "pdf_path": pdf_path,
+                    "status": status,
+                    "display_text": display_text,
+                })
+
+    return items
 
 
 def discover_company_documents(
@@ -632,11 +807,6 @@ class OneShotView(QWidget):
 
         row_b.addStretch(1)
 
-        self.open_dossier_btn = QPushButton("🏛️ Valuation Dossier")
-        self.open_dossier_btn.setToolTip("Open the full Stage 1 & 2 Audit/Valuation Dossier Dialog")
-        self.open_dossier_btn.clicked.connect(self._on_open_dossier_clicked)
-        row_b.addWidget(self.open_dossier_btn)
-
         self.portfolio_btn = QPushButton("📊 Analyzed Stocks")
         self.portfolio_btn.setToolTip("Open the Portfolio Valuation Coverage Table & Payoff Matrix")
         self.portfolio_btn.clicked.connect(self._on_open_portfolio_clicked)
@@ -1144,29 +1314,10 @@ class OneShotView(QWidget):
             self.refresh_companies(select_ticker=getattr(dlg, "created_ticker", None))
 
     def _on_open_portfolio_clicked(self):
-        dlg = AuditValuationDialog(
-            source=None,
-            parent=self.main_window or self,
+        dlg = PortfolioCoverageDialog(
             db_path=self.db_path,
-            initial_tab=2,
-        )
-        dlg.show()
-
-    def _on_open_dossier_clicked(self):
-        if not self.current_company:
-            return
-        dlg = AuditValuationDialog(
-            source=None,
             parent=self.main_window or self,
-            db_path=self.db_path,
         )
-        # Select current ticker in dialog
-        ticker = self.current_company["ticker"]
-        for i in range(dlg.company_combo.count()):
-            data = dlg.company_combo.itemData(i)
-            if data and data.get("ticker") == ticker:
-                dlg.company_combo.setCurrentIndex(i)
-                break
         dlg.show()
 
     # =========================================================================

@@ -290,12 +290,6 @@ class PortfolioView(QWidget):
         self.view_s1_btn.clicked.connect(self._view_stage1_audit)
         watch_header.addWidget(self.view_s1_btn)
 
-        self.go_to_s2_btn = QPushButton("⚡ Go to Stage 2 Valuation")
-        self.go_to_s2_btn.setStyleSheet("font-weight: bold; color: #0d47a1;")
-        self.go_to_s2_btn.setToolTip("Switch active company in Valuation dialog and jump to Stage 2 Valuation Note tab.")
-        self.go_to_s2_btn.clicked.connect(self._go_to_stage2_tab)
-        watch_header.addWidget(self.go_to_s2_btn)
-
         details_layout.addLayout(watch_header)
 
         # Text browser for Markdown rendering of triggers
@@ -631,24 +625,15 @@ class PortfolioView(QWidget):
         self.view_s1_btn.setEnabled(s["has_stage1"])
         self.view_s2_btn.setEnabled(s["has_stage2"])
         self.copy_triggers_btn.setEnabled(bool(triggers))
-        if hasattr(self, "go_to_s2_btn"):
-            self.go_to_s2_btn.setEnabled(True)
 
     def _on_table_double_clicked(self, item):
         row = item.row()
         if 0 <= row < len(self.filtered_data):
             self.current_stock = self.filtered_data[row]
-            self._go_to_stage2_tab()
-
-    def _go_to_stage2_tab(self):
-        if not self.current_stock:
-            return
-        ticker = self.current_stock["ticker"]
-        parent_dlg = self.window()
-        if hasattr(parent_dlg, "select_company_by_ticker"):
-            parent_dlg.select_company_by_ticker(ticker)
-            if hasattr(parent_dlg, "tabs"):
-                parent_dlg.tabs.setCurrentIndex(1)
+            if self.current_stock.get("has_stage2"):
+                self._view_stage2_note()
+            elif self.current_stock.get("has_stage1"):
+                self._view_stage1_audit()
 
     def _fetch_live_quotes(self):
         tickers = [

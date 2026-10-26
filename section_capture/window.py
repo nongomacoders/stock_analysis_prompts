@@ -17,18 +17,18 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
 )
 
-from .audit_dialog import AuditValuationDialog, open_folder_and_select
 from .db import (
     DOC_TYPES,
     load_last_opened_dir,
     save_last_opened_dir,
 )
-from .one_shot_view import OneShotView
+from .one_shot_view import OneShotView, open_folder_and_select
 from .openrouter import (
     get_model_display_name,
     get_openrouter_model,
 )
 from .packages import clean_single_line_text
+from .portfolio_view import PortfolioCoverageDialog
 
 
 class SanitizedLineEdit(QLineEdit):
@@ -231,11 +231,8 @@ class CaptureWindow(QMainWindow):
         disp = get_model_display_name(model_id)
         self.model_status_label.setText(f"🤖 Active AI: {disp} ({model_id})")
 
-    def show_audit_valuation(self):
-        AuditValuationDialog(None, self, db_path=self.output_root, initial_tab=0).exec()
-
     def show_portfolio_dashboard(self):
-        AuditValuationDialog(None, self, db_path=self.output_root, initial_tab=2).exec()
+        PortfolioCoverageDialog(db_path=self.output_root, parent=self).exec()
 
     def show_new_company_dialog(self):
         from .new_company_dialog import NewCompanyDialog

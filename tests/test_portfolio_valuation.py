@@ -27,7 +27,6 @@ from section_capture.portfolio_view import (
     PortfolioView,
     normalize_markdown_for_qt,
 )
-from section_capture.audit_dialog import AuditValuationDialog
 
 
 @pytest.fixture(scope="session")
@@ -348,175 +347,16 @@ def test_portfolio_view_widget(qapp, tmp_path):
         view.deleteLater()
 
 
-def test_audit_dialog_with_portfolio_tab(qapp, tmp_path):
-    """Test that AuditValuationDialog contains all 3 tabs and supports initial_tab selection."""
-    test_db = tmp_path / "test_audit_dialog.sqlite"
+def test_portfolio_coverage_dialog(qapp, tmp_path):
+    """Test standalone PortfolioCoverageDialog rendering and cleanup."""
+    test_db = tmp_path / "test_portfolio_dlg.sqlite"
     sha = "test_sha_dlg"
     upsert_report(sha256=sha, filename="lewis-iar-2026.pdf", db_path=test_db)
 
-    class DummySource:
-        sha256 = sha
-        path = Path("companies/retail/LEW/sources/lewis-iar-2026.pdf")
-        page_count = 10
-        questions_ledger = ""
-
-    dlg = AuditValuationDialog(DummySource(), db_path=test_db, initial_tab=2)
+    dlg = PortfolioCoverageDialog(db_path=test_db)
     try:
-        assert dlg.tabs.count() == 3
-        assert dlg.tabs.tabText(0) == "Stage 1: Cognitive Forensic Audit"
-        assert dlg.tabs.tabText(1) == "Stage 2: Institutional Valuation Note"
-        assert dlg.tabs.tabText(2) == "Analyzed Stocks & Portfolio Coverage"
-        assert dlg.tabs.currentIndex() == 2
-    finally:
-        dlg.deleteLater()
-
-
-def test_open_prompt_folder_action(qapp, tmp_path, monkeypatch):
-    """Test that AuditValuationDialog has streamlined automated controls and legacy manual buttons are removed."""
-    test_db = tmp_path / "test_open_folder.sqlite"
-    sha = "test_sha_folder"
-    upsert_report(sha256=sha, filename="lewis-iar-2026.pdf", db_path=test_db)
-
-    class DummySource:
-        sha256 = sha
-        path = Path("companies/retail/LEW/sources/lewis-iar-2026.pdf")
-        page_count = 10
-        questions_ledger = ""
-
-    dlg = AuditValuationDialog(DummySource(), db_path=test_db)
-    try:
-        # Automated execution buttons are present
-        assert hasattr(dlg, "compile_s1_btn")
-        assert hasattr(dlg, "run_s1_ai_btn")
-        assert hasattr(dlg, "save_s1_btn")
-        assert hasattr(dlg, "gen_s2_btn")
-        assert hasattr(dlg, "run_s2_ai_btn")
-        assert hasattr(dlg, "save_s2_btn")
-        assert hasattr(dlg, "gen_sens_update_btn")
-
-        # Legacy manual buttons are removed from the layout
-        assert not hasattr(dlg, "open_s1_folder_btn")
-        assert not hasattr(dlg, "open_s2_folder_btn")
-        assert not hasattr(dlg, "copy_s1_btn")
-        assert not hasattr(dlg, "copy_s2_btn")
-        assert not hasattr(dlg, "paste_s1_btn")
-        assert not hasattr(dlg, "paste_s2_btn")
-        assert not hasattr(dlg, "load_s1_btn")
-        assert not hasattr(dlg, "load_s2_btn")
-        assert not hasattr(dlg, "s1_chat_edit")
-        assert not hasattr(dlg, "s2_chat_edit")
-        assert not hasattr(dlg, "copy_s1_chat_btn")
-        assert not hasattr(dlg, "copy_s2_chat_btn")
-    finally:
-        dlg.deleteLater()
-
-
-def test_audit_dialog_run_stage1_deepseek_btn(qapp, tmp_path, monkeypatch):
-    """Test that AuditValuationDialog provides dynamic AI execution actions for Stage 1 and Stage 2."""
-    test_db = tmp_path / "test_stage1_btn.sqlite"
-    sha = "test_sha_stage1_ds"
-    upsert_report(sha256=sha, filename="APF_IAR_2026.pdf", db_path=test_db)
-
-    class DummySource:
-        filename = "APF_IAR_2026.pdf"
-        sha256 = sha
-        detected_sector = "reit"
-        def get_all_sections(self):
-            return []
-
-    dlg = AuditValuationDialog(DummySource(), db_path=test_db)
-    try:
-        assert hasattr(dlg, "run_s1_deepseek_btn")
-        assert "DeepSeek" in dlg.run_s1_deepseek_btn.text()
-        assert hasattr(dlg, "run_s2_deepseek_btn")
-        assert "DeepSeek" in dlg.run_s2_deepseek_btn.text()
-        assert hasattr(dlg, "model_badge")
-        assert "DeepSeek" in dlg.model_badge.text()
-    finally:
-        dlg.deleteLater()
-
-    # Dynamic model override test
-    monkeypatch.setenv("OPENROUTER_MODEL", "anthropic/claude-3.5-sonnet")
-    dlg2 = AuditValuationDialog(DummySource(), db_path=test_db)
-    try:
-        assert "Claude 3.5 Sonnet" in dlg2.run_s1_ai_btn.text()
-        assert "Claude 3.5 Sonnet" in dlg2.run_s2_ai_btn.text()
-        assert "Claude 3.5 Sonnet" in dlg2.model_badge.text()
-    finally:
-        dlg2.deleteLater()
-
-
-def test_audit_dialog_without_loading_pdf_sets_ticker_from_dropdown(qapp, tmp_path):
-    """Test that opening AuditValuationDialog with source=None automatically populates company dropdown."""
-    test_db = tmp_path / "test_dropdown_no_pdf.sqlite"
-    sha1 = "sha_orn_test"
-    sha2 = "sha_pan_test"
-    upsert_report(sha256=sha1, filename="20260917-ORN-ASX-JSE-Annual-Report-2026.pdf", db_path=test_db)
-    upsert_report(sha256=sha2, filename="Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf", db_path=test_db)
-
-    # Open dialog without loading any PDF (source=None)
-    dlg = AuditValuationDialog(source=None, db_path=test_db, initial_tab=1)
-    try:
-        assert hasattr(dlg, "company_combo")
-        assert dlg.company_combo.count() >= 2
-        # Verify ticker is automatically set (not generic 'COMPANY')
-        assert dlg.ticker in {"ORN", "PAN"}
-        assert dlg.sector == "mining"
-        assert dlg.tabs.currentIndex() == 1  # Valuation tab
-        assert hasattr(dlg, "load_canvas_btn")
-    finally:
-        dlg.deleteLater()
-
-
-def test_audit_dialog_company_dropdown_switching(qapp, tmp_path):
-    """Test that switching ticker in the company dropdown updates company details and brief paths."""
-    test_db = tmp_path / "test_dropdown_switching.sqlite"
-    sha_orn = "sha_orn_switch"
-    sha_lew = "sha_lew_switch"
-    upsert_report(sha256=sha_orn, filename="20260917-ORN-ASX-JSE-Annual-Report-2026.pdf", db_path=test_db)
-    upsert_report(sha256=sha_lew, filename="lewis-iar-2026.pdf", db_path=test_db)
-
-    dlg = AuditValuationDialog(source=None, db_path=test_db)
-    try:
-        # Programmatically select ORN
-        assert dlg.select_company_by_ticker("ORN") is True
-        assert dlg.ticker == "ORN"
-        assert dlg.sector == "mining"
-        assert "ORN" in dlg.windowTitle()
-        assert dlg.company_title == "Orion Minerals"
-
-        # Switch to LEW
-        assert dlg.select_company_by_ticker("LEW") is True
-        assert dlg.ticker == "LEW"
-        assert dlg.sector == "retail"
-        assert "LEW" in dlg.windowTitle()
-        assert dlg.company_title == "Lewis Group Limited"
-    finally:
-        dlg.deleteLater()
-
-
-def test_portfolio_view_go_to_stage2_tab_action(qapp, tmp_path):
-    """Test that clicking 'Go to Stage 2 Valuation' in PortfolioView switches dialog ticker and tab."""
-    test_db = tmp_path / "test_portfolio_s2_nav.sqlite"
-    sha_orn = "sha_orn_nav"
-    sha_pan = "sha_pan_nav"
-    upsert_report(sha256=sha_orn, filename="20260917-ORN-ASX-JSE-Annual-Report-2026.pdf", db_path=test_db)
-    upsert_report(sha256=sha_pan, filename="Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf", db_path=test_db)
-
-    dlg = AuditValuationDialog(source=None, db_path=test_db, initial_tab=2)
-    try:
-        assert dlg.tabs.currentIndex() == 2  # Portfolio tab
-        assert hasattr(dlg.tab_portfolio, "go_to_s2_btn")
-
-        # Select second stock in table
-        dlg.tab_portfolio.table.selectRow(1)
-        selected_stock = dlg.tab_portfolio.current_stock
-        assert selected_stock is not None
-
-        # Click Go to Stage 2 Valuation
-        dlg.tab_portfolio.go_to_s2_btn.click()
-        assert dlg.tabs.currentIndex() == 1  # Switched to Stage 2
-        assert dlg.ticker == selected_stock["ticker"]
+        assert hasattr(dlg, "portfolio_view")
+        assert dlg.portfolio_view.table.rowCount() == 1
     finally:
         dlg.deleteLater()
 
@@ -570,28 +410,6 @@ def test_sens_txt_format_and_completed_archive(tmp_path):
     assert (comp_target / txt2.name).read_text(encoding="utf-8") == "Notice 2: Disposal of KPMG Crescent for R385m"
 
 
-def test_audit_dialog_sens_update_and_auto_archive(qapp, tmp_path, monkeypatch):
-    from section_capture.audit_dialog import AuditValuationDialog
-    from section_capture.db import upsert_report, save_stage2_report
-    from PySide6.QtWidgets import QMessageBox
-
-    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
-    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
-
-    test_db = tmp_path / "test_sens_archive.sqlite"
-    sha = "sha_apf_sens_test"
-    upsert_report(sha256=sha, filename="APF_IAR_2026.pdf", db_path=test_db)
-    save_stage2_report(sha, response="# Baseline APF Note\nTarget: R0.48", db_path=test_db)
-
-    dlg = AuditValuationDialog(source=None, db_path=test_db, initial_tab=1)
-    try:
-        assert hasattr(dlg, "move_sens_btn")
-        # Ensure button click works when no pending files
-        dlg.move_sens_to_completed_gui()
-    finally:
-        dlg.deleteLater()
-
-
 def test_normalize_markdown_for_qt(qapp):
     from PySide6.QtWidgets import QTextBrowser
 
@@ -629,12 +447,8 @@ def test_normalize_markdown_for_qt(qapp):
 
 def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
     from section_capture.db import detect_company_meta, get_analyzed_stocks
-    from section_capture.audit_dialog import AuditValuationDialog, discover_available_companies
+    from section_capture.one_shot_view import discover_available_companies
     from workflow.export_stage1 import export_stage1_prompt
-    from PySide6.QtWidgets import QMessageBox
-
-    monkeypatch.setattr(QMessageBox, "information", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
-    monkeypatch.setattr(QMessageBox, "warning", lambda *args, **kwargs: QMessageBox.StandardButton.Ok)
 
     # 1. detect_company_meta
     orig_path = "companies/construction/CGR/sources/10023_Calgro-IR-2026_WEB-FA3.pdf"
@@ -664,29 +478,7 @@ def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
         assert cgr_comp is not None
         assert cgr_comp["sha256"] == cgr_stock["sha256"]
 
-        # 4. AuditValuationDialog compile_stage1_prompt
-        dlg = AuditValuationDialog(db_path=real_db)
-        try:
-            idx = -1
-            for i in range(dlg.company_combo.count()):
-                if "CGR" in dlg.company_combo.itemText(i):
-                    idx = i
-                    break
-            assert idx != -1
-            dlg.company_combo.setCurrentIndex(idx)
-            assert dlg.ticker == "CGR"
-            assert dlg.source is not None
-            assert dlg.source.sha256 == cgr_stock["sha256"]
-
-            dlg.compile_stage1_prompt()
-            compiled = dlg.s1_prompt_edit.toPlainText()
-            assert len(compiled) > 1000
-            assert "STAGE 1: INDEPENDENT COGNITIVE AUDIT" in compiled
-            assert "Calgro" in compiled or "CGR" in compiled
-        finally:
-            dlg.deleteLater()
-
-        # 5. CLI workflow/export_stage1.py
+        # 4. CLI workflow/export_stage1.py
         out_file = export_stage1_prompt("CGR")
         assert out_file.exists()
         assert out_file.stat().st_size > 1000
@@ -750,40 +542,6 @@ def test_archive_source_pdfs(tmp_path):
         row = conn.execute("SELECT original_path FROM reports WHERE sha256 = 'sha_afs_1'").fetchone()
         assert "completed" in row["original_path"]
         assert "FY26" in row["original_path"]
-
-
-def test_audit_dialog_dynamic_period_switching(qapp, tmp_path):
-    from section_capture.audit_dialog import AuditValuationDialog
-    from section_capture.db import upsert_report
-
-    test_db = tmp_path / "test_period_switch.sqlite"
-    sha = "test_sha_period"
-    upsert_report(sha256=sha, filename="PIK_AFS_2026.pdf", period="FY26", db_path=test_db)
-
-    class DummySource:
-        filename = "PIK_AFS_2026.pdf"
-        sha256 = sha
-        detected_sector = "retail"
-        def get_all_sections(self):
-            return []
-
-    dlg = AuditValuationDialog(DummySource(), db_path=test_db)
-    try:
-        assert hasattr(dlg, "period_combo")
-        assert dlg.period == "FY26"
-        assert dlg.period_combo.currentText() == "FY26"
-
-        # Switch period to 1H27
-        dlg.period_combo.setEditText("1H27")
-        assert dlg.period == "1H27"
-        assert "1H27" in str(dlg.briefs_dir)
-
-        # Switch period back to FY26
-        dlg.period_combo.setEditText("FY26")
-        assert dlg.period == "FY26"
-        assert "FY26" in str(dlg.briefs_dir)
-    finally:
-        dlg.deleteLater()
 
 
 def test_document_classify_dialog_period_selection(qapp):
