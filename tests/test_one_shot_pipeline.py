@@ -42,7 +42,8 @@ def test_discover_company_documents_ordering(pdf_path, tmp_path):
 def test_one_shot_view_in_capture_window_and_reordering(pdf_path, qapp, tmp_path):
     win = CaptureWindow(output_root=tmp_path)
     assert hasattr(win, "one_shot_view")
-    assert win.workspace_tabs.currentIndex() == 0
+    assert win.centralWidget() is win.one_shot_view
+    assert not hasattr(win, 'canvas')
 
     view: OneShotView = win.one_shot_view
     # Populate custom test company

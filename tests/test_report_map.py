@@ -1,18 +1,17 @@
 import copy
-import hashlib
-import json
 from types import SimpleNamespace
 
 import pytest
 from PySide6.QtCore import QRectF
 
-from section_capture.map_dialog import ReportMapDialog
 from section_capture.packages import save_package
 from section_capture.report_map import (
     assign_section_ids,
     build_manual_section_map,
+    insert_section_into_report_map,
     load_cached_map,
     matching_section_ids,
+    preview_inserted_section_id,
     register_subsection,
     report_overview,
     save_map,
@@ -21,7 +20,6 @@ from section_capture.report_map import (
     validate_map,
 )
 from section_capture.window import CaptureWindow
-from section_capture.pdf_source import PdfSource
 
 
 def test_real_scan_keeps_shared_page_boundaries_and_all_primary_statements(source):
@@ -124,78 +122,6 @@ def test_export_without_map_is_explicit_not_a_fake_outline(source, tmp_path):
     assert 'No report map is supplied' in saved.prompt
 
 
-def test_map_dialog_copy_is_navigation_only_and_preserves_pending_capture(qapp, pdf_path, tmp_path):
-    window = CaptureWindow(tmp_path)
-    window.show()
-    assert not window.map_action.isEnabled()
-    assert window.open_pdf(pdf_path)
-    cap = window.source.capture_area(3, QRectF(20, 65, 190, 475))
-    window.selection_changed(cap)
-    before = copy.deepcopy(window.source.report_map)
-    dialog = ReportMapDialog(window.source, window.scan_report_map, window)
-    dialog.show()
-    dialog.copy_button.click()
-    assert 'CEO' in qapp.clipboard().text()
-    assert 'Pending:' in qapp.clipboard().text()
-    assert window.pending is cap
-    assert window.source.report_map == before
-    dialog.close()
-    window._reset_section()
-    window.close()
-
-
-def test_cancelled_rescan_preserves_previous_cached_map(qapp, pdf_path, tmp_path, monkeypatch):
-    window = CaptureWindow(tmp_path)
-    assert window.open_pdf(pdf_path)
-    before = copy.deepcopy(window.source.report_map)
-    def cancel(*args):
-        raise InterruptedError('cancelled')
-    monkeypatch.setattr('section_capture.window.scan_report', cancel)
-    assert window.scan_report_map() is False
-    assert window.source.report_map == before
-    window.close()
-
-
-def test_open_uncached_report_scans_before_export(qapp, pdf_path, tmp_path, monkeypatch):
-    calls = []
-    def opened_without_cache(path):
-        source = PdfSource(path)
-        source.report_map = None
-        return source
-    reference = load_cached_map('62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd', 54)
-    def scanned(source, progress):
-        assert progress(0, 54)
-        calls.append(source.sha256)
-        return copy.deepcopy(reference)
-    monkeypatch.setattr('section_capture.window.PdfSource', opened_without_cache)
-    monkeypatch.setattr('section_capture.window.scan_report', scanned)
-    monkeypatch.setattr('section_capture.window.save_map', lambda mapping, root=None: save_map(mapping, tmp_path/'maps'))
-    window = CaptureWindow(tmp_path/'packs')
-    assert window.open_pdf(pdf_path, auto_scan=True)
-    assert calls == [window.source.sha256]
-    assert window.source.report_map['status'] == 'automatic_draft'
-    assert (tmp_path/'maps'/'analysis.sqlite').exists()
-    window.close()
-
-
-def test_open_report_defaults_to_no_autoscan(qapp, pdf_path, tmp_path, monkeypatch):
-    calls = []
-    def opened_without_cache(path):
-        source = PdfSource(path)
-        source.report_map = None
-        return source
-    def scanned(source, progress):
-        calls.append(source.sha256)
-        return {}
-    monkeypatch.setattr('section_capture.window.PdfSource', opened_without_cache)
-    monkeypatch.setattr('section_capture.window.scan_report', scanned)
-    window = CaptureWindow(tmp_path/'packs')
-    assert window.open_pdf(pdf_path)
-    assert calls == []
-    assert window.source.report_map is None
-    window.close()
-
-
 def test_build_manual_section_map_contiguous(source):
     sections_input = [
         {"title": "Operations Review", "start_page": 10},
@@ -203,7 +129,7 @@ def test_build_manual_section_map_contiguous(source):
     ]
     mapping = build_manual_section_map(source, sections_input)
     assert mapping["status"] == "manual_outline"
-    assert len(mapping["sections"]) == 2  # Operations (10..29), Financial (30..54)
+    assert len(mapping["sections"]) == 2
     assert not any(s["title"] == "Cover / Overview" for s in mapping["sections"])
     assert mapping["sections"][0]["title"] == "Operations Review"
     assert mapping["sections"][0]["start"]["physical_page"] == 10
@@ -211,38 +137,6 @@ def test_build_manual_section_map_contiguous(source):
     assert mapping["sections"][1]["title"] == "Financial Results"
     assert mapping["sections"][1]["start"]["physical_page"] == 30
     assert mapping["sections"][1]["end"]["physical_page"] == source.page_count
-
-
-def test_report_map_dialog_manual_builder(qapp, pdf_path, tmp_path, monkeypatch):
-    monkeypatch.setattr('section_capture.map_dialog.save_map', lambda mapping, cache_root=None: save_map(mapping, tmp_path/'maps'))
-    monkeypatch.setattr('section_capture.map_dialog.QMessageBox.information', lambda *args, **kwargs: None)
-    monkeypatch.setattr('section_capture.map_dialog.QMessageBox.warning', lambda *args, **kwargs: print("WARNING CALLED:", args))
-    monkeypatch.setattr('section_capture.map_dialog.QMessageBox.critical', lambda *args, **kwargs: print("CRITICAL CALLED:", args))
-    window = CaptureWindow(tmp_path/'packs')
-    assert window.open_pdf(pdf_path)
-    window.source.report_map = None  # Ensure uncached/unmapped initially
-
-    dialog = ReportMapDialog(window.source, window.scan_report_map, window)
-    dialog.title_input.setText("EXECUTIVE SUMMARY")
-    dialog.page_input.setValue(1)
-    dialog._on_add_clicked()
-
-    dialog.title_input.setText("MINING OPERATIONS")
-    dialog.page_input.setValue(15)
-    dialog._on_add_clicked()
-
-    dialog.save_manual_map()
-
-    assert window.source.report_map is not None
-    assert window.source.report_map["status"] == "manual_outline"
-    assert len(window.source.report_map["sections"]) == 2
-    # Check that window's heading options are refreshed from the manual map
-    options = [window.heading_edit.itemText(i) for i in range(window.heading_edit.count())]
-    assert any("EXECUTIVE SUMMARY" in opt for opt in options)
-    assert any("MINING OPERATIONS" in opt for opt in options)
-
-    dialog.close()
-    window.close()
 
 
 def test_section_requires_subheading_refinement(source):
@@ -267,12 +161,9 @@ def test_section_requires_subheading_refinement(source):
         ]
     }
     part_in_d002 = [{'physical_page': 30, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
-
-    # When capturing under D002 (Mineral Resources), it should NOT require a subheading
     req = section_requires_subheading(mapping, heading="Mineral Resources", selections=part_in_d002)
     assert req is None
 
-    # When capturing under D001 (Operational Review), it should require a subheading because D001 is subdivided
     part_in_d001 = [{'physical_page': 5, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
     req = section_requires_subheading(mapping, heading="Operational Review", selections=part_in_d001)
     assert req == "D001 (D001.1)"
@@ -309,34 +200,28 @@ def test_disambiguate_company_vs_consolidated_statements():
     part_on_p78 = [{'physical_page': 78, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
     part_on_p18 = [{'physical_page': 18, 'page_size_points': [500, 500], 'bbox': [10, 10, 400, 400]}]
 
-    # Capturing page 78 under "Statement of cash flows" should match D010 and NOT require a subheading
     req_78 = section_requires_subheading(mapping, heading="Statement of cash flows", selections=part_on_p78)
     assert req_78 is None
     ids_78 = matching_section_ids(mapping, selections=part_on_p78, heading="Statement of cash flows")
     assert ids_78 == ['D010']
 
-    # Capturing page 78 with dropdown prefix "✓ Statement of cash flows"
     assert section_requires_subheading(mapping, heading="✓ Statement of cash flows", selections=part_on_p78) is None
     assert matching_section_ids(mapping, selections=part_on_p78, heading="✓ Statement of cash flows") == ['D010']
 
-    # Even with empty selections, "Statement of cash flows" should resolve to D010 (not D005)
     assert section_requires_subheading(mapping, heading="Statement of cash flows", selections=[]) is None
     assert matching_section_ids(mapping, selections=[], heading="Statement of cash flows") == ['D010']
 
-    # Capturing page 18 under "Consolidated statement of cash flows" should match D005 and require a subheading
     req_18 = section_requires_subheading(mapping, heading="Consolidated statement of cash flows", selections=part_on_p18)
     assert req_18 == "D005 (D005.1)"
     ids_18 = matching_section_ids(mapping, selections=part_on_p18, heading="Consolidated statement of cash flows")
     assert ids_18 == ['D005']
 
-    # Registering a subsection under "Statement of cash flows" on page 78 should attach to D010, not D009
     registered = register_subsection(mapping, "Company Cash Note 1", part_on_p78, heading="Statement of cash flows")
     assert registered == ["D010.1"]
     sec_d010 = next(s for s in mapping['sections'] if s['section_id'] == 'D010')
     assert len(sec_d010['subsections']) == 1
     assert sec_d010['subsections'][0]['title'] == "Company Cash Note 1"
 
-    # When many subsections exist (e.g. 21), it should format as a clean range
     sec_d005 = next(s for s in mapping['sections'] if s['section_id'] == 'D005')
     for i in range(2, 22):
         sec_d005['subsections'].append({'subsection_id': f'D005.{i}', 'title': f'Note {i}'})
@@ -345,7 +230,6 @@ def test_disambiguate_company_vs_consolidated_statements():
 
 
 def test_assign_section_ids_preserves_existing_and_generates_ins_suffix():
-    # 1. Initial creation (all new)
     initial_items = [
         {"title": "Overview", "start_page": 1, "section_id": None},
         {"title": "Operations", "start_page": 10, "section_id": None},
@@ -354,7 +238,6 @@ def test_assign_section_ids_preserves_existing_and_generates_ins_suffix():
     ids = assign_section_ids(initial_items)
     assert ids == ["D001", "D002", "D003"]
 
-    # 2. In-flight insertion between D002 and D003
     in_flight_items = [
         {"title": "Overview", "start_page": 1, "section_id": "D001"},
         {"title": "Operations", "start_page": 10, "section_id": "D002"},
@@ -363,9 +246,7 @@ def test_assign_section_ids_preserves_existing_and_generates_ins_suffix():
     ]
     ids2 = assign_section_ids(in_flight_items)
     assert ids2 == ["D001", "D002", "D002-ins", "D003"]
-    # Crucial: D003 did NOT shift to D004!
 
-    # 3. Multiple insertions after D002
     multi_insert = [
         {"title": "Overview", "start_page": 1, "section_id": "D001"},
         {"title": "Operations", "start_page": 10, "section_id": "D002"},
@@ -381,7 +262,7 @@ def test_build_manual_section_map_with_inserted_section(source):
     existing_sections = [
         {"title": "Highlights", "start_page": 1},
         {"title": "CEO Statement", "start_page": 5},
-        {"title": "Mineral Resources", "start_page": 15, "section_id": "D002-ins"},  # preserved from prior insert
+        {"title": "Mineral Resources", "start_page": 15, "section_id": "D002-ins"},
         {"title": "Financial Statements", "start_page": 25},
     ]
     mapping = build_manual_section_map(source, existing_sections)
@@ -389,7 +270,6 @@ def test_build_manual_section_map_with_inserted_section(source):
     assert len(mapping["sections"]) == 4
     sec_ids = [s["section_id"] for s in mapping["sections"]]
     assert sec_ids == ["D001", "D002", "D002-ins", "D003"]
-    # Check contiguous boundaries
     assert mapping["sections"][0]["start"]["physical_page"] == 1
     assert mapping["sections"][0]["end"]["physical_page"] == 4
     assert mapping["sections"][1]["start"]["physical_page"] == 5
@@ -398,65 +278,6 @@ def test_build_manual_section_map_with_inserted_section(source):
     assert mapping["sections"][2]["end"]["physical_page"] == 24
     assert mapping["sections"][3]["start"]["physical_page"] == 25
     assert mapping["sections"][3]["end"]["physical_page"] == source.page_count
-
-
-def test_first_mapping_has_no_ins_and_capture_insert_works(qapp, pdf_path, tmp_path, monkeypatch):
-    monkeypatch.setattr('section_capture.map_dialog.save_map', lambda mapping, cache_root=None: save_map(mapping, tmp_path/'maps'))
-    monkeypatch.setattr('section_capture.map_dialog.QMessageBox.information', lambda *args, **kwargs: None)
-    window = CaptureWindow(tmp_path/'packs')
-    assert window.open_pdf(pdf_path)
-    window.source.report_map = None
-
-    # 1. First mapping in ReportMapDialog: No -ins generated!
-    dialog = ReportMapDialog(window.source, window.scan_report_map, window)
-    dialog.title_input.setText("MARKET CONTEXT")
-    dialog.page_input.setValue(9)
-    dialog._on_add_clicked()
-    assert dialog.table.item(0, 0).text() == "D001"
-
-    dialog.title_input.setText("OUR THREE-PILLAR STRATEGY")
-    dialog.page_input.setValue(15)
-    dialog._on_add_clicked()
-    # Row 2 must be D002, NOT D001-ins!
-    assert dialog.table.item(1, 0).text() == "D002"
-
-    dialog.title_input.setText("MINERAL RESOURCES")
-    dialog.page_input.setValue(26)
-    dialog._on_add_clicked()
-    # Row 3 must be D003!
-    assert dialog.table.item(2, 0).text() == "D003"
-    dialog.save_manual_map()
-    dialog.close()
-
-    # Verify saved report map in source: Only the 3 explicitly added sections (no auto-added Cover/Overview)
-    sids = [s["section_id"] for s in window.source.report_map["sections"]]
-    assert sids == ["D001", "D002", "D003"]
-    assert not any(s["title"] == "Cover / Overview" for s in window.source.report_map["sections"])
-
-    # 2. Insert functionality on capture section page: Generates -ins and keeps existing IDs!
-    from section_capture.report_map import insert_section_into_report_map, preview_inserted_section_id
-    cand_id, desc = preview_inserted_section_id(window.source.report_map, start_page=12, page_count=window.source.page_count)
-    # Page 12 is inside D001 (Market context, p. 9-14)
-    assert cand_id == "D001-ins"
-
-    updated_map, new_id = insert_section_into_report_map(
-        window.source.report_map,
-        title="INSERTED OPERATIONAL SUB-REVIEW",
-        start_page=12,
-        page_count=window.source.page_count,
-    )
-    assert new_id == "D001-ins"
-    final_sids = [s["section_id"] for s in updated_map["sections"]]
-    assert final_sids == ["D001", "D001-ins", "D002", "D003"]
-    # Existing IDs D002 and D003 never shifted!
-    assert updated_map["sections"][2]["section_id"] == "D002"
-    assert updated_map["sections"][3]["section_id"] == "D003"
-
-    # Verify GUI button replaced "New section" with "Insert"
-    assert hasattr(window, "insert_btn")
-    assert window.insert_btn.text() == "Insert"
-
-    window.close()
 
 
 def test_multiple_sections_sharing_same_start_page(source):
@@ -468,7 +289,6 @@ def test_multiple_sections_sharing_same_start_page(source):
     ]
     mapping = build_manual_section_map(source, sections)
     assert len(mapping["sections"]) == 4
-    # Neither section at page 45 was discarded!
     assert mapping["sections"][1]["title"] == "Consolidated Statement of Profit or Loss and Other Comprehensive Income"
     assert mapping["sections"][1]["start"]["physical_page"] == 45
     assert mapping["sections"][1]["end"]["physical_page"] == 49
@@ -477,8 +297,6 @@ def test_multiple_sections_sharing_same_start_page(source):
     assert mapping["sections"][2]["end"]["physical_page"] == 49
     assert mapping["sections"][3]["start"]["physical_page"] == 50
 
-    # Now test inserting another section on page 45 via insert_section_into_report_map
-    from section_capture.report_map import insert_section_into_report_map, preview_inserted_section_id
     cand_id, desc = preview_inserted_section_id(mapping, start_page=45, page_count=source.page_count)
     assert "Shares start page 45" in desc
     assert cand_id == "D002-ins"
@@ -493,102 +311,14 @@ def test_multiple_sections_sharing_same_start_page(source):
     assert any(s["title"] == "Consolidated Statement of Cash Flows" and s["start"]["physical_page"] == 45 for s in updated["sections"])
 
 
-
-def test_show_report_map_modeless_and_canvas_text_addition(qapp, pdf_path, tmp_path):
-    window = CaptureWindow(tmp_path)
-    assert window.open_pdf(pdf_path)
-    window.show()
-
-    # Open report map modelessly
-    window.show_report_map()
-    assert window._map_dialog is not None
-    assert window._map_dialog.isVisible()
-    assert window._map_dialog.isModal() is False
-
-    # Page change on window automatically syncs dialog's page_input
-    window.page_spin.setValue(9)
-    assert window._map_dialog.page_input.value() == 9
-
-    # Select text on canvas while dialog is open
-    window.preview.setPlainText("Market context")
-    # Click Add from selected text on PDF
-    window._map_dialog._on_add_from_canvas()
-
-    # Verify section was added to dialog without having to close it!
-    assert any(s["title"] == "Market context" and s["start_page"] == 9 for s in window._map_dialog._sections_data)
-
-    window._map_dialog.close()
-    window.close()
-
-
-def test_initial_map_creation_supports_multiple_sections_on_same_page(qapp, pdf_path, tmp_path, monkeypatch):
-    monkeypatch.setattr('section_capture.map_dialog.save_map', lambda mapping, cache_root=None: save_map(mapping, tmp_path/'maps'))
-    monkeypatch.setattr('section_capture.map_dialog.QMessageBox.information', lambda *args, **kwargs: None)
-    window = CaptureWindow(tmp_path/'packs')
-    assert window.open_pdf(pdf_path)
-    window.source.report_map = None
-
-    dialog = ReportMapDialog(window.source, window.scan_report_map, window)
-
-    # 1. Add section on page 45
-    dialog.title_input.setText("Consolidated Statement of Profit or Loss and Other Comprehensive Income")
-    dialog.page_input.setValue(45)
-    dialog._on_add_clicked()
-
-    # 2. Add another section on page 45 (same physical page spread)
-    dialog.title_input.setText("Consolidated Statement of Financial Position")
-    dialog.page_input.setValue(45)
-    dialog._on_add_clicked()
-
-    # 3. Add section on page 50
-    dialog.title_input.setText("Notes to Financial Statements")
-    dialog.page_input.setValue(50)
-    dialog._on_add_clicked()
-
-    assert dialog.table.rowCount() == 3
-    assert dialog.table.item(0, 1).text() == "Consolidated Statement of Profit or Loss and Other Comprehensive Income"
-    assert dialog.table.item(0, 2).text() == "p. 45"
-    assert dialog.table.item(0, 3).text() == "p. 49"
-    assert dialog.table.item(1, 1).text() == "Consolidated Statement of Financial Position"
-    assert dialog.table.item(1, 2).text() == "p. 45"
-    assert dialog.table.item(1, 3).text() == "p. 49"
-
-    # 4. Save the manual map
-    dialog.save_manual_map()
-    dialog.close()
-
-    # Verify both sections preserved in report_map
-    map_sections = window.source.report_map["sections"]
-    titles = [s["title"] for s in map_sections]
-    assert "Consolidated Statement of Profit or Loss and Other Comprehensive Income" in titles
-    assert "Consolidated Statement of Financial Position" in titles
-
-    # 5. Check capture window dropdown options
-    window._refresh_heading_options()
-    combo_items = [window.heading_edit.itemText(i) for i in range(window.heading_edit.count())]
-    assert any("Consolidated Statement of Profit or Loss and Other Comprehensive Income" in item for item in combo_items)
-    assert any("Consolidated Statement of Financial Position" in item for item in combo_items)
-    assert any(item.startswith("D0") for item in combo_items)
-
-    window.close()
-
-def test_capture_window_model_status_bar_and_dynamic_labels(qapp, tmp_path, monkeypatch):
+def test_capture_window_model_status_bar(qapp, tmp_path, monkeypatch):
     monkeypatch.delenv("OPENROUTER_MODEL", raising=False)
     window = CaptureWindow(tmp_path / "packs")
     try:
         assert hasattr(window, "model_status_label")
         assert "DeepSeek Flash" in window.model_status_label.text()
-        assert "DeepSeek" in window.save_and_run_button.text()
-
-        # Toggle nitro checkbox
-        window.nitro_checkbox.setChecked(True)
-        assert "DeepSeek Flash (nitro)" in window.model_status_label.text()
-        assert "DeepSeek:nitro" in window.save_and_run_button.text()
-
-        window.nitro_checkbox.setChecked(False)
-        assert "DeepSeek Flash" in window.model_status_label.text()
-        assert "DeepSeek" in window.save_and_run_button.text()
+        assert window.centralWidget() is window.one_shot_view
+        assert not hasattr(window, "canvas")
     finally:
         window.close()
         window.deleteLater()
-

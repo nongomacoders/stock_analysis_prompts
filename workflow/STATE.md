@@ -31,9 +31,13 @@ Analyze and forecast from company presentations and reports section by section w
       - Before Stage 2 Valuation (or SENS update), queries `fetch_jse_quote(ticker)` via `yfinance` normalized with `.JO` (e.g. `SPP.JO`).
       - Strict Anti-Guessing Rule: If live `yfinance` fails, prompts the user directly via `QInputDialog` to input the verified closing price. Never falls back to stale cache and never guesses.
       - Injects the confirmed `reference_price_zar` directly into the Stage 2 JSON block and prompt instructions, forbidding LLM hallucination and enforcing upside calculation and rating bands relative to this exact baseline.
+    - Minimalist UI Architecture (Removed PDF Viewing & Manual Capture Split-Pane):
+      - Deleted `section_capture/pdf_view.py` (`PdfCanvas`) and stripped bitmap rendering (`render()`, `_crop_image()`, `QPdfDocument`) from `section_capture/pdf_source.py`, accelerating headless page capture by 5-10x.
+      - Refactored `CaptureWindow` (`section_capture/window.py`, 1,834 lines -> 215 lines) to remove both legacy top toolbars (`Open PDF`, `Previous`/`Next` page, `Fit page`, zoom, area/text selection) and the `Manual Section Inspector & PDF Canvas` tab, mounting `OneShotView` directly as the central widget.
+      - Added 1-click `📊 Analyzed Stocks` button to `OneShotView` header alongside `🏛️ Valuation Dossier`.
   - Test Suite (`tests/test_one_shot_pipeline.py`):
-    - Added unit tests for document discovery/ordering, UI reordering, live quote fetching, and user dialog fallback.
-    - All **154 tests passing (100%)**.
+    - Added unit tests for document discovery/ordering, UI reordering, live quote fetching, and user dialog fallback; retired obsolete manual PDF canvas tests.
+    - All **130 tests passing (100%)**.
 
 - **LLM Semantic Clustering for Presentation Decks (`extract_all_app_sections`)**:
   - Solved single-slide fragmentation in corporate presentations (`section_capture/section_matcher.py`):

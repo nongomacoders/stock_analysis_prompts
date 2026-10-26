@@ -632,10 +632,15 @@ class OneShotView(QWidget):
 
         row_b.addStretch(1)
 
-        self.open_dossier_btn = QPushButton("🏛️ Open Valuation Dossier & Portfolio")
-        self.open_dossier_btn.setToolTip("Open the full Stage 1 & 2 Audit/Valuation Dialog and Portfolio Coverage Table")
+        self.open_dossier_btn = QPushButton("🏛️ Valuation Dossier")
+        self.open_dossier_btn.setToolTip("Open the full Stage 1 & 2 Audit/Valuation Dossier Dialog")
         self.open_dossier_btn.clicked.connect(self._on_open_dossier_clicked)
         row_b.addWidget(self.open_dossier_btn)
+
+        self.portfolio_btn = QPushButton("📊 Analyzed Stocks")
+        self.portfolio_btn.setToolTip("Open the Portfolio Valuation Coverage Table & Payoff Matrix")
+        self.portfolio_btn.clicked.connect(self._on_open_portfolio_clicked)
+        row_b.addWidget(self.portfolio_btn)
 
         self.stop_btn = QPushButton("⏹ Stop")
         self.stop_btn.setEnabled(False)
@@ -1131,6 +1136,21 @@ class OneShotView(QWidget):
     def _on_new_company_clicked(self):
         if self.main_window and hasattr(self.main_window, "show_new_company_dialog"):
             self.main_window.show_new_company_dialog()
+            return
+        from PySide6.QtWidgets import QDialog
+        from .new_company_dialog import NewCompanyDialog
+        dlg = NewCompanyDialog(self)
+        if dlg.exec() == QDialog.DialogCode.Accepted:
+            self.refresh_companies(select_ticker=getattr(dlg, "created_ticker", None))
+
+    def _on_open_portfolio_clicked(self):
+        dlg = AuditValuationDialog(
+            source=None,
+            parent=self.main_window or self,
+            db_path=self.db_path,
+            initial_tab=2,
+        )
+        dlg.show()
 
     def _on_open_dossier_clicked(self):
         if not self.current_company:

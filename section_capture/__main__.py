@@ -2,7 +2,6 @@ import argparse
 import sys
 from pathlib import Path
 
-from PySide6.QtCore import QTimer
 from PySide6.QtGui import QFont, QFontDatabase
 from PySide6.QtWidgets import QApplication
 
@@ -27,8 +26,6 @@ QStatusBar { background: #eaf0f6; padding: 4px; }
 
 
 def apply_theme(app):
-    # Restricted/offscreen Windows sessions sometimes cannot enumerate the
-    # registry font catalogue. Load installed system fonts directly as fallback.
     if not QFontDatabase.families():
         for name in ("segoeui.ttf", "seguisb.ttf"):
             path = Path("C:/Windows/Fonts") / name
@@ -39,12 +36,11 @@ def apply_theme(app):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Select PDF evidence and save an LLM upload pack.")
-    parser.add_argument("pdf", nargs="?", help="Optional PDF to open")
-    parser.add_argument("--output", type=Path, help="Folder for saved section packs")
+    parser = argparse.ArgumentParser(description="Autonomous Equity Research Pipeline.")
+    parser.add_argument("--output", type=Path, help="Folder for SQLite database")
     args = parser.parse_args()
     app = QApplication(sys.argv[:1])
-    app.setApplicationName("Report Section Capture")
+    app.setApplicationName("Equity Research — Autonomous Pipeline")
     apply_theme(app)
     window = CaptureWindow(args.output)
     screen = app.primaryScreen()
@@ -52,8 +48,6 @@ def main():
         available = screen.availableGeometry()
         window.resize(min(1440, available.width() - 50), min(940, available.height() - 60))
     window.show()
-    if args.pdf:
-        QTimer.singleShot(0, lambda: window.open_pdf(args.pdf))
     return app.exec()
 
 
