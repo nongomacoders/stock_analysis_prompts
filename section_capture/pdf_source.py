@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import logging
 import math
 import re
 from dataclasses import dataclass, field
@@ -11,6 +12,8 @@ from pathlib import Path
 import pdfplumber
 from PySide6.QtCore import QRectF
 from .report_map import load_cached_map, load_questions_ledger
+
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 def extract_structured_text(crop) -> str:
