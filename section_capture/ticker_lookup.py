@@ -23,6 +23,7 @@ from companies.sectors import (
     resolve_sector_alias,
 )
 from section_capture.db import KNOWN_COMPANIES
+from section_capture.market_data import fetch_jse_company_profile
 from section_capture.openrouter import get_model_display_name, get_openrouter_api_key, query_openrouter
 from section_capture.packages import has_sector_prompt
 from section_capture.report_map import has_orientation_prompt
@@ -154,16 +155,45 @@ def check_prompt_appropriateness(sector_code: str) -> dict[str, Any]:
     }
 
 
-def build_ticker_examination_prompt(ticker: str) -> str:
-    """Builds a structured prompt for OpenRouter to discover company details and assess Stage 1/2 appropriateness."""
+def build_ticker_examination_prompt(ticker: str, verified_profile: dict[str, Any] | None = None) -> str:
+    """Builds a structured prompt for OpenRouter with live web search to discover company details and assess Stage 1/2 appropriateness."""
     registered_sectors = ", ".join(sorted(get_all_sector_codes()))
+    t_clean = ticker.strip().upper()
+
+    profile_context = ""
+    if verified_profile:
+        p_name = verified_profile.get("company_name", "")
+        p_sec = verified_profile.get("sector", "")
+        p_ind = verified_profile.get("industry", "")
+        p_sum = verified_profile.get("business_summary", "")
+        profile_context = f"""
+VERIFIED JSE LISTING GROUND TRUTH FOR {t_clean} ({t_clean}.JO):
+- Official Corporate Name: {p_name}
+- Industry / Sector Classification: {p_sec} - {p_ind}
+- Operations Summary: {p_sum}
+"""
+
     return f"""You are a senior Johannesburg Stock Exchange (JSE) and FTSE/JSE ICB equity research analyst.
 Examine the following stock ticker symbol on the JSE:
 
-Ticker: {ticker.strip().upper()}
+Ticker: {t_clean}
+{profile_context}
+CRITICAL ACCURACY & SEARCH DIRECTIVE:
+1. Search live JSE listings, official SENS announcements, and investor relations (e.g. jse.co.za) for ticker symbol '{t_clean}'.
+2. Confirm the exact public corporate identity trading on the JSE under ticker '{t_clean}'.
+   - Do NOT guess, hallucinate, or assume arbitrary private or unlisted companies.
+   - For example:
+     - 'DCP' is Dis-Chem Pharmacies Limited (Consumer Staples / Pharmacy & Healthcare Retail).
+     - 'VOD' is Vodacom Group Limited (Mobile Telecommunications).
+     - 'RBX' is Raubex Group Limited (Construction & Materials).
+     - 'DTC' is Datatec Limited (Technology Services & Solutions).
+     - 'PIK' is Pick n Pay Stores Limited (Food & Drug Retail).
+     - 'SRE' is Sirius Real Estate Limited (Real Estate Investment Trust).
+     - 'NTU' is Nutun Limited (Consumer Lending & Credit Management).
+3. Map the company to the closest registered sector code in our research framework: [{registered_sectors}].
+   - Note: Dis-Chem (DCP) maps to 'retail'. Vodacom (VOD) maps to 'telcos'. Raubex (RBX) maps to 'construction'.
 
-Please provide accurate, verified details on this company and assess whether our two-stage institutional research pipeline prompts are appropriate for its business and accounting model:
-
+Assess whether our two-stage institutional research pipeline prompts are appropriate for its business and accounting model:
 - Stage 1 Mandate: Cognitive Forensic Accounting Audit (audits accounting policies, IFRS recognition, balance sheet quality, debt covenants, and segmental earnings before valuation).
 - Stage 2 Mandate: Institutional Valuation Note (2-year operational forecast, SOTP DCF or relevant intrinsic valuation model, target price in ZAR, and monitoring triggers).
 
@@ -171,11 +201,11 @@ Registered sector options in our system: [{registered_sectors}].
 
 Return ONLY a valid JSON object with the following exact keys:
 {{
-  "ticker": "{ticker.strip().upper()}",
+  "ticker": "{t_clean}",
   "company_name": "Official Full Legal Company Name",
   "jse_sector": "Official FTSE/JSE ICB Sector Name",
-  "icb_code": "Official ICB numeric code (e.g. 30201020, 551030)",
-  "matched_sector_code": "One of [{registered_sectors}] or closest industry slug",
+  "icb_code": "Official ICB numeric code (e.g. 30201020, 551030, 404010)",
+  "matched_sector_code": "One of [{registered_sectors}]",
   "business_summary": "1-2 sentence description of primary operations and profit drivers.",
   "stage1_appropriateness": {{
     "status": "Appropriate" or "Requires Special Focus",
@@ -219,7 +249,7 @@ def parse_examination_response(raw_text: str) -> dict[str, Any]:
 
 
 class TickerExamineWorker(QThread):
-    """Background worker executing OpenRouter examination query without blocking Qt event loop."""
+    """Background worker executing verified JSE lookup and OpenRouter web examination without blocking Qt event loop."""
 
     finished_examination = Signal(dict)
     failed_examination = Signal(str)
@@ -228,19 +258,88 @@ class TickerExamineWorker(QThread):
         super().__init__(parent)
         self.ticker = ticker.strip().upper()
 
+    def _synthesize_profile_response(self, profile: dict[str, Any]) -> dict[str, Any]:
+        ticker = self.ticker
+        c_name = profile.get("company_name") or f"{ticker} Limited"
+        ind = profile.get("industry") or ""
+        sec = profile.get("sector") or ""
+        matched_sec = (
+            normalize_sector_code(ind)
+            or normalize_sector_code(sec)
+            or resolve_sector_alias(ind)
+            or resolve_sector_alias(sec)
+            or "retail"
+        )
+        return {
+            "ticker": ticker,
+            "company_name": c_name,
+            "jse_sector": f"{sec} / {ind}".strip(" /"),
+            "icb_code": "",
+            "matched_sector_code": matched_sec,
+            "business_summary": profile.get("business_summary") or f"{c_name} ({ticker}) listed on the JSE.",
+            "stage1_appropriateness": {
+                "status": "Appropriate",
+                "focus_areas": "Audit accounting policies, revenue recognition, IFRS 16 leases, working capital, and segmental earnings.",
+                "caveats": "Verify against published annual financial statements."
+            },
+            "stage2_appropriateness": {
+                "status": "Appropriate",
+                "recommended_valuation_model": "SOTP DCF / Multiples",
+                "key_drivers": "Revenue growth, operational margins, working capital efficiency, and free cash flow generation."
+            }
+        }
+
     def run(self):
         try:
+            # 1. Pre-fetch verified JSE profile from Yahoo Finance / market data
+            verified_profile = fetch_jse_company_profile(self.ticker)
+
             api_key = get_openrouter_api_key()
             if not api_key:
+                if verified_profile:
+                    resp = self._synthesize_profile_response(verified_profile)
+                    self.finished_examination.emit(resp)
+                    return
                 self.failed_examination.emit("OpenRouter API key not configured in secrets.env or environment.")
                 return
 
-            prompt = build_ticker_examination_prompt(self.ticker)
-            resp = query_openrouter(prompt, timeout=60, max_tokens=2048)
-            content = resp[0] if isinstance(resp, tuple) else resp
-            parsed = parse_examination_response(content)
+            prompt = build_ticker_examination_prompt(self.ticker, verified_profile=verified_profile)
+            parsed: dict[str, Any] = {}
+            try:
+                # Query OpenRouter with live web search enabled
+                resp = query_openrouter(prompt, timeout=60, max_tokens=2048, web_search=True)
+                content = resp[0] if isinstance(resp, tuple) else resp
+                parsed = parse_examination_response(content)
+            except Exception as llm_err:
+                if verified_profile:
+                    resp = self._synthesize_profile_response(verified_profile)
+                    self.finished_examination.emit(resp)
+                    return
+                raise llm_err
+
+            # Ground response with verified_profile if LLM hallucinated or returned incomplete data
+            if verified_profile:
+                if not parsed.get("company_name") or parsed.get("company_name") == self.ticker or "pty" in parsed.get("company_name", "").lower():
+                    parsed["company_name"] = verified_profile["company_name"]
+                if not parsed.get("business_summary") or len(parsed.get("business_summary", "")) < 10:
+                    parsed["business_summary"] = verified_profile.get("business_summary", "")
+
+            # Ensure matched_sector_code is valid
+            if not parsed.get("matched_sector_code") and verified_profile:
+                matched = (
+                    normalize_sector_code(verified_profile.get("industry"))
+                    or normalize_sector_code(verified_profile.get("sector"))
+                    or resolve_sector_alias(verified_profile.get("industry"))
+                    or resolve_sector_alias(verified_profile.get("sector"))
+                )
+                if matched:
+                    parsed["matched_sector_code"] = matched
 
             if "error" in parsed and "company_name" not in parsed:
+                if verified_profile:
+                    resp = self._synthesize_profile_response(verified_profile)
+                    self.finished_examination.emit(resp)
+                    return
                 self.failed_examination.emit(f"Could not parse company details: {parsed.get('error')}")
                 return
 

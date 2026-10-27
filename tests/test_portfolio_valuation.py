@@ -45,16 +45,16 @@ def test_parse_valuation_summary_lewis():
     text = lewis_note_path.read_text(encoding="utf-8")
     summary = parse_valuation_summary(text)
 
-    assert summary.get("target_price") == 84.50
-    assert summary.get("reference_price") == 79.00
+    assert summary.get("target_price") == 95.00
+    assert summary.get("reference_price") == 90.19
     assert summary.get("recommendation") == "HOLD"
-    assert summary.get("upside_pct") == 6.96
-    assert summary.get("dividend_yield_pct") == 11.90
-    assert summary.get("tsr_pct") == 18.86
+    assert round(summary.get("upside_pct", 0), 2) == 5.33
+    assert round(summary.get("dividend_yield_pct", 0), 2) == 9.44
+    assert round(summary.get("tsr_pct", 0), 2) == 14.77
     assert summary.get("sector") == "retail"
 
     triggers = summary.get("monitoring_triggers", "")
-    assert "Debtor Cost Migration" in triggers
+    assert "Collection Rate" in triggers
     assert "Gross Margin" in triggers
     assert "Speciality Segment Turnaround" in triggers
 
@@ -445,7 +445,7 @@ def test_normalize_markdown_for_qt(qapp):
     assert "Summary of SENS" in clean_text
     assert "Following disclosure" in clean_text
 
-def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
+def test_cgr_detection_and_stage1_compile(qapp, monkeypatch, tmp_path):
     from section_capture.db import detect_company_meta, get_analyzed_stocks
     from section_capture.one_shot_view import discover_available_companies
     from workflow.export_stage1 import export_stage1_prompt
@@ -479,7 +479,7 @@ def test_cgr_detection_and_stage1_compile(qapp, monkeypatch):
         assert cgr_comp["sha256"] == cgr_stock["sha256"]
 
         # 4. CLI workflow/export_stage1.py
-        out_file = export_stage1_prompt("CGR")
+        out_file = export_stage1_prompt("CGR", output_path=tmp_path / "CGR_FY26_stage1_forensic_prompt.md")
         assert out_file.exists()
         assert out_file.stat().st_size > 1000
 
@@ -776,7 +776,8 @@ def test_portfolio_view_dynamic_rating_badges_and_filter(qapp, tmp_path):
     pv = PortfolioView(db_path=test_db)
     try:
         assert pv.table.rowCount() == 1
-        rec_item = pv.table.item(0, 10)
+        assert pv.table.columnCount() == 11
+        rec_item = pv.table.item(0, 8)
         assert rec_item is not None
         assert rec_item.text() == "STRONG SELL"
         tooltip = rec_item.toolTip()

@@ -235,7 +235,7 @@ class NewCompanyDialog(QDialog):
         model_name = get_model_display_name()
         self.examine_btn.setEnabled(False)
         self.examine_btn.setText("⏳ Examining...")
-        self.assessment_header.setText(f"⏳ Querying {model_name} for <b>{ticker}</b> details and evaluating Stage 1 & Stage 2 prompt fit...")
+        self.assessment_header.setText(f"⏳ Searching live JSE & querying {model_name} for <b>{ticker}</b> details and evaluating prompt fit...")
         self.assessment_details.setText("")
         self.assessment_frame.setVisible(True)
 

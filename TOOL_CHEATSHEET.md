@@ -5,7 +5,7 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 ---
 
 ### 1. PowerShell & Python One-Liners
-* **Quote stripping issue**: PowerShell swallows nested double quotes in `python -c "..."`, causing `SyntaxError: unterminated string literal`.
+* **Quote stripping issue**: Windows PowerShell 5.1 swallows inner double quotes in BOTH `python -c "..."` and single-quoted `python -c 'print("hello world")'` when the inner string contains spaces (turning `"hello world"` into bare tokens `hello world` and raising `SyntaxError: '(' was never closed`).
 * **Bracket / type literal parsing**: PowerShell treats unquoted brackets like `print([c[1] for c in ...])` inside command strings as attribute or type literal expressions, throwing `Missing ] at end of attribute or type literal`.
 * **Multi-line parser error**: Running multi-line `python -c "..."` causes `ScriptBlock should only be specified as a value of the Command parameter`.
 * **Windows Charmap / Unicode error**: PowerShell defaults to `cp1252`. Printing Unicode characters like `⚡`, `✓`, or emojis crashes Python with `UnicodeEncodeError: 'charmap' codec can't encode character...`.
@@ -127,6 +127,7 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 * **`load_questions_ledger(sha256, questions_root=...)`**: Uses `questions_root` (not `db_path`) to resolve the database directory.
 * **`upsert_report(sha256=..., filename=..., original_path=..., ...)`**: Takes explicit keyword/positional fields (`sha256`, `filename`, `original_path`, `byte_size`, `physical_page_count`, `doc_type`, `period`, `db_path`), not a `PdfSource` object.
 * **`build_stage2_prompt_content(...)`**: Takes `(stage1_content, company_title, ticker, detected_sector, sens_announcements=None)` — does not take `filename`.
+* **`section_capture.openrouter`**: `OpenRouterWorker`, `get_openrouter_model()`, and `get_model_display_name()` live in `section_capture.openrouter` (not `section_capture.llm_worker`).
 
 
 ---
@@ -134,3 +135,42 @@ Keep interventions fast, lean, and error-free on Windows + PowerShell.
 ### 13. `git add` After `git rm` Gotcha
 * **Issue**: Passing a file already deleted via `git rm <path>` into a subsequent `git add <path> <other_files>...` causes `fatal: pathspec '<path>' did not match any files` and aborts staging for all `<other_files>` in that command.
 * **Rule**: Do not re-pass `git rm`-deleted paths to `git add`; only pass modified or untracked files to `git add`.
+
+
+---
+
+### 14. Stock Evaluation Workflow & Output Format Reference
+* **Guide**: See [`docs/STOCK_EVALUATION_FORMAT.md`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/docs/STOCK_EVALUATION_FORMAT.md) for the mandatory 5-part user response structure, including the **Valuation Errors Found & Analytical Lessons Learned** section and sector-specific checklist.
+* **Evaluation CLI**: Run `.venv\Scripts\python.exe evaluate_stock.py <TICKER> [--period <PERIOD>] [--rerun]`.
+
+---
+
+### 15. Windows CLI UTF-8 Reconfiguration (`UnicodeEncodeError: 'charmap'`)
+* **Issue**: Python scripts printing Unicode symbols (`✓`, `⚠️`, emojis) to default Windows consoles crash on cp1252.
+* **Rule**: Always configure standard output encoding at script entrypoints:
+  ```python
+  if hasattr(sys.stdout, "reconfigure"):
+      sys.stdout.reconfigure(encoding="utf-8")
+  ```
+
+---
+
+### 16. Disk File Regeneration vs Integration Test Assertions
+* **Issue**: Regenerating a valuation note on disk causes tests asserting against that note file in `tests/test_portfolio_valuation.py` to fail if expectations contain legacy numbers.
+* **Rule**: Synchronize test assertions with regenerated notes, or use mock/simulated fixtures for invariant parser tests.
+
+---
+
+### 17. OpenRouter Remote Socket Drops (`WinError 10054`) & Backoff Retry
+* **Issue**: OpenRouter API connections drop during long 70k+ token completions.
+* **Rule**: Wrap API requests in an exponential backoff retry loop (up to 3 attempts with 2s, 4s, 8s delay) in `query_openrouter` (`section_capture/openrouter.py`).
+
+
+---
+
+### 18. JSE Ticker Examination & Ground-Truth LLM Web Search
+* **Issue**: Un-grounded LLM prompts asking about 3-letter stock tickers (e.g. `DCP`) hallucinate non-existent entities (e.g. "DCP (Pty) Ltd Construction") instead of authentic JSE-listed companies (Dis-Chem Pharmacies Limited).
+* **Fix**:
+  1. Use `fetch_jse_company_profile(ticker)` in `section_capture/market_data.py` via `yfinance` (`<TICKER>.JO`) for instant ground truth.
+  2. Pass `web_search=True` (`plugins=[{"id": "web"}]`) in `query_openrouter()` and inject verified listing data into `build_ticker_examination_prompt()`.
+  3. Maintain fallback synthesis (`_synthesize_profile_response`) so the UI never crashes or returns empty data if OpenRouter drops out.

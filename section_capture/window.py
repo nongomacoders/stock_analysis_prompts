@@ -131,7 +131,7 @@ class HeadingComboBox(QComboBox):
 class DocumentClassifyDialog(QDialog):
     """Modal dialog prompting the analyst to classify a document role and reporting period."""
 
-    def __init__(self, filename: str, initial_type: str = "annual_report", initial_period: str = "FY26", parent=None):
+    def __init__(self, filename: str, initial_type: str = "annual_report", initial_period: str = "", parent=None):
         super().__init__(parent)
         self.setWindowTitle("Classify Document Role & Reporting Period")
         self.resize(480, 270)
@@ -172,16 +172,22 @@ class DocumentClassifyDialog(QDialog):
 
         self.period_combo = QComboBox()
         self.period_combo.setEditable(True)
-        common_periods = ["FY26", "1H27", "FY27", "1H26", "2H26", "FY25", "1H25"]
-        if initial_period not in common_periods:
+        self.period_combo.addItem("")  # Blank by default to require explicit selection
+        common_periods = ["1H26", "2H26", "FY26", "1H27", "2H27", "FY27", "1H25", "2H25", "FY25"]
+        if initial_period and initial_period not in common_periods:
             common_periods.insert(0, initial_period)
         for p in common_periods:
             self.period_combo.addItem(p)
-        idx_p = self.period_combo.findText(initial_period)
-        if idx_p >= 0:
-            self.period_combo.setCurrentIndex(idx_p)
+        if initial_period:
+            idx_p = self.period_combo.findText(initial_period)
+            if idx_p >= 0:
+                self.period_combo.setCurrentIndex(idx_p)
+            else:
+                self.period_combo.setEditText(initial_period)
         else:
-            self.period_combo.setEditText(initial_period)
+            self.period_combo.setCurrentIndex(0)
+        if self.period_combo.lineEdit():
+            self.period_combo.lineEdit().setPlaceholderText("Select / Enter Period")
         form.addRow("Reporting Period:", self.period_combo)
 
         layout.addLayout(form)
@@ -193,7 +199,15 @@ class DocumentClassifyDialog(QDialog):
 
     def _on_accept(self):
         self.selected_doc_type = self.type_combo.currentData()
-        self.selected_period = self.period_combo.currentText().strip() or "FY26"
+        period = self.period_combo.currentText().strip()
+        if not period:
+            QMessageBox.critical(
+                self,
+                "Reporting Period Required",
+                "Please select or enter the reporting period (e.g. 1H26, FY26) before continuing.",
+            )
+            return
+        self.selected_period = period
         self.accept()
 
 

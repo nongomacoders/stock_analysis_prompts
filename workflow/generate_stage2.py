@@ -23,7 +23,12 @@ from companies.sectors import (
     get_jse_sector_name,
     get_sector_config,
 )
-from section_capture.db import DOC_TYPES, KNOWN_COMPANIES
+from section_capture.db import (
+    DOC_TYPES,
+    KNOWN_COMPANIES,
+    format_sector_guardrails_block,
+    validate_and_repair_rating_bands,
+)
 
 
 def format_documents_considered_table(
@@ -103,6 +108,39 @@ def ensure_documents_considered_table(
         )
 
     return table_block + "\n\n" + note_markdown.lstrip()
+
+
+def sanitize_stage2_valuation_markdown(
+    note_markdown: str,
+    target_price_hint: float | None = None,
+    reference_price_hint: float | None = None,
+) -> str:
+    """Validates the opening JSON block in a Stage 2 / Stage 2-U valuation note and repairs degenerate rating_bands."""
+    if not note_markdown:
+        return note_markdown
+    import json
+    import re
+
+    m = re.search(r"(```(?:json)?\s*)(\{[\s\S]*?\})(\s*```)", note_markdown, flags=re.IGNORECASE)
+    if not m:
+        return note_markdown
+    try:
+        data = json.loads(m.group(2))
+        if not isinstance(data, dict):
+            return note_markdown
+        tp = data.get("target_price_zar", data.get("target_price", target_price_hint))
+        ref = data.get("reference_price_zar", data.get("reference_price", reference_price_hint))
+        if ref is None and reference_price_hint and reference_price_hint > 0:
+            data["reference_price_zar"] = round(float(reference_price_hint), 2)
+            ref = data["reference_price_zar"]
+        repaired = validate_and_repair_rating_bands(data.get("rating_bands"), tp, ref)
+        if repaired and data.get("rating_bands") != repaired:
+            data["rating_bands"] = repaired
+            new_json = json.dumps(data, indent=2, ensure_ascii=False)
+            return note_markdown[: m.start(2)] + new_json + note_markdown[m.end(2) :]
+    except Exception:
+        pass
+    return note_markdown
 
 
 def _format_section1_spec(
@@ -206,6 +244,7 @@ def build_stage2_prompt_content(
     sens_announcements: list[str] | None = None,
     reference_price_zar: float | None = None,
     source_documents: list[dict] | None = None,
+    db_path: str | Path | None = None,
 ) -> str:
     """Constructs the Stage 2 Markdown prompt text incorporating Stage 1 determinations as 99% confidence prior."""
     md_lines: list[str] = []
@@ -264,8 +303,8 @@ def build_stage2_prompt_content(
         md_lines.append("## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE")
         md_lines.append("")
         md_lines.extend(_format_section1_spec(ticker, company_title, "Retail", "retail", reference_price_zar=reference_price_zar, source_documents=source_documents))
-        md_lines.append("2. **Detailed Operational Forecast (FY27E & FY28E):** Merchandise sales, credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.")
-        md_lines.append("3. **Consolidated Financial Statements & Cash Flow Bridge:** Revenue, Gross Profit, Operating Expenses, Operating Profit, PAT, HEPS, and Free Cash Flow to Equity (FCFE).")
+        md_lines.append("2. **Detailed Operational Forecast (Historical Base Period + FY26E, FY27E & FY28E):** Include historical actuals column(s) alongside forecasts for merchandise sales by segment (with exact currency units, e.g. R'm vs EUR'm), credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.")
+        md_lines.append("3. **Consolidated Financial Statements & Cash Flow Bridge:** Include historical actuals column(s) alongside forecasts for Revenue, Cost of Sales, Gross Profit, Other Revenue/Income, Net Operating Expenses, Operating Profit, Net Finance Costs, PBT, Tax, PAT (Continuing), Discontinued Operations, PAT (Total), Weighted-Average Shares (m), Continuing HEPS (cents), and Free Cash Flow to Equity (FCFE).")
         md_lines.append("4. **Valuation Multiples & DCF Table:** Forward P/E, EV/EBITDA, dividend yield, and per-share equity value in ZAR.")
         md_lines.append("5. **Sensitivity Matrix:** 2D sensitivity table (Sales Growth vs Debtor Cost % or P/E Multiple).")
         md_lines.append("6. **Actionable Portfolio Monitoring Triggers & Catalysts ('What to Watch For That Will Move the Stock'):**")
@@ -579,6 +618,11 @@ def build_stage2_prompt_content(
         md_lines.append("   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.")
         md_lines.append("")
 
+    guardrails_md = format_sector_guardrails_block(detected_sector, stage="stage2", db_path=db_path)
+    if guardrails_md:
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append(guardrails_md)
     md_lines.extend(_format_critical_formatting_constraints())
     return "\n".join(md_lines)
 

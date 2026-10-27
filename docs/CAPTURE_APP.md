@@ -19,6 +19,14 @@ To open a specific PDF directly:
 
 On another machine, install `uv` and run `./setup.ps1` to create `.venv` from `requirements.lock.txt`.
 
+## Scaffolding & Ticker Examination Hub
+
+The app includes a **New Company Hub** dialog to initialize new company hubs without leaving the GUI:
+1. Enter any JSE ticker symbol (e.g. `DCP`, `VOD`, `RBX`, `PIK`).
+2. Click **🔍 Examine Ticker**: The system queries local registries, fetches verified JSE profile data via Yahoo Finance (`<TICKER>.JO`), and queries OpenRouter with live web search (`plugins: [{"id": "web"}]`) to verify the authentic JSE listing and check Stage 1 / Stage 2 prompt readiness.
+3. Automatically populates legal company name, sector code, and audit preview card.
+4. Optionally drop or browse for an initial PDF report to automatically copy into `sources/` and open in the capture app.
+
 ## Progressive section workflow
 
 1. **Open PDF**: Loads the report's major-section map and open verification questions from `documents/analysis.sqlite` (or scans native PDF headings automatically on first open).

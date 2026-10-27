@@ -18,237 +18,147 @@ You are conducting a definitive 2-year operational and valuation forecast for **
 
 ## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)
 
-# FORENSIC AUDIT REPORT — NUTUN LIMITED (NTU)
-## Independent Cognitive Audit: H1 FY2026 Condensed Consolidated Financial Statements (Six Months Ended 31 March 2026)
+# FORENSIC AUDIT REPORT — NUTUN LIMITED (NTU) H1 2026
+## Independent Managing Director & Senior Forensic Credit/Lending Accounting Audit
 
 ---
 
 ## 1. EXECUTIVE FORENSIC AUDIT SUMMARY
 
-**True Economic Performance.** Nutun's H1 FY2026 result is a **tale of two operating engines masked by a single IFRS loss line**. The headline IFRS loss of R63m is *not* an operating deterioration — it is the mechanical consequence of a **non-cash, forward-looking acceleration of PBD amortisation** (R597m, up 41%) driven by management's decision to raise the credit-adjusted effective interest rate (CAEIR) to **19.2%** (from 18.4% at FY2025 and 17.9% at H1 FY2025) and to apply a *more conservative* macro overlay (elevated interest-rate forecast). In plain terms: **management deliberately front-loaded future amortisation expense into the current period**, which suppresses reported profit but *improves* the embedded discount rate and future profitability. This is the opposite of an aggressive accounting posture — it is conservative.
+**True economic performance.** Nutun's H1 2026 headline "EBITDA +28.5% to R790m" is a **CODM-view, non-IFRS construct that does not convert to cash**. The IFRS statutory result is a **continuing loss of R63m** (basic and headline LPS −8.1c), and the group generated **negative operating cash flow of R(111)m** — a **R901m gap** between "Core EBITDA" and actual operating cash. The apparent earnings improvement is driven almost entirely by **higher gross collections (R773m vs R604m, +28%)** on a book that was replenished with R382m of new acquisitions, **not** by margin expansion. The R175m increase in PBD amortisation (R597m vs R422m) is the accounting mirror of those collections — it is a **cost of revenue, not a below-the-line item**, and it fully offsets the collection uplift at the P&L level.
 
-**Cash generation is genuinely strong.** Nutun South Africa EBITDA rose 36% to R710m on PBD gross collections of R773m (+28%) and RTC revenue of R116m (+27%). The group generated **positive net cash from financing activities of R178m** and reduced net debt dynamics despite a R63m loss. The "loss" is an accounting artifact of the PBD amortisation model, not a cash burn.
+**Balance sheet health.** Total equity fell to **R1,329m** (from R1,396m at Sep-25) — a **loss-making, dividend-suspended, equity-eroding** entity. The **entire principal book portfolio (R3,845m) is pledged** as security for R4,016m of interest-bearing liabilities and overdrafts, alongside trade receivables and cash. **Unencumbered assets are minimal.** The PBD book is **100% POCI/Stage 3** by definition — there is no Stage 1/2 performing book to cushion; the only credit metric that matters is the **12.6% ECL coverage** on a R3,414m gross principal book, and that coverage **fell sharply from 20.4% (Mar-25) and 17.7% (Sep-25)**.
 
-**Balance sheet health is adequate but leveraged.** Total equity R1,329m against interest-bearing debt R3,743m (senior R3,547m + subordinated R196m) plus bank overdrafts R273m = **R4,016m total interest-bearing liabilities**. Net debt/equity is elevated (~2.8x gross), but **R0.8bn of unutilised facilities** and **R475m undrawn overdraft** provide a liquidity cushion. Critically, **R3,845m of PBD is pledged as security** — the debt is substantially asset-backed by the collection book.
+**Post-balance-sheet liquidity runway.** Cash R112m; undrawn overdraft facilities **R475m** (the only quantified "unutilised" figure — the "~R0.8bn" claim in the commentary is **not corroborated** by the debt note). Maturity wall: **R1,396m payable within 12 months** against R112m cash and R475m undrawn overdraft — a **R809m near-term funding gap** that must be refinanced or rolled. The group is **structurally reliant on rolling overdraft and revolving facilities** (drawdowns R3,178m / settlements R3,269m in the half — gross churn, not net new money).
 
-**Post-balance-sheet liquidity runway.** Cash of R112m + other investments R81m + undrawn facilities R475m + R0.8bn unutilised = **~R1.5bn+ of near-term liquidity** against R1,396m of debt maturing within 12 months. This is **tight but serviceable**, contingent on PBD collections continuing at the R773m/half-year run-rate. The maturity wall is the single most important watch item.
+**Key findings.**
+1. **EBITDA ≠ cash.** Core EBITDA R790m vs operating cash outflow R(111)m. The R901m bridge is interest paid R225m + PBD acquisitions R382m + working capital R(23)m + tax R2m + other. Management's own footnote calls Core EBITDA "management's view of operating cash flows" — the statutory cash flow statement **contradicts this**.
+2. **CAEIR rose to 19.2% (from 17.9%)** — this inflates imputed interest revenue (R383m vs R333m) while depressing carrying value. The **fair value note uses an 18.50% market discount rate yet claims fair value ≈ carrying value** — a **70bps tension** that is not reconciled.
+3. **ECL coverage collapsed to 12.6%** on the principal book, driven by a **R241m impairment loss on Banking & Specialised Lending – Unsecured** (coverage 9.6%, down from 19.4%). The "cumulative impairment gain of R431m" is being **reversed by payer drop-offs and reduced settlement activity** — the base-case assumptions are proving optimistic.
+4. **Trade receivables ECL is 0.00% until 90+ days overdue** — a **relaxed SICR/backstop policy** that delays Stage 2 provisioning.
+5. **All H1 2026 figures are unaudited and unreviewed** — restatement risk on PBD carrying value, amortisation and CAEIR is live.
+6. **Treasury shares bought at R1/share** vs ~R6.90 book value — a market-distress signal.
 
-**Key forensic findings:**
-1. **The R63m loss is a conservative accounting outcome, not operational failure.** Accelerated amortisation + higher CAEIR = deliberate profit suppression.
-2. **PBD impairment loss of R167m is a *reduction in cumulative impairment gain*, not a new credit event.** The R431m cumulative impairment gain (down from R598m) reflects payer drop-offs on *historical* books — a normalisation, not a collapse.
-3. **The "Other financial assets" fair-value book (R644m) is the genuine soft spot** — Level 3, 16% discount rate, R30m fair value gain. This is the least verifiable asset on the balance sheet.
-4. **Nutun International is the margin drag** — Rand strength cost R46m of EBITDA, and the DTI incentive uncertainty is an unquantified contingent risk.
-5. **No dividend, treasury shares acquired (R3.7m), and a board reshuffle (Executive Chairman + joint CEOs)** signal a group in transition/restructuring mode.
+**Bottom line:** Nutun is a **loss-making, cash-negative, fully-encumbered consumer debt purchaser** whose reported "EBITDA growth" is an artefact of the CODM presentation that adds back the very amortisation that represents the economic cost of the book. The credit book is deteriorating (coverage down, impairment up on the largest segment), the funding structure is short-dated and fully secured, and the equity buffer is thin (R1,329m) relative to R4,016m of debt. **This is a going-concern-adjacent, covenant-sensitive credit, not a growth story.**
 
 ---
 
 ## 2. DETAILED FORENSIC REASONING & DETERMINATIONS
 
-### 2.1 IFRS 9 Stage 1/2/3 ECL Migration & Qualitative Macro Overlays
+### 2.1 IFRS 9 Stage Migration & ECL — the POCI "no-stage" reality
 
-**The critical structural fact:** Nutun's PBDs are **Purchased Credit-Impaired (POCI) assets classified as Stage 3 on initial recognition** (Note 6.1). This classification **does not change subsequent to initial recognition**, even if cash flows return to full contractual terms. This is the correct IFRS 9 treatment for deep-discount purchased NPL portfolios.
+**Determination:** The PBD principal book is **irrevocably classified as POCI (Stage 3) at initial recognition** and cannot cure to Stage 1/2 even if cash flows return to contractual terms `[p. 21]`. Therefore **there is no Stage 1/2/3 migration to audit** — the entire R3,414m gross book is credit-impaired from day one. The relevant forensic test is **ECL coverage adequacy**, not stage migration.
 
-**Therefore, the conventional "Stage 1→2→3 migration" framework does NOT apply to the principal book.** The entire R3,845m principal book is Stage 3 by construction. The relevant ECL mechanic is the **lifetime ECL allowance against the gross carrying amount**, reconciled in Note 6.1:
+**Coverage analysis (principal book):**
 
-| Segment | Gross CA (Rm) | ECL Allowance (Rm) | Net CA (Rm) | ECL Rate |
-|---|---|---|---|---|
-| Banking & specialised lending – unsecured | 2,371 | 227 | 2,598 | 9.6% |
-| Debt review | 951 | 141 | 1,092 | 14.8% |
-| Retail | 46 | 51 | 97 | 110.9% |
-| Banking – secured | 46 | 12 | 58 | 26.1% |
-| **Total** | **3,414** | **431** | **3,845** | **12.6%** |
+| Segment | Gross (Rm) | ECL (Rm) | Coverage Mar-26 | Coverage Mar-25 | Coverage Sep-25 |
+|---|---|---|---|---|---|
+| Banking & specialised lending – unsecured | 2,371 | 227 | **9.6%** | 19.4% | 18.9% |
+| Debt review | 951 | 141 | 14.8% | 10.7% | 9.1% |
+| Retail | 46 | 51 | >100% | >100% | 97.9% |
+| Banking – secured | 46 | 12 | 26.1% | 71.4% | 20.4% |
+| **Total** | **3,414** | **431** | **12.6%** | **20.4%** | **17.7%** |
 
-**Forensic determination on the ECL allowance movement:** The allowance *fell* from R598m (FY2025) to R431m (H1 FY2026) — a **R167m impairment loss** (i.e., a reduction in the cumulative impairment *gain*). The reconciliation (Note 6.1) decomposes this:
+**Forensic finding:** The **largest segment (Banking unsecured, 69% of gross book) saw coverage collapse from 19.4% to 9.6%** while its gross balance grew from R2,366m to R2,371m. The ECL allowance on this segment fell from R460m to R227m — a **R233m release** — despite the group booking a **R241m impairment loss** on the same segment in the period `[p. 24]`. This is internally consistent only if **new acquisitions (R382m) carried low initial ECL** (R24m impairment gain on acquisitions) while **historical books deteriorated (R191m loss)**. The net effect: **coverage on the legacy book is being masked by fresh, low-provision acquisitions.** This is a classic **"denominator effect"** — new low-coverage books dilute the aggregate ratio. **The 12.6% headline coverage overstates the true provisioning adequacy of the legacy book.**
 
-- **Impairment gain on books acquired during the period: +R24m** (new books performing above base case)
-- **Impairment loss on historical books: −R191m** (payer drop-offs, reduced settlement activity)
+**Qualitative macro overlay:** Management cites "elevated interest rate forecast relative to our expectations" and "consumer health & payment behaviour" `[p. 4–5]` as amortisation drivers, and the impairment model parameters are "applied in determining expected cash shortfalls" `[p. 21]`. **No quantification of the overlay is disclosed.** The **R431m cumulative impairment gain** (favourable ECL vs acquisition base-case) is being **reduced by payer drop-offs and reduced settlement activity** `[p. 24]` — i.e., the base-case is proving **too optimistic**, and the gain is unwinding. This is a **leading indicator of further impairment** if payer behaviour continues to deteriorate.
 
-**This is the single most important credit-quality signal in the report.** The R191m loss on *historical* books is concentrated in **Banking & specialised lending – unsecured (−R242m)** and **Debt review (+R46m gain)**. The unsecured banking book is where consumer stress is biting. The disclosure explicitly attributes this to *"payer drop-offs and reduced settlement activity on historical book portfolios."*
+**12-month rolling ECL horizon (Q14):** PBDs are modelled on a **rolling 12-month net cash flow** discounted at CAEIR `[p. 21]`. For a POCI asset, IFRS 9 requires **lifetime ECL**. A 12-month rolling horizon **structurally understates** the loss allowance if the collection tail extends beyond 12 months (which it does for written-off consumer debt — typical tails are 3–5 years). **This is a material understatement risk.** The ERC of R8,366m (vs carrying R4,489m) implies a **multi-year collection tail** — inconsistent with a 12-month ECL horizon. **Determination: the 12-month horizon is not appropriate for lifetime POCI ECL and understates the allowance.**
 
-**Macro overlay assessment:** Management states amortisation was accelerated by *"forward looking macro-economic assumptions including an elevated interest rate forecast relative to our expectations."* This is a **qualitative overlay that increased the CAEIR to 19.2%** — a 80bps increase YoY. Higher discount rate → lower present value of expected collections → higher amortisation charge → lower reported profit. **This is a conservative, pro-cyclical overlay.** It is the accounting equivalent of "kitchen-sinking" the current period to de-risk the future. I verify this as **credible and conservative**, not aggressive.
+### 2.2 Loan book vintage delinquency roll rates
 
-**Verdict:** ECL mechanics are **sound and conservatively applied**. The Stage 3 POCI classification is correct. The reduction in cumulative impairment gain is a **genuine normalisation of historical over-performance**, not a new credit shock. The R191m historical-book loss is the true credit-cost signal — annualised ~R382m against a R3.8bn book = **~10% credit loss rate on the principal book**, which is high but consistent with deep-discount NPL collection economics.
+**Determination:** **No DPD buckets, vintage loss curves, or roll-rate tables are disclosed for the PBD book.** PBDs are "not subsequently managed based on the credit risk rating but rather on a cash collection basis" `[p. 21]`. The only delinquency disclosure is for **trade receivables** (a separate, small book):
 
----
+| Trade receivables | Current | 30d | 61–90d | 90+d | Total |
+|---|---|---|---|---|---|
+| ECL rate Mar-26 | 0.00% | 0.00% | **0.00%** | 100.00% | 1.34% |
+| Gross (Rm) | 339 | 25 | 5 | 5 | 374 |
 
-### 2.2 Loan Book Vintage Delinquency Roll Rates
+**Forensic finding:** **Zero ECL on 61–90 day overdue** is a **relaxed SICR backstop** (standard is 30 DPD). The 90-DPD cliff means **no Stage 2 provisioning until 90+ days** — deterioration between 30 and 90 days is invisible. Gross 90+ overdue fell to R5m (from R7m), but the **policy leniency masks the trajectory**. **Determination: SICR policy is lenient; the 30-DPD backstop should be verified against FY2025 policy — if relaxed, it is an accounting red flag.**
 
-**Critical forensic caveat:** Nutun does **not** disclose a traditional delinquency roll-rate matrix (30/60/90/120+ DPD buckets) for the principal book, because these are **written-off consumer debts purchased at deep discount** — they are already in default at acquisition. The relevant "vintage" analysis is the **acquisition-cohort performance** embedded in the ECL reconciliation:
+### 2.3 Carrying value & ERC of PBD and NPL portfolios
 
-- **Books acquired during H1 FY2026:** +R24m impairment gain (performing above base case)
-- **Historical books:** −R191m impairment loss (underperforming base case)
+**Determination:** Carrying value R4,489m (principal R3,845m + other financial assets R644m). **ERC of R8,366m is disclosed only in the Highlights table `[p. 3]` and is NOT referenced in the PBD note or credit risk note.** This is a **disclosure gap** — the ERC is the revenue backbone but its methodology, discount rate, and vintage assumptions are **not audited or reconciled** to the carrying value.
 
-**The trade receivables ECL matrix (Note 6.1) is the only true "roll-rate" disclosure**, and it is benign:
+**ERC/CV uplift:** 8,366/4,489 = **1.86x** (Mar-25: 1.79x). The widening uplift is consistent with management's "improving embedded discount rate" claim, but it also **increases reliance on ERC estimation**. If ERC is overstated by 10%, the implied forward collections (and hence revenue) are overstated by ~R837m.
 
-| Bucket | 31 Mar 2026 Gross (Rm) | Loss Allowance (Rm) | ECL Rate |
-|---|---|---|---|
-| Current | 339 | – | 0.00% |
-| 30 days overdue | 25 | – | 0.00% |
-| 61–90 days overdue | 5 | – | 0.00% |
-| >90 days overdue | 5 | (5) | 100.00% |
-| **Total** | **374** | **(5)** | **1.34%** |
+**Amortisation composition (Q16 — reconciliation tension):** The footnote `[p. 31]` states amortisation R597m = CAEIR R383m + impairment R167m + net collections R728m + FV movements R30m + cash collections R116m. **These sum to R1,424m, not R597m.** The footnote is describing **components of the CODM-view adjustment**, not a simple sum. The actual reconciliation is: **CODM revenue from PBD R888m − IFRS net income from PBD R69m = R819m**, which is the **gross-up adjustment**, not R597m. The R597m amortisation is the **CODM-view cost of revenue line** `[p. 30]`. **Determination: the footnote is poorly worded and does not arithmetically reconcile as presented; the R597m is confirmed from the segment table but the component footnote is misleading.** This is a **presentation quality flag**, not a misstatement — but it undermines confidence in the disclosure.
 
-**Forensic determination:** Trade receivables credit quality is **excellent** — 0% loss rate on current/30/60-day buckets, 100% provision on >90-day. The overall 1.34% ECL rate is *lower* than FY2025's 2.75%, reflecting improved collections. **No roll-rate deterioration in the trade book.**
+**Fair value vs carrying value (Q13 — the 70bps tension):** Fair value note uses **18.50% market discount rate** vs **19.2% CAEIR** `[p. 26]`. A **lower** discount rate should produce a **higher** PV → fair value **above** carrying value. Yet management states fair value **approximates** carrying value (both R3,845m) `[p. 27]`. **Resolution:** management states expected cash flows were "adjusted for risk" — i.e., the cash flows were **haircut** to offset the lower discount rate. **This is a discretionary adjustment that is not quantified.** **Determination: the fair value ≈ carrying value claim is not independently verifiable; the 70bps gap and the unquantified cash-flow risk adjustment represent a valuation uncertainty. If the risk adjustment is insufficient, fair value < carrying value and an impairment write-down is required.**
 
-**The real vintage risk is in the PBD book**, and the disclosure tells us the answer: **historical unsecured banking books are rolling off faster than base case** (payer drop-offs). This is the roll-rate that matters, and it is **negative but disclosed transparently**. The R242m loss on historical unsecured banking books is the forensic red flag — it suggests the *older* vintages (pre-FY2025 acquisitions) are decaying faster than modelled.
+### 2.4 Risk-adjusted NIM vs CLR
 
-**Verdict:** No hidden delinquency deterioration. The disclosed historical-book underperformance is the honest signal, and it is **already provisioned** through the R167m impairment loss. The new-book gains (+R24m) partially offset, confirming **underwriting discipline on recent acquisitions is intact**.
+**Determination:** Nutun does not disclose a conventional NIM (it is not a bank). The relevant spread metrics are:
 
----
+- **CAEIR imputed interest revenue:** R383m on average principal book (~R3,910m) = **~19.6% annualised yield**.
+- **Impairment loss (CLR equivalent):** R167m on average book = **~8.5% annualised credit loss ratio**.
+- **Net interest margin after credit:** 19.6% − 8.5% = **~11.1%** gross, before funding cost.
+- **Funding cost:** interest expense R177m on ~R3,900m debt = **~9.1%**.
+- **Net spread after funding and credit:** ~11.1% − 9.1% = **~2.0%** — **razor-thin**.
 
-### 2.3 Carrying Value & Estimated Remaining Collections (ERC) of PBD and NPL Portfolios
+**Forensic finding:** The **CLR of 8.5% is rising** (impairment R167m vs R173m — roughly flat in absolute terms, but on a growing book the ratio is compressing only because new low-ECL acquisitions dilute it). The **funding cost of ~9.1%** (JIBAR + 2.8–5.2% margins) is **high** and **floating** — every repo rate cut helps (management cites repo cuts), but every rate rise hurts. **The risk-adjusted spread of ~2% is insufficient to absorb a deterioration in collections.** A 200bps rise in CLR would wipe out the entire net spread. **Determination: the business model is a thin-spread, high-turnover debt purchase operation that is highly sensitive to collection performance and funding cost.**
 
-This is the **core valuation junction**. The key data points:
+### 2.5 NCA fee and rate caps
 
-| Metric | H1 FY2026 | H1 FY2025 | FY2025 |
-|---|---|---|---|
-| PBD carrying value (Rm) | 4,489 | 4,353 | 4,677 |
-| — Principal book | 3,845 | 3,690 | 3,975 |
-| — Other financial assets (FV) | 644 | 663 | 702 |
-| ERC (Rm) | 8,366 | 7,808 | — |
-| Cost of acquisitions (Rm) | 410 | 272 | — |
-| CAEIR | 19.2% | 17.9% | 18.4% |
+**Determination:** **No NCA (National Credit Act) fee/rate cap disclosure is captured.** Nutun is a **debt purchaser**, not a credit provider originating loans — the NCA caps on interest/fees apply to the original credit agreements, and the purchased book is acquired at a **deep discount** reflecting incurred losses `[p. 13]`. The **CAEIR of 19.2%** is an accounting discount rate, not a contractual rate, so NCA caps do not directly bind it. **However**, the **agency commission revenue (R159m)** and **collection fees** charged to clients could be subject to NCA/contractual caps — **not disclosed**. **Determination: NCA cap exposure is low for the principal book (purchased at discount) but unverified for the agency/fee lines. Flag for verification.**
 
-**The ERC-to-carrying-value ratio is the key coverage metric:**
-- **H1 FY2026: 8,366 / 4,489 = 1.86x**
-- **H1 FY2025: 7,808 / 4,353 = 1.79x**
+### 2.6 Securitization / debt covenant headroom
 
-**Forensic determination:** ERC coverage **improved** from 1.79x to 1.86x. This means the book is *more* conservatively valued relative to expected collections than a year ago. The carrying value of R4,489m is backed by R8,366m of estimated remaining collections — a **R3,877m cushion** (46% of ERC). Even if collections underperform by ~46%, the carrying value is covered.
+**Determination:** **Covenant ratios and headroom are NOT disclosed.** The commentary claims "funding covenants are comfortably complied with" `[p. 5]` — **unquantified**. The debt note discloses:
 
-**But the critical nuance:** ERC is a **management estimate**, not a contractual entitlement. It is derived from the same models that produce the CAEIR. The **circularity risk** is real: management sets the CAEIR (19.2%), which determines carrying value; management also estimates ERC. A higher CAEIR *lowers* carrying value (conservative) but does *not* change ERC. So the 1.86x coverage is **partly manufactured by the conservative CAEIR hike** — which is fine, because it means the cushion is real.
+- **Maturity wall:** R1,396m <12 months; R2,620m >12 months `[p. 14]`.
+- **Facility types:** Notes (JIBAR+2.8–3.7%), Senior amortising (JIBAR+2.85–5.2%), Senior bullet (JIBAR+3–3.28%), Subordinated (JIBAR+4.6–5.0%), Revolving (Prime−0.25–0.35%) `[p. 15]`.
+- **Undrawn overdraft: R475m** (vs R43m Mar-25, R136m Sep-25) `[p. 14]`.
+- **Pledge:** 100% of PBD (R3,845m) + trade receivables + cash pledged `[p. 13, p. 15]`.
 
-**The "Other financial assets" (R644m) is the weak link.** This is a **Level 3 fair value** book (Note 6.3/6.4), valued at a **16% discount rate** (up from 12.93% at H1 FY2025, flat vs FY2025's 16%). The R30m fair value gain in H1 FY2026 is a **non-cash mark-up** on a book with **no title** (Nutun does not own the underlying portfolio — Note 1). This is the **least verifiable R644m on the balance sheet**. The 16% discount rate is *lower* than the 19.2% CAEIR on the principal book — meaning the FV book is valued *less conservatively* than the amortised-cost book. **Forensic flag: the FV book's discount rate should arguably be higher given the lack of title and recourse.**
+**Forensic finding:** The **"~R0.8bn unutilised facilities" claim is NOT corroborated** — the only quantified figure is R475m undrawn overdraft. The gap (R325m) is unexplained. **Determination: liquidity headroom is likely overstated in the commentary; the verified undrawn capacity is R475m, against a R1,396m 12-month maturity wall — a R921m refinancing requirement.** The **full encumbrance of the asset base** means there is **no unencumbered collateral** to raise new secured debt. **This is a material liquidity constraint.**
 
-**Verdict:** Principal book carrying value is **conservatively stated** (1.86x ERC coverage, 19.2% CAEIR). The **R644m other financial assets FV book is the genuine valuation soft spot** — Level 3, no title, 16% discount rate, R30m non-cash gain. I would apply a **valuation haircut of 10–20%** to this book in a stress case (R64–129m), which would reduce equity by ~5–10%. This is the single largest accounting judgment risk.
-
----
-
-### 2.4 Risk-Adjusted NIM vs Credit Loss Ratio (CLR)
-
-**Reconstructing the economics from the segment note (Note 7):**
-
-Nutun South Africa PBD economics (CODM view, H1 FY2026):
-- PBD collections (revenue): R888m
-- Amortisation of PBD: (R597m)
-- Net finance charge: (R203m)
-- **Net PBD contribution before opex: R888m − R597m − R203m = R88m**
-
-But the IFRS view is cleaner:
-- CAEIR imputed interest revenue: R383m
-- Impairment loss on principal book: (R167m)
-- Net income from PBD: R69m
-- Fair value movements on other financial assets: R30m
-
-**Risk-adjusted NIM calculation:**
-- Interest revenue (CAEIR): R383m on average principal book of ~R3,910m = **9.8% gross yield**
-- Less impairment loss: R167m = **4.3% CLR**
-- **Risk-adjusted NIM = 9.8% − 4.3% = 5.5%**
-
-**But this understates the true economics** because the CAEIR imputed interest is *net of* the deep-discount amortisation. The **cash-on-cash return** is better measured by:
-- Gross collections R773m on average book R3,910m = **19.8% cash yield**
-- Less directly attributable collection costs R45m = **18.6% net cash yield**
-- Less net finance charge (R203m on R3,910m = 5.2%) = **13.4% pre-opex, pre-tax cash margin**
-
-**Forensic determination:** The **risk-adjusted NIM of ~5.5% (IFRS) / ~13.4% (cash)** is **healthy for a deep-discount NPL collector**. The CLR of 4.3% (IFRS impairment / average book) is **elevated but expected** for Stage 3 POCI assets. The key insight: **the CLR is falling in economic terms** — the R167m impairment loss is a *reduction in a cumulative gain*, not a fresh loss. The **true incremental credit cost is the R191m historical-book loss**, which annualises to ~R382m / R3.9bn = **~9.8% incremental CLR**. This is the number to watch.
-
-**Verdict:** Risk-adjusted NIM is **positive and adequate**. The CLR is **high but declining in trend** (historical-book losses are normalising, new books are gaining). The **cash economics (13.4% margin) are far stronger than the IFRS optics (5.5% NIM)** — this is the central "surface-reading pitfall" (see Section 3).
-
----
-
-### 2.5 National Credit Act (NCA) Fee and Rate Caps
-
-**Forensic limitation:** The report **does not disclose** NCA-prescribed maximum interest rates, initiation fees, or service fees on the PBD book. This is a **disclosure gap**. However, the structural facts allow inference:
-
-- The PBDs are **purchased written-off consumer debts** — Nutun is the *creditor* post-acquisition, and collections are subject to NCA caps on the underlying credit agreements.
-- The **CAEIR of 19.2%** is an *accounting* discount rate, **not** a contractual interest rate. It reflects the expected return on a deep-discount purchase, not NCA-capped interest.
-- **Agency commission revenue (R159m, down 15%)** is fee-based and subject to NCA debt-collection fee caps. The 15% decline is attributed to *"strategic shift to larger, scalable mandates"* — i.e., fewer, bigger clients. This is **not** an NCA-driven margin squeeze; it is a deliberate mix shift.
-
-**Forensic determination:** There is **no evidence of NCA fee-cap stress** in the numbers. The RTC revenue growth (+27% to R116m) and PBD collection growth (+28%) confirm the collections engine is *expanding*, not being capped. The **absence of explicit NCA cap disclosure is a transparency weakness**, but the economics do not suggest a binding constraint. **Watch item:** any future NCA amendment to debt-review or emolument-attachment rules could impair the Debt review book (R1,092m net CA, 14.8% ECL rate) — the second-largest segment.
-
-**Verdict:** NCA caps are **not currently binding** on reported economics. The disclosure gap is noted but not material to the H1 result. The **Debt review book (R1,092m) is the NCA-sensitive exposure** to monitor.
-
----
-
-### 2.6 Securitization / Debt Covenant Headroom
-
-**The debt structure (Note 2):**
-
-| Facility | 31 Mar 2026 (Rm) | Rate | Maturity |
-|---|---|---|---|
-| Notes (bullet) | 671 | JIBAR + 2.8–3.7% | 2026–2032 |
-| Notes (amortising) | 151 | JIBAR + 3.0–3.1% | 2028 |
-| Senior (amortising) | 1,738 | JIBAR + 2.85–5.2% | 2026–2030 |
-| Senior (bullet) | 690 | JIBAR + 3–3.28% | 2026–2030 |
-| Subordinated (amortising) | 46 | JIBAR + 4.6% | 2028 |
-| Subordinated (bullet) | 150 | JIBAR + 5.0% | 2027 |
-| Senior revolving | 297 | Prime − 0.25–0.35% | 2028 |
-| **Total** | **3,743** | | |
-| Bank overdrafts | 273 | | |
-| **Total interest-bearing** | **4,016** | | |
-
-**Maturity profile:** R1,396m within 12 months; R2,620m thereafter.
-
-**Covenant headroom assessment:**
-- Management states *"funding covenants are comfortably complied with"* and *"approximately R0.8 billion in unutilised facilities."*
-- **Undrawn overdraft facilities: R475m** (up from R136m at FY2025 — a **3.5x increase in liquidity headroom**).
-- **Pledged security: R3,845m of PBD** (Note 1) — the debt is **substantially asset-backed**. The pledge covers *"the duration of the agreement."*
-
-**Forensic determination:** The **R1,396m 12-month maturity wall** is the key risk. Against it:
-- Cash R112m + other investments R81m = R193m
-- Undrawn overdraft R475m
-- Unutilised facilities R0.8bn
-- **Total near-term liquidity ~R1.47bn** vs R1,396m maturities = **~1.05x coverage**
-
-This is **tight but adequate**. The critical dependency is **PBD collections continuing at R773m/half-year**. If collections drop 20%, the liquidity coverage falls below 1.0x and refinancing risk becomes acute. **The R0.8bn unutilised facility is the swing factor** — if it is committed and available, the maturity wall is manageable. If it is uncommitted/conditional, the risk is higher.
-
-**The securitization structure** (PBD pledged, notes/senior/subordinated tranching) is a **classic NPL securitization**. The **subordinated debt of R196m** provides a **first-loss cushion** to senior lenders — but it is *thin* relative to the R3,845m pledged book (5.1% of pledged assets). A **>5% impairment of the pledged book would wipe out the subordinated tranche** and put senior covenants under pressure. Given the R191m historical-book loss (5.0% of the principal book), **the subordinated cushion is being consumed at roughly its annual loss rate** — a **genuine covenant watch item**.
-
-**Verdict:** Covenant headroom is **adequate but not comfortable**. The **R1,396m maturity wall + thin subordinated cushion (5.1% of pledged book) + 5.0% annual historical-book loss rate** create a **refinancing/covenant risk cluster**. The R0.8bn unutilised facility is the mitigant, but its *committed* status is undisclosed. **This is the second-largest forensic risk after the FV book.**
+**Fair value of debt (Q24):** Carrying R3,743m vs fair value R3,769m (Mar-26) — fair value **R26m above** carrying. At Sep-25, fair value was **R339m below** carrying. A **R365m swing in six months** reflects rising rates on **100% floating-rate debt**. **Determination: the group has no fixed-rate hedge on its debt — full repricing risk.**
 
 ---
 
 ## 3. AUDIT OF COMMON SURFACE-READING PITFALLS
 
-| # | Naive Reader's Error | Forensic Reality |
-|---|---|---|
-| 1 | **"Nutun lost R63m — the business is failing."** | The loss is a **non-cash accounting artifact** of accelerated PBD amortisation (R597m, +41%) driven by a *conservative* CAEIR hike to 19.2%. Cash generation is strong (EBITDA R790m, +28%; positive financing cash flow R178m). The loss reflects **deliberate profit suppression**, not operational decline. |
-| 2 | **"Impairment loss of R167m means credit quality is collapsing."** | The R167m is a **reduction in a cumulative impairment *gain*** (from R598m to R431m), not a fresh loss. It decomposes into **+R24m gain on new books** and **−R191m loss on historical books** (payer drop-offs). New underwriting is *performing*; old books are normalising. |
-| 3 | **"PBD carrying value of R4,489m is risky because it's all Stage 3."** | Stage 3 POCI classification is **mandatory and correct** for deep-discount purchased NPLs. The book is **1.86x covered by ERC (R8,366m)** and valued at a **conservative 19.2% CAEIR**. The risk is *priced in*, not hidden. |
-| 4 | **"The R644m other financial assets is just more PBD — same risk."** | **No.** This is a **Level 3 fair-value book with no title** to underlying portfolios, valued at a **16% discount rate** (lower than the 19.2% CAEIR — *less* conservative). The R30m fair value gain is non-cash. **This is the genuine valuation soft spot**, distinct from the amortised-cost principal book. |
-| 5 | **"Net debt of ~R2.8bn against R1.3bn equity is dangerously leveraged."** | Gross leverage is elevated, but **R3,845m of PBD is pledged as security** — the debt is **asset-backed**. Undrawn facilities of R0.8bn + R475m overdraft provide **~1.05x coverage of the R1,396m 12-month maturity wall**. Tight, but serviceable *if collections hold*. |
-| 6 | **"Nutun International revenue fell 1% — the BPO is shrinking."** | Revenue fell only due to **R27m adverse FX translation**; **billable seats grew 20% to 2,491** and clients grew to 36. The EBITDA decline (−15% to R80m) is **R46m of FX/hedge losses**, not operational. The BPO is *growing in volume*, *compressed in Rand terms*. |
-| 7 | **"Headline loss per share of 8.1c is the true earnings picture."** | Headline earnings *equals* basic loss here (no adjustments), so HEPS = basic EPS = −8.1c. But **core continuing loss (−R63m) is the management metric**, and it *improved* from −R71m. The **cash EBITDA of R790m** is the economic reality the EPS line obscures. |
-| 8 | **"No dividend + treasury share buyback = capital return is dead."** | Dividend suspension is **explicitly a FY2023 policy** (capital preservation for deleveraging). The R3.7m treasury buyback is **for Conditional Share Plan vesting**, not a capital return signal. **Neither is a distress signal** — both are consistent with a deleveraging/restructuring phase. |
+| Naive reader error | Forensic reality |
+|---|---|
+| "EBITDA up 28.5% to R790m — strong growth." | **Core EBITDA is a non-IFRS CODM construct that adds back PBD amortisation (R597m) — the economic cost of the book.** Actual operating cash flow is **R(111)m**. EBITDA is not converting to cash; the R901m gap is interest, acquisitions and working capital. |
+| "Continuing core loss improved to R63m from R71m — turnaround." | The improvement is **R8m on a R1.6bn revenue base** — immaterial. The group remains **loss-making at every level** (operating, PBT, PAT, headline, basic). Equity fell R67m in the half. |
+| "PBD carrying value grew 3.1% — book is growing." | Growth is **entirely from R382m of new acquisitions**; the legacy book is **amortising faster than it is replenished** (amortisation R597m vs acquisitions R410m). Net book economics are **consumptive**, not accretive. |
+| "ECL coverage 12.6% — adequate." | Coverage **collapsed from 20.4%** and is **diluted by low-ECL new acquisitions**. The legacy Banking-unsecured book coverage fell to **9.6%** — the largest segment is **under-provisioned**. |
+| "Fair value approximates carrying value — no impairment risk." | The **18.50% market rate vs 19.2% CAEIR** creates a **70bps tension** resolved only by an **unquantified cash-flow risk adjustment**. The claim is **not independently verifiable**. |
+| "Covenants comfortably complied with; R0.8bn unutilised." | **Covenant ratios are not disclosed.** The only verified undrawn figure is **R475m overdraft** — the R0.8bn claim is **uncorroborated**. Against a **R1,396m 12-month maturity wall**, liquidity is **tight**, not comfortable. |
+| "Diversified across UK, US, SA — geographic diversification." | **UK is 42.6% of revenue, US 29.8%** — **72% concentration in two FX-exposed geographies**. SA is only 22.4%. This is **concentration risk**, not diversification. |
+| "Treasury shares bought — capital management." | Bought at **R1/share vs ~R6.90 book value** — a **market-distress signal**, not prudent capital management. |
+| "Amortisation up 41% — driven by portfolio ageing." | Partly **assumption-driven** ("elevated interest rate forecast") — a **non-cash model input change** that could reverse, or could signal prior optimism. The split is **not disclosed**. |
+| "Headline LPS improved to −8.1c from −17.2c." | The prior period included a **R71m profit-on-disposal headline adjustment**; the current period has **zero adjustments**. The improvement is **base-effect, not operational**. |
 
 ---
 
 ## 4. FINAL FORENSIC VERIFICATION MATRIX
 
-| Junction | Raw Initial Claim (Section 1) | Resolving Note / SENS / Disclosure | Final Verified Determination |
+| Junction | Raw Initial Claim | Resolving Note / SENS | Final Verified Determination |
 |---|---|---|---|
-| **IFRS 9 ECL & Stage Migration** | "Portfolio amortisation costs increased 41% to R597m driven by portfolio ageing and macro factors." | Note 6.1: PBDs are **Stage 3 POCI on initial recognition**; classification never changes. CAEIR raised to **19.2%** (from 18.4%). ECL allowance fell R598m→R431m (R167m impairment loss = reduction in cumulative gain). | **CONSERVATIVE & SOUND.** Stage 3 POCI is correct. The R167m is a normalisation of historical over-performance (+R24m new-book gain, −R191m historical-book loss), not a credit shock. Macro overlay is pro-cyclical/conservative. |
-| **Loan Book Vintage / Roll Rates** | "Collections favourably impacted by enhanced methodologies despite subdued economy." | Note 6.1 trade receivables matrix: **0% ECL on current/30/60-day; 100% on >90-day; 1.34% total** (down from 2.75%). PBD historical-book loss −R191m (concentrated in unsecured banking −R242m). | **NO HIDDEN DETERIORATION.** Trade book is pristine. PBD historical-book decay is **disclosed and provisioned**. New-book gains confirm underwriting discipline. Watch: unsecured banking historical vintages. |
-| **PBD / NPL Carrying Value & ERC** | "Carrying value R4,489m; ERC R8,366m; cost of acquisitions R410m (+51%)." | Note 1.1: Principal book R3,845m; ERC coverage **1.86x** (up from 1.79x). Note 6.3: FV book R644m at **16% discount** (Level 3, no title). | **PRINCIPAL BOOK CONSERVATIVE (1.86x ERC, 19.2% CAEIR).** FV book (R644m) is the **soft spot** — Level 3, no title, 16% discount (less conservative than CAEIR), R30m non-cash gain. Apply 10–20% haircut in stress case. |
-| **Risk-Adjusted NIM vs CLR** | "EBITDA +28% to R790m; continuing core loss R63m." | Note 7: CAEIR interest R383m; impairment R167m; net PBD income R69m; FV gain R30m. Cash collections R773m; collection costs R45m; net finance charge R203m. | **NIM ~5.5% (IFRS) / ~13.4% (cash).** CLR 4.3% (IFRS) / ~9.8% incremental (historical-book annualised). **Cash economics far stronger than IFRS optics.** Positive and adequate. |
-| **NCA Fee & Rate Caps** | "Agency commission declined 15% to R159m following strategic shift to larger mandates." | No explicit NCA cap disclosure. RTC revenue +27% to R116m; PBD collections +28%. Debt review book R1,092m (14.8% ECL). | **NOT CURRENTLY BINDING.** Decline is mix-shift, not cap stress. **Disclosure gap noted.** Debt review book is the NCA-sensitive exposure to monitor. |
-| **Securitization / Covenant Headroom** | "Covenants comfortably complied; ~R0.8bn unutilised facilities." | Note 2: Total interest-bearing R4,016m; **R1,396m maturing <12 months**; undrawn overdraft **R475m** (up from R136m). Note 1: **R3,845m PBD pledged**. Subordinated debt R196m = **5.1% of pledged book**. | **ADEQUATE BUT TIGHT.** ~1.05x liquidity coverage of 12-month wall. **Thin subordinated cushion (5.1%) vs 5.0% annual historical-book loss rate** = covenant watch item. R0.8bn facility is the swing mitigant (committed status undisclosed). |
-| **Nutun International Margin** | "EBITDA −15% to R80m; revenue −1% to R559m." | Note 6.2: FX translation −R27m revenue; R46m EBITDA hit from FX/hedge. Billable seats **+20% to 2,491**; clients 36. DTI incentive uncertainty flagged. | **VOLUME GROWTH, RAND-COMPRESSED.** Operational expansion intact; EBITDA decline is FX-driven. **DTI incentive uncertainty is unquantified contingent risk.** |
-| **Capital Return / Dividend** | "Cash dividends suspended; no dividend declared; treasury shares acquired R3.7m." | Note 3: 3,662,209 treasury shares at R1/share **for Conditional Share Plan vesting**. Dividend suspension = FY2023 policy. | **NOT A DISTRESS SIGNAL.** Treasury buyback is CSP-related, not capital return. Dividend suspension is deleveraging policy. Consistent with restructuring phase. |
-| **Board / Governance** | "Ian Kirk resigned; Jonathan Jawno Executive Chairman; joint CEOs appointed." | Section 1 board changes: Executive Chairman + joint CEOs (Amoils SA, Moggee Intl) effective 1 Jan 2026; new Audit & Risk Committee member (Naidoo). | **TRANSITION GOVERNANCE.** Executive Chairman + joint CEO structure signals **active restructuring/oversight**. Governance is being reinforced, not destabilised. Monitor for strategic review outcomes. |
+| **EBITDA-to-cash conversion** | "EBITDA +28.5% to R790m; strong cash generation" `[p. 3–4]` | Cash flow statement `[p. 12]`; segment reconciliation `[p. 31]` | **REJECTED.** Operating cash flow is **R(111)m**. R901m gap = interest R225m + PBD acquisitions R382m + WC R(23)m + tax R2m + other. EBITDA ≠ cash. |
+| **PBD amortisation driver** | "Driven by portfolio ageing and macro factors" `[p. 4]` | PBD note `[p. 13]`; CAEIR `[p. 21]` | **PARTIALLY VERIFIED.** Amortisation R597m = CAEIR R383m + impairment R167m + net collections R728m (CODM view). CAEIR rose to **19.2%** (from 17.9%) — assumption-driven component **not quantified**. |
+| **ECL coverage adequacy** | "Impairment loss R167m; coverage 12.6%" `[p. 22–23]` | Credit risk note `[p. 22–24]` | **ADEQUACY QUESTIONED.** Coverage fell from **20.4%** to **12.6%**; Banking-unsecured fell to **9.6%**. Diluted by low-ECL new acquisitions. Legacy book under-provisioned. |
+| **12-month ECL horizon** | "Rolling 12-month net cash flow" `[p. 21]` | PBD note `[p. 21]` | **INAPPROPRIATE for POCI lifetime ECL.** ERC R8,366m implies multi-year tail; 12-month horizon **understates** allowance. |
+| **Fair value vs carrying value** | "Fair value approximates carrying value" `[p. 26–27]` | Fair value note `[p. 26–27]` | **NOT VERIFIABLE.** 18.50% market rate vs 19.2% CAEIR = 70bps tension; resolved only by **unquantified cash-flow risk adjustment**. Impairment risk live. |
+| **ERC achievability** | "ERC R8,366m" `[p. 3]` | **Not referenced in PBD/credit notes** | **UNVERIFIED.** ERC methodology, discount rate, vintage curves **not disclosed**. 1.86x uplift relies on estimation. |
+| **Trade receivables SICR** | "0% ECL until 90+ days" `[p. 25]` | Credit risk note `[p. 25]` | **LENIENT.** 90-DPD backstop vs standard 30-DPD. Delays Stage 2 provisioning. Verify vs FY2025 policy. |
+| **Covenant compliance** | "Comfortably complied; ~R0.8bn unutilised" `[p. 5]` | Debt note `[p. 14–15]` | **UNCORROBORATED.** Covenant ratios **not disclosed**. Only verified undrawn = **R475m overdraft**. R0.8bn claim unsupported. |
+| **Liquidity runway** | "R0.8bn unutilised" `[p. 5]` | Debt note `[p. 14]`; cash flow `[p. 12]` | **TIGHT.** Cash R112m + undrawn R475m = R587m vs **R1,396m <12m maturities** = **R809m gap**. Fully encumbered asset base. |
+| **Asset encumbrance** | "PBD pledged as security" `[p. 13]` | Pledge footnotes `[p. 13, p. 15]` | **100% of PBD (R3,845m) + trade receivables + cash pledged.** No unencumbered collateral for new secured debt. |
+| **Funding rate risk** | "Repo cuts reduced net interest cost" `[p. 4]` | Debt note `[p. 15]`; FV note `[p. 27]` | **100% floating-rate debt.** FV swing R365m in 6 months. No fixed-rate hedge. Full repricing risk. |
+| **Segment profitability** | "SA EBITDA R710m; Intl R80m" `[p. 3]` | Segment note `[p. 30]` | **SA PBT is R(123)m; Intl PBT R31m.** SA is **loss-making at PBT** after R203m net finance charge. Group reliant on International. |
+| **Revenue concentration** | "Diversified UK/US/SA" `[p. 17]` | Revenue disaggregation `[p. 17]` | **72% UK+US concentration.** SA only 22.4%. FX-exposed concentration risk. |
+| **Core adjustments** | "Core loss = headline = basic = R63m" `[p. 6]` | Core reconciliation `[p. 6, p. 31]` | **VERIFIED.** Zero core adjustments in H1 2026. Clean — no add-backs flattering the period. |
+| **Audit status** | "Unaudited and unreviewed" `[p. 6]` | Basis of preparation `[p. 6]` | **CONFIRMED.** All H1 2026 figures unaudited/unreviewed. Restatement risk on PBD, amortisation, CAEIR. |
+| **Treasury share buyback** | "3.66m shares at R1/share" `[p. 16]` | Share capital note `[p. 16]` | **MARKET DISTRESS SIGNAL.** R1/share vs ~R6.90 book value. Weighted avg shares 782.1m. |
+| **Change % signs (p.3)** | "Opex 5%; amortisation (41%); Intl opex (2%)" `[p. 3]` | Primary statements `[p. 9, p. 30]` | **SIGN ERRORS CONFIRMED.** Opex −5.2%; amortisation +41.5%; Intl opex +1.9%. Use absolute values only. |
 
 ---
 
-### FINAL FORENSIC OPINION
-
-**Nutun's H1 FY2026 is a conservatively-reported, cash-generative, deleveraging business in transition.** The R63m IFRS loss is an **accounting artifact of deliberate PBD amortisation acceleration** (CAEIR 19.2%, +80bps), not operational failure. The **principal PBD book is conservatively valued (1.86x ERC coverage)** and the **trade receivables book is pristine (1.34% ECL)**.
-
-**The two genuine forensic risks are:**
-1. **The R644m Level 3 "other financial assets" FV book** — no title, 16% discount (less conservative than CAEIR), R30m non-cash gain. **Haircut 10–20% in stress.**
-2. **The R1,396m 12-month maturity wall vs a thin 5.1% subordinated cushion** — liquidity coverage ~1.05x, dependent on R773m/half-year collections and the *committed* status of the R0.8bn facility.
-
-**The single most important forward indicator** is the **historical-book impairment loss (R191m in H1)** — if this accelerates, the subordinated cushion and covenants come under pressure. If it stabilises (as the +R24m new-book gain suggests), the deleveraging trajectory is intact.
-
-**No forward valuation is expressed per mandate.** This is a forensic determination of accounting integrity, balance-sheet health, and disclosure quality — all of which I assess as **adequate-to-good, with two clearly identified soft spots.**
+**AUDIT CONCLUSION:** Nutun's H1 2026 presents a **loss-making, cash-negative, fully-encumbered consumer debt purchaser** whose headline "EBITDA growth" is a **CODM-view artefact** that adds back the economic cost of the book. The credit book is **deteriorating** (coverage down, legacy impairment up), the funding structure is **short-dated, floating-rate and fully secured**, and the equity buffer is **thin**. The **unaudited status**, **undisclosed covenant ratios**, **uncorroborated R0.8bn liquidity claim**, and **unverifiable fair value ≈ carrying value assertion** are material forensic red flags. **This is a covenant-sensitive, going-concern-adjacent credit — not a growth story.**
 
 ---
 
@@ -264,29 +174,64 @@ This is **tight but adequate**. The critical dependency is **PBD collections con
        "jse_sector_code": "JS3020",
        "jse_sector_name": "Consumer Lending",
        "recommendation": "BUY | HOLD | SELL",
-       "reference_price_zar": 0.00,
+       "reference_price_zar": 0.89,
        "target_price_zar": 0.00,
        "implied_upside_pct": 0.0,
        "forward_dividend_yield_pct": 0.0,
-       "projected_12m_tsr_pct": 0.0
+       "projected_12m_tsr_pct": 0.0,
+       "rating_bands": {
+         "strong_buy_max_zar": 0.00,
+         "buy_max_zar": 0.00,
+         "hold_max_zar": 0.00,
+         "sell_max_zar": 0.00,
+         "strong_sell_above_zar": 0.00
+       }
      }
      ```
-   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
+   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for NTU on the JSE is **R0.89**. You MUST use `0.89` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R0.89 baseline.
+   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:
+     ### Source Documents & Disclosures Considered
+     | # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |
+     | :---: | :--- | :---: | :---: | :---: | :--- |
+     | 1 | `nutunlimitedcondensedconsolidatedafs31march2026.pdf` | [AFS] Annual Financial Statements (AFS) | 38 | FY26 | [Summarize audited/reviewed primary statements, notes & cash flow] |
+   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).
+   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:
      | Metric | Determination | Basis & Key Commentary |
      | :--- | :---: | :--- |
      | **Sector** | Consumer Lending (Consumer Lending — JS3020 / ICB 30201020) | [Sub-sector classification] |
-     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
+     | **Current Reference Share Price** | R0.89 | Verified closing share price (NTU.JO via Yahoo Finance / confirmed input) |
      | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
      | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
      | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
      | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
      | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |
    - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Operational & Segment Forecast (FY27E & FY28E):** Segment drivers, margins, and operational KPIs.
 3. **Consolidated Financial Statements & FCFE Bridge:** Income statement, balance sheet, and equity free cash flow.
 4. **Institutional Valuation Table:** Intrinsic valuation methodology, multiples, and target price in ZAR.
 5. **Forward Valuation Multiples & Sensitivity Matrix:** Target multiples and sensitivity analysis.
 6. **Actionable Portfolio Monitoring Triggers & Catalysts:** Red lines, sensitivity impacts, and reporting dates.
+---
+
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: CONSUMER_LENDING)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-CROSS-SECTION-METRIC-SYNC` | **UNIVERSAL** | **Cross-Section HEPS, Multiple & Target Price Identity** *(Origin: SPP)* | Compute your Section 3 (P&L and HEPS) and Section 4 (DCF and P/E / EV/EBITDA valuation) numbers BEFORE writing the Section 1 Executive Summary Card commentary. The 12-Month Target Price, Reference Price, Forecast HEPS (e.g. FY27E HEPS in R or cents), and Target P/E or EV/EBITDA multiple cited in the Section 1 Executive Summary Card 'Basis & Key Commentary' cell MUST be 100% identical to Section 3 and Section 4 (never cite one HEPS/multiple in Section 1 commentary and a different HEPS/multiple in Section 4). |
+| `ALL-RATING-BANDS-MONOTONIC` | **UNIVERSAL** | **Strictly Ascending ZAR Rating Bands** *(Origin: SPP)* | In the opening JSON block and Section 1 table, rating_bands thresholds MUST be strictly ascending in ZAR per share: strong_buy_max_zar < buy_max_zar < hold_max_zar < sell_max_zar == strong_sell_above_zar, anchored around target_price_zar (Strong Buy <= Target/1.30, Buy <= Target/1.15, Hold <= Target/0.95, Sell <= Target/0.85, Strong Sell > Target/0.85). Never output identical ZAR values for Hold and Sell thresholds. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-HISTORICAL-BASE-COLUMN` | **UNIVERSAL** | **Mandatory Historical Actuals Base Column & Currency Unit Consistency** *(Origin: SPP)* | In Section 2 (Operational Forecast) and Section 3 (Income Statement & Cash Flow Bridge), always include the reported historical base period column(s) (e.g. FY25A and/or 1H26A) alongside FY26E, FY27E, and FY28E so annualized run-rates, operating expenses, and margins are anchored to audited actuals. Never label a ZAR-converted segment revenue row as EUR'm or USD'm; ensure every row's currency unit label matches the numbers in that row. |
+| `ALL-PAT-HEPS-RECONCILIATION` | **UNIVERSAL** | **Forecast PAT-to-HEPS Reconciliation & Net Finance Sign Integrity** *(Origin: CGR)* | Forecast HEPS (cents) MUST equal (Forecast Headline Earnings in R'm / Weighted-Average Shares in millions * 100) and move directionally with Forecast PAT unless explicit non-headline items (e.g. PPE/investment property fair-value gains or goodwill impairments) are itemized in the bridge. Never forecast a sharp drop in PAT alongside an unexplained rise in HEPS. Also verify whether historical Net Finance is net finance income (+, e.g. when JV finance income exceeds P&L finance cost after interest capitalisation) or net finance expense (-), and preserve the exact sign so the P&L sums vertically. |
+| `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT` | **UNIVERSAL** | **Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting** *(Origin: CGR)* | In Section 4 SOTP / DCF valuation tables, every component row MUST sum vertically to Total Enterprise Value (TEV), Equity Value (TEV less Net Debt), SOTP Fair Value per Share (Equity Value / Net Shares), and Target Price (ZAR). If a percentage risk/liquidity discount is applied (e.g. 25% discount), the discount ZAR per share and resulting Target Price MUST equal SOTP Fair Value per Share * (1 - discount%); never switch denominators mid-table. Never add book working capital (Inventory, Contract Assets/WIP) or Goodwill on top of a segment DCF/NPV that already discounts the cash flows generated by those operating assets. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary. |
+| `CONSUMER-LENDING-ECL-PBD-ERC` | **CONSUMER_LENDING** | **Consumer Lending IFRS 9 Stage Migration & Purchased Book Debt (PBD) Amortization** | Reconcile gross loan book and Purchased Book Debt (PBD) carrying values against Estimated Remaining Collections (ERC), separating cash collections applied to revenue yield vs principal amortization and Stage 1/2/3 ECL coverage. |
+
 ---
 
 ## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)

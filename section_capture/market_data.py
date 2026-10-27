@@ -69,6 +69,30 @@ def fetch_jse_quote(ticker: str) -> dict[str, Any] | None:
         logger.warning(f"Error fetching quote for {sym}: {exc}")
         return None
 
+def fetch_jse_company_profile(ticker: str) -> dict[str, Any] | None:
+    """Fetches verified corporate profile and industry classification for a JSE equity from Yahoo Finance."""
+    sym = to_jse_symbol(ticker)
+    clean_ticker = ticker.strip().upper().removesuffix(".JO")
+    try:
+        t = yf.Ticker(sym)
+        info = getattr(t, "info", None) or {}
+        long_name = info.get("longName") or info.get("shortName")
+        if not long_name:
+            return None
+        return {
+            "ticker": clean_ticker,
+            "symbol": sym,
+            "company_name": long_name,
+            "sector": info.get("sector") or "",
+            "industry": info.get("industry") or "",
+            "business_summary": info.get("longBusinessSummary") or "",
+            "website": info.get("website") or "",
+            "currency": info.get("currency") or "ZAc",
+        }
+    except Exception as exc:
+        logger.warning(f"Error fetching profile for {sym}: {exc}")
+        return None
+
 
 def fetch_all_jse_quotes(tickers: list[str]) -> dict[str, dict[str, Any]]:
     """Batch-fetches quotes for multiple JSE equities."""

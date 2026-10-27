@@ -30,6 +30,76 @@ Please format your response into the following four clear sections:
 
 ---
 
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: CONSUMER_LENDING)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary. |
+| `CONSUMER-LENDING-ECL-PBD-ERC` | **CONSUMER_LENDING** | **Consumer Lending IFRS 9 Stage Migration & Purchased Book Debt (PBD) Amortization** | Reconcile gross loan book and Purchased Book Debt (PBD) carrying values against Estimated Remaining Collections (ERC), separating cash collections applied to revenue yield vs principal amortization and Stage 1/2/3 ECL coverage. |
+
+---
+
+## MASTER WORKING PAPER: CUMULATIVE OPEN QUESTIONS LEDGER
+> **Cognitive Audit Anchor:** The authoritative ledger below consolidates all priority questions, forensic hypotheses, and cross-reference resolutions developed across the entire disclosure set. Use this ledger as your reference matrix when auditing the sequential section extractions that follow.
+
+## OPEN QUESTIONS LEDGER — Nutun H1 2026 (updated after Primary Financial Statements, pp. 8–32)
+
+### Target: Highlights / p.3
+- Q1 [High]: Recompute all Change % on p.3 — sign errors detected (opex "5%" vs −5.2%; amortisation "(41%)" vs +41.5%; Intl opex "(2%)" vs +1.9%). Confirm correct direction of every KPI line. [Underlying absolutes confirmed from pp. 9, 30; p.3 signs still open]
+
+### Target: PBD/RTC note / accounting policies
+- Q3 [High]: Quantify split of R175m amortisation increase between portfolio ageing/volume vs change in forward-looking macro/EIR assumptions. CAEIR rose to 19.2% from 17.9%; precise split not disclosed. [Partially resolved]
+- Q6 [Medium]: Confirm ERC (R8,366m) estimation methodology and discount rate; check whether PBD/RTC carrying value (R4,489m) is impairment-tested; obtain portfolio ageing profile. [PBD carrying R4,489m confirmed; ERC not referenced; ageing not disclosed]
+- Q13 [High]: Reconcile PBD fair value R3,845m to 18.50% market discount rate vs 19.2% CAEIR; management states fair value ≈ carrying value — verify cash flow risk adjustment. [New]
+- Q14 [High]: Verify whether 12-month rolling ECL horizon is appropriate for POCI lifetime ECL; obtain tail beyond 12 months and vintage loss curves. [New]
+- Q19 [Medium]: Quantify base-case vs actual collections; obtain vintage loss curves; verify payer drop-off rate behind R431m cumulative impairment gain reduction. [New]
+
+### Target: Credit risk note
+- Q4 [High]: Extract collections-vs-ERC actuals, vintage loss curves, DPD buckets, and coverage/impairment on PBD/RTC carrying value. Test achievability of R8,366m ERC. [Collections R773m gross / R728m net confirmed; coverage 12.6% confirmed; ERC and DPD/vintage still open]
+- Q15 [High]: Verify SICR policy and 30-DPD backstop; check whether 90-DPD threshold for trade receivables ECL is a relaxation vs FY2025. [New]
+
+### Target: Debt / funding note
+- Q5 [High]: Obtain covenant ratios (interest cover, LTV, net debt/EBITDA, ABS triggers), headroom, maturity wall, facility types. Quantify "~R0.8bn unutilised facilities". [Maturity wall R1,396m <12m / R2,620m >12m confirmed; undrawn overdraft R475m confirmed; covenants and R0.8bn claim still open]
+- Q12 [High]: Obtain pledge agreement terms, covenant ratios, ABS performance triggers, and unencumbered asset base — 100% of PBD (R3,845m) plus trade receivables and cash pledged. [New]
+- Q18 [High]: Verify total undrawn facilities across all debt types (not just overdraft R475m); check R0.8bn claim source. [New]
+- Q24 [Medium]: Verify rate sensitivity; check fixed vs floating split (all floating per note); explain R365m fair value swing in 6 months. [New]
+
+### Target: Cash flow statement / segment note
+- Q7 [Medium]: Reconcile EBITDA (R710m SA) to operating cash flow; check cash conversion, working capital, and actual PBD acquisition cash outflows (R382m confirmed). [Resolved]
+- Q17 [High]: Build full EBITDA-to-cash bridge: Core EBITDA R790m vs operating cash outflow R(111)m — R901m gap; interest paid R225m, PBD additions R382m, WC R(23)m, tax R2m. [New]
+- Q16 [High]: Reconcile CODM revenue R888m − IFRS net income R69m to amortisation R597m; footnote components (383+167+728+30+116) do not arithmetically reconcile. [New]
+
+### Target: Segmental note 7 / revenue note
+- Q8 [Medium]: Check FX sensitivity, hedge accounting, and DTI incentive income recognised; verify International margin drivers. [FX contracts confirmed; DTI and hedge accounting still open]
+- Q9 [Medium]: Verify client concentration (top-10 % of revenue) and sustainability of R159m agency commission line after client count fell 23→20. [R159m confirmed; concentration still open]
+- Q20 [Medium]: Obtain top-10 client % of revenue; verify SA agency commission sustainability. [New]
+- Q21 [Medium]: Verify SA funding cost allocation and transfer pricing — SA PBT R(123)m vs International R31m. [New]
+
+### Target: Currency risk note
+- Q22 [Medium]: Verify hedge accounting treatment, effectiveness, and MTM for USD/GBP FX contracts. [New]
+
+### Target: Fair value note
+- Q23 [Medium]: Verify Level 3 FV gain drivers; R30m vs R74m Mar-25 vs R114m FY25 — declining. [New]
+
+### Target: Board / governance / related-party note
+- Q10 [Low]: Check for related-party transactions and key-person risk following Executive Chairman and joint CEO board appointments (1 Jan 2026). [Still open]
+- Q25 [Low]: Check for related-party transactions and key-person risk. [New — duplicate of Q10]
+
+### Target: Share capital note
+- Q27 [Low]: Verify market price vs book value (~R6.90/share); treasury shares acquired at R1/share. [New]
+
+### Target: FY2026 audited AFS / subsequent events
+- Q11 [Low]: H1 2026 is unaudited and unreviewed. At FY2026 audit, check for restatements to PBD/RTC carrying value, amortisation, CAEIR, or core-earnings adjustments. [Still open]
+- Q26 [Low]: Check for restatements to PBD carrying value, amortisation, CAEIR, or core earnings at FY2026 audit. [New — duplicate of Q11]
+
+---
+
 # THE SEQUENTIAL EXTRACTION & WORKING PAPER DOSSIER (2 SECTIONS)
 
 ================================================================================
@@ -311,6 +381,88 @@ Please format your response into the following four clear sections:
 
 ### [ANALYST QUERY / EMPHASIS]
 Scrutinize key accounting policies, unusual movements, and forward guidance.
+
+### [SECTION READING RESPONSE / DETERMINATION]
+### 1. Answers to Stored Questions for This Section
+*(No stored questions were supplied — first section capture. Omitted per workflow rule.)*
+
+### 2. Footnote & Qualification Deep-Dive
+
+- **"The financial information on which this announcement is based has not been reviewed and reported on by Nutun Limited's auditors"** `[unmapped, physical PDF p. 6]` — This is a material qualification. All H1 2026 figures (revenue, EBITDA, PBD/RTC carrying values, amortisation, covenant compliance) are **unaudited and unreviewed**. Any forecast built on these numbers carries unverified-basis risk; the FY2026 audited AFS must be checked for restatement of PBD/RTC carrying values and amortisation.
+- **"Any forecast financial information has not been reviewed or reported on by the company's auditors"** `[unmapped, physical PDF p. 6]` — Forward-looking statements (book-buying objectives, AI-driven margin enhancement, "higher profitability in future years") are unverified management assertions, not audited guidance.
+- **"accelerated amortisation driven by forward looking macro-economic assumptions including an elevated interest rate forecast relative to our expectations"** `[unmapped, physical PDF p. 5]` — This is the key accounting-policy signal in the capture. PBD/RTC amortisation rose 41% to R597m (vs R422m) on cost of acquisitions up 51% to R410m. Management attributes part of the increase to a **forward-looking macro assumption change (higher interest rate forecast)** — i.e., a valuation-model input change, not purely portfolio ageing. This must be reconciled: how much of the R175m amortisation increase is (a) volume/ageing vs (b) assumption change? If assumption-driven, it is a non-cash P&L hit that could reverse — or could signal the embedded discount rate / EIR assumptions were previously too optimistic.
+- **"Portfolio amortisation costs increased by 41%... driven by portfolio ageing and macro-economic factors linked to interest rates, inflation and consumer health & payment behaviour"** `[unmapped, physical PDF p. 4]` — Consumer payment behaviour deterioration is flagged qualitatively but **no delinquency, roll-rate, vintage or coverage data is disclosed in this capture**. This is the single largest gap for credit-risk assessment.
+- **"funding covenants are comfortably complied with and have approximately R0.8 billion in unutilised facilities as at 31 March 2026"** `[unmapped, physical PDF p. 5]` — "Comfortably complied" is unquantified. No covenant headroom ratios, no maturity profile, no ABS trigger levels disclosed here. Must be verified against debt note.
+- **"cash dividends have been suspended, with no cash dividend being declared"** `[unmapped, physical PDF p. 5]` — Consistent with continuing core loss; DPS = 0. Confirms no payout in forecast.
+- **Core earnings reconciliation notes** `[unmapped, physical PDF p. 6]` — Note 1 (transaction costs, FY2025 funding restructuring) and Note 2 (impairment of financial assets held by associate TC Global Finance, R47m in H1 2025) are clean prior-period adjustments; H1 2026 has **zero** core adjustments, meaning core loss = headline loss = basic loss = R63m. No add-backs flattering the current period.
+- **Discontinued operations** `[unmapped, physical PDF p. 6]` — Nutun Transact disposal (FY2025) fully washed through; H1 2026 discontinued = nil. Forecast should model continuing operations only.
+- **No footnote markers (`[^1]`, `*`) with missing definitions were detected in this capture** — the table on p. 3 carries no footnote markers. However, the p. 3 table's "Change %" column contains a **sign/label inconsistency** (see Q1 below) that functions as an unlabelled qualification.
+
+**Arithmetic checks on supplied numbers:**
+- Revenue 1,610 − Operating costs 820 = **EBITDA 790** ✓ (ties).
+- Segment EBITDA: SA 710 + Intl 80 = **790** ✓.
+- Segment revenue: 1,051 + 559 = **1,610** ✓.
+- Segment opex: 341 + 479 = **820** ✓.
+- EBITDA 790 − PBD/RTC amortisation 597 − net interest 216 = **−23**, but reported continuing core loss = **−63**. **Unexplained R40m gap** (likely D&A, tax, NCI, or other costs not shown in this extract) — flagged as Q2.
+- PBD/RTC: Carrying value 4,489 vs Estimated remaining collections 8,366 → **implied embedded uplift 86%** (ERC/CV = 1.86x). H1 2025: 7,808/4,353 = 1.79x. Uplift widened — consistent with management's "improving embedded discount rate" claim, but also raises ERC-estimate reliance risk.
+- Cost of acquisitions 410 vs amortisation 597 → amortisation running **1.46x** current-period acquisition spend; book is being consumed faster than replenished in P&L terms.
+- Change % column anomalies: Operating costs "5%" but 820 vs 865 = **−5.2%** (sign error); PBD/RTC amortisation "(41%)" but 597 vs 422 = **+41.5%** (sign/parenthesis error); Nutun International opex "(2%)" but 479 vs 470 = **+1.9%**. Treat all Change % signs on p. 3 as unreliable; use absolute values.
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| Q1 | High | Segment note (note 7) / financial statements | Change % column sign errors on p. 3 (opex "5%" vs −5.2%; amortisation "(41%)" vs +41.5%; Intl opex "(2%)" vs +1.9%) `[unmapped, p. 3]` | Recompute every Change % from absolute H1 2026 vs H1 2025 figures in note 7; confirm correct direction of each line | Mis-signed growth rates corrupt any trend-based forecast |
+| Q2 | High | Group income statement / note on EBITDA-to-loss bridge | EBITDA 790 − amortisation 597 − net interest 216 = −23, but core loss reported −63 (R40m unexplained) `[unmapped, pp. 3–4]` | Locate the R40m: D&A, tax, NCI, associate losses, or other opex not in the KPI table; reconcile EBITDA to core loss line by line | Forecast P&L bridge must be complete; hidden R40m cost base changes margin math |
+| Q3 | High | PBD/RTC note / accounting policies | "Accelerated amortisation driven by forward looking macro-economic assumptions including an elevated interest rate forecast" `[unmapped, p. 5]` | Quantify split of the R175m amortisation increase between (a) portfolio ageing/volume and (b) change in macro/EIR assumptions; check EIR and discount-rate methodology vs FY2025 | Determines whether amortisation is a recurring cash-equivalent cost or a reversible non-cash assumption hit — directly drives core earnings forecast |
+| Q4 | High | PBD/RTC note / credit risk note | "Consumer health & payment behaviour" cited as amortisation driver; no delinquency, roll-rate, vintage or coverage data disclosed `[unmapped, p. 4]` | Extract collections-vs-ERC actuals, vintage loss curves, DPD buckets, and any impairment/coverage on PBD/RTC carrying value of R4,489m | Core credit-risk assessment of the principal lending book; tests whether ERC of R8,366m is achievable |
+| Q5 | High | Debt / funding note | "Funding covenants comfortably complied with; ~R0.8bn unutilised facilities" — unquantified `[unmapped, p. 5]` | Obtain covenant ratios (interest cover, LTV, net debt/EBITDA, ABS triggers), headroom, maturity wall, and facility types (RCF/syndicated/ABS) | Funding covenant tightness is a going-concern and forecast-flexibility input |
+| Q6 | Medium | PBD/RTC note | Carrying value R4,489m vs ERC R8,366m (1.86x uplift); acquisitions R410m vs amortisation R597m `[unmapped, p. 3]` | Confirm ERC estimation methodology, discount rate, and whether carrying value is subject to impairment testing; check portfolio ageing profile | ERC is the revenue backbone; overstatement inflates forward collections forecast |
+| Q7 | Medium | Cash flow statement | "Strong growth in Nutun South Africa's cash generation" (EBITDA R710m) but group core loss R63m `[unmapped, pp. 4–5]` | Reconcile EBITDA to operating cash flow; check cash conversion, working capital, and actual PBD acquisition cash outflows (R593m FY2025 H2 + R382m H1 2026) | Cash generation claim underpins liquidity forecast; EBITDA ≠ cash |
+| Q8 | Medium | Segmental note 7 | Nutun International EBITDA −15% to R80m on R46m FX impact; Rand strength and DTI incentive uncertainty flagged `[unmapped, pp. 4–5]` | Check FX sensitivity disclosure, hedge accounting, and any DTI incentive income recognised in revenue/other income | International margin forecast hinges on FX and incentive assumptions |
+| Q9 | Medium | Revenue note / agency segment | Agency commission revenue −15% to R159m on "strategic shift to larger mandates, fewer clients"; client count SA 23→20 `[unmapped, pp. 3–4]` | Verify client concentration (top-10 % of revenue) and sustainability of the R159m agency line | Client concentration risk to revenue forecast |
+| Q10 | Low | Related-party / board note | Executive Chairman appointment (Jonathan Jawno) and joint CEO board appointments 1 Jan 2026; Ian Kirk and Albertinah Kekana resigned `[unmapped, p. 7]` | Check for related-party transactions, key-person risk, and any governance flags in the board/governance section | Governance stability affects forecast risk premium, not core numbers |
+| Q11 | Low | Subsequent events / FY2026 AFS | Entire H1 2026 result is unaudited and unreviewed `[unmapped, p. 6]` | At FY2026 audited AFS, check for restatements to PBD/RTC carrying value, amortisation, or core-earnings adjustments | Unaudited basis risk to all baseline inputs |
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Metric (Rm unless stated) | H1 2026 | H1 2025 | Change |
+| --- | --- | --- | --- |
+| Revenue and other income | 1,610 | 1,480 | +8.8% |
+| — Nutun South Africa | 1,051 | 917 | +14.6% |
+| — Nutun International | 559 | 563 | −0.7% |
+| Operating costs | 820 | 865 | −5.2% |
+| — Nutun South Africa | 341 | 395 | −13.7% |
+| — Nutun International | 479 | 470 | +1.9% |
+| EBITDA | 790 | 615 | +28.5% |
+| — Nutun South Africa | 710 | 522 | +36.0% |
+| — Nutun International | 80 | 93 | −14.0% |
+| PBD & RTC amortisation | 597 | 422 | +41.5% |
+| Net interest cost | 216 | 233 | −7.3% |
+| Continuing core loss | (63) | (71) | improved R8m |
+| PBD/RTC cost of acquisitions | 410 | 272 | +50.7% |
+| PBD/RTC carrying value | 4,489 | 4,353 | +3.1% |
+| PBD/RTC estimated remaining collections | 8,366 | 7,808 | +7.1% |
+| Clients — Nutun South Africa | 20 | 23 | −13.0% |
+| Clients — Nutun International | 36 | 35 | +2.9% |
+| Nutun International billable seats | 2,491 | 2,069 | +20.4% |
+| Core loss per share (cents) | (8.1) | (9.1) | — |
+| Headline loss per share (cents) | (8.1) | (17.2) | — |
+| Basic loss per share (cents) | (8.1) | (8.2) | — |
+| DPS (cents) | 0 | 0 | suspended |
+| Unutilised facilities | ~R0.8bn | n/a | — |
+| PBD collections (SA) | 773 | 604 (implied) | +28% |
+| RTC revenue (SA) | 116 | 91 (implied) | +27% |
+| Agency commission & fee revenue (SA) | 159 | 187 (implied) | −15% |
+| Other income (SA) | 4 | 35 (implied) | −R31m |
+| Net interest cost (SA) | 203 | 218 (implied) | −7% |
+| FX adverse impact (Intl revenue) | 27 | — | — |
+| FX adverse impact (Intl EBITDA) | 46 | — | — |
+
+*Derived: implied ERC/CV uplift 1.86x (H1 2026) vs 1.79x (H1 2025); amortisation/acquisition spend 1.46x; EBITDA-to-core-loss bridge gap R40m (unresolved — Q2).*
+
+### 6. Next Section to Capture
+**The PBD/RTC note and credit-risk note (and the segmental note 7)** — these will resolve **Q3, Q4, Q6** (amortisation assumption split, ERC methodology, delinquency/vintage/coverage data) and **Q1** (segment Change % recomputation). If the Report Map orders sections differently, capture the **debt/funding note** next to resolve **Q5** (covenant headroom and facility structure), as funding is the highest going-concern priority after the credit book.
 
 ================================================================================
 ## SECTION 2: [unmapped] Primary financial statements
@@ -1488,3 +1640,262 @@ Equity accounted earnings. It represents management’s view of operating cash f
 
 ### [ANALYST QUERY / EMPHASIS]
 Scrutinize key accounting policies, unusual movements, and forward guidance.
+
+### [SECTION READING RESPONSE / DETERMINATION]
+### 1. Answers to Stored Questions for This Section
+
+**Q1 [High]: Recompute all Change % on p.3 — sign errors detected. Confirm correct direction of every KPI line.**
+- **Status**: `Partially resolved (remainder stays open for [Highlights / p.3])`
+- **Answer & evidence**: The primary statements captured here (pp. 8–32) do not include the p.3 Highlights table, so the sign-error recomputation cannot be completed. However, the underlying absolute figures needed to recompute the KPI lines are now available and confirm the direction of travel: Revenue R711m vs R745m (down 4.6%); Gross profit from services R326m vs R393m (down 17.0%); Operating costs R445m vs R560m (down 20.5%); Amortisation of PBD R597m vs R422m (up 41.5%); Net finance charge R39m vs R52m (down 25.0%); Loss for the period R(63)m vs R(64)m. The amortisation direction (+41.5%) and opex direction (−20.5%) are confirmed from `[unmapped, physical PDF p. 9]` and `[unmapped, physical PDF p. 30]`. The p.3 percentage signs still require the Highlights section to verify.
+
+**Q2 [High]: EBITDA 790 − amortisation 597 − net interest 216 = −23, but core loss = −63. Locate the unexplained R40m.**
+- **Status**: `Resolved`
+- **Answer & evidence**: The bridge is fully disclosed in the segment reconciliation `[unmapped, physical PDF p. 31]`. Core EBITDA R790m − amortisation of PBD R597m − net finance charge R216m − equity accounted loss R1m − depreciation & amortisation R68m + tax credit R29m = R(63)m. The "unexplained R40m" is the **R68m depreciation & amortisation** (of intangibles/PPE, distinct from PBD amortisation) net of the **R29m tax credit** (68 − 29 = 39 ≈ 40). No residual remains. Note: the earlier stored question's arithmetic omitted D&A and tax.
+
+**Q3 [High]: Quantify split of R175m amortisation increase between portfolio ageing/volume vs change in forward-looking macro/EIR assumptions.**
+- **Status**: `Partially resolved (remainder stays open for [PBD/RTC note / accounting policies])`
+- **Answer & evidence**: Amortisation of PBD rose from R422m (H1 2025) to R597m (H1 2026), +R175m `[unmapped, physical PDF p. 30 vs p. 32]`. The segment footnote `[unmapped, physical PDF p. 31]` defines amortisation as CAEIR imputed interest R383m + impairment loss R167m + net cash collections R728m + fair value movements R30m + cash collections R116m. The increase is therefore driven by higher net cash collections (R728m vs R566m, +R162m) and higher CAEIR interest (R383m vs R333m, +R50m), partly offset by lower impairment (R167m vs R173m). The **CAEIR rose to 19.2% from 17.9%** `[unmapped, physical PDF p. 21]`, which mechanically inflates imputed interest and amortisation. The precise split between volume/ageing vs EIR/macro assumption change is **not disclosed** and remains open.
+
+**Q4 [High]: Extract collections-vs-ERC actuals, vintage loss curves, DPD buckets, and coverage/impairment on PBD/RTC carrying value.**
+- **Status**: `Partially resolved (remainder stays open for [Credit risk note / PBD/RTC note])`
+- **Answer & evidence**: Collections: gross collections R773m, net collections R728m, collection costs R45m `[unmapped, physical PDF p. 13]`. PBD principal book gross carrying R3,414m, ECL allowance R431m, net R3,845m → **coverage 12.6%** `[unmapped, physical PDF p. 22–23]`. Segment split: Banking & specialised lending unsecured gross R2,371m / ECL R227m (9.6% coverage); Debt review gross R951m / ECL R141m (14.8%); Retail gross R46m / ECL R51m (>100%); Banking secured gross R46m / ECL R12m (26.1%) `[unmapped, physical PDF p. 23]`. **No DPD buckets or vintage loss curves are disclosed for PBD** (PBDs are POCI/Stage 3 by definition and managed on cash-collection basis, not DPD). ERC of R8,366m is **not referenced in this section** — remains open.
+
+**Q5 [High]: Obtain covenant ratios, headroom, maturity wall, facility types. Quantify "~R0.8bn unutilised facilities".**
+- **Status**: `Partially resolved (remainder stays open for [Debt / funding note])`
+- **Answer & evidence**: Maturity wall: R1,396m payable within 12 months, R2,620m thereafter `[unmapped, physical PDF p. 14]`. Facility types: Notes (bullet/amortising, JIBAR+2.8–3.7%), Senior amortising (JIBAR+2.85–5.2%), Senior bullet (JIBAR+3–3.28%), Subordinated (JIBAR+4.6–5.0%), Revolving facility (Prime−0.25–0.35%) `[unmapped, physical PDF p. 15]`. **Undrawn overdraft facilities R475m** (vs R43m Mar-25, R136m Sep-25) `[unmapped, physical PDF p. 14]` — this is the only quantified "unutilised" figure; the "~R0.8bn" claim is **not corroborated** here (R475m undrawn overdraft only). **Covenant ratios and headroom are NOT disclosed** — remains open.
+
+**Q7 [Medium]: Reconcile EBITDA (R710m SA) to operating cash flow; check cash conversion, working capital, and actual PBD acquisition cash outflows.**
+- **Status**: `Resolved`
+- **Answer & evidence**: Cash utilised by operations R(50)m; interest paid R(225)m; tax refunded R2m → operating cash before WC R(270)m `[unmapped, physical PDF p. 12]`. PBD acquisition cash outflow: **Additions R382m** `[unmapped, physical PDF p. 13]` (matches stored question's R382m H1 2026). Decrease in PBD (collections net) R182m inflow. Net cash utilised by operating activities R(111)m. Core EBITDA R790m vs operating cash outflow R(111)m — the gap is explained by interest paid R225m, PBD additions R382m, and WC movements. Cash conversion is **negative**; EBITDA is not converting to cash.
+
+**Q8 [Medium]: Check FX sensitivity, hedge accounting, and DTI incentive income; verify International margin drivers.**
+- **Status**: `Partially resolved (remainder stays open for [Segmental note 7 / revenue note])`
+- **Answer & evidence**: FX: Nutun entered FX contracts to hedge USD/GBP receipts for International segment `[unmapped, physical PDF p. 25]`. Foreign currency assets R207m receivables + R27m bank balances; liabilities USD R10m, GBP R2m `[unmapped, physical PDF p. 26]`. Revenue by geography: SA R159m, Australia R27m, UK R303m, US R212m, Other R10m `[unmapped, physical PDF p. 17]`. International revenue R552m vs R557m (flat). **DTI incentive income and hedge accounting treatment not disclosed** — remains open.
+
+**Q9 [Medium]: Verify client concentration (top-10 % of revenue) and sustainability of R159m agency commission line after client count fell 23→20.**
+- **Status**: `Partially resolved (remainder stays open for [Segmental note 7 / revenue note])`
+- **Answer & evidence**: SA commissions and fees R159m vs R188m (down 15.4%) `[unmapped, physical PDF p. 17]`. **Client concentration (top-10 %) is NOT disclosed** — remains open. The R159m line is confirmed but sustainability cannot be assessed without concentration data.
+
+**Q10 [Low]: Check for related-party transactions and key-person risk.**
+- **Status**: `Open (not addressed in this section)`
+- **Answer & evidence**: No related-party note captured in this section. Carried forward.
+
+**Q11 [Low]: H1 2026 unaudited and unreviewed; check for restatements at FY2026 audit.**
+- **Status**: `Partially resolved (remainder stays open for [FY2026 audited AFS])`
+- **Answer & evidence**: All H1 2026 statements are marked "Unaudited" `[unmapped, physical PDF pp. 8–32]`. No "reviewed" designation. Restatement risk remains open for FY2026 audit.
+
+**Q6 [Medium]: Confirm ERC (R8,366m) estimation methodology and discount rate; check whether PBD/RTC carrying value (R4,489m) is impairment-tested; obtain portfolio ageing profile.**
+- **Status**: `Partially resolved (remainder stays open for [PBD/RTC note])`
+- **Answer & evidence**: PBD carrying value R4,489m `[unmapped, physical PDF p. 8, p. 13]`. PBDs are POCI/Stage 3, measured at amortised cost using CAEIR of **19.2%** (Mar-25: 17.9%; Sep-25: 18.4%) `[unmapped, physical PDF p. 21]`. Fair value disclosure uses current market discount rate **18.50%** (Mar-25: 15.81%; Sep-25: 15.93%) and states fair value approximates carrying value `[unmapped, physical PDF p. 26]`. **ERC R8,366m is NOT referenced in this section** — remains open. Portfolio ageing profile not disclosed (PBDs managed on cash-collection basis, not DPD).
+
+---
+
+### 2. Footnote & Qualification Deep-Dive
+
+**Footnote 1.1 `*` — Pledged PBD as security** `[unmapped, physical PDF p. 13]`
+- Quote: "Purchased book debts of R3 845 million ... have been pledged as security for the interest-bearing liabilities and bank overdrafts per the pledge agreement ... These assets are pledged for the duration of the agreement."
+- Implication: **100% of the principal book portfolio (R3,845m) is encumbered**. This is a critical funding-structure constraint: the entire PBD asset base secures R4,016m of interest-bearing liabilities + overdrafts. Any ABS/securitisation trigger breach or pledge covenant could crystallise. Must verify pledge covenant terms and ABS performance triggers in the debt note.
+
+**Footnote 1.1 `**` — Net collections composition** `[unmapped, physical PDF p. 13]`
+- Quote: "Included in net collections are gross collections of R773 million ... and directly attributable and incremental collection costs of R45 million."
+- Implication: Gross collections R773m less collection costs R45m = R728m net. Collection cost ratio = 5.8% of gross collections (Mar-25: 6.3%; Sep-25: 6.5%). Improving cost efficiency, but must verify whether "directly attributable and incremental" excludes overhead allocation — if so, true collection economics are worse.
+
+**Footnote 2 `*` — Comparative disclosure presented for first time** `[unmapped, physical PDF p. 14]`
+- Quote: "Comparative disclosure for 31 March 2025 has been presented for the first time to enhance the overall presentation."
+- Implication: The Mar-25 debt maturity/class split is **newly presented**, not previously audited at interim. Increases restatement/comparability risk. Must verify against FY2025 audited AFS.
+
+**Footnote 2.1 `*` — Pledge security (debt note)** `[unmapped, physical PDF p. 15]`
+- Quote: "Purchased book debts, trade and other receivables and cash and cash equivalents have been pledged as security for the interest-bearing liabilities and bank overdrafts."
+- Implication: Broader encumbrance than just PBD — trade receivables and cash also pledged. Reduces unencumbered liquidity. Must quantify unencumbered asset base for covenant headroom.
+
+**Footnote 3.1 `*` — Share capital net of issue costs; treasury shares** `[unmapped, physical PDF p. 16]`
+- Quote: "Nutun acquired 3,662,209 shares for a consideration of R3.7 million (average share price of R1 per share) ... for the purpose of holding the shares as treasury shares to be utilised on the vestings of the Conditional Share Plan."
+- Implication: Share buyback at R1/share signals **market price distress** (vs R5,414m/784m = ~R6.90 book value per share). Treasury shares reduce weighted average shares to 782.1m, marginally inflating loss per share. Minor but signals capital management stress.
+
+**Footnote 4 `*` and 4.1 `*` — Revenue disaggregation first-time presentation** `[unmapped, physical PDF p. 17]`
+- Quote: "This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 ... Comparative disclosure for 31 March 2025 has been presented for the first time."
+- Implication: Geographic revenue split is **newly disclosed** — no audited interim comparator. UK R303m (42.6% of revenue) is the largest geography; US R212m (29.8%); SA only R159m (22.4%). Concentration in UK/US BPO revenue — FX and client-concentration risk. Must verify client concentration.
+
+**Footnote 5.1 `*` — Dilutive shares** `[unmapped, physical PDF p. 18]`
+- Quote: "Shares deemed to be issued for no consideration in respect of the conditional share plan do not have a dilutive effect in the current period."
+- Implication: Diluted = basic LPS at R(8.1)c. Conditional share plan is anti-dilutive in a loss period. On return to profit, dilution could re-emerge. Minor.
+
+**Footnote 6.1 — ECL methodology: "low credit risk" presumption** `[unmapped, physical PDF p. 20]`
+- Quote: "The group assumes that the credit risk on a financial instrument has not increased significantly if the financial instrument is determined to have a low credit risk at the reporting date."
+- Implication: **SICR low-credit-risk exemption** applied. For PBDs (POCI/Stage 3 by definition) this is moot, but for trade receivables it could delay Stage 2 migration. Must verify SICR thresholds and whether 30-DPD backstop is applied.
+
+**Footnote 6.1 — ECL maximum period = contractual period** `[unmapped, physical PDF p. 20]`
+- Quote: "The maximum period considered when measuring ECL is the maximum contractual period (including extension options) ... and not a longer period, even if that period is consistent with business practice."
+- Implication: For PBDs, ECL is measured over **rolling 12-month net cash flow** discounted at CAEIR `[unmapped, physical PDF p. 21]` — not full lifetime. This is a **shortened ECL horizon** vs full-lifetime Stage 3 ECL. Understates lifetime loss allowance if collections tail extends beyond 12 months. Must verify whether 12-month rolling is appropriate for POCI lifetime ECL.
+
+**Footnote 6.1 — POCI classification irrevocable** `[unmapped, physical PDF p. 21]`
+- Quote: "The classification of PBDs does not change subsequent to initial recognition, even in the unlikely event of the expected cash flows associated thereto returning to full contractual terms."
+- Implication: PBDs permanently Stage 3. **No cure/re-aging to Stage 1/2 possible.** This is conservative and correct under IFRS 9, but means the entire R3,845m net PBD book is credit-impaired — coverage ratio of 12.6% is the key metric. Must benchmark 12.6% coverage against expected recovery rates.
+
+**Footnote 6.1 — CAEIR 19.2%** `[unmapped, physical PDF p. 21]`
+- Quote: "The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%; 30 September 2025: 18.4%)."
+- Implication: **CAEIR rose 130bps YoY**. Higher discount rate on same cash flows → lower PV → lower carrying value → but also higher imputed interest revenue (R383m vs R333m). This is a **double-edged sword**: it inflates the P&L interest line while depressing the balance sheet. Must verify whether CAEIR increase reflects higher market rates (benign) or higher credit risk premium (adverse). The fair value note uses 18.50% market rate vs 19.2% CAEIR — a 70bps gap that management says "approximates carrying value" `[unmapped, physical PDF p. 26]`. **This is a tension**: if market rate is 18.50% and CAEIR is 19.2%, fair value should be *higher* than carrying value, not equal. Must verify the fair value approximation.
+
+**Footnote 6.1 — "elevated interest rate forecast" / impairment model parameters** `[unmapped, physical PDF p. 21]`
+- Quote: "These impairment model parameters have been applied in determining expected cash shortfalls arising from non-payment in the best estimate provision on the loan book as at 31 March 2026. These books are not subsequently managed based on the credit risk rating but rather on a cash collection basis."
+- Implication: Confirms forward-looking macro overlay applied. **No quantification of overlay** — must verify in PBD/RTC note. "Cash collection basis" confirms no DPD staging for PBDs.
+
+**Footnote 6.1 — Trade receivables ECL table `*` and `**`** `[unmapped, physical PDF p. 25]`
+- Quote: "The expected credit loss (ECL) on trade receivables is shown per the maturity of trade receivables ... This disclosure was presented for the first time..."
+- Implication: Trade receivables ECL: Current 0.00%, 30-day 0.00%, 61–90 day 0.00%, 90+ day 100.00%, total 1.34% `[unmapped, physical PDF p. 25]`. **Zero ECL on 61–90 day overdue** is aggressive — no Stage 2 provisioning until 90+ days. This is a **relaxed SICR threshold** (90 DPD vs standard 30 DPD). Must verify SICR policy and whether this masks deterioration. Gross 90+ overdue fell to R5m from R7m, but 61–90 day fell to R5m from R6m — small book but policy is lenient.
+
+**Footnote 6.2 `*` — Foreign currency assets** `[unmapped, physical PDF p. 26]`
+- Quote: "Assets held in foreign currency relate to receivables of R207 million ... and bank balances of R27 million."
+- Implication: FX exposure R234m assets vs R12m liabilities — net long FX. GBP strengthened (22.4 vs 23.1 avg) — translation loss R4m in OCI. Hedge contracts in place but **no hedge effectiveness disclosure**. Must verify hedge accounting.
+
+**Footnote 6.3 — Fair value of PBD: discount rate 18.50% vs CAEIR 19.2%** `[unmapped, physical PDF p. 26]`
+- Quote: "The fair value of principal book portfolios is determined by adjusting the discount rate from the credit-adjusted effective interest rate to a current market related discount rate of 18.50% ... The fair values determined on this basis approximates the carrying value."
+- Implication: **Critical tension**: market rate 18.50% < CAEIR 19.2%. Lower discount rate → higher PV → fair value should exceed carrying value by ~R100m+. Yet management states fair value ≈ carrying value (both R3,845m) `[unmapped, physical PDF p. 27]`. Either (a) expected cash flows were also adjusted downward for risk, or (b) the approximation is imprecise. Must verify the cash flow adjustment and reconcile the R3,845m fair value to the 18.50% discount rate.
+
+**Footnote 6.3 — Interest-bearing liabilities fair value** `[unmapped, physical PDF p. 27]`
+- Quote: Carrying R3,743m vs fair value R3,769m (Mar-25: R3,407m vs R3,428m; Sep-25: R3,807m vs R3,468m).
+- Implication: At Sep-25, fair value was **R339m below carrying** (favourable to group); at Mar-26, fair value is **R26m above carrying** (unfavourable). Swing of R365m in six months — reflects rising rates. Must verify rate sensitivity.
+
+**Footnote 6.4 `*` — Level 3 other movements** `[unmapped, physical PDF p. 29]`
+- Quote: "Other movements include additions of R28 million ... and cash collections of R116 million."
+- Implication: Level 3 other financial assets R644m, gains R30m in P&L. Fair value gains of R30m (vs R74m Mar-25, R114m FY25) — **declining fair value gains** signal deteriorating performance on fair-value PBDs. Must verify.
+
+**Footnote 7 `*` — Segment revenue** `[unmapped, physical PDF p. 30]`
+- Quote: "Refer to note 4.1 for the disaggregation of revenue."
+- Implication: Cross-reference only. No new information.
+
+**Footnote 7 `*` — Amortisation of PBD composition** `[unmapped, physical PDF p. 31]`
+- Quote: "Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R383 million, impairment loss of R167 million and net cash collections of R728 million per note 1.1 and fair value movements of R30 million and cash collections of R116 million per note 1.2."
+- Implication: **Critical reconciliation**: Amortisation R597m = CAEIR R383m + impairment R167m + net collections R728m + FV movements R30m + cash collections R116m − ? Let's check: 383 + 167 + 728 + 30 + 116 = 1,424. That does not equal 597. The footnote is describing the *components* of the CODM-view amortisation, not a simple sum. The CODM view amortisation R597m is the difference between CODM revenue from PBD (R888m) and IFRS net income from PBD (R69m) plus adjustments. Must verify the exact arithmetic: CODM revenue R888m − IFRS net income R69m = R819m, not R597m. **Reconciliation tension** — must verify.
+
+**Footnote 7 `**` — Core EBITDA definition** `[unmapped, physical PDF p. 31]`
+- Quote: "Core EBITDA is a non-IFRS measure calculated as core earnings per the policy above adjusted for Interest, Tax, Depreciation and Amortisation and Equity accounted earnings. It represents management's view of operating cash flows."
+- Implication: **"Management's view of operating cash flows"** — but actual operating cash flow is R(111)m `[unmapped, physical PDF p. 12]`. Core EBITDA R790m vs operating cash outflow R(111)m — a **R901m gap**. This is the single most important qualification: EBITDA is NOT cash flow. Must verify the cash conversion bridge.
+
+**Footnote 7 — Segment reconciliation: SA loss R(86)m, International profit R23m** `[unmapped, physical PDF p. 30]`
+- Quote: SA (Loss)/profit before tax R(123)m; International R31m; Group R(92)m.
+- Implication: **SA is loss-making at PBT level**; International is the only profitable segment. SA loss driven by net finance charge R(203)m (CODM view) vs International R(13)m. Must verify SA funding cost allocation.
+
+**Footnote 7 — "Exceptional items (core and headline adjustments) = nil"** `[unmapped, physical PDF p. 31]`
+- Quote: "Exceptional items (core and headline adjustments) — — —"
+- Implication: **No core adjustments in H1 2026** — core loss = IFRS loss = R(63)m. This is cleaner than prior periods (H1 2025 had R71m headline adjustments). But must verify no items were reclassified as "normal operations" to avoid adjustment.
+
+---
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| Q12 | High | Debt / funding note | 100% of PBD (R3,845m) pledged as security; trade receivables and cash also pledged `[unmapped, p. 13, p. 15]` | Obtain pledge agreement terms, covenant ratios (LTV, interest cover, net debt/EBITDA), ABS performance triggers, and unencumbered asset base | Encumbrance constrains refinancing and liquidity; covenant breach could accelerate debt |
+| Q13 | High | PBD/RTC note / accounting policies | CAEIR 19.2% vs fair value discount rate 18.50%; management states fair value ≈ carrying value `[unmapped, p. 21, p. 26–27]` | Reconcile R3,845m fair value to 18.50% discount rate; verify cash flow risk adjustment; check whether CAEIR increase is market-rate or credit-risk driven | If fair value < carrying value, impairment write-down needed; CAEIR increase inflates P&L interest but may mask credit deterioration |
+| Q14 | High | PBD/RTC note | 12-month rolling ECL horizon for POCI assets `[unmapped, p. 21]` | Verify whether 12-month rolling net cash flow is appropriate for lifetime ECL on POCI; check tail beyond 12 months; obtain vintage loss curves | Shortened horizon may understate lifetime loss allowance |
+| Q15 | High | Credit risk note | Trade receivables ECL: 0% on 61–90 day overdue, 100% only at 90+ `[unmapped, p. 25]` | Verify SICR policy and 30-DPD backstop; check whether 90-DPD threshold is a relaxation vs FY2025 | Relaxed SICR delays Stage 2 provisioning; masks deterioration |
+| Q16 | High | Segment note 7 / PBD note | Amortisation R597m composition footnote does not arithmetically reconcile (383+167+728+30+116 ≠ 597) `[unmapped, p. 31]` | Reconcile CODM revenue R888m − IFRS net income R69m to amortisation R597m; verify each component | If amortisation is misstated, core EBITDA R790m is misstated |
+| Q17 | High | Cash flow statement / segment note | Core EBITDA R790m vs operating cash outflow R(111)m — R901m gap `[unmapped, p. 12, p. 31]` | Build full EBITDA-to-cash bridge: interest paid R225m, PBD additions R382m, WC R(23)m, tax R2m | EBITDA is not converting to cash; liquidity risk |
+| Q18 | High | Debt / funding note | Undrawn overdraft facilities R475m only; "~R0.8bn unutilised" claim not corroborated `[unmapped, p. 14]` | Verify total undrawn facilities across all debt types (not just overdraft); check R0.8bn claim source | Liquidity headroom may be overstated |
+| Q19 | Medium | PBD/RTC note | Cumulative impairment gain R431m "relates to elevated performance above investment base-case"; reduction due to "payer drop-offs and reduced settlement activity" `[unmapped, p. 24]` | Quantify base-case vs actual collections; obtain vintage loss curves; verify payer drop-off rate | If base-case is too optimistic, R431m gain could reverse |
+| Q20 | Medium | Segment note 7 / revenue note | SA commissions R159m (down 15.4%); client count 23→20; no top-10 concentration disclosed `[unmapped, p. 17]` | Obtain top-10 client % of revenue; verify SA agency commission sustainability | Revenue concentration risk |
+| Q21 | Medium | Segment note 7 | SA PBT R(123)m vs International R31m; SA net finance charge R(203)m CODM view `[unmapped, p. 30]` | Verify SA funding cost allocation; check transfer pricing | SA loss-making; group reliant on International |
+| Q22 | Medium | Currency risk note | FX hedge contracts for USD/GBP; no hedge effectiveness disclosure `[unmapped, p. 25]` | Verify hedge accounting treatment, effectiveness, and MTM | FX volatility could hit P&L |
+| Q23 | Medium | Fair value note | Level 3 FV gains R30m (vs R74m Mar-25, R114m FY25) — declining `[unmapped, p. 29]` | Verify FV gain drivers; check whether decline signals deteriorating performance | Declining FV gains signal credit deterioration |
+| Q24 | Medium | Debt note | Interest-bearing liabilities fair value swing R365m in 6 months (Sep-25 FV R339m below carrying → Mar-26 R26m above) `[unmapped, p. 27]` | Verify rate sensitivity; check fixed vs floating split (all floating per note) | Rising rates increase funding cost and fair value liability |
+| Q25 | Low | Board / governance / related-party note | No related-party note captured `[unmapped, pp. 8–32]` | Check for related-party transactions and key-person risk | Governance risk |
+| Q26 | Low | FY2026 audited AFS | All H1 2026 statements "Unaudited"; no "reviewed" designation `[unmapped, pp. 8–32]` | Check for restatements to PBD carrying value, amortisation, CAEIR, or core earnings at FY2026 audit | Restatement risk |
+| Q27 | Low | Share capital note | Treasury shares acquired at R1/share vs book value ~R6.90/share `[unmapped, p. 16]` | Verify market price vs book value; check capital management strategy | Market distress signal |
+
+---
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Metric | H1 2026 (Mar-26) | H1 2025 (Mar-25) | FY2025 (Sep-25) |
+| --- | --- | --- | --- |
+| Revenue | R711m | R745m | R1,435m |
+| Gross profit from services | R326m | R393m | R703m |
+| Cost of revenue | R(385)m | R(352)m | R(732)m |
+| Net income from PBD | R69m | R53m | R244m |
+| CAEIR imputed interest | R383m | R333m | R683m |
+| Interest expense | R(177)m | R(181)m | R(354)m |
+| Impairment loss on PBD | R(167)m | R(173)m | R(199)m |
+| Fair value movements other financial assets | R30m | R74m | R114m |
+| Operating costs | R(445)m | R(560)m | R(1,063)m |
+| Net finance charge | R(39)m | R(52)m | R(91)m |
+| Operating loss | R(79)m | R(168)m | R(186)m |
+| Loss before tax | R(92)m | R(161)m | R(148)m |
+| Income tax credit | R29m | R39m | R35m |
+| Loss from continuing ops | R(63)m | R(122)m | R(113)m |
+| Loss from discontinued ops | – | R58m | R(125)m |
+| Loss for period | R(63)m | R(64)m | R(238)m |
+| Basic LPS (total) | (8.1)c | (8.2)c | (30.3)c |
+| Headline LPS (total) | (8.1)c | (17.2)c | (39.4)c |
+| Core EBITDA | R790m | n/a | n/a |
+| SA Core EBITDA | R710m | n/a | n/a |
+| Intl Core EBITDA | R80m | n/a | n/a |
+| **Balance sheet** | | | |
+| Cash & equivalents | R112m | R118m | R106m |
+| Other investments | R81m | R237m | R41m |
+| Trade & other receivables | R497m | R556m | R471m |
+| PBD (net) | R4,489m | R4,353m | R4,677m |
+| — Principal book (net) | R3,845m | R3,690m | R3,975m |
+| — Other financial assets | R644m | R663m | R702m |
+| Total assets | R6,444m | R6,661m | R6,604m |
+| Bank overdrafts | R273m | R457m | R364m |
+| Interest-bearing debt | R3,743m | R3,407m | R3,443m |
+| — Senior debt | R3,547m | R3,182m | R3,293m |
+| — Subordinated debt | R196m | R225m | R150m |
+| Lease liabilities | R345m | R395m | R364m |
+| Total liabilities | R5,115m | R5,110m | R5,208m |
+| Total equity | R1,329m | R1,551m | R1,396m |
+| **Credit metrics** | | | |
+| PBD gross carrying (principal) | R3,414m | R3,066m | R3,377m |
+| PBD ECL allowance | R431m | R624m | R598m |
+| PBD coverage ratio | 12.6% | 20.4% | 17.7% |
+| — Banking unsecured coverage | 9.6% | 19.4% | 18.9% |
+| — Debt review coverage | 14.8% | 10.7% | 9.1% |
+| — Retail coverage | >100% | >100% | 97.9% |
+| — Banking secured coverage | 26.1% | 71.4% | 20.4% |
+| Gross collections | R773m | R604m | R1,280m |
+| Net collections | R728m | R566m | R1,197m |
+| Collection costs | R45m | R38m | R83m |
+| PBD additions | R382m | R265m | R857m |
+| CAEIR | 19.2% | 17.9% | 18.4% |
+| Fair value discount rate (PBD) | 18.50% | 15.81% | 15.93% |
+| Other financial assets discount rate | 16.0% | 12.93% | 16.0% |
+| Trade receivables ECL rate | 1.34% | 1.43% | 2.75% |
+| **Funding** | | | |
+| Total interest-bearing liabilities | R4,016m | R3,864m | R3,807m |
+| Payable <12 months | R1,396m | R1,039m | R1,237m |
+| Payable >12 months | R2,620m | R2,825m | R2,570m |
+| Undrawn overdraft facilities | R475m | R43m | R136m |
+| **Cash flow** | | | |
+| Cash utilised by operations | R(50)m | R(103)m | R(338)m |
+| Interest paid | R(225)m | R(251)m | R(468)m |
+| Net cash utilised by operating activities | R(111)m | R(213)m | R(297)m |
+| PBD additions (cash) | R(382)m | R(265)m | R(857)m |
+| Net cash from investing | R(61)m | R437m | R603m |
+| Net cash from financing | R178m | R(696)m | R(787)m |
+| Net cash movement | R6m | R(472)m | R(482)m |
+| **Revenue by geography** | | | |
+| South Africa | R159m | R188m | R341m |
+| Australia | R27m | R74m | R127m |
+| United Kingdom | R303m | R259m | R525m |
+| United States | R212m | R224m | R428m |
+| Other | R10m | – | R14m |
+| **Segment PBT** | | | |
+| SA PBT | R(123)m | R(202)m | n/a |
+| Intl PBT | R31m | R41m | n/a |
+| Group PBT | R(92)m | R(161)m | R(148)m |
+
+---
+
+### 6. Next Section to Capture
+
+**Next section: Debt / funding note (covenants, maturity profile, ABS triggers) — or the PBD/RTC note if available.**
+
+This section will resolve:
+- **Q5** (covenant ratios, headroom, R0.8bn unutilised facilities)
+- **Q12** (pledge agreement terms, ABS triggers, unencumbered assets)
+- **Q18** (total undrawn facilities)
+- **Q24** (rate sensitivity, fixed vs floating)
+- **Q13** (partially — funding cost context for CAEIR vs market rate)
+
+If the PBD/RTC note is available instead, it will resolve **Q3, Q6, Q13, Q14, Q19** (CAEIR methodology, ERC, vintage curves, base-case assumptions).

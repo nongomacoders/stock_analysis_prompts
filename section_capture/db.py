@@ -87,7 +87,278 @@ CREATE TABLE IF NOT EXISTS market_quotes (
     change_pct REAL,
     updated_at TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS sector_guardrails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    rule_code TEXT UNIQUE NOT NULL,
+    sector TEXT NOT NULL,
+    stage TEXT NOT NULL DEFAULT 'all',
+    title TEXT NOT NULL,
+    rule_text TEXT NOT NULL,
+    origin_ticker TEXT,
+    enabled INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
 """
+
+
+DEFAULT_SECTOR_GUARDRAILS: list[dict[str, Any]] = [
+    {
+        "rule_code": "ALL-IFRS16-EV-BRIDGE",
+        "sector": "all",
+        "stage": "all",
+        "title": "IFRS 16 EV-to-Equity & Cash Flow Consistency",
+        "rule_text": (
+            "Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. "
+            "If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), "
+            "DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). "
+            "Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. "
+            "Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-PNL-VERTICAL-ARITHMETIC",
+        "sector": "all",
+        "stage": "all",
+        "title": "Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge",
+        "rule_text": (
+            "Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; "
+            "Gross profit + Other revenue/income - Net operating expenses = Operating profit). "
+            "Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; "
+            "never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-SHARE-COUNT-ANCHOR",
+        "sector": "all",
+        "stage": "all",
+        "title": "Verified Weighted-Average Share Count & Continuing HEPS Denominator",
+        "rule_text": (
+            "Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. "
+            "Never confuse Headline Earnings in R'm with the share count in millions. "
+            "In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, "
+            "and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-HISTORICAL-BASE-COLUMN",
+        "sector": "all",
+        "stage": "stage2",
+        "title": "Mandatory Historical Actuals Base Column & Currency Unit Consistency",
+        "rule_text": (
+            "In Section 2 (Operational Forecast) and Section 3 (Income Statement & Cash Flow Bridge), always include the reported historical base period column(s) (e.g. FY25A and/or 1H26A) alongside FY26E, FY27E, and FY28E "
+            "so annualized run-rates, operating expenses, and margins are anchored to audited actuals. "
+            "Never label a ZAR-converted segment revenue row as EUR'm or USD'm; ensure every row's currency unit label matches the numbers in that row."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-CROSS-SECTION-METRIC-SYNC",
+        "sector": "all",
+        "stage": "stage2",
+        "title": "Cross-Section HEPS, Multiple & Target Price Identity",
+        "rule_text": (
+            "Compute your Section 3 (P&L and HEPS) and Section 4 (DCF and P/E / EV/EBITDA valuation) numbers BEFORE writing the Section 1 Executive Summary Card commentary. "
+            "The 12-Month Target Price, Reference Price, Forecast HEPS (e.g. FY27E HEPS in R or cents), and Target P/E or EV/EBITDA multiple cited in the Section 1 Executive Summary Card 'Basis & Key Commentary' cell "
+            "MUST be 100% identical to Section 3 and Section 4 (never cite one HEPS/multiple in Section 1 commentary and a different HEPS/multiple in Section 4)."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-RATING-BANDS-MONOTONIC",
+        "sector": "all",
+        "stage": "stage2",
+        "title": "Strictly Ascending ZAR Rating Bands",
+        "rule_text": (
+            "In the opening JSON block and Section 1 table, rating_bands thresholds MUST be strictly ascending in ZAR per share: "
+            "strong_buy_max_zar < buy_max_zar < hold_max_zar < sell_max_zar == strong_sell_above_zar, anchored around target_price_zar "
+            "(Strong Buy <= Target/1.30, Buy <= Target/1.15, Hold <= Target/0.95, Sell <= Target/0.85, Strong Sell > Target/0.85). "
+            "Never output identical ZAR values for Hold and Sell thresholds."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "ALL-PAT-HEPS-RECONCILIATION",
+        "sector": "all",
+        "stage": "stage2",
+        "title": "Forecast PAT-to-HEPS Reconciliation & Net Finance Sign Integrity",
+        "rule_text": (
+            "Forecast HEPS (cents) MUST equal (Forecast Headline Earnings in R'm / Weighted-Average Shares in millions * 100) and move directionally with Forecast PAT "
+            "unless explicit non-headline items (e.g. PPE/investment property fair-value gains or goodwill impairments) are itemized in the bridge. "
+            "Never forecast a sharp drop in PAT alongside an unexplained rise in HEPS. "
+            "Also verify whether historical Net Finance is net finance income (+, e.g. when JV finance income exceeds P&L finance cost after interest capitalisation) or net finance expense (-), "
+            "and preserve the exact sign so the P&L sums vertically."
+        ),
+        "origin_ticker": "CGR",
+    },
+    {
+        "rule_code": "ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT",
+        "sector": "all",
+        "stage": "stage2",
+        "title": "Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting",
+        "rule_text": (
+            "In Section 4 SOTP / DCF valuation tables, every component row MUST sum vertically to Total Enterprise Value (TEV), Equity Value (TEV less Net Debt), "
+            "SOTP Fair Value per Share (Equity Value / Net Shares), and Target Price (ZAR). "
+            "If a percentage risk/liquidity discount is applied (e.g. 25% discount), the discount ZAR per share and resulting Target Price MUST equal SOTP Fair Value per Share * (1 - discount%); "
+            "never switch denominators mid-table. "
+            "Never add book working capital (Inventory, Contract Assets/WIP) or Goodwill on top of a segment DCF/NPV that already discounts the cash flows generated by those operating assets."
+        ),
+        "origin_ticker": "CGR",
+    },
+    {
+        "rule_code": "ALL-TREASURY-SHARE-DIVIDEND-BRIDGE",
+        "sector": "all",
+        "stage": "all",
+        "title": "Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation",
+        "rule_text": (
+            "Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts "
+            "(e.g. in the Integrated Report dividend declaration or Stated Capital note). "
+            "Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement "
+            "eliminate intra-group dividends paid on treasury shares."
+        ),
+        "origin_ticker": "CGR",
+    },
+    {
+        "rule_code": "ALL-ENTITY-ACRONYM-DISAMBIGUATION",
+        "sector": "all",
+        "stage": "all",
+        "title": "Full Legal Entity Name Verification Across Notes (No Acronym Conflation)",
+        "rule_text": (
+            "Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. "
+            "When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes "
+            "before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary."
+        ),
+        "origin_ticker": "CGR",
+    },
+    {
+        "rule_code": "RETAIL-IFRS16-HEADLEASE-SUBLEASE",
+        "sector": "retail",
+        "stage": "all",
+        "title": "Retail Head-Lease Liability vs. Back-to-Back Franchisee Lease Receivable Netting",
+        "rule_text": (
+            "For wholesale/franchise retailers that sign head-leases on properties and sub-lease them back-to-back to independent retailers, "
+            "always net the IFRS 16 finance lease receivables (Current + Non-current) against gross IFRS 16 lease liabilities to isolate the group's true net store/DC lease exposure, "
+            "and distinguish Pre-IFRS 16 covenant EBITDA from Post-IFRS 16 statutory EBITDA."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "RETAIL-ECL-CASHFLOW-VS-ALLOWANCE",
+        "sector": "retail",
+        "stage": "all",
+        "title": "Retail & Trade Receivable ECL Non-Cash Movement vs. Balance Sheet Allowance Bridge",
+        "rule_text": (
+            "When auditing trade/retailer receivables and loan allowances, reconcile the Cash Flow Statement non-cash ECL movement against the Balance Sheet allowance movement "
+            "by accounting for final write-offs against the allowance and fair-value discounting, and verify whether elevated credit loss run-rates persist in post-balance-sheet SENS updates."
+        ),
+        "origin_ticker": "SPP",
+    },
+    {
+        "rule_code": "MINING-SECTION36-CAPEX-TAX",
+        "sector": "mining",
+        "stage": "all",
+        "title": "SA Mining Section 36 Capital Allowance & Sustaining vs. Growth Capex Split",
+        "rule_text": (
+            "Separate sustaining capital (included in AISC) from expansionary/growth project capital (excluded from AISC), "
+            "and apply 100% upfront Section 36 capital redemption shields before modeling cash tax step-ups under the South African Gold Mining Tax Formula or corporate tax rate."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "REIT-SAREIT-FFO-LTV-BRIDGE",
+        "sector": "reit",
+        "stage": "all",
+        "title": "SA REIT BPR Distributable Income & Look-Through LTV Reconciliation",
+        "rule_text": (
+            "Strip non-cash fair value property revaluations, straight-line rental accruals, and derivative mark-to-market movements from IFRS profit to arrive at "
+            "SA REIT Funds From Operations (FFO) / Distributable Income per Share (DIPS), and reconcile nominal balance sheet LTV against look-through LTV including JV/associate debt."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "IT-ARR-WIP-CASH-CONVERSION",
+        "sector": "it",
+        "stage": "all",
+        "title": "IT Services Recurring ARR vs. Unbilled Contract Asset (WIP) Cash Conversion",
+        "rule_text": (
+            "Separate high-multiple recurring managed services/ARR from low-margin hardware/software resale, "
+            "and audit whether EBITDA growth is backed by cash collection or trapped in unbilled IFRS 15 contract assets (WIP)."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "CONSTRUCTION-POC-WIP-RETENTIONS",
+        "sector": "construction",
+        "stage": "all",
+        "title": "Construction POC Revenue Recognition, Retentions & Joint Operations",
+        "rule_text": (
+            "Cross-check IFRS 15 percentage-of-completion (POC) revenue against contract assets (unbilled WIP), retentions receivable aging, "
+            "customer advances (contract liabilities), and proportionate consolidation of joint operations vs equity-accounted JVs."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "CONSUMER-LENDING-ECL-PBD-ERC",
+        "sector": "consumer_lending",
+        "stage": "all",
+        "title": "Consumer Lending IFRS 9 Stage Migration & Purchased Book Debt (PBD) Amortization",
+        "rule_text": (
+            "Reconcile gross loan book and Purchased Book Debt (PBD) carrying values against Estimated Remaining Collections (ERC), "
+            "separating cash collections applied to revenue yield vs principal amortization and Stage 1/2/3 ECL coverage."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "FINANCE-NIM-CLR-CET1",
+        "sector": "finance",
+        "stage": "all",
+        "title": "Banking Risk-Adjusted NIM, Credit Loss Ratio (CLR) & CET1 Capital Bridge",
+        "rule_text": (
+            "Evaluate Net Interest Margin (NIM) net of the Credit Loss Ratio (CLR bps) across Stage 1/2/3 loan portfolios, "
+            "and verify dividend payout capacity against Basel III CET1 regulatory capital buffers and Return on Equity (ROE) vs Cost of Equity (Ke)."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "TELCOS-IFRS16-TOWER-SPECTRUM-FCF",
+        "sector": "telcos",
+        "stage": "all",
+        "title": "Telco Tower Lease Capitalisation (IFRS 16) & Spectrum/Network Capex Free Cash Flow",
+        "rule_text": (
+            "Treat recurring tower lease principal & interest payments as ongoing cash outflows when computing Free Cash Flow to Equity (FCFE), "
+            "and separate one-off spectrum auction outlays from recurring network modernization capex."
+        ),
+        "origin_ticker": None,
+    },
+    {
+        "rule_code": "TELCOS-GOODWILL-DISCOUNT-RATE-SENSITIVITY",
+        "sector": "telcos",
+        "stage": "all",
+        "title": "Telco Goodwill Impairment Avoidance & Discount Rate Sensitivity Test",
+        "rule_text": (
+            "When evaluating telco CGUs in structural revenue decline (e.g. legacy IT/converged comms), never accept a 'no impairment' "
+            "determination that is achieved solely by reducing the pre-tax discount rate by >200 bps without an underlying reduction in cost of capital or risk profile. "
+            "Always perform a counterfactual sensitivity test holding the prior year's discount rate constant and reflect implied goodwill impairments in adjusted equity value."
+        ),
+        "origin_ticker": "TKG",
+    },
+    {
+        "rule_code": "TELCOS-CLEAN-FCF-DIVIDEND-COVER",
+        "sector": "telcos",
+        "stage": "all",
+        "title": "Telco Clean Operational FCF vs. Non-Recurring Dividend Payout Cover",
+        "rule_text": (
+            "When forecasting telco dividend sustainability against free cash flow payout policies (e.g. 40-60% of FCF), "
+            "strip all non-operating cash inflows such as cell-captive insurance dividends, contract-asset factoring receipts, and disposal gains. "
+            "Compute dividend cover strictly against recurring, clean operational FCF post-lease principal and interest."
+        ),
+        "origin_ticker": "TKG",
+    },
+]
 
 
 @dataclass
@@ -213,6 +484,36 @@ KNOWN_COMPANIES: dict[str, tuple[str, str]] = {
     "NTU": ("Nutun Limited", "consumer_lending"),
     "NUTUN": ("Nutun Limited", "consumer_lending"),
     "TCP": ("Nutun Limited", "consumer_lending"),
+    # Additional prominent JSE constituents
+    "DCP": ("Dis-Chem Pharmacies Limited", "retail"),
+    "DISCHEM": ("Dis-Chem Pharmacies Limited", "retail"),
+    "VOD": ("Vodacom Group Limited", "telcos"),
+    "TKG": ("Telkom SA SOC Ltd", "telcos"),
+    "PIK": ("Pick n Pay Stores Limited", "retail"),
+    "SRE": ("Sirius Real Estate Limited", "reit"),
+    "SHP": ("Shoprite Holdings", "retail"),
+    "WHL": ("Woolworths Holdings", "retail"),
+    "MRP": ("Mr Price Group", "retail"),
+    "SPP": ("The Spar Group", "retail"),
+    "TBS": ("Tiger Brands", "retail"),
+    "CLS": ("Clicks Group", "retail"),
+    "MTN": ("MTN Group Limited", "telcos"),
+    "FSR": ("FirstRand Limited", "finance"),
+    "SBK": ("Standard Bank Group", "finance"),
+    "NED": ("Nedbank Group", "finance"),
+    "ABG": ("Absa Group Limited", "finance"),
+    "INP": ("Investec plc", "finance"),
+    "INL": ("Investec Limited", "finance"),
+    "CPI": ("Capitec Bank Holdings", "finance"),
+    "SLM": ("Sanlam Limited", "finance"),
+    "DSY": ("Discovery Limited", "finance"),
+    "IMP": ("Impala Platinum", "mining"),
+    "AMS": ("Anglo American Platinum", "mining"),
+    "SSW": ("Sibanye Stillwater", "mining"),
+    "EXX": ("Exxaro Resources", "mining"),
+    "KIO": ("Kumba Iron Ore", "mining"),
+    "NPH": ("Northam Platinum", "mining"),
+    "SOL": ("Sasol Limited", "mining"),
 }
 
 
@@ -316,6 +617,32 @@ def compute_rating_bands_fallback(
         "sell_max_zar": s_max,
         "strong_sell_above_zar": s_max,
     }
+
+
+def validate_and_repair_rating_bands(
+    rating_bands: dict[str, Any] | None,
+    target_price: float | int | None,
+    reference_price: float | int | None = None,
+) -> dict[str, float] | None:
+    """Validates that rating_bands has strictly ascending ZAR thresholds; repairs using fallback if degenerate."""
+    if isinstance(rating_bands, dict):
+        try:
+            sb = float(rating_bands["strong_buy_max_zar"])
+            b = float(rating_bands["buy_max_zar"])
+            h = float(rating_bands["hold_max_zar"])
+            s = float(rating_bands["sell_max_zar"])
+            ss = float(rating_bands.get("strong_sell_above_zar", s))
+            if 0 < sb < b < h < s and abs(ss - s) <= 0.05:
+                return {
+                    "strong_buy_max_zar": round(sb, 2),
+                    "buy_max_zar": round(b, 2),
+                    "hold_max_zar": round(h, 2),
+                    "sell_max_zar": round(s, 2),
+                    "strong_sell_above_zar": round(s, 2),
+                }
+        except (KeyError, TypeError, ValueError):
+            pass
+    return compute_rating_bands_fallback(target_price, reference_price)
 
 
 def evaluate_dynamic_rating(
@@ -663,10 +990,13 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
         if "jse_sector_name" not in res:
             res["jse_sector_name"] = get_jse_sector_name(res["sector"], ticker=t_hint)
 
-    if "rating_bands" not in res and "target_price" in res and res["target_price"]:
-        fallback_bands = compute_rating_bands_fallback(res["target_price"], res.get("reference_price"))
-        if fallback_bands:
-            res["rating_bands"] = fallback_bands
+    repaired_bands = validate_and_repair_rating_bands(
+        res.get("rating_bands"),
+        res.get("target_price"),
+        res.get("reference_price"),
+    )
+    if repaired_bands:
+        res["rating_bands"] = repaired_bands
 
     return res
 
@@ -874,10 +1204,10 @@ def auto_link_companion_reports(
     resolved = resolve_db_path(db_path)
     p = Path(report_path).resolve()
     sources_dir = None
-    if p.parent.name.lower() == "sens" and p.parent.parent.name.lower() == "sources":
-        sources_dir = p.parent.parent
-    elif p.parent.name.lower() == "sources":
-        sources_dir = p.parent
+    for parent in p.parents:
+        if parent.name.lower() == "sources":
+            sources_dir = parent
+            break
 
     if not sources_dir or not sources_dir.exists():
         return None
@@ -1061,6 +1391,41 @@ def _migrate_schema(conn: sqlite3.Connection):
         )
         """
     )
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS sector_guardrails (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            rule_code TEXT UNIQUE NOT NULL,
+            sector TEXT NOT NULL,
+            stage TEXT NOT NULL DEFAULT 'all',
+            title TEXT NOT NULL,
+            rule_text TEXT NOT NULL,
+            origin_ticker TEXT,
+            enabled INTEGER NOT NULL DEFAULT 1,
+            created_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        )
+        """
+    )
+    now_iso = datetime.now(timezone.utc).isoformat()
+    for gr in DEFAULT_SECTOR_GUARDRAILS:
+        cur.execute(
+            """
+            INSERT OR IGNORE INTO sector_guardrails (
+                rule_code, sector, stage, title, rule_text, origin_ticker, enabled, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?)
+            """,
+            (
+                gr["rule_code"],
+                gr["sector"],
+                gr.get("stage", "all"),
+                gr["title"],
+                gr["rule_text"],
+                gr.get("origin_ticker"),
+                now_iso,
+                now_iso,
+            ),
+        )
     cols = {row[1] for row in cur.execute("PRAGMA table_info(reports)").fetchall()}
     new_cols = [
         ("stage1_prompt", "TEXT"),
@@ -1133,6 +1498,118 @@ def connect_db(db_path: str | Path | None = None) -> sqlite3.Connection:
     conn.executescript(SCHEMA_SQL)
     _migrate_schema(conn)
     return conn
+
+
+def upsert_sector_guardrail(
+    rule_code: str,
+    sector: str,
+    title: str,
+    rule_text: str,
+    stage: str = "all",
+    origin_ticker: str | None = None,
+    enabled: bool = True,
+    db_path: str | Path | None = None,
+) -> None:
+    """Inserts or updates a sector-specific or universal ('all') guardrail in SQLite."""
+    now = datetime.now(timezone.utc).isoformat()
+    norm_sec = "all" if sector.lower().strip() == "all" else (normalize_sector_code(sector) or sector.lower().strip())
+    with connect_db(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO sector_guardrails (
+                rule_code, sector, stage, title, rule_text, origin_ticker, enabled, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(rule_code) DO UPDATE SET
+                sector = excluded.sector,
+                stage = excluded.stage,
+                title = excluded.title,
+                rule_text = excluded.rule_text,
+                origin_ticker = excluded.origin_ticker,
+                enabled = excluded.enabled,
+                updated_at = excluded.updated_at
+            """,
+            (
+                rule_code.strip().upper(),
+                norm_sec,
+                stage.lower().strip(),
+                title.strip(),
+                rule_text.strip(),
+                origin_ticker.strip().upper() if origin_ticker else None,
+                1 if enabled else 0,
+                now,
+                now,
+            ),
+        )
+        conn.commit()
+
+
+def get_sector_guardrails(
+    sector: str | None = None,
+    stage: str = "all",
+    db_path: str | Path | None = None,
+) -> list[dict[str, Any]]:
+    """Returns all enabled guardrails for 'all' plus the specified sector and stage."""
+    norm_sec = normalize_sector_code(sector) or (sector.lower().strip() if sector else "")
+    norm_stage = (stage or "all").lower().strip()
+    allowed_stages = {"all", "both", norm_stage}
+    if norm_stage == "sens":
+        allowed_stages.add("stage2")
+
+    with connect_db(db_path) as conn:
+        if norm_sec and norm_sec != "all":
+            rows = conn.execute(
+                """
+                SELECT rule_code, sector, stage, title, rule_text, origin_ticker, enabled, updated_at
+                FROM sector_guardrails
+                WHERE enabled = 1 AND sector IN ('all', ?)
+                ORDER BY CASE WHEN sector = 'all' THEN 0 ELSE 1 END ASC, id ASC
+                """,
+                (norm_sec,),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """
+                SELECT rule_code, sector, stage, title, rule_text, origin_ticker, enabled, updated_at
+                FROM sector_guardrails
+                WHERE enabled = 1
+                ORDER BY CASE WHEN sector = 'all' THEN 0 ELSE 1 END ASC, id ASC
+                """
+            ).fetchall()
+
+    results: list[dict[str, Any]] = []
+    for r in rows:
+        d = dict(r)
+        if norm_stage == "all" or d["stage"].lower() in allowed_stages:
+            results.append(d)
+    return results
+
+
+def format_sector_guardrails_block(
+    sector: str | None = None,
+    stage: str = "stage2",
+    db_path: str | Path | None = None,
+) -> str:
+    """Formats the active universal + sector-specific guardrails from SQLite as a Markdown table & rules block."""
+    rules = get_sector_guardrails(sector=sector, stage=stage, db_path=db_path)
+    if not rules:
+        return ""
+    sec_label = (sector or "all").upper()
+    lines = [
+        f"## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: {sec_label})",
+        "",
+        "The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:",
+        "",
+        "| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |",
+        "| :--- | :---: | :--- | :--- |",
+    ]
+    for r in rules:
+        scope = "UNIVERSAL" if r["sector"] == "all" else r["sector"].upper()
+        origin = f" *(Origin: {r['origin_ticker']})*" if r.get("origin_ticker") else ""
+        lines.append(
+            f"| `{r['rule_code']}` | **{scope}** | **{r['title']}**{origin} | {r['rule_text']} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
 
 
 def upsert_report(
@@ -1519,6 +1996,13 @@ def save_stage1_report(
             params.append(response)
         params.append(report_sha256)
         conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", params)
+
+        # If saving on a child/companion report, automatically sync the parent report as well
+        if "parent_report_sha256" in row.keys() and row["parent_report_sha256"]:
+            parent_params = list(params[:-1])
+            parent_params.append(row["parent_report_sha256"])
+            conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", parent_params)
+
         return True
 
 
@@ -1601,6 +2085,13 @@ def save_stage2_report(
                 ])
         params.append(report_sha256)
         conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", params)
+
+        # If saving on a child/companion report, automatically sync the parent report as well
+        if "parent_report_sha256" in row.keys() and row["parent_report_sha256"]:
+            parent_params = list(params[:-1])
+            parent_params.append(row["parent_report_sha256"])
+            conn.execute(f"UPDATE reports SET {', '.join(updates)} WHERE sha256 = ?", parent_params)
+
         return True
 
 

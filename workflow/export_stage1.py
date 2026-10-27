@@ -20,7 +20,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from companies import find_company_dir
 from companies.sectors import get_sector_config
-from section_capture.db import KNOWN_COMPANIES
+from section_capture.db import KNOWN_COMPANIES, format_sector_guardrails_block
 
 DB_PATH = Path("documents/analysis.sqlite")
 
@@ -76,6 +76,7 @@ def build_stage1_prompt_content(
     sens_reports: list[dict] | None = None,
     final_questions_ledger: str | None = None,
     compact: bool = True,
+    db_path: str | Path | None = None,
 ) -> str:
     """Constructs the Stage 1 Markdown prompt text from primary sections, companion annual reports (AFS), and SENS notices."""
     md_lines: list[str] = []
@@ -150,7 +151,7 @@ def build_stage1_prompt_content(
     if detected_sector == "retail":
         md_lines.append(
             "2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key retail junction "
-            "(merchandise vs credit/other revenue, gross profit margin bridge, debtors book health & IFRS 9 ECL provisioning, "
+            "(weighted-average basic & diluted share count and continuing HEPS reconciliation, merchandise vs credit/other revenue, gross profit margin bridge, debtors book health & IFRS 9 ECL provisioning, "
             "store network capex and trading density, IFRS 16 lease liability structure, post-year-end trading, and cash conversion / dividend payout), "
             "citing specific notes, tables, and calculations."
         )
@@ -215,6 +216,11 @@ def build_stage1_prompt_content(
     md_lines.append("3. **Audit of Common Surface-Reading Pitfalls:** Contrast your findings against the common errors made by naive readers.")
     md_lines.append("4. **Final Forensic Verification Matrix:** A clean markdown summary table listing each Junction, the Raw Initial Claim, the Resolving Note/SENS Announcement, and your Final Verified Determination.")
     md_lines.append("")
+    guardrails_md = format_sector_guardrails_block(detected_sector, stage="stage1", db_path=db_path)
+    if guardrails_md:
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append(guardrails_md)
     md_lines.append("---")
     md_lines.append("")
 

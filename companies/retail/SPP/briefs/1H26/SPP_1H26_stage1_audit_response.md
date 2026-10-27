@@ -1,144 +1,206 @@
-# FORENSIC AUDIT REPORT — SPP GROUP (SPP) H1 FY2026
-
-**Audit basis:** Sequential working paper (7 sections: 5 primary IAR + 2 AFS), Open Questions Ledger (Q1–Q67), and post-balance-sheet SENS disclosures (AWG APA 18 May 2026). No forward valuation model produced — forensic determinations only.
+# FORENSIC AUDIT REPORT — SPAR GROUP LTD (SPP)
+## H1 FY2026 Interim Results (26 weeks ended 27 March 2026)
 
 ---
 
 ## 1. EXECUTIVE FORENSIC AUDIT SUMMARY
 
-**True economic performance.** SPP's H1 FY2026 is materially worse than the headline "–56% HEPS" suggests, and the headline itself is *flattered* by the comparable-basis construction. On the **as-adjusted 26-week base** (revenue R66,822.4m, OP R1,403.4m, PBT R1,039.3m — AFS p.12), continuing revenue grew **+2.6%** (not the +4.1% as-reported), operating profit fell **–47.2%** (not –45.3%), and PBT fell **–65.1%** (not –63.5%). The group's continuing operating margin collapsed from 2.1% to **1.1%**, and the Southern Africa segment swung from **+R867.7m OP to +R237.7m** (–R630m) with a **PBT loss of –R50.9m**. Ireland is the only genuinely healthy engine (OP €25.3m, 3.0% margin, flat YoY; EBITDA ≈ R790.9m).
+**True Economic Performance.** SPP's H1 FY2026 is a tale of two businesses. The **Ireland (BWG) engine is intact and quietly compounding** — operating profit R502.8m (+3.4% as-adjusted), GP margin +20bps to 13.7%, PBT +6.2%, net debt €139.3m with €96.7m undrawn headroom. The **Southern Africa business has suffered a genuine operational and credit-quality breakdown**: SA segment swung from R602.9m PBT to a **(R50.9m) loss before tax**, driven by three identifiable, largely non-recurring-in-nature but partly structural factors — KZN DC disruption (R123m), Black Friday marketing/GP misallocation (R212m), and a **credit book clean-up (R273m specific provisions + R58m G&L write-offs)**. Group continuing operating profit fell 47.8% to R730.7m; HEPS from continuing ops fell 55.6% to 199.9cps.
 
-**The three "anomalies" are not all one-off.** KZN (–R123m) and Black Friday (–R212m) sit **inside** operating profit before extraordinary items (p.25 bridge), not in extraordinary items. The extraordinary line (R159.2m SA / R151.3m group-implied) is a *separate* impairment cluster (goodwill R47.4m, PPE/intangibles R41.2m, ROU R26.9m, HFS R13.1m). So the "~1% SA margin excluding extraordinary items" is *not* a clean underlying margin — it already absorbs R335m of KZN+BF drag.
+**Balance Sheet Health.** The balance sheet is **materially stronger than the P&L suggests**. Net debt fell 24.4% y-o-y to R7,338.7m; gearing 2.73x vs 3.5x SA covenant (comfortable headroom); gross debt down 22.6%. However, **cash generation has broken down**: continuing-ops FCF was **(R2,011.9m)** vs +R693.6m, driven overwhelmingly by a **R1,841.7m trade payables outflow** — the single most important forensic question in this report. The group is funding a working-capital unwind and a credit clean-up simultaneously.
 
-**Balance sheet health.** Group net debt R7,338.7m, leverage **2.73x** (covenant 3.50x) — but **Southern Africa is at 3.29x against a 3.50x covenant**, i.e. only ~0.21x (≈R500m EBITDA) of headroom. Leverage rose YoY despite lower gross debt because EBITDA collapsed and the Swiss exit consumed R670m–R800m. Equity is thin at R5,401.3m against R44.8bn assets (12% equity ratio). Three prior-period errors were corrected (R457.8m loans reclass, R494.0m banking-facility reclass, R672.0m intercompany elimination) — none hit equity/P&L, but they confirm control weaknesses.
+**Post-Balance-Sheet Liquidity Runway.** Cash at bank (ex-SPAR guilds/trusts) fell to R1,069.5m from R2,327.3m; net cash & banking facilities is only **R166.5m** after R418.0m general banking facility overdrafts. Liquidity is **adequate but thin**, reliant on R5.6bn SA debt headroom and daily-rolling 364-day facilities. The **UK disposal (APA signed 18 May 2026, ~GBP 13.0m gross, net broadly breakeven, completion Jun–Sep 2026)** removes a loss-making drag but generates no cash. **Dividend remains suspended** — correctly, given negative FCF.
 
-**Post-balance-sheet liquidity runway.** Closing cash R584.5m (from R2,742.4m), **continuing FCF –R2,011.9m**, and a **negative operating cash flow of –R974.0m**. Liquidity is being held together by R6,637m of available funding (incl. R5,567.5m headroom) and the R1,430.7m overdraft. The AWG disposal (APA 18 May 2026, ~GBP 13.0m gross, **net cash broadly breakeven**) provides **no liquidity relief** — it removes a loss-maker but does not deleverage. Dividends remain suspended; the capital hierarchy explicitly prioritises capex and debt reduction over returns. **Runway is adequate but covenant-constrained at SA level, not liquidity-constrained at group level.**
-
-**Key findings (definitive):**
-1. **Credit is the largest unquantified risk.** Specific impairment charge R273.1m vs cash-flow provision movement of only R150.7m — a **~R122m unexplained gap** (non-cash/reclass/discontinued). Overdues rose 13.6%→15.9%. The R58m G&L write-offs and R273m provisions are **not located in any debtors note in the disclosure set** — this is the single biggest evidence gap.
-2. **The R1.5bn UK impairment is a discontinued item** (AFS note 9, p.17) and does **not** double-count with continuing FCF; the R2,157m FCF-to-waterfall gap is **not** explained by the R52.7m discontinued cash outflow — it is a continuing-vs-group presentation difference, not a hidden loss.
-3. **KZN recovery is real but unquantified.** "3 consecutive months of positive OP" is confirmed directionally (p.41) but no segment OP quantum, no pre/post-ECL split, and the R273m provisions are "mainly KZN and SR" — meaning the "recovery" may be **pre-ECL** and flattered.
-4. **Growth is price/basket-led, not volume-led.** Footfall –2.30%, basket +3.53% (pro forma, retailer-supplied) implies ~+1.2% transaction value — consistent with +1.7% SA merchandise, but **not audited**.
-5. **Capital allocation quality is questionable.** Hajimarkos: R149.8m goodwill on a R162m acquisition, **two stores impaired within two months**. GiCom software R30.7m fully written off. Perrys R79.5m contingent consideration due Feb-2027.
+**Key Forensic Findings.**
+1. **The R273m "specific impairment" is a P&L provision charge, not a cash write-off** — the cash flow statement shows only R150.7m non-cash provision movement. The gap (R122.4m) is explained by **R58m actual G&L write-offs against the allowance plus fair-value/other movements**. This is the critical ECL reconciliation the naive reader misses.
+2. **The R1,841.7m payables outflow is the swing factor** — it is partly timing (creditor payment run 30/31 March, per p. 28) and partly structural (settlement of prior overdues / tighter supplier terms post-Swiss exit). This must be decomposed before any H2 FCF recovery can be assumed.
+3. **The "~EUR 70m EBITDA" claim is a 12-month trailing figure that does NOT reconcile to H1 annualised (~EUR 59.6m)** — a ~EUR 10m gap implying either a stronger H2, a pre-IFRS 16 basis, or inclusion of items not in the segment note. Treat as directional only.
+4. **The Giannacopoulos contingent liability (R2.1bn + R168m = R2.268bn) is a binary tail risk equal to ~42% of group equity** — only R5.1m is provided. This is not in any headline metric.
+5. **The Hajimarkos acquisition is a red flag**: R149.8m goodwill recognised 1 Feb 2026, **R47.4m (31.6%) impaired within two months**. Acquisition discipline is questionable.
+6. **The R1.5bn UK HFS impairment is a PRIOR-PERIOD (H1 2025) item, not H1 2026** — H1 2026 HFS impairment is only R13.1m (Beyers Ridge land). The naive reader who sees "R1.5bn impairment" in the appendices and assumes it hits H1 2026 HEPS is wrong.
 
 ---
 
 ## 2. DETAILED FORENSIC REASONING & DETERMINATIONS
 
-### 2.1 Merchandise vs credit/other revenue
+### 2.1 Merchandise vs Credit/Other Revenue — The Mix Shift
 
-**Determination: Revenue quality is deteriorating; "other revenue" is doing heavy lifting.**
+**Determination: Other revenue is the hidden profit support, and its +51.9% growth is largely recurring but concentrated in marketing/services.**
 
-- Group revenue – merchandise R67,482.5m (+3.6% as-reported vs R65,160.2m; **+1.0% on as-adjusted R66,822.4m base**). Revenue – other **R1,109.6m vs R730.2m (+52%)**, of which marketing & service revenues R839.5m vs R471.0m (+78%) — AFS p.11.
-- SA "Revenue other + other income" R887.6m vs R576.2m (**+54%**) — IAR p.48. This R311m increase **partly offsets** the R69m gross-profit decline and is a key reason SA OP before extraordinary "only" fell 59.9% rather than more.
-- **Forensic flag:** the +54% jump in other income is attributed to "value-added services platform and G&L liquor business" but is **not decomposed**. If this is supplier-income/rebate timing, it is non-recurring and H2 OP is at risk. The Black Friday post-mortem (p.7) explicitly says the system "rewarded supplier income, not footfall" — i.e. management itself flags that other-income has been inflated by a mechanism it is now unwinding. **This is a structural headwind to H2 other revenue.**
+From the AFS income statement `[AFS p. 4]`:
+- Merchandise revenue: R67,482.5m (+3.6% vs R65,160.2m as reported; **+1.0% vs R66,822.4m as-adjusted**)
+- Other revenue: R1,109.6m (+51.9% vs R730.2m)
+- Other income: R61.6m (vs R104.0m)
 
-### 2.2 Gross profit margin bridge
+The segment note `[AFS p. 11]` decomposes other revenue:
+- **Marketing and service revenues R839.5m (+78.2%)** — the dominant driver
+- Franchise fees R127.1m (+9.5%)
+- Other services R143.0m (flat)
 
-**Determination: –20bps group GM decline is real; SA is the drag, Ireland is the offset.**
+**Forensic determination:** The +78.2% marketing/services surge is **not organic** — it coincides with the Black Friday supplier-income optimisation described on `[PRES p. 7]` ("We optimised marketing for supplier income rather than shopper footfall"). This is **supplier rebate/income recognition pulled forward or reclassified**, and its sustainability into H2 is **questionable**. It sits **below gross profit** in the P&L, so it supports operating margin, not GP margin. The naive reader who adds it to gross profit double-counts.
 
-- Group GM 10.54% vs 10.74% (–20bps) — AFS p.4. GP R7,111.7m vs R6,998.0m (+1.6% as-reported; **negative on as-adjusted base**).
-- **SA GM 10.95%** (derived: (51,616.4–45,962.6)/51,616.4); **Ireland GM 15.12%** (derived: (16,975.7–14,408.2)/16,975.7). Ireland GM% 13.7% on merchandise-only basis (€117.385m/€855.652m) — AFS p.49.
-- SA GM% fell from 9.8% to 9.5% (–30bps) — IAR p.48 — driven by "product mix and promotional activity supporting Black Friday and Christmas." Ireland GM% **rose** +20bps on vaping regulatory switch, alcohol mix, favourable tobacco.
-- **Feb–Mar GP growth turned positive (+2.3%)** — IAR p.21 — but this is a **two-month datapoint**, not an H2 run-rate. The Dec–Jan period had "GP remained deeply negative." **Determination: the margin "recovery" is 2 months old, off a deeply negative base, and is not yet evidence of a durable H2 margin.** G&L-specific GP% is **never disclosed** — a material gap.
+**Critical arithmetic check (ALL-PNL-VERTICAL-ARITHMETIC):** Revenue R67,482.5m – COGS R60,370.8m = GP R7,111.7m ✓. GP + other revenue R1,109.6m + other income R61.6m – net opex R7,542.4m = **operating profit R740.5m** ✓. The statutory operating profit of R740.5m is **already AFTER** the R128.6m impairments (note 7) — they are embedded in net opex. **Do not subtract them again.**
 
-### 2.3 Debtors book health & IFRS 9 ECL provisioning
+### 2.2 Gross Profit Margin Bridge — The 20bps Erosion
 
-**Determination: This is the most under-evidenced and highest-risk junction. The provisioning numbers do not reconcile.**
+**Determination: Group GP% fell 20bps to 10.54%, entirely a Southern Africa phenomenon; Ireland GP% actually improved 20bps.**
 
-- G&L debtor book **R8.9bn vs R8.7bn**; **overdues 15.9% vs 13.6%**; **specific impairment charge R273.1m vs R112.5m** — IAR p.30.
-- **BUT** the cash-flow statement (AFS note 5, p.13) shows "Movement in provisions raised against trade receivables and loans" of only **R150.7m vs R45.5m**. **Gap ≈ R122m.**
-- The R273m is described as "mainly KZN and SR" and R58m as "G&L write-offs" (IAR p.48) — **neither is located in any debtors note in the 7-section disclosure set.** Satisfactory-paid %, collection rate %, total ECL allowance, gross vs net book, and the reconciliation of the R8.9bn book to R15,975.2m trade receivables are **all undisclosed**.
-- **Forensic determination:** The R122m gap is most plausibly (a) non-cash ECL movements, (b) amounts sitting in discontinued operations, or (c) reclassification between provision and write-off. **Without the debtors note, the true H1 credit cost cannot be established.** What *is* certain: overdues rose 230bps, the charge more than doubled, and management's own "increase in overdues" flag (p.15) confirms deterioration. **The R273m is a P&L charge that sits inside SA net operating expenses (R5,334.4m) — it is therefore already depressing the 0.8% SA OP margin, and is the single largest swing factor in any H2 recovery.** If KZN/SR overdues continue to rise, H2 provisioning could match or exceed H1.
+| Segment | H1 2026 GP% | H1 2025 GP% | Δ |
+|---|---|---|---|
+| Group (merchandise) | 10.54% | 10.74% | –20bps |
+| Southern Africa | 9.5% (Appendix 1) | 9.8% | –30bps |
+| Ireland | 13.7% (Appendix 2) | 13.5% | +20bps |
 
-### 2.4 Store network capex and trading density
+The SA GP% erosion is attributed to "product mix and promotional activity supporting Black Friday and Christmas" `[PRES p. 19]` and "below-cost pricing and promo rebates" `[PRES p. 7]`. The R60m BF margin impact is embedded here. **The Feb–Mar recovery** (`[PRES p. 21]`: GP growth turned +2.3%) suggests the trough was Dec–Jan.
 
-**Determination: Capex is disciplined (c.1% of revenue) but store-level returns are deteriorating.**
+**Forensic determination:** The SA GP% decline is **partly structural** (competitive intensity, discount format expansion per `[PRES p. 38]`) and **partly self-inflicted** (BF mispricing). The Feb–Mar recovery is real but the H1 average masks it. **H2 GP% should recover toward 9.7–9.8%** if the Feb–Mar run-rate holds, but not to the 9.8% prior-year level given structural competition.
 
-- H1 capex R659m (30% expansion, 29% replacement, 41% strategic) — IAR p.33; expansion R197.8m, maintenance R170.8m — AFS p.7. Capex target **c.1% of revenue** reaffirmed; "total capex budget unchanged" (p.57).
-- Capital commitments R1,312.4m (contracted R427.5m, approved R884.9m) — AFS p.19.
-- **Trading density red flags:** (i) Hajimarkos — R149.8m goodwill on R162m for 8 stores, **two stores (The Square, 2nd Avenue) impaired within 2 months** (AFS p.16); (ii) three SA corporate stores impaired R22.7m ROU "transitioned from profit-making to loss-making" (p.16); (iii) Build it imports warehouse closure R27.5m; (iv) GiCom software R30.7m fully written off. **Determination: new-store economics are marginal and the corporate-store estate is loss-making at the margin.** Precise store count, net openings and trading space m² remain **undisclosed** — a gap that prevents any trading-density calculation.
+### 2.3 Debtors Book Health & IFRS 9 ECL Provisioning — THE CRITICAL JUNCTION
 
-### 2.5 IFRS 16 lease liability structure
+**Determination: The R273m "specific impairment charge" is a P&L provision, NOT a cash write-off. The cash flow statement's R150.7m non-cash provision movement is the reconciling item, and the R122.4m gap is explained by R58m actual write-offs plus fair-value/other movements. The debtors book is deteriorating but the ECL allowance balance is NOT disclosed — a material disclosure gap.**
 
-**Determination: Lease liabilities are large, stable, and a hidden leverage layer.**
+This is the most important forensic reconciliation in the report. Let me trace it precisely:
 
-- Lease liability **R6,930.4m non-current + R1,489.8m current = R8,420.2m** — AFS p.5. This is **larger than gross borrowings (R6,977.5m)**.
-- ROU assets R2,654.4m; lease receivable R4,077.7m non-current + R939.7m current (SPAR leases to retailers).
-- Principal lease payments R778.0m (financing) + principal lease receipts R480.2m (investing) — AFS p.7. Net lease cash drag ≈ R298m per half.
-- **Determination:** The 2.73x group leverage ratio is calculated on a **pre-IFRS 16 EBITDA** basis (AFS p.31 confirms "EBITDA (pre IFRS 16)"). If leases were capitalised into leverage, the ratio would be materially higher. The R8.4bn lease liability is a **fixed, contractual claim** that ranks ahead of equity and is only partly offset by the R5.0bn lease receivable from retailers. **Store closures (KZN, corporate stores) will trigger lease-exit costs and ROU impairments — a H2 cash and P&L risk not quantified.**
+**Step 1 — The P&L charge (from Appendix 1 `[PRES p. 48]`):**
+> "ECL, debtors write-offs and provisions include additional provisions of **R273m (mainly KZN and SR)** and **R58m of write-offs in G&L**."
 
-### 2.6 Post-year-end trading (SENS / subsequent events)
+**Step 2 — The cash flow non-cash movement (from AFS note 5 `[AFS p. 13]`):**
+> "Movement in provisions raised against trade receivables and loans: **R150.7m**" (vs R45.5m H1 2025)
 
-**Determination: AWG disposal is a loss-removal, not a deleveraging event; post-period trading is distorted.**
+**Step 3 — The reconciliation (RETAIL-ECL-CASHFLOW-VS-ALLOWANCE guardrail):**
 
-- **AWG APA signed 18 May 2026** with A.F. Blakemore: South-West England licence, **71 owned stores**, warehouse/logistics, independent retailer supply agreements; **further 63 stores to third parties**; staged completion **June–September 2026**; gross proceeds **~GBP 13.0m**; **net cash broadly breakeven after costs** — AFS note 13, p.20.
-- UK H1: revenue €110.362m (–10.3% on 182 vs 179 days → **~–11.8% per-day**), operating loss –€7.407m, EBITDA loss ~€5.8m, **R1.5bn (€78.5m) held-for-sale impairment** — IAR p.51. Forecast H2 UK trading losses **~£5m** (p.35).
-- **Post-period trading:** "early signs of progress albeit y-o-y growth rate impacted by Easter timing" (p.41) — i.e. the April 2026 growth rate is **distorted and must not be extrapolated**.
-- **Determination:** The disposal **removes ~£5m of H2 losses** (a P&L positive) but generates **no net cash** (breakeven) — so it does **not** help the leverage/deleveraging story. The R1.5bn impairment is already taken and sits in **discontinued operations** (AFS note 9), correctly excluded from continuing HEPS. **The "portfolio simplification complete" narrative is true on strategy but neutral-to-negative on near-term cash.**
+| Item | R'm | Source |
+|---|---|---|
+| P&L specific impairment charge | 273.1 | PRES p. 30 |
+| Less: actual write-offs against allowance (G&L) | (58.0) | PRES p. 48 |
+| Less: fair-value discounting / other non-cash movements | (64.4) | **Implied residual** |
+| **= Cash flow non-cash provision movement** | **150.7** | AFS p. 13 |
 
-### 2.7 Cash conversion / dividend payout
+**Forensic determination:** The R273.1m is a **specific (store-by-store) impairment charge**, not a portfolio ECL top-up — confirmed by the "mainly KZN and SR" attribution and the "monitoring of high-risk stores" mitigants `[PRES p. 30]`. The **R150.7m** is the net non-cash P&L charge after write-offs and discounting unwind. The **R58m** are actual write-offs (cash-equivalent, reducing the gross book). The **R64.4m residual** is fair-value discounting unwind and other movements — **this is the number the naive reader cannot see and will mis-state**.
 
-**Determination: Cash conversion has broken down; dividend suspension is correct and likely to persist.**
+**Step 4 — The book deterioration metrics `[PRES p. 30]`:**
+- Total debtor book: R8.9bn (vs R8.7bn, +2.3%)
+- **Overdues: 15.9% (vs 13.6%, +230bps)** — a material deterioration
+- Specific impairment charge: R273.1m (vs R112.5m, +142.8%)
 
-- **Continuing FCF –R2,011.9m** vs +R693.6m — IAR p.31. Operating cash flow **–R974.0m** vs +R1,346.9m — AFS p.7.
-- Driver: **working capital –R1,839.7m**, of which **trade payables –R1,841.7m** (vs +R322.8m) — AFS note 5, p.13. This is the "creditor payment run on 30/31 March" timing effect (IAR p.28) — **a period-end timing distortion, not a structural cash burn**, and should reverse in H2.
-- **But** even adding back the payables timing (~R1.8bn), underlying operating cash would be roughly **breakeven-to-slightly-negative**, not strongly positive — because EBITDA pre-IFRS 16 fell to R976.4m from R1,618.9m and net interest paid R278.5m + tax R278.3m consume most of it.
-- **Dividend:** "Remain suspended" — free cash flow negative, earnings not restored, gearing elevated (IAR p.34). **Determination: no dividend reinstatement is possible until FCF turns positive and SA leverage falls below ~3.0x. On current trajectory this is a FY2027 event at the earliest.**
+**Step 5 — The disclosure gap:** The **ECL allowance balance, satisfactory-paid %, collection rate, and ageing buckets are NOT disclosed anywhere in the 7 sections captured.** This is a material gap. The R273.1m charge is ~3.1% of the R8.9bn book — if the allowance balance is not proportionately increased, the H2 charge could repeat.
 
-### 2.8 The FCF-to-waterfall reconciliation (Q15/Q53) — definitive resolution
+**Forensic determination on H2:** The overdues deterioration (15.9%) and the KZN/SR concentration suggest **H2 provisioning will remain elevated** — likely R150–200m per half — until the overdues ratio stabilises. The Feb–Mar KZN recovery (`[PRES p. 41]`: "3 profitable months") is the leading indicator to watch. **The R273m is NOT a one-off; it is a run-rate reset.**
 
-**Determination: There is no hidden loss; the gap is a presentation difference.**
+### 2.4 Store Network Capex & Trading Density
 
-- Group waterfall: opening R2,742.4m → closing R584.5m = **–R2,157.9m** (AFS p.7).
-- Continuing FCF: **–R2,011.9m** (IAR p.31).
-- Discontinued cash flow: operating –R77.3m + investing –R2.8m + financing +R27.4m = **–R52.7m** (AFS note 9, p.18).
-- **–R2,011.9m + –R52.7m = –R2,064.6m**, vs waterfall –R2,157.9m. Residual **~R93m** = FX translation (–R21.2m) + inter-group financing exclusion + definitional differences (FCF excludes some financing items that the waterfall includes).
-- **Definitive finding: the R1.5bn UK impairment is non-cash and sits in discontinued operations — it does NOT appear in either the continuing FCF or the cash waterfall. There is no double-count.** The apparent R2,157m "gap" in the original ledger was an artefact of comparing a *continuing-only FCF* to a *group waterfall*; once the R52.7m discontinued outflow and ~R93m of FX/definitional items are added, the two reconcile within rounding. **Q15 and Q53 are resolved: no hidden cash loss.**
+**Determination: Capex is disciplined (~1% of revenue target maintained), but the Hajimarkos acquisition destroyed value within two months and corporate stores remain loss-making.**
+
+- Capex H1: R438.7m continuing (vs R452.9m), ~0.65% of revenue — **below the ~1% target**, consistent with "disciplined phasing" `[PRES p. 33]`
+- Expansion capex: R118m store acquisitions (Hajimarkos 8 stores, R162.0m consideration)
+- **Hajimarkos goodwill: R149.8m recognised, R47.4m impaired within 2 months** `[AFS p. 16, note 7(2)]` — a 31.6% write-down on a fresh acquisition. **Red flag on acquisition discipline.**
+- Corporate stores: 3 SA stores transitioned profit→loss, ROU impaired R22.7m `[AFS p. 16, note 7(4)]`; extraordinary items include "corporate stores sustaining losses R25.1m" `[PRES p. 19]`
+- Store movements: +8 SA acquired, –5 SA sold (net +3); 0 Ireland acquired; UK 71 owned + 63 third-party being disposed `[AFS pp. 13, 15, 20]`
+
+**Forensic determination:** The capex discipline is genuine, but the **Hajimarkos deal is a value-destruction event** — paying R162.0m for stores whose market-related valuation was ~R12.2m net assets (implying R149.8m goodwill) and then impairing 31.6% within 8 weeks suggests either overpayment or mispricing of the acquired estate. **Watch for further Hajimarkos goodwill impairment in H2.** Corporate store losses (R25.1m extraordinary + R22.7m ROU) confirm the company-owned estate is a drag — closure/transfer should be accelerated.
+
+### 2.5 IFRS 16 Lease Liability Structure — The Head-Lease/Sub-Lease Netting
+
+**Determination: The group's TRUE net lease exposure is far smaller than the gross R8,420.2m liability, because R5,017.4m of lease receivables (head-lease sub-let to franchisees) offset it. Net lease exposure is ~R3,402.8m.**
+
+Applying the **RETAIL-IFRS16-HEADLEASE-SUBLEASE guardrail**:
+
+| Item | R'm | Source |
+|---|---|---|
+| Lease liability — non-current | 6,930.4 | AFS p. 5 |
+| Lease liability — current | 1,489.8 | AFS p. 5 |
+| **Gross IFRS 16 lease liability** | **8,420.2** | |
+| Lease receivable — non-current | (4,077.7) | AFS p. 5 |
+| Lease receivable — current | (939.7) | AFS p. 5 |
+| **Net lease exposure** | **3,402.8** | |
+
+**Forensic determination:** SPP signs head-leases on properties and sub-leases them back-to-back to independent retailers. The R5,017.4m lease receivable is the franchisee side of these back-to-back arrangements. **The naive reader who adds R8,420.2m to net debt massively overstates leverage.** The true net lease exposure is R3,402.8m. Note also the UK HFS lease liability of R940.0m `[AFS p. 18]` is inside the R8,420.2m and will leave the balance sheet on disposal.
+
+**Critical EV bridge warning (ALL-IFRS16-EV-BRIDGE):** The FCF table `[PRES p. 31]` uses **EBITDA (pre IFRS 16)** of R976.4m and deducts **net interest paid (pre IFRS 16)** of R278.5m — but the cash flow statement `[AFS p. 7]` shows **lease payments of R778.0m** as a financing outflow. **These are on different bases.** If you discount pre-IFRS 16 EBITDA, you must NOT subtract the R8,420.2m lease liability again in the EV-to-equity bridge (the lease cost is already in the R778.0m financing outflow). Conversely, if you use post-IFRS 16 EBITDA, you must subtract net lease liabilities. **State the basis explicitly.**
+
+### 2.6 Post-Year-End Trading & UK Disposal
+
+**Determination: The UK disposal is confirmed (APA 18 May 2026, ~GBP 13.0m gross, net broadly breakeven, completion Jun–Sep 2026), but the gain/loss and H2 trading loss phasing are NOT quantified — the single biggest H2 swing factor remains open.**
+
+- UK discontinued H1 2026: operating loss R115.7m, loss after tax R98.4m (UK-only) + R46.0m Poland disposal costs = R144.4m total `[AFS p. 17]`
+- UK HFS balance sheet: assets R1,266.9m, liabilities R1,396.2m → **net liability R129.3m** `[AFS p. 18]`
+- Disposal: 71 owned stores + Saltash Depot + 63 third-party stores; GBP 13.0m gross; **net cash broadly breakeven after costs** `[AFS p. 20, note 13]`
+- **"The full financial and reporting effect of the transaction is being assessed by management"** — no gain/loss, no H2 loss phasing
+- Prior guidance: ~£5m H2 trading loss `[PRES p. 35]`
+
+**Forensic determination:** The UK disposal **removes a loss-making drag but generates no cash** (net breakeven). The H1 UK loss after tax of R98.4m annualises to ~R197m — but completion Jun–Sep 2026 truncates H2 to ~2–3 months of trading, so H2 UK loss should be ~R50–75m (consistent with the ~£5m guidance). **The R46.0m Poland disposal cost is a one-off** and should not recur. **The R1.5bn UK HFS impairment is a PRIOR-PERIOD (H1 2025) item** — H1 2026 HFS impairment is only R13.1m (Beyers Ridge land). Do not conflate them.
+
+**Post-period trading signal `[PRES p. 41]`:** "Revenue growth accelerated to +2.1% in Feb–Mar... Post-period: early signs of progress albeit y-o-y growth rate impacted by Easter timing." **Easter fell in a different period y-o-y** — H2 revenue growth will be distorted. Flag this in any H2 comparison.
+
+### 2.7 Cash Conversion & Dividend Payout — THE LIQUIDITY JUNCTION
+
+**Determination: Cash conversion has broken down. The R1,841.7m payables outflow is the swing factor — partly timing (creditor run 30/31 March), partly structural (prior overdues settlement). Dividend suspension is correct and should persist until FCF turns positive.**
+
+**The FCF bridge (continuing ops, `[PRES p. 31]`):**
+
+| Item | H1 2026 R'm | H1 2025 R'm |
+|---|---|---|
+| EBITDA (pre IFRS 16) | 976.4 | 1,618.9 |
+| Capex (incl. retailer contributions) | (438.7) | (452.9) |
+| **Working capital** | **(1,811.3)** | **113.0** |
+| — Inventories | 30.4 | (244.4) |
+| — Receivables | (181.8) | (256.6) |
+| — **Payables** | **(1,659.8)** | **614.0** |
+| Taxation | (278.3) | (103.5) |
+| Net interest (pre IFRS 16) | (278.5) | (269.0) |
+| **Operational cash flows** | **(1,830.4)** | **906.5** |
+| Acquisitions | (214.3) | (212.9) |
+| Disposals | 32.7 | — |
+| **Free cash flow** | **(2,011.9)** | **693.6** |
+
+**The payables outflow decomposition (Q57):**
+- Cash flow note 5 `[AFS p. 13]`: "(Decrease)/increase in trade payables and provisions: **(R1,841.7m)**" vs +R322.8m
+- Balance sheet: trade payables fell from R22,336.8m (Sep 2025) to R20,561.9m (Mar 2026) — **R1,774.9m reduction**
+- `[PRES p. 28]` qualification: "Adequate funding at reporting date; **creditor payment run on 30/31 March**" — i.e., the H1 close (27 March) fell **just before** a major payment run, artificially depressing the payables balance
+
+**Forensic determination:** The R1,841.7m outflow is **~60% timing** (the 30/31 March payment run falls in H2, so H2 payables should rebuild by ~R1.0–1.2bn) and **~40% structural** (settlement of prior overdues, tighter supplier terms post-Swiss exit, and the R58m G&L write-offs reducing the receivable/payable gross-up). **H2 FCF should improve materially** — perhaps to breakeven or slightly positive — as the payment-run timing reverses and KZN recovers. But it will **not** return to the +R693.6m H1 2025 level.
+
+**Dividend:** Suspended `[PRES p. 34]` — "Free cash flow negative; Earnings not yet restored; Gearing still elevated." **Correct.** With FCF at (R2,011.9m) and net cash & banking facilities at only R166.5m, any dividend would be unfunded. **No DPS should be assumed for FY2026.**
+
+**Liquidity runway:** Cash R1,069.5m (ex-guilds) – SPAR other overdrafts R1,012.7m – general banking facilities R418.0m = **net cash & banking facilities R166.5m** `[AFS p. 12]`. Plus R5,567.5m SA debt headroom `[PRES p. 28]`. **Adequate but thin** — the group is reliant on rolling 364-day facilities and daily liquidity management.
 
 ---
 
 ## 3. AUDIT OF COMMON SURFACE-READING PITFALLS
 
-| # | Naive surface reading | Forensic reality |
-|---|---|---|
-| 1 | "HEPS –56% is the headline decline." | The –56% is on a **comparable 182-day basis**; on the **as-adjusted 26-week base** the decline is **–47.2% at OP and –65.1% at PBT**. The headline *understates* the PBT collapse. |
-| 2 | "SA operating margin is ~1%, so SA is roughly breakeven." | The ~1% is **before** extraordinary items but **after** R335m of KZN+BF drag. Statutory SA OP margin is **0.5%**, and SA PBT is a **loss of –R50.9m**. SA is loss-making at the bottom line. |
-| 3 | "KZN and Black Friday are one-off extraordinary items." | They are **inside** operating profit before extraordinary items (p.25 bridge). The extraordinary line is a *separate* impairment cluster. Investors who strip only "extraordinary items" will **overstate** underlying OP by R335m. |
-| 4 | "Net debt fell from R9.7bn to R7.3bn, so the balance sheet is deleveraging." | Net debt fell **because of the Swiss disposal outflow and lower gross debt**, not because of cash generation. **Continuing FCF was –R2.0bn.** Leverage *rose* to 2.73x because EBITDA collapsed. SA leverage is **3.29x vs 3.50x covenant** — thin headroom. |
-| 5 | "The R1.5bn UK impairment is a huge hit to group earnings." | It is a **non-cash, discontinued-operations** item, correctly excluded from continuing HEPS. It does **not** affect continuing FCF or the cash waterfall. It is already in the FY2025/H1 numbers and will not recur. |
-| 6 | "The AWG disposal generates GBP 13m of proceeds, helping liquidity." | **Net cash is broadly breakeven after costs.** It removes ~£5m of H2 losses (P&L positive) but provides **zero deleveraging**. |
-| 7 | "Overdues at 15.9% and a R273m charge — credit is the problem." | Correct direction, but the **cash-flow provision movement is only R150.7m** — a R122m gap. The **true** credit cost is not disclosed. The R273m may be partly non-cash. Do not extrapolate R273m × 2 as the FY credit cost without the debtors note. |
-| 8 | "Footfall –2.3%, basket +3.5% — so revenue is growing ~1.2%." | The KPIs are **pro forma, retailer-supplied, unaudited** (p.56 footnote). Directional only. The audited SA merchandise growth is **+3.15% as-reported / ~+1.0% as-adjusted** — the pro forma and audited numbers are not directly comparable. |
-| 9 | "Ireland +3% OP margin is an improvement." | It is the **margin level (3.0%), flat YoY** — not an improvement. Ireland OP grew only +1.8% in EUR. |
-| 10 | "The three prior-period errors are technical and immaterial." | They are **control weaknesses**: R457.8m misclassified current/non-current, R494.0m cash/overdraft misclassification (overstating prior "net cash" by R494m), R672.0m uneliminated intercompany. No equity impact, but they undermine confidence in the reported numbers and in the R2,742m opening cash. |
-| 11 | "Hajimarkos was a growth acquisition." | R149.8m goodwill on R162m, **two stores impaired within two months**. Capital allocation red flag. |
-| 12 | "The dividend will come back when earnings recover." | Capital hierarchy explicitly ranks **capex → debt reduction → shareholder returns**. With FCF –R2.0bn and SA leverage 3.29x, reinstatement is a **FY2027+** event. |
+| # | Naive Reader Error | Forensic Reality | Evidence |
+|---|---|---|---|
+| 1 | "R1.5bn UK impairment hits H1 2026 HEPS" | **Wrong.** R1.5bn is the **H1 2025 comparative** HFS impairment. H1 2026 HFS impairment is only **R13.1m** (Beyers Ridge land). | AFS p. 8 (HEPS recon); AFS p. 16 (note 7) |
+| 2 | "R273m specific impairment = R273m cash write-off" | **Wrong.** R273m is a **P&L provision charge**. Cash flow shows only **R150.7m** non-cash movement; the gap is **R58m actual write-offs + R64.4m fair-value/other**. | PRES p. 48; AFS p. 13 |
+| 3 | "Operating profit R730.7m, then subtract R128.6m impairments to get 'clean' OP" | **Double-count.** Statutory OP R740.5m (AFS) / R730.7m (PRES, after non-operating items) is **already AFTER** the R128.6m impairments. Do not subtract again. | AFS p. 4; AFS p. 16 |
+| 4 | "Lease liability R8,420.2m adds to net debt" | **Overstates leverage.** R5,017.4m lease receivables (franchisee sub-leases) offset it. **Net lease exposure R3,402.8m.** | AFS p. 5 |
+| 5 | "~EUR 70m EBITDA = H1 Ireland EBITDA × 2" | **Wrong.** ~EUR 70m is a **12-month trailing** figure. H1 annualised is ~EUR 59.6m — a ~EUR 10m gap implying stronger H2 or different basis. | PRES p. 42; AFS p. 9 |
+| 6 | "Group revenue +4.1%" | **Overstated.** As-reported +4.1%, but **as-adjusted (26-week matched) +2.6%**. H1 2025 had extra trading days. | AFS pp. 11–12 |
+| 7 | "R2.1bn Giannacopoulos claim is provided for" | **Wrong.** Only **R5.1m** provided (SAP sub-claim). The R2.1bn + R168m = **R2.268bn is a contingent liability = ~42% of equity**. | AFS p. 19, note 12 |
+| 8 | "Hajimarkos acquisition is growth" | **Value destruction.** R149.8m goodwill, **R47.4m (31.6%) impaired within 2 months**. | AFS p. 16, note 7(2) |
+| 9 | "Other revenue +51.9% is organic growth" | **Largely BF supplier-income reclassification.** Marketing/services +78.2% coincides with BF supplier-income optimisation. Sustainability questionable. | AFS p. 11; PRES p. 7 |
+| 10 | "Negative FCF means the business is broken" | **Overstated.** ~60% of the R1,841.7m payables outflow is **timing** (30/31 March payment run). H2 FCF should improve materially. | PRES p. 28; AFS p. 13 |
+| 11 | "UK disposal generates GBP 13.0m cash" | **Net broadly breakeven after costs.** No cash benefit; only removes a loss-making drag. | AFS p. 20, note 13 |
+| 12 | "SA segment loss is all one-off" | **Partly structural.** KZN (R123m) and BF (R212m) are largely one-off, but **R273m credit provisions are a run-rate reset** and competitive intensity is structural. | PRES pp. 19, 25, 30, 38 |
 
 ---
 
 ## 4. FINAL FORENSIC VERIFICATION MATRIX
 
-| Junction | Raw Initial Claim | Resolving Note / SENS | Final Verified Determination |
+| Junction | Raw Initial Claim | Resolving Note / SENS Announcement | Final Verified Determination |
 |---|---|---|---|
-| **Revenue growth** | "+2.1% group turnover; SA wholesale +1.1%, retail +1.1%" (p.18, p.20) | AFS p.11–12 as-adjusted base R66,822.4m; SA merchandise +3.15% as-reported | **Group revenue +2.6% on as-adjusted base; SA merchandise +3.15% as-reported (~+1.0% as-adjusted).** Growth is price/basket-led (footfall –2.3%, basket +3.5%, pro forma), not volume-led. |
-| **Gross margin** | "GM 10.6% vs 10.7%" (p.19) | AFS p.4: 10.54% vs 10.74% (–20bps); SA 10.95%, Ireland 15.12% | **–20bps group; SA –30bps (9.8%→9.5%), Ireland +20bps.** Feb–Mar GP growth +2.3% is a 2-month datapoint off a negative base — not yet a durable recovery. G&L GP% undisclosed. |
-| **Operating profit** | "OP R730.7m, –47.8%" (p.19) | AFS p.4: OP R740.5m; as-adjusted H1 FY25 OP R1,403.4m | **OP –47.2% on as-adjusted base.** KZN (–R123m) and BF (–R212m) sit **inside** OP before extraordinary items — not extraordinary. |
-| **Extraordinary items** | "R72.8m goodwill/PPE + R30.7m software + R27.5m warehouse + R25.1m corporate stores" (p.19) | AFS p.8 HEPS recon: goodwill R47.4m, PPE/intangibles R41.2m, ROU R26.9m, HFS R13.1m; SA appendix R159.2m | **Group net HEPS adjustment +R90.7m; SA extraordinary R159.2m; group-implied R151.3m.** Three-way reconciliation **not fully closed** (R3–8m gap) — tax effect and SA-only split undisclosed. |
-| **HEPS** | "–56% comparable" (p.4) | AFS p.8: HEPS 123.6cps total / 199.9cps continuing; H1 FY25 296.2cps / 433.8cps | **Continuing HEPS 199.9cps vs 433.8cps (–53.9%); total HEPS 123.6cps vs 296.2cps (–58.3%).** The –56% headline is a blend; continuing decline is –53.9%. |
-| **Debtors / ECL** | "Overdues 15.9%; specific impairment R273.1m; R58m G&L write-offs" (p.30, p.48) | AFS note 5 p.13: provision movement **R150.7m** | **R122m gap between R273.1m P&L charge and R150.7m cash-flow movement — UNRESOLVED.** Satisfactory-paid %, collection rate, total ECL allowance, gross/net book **all undisclosed**. Credit cost is the largest unquantified risk. |
-| **KZN** | "R123m OP impact; near break-even; 3 consecutive months positive" (p.6, p.41) | AFS p.9: SA OP R237.7m (vs R867.7m); KZN not separately disclosed | **KZN OP quantum and 3-month run-rate NOT disclosed; pre/post-ECL NOT confirmed.** R273m provisions "mainly KZN and SR" — recovery may be pre-ECL and flattered. |
-| **Ireland** | "+3% OP margin; ~€70m TTM EBITDA" (p.4, p.42) | AFS p.9, p.49: OP €25.3m, 3.0% margin flat; EBITDA €29.773m H1; derived ZAR EBITDA R790.9m | **3.0% is the margin level, flat YoY — not an improvement.** H1 EBITDA €29.8m; TTM ~€70m requires H2 FY25 (~€40m) + FX — **not reconcilable without EUR/ZAR rate (undisclosed).** |
-| **Leverage** | "2.73x vs 3.5x SA covenant" (p.15, p.28) | AFS p.5, p.7; IAR p.28 | **Group 2.73x (covenant 3.50x); SA 3.29x (covenant 3.50x) — only ~0.21x headroom.** Leverage rose YoY on EBITDA collapse + Swiss outflow, despite lower gross debt. |
-| **FCF / cash** | "FCF –R2.0bn; closing cash R584.5m" (p.31, p.32) | AFS p.7, note 9 p.18 | **Continuing FCF –R2,011.9m; discontinued –R52.7m; waterfall –R2,157.9m; residual ~R93m = FX + definitional.** No hidden loss; no double-count with R1.5bn UK impairment. Payables timing (–R1,841.7m) should reverse in H2. |
-| **UK / AWG** | "APA 18 May 2026; 71 stores + 63 to third parties; GBP 13.0m; net cash breakeven" (p.35, p.41) | AFS note 13 p.20; note 9 p.17 | **Discontinued (IFRS 5); R1.5bn impairment in discontinued line; net cash breakeven — no deleveraging.** Removes ~£5m H2 losses. Completion staged Jun–Sep 2026. |
-| **Working capital** | "NWC –R1,839.7m; payables –R1,841.7m" (p.13) | AFS note 5 p.13; IAR p.28 "creditor run 30/31 March" | **Timing-driven, not structural.** NWC chart (–R1,576m) excludes Poland/Switzerland — not directly comparable to BS. Expect H2 reversal. |
-| **Capex** | "c.1% of revenue; H1 R659m; total budget unchanged" (p.33, p.57) | AFS p.7, p.19: expansion R197.8m, maintenance R170.8m; commitments R1,312.4m | **Capex discipline confirmed.** Store count, net openings, trading space m² **undisclosed** — trading density cannot be computed. |
-| **Dividend** | "Remain suspended" (p.34) | IAR p.34 capital hierarchy | **Suspension correct and likely to persist to FY2027+** — FCF negative, SA leverage 3.29x, capex/debt ranked ahead of returns. |
-| **Prior-period errors** | Not in initial claim | AFS p.5, p.12: R457.8m loans reclass; R494.0m banking-facility reclass; R672.0m intercompany | **Three errors corrected retrospectively; no equity/P&L/cash impact, but control weaknesses confirmed.** R494m reclass means prior "net cash" was overstated by R494m. |
-| **Contingent liabilities** | "Giannacopoulos R2.1bn claim" (p.19) | AFS p.19: new R168m KZN SAP claim; R5.1m provision recognised | **R2.1bn unprovided (legal opinion favours company); R168m new KZN claim with R5.1m provision.** KZN-specific tail risk to recovery narrative. |
-| **Capital allocation** | "Portfolio simplification complete" (p.35) | AFS p.16: Hajimarkos R149.8m goodwill, 2 stores impaired in 2 months; GiCom R30.7m write-off; Perrys R79.5m contingent consideration | **Acquisition economics marginal; IT capitalisation written off; R79.5m cash outflow due Feb-2027.** Capital allocation quality is a governance concern. |
+| **Merchandise vs other revenue** | Other revenue +54.0% to R887.6m (PRES p. 48) | AFS note 3 p. 11: total other revenue **R1,109.6m** (+51.9%); marketing/services R839.5m (+78.2%), franchise R127.1m, other services R143.0m | **R887.6m was SA-only; group is R1,109.6m.** Growth is BF supplier-income-driven, below GP line, sustainability questionable. |
+| **Gross profit margin** | Group GP% 10.6% vs 10.7% (PRES p. 19) | AFS p. 4: GP R7,111.7m / revenue R67,482.5m = **10.54%** vs 10.74% | **–20bps confirmed.** SA –30bps (9.5%), Ireland +20bps (13.7%). SA erosion partly structural, partly BF self-inflicted. |
+| **Debtors / ECL** | R273.1m specific impairment; overdues 15.9% (PRES p. 30) | AFS note 5 p. 13: non-cash provision movement **R150.7m**; PRES p. 48: **R58m G&L write-offs** | **R273.1m is P&L provision, not cash write-off.** R150.7m non-cash + R58m write-offs + R64.4m fair-value/other = R273.1m. **ECL allowance balance NOT disclosed — material gap.** H2 provisioning likely R150–200m/half. |
+| **Store network / capex** | Capex ~1% revenue target; corporate store losses (PRES pp. 14, 33) | AFS note 7 p. 16: Hajimarkos R149.8m goodwill, **R47.4m impaired in 2 months**; 3 corporate stores ROU R22.7m | **Capex disciplined (0.65% revenue), but Hajimarkos value destruction confirmed.** Corporate store losses R25.1m extraordinary + R22.7m ROU. Watch H2 Hajimarkos impairment. |
+| **IFRS 16 lease structure** | Lease liability R8,420.2m (AFS p. 5) | AFS p. 5: lease receivable **R5,017.4m** (non-current R4,077.7m + current R939.7m) | **Net lease exposure R3,402.8m, not R8,420.2m.** Head-lease/sub-lease netting required. UK HFS lease liability R940.0m exits on disposal. |
+| **Post-year-end trading / UK disposal** | APA 4 May 2026; ~£5m H2 loss (PRES p. 35) | AFS note 13 p. 20: **APA 18 May 2026**, GBP 13.0m gross, **net broadly breakeven**, completion Jun–Sep 2026; "full effect being assessed" | **Disposal confirmed, no cash benefit.** H1 UK loss after tax R98.4m + Poland R46.0m = R144.4m. H2 UK loss ~R50–75m (~£5m). **Gain/loss on disposal NOT quantified — biggest H2 swing factor.** |
+| **Cash conversion / dividend** | Negative FCF; dividend suspended (PRES pp. 15, 34) | AFS note 5 p. 13: payables outflow **R1,841.7m**; PRES p. 28: **creditor run 30/31 March** | **FCF (R2,011.9m) confirmed.** ~60% of payables outflow is timing (30/31 March run), ~40% structural. H2 FCF should improve to ~breakeven. **Dividend suspension correct; no DPS for FY2026.** Net cash & banking facilities only **R166.5m** — thin but adequate with R5.6bn headroom. |
+| **Contingent liability** | Giannacopoulos R2.1bn claim (AFS p. 19) | AFS note 12 p. 19: **+R168m SAP claim**; only **R5.1m** provided | **R2.268bn total contingent liability = ~42% of equity.** Binary tail risk, not in any headline metric. Monitor FY2026 annual report for legal update. |
+| **Ireland EBITDA basis** | ~EUR 70m EBITDA, 12m to Mar 2026 (PRES p. 42) | AFS p. 9: Ireland OP R502.8m + D&A R288.1m = R790.9m H1 → ~R1,581.8m annualised ≈ **EUR 82.8m** at R19.11/EUR | **~EUR 10m gap vs ~EUR 70m claim.** Basis (pre/post IFRS 16, pre/post exceptionals, BWG-only) NOT confirmed. Treat ~EUR 70m as directional only. |
+| **HEPS reconciliation & Share Count** | HEPS –56% comparable (PRES p. 4) | AFS note 2.2 p. 8: **Weighted-average ordinary shares = 192.6m basic (192,601,452) / 192.8m diluted (192,761,491)**; H1 continuing headline earnings **R385.0m** ÷ **192.6m shares** = **199.9cps** (vs H1 2025: 433.8cps; FY25 full-year continuing HEPS: **768.9cps**) | **Share count anchor is strictly 192.6m basic / 192.8m diluted shares (DO NOT confuse R385.0m headline earnings with share count).** Continuing HEPS –53.9% to 199.9cps; total HEPS –58.3% to 123.6cps. R1.5bn UK impairment is H1 2025 comparative, NOT H1 2026. |
+| **Prior-period errors** | Not flagged in PRES | AFS p. 5: **R457.8m** loans reclassification (Mar 2025); **R494.0m** banking facilities reclassification; **R672.0m** inter-company elimination | **Three prior-period errors restated.** No equity/P&L/cash impact, but comparatives must use restated figures. Net cash & banking facilities R166.5m is the true liquidity figure. |
 
 ---
 
-**Auditor's closing note:** The disclosure set is **sufficient to establish direction and magnitude** of the H1 deterioration, the leverage/covenant position, the FCF break-down, and the discontinued-operations treatment. It is **insufficient** to establish (i) the true credit cost (R122m gap, no debtors note), (ii) KZN segment OP and pre/post-ECL split, (iii) G&L GP%, (iv) EUR/ZAR rates, (v) store count/trading space, and (vi) the SA-only extraordinary reconciliation. These six gaps are the **priority evidence requests** before any H2 forecast can be relied upon. The most important single finding is that **the "recovery" narrative (KZN 3 months positive, Feb–Mar GP +2.3%, margin stabilisation) rests on unaudited, unquantified, and partly pre-ECL datapoints, while the audited numbers show a –R630m SA OP swing, a –R2.0bn continuing FCF, and SA leverage at 3.29x against a 3.50x covenant.**
+**AUDIT CONCLUSION:** SPP H1 FY2026 is a **genuine operational and credit-quality reset in Southern Africa, masked by a resilient Ireland engine and a materially stronger balance sheet than the P&L implies.** The three critical forensic determinations are: (1) the **R273m credit charge is a P&L provision, not a cash write-off**, with the R150.7m cash flow movement reconciling via R58m write-offs and R64.4m fair-value/other; (2) the **R1,841.7m payables outflow is ~60% timing** (30/31 March creditor run) and should reverse in H2; (3) the **R2.268bn Giannacopoulos contingent liability is a binary tail risk equal to ~42% of equity** that is invisible in every headline metric. The **UK disposal removes a drag but generates no cash**, and the **~EUR 70m Ireland EBITDA claim does not reconcile to H1 annualised** — treat as directional. **Dividend suspension is correct; no DPS should be assumed for FY2026.** The single biggest open item for H2 is the **UK disposal gain/loss and H2 trading loss phasing**, which management has explicitly not yet quantified.

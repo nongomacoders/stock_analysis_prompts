@@ -1,5 +1,5 @@
 # STAGE 1: INDEPENDENT COGNITIVE AUDIT VIA SEQUENTIAL EXTRACTION & QUESTION LEDGER
-**Target Asset:** Calgro M3 Holdings (CGR)  
+**Target Asset:** Calgro M3 Holdings Limited (CGR)  
 **Sector:** Construction  
 **Primary Document:** `10023_Calgro-IR-2026_WEB-FA3.pdf` (Integrated Annual Report [IAR] — 5 sections)  
 **Companion Financial Document:** `Calgro-AFS-2026.pdf` (AFS — 36 sections)  
@@ -10,7 +10,7 @@
 
 ### INSTRUCTIONS FOR FORENSIC AUDITOR (LLM):
 You are acting as an independent **Managing Director and Senior Forensic Construction & Infrastructure Financial Auditor**. 
-You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of Calgro M3 Holdings's financial disclosures (41 total sections across primary report and companion disclosures).
+You have been provided with the complete, chronological working paper compiled during a section-by-section forensic capture of Calgro M3 Holdings Limited's financial disclosures (41 total sections across primary report and companion disclosures).
 
 Notice how this working paper is constructed:
 1. At each stage, specific text, accounting notes, APMs, and operational tables were extracted directly from the report.
@@ -28,6 +28,21 @@ Please format your response into the following four clear sections:
 2. **Detailed Forensic Reasoning & Determinations:** Step-by-step walkthrough of each key construction and infrastructure junction (percentage-of-completion [POC] revenue recognition & IFRS 15 timing, gross margin bridge across residential property development vs memorial parks vs infrastructure contracting, contract assets / unbilled WIP days vs contract liabilities & customer advances, retentions receivable and trade debtors aging/IFRS 9 ECL, joint ventures vs proportionately consolidated joint operations [e.g. BDC / Bankenveld District City], borrowing costs capitalised into construction assets, onerous contract provisions & performance guarantee/bonding facilities, DMTN corporate bond and bank debt covenant headroom, and cash tax vs deferred tax), citing specific notes, tables, and calculations.
 3. **Audit of Common Surface-Reading Pitfalls:** Contrast your findings against the common errors made by naive readers.
 4. **Final Forensic Verification Matrix:** A clean markdown summary table listing each Junction, the Raw Initial Claim, the Resolving Note/SENS Announcement, and your Final Verified Determination.
+
+---
+
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: CONSTRUCTION)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction (for example, in CGR, Note 39 'Bankenveld District City Proprietary Limited' ('BDC', a 50% joint operation in Gauteng) is a completely separate legal entity from Note 48 'Belhar Calgro M3 Development Company Proprietary Limited' (a 49%-owned subsidiary with 100% board control in Western Cape)). Always compare full legal entity names across notes. |
+| `CONSTRUCTION-POC-WIP-RETENTIONS` | **CONSTRUCTION** | **Construction POC Revenue Recognition, Retentions & Joint Operations** | Cross-check IFRS 15 percentage-of-completion (POC) revenue against contract assets (unbilled WIP), retentions receivable aging, customer advances (contract liabilities), and proportionate consolidation of joint operations vs equity-accounted JVs. |
 
 ---
 

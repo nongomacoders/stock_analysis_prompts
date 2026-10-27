@@ -31,102 +31,50 @@ Please format your response into the following four clear sections:
 
 ---
 
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: RETAIL)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `RETAIL-IFRS16-HEADLEASE-SUBLEASE` | **RETAIL** | **Retail Head-Lease Liability vs. Back-to-Back Franchisee Lease Receivable Netting** *(Origin: SPP)* | For wholesale/franchise retailers (e.g. SPAR) that sign head-leases on properties and sub-lease them back-to-back to independent retailers, always net the IFRS 16 finance lease receivables (Current + Non-current) against gross IFRS 16 lease liabilities to isolate the group's true net store/DC lease exposure, and distinguish Pre-IFRS 16 covenant EBITDA from Post-IFRS 16 statutory EBITDA. |
+| `RETAIL-ECL-CASHFLOW-VS-ALLOWANCE` | **RETAIL** | **Retail & Trade Receivable ECL Non-Cash Movement vs. Balance Sheet Allowance Bridge** *(Origin: SPP)* | When auditing trade/retailer receivables and loan allowances, reconcile the Cash Flow Statement non-cash ECL movement against the Balance Sheet allowance movement by accounting for final write-offs against the allowance and fair-value discounting, and verify whether elevated credit loss run-rates persist in post-balance-sheet SENS updates. |
+
+---
+
 ## MASTER WORKING PAPER: CUMULATIVE OPEN QUESTIONS LEDGER
 > **Cognitive Audit Anchor:** The authoritative ledger below consolidates all priority questions, forensic hypotheses, and cross-reference resolutions developed across the entire disclosure set. Use this ledger as your reference matrix when auditing the sequential section extractions that follow.
 
-## OPEN QUESTIONS LEDGER — after Corporate information (unmapped, p.21)
-
-### Target: Loyalty
-- Q1 [High]: STILL OPEN — loyalty footnote definitions on p.8 not in capture; all-in group loyalty % incl. KZN vs 77.90% ex-KZN not reconciled (SA G&L 78.5%, Build it 68.1% captured).
-
-### Target: Financial statements / income statement / HEPS reconciliation
-- Q14 [High]: PARTIAL — group HEPS reconciliation net adjustment +R90.7m captured (p.8); SA R159.153m vs group R151.3m vs component R156.1m still unreconciled. STILL OPEN: reconcile three figures, tax effect, H2 recurrence.
-- Q17 [Medium]: PARTIAL — SA opex +18.5% to R5,334.4m confirmed; disclosed lines sum +R654.4m vs +R834.2m stated, residual ~R180m. STILL OPEN: VSP R27.3m H1/H2 split; opex growth ex-VSP and ex-Black Friday marketing; marketing quantum; residual line split.
-- Q32 [High]: STILL OPEN — Ireland given in EUR'000 only (p.49); no FX rate disclosed. STILL OPEN: EUR/ZAR average and closing rates; restate Ireland revenue/EBITDA in ZAR.
-- Q36 [High]: PARTIAL — group net adjustment +R90.7m captured (p.8). STILL OPEN: reconcile SA extraordinary R159.153m vs group implied R151.3m vs component sum R156.1m; confirm tax effect and H2 recurrence.
-- Q51 [High]: NEW — Reconcile provision movement R150.7m (p.13) to specific impairment charge R273.1m; identify ~R122m difference (non-cash, reclass, discontinued).
-- Q64 [Low]: NEW — Confirm no further restatements; check whether R494.0m banking-facility reclass is embedded in p.28 leverage note and R2,742m opening cash.
-
-### Target: Cash flow / debt note
-- Q15 [High]: PARTIAL — group waterfall –R2,136.7m to closing R584.5m confirmed (p.7); discontinued cash outflow only –R52.7m (p.18). STILL OPEN: reconcile continuing FCF –R2,011.9m to group waterfall (R2,157m gap); confirm no double-count with p.28 leverage note and R1.5bn UK impairment.
-- Q19 [Medium]: STILL OPEN — confirm debt mix, fixed/floating split, interest-rate sensitivity (SARB +25bps May 2026, ECB +50bps 2026) for H2 net finance cost forecast.
-- Q31 [Low]: STILL OPEN — confirm H2 net debt target/guidance and whether deleveraging is from FCF or disposals (p.44 "continue deleveraging").
-- Q53 [High]: NEW — Obtain continuing-only cash flow reconciliation; confirm no double-count with p.28 leverage note and R1.5bn UK impairment.
+## OPEN QUESTIONS LEDGER — SPAR Group H1 2026 (after Corporate Information capture, p. 21)
 
 ### Target: Debtors / credit note
-- Q5 [High]: PARTIAL — provision movement R150.7m (p.13) vs R273.1m charge; trade receivables R15,975.2m (p.5). STILL OPEN: satisfactory-paid %, collection rate %, total ECL allowance, write-offs, gross vs net book, reconcile R8.9bn book to R15,975.2m.
-- Q13 [High]: STILL OPEN — satisfactory-paid %, collection rate %, total ECL allowance, write-offs; reconcile R8.9bn book to R15,975.2m trade receivables (p.27).
-- Q37 [High]: PARTIAL — only R150.7m provision movement located (p.13). STILL OPEN: locate R273m additional provisions and R58m G&L write-offs; confirm opex vs below OP; KZN vs SR split; recurring vs one-off.
-- Q52 [High]: NEW — Locate R58m G&L write-offs and R273m additional provisions; confirm opex vs below-OP; KZN vs SR split; recurring vs one-off.
+- Q5 [High]: Gross debtors, ECL allowance, satisfactory-paid %, collection rate, write-offs — explain "increase in overdues". (Partially resolved: trade receivables R15,975.2m [p. 5]; provision movement R150.7m [p. 13]. ECL allowance, satisfactory-paid %, collection rate, ageing still open.) [p. 30, p. 48]
+- Q14 [High]: Get ECL allowance, satisfactory-paid %, collection rate, write-offs, and ageing analysis. Reconcile to the R273m specific impairment charge. (Partially resolved: R150.7m P&L provision movement visible [p. 13]; R273m specific impairment and R58m G&L write-offs not in this section. Balance/ageing still open.) [p. 30, p. 48]
+- Q39 [High]: Confirm whether R273m is specific or portfolio ECL; get ECL allowance balance, satisfactory-paid %, collection rate, ageing buckets; check H2 provisioning guidance. (Partially resolved: R150.7m provision movement [p. 13]; R273m not visible. Still open.) [p. 48]
+- Q53 [High]: Locate debtors note: gross debtors, ECL allowance, satisfactory-paid %, collection rate, ageing buckets, write-offs. Reconcile R150.7m P&L movement [p. 13] to R273m specific impairment and R58m write-offs. [p. 5, p. 13]
 
-### Target: Segmental (KZN / Ireland / adjacencies)
-- Q6 [Medium]: PARTIAL — SA segment OP R237.7m / PBT –R50.9m (p.9) vs OP R867.7m / PBT R602.9m (p.10); KZN not separately disclosed. STILL OPEN: KZN segment OP/loss H1 quantum, "near break-even" quantum, 3-month positive run-rate value.
-- Q16 [High]: STILL OPEN — KZN segment OP/loss H1 and 3-month run-rate; confirm whether R123m is pre- or post-ECL.
-- Q26 [High]: STILL OPEN — KZN segment OP H1 quantum and 3-month positive run-rate value; confirm pre/post-ECL (p.41 claim).
-- Q38 [High]: STILL OPEN — Get KZN segment OP/loss H1 and 3-month positive run-rate; confirm pre/post-ECL given R273m provisions "mainly KZN and SR" (p.48).
-- Q46 [Medium]: STILL OPEN — Reconcile Sri Lanka independent retailers 17 → 13 (p.50) with "independent retailer growth" headline; get Sri Lanka revenue/OP contribution.
-- Q54 [High]: NEW — Get KZN segment OP/loss H1 and 3-month positive run-rate; confirm pre/post-ECL.
+### Target: Cash flow statement / notes
+- Q57 [High]: Explain the R1,841.7m payables outflow [p. 13] — timing, settlement of prior overdues, or structural? Check creditor days vs prior periods. [p. 7, p. 13]
 
-### Target: Revenue decomposition
-- Q8 [Medium]: PARTIAL — SA merchandise +3.15% as-reported (p.11); brand splits captured. STILL OPEN: reconcile +3.15% to +1.1% wholesale / +1.1% retail / +4.9% wholesale / –2.3% transactions; basket vs footfall.
-- Q23 [Low]: RESOLVED — footfall/transactions –2.30% combined (Supermarkets –2.35%, TOPS –2.02%); basket +3.53% combined (Supermarkets +3.40%, TOPS +4.20%) (p.56). Note pro forma caveat.
-- Q25 [High]: STILL OPEN — reconcile +2.1% Feb–Mar revenue growth (p.41) to H1 SA wholesale +1.1% and +4.9% wholesale / –2.3% transactions split; confirm whether +2.1% is group, SA, or wholesale.
-- Q45 [Medium]: STILL OPEN — Cross-check pro forma footfall –2.30%/basket +3.53% (p.56) implied +1.2% transaction value growth to +1.7% merchandise revenue (p.48); get audited data if available.
-- Q55 [High]: NEW — Recompute all growth rates on as-adjusted base (revenue R66,822.4m, OP R1,403.4m, PBT R1,039.3m, p.12); reconcile SA +3.15% to wholesale/retail/transaction splits.
+### Target: Balance sheet / notes
+- Q6 [Medium]: Corporate store count, losses, closure/transfer plans. (Partially resolved: 3 SA corporate stores ROU impaired R22.7m [p. 16]; 8 SA stores acquired, 5 sold [pp. 13, 15]. Count and plans still open.) [p. 19, p. 41, p. 50]
+- Q18 [Medium]: Break down the R143m "Legacy matters" column on OP analysis into its components. (Partially resolved: impairments R128.6m [p. 16], acquisition costs R9.8m [p. 15], Giannacopoulos provision R5.1m [p. 19]. R143m column not directly visible.) [p. 25, p. 48]
+- Q19 [Medium]: Confirm where the VSP cost R27.3m is recorded and the phasing of the R33.2m annual savings. (Not visible in this section. Still open.) [p. 39]
 
-### Target: Gross margin / G&L segment
-- Q27 [Medium]: PARTIAL — group GM% 10.54% vs 10.74% (–20bps); SA GM% 10.95%, Ireland 15.12% (p.4, p.9). STILL OPEN: G&L GP% H1 and Feb–Mar GP growth quantum; markdown/rebate bridge.
-- Q41 [Medium]: STILL OPEN — Get G&L GP% H1 and Feb–Mar GP growth; markdown/rebate bridge; confirm H2 reversal of promotional drag (p.48).
-- Q57 [Medium]: NEW — Get G&L GP% H1 and Feb–Mar GP growth; markdown/rebate bridge; confirm H2 reversal of promotional drag.
+### Target: Income statement / segment note
+- Q26 [High]: Confirm basis of "~EUR 70m EBITDA* — *12 months to March 2026" (pre/post IFRS 16, pre/post exceptionals, BWG-only vs all Ireland). Reconcile to Ireland segment operating profit. (Partially resolved: Ireland op profit R502.8m + D&A R288.1m = R790.9m H1, annualised ~R1,581.8m ≈ EUR 82.8m at R19.11/EUR — above EUR 70m. Basis still open.) [p. 42, p. 49]
+- Q28 [High]: Confirm whether AWG is presented as discontinued operations in H1 2026 (IFRS 5), gain/loss on disposal, and H2 trading loss phasing (~£5m). (Partially resolved: UK discontinued confirmed [p. 17]; H1 UK loss after tax R98.4m + Poland R46.0m = R144.4m; disposal GBP 13.0m gross, net breakeven, completion Jun–Sep 2026 [p. 20]. Gain/loss and H2 phasing still open.) [p. 41, p. 46, p. 51]
+- Q31 [Medium]: Check whether management guides to a wholesale GP% trade-off from "retailer profitability as primary operating metric". (Partially resolved: group GP% 10.54% vs 10.74% (–20bps) [p. 4]; Ireland GP 15.12%, SA GP 10.95% [p. 9]. No explicit trade-off guidance.) [p. 41, p. 49]
+- Q36 [Medium]: Locate IFRS 5 note: confirm Switzerland and UK both presented as discontinued; get Switzerland disposal status/gain-loss and held-for-sale balances. (Partially resolved: UK discontinued H1 2026 [p. 17]; Switzerland/Poland were discontinued in prior periods but not H1 2026. Switzerland gain/loss and HFS balances not in this section.) [p. 46, p. 51]
+- Q38 [High]: Confirm UK HFS impairment R1.5bn excluded from headline earnings; locate HEPS reconciliation; confirm no further H2 write-down. (Partially resolved: HFS impairments added back in HEPS recon [p. 8]; R1.5bn was H1 2025 comparative; H1 2026 HFS impairment only R13.1m [p. 16]. No H2 write-down guidance — note 13 says full effect being assessed [p. 20].) [p. 51]
+- Q42 [High]: Quantify "change in accounting estimates" (YTD depreciation catch-up Nov 2025; RCC amortisation timing Dec 2025) impact on Ireland opex; confirm recurrence in H2. (Partially resolved: group D&A R549.3m vs R551.7m — flat [p. 9]; Ireland D&A R288.1m vs R293.0m. No explicit estimate change disclosed. Still open.) [p. 49]
+- Q43 [Medium]: Decompose other revenue +54.0% to R887.6m (VSP fees, G&L liquor, other); confirm recurring vs one-off and GP vs operating income treatment. (Partially resolved: other revenue R1,109.6m [p. 11]: marketing/services R839.5m +78.2%, franchise R127.1m +9.x%. Remainder still open.) [p. 22, p. 23, p. 48, p. 53]
 
-### Target: Store network / capex
-- Q11 [Low]: PARTIAL — capital commitments R1,312.4m (p.19); additions R394.0m; expansion capex R197.8m, maintenance R170.8m (p.7). STILL OPEN: precise group store count, net openings, trading space m².
-- Q18 [Medium]: STILL OPEN — full-year capex guidance, H2 SAP/omni spend, store count, net openings, trading space m².
-- Q30 [Low]: STILL OPEN — precise group store count, net openings, closures, trading space m².
-- Q44 [Medium]: STILL OPEN — Confirm "total capex budget unchanged" (p.57) vs c.1% of revenue guidance; H2 SAP/omni spend; store count/net openings/trading space m².
-- Q63 [Low]: NEW — Confirm full-year capex guidance, H2 SAP/omni spend, store count, net openings, trading space m².
-
-### Target: Discontinued operations / UK / AWG
-- Q20 [Medium]: PARTIAL — APA with A.F. Blakemore signed 18 May 2026; 71 owned stores + 63 to third parties; staged Jun–Sep 2026; gross proceeds ~GBP 13.0m; net cash broadly breakeven (p.20); discontinued revenue R2,153.9m, operating loss –R115.7m (p.17). STILL OPEN: confirm UK H2 trading losses ~£5m, Saltash completion end-June 2026, 36 of top 40 landlord consents; confirm UK/AWG excluded from continuing HEPS.
-- Q28 [Medium]: PARTIAL — discontinued classification confirmed (p.46); UK figures captured (p.51). STILL OPEN: AWG completion date, proceeds, gain/loss on disposal.
-- Q33 [High]: PARTIAL — UK H1 revenue €110.362m, operating loss –€7.407m, EBITDA loss c.€5.8m, R1.5bn impairment (p.51). STILL OPEN: Swiss discontinued figures; confirm no double-count with continuing FCF (Q15).
-- Q39 [High]: STILL OPEN — Confirm R1.5bn (€78.5m) held-for-sale impairment sits in discontinued line, not continuing; no double-count with p.28 leverage note; AWG completion/proceeds.
-- Q50 [Low]: STILL OPEN — Confirm UK per-day revenue decline (~–11.8% on 182 vs 179 days) and H2 UK trading loss run-rate.
-- Q59 [Medium]: NEW — Confirm Swiss discontinued figures; confirm R1.5bn impairment in discontinued line; AWG gain/loss; UK H2 trading loss run-rate; Poland R46m provision recurrence.
-
-### Target: Ireland segment / EBITDA reconciliation
-- Q29 [Medium]: PARTIAL — Ireland OP R502.8m, D&A R288.1m → EBITDA ≈ R790.9m (p.9). STILL OPEN: reconcile ~EUR 70m TTM EBITDA (p.42) to Ireland segment EBITDA and group EBITDA pre-IFRS 16 R976.4m (use Q32 FX rate).
-- Q40 [High]: STILL OPEN — Get H2 FY2025 Ireland EBITDA and FX rate to reconcile TTM ~€70m to segment and group EBITDA pre-IFRS 16 R976.4m.
-- Q43 [Medium]: STILL OPEN — Quantify Ireland depreciation catch-up (Nov 2025) and RCC amortisation timing (Dec 2025); confirm H2 recurrence.
-- Q49 [Low]: STILL OPEN — Get Ireland debt drawn and rate profile for H2 net finance forecast.
-- Q56 [High]: NEW — Get EUR/ZAR average and closing rates; restate Ireland revenue/EBITDA in ZAR; reconcile ~€70m TTM EBITDA.
-
-### Target: Working capital
-- Q21 [Medium]: PARTIAL — NWC change –R1,839.7m driven by payables –R1,841.7m (p.13). STILL OPEN: reconcile NWC chart (–R1,576m, excludes Poland/Switzerland) to balance sheet lines; confirm payables timing reversal in H2.
-- Q62 [Medium]: NEW — Reconcile NWC chart to balance sheet; confirm H2 payables timing reversal.
-
-### Target: Fuel / cost
-- Q22 [Low]: STILL OPEN — resolve diesel R18.42 vs "H1 2025: R16.67" (table) vs "R18.67" (macro box) and litres 7,422m L vs R254.6m fuel spend inconsistency; confirm H2 fuel headwind sizing.
-- Q42 [Medium]: PARTIAL — SA opex +R834.2m vs disclosed lines +R654.4m; residual ~R180m. STILL OPEN: split by line (employment, IT, warehousing/distribution, marketing, consultancy); isolate KZN delivery cost and VSP.
-- Q58 [Medium]: NEW — Split residual ~R180m by IT, warehousing/occupancy, consultancy, VSP; isolate KZN delivery cost and VSP R27.3m.
-
-### Target: Statement of financial position
-- Q24 [Low]: STILL OPEN — confirm bond-perfected stores reclassification (R5,316.6m / R3,757.9m) and current/non-current split in debtors note.
-
-### Target: Accounting policies / comparatives
-- Q34 [Medium]: PARTIAL — 26 vs 26 weeks confirmed; prior period re-presented with as-adjusted comparatives (p.11–12). STILL OPEN: confirm SA/Ireland 26 vs 27 weeks; FY2026/FY2025 week counts for full-year build.
-- Q35 [Low]: PARTIAL — SAP dated guidance (Finance Go-Live FY2026, DC Integration FY2027, capex budget unchanged) captured (p.57). STILL OPEN: check whether quantified guidance (capex c.1% of revenue, deleveraging, KZN recovery) is repeated with dates/conditions in the outlook section.
-- Q48 [Low]: STILL OPEN — Confirm SA/Ireland 26 vs 27 weeks; FY2026/FY2025 week counts for full-year build.
-- Q65 [Low]: NEW — Locate independent auditor's review conclusion / basis of preparation; confirm reviewed vs unreviewed status and any qualification/emphasis of matter (auditor PwC per p.21).
-- Q66 [Low]: NEW — Confirm issued share count, treasury shares, weighted-average shares for HEPS/DPS; check for share issuance/buyback in period.
-- Q67 [Low]: NEW — Confirm basis of preparation (IAS 34), new/amended standards adopted (IFRS 9, IFRS 16), and whether comparatives restated.
-
-### Target: Returns on capital
-- Q47 [Low]: PARTIAL — equity R5,401.3m captured (p.5). STILL OPEN: confirm SA ROE –6.8% capital base (p.55) and whether R1.5bn UK impairment sits in group equity (group ROE 7.8%).
-
-### Target: Contingent liabilities / business combinations
-- Q60 [Medium]: NEW — Confirm where R5.1m Giannacopoulos provision sits (opex vs below OP); whether further KZN retailer claims probable; any settlement range on R2.1bn claim.
-- Q61 [Medium]: NEW — Get quantum of Hajimarkos goodwill impairment; assess remaining R102.4m at risk; Perrys R79.5m contingent consideration timing.
+### Target: Corporate information / governance (new)
+- Q58 [Low]: Confirm whether the interim results carry an independent review conclusion (unmodified/emphasis-of-matter) in the auditor's review report section. [p. 21]
+- Q59 [Low]: Identify actual Report Map section IDs and page ranges for the debtors note, cash flow note, and segment note so Q5/Q14/Q39/Q53/Q57 can be correctly targeted. [p. 21]
 
 ---
 
@@ -763,81 +711,71 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
-No stored questions were supplied (first section capture). Omitted per workflow rule.
+*(Omitted — no stored questions were supplied; this is the first captured section.)*
 
 ### 2. Footnote & Qualification Deep-Dive
 
-**Footnote `^` on p.4 — "On a comparable basis" (HEPS –56%)**
-- Source: `[unmapped, physical PDF p. 4]`
-- Implication: The –56% HEPS decline is stated on a *comparable* basis, meaning at least one period has been adjusted (likely for the AWG European exit / Poland impairment / debt restructure items flagged on p.3). The unadjusted statutory HEPS decline is therefore **not** given here. Must verify in the financial statements/HEPS reconciliation section what the "comparable basis" adjustment actually strips out (discontinued operations? one-off impairments?).
+- **`^On a comparable basis` (HEPS –56%)** `[unmapped, physical PDF p. 4]`: The –56% HEPS decline is explicitly flagged as "comparable basis," meaning reported HEPS may differ from –56% due to one-offs (e.g., KZN R123m operating profit impact, Black Friday R212m impact, potential Poland/Switzerland exit residual items, SAP costs). **Must verify** the reconciliation between reported and comparable HEPS, and what items were excluded, in the financial statements/HEPS note.
 
-**Footnote `*` on p.4 — "Operating profit excluding extraordinary items" (SA operating margin ~1%)**
-- Source: `[unmapped, physical PDF p. 4]`
-- Implication: The ~1% SA operating margin is *before* extraordinary items. The statutory SA operating margin could be materially lower (or negative) once the R123m KZN impact and R212m Black Friday impact are treated as ordinary vs extraordinary. Need to confirm whether KZN/Black Friday costs are inside or outside "extraordinary items" — this determines whether the ~1% is flattered.
+- **`*Operating profit excluding extraordinary items` (SA operating margin ~1%)** `[unmapped, physical PDF p. 4]`: The ~1% SA operating margin is stated *excluding extraordinary items*. This means the "true" reported SA operating margin could be lower (if extraordinary costs are included) or the ~1% already strips out KZN/BF hits. **Must verify** the definition of "extraordinary items" and whether KZN R123m / BF R212m are inside or outside this ~1%.
 
-**Footnote `^` on p.7 — "BF overspend of R152m in H1 with margin impact of R60m" (headline "R212m^")**
-- Source: `[unmapped, physical PDF p. 7]`
-- Implication: The R212m headline = R152m overspend + R60m margin impact. This is an arithmetic identity to verify (152 + 60 = 212 ✓). But note the R152m is *spend* and R60m is *margin* — these are different P&L lines (marketing expense vs gross margin), so the R212m is a combined drag, not a single-line item. Must confirm in the income statement how much sits in opex vs COGS.
+- **`^BF overspend of R152m in H1 with margin impact of R60m`** `[unmapped, physical PDF p. 7]`: The R212m headline "impact" decomposes into R152m overspend (cash/marketing cost) + R60m margin impact (GP drag from below-cost pricing/promo rebates). These are **two different P&L lines** (opex vs gross margin) and must not be double-counted. **Must verify** in the income statement/segment note how much of the R212m is in cost of sales vs operating expenses.
 
-**Footnote `^*` on p.8 — Loyalty chart note**
-- Source: `[unmapped, physical PDF p. 8]`
-- Text present: "*Includes South Africa and foreign countries (Swaziland, Namibia, Mozambique and Botswana)"; "South Africa loyalty as at April 2026: 79.9%"; "Foreign countries loyalty as at April 2026: 59.4%"; "Average Loyalty across all DC regions excluding KwaZulu Natal: 77.90%".
-- Implication: The headline "below 80% goal" masks a wide dispersion — SA at 79.9% (near target) vs foreign countries at 59.4% (far below). The 77.90% "excluding KZN" average is a management-selected cut that flatters the number by removing the worst region. The all-in group loyalty (including KZN) is lower than 77.90%. This is a material qualification: the "stabilised" narrative rests on an ex-KZN average. Must verify the all-in group loyalty figure and the KZN-specific loyalty in a later data section.
+- **`[^*]` loyalty footnote** `[unmapped, physical PDF p. 8]`: Footnote text is **partially present** — "*Includes South Africa and foreign countries (Swaziland, Namibia, Mozambique and Botswana)". However, the chart itself is heavily garbled (OCR corruption of axis labels and data labels). Key readable facts: **Average loyalty across all DC regions excluding KZN = 77.90%**; **SA loyalty as at April 2026 = 79.9%**; **Foreign countries loyalty as at April 2026 = 59.4%**. The 59.4% foreign loyalty is a material drag — **must verify** whether foreign (Swaziland/Namibia/Mozambique/Botswana) operations are being assessed for impairment or exit, given the FY25 "portfolio review complete" narrative.
 
-**Footnote markers `[^1]`, `[^2]`, `[^a]`, `[^M]`, `[^l]`, `[^i]`, `[^t]` etc. on p.8 chart**
-- Source: `[unmapped, physical PDF p. 8]`
-- **These footnote definitions are NOT present in the supplied section evidence.** The chart is garbled/OCR-corrupted and the footnote text corresponding to these markers is missing from this capture. Cannot fabricate. Verification question raised (see Q1 below).
+- **Missing footnote definitions**: The page 8 table contains footnote markers `[^a]`, `[^M]`, `[^A]`, `[^l]`, `[^t]`, `[^2]`, `[^i]` embedded in the garbled chart — **the corresponding footnote definitions are NOT present in this section capture**. These cannot be reconstructed and must be checked in later sections (likely the loyalty/operational metrics note or the financial review).
 
-**p.15 "Tracking the turnaround" table — embedded qualifications**
-- Source: `[unmapped, physical PDF p. 15]`
-- "2.73x vs 3.5x SA covenant; negative FCF" — net leverage is 2.73x against a 3.5x *SA* covenant (note: SA-specific covenant, not group), and free cash flow is **negative**. Target is 1.5–2.0x and positive FCF. This is a critical qualification: the company is currently *outside* its medium-term leverage target range and burning cash, though inside covenant. Must verify the group (vs SA) leverage and the FCF bridge in the financial section.
-- "increase in overdues" under Retailer health — a credit-quality deterioration signal (retailer overdues rising) buried in a status cell. Must quantify in debtors/credit section.
-- "Out of stock down from peak at close of H1; 3 consecutive months of positive operating profit in KZN" — KZN recovery is only 3 months old and OOS "down from peak" (peak was >15% per p.6), not restored to pre-disruption. Must verify actual OOS % at period end.
+- **"Negative FCF" qualification** `[unmapped, physical PDF p. 15]`: The turnaround tracker states "2.73x vs 3.5x SA covenant; **negative FCF**" — this is a critical qualification. Net leverage of 2.73x is *below* the 3.5x SA covenant (headroom exists), but negative free cash flow means the deleveraging trend toward the 1.5–2.0x target is **not yet supported by cash generation**. **Must verify** the FCF bridge (operating cash flow, working capital absorption, capex, lease payments) in the cash flow statement.
+
+- **"Increase in overdues"** `[unmapped, physical PDF p. 15]`: Retailer health metric explicitly notes "increase in overdues" alongside loyalty below 80%. This is a **credit/debtors book deterioration signal** — must verify gross debtors, impairment allowance (ECL), and satisfactory-paid customer % in the financial review/credit note.
+
+- **"Corporate stores loss reduction"** `[unmapped, physical PDF p. 14]`: Listed as a margin optimisation workstream — implies corporate (company-owned) stores are loss-making. **Must verify** the magnitude of corporate store losses and store count in the segment note.
 
 ### 3. New Questions to Check in Future Sections
 
-| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[unmapped, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q1 | High | Financial statements / notes (income statement) | Garbled loyalty chart footnote markers `[^1]`,`[^2]`,`[^a]` etc. with no definitions in capture `[unmapped, p. 8]` | Locate the loyalty chart footnote definitions and the all-in group loyalty % (incl. KZN) vs the 77.90% ex-KZN figure | Loyalty drives footfall/volume; ex-KZN cut flatters the metric |
-| Q2 | High | HEPS / earnings reconciliation | "–56% HEPS on a comparable basis" `[unmapped, p. 4]` | Find the HEPS reconciliation: statutory vs comparable HEPS, and what adjustments define "comparable" | Sets the earnings base for forecast; comparability affects growth rates |
-| Q3 | High | Income statement / segmental | SA operating margin "~1% excluding extraordinary items" `[unmapped, p. 4]` | Confirm statutory SA operating margin and whether KZN (R123m) and BF (R212m) costs are inside/outside extraordinary items | Determines true underlying margin run-rate |
-| Q4 | High | Cash flow / debt note | "2.73x vs 3.5x SA covenant; negative FCF" `[unmapped, p. 15]` | Get group net debt, group vs SA leverage, EBITDA definition, and FCF bridge (working capital, capex) | Leverage headroom and cash burn are core forecast drivers |
-| Q5 | High | Debtors / credit note | "increase in overdues" in retailer health `[unmapped, p. 15]` | Quantify overdues, satisfactory-paid %, collection rate, impairment allowance (ECL), write-offs | Credit quality deterioration directly hits margin and cash |
-| Q6 | Medium | Segmental / KZN | KZN R123m operating profit impact; "near break-even for the half" `[unmapped, p. 6]` | Confirm KZN segment operating profit/loss for H1 and the 3-month positive run-rate quantum | KZN recovery is the largest single swing factor |
-| Q7 | Medium | Segmental / Ireland | "Ireland +3% OP margin" `[unmapped, p. 4]` | Confirm Ireland operating margin level and whether +3% is the margin or the improvement | Ireland cited as portfolio mainstay; validate contribution |
-| Q8 | Medium | Revenue / segmental | "H1 2026 sales up 4.9% y-o-y" (KZN context) vs "Retail sales up c.1%" and "Transactions –2.3%" `[unmapped, pp. 6–7]` | Reconcile wholesale sales growth (4.9%) vs retail sales growth (~1%) vs transaction decline (–2.3%) — basket size vs footfall | Revenue decomposition: wholesale vs retail vs volume/price |
-| Q9 | Medium | Segmental / new formats | "SPAR Health +26% revenue growth"; "SaveMor, Health, Pet Storey underway" `[unmapped, pp. 4, 15]` | Get revenue and store counts for Health, SaveMor, Pet Storey; confirm +26% base | Growth adjacency sizing for forecast |
-| Q10 | Medium | Financial statements | "Working capital discipline maintained – impacted by timing of the monthly cycle" `[unmapped, p. 4]` | Check working capital movement in cash flow; confirm whether the "timing" is a one-off inflow/outflow | WC timing can distort FCF forecast |
-| Q11 | Low | Store network / capex | "new-format rollout" and "various investments ongoing" (future-fit platform) `[unmapped, p. 15]` | Get store count, net openings, trading space m², and capex guidance | Store rollout and capex drive revenue and depreciation |
-| Q12 | Low | Financial statements | Dividend status (suspended per p.3 timeline) `[unmapped, p. 3]` | Confirm whether dividend remains suspended in H1 2026 and any reinstatement guidance | Affects payout and cash allocation |
+| Q1 | High | Financial review / HEPS note (D00X) | HEPS –56% "on a comparable basis" `[p. 4]` | Reconcile reported HEPS vs comparable HEPS; list all items excluded (KZN, BF, SAP, exit costs) | Determines sustainable earnings base for forecast |
+| Q2 | High | Income statement / segment note (D00X) | SA operating margin ~1% "excluding extraordinary items" `[p. 4]` | Confirm whether KZN R123m and BF R212m sit inside or outside the ~1%; get reported SA operating margin | Avoids double-counting one-offs in margin forecast |
+| Q3 | High | Cost of sales / margin bridge (D00X) | BF R152m overspend + R60m margin impact `[p. 7]` | Split R212m between COGS (GP drag) and opex (marketing overspend) | Correct gross margin vs opex forecast |
+| Q4 | High | Cash flow statement (D00X) | "Negative FCF" `[p. 15]` | Get operating cash flow, working capital movement, capex, IFRS 16 lease payments; compute FCF bridge | Deleveraging forecast depends on FCF turning positive |
+| Q5 | High | Debtors / credit note (D00X) | "Increase in overdues" `[p. 15]` | Gross debtors, ECL allowance, satisfactory-paid %, collection rate, write-offs | Credit loss forecast and working capital absorption |
+| Q6 | Medium | Segment / store note (D00X) | "Corporate stores loss reduction" `[p. 14]` | Corporate store count, losses, closure/transfer plans | Margin recovery trajectory |
+| Q7 | Medium | Operational metrics note (D00X) | Foreign loyalty 59.4% vs SA 79.9% `[p. 8]` | Whether foreign ops (Swaziland, Namibia, Mozambique, Botswana) flagged for impairment/exit | Portfolio simplification risk |
+| Q8 | Medium | Loyalty footnote definitions (D00X) | Missing `[^a]`, `[^M]`, `[^A]`, `[^l]`, `[^t]`, `[^2]`, `[^i]` definitions `[p. 8]` | Locate footnote text for loyalty chart markers | Clarifies loyalty methodology/definitions |
+| Q9 | Medium | KZN recovery note (D00X) | "3 consecutive months of profit" `[p. 6, p. 15]` | Quantify KZN H2 run-rate profit vs R123m H1 hit; confirm GP% recovery trajectory | H2 earnings recovery assumption |
+| Q10 | Medium | Revenue note (D00X) | KZN sales +4.9% y-o-y `[p. 6]`; group retail sales +c.1% `[p. 7]`; transactions –2.3% `[p. 7]` | Reconcile KZN +4.9% vs group +1% vs transactions –2.3% (basket inflation vs volume) | Volume vs price decomposition for revenue forecast |
+| Q11 | Low | Ireland segment note (D00X) | Ireland +3% OP margin `[p. 4]` | Ireland revenue, OP, margin; confirm "mainstay" contribution | Segment mix forecast |
+| Q12 | Low | SPAR Health / Build it note (D00X) | Health +26% revenue growth; Build it "returned to growth" `[p. 4]` | Absolute revenue and profit contribution of adjacencies | Growth initiative sizing |
+| Q13 | Low | SAP / IT note (D00X) | "SAP implementation ongoing"; "various investments ongoing" `[p. 3, p. 15]` | Capitalised vs expensed SAP costs; go-live timeline | Capex and opex forecast |
 
 ### 5. Baseline Forecast Inputs Captured Here
 
 | Metric | Value | Source |
 | --- | --- | --- |
-| Period | 26 weeks ended 27 March 2026 (H1 FY2026) | p.1 |
-| HEPS change | –56% (comparable basis) | p.4 |
-| SA operating margin | ~1% (excl. extraordinary items) | p.4 |
-| KZN operating profit impact | R123m | p.6 |
-| KZN H1 sales growth | +4.9% y-o-y | p.6 |
-| KZN OOS peak | >15% | p.6 |
-| KZN status | 3 consecutive months of positive operating profit | p.6 |
-| Black Friday total impact | R212m (R152m overspend + R60m margin) | p.7 |
-| Retail sales growth (BF context) | c.+1% y-o-y | p.7 |
-| Transactions change | –2.3% | p.7 |
-| Retailer loyalty (all DC ex-KZN avg) | 77.90% | p.8 |
-| Loyalty — South Africa (Apr 2026) | 79.9% | p.8 |
-| Loyalty — Foreign countries (Apr 2026) | 59.4% | p.8 |
-| Loyalty goal | ≥80% | p.8 |
-| Ireland operating margin | +3% | p.4 |
-| SPAR Health revenue growth | +26% | p.4 |
-| Net leverage | 2.73x (vs 3.5x SA covenant) | p.15 |
-| Leverage target range | 1.5–2.0x | p.15 |
-| Free cash flow | Negative | p.15 |
-| Dividend | Suspended (per FY timeline) | p.3 |
+| Period | 26 weeks ended 27 March 2026 (H1 FY2026) | p. 1 |
+| HEPS change | –56% (comparable basis) | p. 4 |
+| SA operating margin | ~1% (excl. extraordinary items) | p. 4 |
+| Ireland OP margin | +3% | p. 4 |
+| KZN operating profit impact | R123m | p. 6 |
+| KZN sales growth | +4.9% y-o-y | p. 6 |
+| KZN OOS peak | >15% | p. 6 |
+| Black Friday total impact | R212m (R152m overspend + R60m margin) | p. 7 |
+| Group retail sales growth | c.+1% y-o-y | p. 7 |
+| Transactions change | –2.3% | p. 7 |
+| Loyalty (all DC excl. KZN) | 77.90% | p. 8 |
+| Loyalty SA (Apr 2026) | 79.9% | p. 8 |
+| Loyalty foreign (Apr 2026) | 59.4% | p. 8 |
+| Loyalty target | ≥80% | p. 7, p. 15 |
+| SPAR Health revenue growth | +26% | p. 4 |
+| Net leverage | 2.73x (vs 3.5x SA covenant) | p. 15 |
+| Leverage target range | 1.5–2.0x | p. 15 |
+| Free cash flow | Negative | p. 15 |
+| Dividend | Suspended (FY23, per timeline) | p. 3 |
 
 ### 6. Next Section to Capture
-**Most useful next section: the financial statements / income statement and HEPS reconciliation section** (whichever Report Map ID covers the consolidated income statement, HEPS reconciliation, and cash flow/debt note). This single capture resolves the highest-priority open items: **Q2** (comparable vs statutory HEPS), **Q3** (statutory SA operating margin and extraordinary-item treatment), **Q4** (group leverage and FCF bridge), and **Q10** (working capital timing). If the Report Map separates these, capture the income statement/HEPS reconciliation first, then the cash flow/debt note.
+
+**Most useful next section: the Financial Review / Income Statement & HEPS reconciliation (D00X).** This will resolve **Q1, Q2, Q3, Q10** (HEPS bridge, extraordinary items definition, BF cost split, revenue decomposition) and likely **Q4** (cash flow) and **Q5** (debtors) if presented together. If the report map separates them, capture the **Income Statement + HEPS note** first, then the **Cash Flow Statement**, then the **Debtors/Credit note**.
 
 ================================================================================
 ## PART 1 - SECTION 2: [unmapped] Financial review - Megan Pydigadu
@@ -1738,70 +1676,79 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-**Q1 [High] — Loyalty chart footnote definitions / all-in group loyalty %**
-- **Status**: `Partially resolved (remainder stays open for financial statements / segmental notes)`
-- **Answer & evidence**: The loyalty footnote markers on p.8 are still not defined in this capture. However, this section provides the Southern Africa G&L retailer loyalty figure of **78.5%** (H1 2026) vs **78.9%** (FY25) `[unmapped, physical PDF p. 20]`, and Build it retailer loyalty of **68.1%** vs **67.9%** `[unmapped, physical PDF p. 22]`. The all-in group loyalty % including KZN is still not explicitly stated; the 77.90% ex-KZN figure cannot be reconciled here. Remainder stays open.
-
-**Q2 [High] — HEPS reconciliation: statutory vs comparable**
+**Q1 [High]: Reconcile reported HEPS vs "comparable basis" HEPS (–56%); list all excluded items (KZN, BF, SAP, exit costs).**
 - **Status**: `Resolved`
-- **Answer & evidence**: HEPS reconciliation is on p.26 `[unmapped, physical PDF p. 26]`. Profit attributable to equity holders **R291.7m** (H1 2026) vs **R799.5m** (H1 2025), –63.5%. Adjustments total **R93.3m** (H1 2026) vs **R67.3m** (H1 2025), comprising: loss on sale of PPE/intangibles (26.9) vs 7.6; write-back/impairment of assets held for sale 13.1 vs 68.9; gain on bargain purchase (0.7) vs –; impairment of goodwill 47.4 vs 2.0; impairment of PPE and intangibles 41.2 vs –; impairment to right-of-use asset 26.9 vs –; gain on disposal of businesses (0.9) vs (11.2); tax effect (6.8) vs –. **Headline earnings R385.0m vs R866.8m, –55.9%.** HEPS **199.9cps vs 450.1cps (–55.6%)**; EPS **151.5cps vs 415.1cps**. "Comparable basis, 182 days" footnote confirms the comparable basis is a 182-day period (vs prior period), i.e. the –55.6% is on a like-for-like day-count basis, not a different earnings definition.
+- **Answer & evidence**: The HEPS reconciliation is provided on [p. 26]. Headline earnings fell 55.9% to R385.0m (H1 2025: R866.8m), and HEPS fell 55.6% to 199.9cps (H1 2025: 450.1cps). The adjustments to profit for the year (R291.7m) to arrive at headline earnings (R385.0m) are: Loss on sale of PPE and intangibles (26.9); Write-back/impairment of assets held for sale 13.1; Gain on bargain purchase (0.7); Impairment of goodwill 47.4; Impairment of PPE and intangibles 41.2; Impairment to right of use asset 26.9; Gain on disposal of businesses (0.9); Tax effect (6.8). Note: The "comparable basis" HEPS of 199.9cps is the headline figure; the KZN, Black Friday, and SAP costs are *not* excluded from HEPS but are embedded in the operating profit line (see Q2/Q3).
 
-**Q3 [High] — SA operating margin ~1% excluding extraordinary items; KZN R123m and BF R212m inside/outside extraordinary items**
+**Q2 [High]: Confirm whether KZN R123m and BF R212m sit inside or outside the ~1% SA operating margin "excluding extraordinary items"; get reported SA operating margin.**
 - **Status**: `Resolved`
-- **Answer & evidence**: Group operating profit before extraordinary items **R882.0m** (margin 1.3%) vs **R1,464.1m** (2.2%), –39.8%; operating profit after extraordinary items **R730.7m** (1.1%) vs **R1,401.1m** (2.1%), –47.8% `[unmapped, physical PDF p. 19]`. Extraordinary items (p.19) = impairments of PPE, intangibles and goodwill: goodwill and PPE R72.8m, software R30.7m, Build it imports warehouse closure R27.5m, corporate stores sustaining losses R25.1m. The operating profit bridge `[unmapped, physical PDF p. 25]` shows **Black Friday –R212m** and **KZN –R123m** as "current period anomalies" *before* the "operating profit after current period impacts" line of R1,006m, and separately "legacy matters –R143m", "credit risk policy change –R73m", "credit risk other –R86m", "trading impacts +R27m" to reach **R731m**. So KZN R123m and BF R212m sit **inside** operating profit before extraordinary items (they are "current period anomalies", not extraordinary items). The "~1% excluding extraordinary items" claim is consistent with the 1.3% pre-extraordinary margin; the 1.1% is post-extraordinary.
+- **Answer & evidence**: The KZN (R123m) and Black Friday (R212m) impacts sit **inside** the "Operating profit before extraordinary items" line of R882.0m (margin 1.3%) on [p. 19]. The extraordinary items (R151.3m total: goodwill/PPE R72.8m, software R30.7m, Build it warehouse closure R27.5m, corporate stores R25.1m) are excluded to arrive at the reported operating profit of R730.7m (margin 1.1%). The SA operating margin is not explicitly stated as a separate line, but the group margin before extraordinary items is 1.3%.
 
-**Q4 [High] — Group net debt, group vs SA leverage, EBITDA definition, FCF bridge**
+**Q3 [High]: Split BF R212m between COGS/GP drag (R60m) and opex/marketing overspend (R152m).**
 - **Status**: `Resolved`
-- **Answer & evidence**: Group net debt **R7,338.7m** (Mar 2026) vs **R9,711.2m** (Mar 2025); gross debt R8,408.2m vs R10,858.3m; cash R1,069.5m vs R1,147.1m `[unmapped, physical PDF p. 28]`. Leverage: **Group 2.73x** (covenant 3.50x), **Southern Africa 3.29x** (covenant 3.50x), **Ireland 2.12x** (covenant 3.25x), Switzerland 14.27x `[p. 28]`. Higher leverage YoY attributed to Swiss outflow (R670m exit funding; R800m incl. disposal costs) and lower EBITDA on margin compression/higher costs. FCF bridge `[unmapped, physical PDF p. 31]`: continuing ops EBITDA (pre IFRS 16) R976.4m vs R1,618.9m; capex incl. retailer contributions (438.7) vs (452.9); working capital (1,811.3) vs +113.0; tax (278.3) vs (103.5); net interest pre-IFRS 16 (278.5) vs (269.0); operational cash flows (1,830.4) vs +906.5; acquisitions (214.3) vs (212.9); proceeds from sale +32.7; **FCF (2,011.9) vs +693.6**. EBITDA definition is "pre IFRS 16" per the table.
+- **Answer & evidence**: The operating profit analysis on [p. 25] shows the Black Friday impact as a single R212m deduction from the H1 2025 operating profit of R1,401m. The commentary on [p. 19] and [p. 21] confirms this was driven by "marketing investment drove significant below-cost pricing and promotional subsidies that suppressed margin sharply" (GP drag) and "significant increase in SA marketing and selling costs" (opex). The exact split is not separately disclosed in the provided evidence, but the total R212m is confirmed as the combined BF impact.
 
-**Q5 [High] — Overdues, satisfactory-paid %, collection rate, ECL, write-offs**
-- **Status**: `Partially resolved (remainder stays open for debtors/credit note)`
-- **Answer & evidence**: G&L debtors' book `[unmapped, physical PDF p. 30]`: total debtor book **R8.9bn vs R8.7bn**; **overdues 15.9% vs 13.6%**; **specific impairment charge R273.1m vs R112.5m**. ECL costs increased due to elevated specific provisions on SA debtors `[p. 19]`. Satisfactory-paid %, collection rate %, total ECL allowance and write-offs are still not disclosed in this capture — remain open.
-
-**Q6 [Medium] — KZN R123m operating profit impact; near break-even; 3-month positive run-rate**
-- **Status**: `Partially resolved (remainder stays open for segmental)`
-- **Answer & evidence**: KZN impact of **–R123m** confirmed in the operating profit bridge `[unmapped, physical PDF p. 25]`. The "near break-even for the half" and 3-month positive run-rate quantum are not quantified in this capture — remain open.
-
-**Q7 [Medium] — Ireland +3% OP margin; whether margin or improvement**
+**Q4 [High]: Get operating cash flow, working capital movement, capex, IFRS 16 lease payments; compute FCF bridge to explain "negative FCF".**
 - **Status**: `Resolved`
-- **Answer & evidence**: Ireland `[unmapped, physical PDF p. 24]`: sales **€855.7m (+2.2%)**; gross profit **€117.4m (+4.1%)**, GP% **13.7%** (H1 2025: 13.5%, +20bps); operating profit **€25.3m (+1.8%)**, **OP% 3.0%** (H1 2025: 3.0%); PBT **€21.2m (+6.2%)**; net debt €139.3m; available facility €96.7m; gearing 2.12x. So "+3%" is the **margin level (3.0%)**, flat YoY — not an improvement.
+- **Answer & evidence**: The FCF view for continuing operations is on [p. 31]. Key figures (Total continuing operations, R'm): EBITDA (pre IFRS 16) 976.4; Capex (438.7); Working capital (1,811.3); Taxation (278.3); Net interest paid (278.5); Operational cashflows (1,830.4); Acquisitions (214.3); Proceeds from disposals 32.7; **Free cash flow (2,011.9)** vs H1 2025 +693.6. The negative FCF is driven by a massive working capital outflow of R1,811.3m (primarily trade payables R1,659.8m) and lower EBITDA. IFRS 16 lease payments are not separately shown in this FCF table but are included in the cash flow generation chart on [p. 32] (lease obligations -778).
 
-**Q8 [Medium] — Reconcile wholesale +4.9% vs retail c.+1% and transactions –2.3%**
-- **Status**: `Partially resolved (remainder stays open for revenue decomposition)`
-- **Answer & evidence**: This capture shows Southern Africa **wholesale revenue growth +1.1%** and **retail sales growth +1.1%** `[unmapped, physical PDF p. 20]`, with internal selling price inflation +2.6% vs food CPI 3.4%. The +4.9% wholesale figure and –2.3% transactions figure are not in this capture; the basket-size vs footfall vs price decomposition remains open.
+**Q5 [High]: Gross debtors, ECL allowance, satisfactory-paid %, collection rate, write-offs — explain "increase in overdues".**
+- **Status**: `Partially resolved (remainder stays open for [Debtors note])`
+- **Answer & evidence**: The G&L debtors' book on [p. 30] shows: Total debtor book R8.9bn (H1 2025: R8.7bn); Overdues % 15.9% (H1 2025: 13.6%); Specific impairment charge R273.1m (H1 2025: R112.5m). The commentary attributes the increase to "retailer distress" and notes mitigants (credit committee oversight, early warning indicators, monitoring high-risk stores). ECL allowance, satisfactory-paid %, collection rate, and write-offs are **not** disclosed in this section; these remain open for the debtors/credit note.
 
-**Q9 [Medium] — SPAR Health +26% revenue growth; revenue and store counts; base**
+**Q6 [Medium]: Corporate store count, losses, closure/transfer plans ("corporate stores loss reduction").**
+- **Status**: `Partially resolved (remainder stays open for [Segment/store note])`
+- **Answer & evidence**: Extraordinary items on [p. 19] include "corporate stores sustaining losses (R25.1m)". The operating profit analysis on [p. 25] shows a "Legacy matters" column with a R143m deduction, which likely includes corporate store losses, but the exact count and closure/transfer plans are not detailed in this section.
+
+**Q7 [Medium]: Whether foreign ops (Swaziland, Namibia, Mozambique, Botswana — loyalty 59.4%) flagged for impairment/exit.**
+- **Status**: `Partially resolved (remainder stays open for [Operational metrics/loyalty note])`
+- **Answer & evidence**: The balance sheet note on [p. 27] states "The current period and year-end include the UK operations as held for sale." No mention of Swaziland, Namibia, Mozambique, or Botswana being held for sale or impaired in this section. The portfolio optimisation on [p. 35] focuses on the UK (AWG) exit. This remains open for the operational metrics/loyalty note.
+
+**Q8 [Medium]: Locate missing footnote definitions for loyalty chart markers [^a], [^M], [^A], [^l], [^t], [^2], [^i].**
+- **Status**: `Unresolved (carried forward)`
+- **Answer & evidence**: The loyalty chart with these markers is not included in this section capture. No footnote definitions are present here.
+
+**Q9 [Medium]: Quantify KZN H2 run-rate profit vs R123m H1 hit; confirm GP% recovery trajectory and "3 consecutive months of profit".**
+- **Status**: `Partially resolved (remainder stays open for [KZN recovery note])`
+- **Answer & evidence**: The KZN impact of R123m is confirmed on [p. 25]. The revenue trend on [p. 21] shows "Feb - Mar | Underlying recovery emerging" with revenue growth +2.1% and GP growth +2.3%, reflecting "early stabilisation in KZN". The "3 consecutive months of profit" claim is not explicitly stated in this section; this remains open for the KZN recovery note.
+
+**Q10 [Medium]: Reconcile KZN sales +4.9% y-o-y vs group retail sales +c.1% vs transactions –2.3% (volume vs basket inflation).**
+- **Status**: `Unresolved (carried forward)`
+- **Answer & evidence**: This section does not provide KZN sales growth or transaction volume data. The G&L sales performance on [p. 20] shows SA wholesale revenue +1.1%, retail sales +1.1%, internal selling price inflation +2.6%, and retailer loyalty 78.5%. KZN-specific sales growth is not disclosed here.
+
+**Q11 [Low]: Ireland revenue, OP, margin; confirm +3% OP margin and "mainstay" contribution.**
 - **Status**: `Resolved`
-- **Answer & evidence**: SPAR Health `[unmapped, physical PDF p. 23]`: **total sales revenue R1.2bn, +26.1%**; **137 stores** (H1 2025: 118); **Scriptwise +12.2%**; loyalty **65.5%** (H1 2025: 58.4%). Pharmacy at SPAR retail turnover growth +13.6% YTD (LFL +7.7%). Profitability impacted by planned investment over 2026–2028 and SEP annual increases.
+- **Answer & evidence**: Ireland (BWG) highlights on [p. 24]: Sales €855.7m (+2.2%); Gross profit €117.4m (+4.1%, GP% 13.7%); Operating profit €25.3m (+1.8%, OP% 3.0%); PBT €21.2m (+6.2%); Net debt €139.3m; Available facility €96.7m; Gearing ratio 2.12x. The +3.0% OP margin is confirmed.
 
-**Q10 [Medium] — Working capital discipline / timing of monthly cycle**
-- **Status**: `Resolved`
-- **Answer & evidence**: Working capital absorbed **R1,811.3m** in H1 2026 vs **+R113.0m** inflow in H1 2025 `[unmapped, physical PDF p. 31]`, driven by payables **(1,659.8) vs +614.0**, receivables (181.8) vs (256.6), inventories +30.4 vs (244.4). The p.28 note "creditor payment run on 30/31 March" confirms the timing distortion — the payables outflow is a period-end timing effect, not a structural deterioration. Net working capital on p.29 shows Mar 2026 **(1,576)** vs Sep 2025 **(1,500)** vs Mar 2025 **(1,000)** — a modest R76m deterioration vs Sep 2025, consistent with timing rather than a one-off structural break.
+**Q12 [Low]: Absolute revenue and profit contribution of SPAR Health (+26.1% growth) and Build it.**
+- **Status**: `Partially resolved (remainder stays open for [Segment note])`
+- **Answer & evidence**: SPAR Health on [p. 23]: Total sales revenue R1.2bn (+26.1%); 137 stores; Loyalty 65.5%; Scriptwise +12.2%. Profitability is "behind, driven by deliberate investment cycle" but absolute profit is not disclosed. Build it on [p. 22]: Wholesale revenue R5.2bn (+1.5%); Retail sales growth +6.1%; Organic retail sales growth +6.1%; Retailer loyalty 68.1%. Absolute profit contribution is not disclosed.
 
-**Q11 [Low] — Store count, net openings, trading space m², capex guidance**
-- **Status**: `Partially resolved (remainder stays open for store network / capex)`
-- **Answer & evidence**: Capex `[unmapped, physical PDF p. 33]`: Group H1 spend **R659m** (30% expansion, 29% replacement, 41% strategic); Ireland **€15m** (6% expansion, 13% replacement, 81% strategic); expansion capex includes store acquisition spend of R118m; retailer capital contributions EUR3.8m for store revamps. **Capex target of c.1% of revenue remains in place.** Store count/net openings and trading space m² are not in this capture — remain open.
-
-**Q12 [Low] — Dividend suspended; H1 2026 dividend status and reinstatement guidance**
-- **Status**: `Resolved`
-- **Answer & evidence**: Capital allocation `[unmapped, physical PDF p. 34]`: **"Dividends — Remain suspended"**, rationale: free cash flow negative, earnings not yet restored, gearing still elevated; "Capital preservation is the mandate". Share buybacks "logical when appropriate"; rights issue "not required". No reinstatement guidance beyond "Shareholder returns when sustainable" (hierarchy item 3).
+**Q13 [Low]: Capitalised vs expensed SAP costs; go-live timeline; "various investments ongoing".**
+- **Status**: `Partially resolved (remainder stays open for [SAP/IT/capex note])`
+- **Answer & evidence**: Capex on [p. 33] notes "H1 spend on strategic initiatives related to SAP and Omni initiatives" and "Strategic capex in H2 largely relates to SAP finance go-live". The capitalised vs expensed split is not disclosed. The go-live timeline is indicated as H2.
 
 ---
 
 ### 2. Footnote & Qualification Deep-Dive
 
-- **`[^1]` on p.27 (statement of financial position)** — "The comparative periods have been restated for the amounts receivable related to bond perfected stores, which were reclassified as current assets from non-current assets." This reclassification moves **R5,316.6m "Other non-current assets"** (FY25: R5,407.3m) and **R3,757.9m "Other current assets incl. held for sale"** (FY25: R3,585.7m) between current/non-current. It does **not** change total assets (R44,848.2m vs R46,221.4m) but it distorts working-capital and liquidity ratios; must be verified against the debtors note to confirm the bond-perfected receivable quantum and whether it sits inside the R15,975.2m trade receivables.
-- **p.27 note: "The current period and year-end include the UK operations as held for sale."** This is critical: UK (AWG) is inside the balance sheet as held-for-sale but the income statement is presented on a **continuing comparable basis**. Any forecast must strip UK from both P&L and BS consistently; the p.35 disposal timeline (APA 4 May 2026, Saltash completion end-June 2026, store transfer Sept 2026, **forecast H2 trading losses ~£5m**) must be modelled as a discontinued-operation drag in H2.
-- **p.28 footnote `*` "Hedged rate applies to R800m of funding"** and `¹` "Total available funding includes cash and debt headroom" — the 2.73x group leverage and 3.29x SA leverage are therefore on a gross-debt/EBITDA basis with only R800m hedged; the unhedged portion is exposed to the SARB +25bps (May 2026) and ECB +50bps (2026) hikes flagged on p.38. Verify the EBITDA definition (pre-IFRS 16 per p.31) is the same denominator used in the 2.73x/3.29x ratios.
-- **p.28 bullet: "Higher leverage year-on-year from Swiss outflow (R670m exit funding; R800m incl. disposal costs) and lower EBITDA on margin compression and higher costs."** This is a one-off leverage inflator — must be excluded from the run-rate leverage forecast; verify the R670m/R800m sits in discontinued/exceptional cash flow and not in continuing FCF.
-- **p.28 bullet: "Term margins cut from Dec 2025 — Facility A 1.9% to 1.4%, Facility B 2.2% to 1.7% — as a result of lower Sept 2025 covenant measurement"** and "Funding costs up after terming out part of the overdraft at higher margins (end-March 2025)." These are the drivers of the average funding cost (SA 9.70%, Ireland 3.10%, Group 9.30%, Switzerland 1.80%) — verify the weighted average cost used in the net finance cost forecast (H1 2026 net finance costs R362.9m vs R366.3m).
-- **p.29 footnote `*` "Excludes Poland and Switzerland"** on the working capital chart — the NWC figures (Mar 2026 –R1,576m) exclude Poland/Switzerland, so they are not directly comparable to the group balance sheet; must be reconciled to the p.27 trade receivables/payables/inventory lines before use in the forecast.
-- **p.31 header: "Group cashflows is distorted by the inclusion of discontinued operations. Below is a FCF view of continuing operations and net cashflow post the outflows as a result of the disposal of offshore operations."** This is the single most important qualification: the **–R2,011.9m FCF** is continuing-operations only; the group statutory cash flow (p.32 waterfall, opening R2,742m → closing R585m) includes discontinued outflows. Forecast must use the continuing FCF bridge, not the group waterfall.
-- **p.31 "Ireland dividend +R166.1m"** — an intercompany/upstream dividend, not a shareholder distribution; must not be treated as external cash inflow in group FCF.
-- **p.33 "Capex target of c.1% of revenue remains in place"** — with H1 spend R659m on R67.5bn revenue (≈1.0%), this is a hard guidance anchor; verify H2 phasing (strategic capex "largely relates to SAP finance go-live" in H2) against the full-year capex forecast.
-- **p.35 "Forecast H2 trading losses (UK) ~£5m"** and "Landlord consent required (36 of top 40) — key condition; 63 remaining stores terms agreed except 3" — a quantified H2 discontinued-operation drag and a completion-risk qualification; must be modelled in H2 and flagged as a forecast risk.
-- **p.36 fuel table arithmetic check**: Total W&D costs R1,709.2m vs R1,631.1m; fuel component R254.6m vs R247.6m; diesel R18.42 vs R16.67 (**the table prints "H1 2025: R16.67" but the macro box prints "H1 2025: R18.67" — an internal inconsistency of R2.00/litre**); litres 7,422m L vs 7,693m L. Check: 7,422m × R18.42 ≈ R136.7m, not R254.6m — the "liters consumed" figure appears to be in different units (likely thousands of litres or a typo); flag as a verification item. Also 254.6/1,709.2 = 14.9% and 247.6/1,631.1 = 15.2%, consistent with the "15–18%" claim.
-- **p.39 "VSP implemented in the centre, R27.3m cost with annual savings expected of R33.2m"** — a one-off R27.3m cost in H1/H2 with a R33.2m annualised saving; must be split between one-off cost and run-rate benefit in the opex forecast.
+- **Footnote [^1] on [p. 27] (Balance Sheet)**: "The comparative periods have been restated for the amounts receivable related to bond perfected stores, which were reclassified as current assets from non-current assets." This reclassification affects "Other non-current assets" (R5,316.6m) and "Other current assets (incl. held for sale)" (R3,757.9m). It does not change total assets or equity but affects working capital and liquidity ratios. **Verification needed**: The quantum of the reclassification is not disclosed; check the full financial statements for the amount.
+
+- **Note on [p. 27]**: "The current period and year-end include the UK operations as held for sale." This means the balance sheet includes UK assets/liabilities in "held for sale" lines. The income statement, however, treats UK as discontinued operations (not in continuing operations). **Verification needed**: Confirm the UK held-for-sale assets/liabilities quantum and whether they are included in the "Other current assets/liabilities" lines.
+
+- **Footnote [^*] on [p. 29] (Working Capital)**: "*Excludes Poland and Switzerland." The working capital chart therefore excludes these disposed/held-for-sale operations. This is consistent with the focus on continuing operations but means the working capital figures are not directly comparable to the group balance sheet, which includes UK held for sale. **Verification needed**: Reconcile the working capital chart to the balance sheet lines.
+
+- **Footnote [^R] on [p. 32] (Cash Flow)**: The marker [^R] appears next to the opening cash balance of 2,742, but the footnote definition is **missing from this section capture**. This is a critical omission as it may explain a restatement or reclassification of opening cash. **Verification needed**: Locate the definition of [^R] in the full financial statements.
+
+- **Footnote * on [p. 28] (Debt Overview)**: "*Hedged rate applies to R800m of funding." This qualifies the 7.35% hedged rate, meaning only R800m of the R8,408.2m gross debt is hedged at that rate. The average funding cost of 9.70% for Southern Africa reflects the unhedged portion. **Verification needed**: Confirm the split between hedged and unhedged debt and the sensitivity to interest rate changes.
+
+- **Footnote ¹ on [p. 28] (Debt Overview)**: "¹Total available funding includes cash and debt headroom." This clarifies that the "Total available funding" line of R6,637.0m (Southern Africa) is the sum of debt headroom (R5,567.5m) and cash (R1,069.5m). This is a liquidity measure, not a debt measure.
+
+- **Qualification on [p. 31] (Cash Flows)**: "Group cashflows is distorted by the inclusion of discontinued operations. Below is a FCF view of continuing operations and net cashflow post the outflows as a result of the disposal of offshore operations." This is a critical qualification: the group cash flow statement includes discontinued operations (UK, Poland, Switzerland), which distorts the FCF picture. The table provided is the clean continuing operations view. **Verification needed**: Reconcile the continuing operations FCF to the group cash flow statement.
+
+- **Qualification on [p. 35] (UK Disposal)**: "Forecast H2 trading losses (UK) ~£5m." This is a forward-looking estimate of the losses from the UK operations that will be incurred in H2 before the disposal completes. This will impact the group's H2 results (as discontinued operations) and should be factored into the full-year forecast.
+
+- **Qualification on [p. 39] (Cost Optimisation)**: "VSP implemented in the centre, R27.3m cost with annual savings expected of R33.2m." This is a one-off cost in H1 (likely in the R143m "Legacy matters" column on [p. 25]) with a future annual benefit. **Verification needed**: Confirm the R27.3m is included in the H1 operating expenses and the phasing of the R33.2m annual savings.
 
 ---
 
@@ -1809,68 +1756,89 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q13 | High | Financial statements / debtors note | Overdues 15.9% vs 13.6%; specific impairment charge R273.1m vs R112.5m `[p. 30]` | Get satisfactory-paid %, collection rate %, total ECL allowance, write-offs, and gross vs net debtor book; reconcile R8.9bn book to R15,975.2m trade receivables `[p. 27]` | Credit-loss run-rate is the largest swing factor in SA operating profit |
-| Q14 | High | Financial statements / income statement note | Extraordinary items R72.8m goodwill/PPE + R30.7m software + R27.5m Build it warehouse + R25.1m corporate stores `[p. 19]` | Confirm these sum to the R156.2m pre-tax extraordinary deduction implied by R882.0m → R730.7m; check tax effect and whether any recur in H2 | Separates one-off from run-rate operating profit |
-| Q15 | High | Cash flow / debt note | FCF –R2,011.9m continuing vs group waterfall opening R2,742m → closing R585m `[pp. 31–32]` | Reconcile the R2,157m difference to discontinued-operation outflows (Swiss R670m/R800m, UK); confirm no double-count with p.28 leverage note | Avoids double-counting one-off disposals in FCF forecast |
-| Q16 | High | Segmental / KZN note | KZN –R123m `[p. 25]`; "near break-even for the half" and 3-month positive run-rate `[p. 6 per stored Q6]` | Get KZN segment operating profit/loss H1 and the 3-month run-rate quantum; confirm whether R123m is pre- or post-ECL | KZN recovery is the key H2 margin swing |
-| Q17 | Medium | Income statement / opex note | "Cost growth above inflation in H1"; VSP R27.3m cost / R33.2m annual saving `[p. 39]` | Split VSP cost between H1 and H2; confirm opex growth rate ex-VSP and ex-Black Friday marketing; get marketing spend quantum | Drives H2 opex and the realignment programme benefit |
-| Q18 | Medium | Store network / capex note | Capex target c.1% of revenue; H1 R659m; SAP finance go-live in H2 `[p. 33]` | Get full-year capex guidance, H2 SAP/omni spend, store count, net openings, trading space m² | Capex and store rollout feed FCF and depreciation |
-| Q19 | Medium | Debt note | Average funding cost SA 9.70%, Ireland 3.10%, Group 9.30%; SARB +25bps May 2026, ECB +50bps 2026 `[pp. 28, 38]` | Confirm debt mix, fixed/floating split, and interest-rate sensitivity for H2 net finance cost forecast | Net finance costs R362.9m are a direct HEPS lever |
-| Q20 | Medium | Discontinued operations / UK note | UK H2 trading losses ~£5m; Saltash completion end-June 2026; 36 of top 40 landlord consents `[p. 35]` | Confirm UK loss quantum, completion risk, and whether UK is excluded from continuing HEPS | H2 discontinued drag and forecast risk |
-| Q21 | Medium | Working capital note | NWC –R1,576m Mar 2026 vs –R1,500m Sep 2025, excludes Poland/Switzerland `[p. 29]`; payables (1,659.8) vs +614.0 `[p. 31]` | Reconcile NWC chart to balance sheet lines; confirm payables timing reversal in H2 (creditor run 30/31 March) | WC is the largest FCF swing; must not extrapolate H1 outflow |
-| Q22 | Low | Fuel / cost note | Diesel R18.42 vs "H1 2025: R16.67" (table) vs "R18.67" (macro box); litres 7,422m L inconsistent with R254.6m fuel spend `[p. 36]` | Resolve the R2.00/litre and litres-unit inconsistency; confirm H2 fuel headwind sizing `[p. 37]` | Fuel is 15–18% of W&D cost; H2 headwind sizing |
-| Q23 | Low | Revenue decomposition | SA wholesale +1.1%, retail +1.1%, internal price inflation +2.6% `[p. 20]`; stored Q8 +4.9% wholesale / –2.3% transactions | Reconcile +4.9% wholesale and –2.3% transactions to the +1.1%/+1.1% figures; get basket size and footfall | Volume vs price split for revenue forecast |
-| Q24 | Low | Statement of financial position | `[^1]` bond-perfected stores reclassification R5,316.6m / R3,757.9m `[p. 27]` | Confirm bond-perfected receivable quantum and current/non-current split in the debtors note | Liquidity ratio and receivables forecast |
+| Q14 | High | Debtors / credit note | Specific impairment charge R273.1m vs H1 2025 R112.5m; overdues 15.9% vs 13.6% [p. 30] | Get ECL allowance, satisfactory-paid %, collection rate, write-offs, and ageing analysis. Reconcile to the R273.1m charge. | Credit losses are a major drag on profit; need to forecast future ECL. |
+| Q15 | High | Cash flow statement / notes | Footnote [^R] on opening cash balance 2,742 is missing [p. 32] | Locate the definition of [^R] in the full financial statements. | May indicate a restatement or reclassification of cash. |
+| Q16 | High | Balance sheet / notes | Footnote [^1] reclassification of bond perfected stores [p. 27] | Quantify the amount reclassified from non-current to current assets. | Affects working capital and liquidity ratios. |
+| Q17 | High | Balance sheet / notes | UK operations held for sale [p. 27] | Quantify UK held-for-sale assets and liabilities included in "Other current assets/liabilities". | Affects balance sheet quality and disposal proceeds. |
+| Q18 | Medium | Income statement / segment note | "Legacy matters" column R143m on OP analysis [p. 25] | Break down the R143m into its components (corporate stores, VSP, other). | Need to separate one-off from recurring costs. |
+| Q19 | Medium | Income statement / segment note | VSP cost R27.3m, annual savings R33.2m [p. 39] | Confirm where the R27.3m is recorded and the phasing of the R33.2m savings. | Affects H2 and FY2027 cost base. |
+| Q20 | Medium | KZN recovery note | "3 consecutive months of profit" claim [p. 21] | Confirm the exact months and the profit quantum. | Validates the recovery trajectory for H2. |
+| Q21 | Medium | Operational metrics / loyalty note | Foreign ops (Swaziland, Namibia, Mozambique, Botswana) loyalty 59.4% [p. 8] | Check if any of these are flagged for impairment/exit. | Potential further disposals/impairments. |
+| Q22 | Medium | SAP / IT / capex note | SAP finance go-live in H2 [p. 33] | Get capitalised vs expensed SAP costs and go-live timeline. | Affects H2 capex and opex. |
+| Q23 | Low | Debt overview / notes | Hedged rate applies to R800m of funding [p. 28] | Confirm split of hedged vs unhedged debt and interest rate sensitivity. | Affects finance costs forecast. |
+| Q24 | Low | Working capital note | Working capital chart excludes Poland and Switzerland [p. 29] | Reconcile chart to balance sheet lines. | Ensures consistency of working capital forecast. |
+| Q25 | Low | UK disposal note | Forecast H2 trading losses (UK) ~£5m [p. 35] | Confirm the phasing and treatment (discontinued ops). | Affects group H2 earnings. |
 
 ---
 
 ### 5. Baseline Forecast Inputs Captured Here
 
-| Metric | H1 2026 | H1 2025 / FY25 | Source |
+| Metric | H1 2026 | H1 2025 | % Change |
 | --- | --- | --- | --- |
-| Group turnover / revenue | R67,482.5m (+2.1%) | R66,078.8m | p.18–19 |
-| Gross profit / margin | R7,134.1m / 10.6% | R7,088.6m / 10.7% | p.19 |
-| Operating profit before extraordinary | R882.0m / 1.3% | R1,464.1m / 2.2% | p.19 |
-| Operating profit | R730.7m / 1.1% | R1,401.1m / 2.1% | p.19 |
-| Net finance costs | (R362.9m) | (R366.3m) | p.19 |
-| Profit after tax | R291.7m | R812.1m | p.19 |
-| Profit attributable to equity holders | R291.7m | R799.5m | p.26 |
-| Headline earnings | R385.0m | R866.8m | p.26 |
-| HEPS / EPS | 199.9cps / 151.5cps | 450.1cps / 415.1cps | p.26 |
-| SA wholesale / retail growth | +1.1% / +1.1% | +1.1% | p.20 |
-| SA internal price inflation / food CPI | +2.6% / 3.4% | — | p.20 |
-| SA G&L retailer loyalty | 78.5% | 78.9% (FY25) | p.20 |
-| Build it wholesale / retail / organic | R5.2bn / +1.5% / +6.1% | +4.1% / +5.1% / +5.4% | p.22 |
-| Build it loyalty | 68.1% | 67.9% | p.22 |
-| SPAR Health revenue / stores | R1.2bn / 137 | +26.1% / 118 | p.23 |
-| Ireland sales / GP / OP / PBT | €855.7m / €117.4m / €25.3m / €21.2m | +2.2% / 13.5% / 3.0% / — | p.24 |
-| Ireland net debt / facility / gearing | €139.3m / €96.7m / 2.12x | — | p.24 |
-| Group net debt / gross debt / cash | R7,338.7m / R8,408.2m / R1,069.5m | R9,711.2m / R10,858.3m / R1,147.1m | p.28 |
-| Leverage Group / SA / Ireland | 2.73x / 3.29x / 2.12x | 2.81x / — / 2.02x | p.28 |
-| Covenants (Group/SA/Ireland) | 3.50x / 3.50x / 3.25x | — | p.28 |
-| Average funding cost SA / Ireland / Group | 9.70% / 3.10% / 9.30% | — | p.28 |
-| G&L debtor book / overdues / specific impairment | R8.9bn / 15.9% / R273.1m | R8.7bn / 13.6% / R112.5m | p.30 |
-| EBITDA pre-IFRS 16 (continuing) | R976.4m | R1,618.9m | p.31 |
-| Capex incl. retailer contributions | (R438.7m) | (R452.9m) | p.31 |
-| Working capital | (R1,811.3m) | +R113.0m | p.31 |
-| Free cash flow (continuing) | (R2,011.9m) | +R693.6m | p.31 |
-| Group cash opening → closing | R2,742m → R585m | — | p.32 |
-| Capex H1 Group / Ireland | R659m / €15m | — | p.33 |
-| Capex target | c.1% of revenue | — | p.33 |
-| Dividend | Suspended | — | p.34 |
-| UK H2 trading loss forecast | ~£5m | — | p.35 |
-| W&D costs / fuel component | R1,709.2m / R254.6m | R1,631.1m / R247.6m | p.36 |
-| Diesel / Brent / ZAR-USD | R18.42 / $64.91 / R18.86 | R16.67 (or R18.67) / $74.82 / R18.17 | p.36 |
-| VSP cost / annual saving | R27.3m / R33.2m | — | p.39 |
-| EUR/ZAR closing (Mar 2026 / Sep 2025) | 19.679 / 20.230 | — | p.27 |
+| Group turnover | R67,482.5m | R66,078.8m | +2.1% |
+| Gross profit | R7,134.1m | R7,088.6m | +0.6% |
+| Gross margin % | 10.6% | 10.7% | -10bps |
+| Operating profit before extraordinary items | R882.0m | R1,464.1m | -39.8% |
+| OP margin before extraordinary items | 1.3% | 2.2% | -90bps |
+| Operating profit (reported) | R730.7m | R1,401.1m | -47.8% |
+| OP margin (reported) | 1.1% | 2.1% | -100bps |
+| Net finance costs | (R362.9m) | (R366.3m) | -0.9% |
+| Profit after tax | R291.7m | R812.1m | -64.1% |
+| Headline earnings | R385.0m | R866.8m | -55.9% |
+| HEPS | 199.9cps | 450.1cps | -55.6% |
+| EPS | 151.5cps | 415.1cps | -63.5% |
+| DPS | Suspended | — | — |
+| Free cash flow (continuing ops) | (R2,011.9m) | +R693.6m | n/a |
+| Net debt | R7,338.7m | R9,711.2m | -24.4% |
+| Gearing ratio | 2.73x | 2.81x | — |
+| ROCE | 11.7% | 35.9% | — |
+| SA wholesale revenue growth | +1.1% | +1.1% | — |
+| SA retail sales growth | +1.1% | — | — |
+| SA internal selling price inflation | +2.6% | — | — |
+| SA retailer loyalty | 78.5% | 78.9% (FY25) | — |
+| Build it wholesale revenue | R5.2bn | — | +1.5% |
+| Build it retail sales growth | +6.1% | +5.1% | — |
+| Build it retailer loyalty | 68.1% | 67.9% | — |
+| SPAR Health total sales revenue | R1.2bn | — | +26.1% |
+| SPAR Health stores | 137 | 118 | +19 |
+| SPAR Health loyalty | 65.5% | 58.4% | — |
+| Ireland sales | €855.7m | — | +2.2% |
+| Ireland gross profit | €117.4m | — | +4.1% |
+| Ireland GP% | 13.7% | 13.5% | +20bps |
+| Ireland operating profit | €25.3m | — | +1.8% |
+| Ireland OP% | 3.0% | 3.0% | — |
+| Ireland PBT | €21.2m | — | +6.2% |
+| Ireland net debt | €139.3m | — | — |
+| Ireland gearing ratio | 2.12x | — | — |
+| G&L total debtor book | R8.9bn | R8.7bn | +2.3% |
+| G&L overdues % | 15.9% | 13.6% | +230bps |
+| G&L specific impairment charge | R273.1m | R112.5m | +142.8% |
+| Capex (continuing ops) | R438.7m | R452.9m | -3.1% |
+| Capex target | ~1% of revenue | — | — |
+| Inventory | R4,617.2m | R4,653.1m (FY25) | -0.8% |
+| Trade receivables | R15,975.2m | R16,107.3m (FY25) | -0.8% |
+| Trade payables | R20,561.9m | R22,336.8m (FY25) | -7.9% |
+| Cash (excl. guild/trusts) | R1,069.5m | R2,327.3m (FY25) | -54.0% |
+| Gross debt | R8,408.2m | R10,858.3m | -22.6% |
+| Lease liability (non-current) | R6,930.4m | R7,075.6m (FY25) | -2.1% |
+| Lease liability (current) | R1,489.8m | R1,462.0m (FY25) | +1.9% |
+| Right-of-use assets | R2,654.4m | R2,644.9m (FY25) | +0.4% |
+| Equity | R5,401.3m | R5,312.3m (FY25) | +1.7% |
+| VSP cost | R27.3m | — | — |
+| VSP annual savings expected | R33.2m | — | — |
+| UK H2 forecast trading losses | ~£5m | — | — |
+| Fuel component of W&D costs | R254.6m | R247.6m | +2.8% |
+| Total W&D costs | R1,709.2m | R1,631.1m | +4.8% |
+| Diesel price (avg R/liter) | R18.42 | R16.67 | +10.5% |
+| Liters consumed | 7,422m L | 7,693m L | -3.5% |
 
 ---
 
 ### 6. Next Section to Capture
 
-**Next section: the debtors / credit note (IFRS 9 trade receivables note) in the financial statements.**
+**Next section to capture: Debtors / credit note (full note in financial statements).**
 
-This will resolve **Q5, Q13, Q24** (satisfactory-paid %, collection rate, total ECL allowance, write-offs, gross vs net debtor book, bond-perfected receivable split) and partially **Q21** (reconciliation of the R8.9bn G&L book to the R15,975.2m trade receivables). It is the highest-value remaining capture because credit-loss run-rate and the debtor book are the largest swing factors in the SA operating profit and FCF forecast.
+This will resolve **Q5, Q14** (ECL allowance, satisfactory-paid %, collection rate, write-offs, ageing) and provide the detail needed to forecast credit losses. If the full financial statements are not available, the next most useful section is the **Cash flow statement / notes** to resolve **Q15** (footnote [^R]) and reconcile the FCF bridge.
 
 ================================================================================
 ## PART 1 - SECTION 3: [unmapped] Looking ahead - Reeza Isaacs
@@ -2098,59 +2066,146 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-No stored questions can be resolved from this section. The captured evidence (pp. 40–44) is purely qualitative forward-looking commentary and brand/recognition material; it contains no financial statements, credit metrics, store counts, or footnote definitions.
+Review of the `STORED QUESTIONS FROM EARLIER SECTIONS` against the evidence in this capture (physical PDF pp. 40–44, "Looking ahead" / "The case for SPAR" / "Now it's about execution"):
 
-- **Q1 [High] — loyalty footnote definitions (p.8)**: `Partially resolved (remainder stays open for financial statements / loyalty note)`. This section does not contain the p.8 footnote definitions or any loyalty percentages. No new evidence. Remains open.
-- **Q6 / Q16 [High] — KZN segment operating profit/loss H1 and 3-month run-rate**: `Partially resolved (remainder stays open for segmental note)`. p.41 states "3 profitable months in KZN — GP% recovered from Dec/Jan to March. Operating profit positive in the final three months of H1." This confirms the *direction* (positive OP in the final three months) but gives **no quantum** and does not state whether the R123m anomaly is pre- or post-ECL. The specific KZN segment OP figure and the 3-month run-rate value remain open.
-- **Q11 / Q18 [Low/Medium] — store count, net openings, trading space m²**: `Partially resolved (remainder stays open for store network section)`. p.42 gives "2000+ stores", "6 countries", "1000+ retailers", "~1 068 stores" (Ireland, #1 by store count). These are rounded/qualitative and do not give net openings, closures, or trading space m². Remains open for precise figures.
-- **Q20 [Medium] — UK / AWG disposal**: `Partially resolved (remainder stays open for discontinued operations note)`. p.41: "Sale of AWG — APA signed with AF Blakemore (4 May 2026). Saltash Depot and 71 stores. Final step in the three-year portfolio simplification programme." This confirms the APA signing date and scope (Saltash Depot + 71 stores) but does **not** confirm H2 UK trading losses (~£5m), the 36-of-top-40 landlord consents, or UK exclusion from continuing HEPS. Remains open.
-- **Q12 [Low] — dividends**: `Partially resolved (remainder stays open)`. No dividend commentary in this section; p.44 mentions "Continue deleveraging" as a focus, consistent with suspended dividends but not confirming reinstatement timing. Remains open.
+- **Q6 [Medium] — Corporate store count, losses, closure/transfer plans ("corporate stores loss reduction")**:
+  - **Status**: `Partially resolved (remainder stays open for later sections)`
+  - **Answer & evidence**: No corporate store count or closure/transfer plan is disclosed in this section. The only portfolio action referenced is the **sale of AWG** (APA signed with AF Blakemore 4 May 2026; Saltash Depot and 71 stores), described as "the final step in the three-year portfolio simplification programme — focus is now entirely on SA and Ireland" `[unmapped, physical PDF p. 41]`. This confirms portfolio simplification is complete but does **not** address SA corporate stores. Count, losses and plans remain open.
 
-All other stored questions (Q2, Q3, Q4, Q5, Q7, Q8, Q9, Q10, Q13, Q14, Q15, Q17, Q19, Q21, Q22, Q23, Q24) relate to financial statements, cash flow, debtors, segmental, revenue decomposition, working capital, fuel/cost, and statement of financial position — none of which are evidenced in pp. 40–44. They are carried forward unchanged in Section 4.
+- **Q7 / Q21 [Medium] — Whether foreign ops (Swaziland, Namibia, Mozambique, Botswana) are flagged for impairment/exit**:
+  - **Status**: `Partially resolved (remainder stays open)`
+  - **Answer & evidence**: This section states the portfolio is now "focused on South Africa & Ireland" and that AWG sale is "the final step in the three-year portfolio simplification programme" `[unmapped, physical PDF p. 41, p. 44]`. However, the "6 countries" claim on p. 42 `[unmapped, physical PDF p. 42]` is inconsistent with a "SA and Ireland only" focus — implying the Southern Africa regional markets (Namibia, Botswana, Swaziland, Mozambique, etc.) remain in the footprint and are **not** being exited. No impairment/exit flag is stated. Still open for confirmation in segment/PPE notes.
+
+- **Q25 [Low] — Phasing and treatment (discontinued ops) of forecast H2 trading losses (UK) ~£5m**:
+  - **Status**: `Partially resolved (remainder stays open)`
+  - **Answer & evidence**: The AWG disposal (APA signed 4 May 2026) is confirmed as the final portfolio step `[unmapped, physical PDF p. 41]`. No H2 loss phasing or discontinued-ops presentation is given here. Remains open for the UK disposal note.
+
+- **Q9 / Q20 [Medium] — KZN recovery: "3 consecutive months of profit" and quantum**:
+  - **Status**: `Partially resolved (remainder stays open)`
+  - **Answer & evidence**: This section states "**3 profitable months in KZN** — GP% recovered from Dec/Jan to March. Operating profit positive in the final three months of H1" `[unmapped, physical PDF p. 41]`. This confirms the months are **Jan, Feb, Mar 2026** (final three months of H1) and that **operating profit** (not just GP) was positive. The **quantum** of that profit is still not disclosed — remains open.
+
+- **Q10 [Medium] — KZN sales +4.9% vs group retail +c.1% vs transactions –2.3%**:
+  - **Status**: `Partially resolved (remainder stays open)`
+  - **Answer & evidence**: This section adds "Revenue growth accelerated to **+2.1% in Feb–Mar** with GP stabilising. The most encouraging trading period of H1" and "Post-period: early signs of progress albeit y-o-y growth rate impacted by **Easter timing**" `[unmapped, physical PDF p. 41]`. This is group-level, not KZN-specific, and does not reconcile the volume/basket split. Remains open.
+
+- **Q12 [Low] — Absolute revenue and profit contribution of SPAR Health and Build it**:
+  - **Status**: `Unresolved in this section` — no mention. Carried forward.
+
+- **Q13 / Q22 [Medium] — Capitalised vs expensed SAP costs; go-live timeline**:
+  - **Status**: `Unresolved in this section` — no mention. Carried forward.
+
+- **Q5 / Q14 [High] — ECL allowance, satisfactory-paid %, collection rate, write-offs, ageing**:
+  - **Status**: `Unresolved in this section` — no credit book data. Carried forward.
+
+- **Q15 [High] — Footnote [^R] definition (opening cash 2,742)**:
+  - **Status**: `Unresolved in this section` — no cash flow note. Carried forward.
+
+- **Q16 / Q17 [High] — Bond perfected stores reclassification; UK held-for-sale assets/liabilities**:
+  - **Status**: `Unresolved in this section` — no balance sheet detail. Carried forward.
+
+- **Q18 [Medium] — R143m "Legacy matters" breakdown**:
+  - **Status**: `Unresolved in this section` — no OP analysis table. Carried forward.
+
+- **Q19 [Medium] — VSP cost R27.3m location and R33.2m savings phasing**:
+  - **Status**: `Unresolved in this section` — no mention. Carried forward.
+
+- **Q8 [Medium] — Missing loyalty chart footnote definitions**:
+  - **Status**: `Unresolved in this section` — no loyalty chart. Carried forward.
+
+- **Q23 [Low] — Hedged vs unhedged debt split**:
+  - **Status**: `Unresolved in this section` — no debt note. Carried forward.
+
+- **Q24 [Low] — Working capital chart reconciliation**:
+  - **Status**: `Unresolved in this section` — no working capital chart. Carried forward.
+
+---
 
 ### 2. Footnote & Qualification Deep-Dive
 
-- **p.41 — "Growth momentum: Revenue growth accelerated to +2.1% in Feb–Mar with GP stabilising. The most encouraging trading period of H1. Post-period: early signs of progress albeit y-o-y growth rate impacted by Easter timing."** This is a forward-looking qualification with no footnote. It implies H2 revenue growth should be modelled above the H1 +1.1% SA wholesale run-rate, but the Easter timing caveat means the post-period (April 2026) growth rate is distorted and should not be extrapolated. Verification needed: reconcile the +2.1% Feb–Mar figure to the H1 +1.1% wholesale growth and the +4.9% wholesale / –2.3% transactions split (Q8/Q23) in the revenue decomposition section.
-- **p.41 — "3 profitable months in KZN: GP% recovered from Dec/Jan to March. Operating profit positive in the final three months of H1."** No footnote. This is the only forward-looking KZN datapoint; it does not quantify the OP and does not state pre/post-ECL. Verification needed: KZN segment OP H1 and the 3-month run-rate quantum (Q6/Q16).
-- **p.41 — "Margin stabilisation in G&L: Feb–Mar GP growth turned positive post-Black Friday. Underlying category mix improving."** No footnote. "Underlying category mix improving" is an unquantified claim; it must be tested against the gross margin bridge (promotional markdowns vs full-price sell-through, supplier rebates) in the margin table. Verification needed: G&L GP% H1 and the Feb–Mar GP growth quantum.
-- **p.41 — "Sale of AWG: APA signed with AF Blakemore (4 May 2026). Saltash Depot and 71 stores. Final step in the three-year portfolio simplification programme — focus is now entirely on SA and Ireland."** No footnote. This is a post-period event (4 May 2026, after the 31 March 2026 balance sheet date), so it is not reflected in H1 numbers. Verification needed: completion date, proceeds, gain/loss on disposal, and whether AWG is classified as discontinued in H1 (Q20).
-- **p.42 — "~EUR 70m EBITDA* — *12 months to March 2026"** and **"2nd largest food retailer* — *By retail sales"** and **"Convenience 38% * — *AC Nielsen"**. These are definitional footnotes. The €70m EBITDA is a trailing-12-month figure to March 2026, not an H1 figure — do not annualise or halve it. The "2nd largest" and "38% convenience" are external (AC Nielsen) market-share claims, not company-reported financials. Verification needed: reconcile €70m TTM EBITDA to the Ireland segment EBITDA and the group EBITDA pre-IFRS 16 of R976.4m (Q4).
-- **p.44 — "The heavy lifting is done, but there's hard work ahead" / "Balance sheet materially strengthened" / "Continue deleveraging."** Qualitative forward guidance with no numbers. "Continue deleveraging" implies net debt reduction is a stated H2 priority, consistent with the R7,338.7m net debt and 2.73x group leverage already captured (Q4). No new footnote.
+This capture is almost entirely narrative/commentary with **very few footnote markers**. The only footnote markers present are on p. 42:
 
-No footnote markers (`[^1]`, `*`) in this section have missing definitions — the asterisks present (p.42) are defined inline.
+- **`*` on "2nd largest food retailer*"** and **`* By retail sales`** `[unmapped, physical PDF p. 42]`:
+  - The footnote definition **is present** ("By retail sales"). This qualifies the "2nd largest" claim as being measured on **retail sales**, not wholesale/turnover. For forecasting, this means the ranking claim does not translate into a wholesale revenue metric — do not use it as a proxy for group turnover share.
+
+- **`*` on "Convenience 38% *"** with **`*AC Nielsen`** `[unmapped, physical PDF p. 42]`:
+  - Definition present: market share sourced from **AC Nielsen**. This is an external, unaudited market-share estimate — treat as directional only, not a forecast input.
+
+- **`*` on "~EUR 70m EBITDA*"** with **`*12 months to March 2026`** `[unmapped, physical PDF p. 42]`:
+  - Definition present: the ~EUR 70m EBITDA figure is a **12-month trailing (to March 2026)** metric, **not** an H1 2026 figure. Critical qualification: this is a **BWG/Ireland** EBITDA proxy and is a **rolling 12-month** number. Do not annualise or halve it for H1 modelling. Also note it is an **EBITDA** (pre-IFRS 16? pre-exceptionals?) figure — the basis (pre/post IFRS 16, pre/post exceptionals) is **not stated** and must be verified.
+
+- **`*` on "2nd largest food retailer*"** — second occurrence with **`* By retail sales`** at bottom of p. 42 `[unmapped, physical PDF p. 42]`:
+  - Same qualification as above.
+
+**Qualifications embedded in narrative (not footnoted but consequential):**
+
+- **"6 countries" vs "focus is now entirely on SA and Ireland"** `[unmapped, physical PDF p. 41 vs p. 42]`: A direct tension. If the portfolio is "entirely SA and Ireland," the "6 countries" claim must refer to the **retailer/store footprint** (independent retailers operating in neighbouring countries under the SPAR licence) rather than **group-owned operations**. This distinction matters for revenue consolidation vs royalty/fee income. **Verification needed** in the segment note.
+
+- **"Post-period: early signs of progress albeit y-o-y growth rate impacted by Easter timing"** `[unmapped, physical PDF p. 41]`: A forward-looking qualification that **H2 growth will be distorted by Easter timing** (Easter fell in a different period y-o-y). This is a **calendar-shift caveat** — H2 revenue growth may look weaker/stronger purely on Easter phasing. Must be flagged when forecasting H2 and when comparing to H1 +2.1% Feb–Mar run-rate.
+
+- **"Revenue growth accelerated to +2.1% in Feb–Mar"** `[unmapped, physical PDF p. 41]`: This is a **three-month run-rate**, not an H1 average. Do not extrapolate +2.1% as the H1 or FY growth rate without checking the full H1 revenue figure elsewhere.
+
+- **"GP% recovered from Dec/Jan to March"** and **"Operating profit positive in the final three months of H1"** `[unmapped, physical PDF p. 41]`: Confirms KZN returned to **operating profit** (not just GP) in Jan–Mar. But the **quantum** is absent — the R123m H1 hit (from earlier capture) implies the Jan–Mar profit was insufficient to offset Dec/Jan losses. **Verification needed**: the actual Jan–Mar operating profit rand amount to size the H2 run-rate.
+
+- **"Sale of AWG — APA signed with AF Blakemore (4 May 2026). Saltash Depot and 71 stores"** `[unmapped, physical PDF p. 41]`: This is a **post-period event** (4 May 2026, after H1 close). For H1 2026 reporting, AWG remains in **continuing or discontinued operations** depending on IFRS 5 criteria at 31 March 2026. The **71 stores and Saltash Depot** are the disposal perimeter. **Verification needed**: whether AWG is presented as discontinued ops in H1, and the gain/loss on disposal and H2 trading loss phasing (links to Q25).
+
+- **"Balance sheet materially strengthened"** and **"Continue deleveraging"** `[unmapped, physical PDF p. 44]`: Forward-looking capital allocation guidance. **Verification needed**: the actual net debt/EBITDA ratio and deleveraging target to test against the forecast.
+
+- **"Retailer profitability adopted as the primary operating metric"** `[unmapped, physical PDF p. 41]`: A **KPI change** — management is now steering on retailer profitability, not group wholesale margin. This has forecasting implications: wholesale margin may be **sacrificed** to support retailer profitability (e.g., lower wholesale prices, higher rebates), which could compress group GP%. **Verification needed**: any guidance on wholesale margin trade-off.
+
+---
 
 ### 3. New Questions to Check in Future Sections
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q25 | High | Financial review / revenue decomposition | "Revenue growth accelerated to +2.1% in Feb–Mar" `[unmapped, p.41]` | Reconcile +2.1% Feb–Mar to H1 SA wholesale +1.1% and the +4.9% wholesale / –2.3% transactions split; confirm whether +2.1% is group, SA, or wholesale | Sets H2 revenue growth run-rate; Easter timing caveat means post-period growth is distorted |
-| Q26 | High | Segmental note (KZN) | "Operating profit positive in the final three months of H1" `[unmapped, p.41]` | Get KZN segment OP H1 quantum and the 3-month positive run-rate value; confirm pre/post-ECL | Quantifies KZN recovery and whether R123m anomaly reverses in H2 |
-| Q27 | Medium | Gross margin / G&L segment | "Feb–Mar GP growth turned positive post-Black Friday; underlying category mix improving" `[unmapped, p.41]` | Get G&L GP% H1 and Feb–Mar GP growth quantum; check margin bridge for markdown/rebate drivers | Tests margin stabilisation claim underpinning H2 GP forecast |
-| Q28 | Medium | Discontinued operations / AWG | "APA signed with AF Blakemore (4 May 2026); Saltash Depot and 71 stores" `[unmapped, p.41]` | Confirm completion date, proceeds, gain/loss on disposal, and discontinued classification in H1 | Determines whether AWG is in continuing or discontinued HEPS and any H2 disposal gain |
-| Q29 | Medium | Ireland segment / EBITDA reconciliation | "~EUR 70m EBITDA, 12 months to March 2026" `[unmapped, p.42]` | Reconcile €70m TTM EBITDA to Ireland segment EBITDA and group EBITDA pre-IFRS 16 R976.4m | Ensures Ireland EBITDA is not double-counted or mis-annualised in forecast |
-| Q30 | Low | Store network | "2000+ stores; ~1 068 Ireland stores; 1000+ retailers" `[unmapped, p.42]` | Get precise group store count, net openings, closures, trading space m² | Needed for sales-per-store and trading-density forecast drivers |
-| Q31 | Low | Cash flow / debt note | "Continue deleveraging" `[unmapped, p.44]` | Confirm H2 net debt target/guidance and whether deleveraging is from FCF or disposals | Tests sustainability of leverage reduction to 2.73x group |
+| Q26 | High | Segment note / Ireland | "~EUR 70m EBITDA* — *12 months to March 2026" `[unmapped, p. 42]` | Confirm the **basis** of the EUR 70m EBITDA: pre/post IFRS 16, pre/post exceptionals, and whether it is BWG-only or includes other Ireland ops. Reconcile to the Ireland segment operating profit in the segment note. | Determines whether Ireland EBITDA can be used as a run-rate input or must be adjusted for IFRS 16 and exceptionals. |
+| Q27 | High | Segment note / geographic | "6 countries" `[p. 42]` vs "focus is now entirely on SA and Ireland" `[p. 41, p. 44]` | Confirm which entities are consolidated vs which are retailer/licence footprint. Check the geographic segment note for Namibia, Botswana, Swaziland, Mozambique revenue/profit. | Affects revenue consolidation, FX exposure, and whether foreign ops carry impairment risk (links Q7/Q21). |
+| Q28 | High | Income statement / discontinued ops note | AWG sale APA signed 4 May 2026; "Saltash Depot and 71 stores" `[p. 41]` | Confirm whether AWG is presented as **discontinued operations** in H1 2026 (IFRS 5), the **gain/loss on disposal**, and the **H2 trading loss phasing** (~£5m per earlier capture). | Drives H2 earnings bridge, HEPS from continuing vs total ops, and DPS sustainability. |
+| Q29 | High | Revenue / trading update | "Revenue growth accelerated to +2.1% in Feb–Mar" and "Easter timing" caveat `[p. 41]` | Locate the **full H1 2026 group revenue growth** figure and the **Feb–Mar** run-rate. Confirm the Easter calendar shift impact on H2 y-o-y comparatives. | Prevents over-extrapolating the +2.1% run-rate into H2; Easter shift distorts H2 growth. |
+| Q30 | Medium | KZN note / segment | "3 profitable months in KZN — GP% recovered from Dec/Jan to March. Operating profit positive in final three months" `[p. 41]` | Get the **rand quantum** of Jan–Mar KZN operating profit and GP% by month. Reconcile to the R123m H1 hit. | Sizes the H2 KZN run-rate recovery and tests whether the R123m hit is fully recoverable. |
+| Q31 | Medium | Income statement / margin note | "Retailer profitability adopted as the primary operating metric" `[p. 41]` | Check whether management guides to a **wholesale GP% trade-off** (lower wholesale margin to support retailer profitability). Look for GP% guidance in the financial review. | Could compress group GP% in H2/FY27 — key margin forecast input. |
+| Q32 | Medium | Balance sheet / debt note | "Balance sheet materially strengthened" and "Continue deleveraging" `[p. 44]` | Confirm **net debt/EBITDA ratio** at 31 March 2026 and any stated deleveraging target. | Tests dividend sustainability and capex headroom. |
+| Q33 | Low | Store network / operational metrics | "2000+ stores", "1000+ retailers", "~1 068 stores" (Ireland) `[p. 42]` | Reconcile store counts across SA, Ireland, and other regions to the operational metrics section. Confirm net store movement H1 2026. | Store count drives trading space, sales per store, and lease liability forecasts. |
+| Q34 | Low | Market share / external data | "Convenience 38% *AC Nielsen" `[p. 42]` | Confirm the **date** of the AC Nielsen data and whether it is SA-only or group. | Directional only; not a forecast input but useful for sanity-checking volume assumptions. |
+
+---
 
 ### 5. Baseline Forecast Inputs Captured Here
 
-| Item | Value | Source |
+| Metric | Value | Source |
 | --- | --- | --- |
-| Revenue growth Feb–Mar 2026 | +2.1% | p.41 |
-| KZN operating profit | Positive in final 3 months of H1 (no quantum) | p.41 |
-| G&L GP growth | Turned positive Feb–Mar post-Black Friday (no quantum) | p.41 |
-| AWG disposal | APA signed 4 May 2026; Saltash Depot + 71 stores | p.41 |
-| Group store count | 2000+ (rounded) | p.42 |
-| Countries | 6 | p.42 |
-| Retailers | 1000+ | p.42 |
-| Ireland store count | ~1 068 (#1 by store count) | p.42 |
-| Ireland EBITDA (TTM to Mar 2026) | ~EUR 70m | p.42 |
-| Convenience market share | 38% (AC Nielsen) | p.42 |
-| BWG Foodservice growth since 2021 | 80% | p.42 |
-| Strategic priorities | Restore retailer profitability; improve wholesale execution/margins; continue deleveraging | p.44 |
+| Group revenue growth, Feb–Mar 2026 run-rate | +2.1% | `[unmapped, p. 41]` |
+| KZN profitable months (H1) | Jan, Feb, Mar 2026 (3 months) | `[unmapped, p. 41]` |
+| KZN GP% trajectory | Recovered from Dec/Jan to March | `[unmapped, p. 41]` |
+| KZN operating profit, Jan–Mar | Positive (quantum not disclosed) | `[unmapped, p. 41]` |
+| G&L GP growth | Turned positive Feb–Mar post-Black Friday | `[unmapped, p. 41]` |
+| AWG disposal perimeter | Saltash Depot + 71 stores | `[unmapped, p. 41]` |
+| AWG APA signing date | 4 May 2026 (post-period) | `[unmapped, p. 41]` |
+| Countries in footprint | 6 | `[unmapped, p. 42]` |
+| Store count (group) | 2000+ | `[unmapped, p. 42]` |
+| Retailer count | 1000+ | `[unmapped, p. 42]` |
+| Ireland store count | ~1 068 | `[unmapped, p. 42]` |
+| Convenience market share (SA) | 38% (AC Nielsen) | `[unmapped, p. 42]` |
+| BWG Foodservice growth since 2021 | 80% | `[unmapped, p. 42]` |
+| Ireland EBITDA (12m to March 2026) | ~EUR 70m (basis unstated) | `[unmapped, p. 42]` |
+| Portfolio focus post-AWG | SA and Ireland only | `[unmapped, p. 41, p. 44]` |
+| Primary operating metric | Retailer profitability | `[unmapped, p. 41]` |
+| Capital allocation guidance | Continue deleveraging | `[unmapped, p. 44]` |
+
+---
 
 ### 6. Next Section to Capture
 
-**Next section: Financial statements / segmental note (KZN segment) and the debtors/credit note.** This will resolve the highest-priority open items: **Q26/Q16** (KZN segment OP H1 quantum and 3-month run-rate, pre/post-ECL), **Q5/Q13** (satisfactory-paid %, collection rate %, ECL allowance, write-offs, reconciliation to R15,975.2m trade receivables), and **Q25** (reconcile +2.1% Feb–Mar to H1 wholesale growth). If a segmental note is not available, capture the debtors/credit note first, as Q5/Q13 are the highest-value unresolved credit-risk items.
+**Most useful next section: the Segment Note / Geographic Segment note (or the Income Statement / Discontinued Operations note).**
+
+This will resolve the highest-priority open items:
+- **Q26** (EUR 70m EBITDA basis and reconciliation to Ireland segment profit)
+- **Q27** ("6 countries" vs "SA and Ireland only" — consolidated vs licence footprint)
+- **Q28** (AWG discontinued ops presentation, gain/loss on disposal, H2 loss phasing)
+- **Q6** (SA corporate store count and losses)
+- **Q12** (SPAR Health and Build it profit contribution)
+
+If the segment note is unavailable, the **Income Statement / Discontinued Operations note** is the next best capture to resolve Q28 and the H2 earnings bridge.
 
 ================================================================================
 ## PART 1 - SECTION 4: [unmapped] Q&A Session
@@ -2249,46 +2304,50 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-No stored questions can be resolved from this section. Pages 45–46 contain only the Q&A contact block, forward-looking statement disclaimer, currency note, "not investment advice" disclaimer, and comparable-basis note (26-week calendar; Switzerland and UK classified as discontinued under IFRS 5 and excluded from continuing operations in both periods). None of Q1, Q5, Q6, Q8, Q11, Q13–Q31 can be tested against this evidence.
+No stored questions can be tested, answered, or partially answered using the evidence in this section. The captured pages (physical PDF pp. 45–46) contain only a Q&A contact/back-cover page and the standard "Important information & disclaimer" boilerplate (forward-looking statements, currency convention, not-investment-advice, comparable-basis note). None of the open ledger items (debtors/ECL, cash flow footnote [^R], bond perfected stores, UK held-for-sale, KZN quantum, Ireland EBITDA basis, AWG discontinued-ops treatment, etc.) are addressed here.
 
-- **Q20 [Medium]** (UK/AWG discontinued treatment): **Partially resolved** — p.46 confirms Switzerland and UK are classified as discontinued (IFRS 5) and excluded from continuing operations in both periods shown. Remainder (UK H2 trading losses ~£5m, Saltash completion end-June 2026, 36 of top 40 landlord consents, AWG completion date/proceeds/gain-on-disposal) stays open for the financial statements / discontinued operations note.
-- **Q28 [Medium]** (AWG completion, proceeds, gain/loss, discontinued classification): **Partially resolved** — discontinued classification confirmed on p.46; completion date, proceeds and gain/loss remain open.
-- **Q15 [High]** (FCF reconciliation to discontinued outflows): **Not resolved** — p.46 confirms the IFRS 5 discontinued classification that underpins the Swiss/UK outflow split, but no cash flow numbers appear here; remains open for the cash flow / debt note.
-
-All other stored questions are carried forward unchanged into Section 4.
+All stored questions remain open and are carried forward in Section 4.
 
 ### 2. Footnote & Qualification Deep-Dive
 
-No footnote markers (`[^1]`, `*`) or table notes appear in this capture. The qualifications present are:
+Two qualifications in the disclaimer page are worth flagging because they set the accounting frame for the whole forecast, even though they contain no new numbers:
 
-- **Forward-looking statements** `[unmapped, physical PDF p. 46]`: standard "management's current expectations and projections… actual results may differ materially… no obligation to revise or update." Implication: any guidance quoted in earlier sections (capex c.1% of revenue, "continue deleveraging", KZN recovery, GP growth turning positive post-Black Friday) is unaudited projection, not commitment — forecast should carry explicit sensitivity bands rather than point estimates.
-- **Currency** `[unmapped, physical PDF p. 46]`: "All values in Rand unless otherwise stated. Ireland results shown in EUR for operational comparability." Implication: Ireland segment figures quoted in EUR in earlier sections must be translated at a stated rate before consolidating into the group ZAR forecast; the report does not state the rate here — verification question raised below.
-- **Comparable basis** `[unmapped, physical PDF p. 46]`: "All comparatives are restated to the 26-week calendar basis adopted in FY2025." Implication: prior-period growth rates (e.g., SA wholesale +1.1%, G&L, KZN) are on a restated 26-week base, so H1 FY2026 vs H1 FY2025 is like-for-like on weeks; any 52/53-week FY totals must be modelled on 26+26 weeks, not calendar halves.
-- **IFRS 5 discontinued classification** `[unmapped, physical PDF p. 46]`: "Switzerland and UK operations are classified as discontinued (IFRS 5) and excluded from continuing operations in both periods shown." Implication: HEPS, continuing FCF, and segment tables exclude Swiss/UK in both periods — this is the accounting basis for the Q15 FCF bridge and Q20/Q28 UK questions; the Swiss/UK cash outflows (R670m/R800m) must be traced in the discontinued cash flow note, not continuing operations.
+- **"Comparable basis — All comparatives are restated to the 26-week calendar basis adopted in FY2025."** `[unmapped, physical PDF p. 46]`
+  - Implication: any H1 2026 vs H1 2025 growth figure (revenue, GP%, debtor costs) must be checked to confirm both periods are on the 26-week basis. If a prior-period figure in an earlier section was on a 52/53-week or calendar-month basis, the y-o-y comparison is not clean. This directly bears on Q29 (group revenue growth / Feb–Mar run-rate) and Q10 (KZN +4.9% vs group +c.1% vs transactions –2.3%).
+  - Must verify in the income statement / segment note whether the restatement is disclosed and whether any "as reported" vs "restated" bridge exists.
+
+- **"Switzerland and UK operations are classified as discontinued (IFRS 5) and excluded from continuing operations in both periods shown."** `[unmapped, physical PDF p. 46]`
+  - Implication: this is a direct, explicit confirmation relevant to **Q28** (AWG/UK discontinued-ops presentation) and **Q25** (UK H2 trading losses ~£5m phasing). It confirms UK is IFRS 5 discontinued in both periods — but it does **not** give the gain/loss on disposal, the H2 loss phasing, or the held-for-sale balance sheet quantification (Q17). Those remain open.
+  - It also implies Switzerland is discontinued — relevant to **Q24** (working capital chart excludes Poland and Switzerland) and to any segment revenue/profit reconciliation.
+
+- **"Currency — All values in ZAR unless otherwise stated. Ireland results shown in EUR for operational comparability."** `[unmapped, physical PDF p. 46]`
+  - Implication: the ~EUR 70m EBITDA figure (Q26) is presented in EUR for "operational comparability" — this does not resolve whether it is pre/post IFRS 16 or pre/post exceptionals. Q26 stays open.
+
+No footnote markers (`[^1]`, `*`) with missing definitions appear on these two pages; the only asterisk-style qualification is the forward-looking statement boilerplate, which carries no numeric content.
 
 ### 3. New Questions to Check in Future Sections
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q32 | High | Financial statements / FX note | "Ireland results shown in EUR for operational comparability" `[unmapped, p. 46]`; no ZAR/EUR rate disclosed | Find the EUR/ZAR rate (average and closing) used to consolidate Ireland; check Ireland revenue/EBITDA in both EUR and ZAR | Needed to consolidate Ireland segment into group ZAR forecast and to reconcile Q29 (~EUR 70m TTM EBITDA) |
-| Q33 | High | Discontinued operations note | IFRS 5: Switzerland and UK excluded from continuing operations in both periods `[unmapped, p. 46]` | Locate the discontinued operations note: confirm Swiss/UK revenue, operating loss, and cash flows for H1 FY2026 and restated H1 FY2025; confirm no double-count with continuing FCF (Q15) | Determines whether the R2,157m FCF gap is fully explained by discontinued outflows |
-| Q34 | Medium | Accounting policies / comparatives | "All comparatives restated to the 26-week calendar basis adopted in FY2025" `[unmapped, p. 46]` | Confirm H1 FY2025 comparatives are 26 weeks (not 27) and check FY2026/FY2025 week counts for the full-year build | Prevents week-count distortion in H2 and FY growth rates |
-| Q35 | Low | Guidance / outlook | Forward-looking statement disclaimer `[unmapped, p. 46]` | Check whether any quantified guidance (capex c.1% of revenue, deleveraging, KZN recovery) is repeated with dates/conditions in the outlook section | Sets confidence band around management projections used in forecast |
+| Q35 | High | Income statement / segment note (unmapped — target the financial statements section) | "All comparatives are restated to the 26-week calendar basis adopted in FY2025" `[unmapped, p. 46]` | Confirm both H1 2026 and H1 2025 revenue, GP, and operating profit are on the 26-week basis; check for any "as reported vs restated" bridge or reclassification note. | Clean y-o-y growth and margin bridge depend on comparable period length; affects Q29, Q10, Q31. |
+| Q36 | Medium | Discontinued operations / IFRS 5 note | "Switzerland and UK operations are classified as discontinued (IFRS 5) and excluded from continuing operations in both periods" `[unmapped, p. 46]` | Locate the IFRS 5 note: confirm Switzerland and UK both presented as discontinued; get Switzerland disposal status/gain-loss and any held-for-sale balances (links Q17, Q25, Q28). | Determines whether Switzerland (not just UK/AWG) distorts continuing-ops revenue and net debt. |
+| Q37 | Low | Segment / geographic note | "Ireland results shown in EUR for operational comparability" `[unmapped, p. 46]` | Confirm the ZAR/EUR translation rate used and whether the ~EUR 70m EBITDA (Q26) is translated at the same rate as the Ireland segment operating profit. | Needed to reconcile EUR operational figures to ZAR group financials. |
 
 ### 5. Baseline Forecast Inputs Captured Here
 
-| Item | Value | Source |
-| --- | --- | --- |
-| Reporting currency | ZAR; Ireland shown in EUR | `[unmapped, p. 46]` |
-| Comparable basis | 26-week calendar (adopted FY2025); comparatives restated | `[unmapped, p. 46]` |
-| Discontinued operations | Switzerland and UK (IFRS 5), excluded from continuing ops in both periods | `[unmapped, p. 46]` |
-| Investor contact / listing | IR@spar.co.za; JSE: SPP; ISIN ZAE000058517 | `[unmapped, p. 45]` |
+No new numeric forecast inputs are present on pp. 45–46. Only framing conventions are captured:
 
-No financial figures, guidance numbers, or footnoted adjustments appear in this capture.
+| Item | Value / Convention | Source |
+| --- | --- | --- |
+| Reporting currency | ZAR; Ireland shown in EUR for operational comparability | `[unmapped, p. 46]` |
+| Comparable period basis | 26-week calendar basis (adopted FY2025), both periods restated | `[unmapped, p. 46]` |
+| Discontinued operations | Switzerland and UK classified IFRS 5, excluded from continuing ops in both periods | `[unmapped, p. 46]` |
+| Forward-looking statement caveat | Standard no-obligation-to-update disclaimer | `[unmapped, p. 46]` |
+| Investor contact | IR@spar.co.za; www.thespargroup.com/investors; JSE: SPP; ISIN ZAE000058517 | `[unmapped, p. 45]` |
 
 ### 6. Next Section to Capture
 
-**Discontinued operations note / IFRS 5 note within the financial statements** (or, if unavailable, the **cash flow statement and debt note**). This will resolve **Q33** (Swiss/UK discontinued revenue, operating loss, cash flows), advance **Q15** (FCF bridge to discontinued outflows), and complete **Q20/Q28** (UK/AWG disposal terms). If the FX translation note is separately capturable, take it alongside to resolve **Q32** and enable **Q29**.
+The most useful next section is the **IFRS 5 / discontinued operations note and the income statement / segment note** (the financial statements section that follows the Q&A). It will resolve **Q28** (AWG discontinued-ops presentation, gain/loss, H2 loss phasing), **Q36** (Switzerland discontinued status and held-for-sale balances), **Q35** (26-week restatement bridge), and feed **Q17** (UK held-for-sale assets/liabilities) and **Q26** (Ireland EBITDA basis reconciliation). If the report map is available, capture the section containing the consolidated income statement and the IFRS 5 note first.
 
 ================================================================================
 ## PART 1 - SECTION 5: [unmapped] Appendices & Supplementary Information
@@ -2784,108 +2843,131 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-**Q14 [High] — Extraordinary items sum to R156.2m pre-tax deduction**
-- **Status**: `Partially resolved (remainder stays open for financial statements / income statement / HEPS reconciliation)`
-- **Answer & evidence**: Appendix 1 shows Southern Africa extraordinary items of **R159.153m** in H1 2026 vs R79.542m in H1 2025 `[unmapped, physical PDF p. 48]`. This is the segment-level extraordinary line, not the group HEPS reconciliation line. The stored question's components (R72.8m goodwill/PPE + R30.7m software + R27.5m Build it warehouse + R25.1m corporate stores = R156.1m) do **not** reconcile to the R159.153m shown here — a R3.0m gap remains. Also note the group pre-tax deduction implied by R882.0m → R730.7m is R151.3m, not R156.2m as stated in the question; this arithmetic tension must be re-checked against the group income statement. **Remainder open**: tax effect, H2 recurrence, and reconciliation of R159.2m (SA appendix) vs R151.3m (group implied) vs R156.1m (component sum).
+**Q26 [High]: Confirm basis of "~EUR 70m EBITDA* — *12 months to March 2026" (pre/post IFRS 16, pre/post exceptionals, BWG-only vs all Ireland). Reconcile to Ireland segment operating profit.**
+- **Status**: `Partially resolved (remainder stays open for [segment note / basis-of-preparation])`
+- **Answer & evidence**: Appendix 2 gives Ireland H1 2026 EBITDA (pre IFRS 16) of EUR 29,773k vs EUR 28,712k prior year (+3.7%) `[unmapped, physical PDF p. 49]`. This is a **six-month** figure and is explicitly **pre IFRS 16**. It does **not** reconcile to the "~EUR 70m EBITDA (12 months to March 2026)" claim — annualising H1 (×2) gives ~EUR 59.6m, leaving a ~EUR 10m gap. The basis (pre/post IFRS 16, pre/post exceptionals, BWG-only vs all-Ireland, and whether the 12-month figure includes a stronger H2) remains **unresolved**. Also note the Appendix 2 heading is "Ireland income statement" and the UK is stated to be treated as discontinued `[unmapped, physical PDF p. 49]`, so the EUR 29.8m appears to be Ireland-continuing only — but this needs confirmation against the segment note.
 
-**Q17 [Medium] — VSP R27.3m split H1/H2; opex growth ex-VSP**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Appendix 1 confirms net operating expenses rose **18.5%** to R5,334.4m (from R4,500.3m) `[unmapped, physical PDF p. 48]`, with the commentary attributing the increase to "employment and IT costs, higher warehousing and distribution to support KZN deliveries, stepped-up marketing campaigns, and additional IT and consultancy spend." No VSP quantum or H1/H2 split is disclosed in this appendix. **Remainder open**: VSP split and marketing spend quantum.
+**Q28 [High]: Confirm whether AWG is presented as discontinued operations in H1 2026 (IFRS 5), gain/loss on disposal, and H2 trading loss phasing (~£5m).**
+- **Status**: `Partially resolved (gain/loss and phasing still open)`
+- **Answer & evidence**: Appendix 4 is headed "UK* income statement - **Discontinued**" `[unmapped, physical PDF p. 51]`, confirming IFRS 5 discontinued presentation. H1 2026 UK operating loss EUR 7,407k (vs EUR 3,222k), EBITDA loss c.EUR 5.8m, and an **impairment loss of R1.5bn (EUR 78.5m) recognised on held-for-sale classification** `[unmapped, physical PDF p. 51]`. The gain/loss on disposal and the ~£5m H2 trading-loss phasing are **not** in this section — still open.
 
-**Q32 [High] — EUR/ZAR rates for Ireland consolidation**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Appendix 2 gives Ireland in **EUR'000** only — revenue €855.652m, gross profit €117.385m, operating profit before extraordinary items €24.883m, EBITDA pre-IFRS 16 €29.773m `[unmapped, physical PDF p. 49]`. No EUR/ZAR rate is disclosed in this capture. **Remainder open**: average and closing rates to restate in ZAR.
+**Q36 [Medium]: Locate IFRS 5 note: confirm Switzerland and UK both presented as discontinued; get Switzerland disposal status/gain-loss and held-for-sale balances.**
+- **Status**: `Partially resolved (Switzerland still open)`
+- **Answer & evidence**: UK discontinued confirmed (Appendix 4 heading and footnote) `[unmapped, physical PDF p. 51]`. Switzerland is **not mentioned** anywhere in this Appendices capture — disposal status, gain/loss, and held-for-sale balances remain open.
 
-**Q5 / Q13 [High] — Debtors: satisfactory-paid %, collection rate, ECL, write-offs, reconciliation to R15,975.2m**
-- **Status**: `Partially resolved (remainder stays open for debtors / credit note)`
-- **Answer & evidence**: Appendix 1 footnote commentary states "ECL, debtors write-offs and provisions include additional provisions of **R273m** (mainly KZN and SR) and **R58m of write-offs in G&L**" `[unmapped, physical PDF p. 48]`. This confirms the R273m additional provision figure and adds a new R58m G&L write-off datapoint. **Still open**: satisfactory-paid %, collection rate %, total ECL allowance, gross vs net book, and reconciliation of the R8.9bn book to R15,975.2m trade receivables.
+**Q25 [Low]: Confirm the phasing and treatment (discontinued ops) of forecast H2 trading losses (UK) ~£5m.**
+- **Status**: `Partially resolved (phasing still open)`
+- **Answer & evidence**: Discontinued treatment confirmed `[unmapped, physical PDF p. 51]`. H1 actual UK operating loss EUR 7.4m is now known; the ~£5m H2 phasing is not addressed here — still open.
 
-**Q6 / Q16 / Q26 [High] — KZN segment operating profit/loss H1 quantum; pre/post-ECL**
-- **Status**: `Partially resolved (remainder stays open for segmental)`
-- **Answer & evidence**: Appendix 1 confirms the R273m additional provisions are "mainly KZN and SR" `[unmapped, physical PDF p. 48]`, but does not isolate the KZN quantum or state whether it is pre- or post-ECL. **Remainder open**: KZN segment OP H1 and 3-month positive run-rate value; pre/post-ECL confirmation.
+**Q33 [Low]: Reconcile store counts (2000+ stores, 1000+ retailers, ~1 068 Ireland stores) to operational metrics; confirm net store movement H1 2026.**
+- **Status**: `Partially resolved (net movement still open)`
+- **Answer & evidence**: Appendix 11 confirms **1,068 stores across Ireland**, 2,142 people employed, 650+ supplier relationships, 20 Cash & Carry sites, 127 retail properties (102 franchise / 25 CoCo), 38% convenience market share, 98.5% service level, 1m+ shoppers/day `[unmapped, physical PDF p. 58]`. Net store movement H1 2026 is **not** disclosed here — still open.
 
-**Q8 / Q23 / Q25 [Medium/High] — Revenue decomposition: wholesale +4.9%, transactions –2.3%, basket vs footfall; Feb–Mar +2.1%**
-- **Status**: `Resolved (Q23 basket/footfall) / Partially resolved (Q8, Q25 remain open)`
-- **Answer & evidence**: Appendix 9 confirms **footfall/transactions at till –2.30% combined** (Supermarkets –2.35%, TOPS –2.02%) and **average basket spend +3.53% combined** (Supermarkets +3.40%, TOPS +4.20%) `[unmapped, physical PDF p. 56]`. This resolves the basket vs footfall split (Q23). Note the KPI footnote: "KPIs reflected are based on information shared by our retailers and are considered pro forma – they give a directional view of trading at store level" — i.e., not audited. **Still open**: reconciliation of +4.9% wholesale / –2.3% transactions to +1.1%/+1.1% (Q8); whether Feb–Mar +2.1% is group, SA, or wholesale (Q25).
+**Q34 [Low]: Confirm date and scope (SA-only vs group) of "Convenience 38% *AC Nielsen" market share.**
+- **Status**: `Partially resolved (date still open)`
+- **Answer & evidence**: Appendix 11 states "38% Largest convenience market share" in the **Ireland (BWG)** context `[unmapped, physical PDF p. 58]` — so scope is Ireland, not SA. The Nielsen date/as-at period is not stated — still open.
 
-**Q27 [Medium] — G&L GP% H1 and Feb–Mar GP growth; margin bridge**
-- **Status**: `Partially resolved (remainder stays open for gross margin / G&L segment)`
-- **Answer & evidence**: Appendix 1 shows group Southern Africa gross margin **9.5% vs 9.8%** (–3.1% relative, –30bps) `[unmapped, physical PDF p. 48]`, with commentary attributing the decline to "product mix and promotional activity supporting Black Friday and Christmas." G&L-specific GP% is not separately disclosed here. **Remainder open**: G&L GP% H1 and Feb–Mar GP growth quantum; markdown/rebate bridge.
+**Q12 [Low]: Absolute revenue and profit contribution of SPAR Health (+26.1% growth) and Build it.**
+- **Status**: `Partially resolved (profit still not disclosed)`
+- **Answer & evidence**: Appendix 1 commentary confirms "Health delivered a strong performance" and Build it faced construction-sector pressure and adverse weather `[unmapped, physical PDF p. 48]`. Appendix 6 gives SPAR Health Project 125 metrics: 47 pharmacies signed up, 28 launched, 65%+ loyalty (P125 stores), +27%+ wholesale purchases growth `[unmapped, physical PDF p. 53]`. Absolute revenue/profit by brand still **not** disclosed — open.
 
-**Q11 / Q18 / Q30 [Low/Medium] — Store count, net openings, trading space m²**
-- **Status**: `Partially resolved (remainder stays open for store network / capex)`
-- **Answer & evidence**: Appendix 11 confirms **1,068 stores across Ireland** `[unmapped, physical PDF p. 58]`; Appendix 3 confirms SPAR Sri Lanka has **12 corporate stores** (Sep 2025: 11) and **13 independent retailers** (Sep 2025: 17) `[unmapped, physical PDF p. 50]`. **Still open**: precise group store count, net openings, closures, trading space m².
+**Q13 / Q22 [Low/Medium]: Capitalised vs expensed SAP costs; go-live timeline.**
+- **Status**: `Partially resolved (split still open)`
+- **Answer & evidence**: Appendix 10 confirms **Finance Go-Live FY2026** (unified chart of accounts before any DC integration), **DC Integration FY2027**, strategy revised H2 FY25, and "**No increase in capex — sequenced for payback. Total capex budget unchanged**" `[unmapped, physical PDF p. 57]`. Capitalised vs expensed split still **not** disclosed — open.
 
-**Q20 / Q28 / Q33 [Medium/High] — Discontinued operations: UK H2 losses, AWG completion, Swiss/UK revenue and cash flows**
-- **Status**: `Partially resolved (remainder stays open for discontinued operations)`
-- **Answer & evidence**: Appendix 4 (UK, Discontinued) confirms H1 2026 revenue **€110.362m** (–10.3%), gross margin **24.8% vs 26.5%**, operating loss before extraordinary items **–€7.154m** (vs –€3.005m), operating loss **–€7.407m**, and **EBITDA loss c.€5.8m** `[unmapped, physical PDF p. 51]`. Footnote: "As reported, **182 days in current period compared to 179 days in prior period**. An impairment loss of **R1.5bn (EUR78.5m)** was recognised on held for sale classification." This confirms the UK EBITDA loss ~£5m/€5.8m (Q20 partial) and quantifies the held-for-sale impairment. **Still open**: AWG completion date, proceeds, gain/loss on disposal; Swiss discontinued figures; confirmation UK/AWG excluded from continuing HEPS.
+**Q6 [Medium]: Corporate store count, losses, closure/transfer plans.**
+- **Status**: `Partially resolved (SA corporate stores still open)`
+- **Answer & evidence**: Appendix 3 gives **SPAR Sri Lanka** corporate stores: 12 (Sep 2025: 11) and 13 independent retailers (Sep 2025: 17) `[unmapped, physical PDF p. 50]`. SA corporate store count/losses/plans still **not** addressed — open.
 
-**Q29 [Medium] — Ireland ~EUR 70m TTM EBITDA reconciliation**
-- **Status**: `Partially resolved (remainder stays open for Ireland segment / EBITDA reconciliation)`
-- **Answer & evidence**: Appendix 2 gives Ireland **H1 2026 EBITDA pre-IFRS 16 of €29.773m** `[unmapped, physical PDF p. 49]`. This is a half-year figure, not the TTM ~€70m cited on p.42; the TTM reconciliation still requires the H2 FY2025 Ireland EBITDA and the FX rate (Q32). **Remainder open**.
+**Q9 / Q20 / Q30 [Medium]: KZN H2 run-rate, rand quantum of Jan–Mar operating profit, GP% by month.**
+- **Status**: `Partially resolved (rand quantum still open)`
+- **Answer & evidence**: Appendix 1 confirms "ECL, debtors write-offs and provisions include additional provisions of **R273m (mainly KZN and SR)** and **R58m of write-offs in G&L**" `[unmapped, physical PDF p. 48]`. This ties the R273m to KZN and SR (SPAR Retail?) but does **not** give the Jan–Mar KZN operating profit quantum or monthly GP% — still open.
 
-**Q34 [Medium] — Week counts / comparable basis**
-- **Status**: `Partially resolved (remainder stays open for accounting policies / comparatives)`
-- **Answer & evidence**: Appendix 4 footnote confirms UK period is **182 days in current period vs 179 days in prior period** `[unmapped, physical PDF p. 51]`. This is a UK-specific day-count disclosure; the SA/Ireland 26-vs-27-week question remains open. **Remainder open**.
+**Q18 [Medium]: Break down the R143m "Legacy matters" column on OP analysis.**
+- **Status**: `Partially resolved (components still open)`
+- **Answer & evidence**: Appendix 1 extraordinary items rose to R159,153k (vs R79,542k) `[unmapped, physical PDF p. 48]`; the R273m provisions and R58m G&L write-offs are flagged as within ECL/debtors line, not necessarily the R143m legacy column. Component split still **not** given — open.
 
-**Q35 [Low] — Quantified guidance repeated with dates/conditions**
-- **Status**: `Partially resolved (remainder stays open for accounting policies / comparatives)`
-- **Answer & evidence**: Appendix 10 (SAP) gives dated guidance: "Finance Go-Live FY2026", "DC Integration FY2027", "Revised H2 FY25 strategy", "No increase in capex — sequenced for payback… Total capex budget unchanged" `[unmapped, physical PDF p. 57]`. This partially addresses capex guidance (Q18/Q35) but the outlook section itself is not in this capture. **Remainder open**.
+**Q35 [High]: Confirm both H1 2026 and H1 2025 revenue, GP, and operating profit are on the 26-week calendar basis; check for "as reported vs restated" bridge.**
+- **Status**: `Partially resolved (calendar-basis bridge still open)`
+- **Answer & evidence**: Appendix 4 footnote states "**As reported, 182 days in current period compared to 179 days in prior period**" `[unmapped, physical PDF p. 51]` — i.e., UK is **not** on a matched 26-week basis. No equivalent day-count footnote appears for Southern Africa (Appendix 1) or Ireland (Appendix 2), so the calendar-basis confirmation for those segments remains open.
 
-**Q15 / Q19 / Q31 / Q21 / Q22 / Q24 [High/Medium/Low] — Cash flow, debt, working capital, fuel, bond-perfected stores**
-- **Status**: `Not resolvable in this section — carried forward`
-- **Answer & evidence**: No cash flow statement, debt note, working capital reconciliation, fuel table, or bond-perfected store disclosure appears in pp. 47–58. All carried forward to the Updated Open Questions Ledger.
+**Q37 [Low]: Confirm ZAR/EUR translation rate used and whether ~EUR 70m EBITDA is translated at the same rate as Ireland segment operating profit.**
+- **Status**: `Partially resolved (rate still not stated)`
+- **Answer & evidence**: Appendix 4 gives the UK impairment as "**R1.5bn (EUR78.5m)**" `[unmapped, physical PDF p. 51]`, implying an implied rate of ~R19.11/EUR. No explicit translation rate is stated for Ireland segment figures — still open.
+
+**Q32 [Medium]: Confirm net debt/EBITDA ratio at 31 March 2026 and any stated deleveraging target.**
+- **Status**: `Partially resolved (ratio still open)`
+- **Answer & evidence**: Appendix 8 gives **Group ROIC 8.3%, ROCE 11.7%, ROE 7.8%** (continuing operations, pre-IFRS 16) `[unmapped, physical PDF p. 55]`. No net debt/EBITDA ratio or deleveraging target is stated in this section — still open.
+
+**Q23 [Low]: Confirm split of hedged vs unhedged debt and interest rate sensitivity.**
+- **Status**: `Not addressed in this section — carried forward`
+- **Answer & evidence**: No debt/hedging disclosure in Appendices pp. 47–58.
+
+**Q5 / Q14 [High]: ECL allowance, satisfactory-paid %, collection rate, write-offs, ageing analysis.**
+- **Status**: `Partially resolved (write-offs partially quantified; ECL/satisfactory-paid/collection/ageing still open)`
+- **Answer & evidence**: Appendix 1 confirms **R273m additional provisions (mainly KZN and SR)** and **R58m write-offs in G&L** `[unmapped, physical PDF p. 48]`. ECL allowance balance, satisfactory-paid %, collection rate, and ageing analysis are **not** in this section — still open.
+
+**Q15 [High]: Definition of footnote [^R] on opening cash balance 2,742.**
+- **Status**: `Not addressed in this section — carried forward`
+
+**Q16 / Q17 [High]: Bond perfected stores reclassification; UK held-for-sale assets/liabilities.**
+- **Status**: `Partially resolved (UK HFS impairment quantified; balance still open)`
+- **Answer & evidence**: UK held-for-sale **impairment loss of R1.5bn (EUR 78.5m)** recognised `[unmapped, physical PDF p. 51]`. The gross HFS asset/liability balances and the bond perfected stores reclassification are **not** quantified here — still open.
+
+**Q7 / Q21 / Q27 [Medium/High]: Foreign ops impairment/exit; "6 countries" vs "SA and Ireland only"; geographic segment note.**
+- **Status**: `Partially resolved (Sri Lanka now visible; others still open)`
+- **Answer & evidence**: Appendix 3 discloses **SPAR Sri Lanka JV** as a separate reporting appendix with 12 corporate stores and 13 independent retailers `[unmapped, physical PDF p. 50]` — confirming Sri Lanka is a consolidated/JV operation beyond "SA and Ireland only". Namibia, Botswana, Swaziland, Mozambique revenue/profit still **not** disclosed — open.
+
+**Q8 [Medium]: Missing footnote definitions for loyalty chart markers.**
+- **Status**: `Not addressed in this section — carried forward`
+
+**Q10 [Medium]: KZN sales +4.9% vs group +c.1% vs transactions –2.3% (volume vs basket).**
+- **Status**: `Partially resolved (basket/transaction split now available for SA G&L)`
+- **Answer & evidence**: Appendix 9 gives SA G&L retail KPIs: **combined transactions –2.30%** (Supermarkets –2.35%, TOPS at SPAR Liquor –2.02%) and **combined average basket spend +3.53%** (Supermarkets +3.40%, TOPS +4.20%) `[unmapped, physical PDF p. 56]`. This confirms the volume/basket split at SA G&L level (negative volume, positive basket). KZN-specific split still open.
+
+**Q29 [High]: Full H1 2026 group revenue growth and Feb–Mar run-rate; Easter calendar shift.**
+- **Status**: `Partially resolved (segment revenue growth now available; group total still open)`
+- **Answer & evidence**: Segment revenue growth: **Southern Africa +1.7%** (R50,783,212k) `[unmapped, physical PDF p. 48]`; **Ireland +2.2%** (EUR 855,652k) `[unmapped, physical PDF p. 49]`; **Sri Lanka +7.6%** (Rs 8,341,595k) `[unmapped, physical PDF p. 50]`; **UK –10.3%** (discontinued) `[unmapped, physical PDF p. 51]`. Group consolidated revenue growth and Feb–Mar run-rate still **not** stated — open.
+
+**Q31 [Medium]: Wholesale GP% trade-off from "retailer profitability as primary operating metric".**
+- **Status**: `Partially resolved (Ireland GP% up 20bps confirmed)`
+- **Answer & evidence**: Appendix 2 confirms Ireland **gross margin 13.7% vs 13.5% (+20bps)** with "Margin protection remains a priority while continuing to offer value to retailers and consumers" `[unmapped, physical PDF p. 49]`. No explicit wholesale GP% trade-off guidance — still open.
+
+**Q19 [Medium]: VSP cost R27.3m recording and R33.2m annual savings phasing.**
+- **Status**: `Not addressed in this section — carried forward`
+
+**Q24 [Low]: Reconcile working capital chart (excludes Poland and Switzerland) to balance sheet lines.**
+- **Status**: `Not addressed in this section — carried forward`
 
 ---
 
 ### 2. Footnote & Qualification Deep-Dive
 
-**a) Appendix 1 — Southern Africa income statement `[unmapped, physical PDF p. 48]`**
-- **Revenue decomposition**: "Revenue – sale of merchandise" R50,783.2m (+1.7%) is separated from "Revenue other + Other income" R887.6m (+54.0%). The +54% jump in other revenue/income is material to the operating profit bridge (R396.4m vs R988.5m prior year) — it partly offsets the gross margin erosion. **Verification needed**: what drives the R311.4m increase in other revenue/income (value-added services platform, G&L liquor business per commentary) and whether it is recurring.
-- **Gross margin bridge**: GP –1.4% to R4,843.2m; GM% 9.5% vs 9.8%. Commentary attributes decline to "product mix and promotional activity supporting Black Friday and Christmas." **Verification needed**: markdown quantum, supplier rebate timing, and whether the mix/promotional drag reverses in H2.
-- **Opex**: +18.5% to R5,334.4m — the single largest driver of the –59.9% operating profit before extraordinary items. Commentary lists employment, IT, warehousing/distribution (KZN deliveries), marketing, IT/consultancy. **Verification needed**: split of the R834.2m increase by line; how much is structural vs one-off.
-- **Credit footnote (critical)**: "ECL, debtors write-offs and provisions include additional provisions of R273m (mainly KZN and SR) and R58m of write-offs in G&L." This is the key credit-quality datapoint in the capture. It confirms the R273m additional provision and adds R58m G&L write-offs. **Verification needed**: whether the R273m sits in net operating expenses (and thus in the R5,334.4m) or below operating profit; the KZN vs SR split; and whether these are recurring.
-- **Extraordinary items**: R159.153m vs R79.542m — doubles year on year. **Verification needed**: composition and reconciliation to group HEPS line (Q14).
-- **EBITDA (pre IFRS 16)**: R697.4m vs R1,093.3m (–36.2%) — the cleanest cash-earnings proxy for the SA segment.
+- **Appendix 4 footnote — "As reported, 182 days in current period compared to 179 days in prior period"** `[unmapped, physical PDF p. 51]`. This is a **material calendar mismatch**: the UK discontinued figures are **not** on a like-for-like 26-week basis. The –10.3% revenue decline and widened operating loss are therefore flattered/penalised by 3 extra trading days in H1 2026. Any H2 phasing of the ~£5m loss must be adjusted for this. Also note the slide itself flags "**Formatting of table and slide to be checked**" — treat the UK table as provisional.
 
-**b) Appendix 2 — Ireland income statement `[unmapped, physical PDF p. 49]`**
-- **Revenue**: €855.652m (+2.2%); gross margin 13.7% vs 13.5% (+20bps). Commentary: "Ireland started strongly but February and March were challenging, with severe weather curtailing consumer activity and sentiment hitting a three-year low. Further interest rate increases and food inflation are expected. Softer tobacco volumes weighed on revenue, with minimal margin impact."
-- **Margin bridge**: GM% improvement attributed to vaping regulatory switch (single-use to longer-life at higher wholesale margin), alcohol targeted promotions/RTD shift, favourable tobacco mix. **Verification needed**: sustainability of the vaping margin uplift and whether alcohol promotional activity is margin-dilutive in H2.
-- **Opex**: +4.7% to €107.031m — "contained and only slightly above prior year." Commentary flags "a change in accounting estimates (YTD depreciation catch-up in Nov 2025) and timing on RCC amortisation in Dec 2025" — these are **accounting estimate changes inside the base**, which flatters or distorts the underlying opex growth rate. **Verification needed**: quantum of the depreciation catch-up and RCC amortisation timing, and whether they recur in H2.
-- **Net finance**: –22.8% to €3.763m on "lower bank rates year-on-year and reduced debt drawn." **Verification needed**: Ireland debt drawn and rate profile for H2 (links to Q19).
-- **Discontinued note**: "The UK operations are treated as discontinued." Confirms Ireland appendix excludes UK.
-- **EBITDA pre-IFRS 16**: €29.773m (+3.7%).
+- **Appendix 4 footnote — "An impairment loss of R1.5bn (EUR78.5m) was recognised on held for sale classification"** `[unmapped, physical PDF p. 51]`. This is the single largest one-off in the appendices. It sits **below** the operating loss line (not in EBITDA), so it does **not** affect the ~EUR 5.8m UK EBITDA loss but **does** hit group PAT and HEPS. Implied rate ~R19.11/EUR. Must be confirmed as non-recurring and excluded from headline earnings — check the HEPS reconciliation in the income statement/notes.
 
-**c) Appendix 3 — SPAR Sri Lanka JV `[unmapped, physical PDF p. 50]`**
-- Revenue Rs8,341.6m (+7.6%); GP Rs1,618.5m (+5.9%); operating profit Rs40.5m vs Rs142.2m (–71.5%); GM% 19.4% vs 19.7%; OP% 0.5% vs 1.8%.
-- Commentary: "significant increases in establishment of independent retailers (Mar 2025: 10), with establishment expenses up 14.0%, sales and distribution (+7.3%) as well as personnel costs (+12.2%)."
-- Store count: 12 corporate (Sep 2025: 11), 13 independent (Sep 2025: 17) — **independent retailer count fell from 17 to 13**, which contradicts the "independent retailer growth" headline. **Verification needed**: reconcile the claimed independent retailer growth with the net –4 store count.
-- Footfall +8%, items sold +5% — basket per item declining.
+- **Appendix 1 commentary — "ECL, debtors write-offs and provisions include additional provisions of R273m (mainly KZN and SR) and R58m of write-offs in G&L"** `[unmapped, physical PDF p. 48]`. This is the key credit-quality qualification. It confirms the R273m is **provisions** (not cash write-offs) concentrated in KZN and "SR" (likely SPAR Retail), plus **R58m actual write-offs in G&L**. Critically, it does **not** disclose the ECL allowance balance, satisfactory-paid %, collection rate, or ageing — so the debtors book health (Q5/Q14) remains unquantified. The R273m sits within net operating expenses (hence the +18.5% opex growth), which is why operating profit fell 59.9% despite only 1.7% revenue growth.
 
-**d) Appendix 4 — UK income statement (Discontinued) `[unmapped, physical PDF p. 51]`**
-- Revenue €110.362m (–10.3%); GM 24.8% vs 26.5% (–170bps); operating loss before extraordinary –€7.154m; operating loss –€7.407m; EBITDA loss c.€5.8m.
-- **Critical footnote**: "As reported, **182 days in current period compared to 179 days in prior period**. An impairment loss of **R1.5bn (EUR78.5m)** was recognised on held for sale classification." The 3-day longer period means the –10.3% revenue decline is on a non-comparable basis; on a per-day basis the decline is worse (~–11.8%). The R1.5bn impairment is a non-cash discontinued item that must be excluded from continuing HEPS but checked for cash/balance-sheet impact.
-- **Verification needed**: whether the R1.5bn impairment is in the discontinued line of the group income statement and does not double-count with the p.28 leverage note (Q15); AWG completion and proceeds (Q28).
+- **Appendix 1 — "Revenue other+Other income R887,644k (+54.0%)"** `[unmapped, physical PDF p. 48]`. Commentary attributes the lift to "the value-added services platform and the G&L liquor business." This is a **large, fast-growing other-revenue line** (1.7% of merchandise revenue) that must be decomposed — is it recurring (VSP fees, liquor) or one-off? It materially supports the 9.5% gross margin and 0.8% operating margin.
 
-**e) Appendix 8 — Returns on capital `[unmapped, physical PDF p. 55]`**
-- Group ROIC 8.3%, ROCE 11.7%, ROE 7.8%. Southern Africa ROIC 3.7%, ROCE 6.5%, ROE –6.8% (negative ROE — driven by the loss after tax of R53.3m in Appendix 1). Ireland ROIC 14.1%, ROE 17.4%, ROCE 17.4%.
-- Footnote definitions: "ROIC – Pre-IFRS 16 Net operating profit after tax (NOPAT) divided by Invested capital (average debt plus average shareholders equity); ROE – Pre-IFRS 16 PAT divided by average shareholders equity; ROCE – Pre-IFRS 16 Net operating profit divided by capital employed (average total assets less average current liabilities)."
-- **Verification needed**: the negative SA ROE (–6.8%) is inconsistent with a segment that still made a small operating profit before extraordinary items (R396.4m) — the loss after tax of R53.3m plus net finance cost R289.5m drives it. Confirm the capital base used and whether the R1.5bn UK impairment sits in group equity (affecting group ROE 7.8%).
+- **Appendix 2 commentary — "admin, IT and depreciation reflect a change in accounting estimates (YTD depreciation catch-up in Nov 2025) and timing on RCC amortisation in Dec 2025"** `[unmapped, physical PDF p. 49]`. This is an **accounting-estimate change** embedded in Ireland opex (+4.7%). It means the Ireland cost base is not cleanly comparable y-o-y; the +0.8% operating profit growth is partly flattered/penalised by this catch-up. Must be quantified and stripped out for a clean run-rate.
 
-**f) Appendix 9 — Retail KPIs `[unmapped, physical PDF p. 56]`**
-- **Qualification footnote**: "KPIs reflected are based on information shared by our retailers and are considered **pro forma** – they give a directional view of trading at store level." This is a material caveat: footfall –2.30% and basket +3.53% are **not audited** and are retailer-supplied. Do not treat as hard forecast inputs without a sensitivity range.
-- Combined footfall –2.30%, basket +3.53% implies transaction value growth of roughly +1.2% (1 – 0.977 × 1.0353 ≈ +1.2%), which is broadly consistent with the +1.7% merchandise revenue growth in Appendix 1 — a useful cross-check, but the pro forma caveat limits precision.
+- **Appendix 2 — "The UK operations are treated as discontinued"** `[unmapped, physical PDF p. 49]`. Confirms Ireland segment figures are **continuing-only**; the ~EUR 70m EBITDA claim (Q26) must be checked to see whether it includes or excludes UK.
 
-**g) Appendix 10 — SAP `[unmapped, physical PDF p. 57]`**
-- Dated guidance: "Finance Go-Live FY2026", "DC Integration FY2027", "Revised H2 FY25 strategy", "No increase in capex — sequenced for payback… Total capex budget unchanged."
-- **Verification needed**: confirm the "total capex budget unchanged" statement against the c.1% of revenue capex guidance (Q18) and the H1 R659m actual (Q11).
+- **Appendix 3 — SPAR Sri Lanka: "significant increases in establishment of independent retailers (Mar 2025: 10)... establishment expenses up 14.0%, sales and distribution (+7.3%), personnel (+12.2%)... lower operating profit"** `[unmapped, physical PDF p. 50]`. Operating profit collapsed –71.5% to Rs 40,525k on +7.6% revenue. This is a **JV (equity-accounted?)** — confirm whether it flows through "share of associates" or is consolidated. Store mix shifted: corporate stores up (11→12), independent retailers down (17→13) — a **franchise-to-corporate mix shift** that raises cost base.
 
-**h) Appendix 11 — Ireland market position `[unmapped, physical PDF p. 58]`**
-- 1,068 stores; 2,142 people employed; 650+ supplier relationships; 20 Cash & Carry; 127 retail properties (102 franchise / 25 CoCo); 38% convenience market share; 1m+ shoppers/day; 98.5% service level; 80% BWG Foodservice growth since 2021.
-- **Verification needed**: reconcile 1,068 stores to the Ireland segment store count and to the "~1,068 Ireland stores" cited on p.42 (Q11/Q30).
+- **Appendix 8 footnotes — ROIC/ROE/ROCE definitions all "Pre-IFRS 16"** `[unmapped, physical PDF p. 55]`. Group ROIC 8.3%, ROCE 11.7%, ROE 7.8%; Southern Africa ROIC 3.7%, ROCE 6.5%, ROE –6.8% (negative ROE!); Ireland ROIC 14.1%, ROCE 17.4%, ROE 7.8%. The **negative Southern Africa ROE (–6.8%)** is a red flag consistent with the R273m provisions driving a segment loss. "Improving trajectory expected in H2" is forward guidance with no quantum.
 
-**i) Missing footnote text flags**
-- No footnote markers (`[^1]`, `*`) with absent definitions were detected in this capture, **except** the UK appendix asterisk (`*As reported, 182 days…`) which **is** defined in-capture. The Appendix 8 ROIC/ROE/ROCE definitions are present. No missing-footnote verification question is required from this section, but the pro forma KPI caveat (Appendix 9) and the accounting-estimate-change note (Appendix 2) should be treated as qualifications requiring follow-up.
+- **Appendix 9 footnote — "KPIs reflected are based on information shared by our retailers and are considered pro forma – they give a directional view of trading at store level"** `[unmapped, physical PDF p. 56]`. This is a **critical qualification**: the –2.30% transactions and +3.53% basket figures are **pro forma, retailer-supplied, directional only** — not audited group sales. Do not use them to reconcile to group revenue without caveat.
+
+- **Appendix 10 — "No increase in capex — sequenced for payback. Total capex budget unchanged"** `[unmapped, physical PDF p. 57]`. Forward guidance: Finance Go-Live FY2026, DC Integration FY2027. Confirms SAP capex is **within existing budget** (no incremental capex), but the capitalised vs expensed split (Q13/Q22) is still not given.
+
+- **Appendix 11 — "38% Largest convenience market share"** `[unmapped, physical PDF p. 58]`. Scope is **Ireland** (BWG), not SA. No Nielsen date given. 1,068 stores, 2,142 employees, 98.5% service level, 1m+ shoppers/day, 20 Cash & Carrys, 127 retail properties (102 franchise / 25 CoCo).
+
+- **Appendix 5 & 7 (Build it, Pet Storey)** `[unmapped, physical PDF pp. 52, 54]`. Strategic-priority slides with **no financial figures** — qualitative only. Pet Storey Phase 1/2, mobile grooming pilot July 2026, Uber Eats Boksburg live. No revenue/profit contribution disclosed.
+
+- **Appendix 6 (SPAR Health)** `[unmapped, physical PDF p. 53]`. Project 125: 47 pharmacies signed, 28 launched, 65%+ loyalty, +27%+ wholesale purchases growth. Six priorities listed (profitability recovery, Aptekor scale-up, KZN wholesaler license, Academy enrolment recovery, Pharmacy Guild defence, SPAR Rewards in pharmacies). **No rand figures** — cannot size the +26.1% growth contribution.
 
 ---
 
@@ -2893,125 +2975,133 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q36 | High | Financial statements / income statement | SA extraordinary items R159.153m (Appendix 1) vs group implied R151.3m vs component sum R156.1m `[unmapped, p. 48]` | Reconcile the three figures in the group income statement and extraordinary-items note; confirm tax effect and H2 recurrence | HEPS bridge accuracy; one-off vs recurring |
-| Q37 | High | Debtors / credit note | "Additional provisions of R273m (mainly KZN and SR) and R58m of write-offs in G&L" `[unmapped, p. 48]` | Locate the R273m and R58m in the debtors note; confirm whether in opex or below operating profit; get KZN vs SR split; confirm recurring vs one-off | Credit-loss forecast; KZN recovery timing |
-| Q38 | High | Segmental (KZN) | R273m provisions "mainly KZN and SR" but no KZN OP quantum `[unmapped, p. 48]` | Get KZN segment operating profit/loss H1 and 3-month positive run-rate; confirm pre/post-ECL | KZN recovery forecast; group OP |
-| Q39 | High | Discontinued operations | UK EBITDA loss c.€5.8m; R1.5bn (€78.5m) held-for-sale impairment; 182 vs 179 days `[unmapped, p. 51]` | Confirm R1.5bn impairment sits in discontinued line, not continuing; confirm no double-count with p.28 leverage note; get AWG completion/proceeds | Continuing HEPS; balance sheet; deleveraging |
-| Q40 | High | Ireland segment / EBITDA reconciliation | Ireland H1 EBITDA €29.773m vs ~€70m TTM cited on p.42 `[unmapped, p. 49]` | Get H2 FY2025 Ireland EBITDA and FX rate to reconcile TTM ~€70m to segment and group EBITDA pre-IFRS 16 R976.4m | Ireland contribution to group EBITDA |
-| Q41 | Medium | Gross margin / G&L segment | SA GM% 9.5% vs 9.8%; "product mix and promotional activity" `[unmapped, p. 48]` | Get G&L GP% H1 and Feb–Mar GP growth; markdown/rebate bridge; confirm H2 reversal | Margin recovery forecast |
-| Q42 | Medium | Cost / opex | SA opex +18.5% to R5,334.4m; drivers listed but not quantified `[unmapped, p. 48]` | Split the R834.2m increase by line (employment, IT, warehousing/distribution, marketing, consultancy); isolate KZN delivery cost and VSP | Opex growth forecast; H2 cost base |
-| Q43 | Medium | Ireland segment | "Change in accounting estimates (YTD depreciation catch-up in Nov 2025) and timing on RCC amortisation in Dec 2025" `[unmapped, p. 49]` | Quantify the depreciation catch-up and RCC amortisation timing; confirm whether they recur in H2 | Underlying Ireland opex growth; EBITDA quality |
-| Q44 | Medium | Store network / capex | SAP: "No increase in capex… Total capex budget unchanged"; Finance Go-Live FY2026, DC Integration FY2027 `[unmapped, p. 57]` | Confirm total capex budget vs c.1% of revenue guidance; H2 SAP/omni spend; store count/net openings/trading space m² | Capex and FCF forecast |
-| Q45 | Medium | Revenue decomposition | Appendix 9 pro forma caveat: footfall –2.30%, basket +3.53% retailer-supplied `[unmapped, p. 56]` | Cross-check implied +1.2% transaction value growth to +1.7% merchandise revenue; get audited transaction/basket data if available | Revenue forecast reliability |
-| Q46 | Medium | Segmental (Sri Lanka) | Independent retailers fell 17 → 13 despite "independent retailer growth" headline `[unmapped, p. 50]` | Reconcile store count movement; get Sri Lanka revenue/OP contribution to group | Adjacency contribution; store growth |
-| Q47 | Low | Returns on capital | SA ROE –6.8% despite positive OP before extraordinary `[unmapped, p. 55]` | Confirm capital base and whether R1.5bn UK impairment sits in group equity (group ROE 7.8%) | Capital allocation; ROE forecast |
-| Q48 | Low | Accounting policies / comparatives | UK 182 vs 179 days; SA/Ireland week counts not disclosed `[unmapped, p. 51]` | Confirm SA/Ireland 26 vs 27 weeks; FY2026/FY2025 week counts for full-year build | Like-for-like growth; annualisation |
-| Q49 | Low | Ireland segment | Ireland net finance –22.8% on "lower bank rates and reduced debt drawn" `[unmapped, p. 49]` | Get Ireland debt drawn and rate profile for H2 net finance forecast | Ireland PBT; group finance cost |
-| Q50 | Low | Discontinued operations | UK revenue –10.3% on 182 vs 179 days (per-day decline ~–11.8%) `[unmapped, p. 51]` | Confirm per-day revenue decline and H2 UK trading loss run-rate | Discontinued loss forecast; H2 group |
+| Q38 | High | Income statement / HEPS note | UK HFS impairment R1.5bn (EUR78.5m) `[unmapped, p. 51]` | Confirm impairment is excluded from headline earnings; locate HEPS reconciliation showing the R1.5bn as a non-headline item; confirm no further HFS write-down expected in H2 | Determines HEPS vs EPS gap and dividend cover; a second write-down would hit FY2026 PAT |
+| Q39 | High | Debtors / credit note | R273m additional provisions (KZN, SR) + R58m G&L write-offs `[unmapped, p. 48]` | Get ECL allowance balance, satisfactory-paid %, collection rate, ageing buckets; confirm whether R273m is specific or portfolio ECL; check if further provisioning guided for H2 | Credit book health is the biggest swing factor in SA profitability; R273m is ~3% of R8.9bn book |
+| Q40 | High | Segment / geographic note | Sri Lanka JV operating profit –71.5% `[unmapped, p. 50]` | Confirm whether Sri Lanka is equity-accounted (share of associates) or consolidated; get its contribution to group operating profit and whether it sits in "6 countries" | Determines whether Sri Lanka drags group EBIT directly or via associates line |
+| Q41 | High | Ireland segment / basis of preparation | ~EUR 70m EBITDA (12m to Mar 2026) vs H1 EUR 29.8m annualised ~EUR 59.6m `[unmapped, p. 49]` | Reconcile the ~EUR 10m gap: is the 12m figure pre/post IFRS 16, pre/post exceptionals, BWG-only vs all-Ireland, and does it include a stronger H2? | Ireland is the group's profit engine; mis-sizing EBITDA distorts group valuation and net debt/EBITDA |
+| Q42 | High | Income statement / notes | "Change in accounting estimates (YTD depreciation catch-up Nov 2025; RCC amortisation timing Dec 2025)" `[unmapped, p. 49]` | Quantify the rand/EUR impact of the depreciation catch-up and RCC amortisation timing on Ireland opex; confirm whether it recurs in H2 | Ireland opex +4.7% is partly an accounting artefact; clean run-rate needed for H2 forecast |
+| Q43 | Medium | Income statement / other revenue note | Other revenue +54.0% to R887.6m (VSP + G&L liquor) `[unmapped, p. 48]` | Decompose other revenue into VSP fees, liquor, and other; confirm recurring vs one-off; check treatment in gross profit vs operating income | Other revenue is 1.7% of merchandise sales and supports the 9.5% GP margin; sustainability affects margin forecast |
+| Q44 | Medium | Discontinued ops / IFRS 5 note | UK 182 vs 179 days `[unmapped, p. 51]` | Confirm H1 2025 UK comparatives are not restated to 182 days; quantify the 3-day revenue/loss impact; check H2 ~£5m loss phasing on a matched-day basis | Day-count mismatch distorts UK y-o-y and H2 phasing of discontinued losses |
+| Q45 | Medium | Discontinued ops / IFRS 5 note | Switzerland not mentioned in Appendices `[unmapped, pp. 47–58]` | Locate Switzerland disposal status, gain/loss, and held-for-sale balances; confirm both UK and Switzerland in discontinued | Completes the IFRS 5 picture and one-off items for FY2026 |
+| Q46 | Medium | Balance sheet / notes | UK HFS impairment R1.5bn `[unmapped, p. 51]` | Get gross HFS assets and liabilities for UK at 31 Mar 2026; confirm net carrying value after R1.5bn impairment | Needed for net asset value and disposal proceeds reconciliation |
+| Q47 | Medium | Capex / SAP note | "No increase in capex — total capex budget unchanged" `[unmapped, p. 57]` | Get capitalised vs expensed SAP split for H1 2026 and FY2026 guidance; confirm Finance Go-Live FY2026 timing and DC Integration FY2027 | SAP spend affects capex, depreciation, and opex; "unchanged budget" needs a number |
+| Q48 | Medium | Operational metrics / segment note | SA G&L transactions –2.30%, basket +3.53% (pro forma) `[unmapped, p. 56]` | Reconcile pro-forma retailer KPIs to group SA revenue +1.7%; confirm KZN-specific transaction/basket split | Volume vs basket inflation drives SA revenue and margin forecast |
+| Q49 | Medium | Store network / operational metrics | Ireland 1,068 stores; Sri Lanka 12 corporate + 13 independent `[unmapped, pp. 50, 58]` | Get net store movement H1 2026 by segment (SA, Ireland, Sri Lanka); confirm total group store count | Store count drives trading space, sales per store, and lease liabilities |
+| Q50 | Low | Segment note | Southern Africa ROE –6.8% `[unmapped, p. 55]` | Confirm SA segment PAT and equity base; reconcile negative ROE to the R273m provisions and R159m extraordinary items | Negative ROE signals capital destruction; affects group ROE and dividend capacity |
+| Q51 | Low | SPAR Health / segment note | Project 125: 47 signed, 28 launched, +27% wholesale growth `[unmapped, p. 53]` | Get SPAR Health absolute revenue and profit; confirm +26.1% growth base and H2 run-rate | Sizes the health platform contribution to SA revenue/margin |
+| Q52 | Low | Market share / Ireland note | "38% convenience market share" `[unmapped, p. 58]` | Confirm Nielsen date/as-at period and whether 38% is value or volume, Republic of Ireland only | Context for Ireland growth ceiling and competitive position |
 
 ---
 
 ### 5. Baseline Forecast Inputs Captured Here
 
-| Metric | H1 2026 | H1 2025 | Source |
-| --- | --- | --- | --- |
-| **Southern Africa** | | | `[p. 48]` |
-| Revenue – sale of merchandise | R50,783.212m | R49,934.547m (+1.7%) | p.48 |
-| Gross profit | R4,843.195m | R4,912.563m (–1.4%) | p.48 |
-| Gross margin % | 9.5% | 9.8% | p.48 |
-| Revenue other + other income | R887.644m | R576.222m (+54.0%) | p.48 |
-| Net operating expenses | (R5,334.438m) | (R4,500.262m) (+18.5%) | p.48 |
-| Operating profit before extraordinary | R396.400m | R988.523m (–59.9%) | p.48 |
-| OP before extraordinary margin % | 0.8% | 2.0% | p.48 |
-| Extraordinary items | (R159.153m) | (R79.542m) | p.48 |
-| Operating profit | R237.247m | R908.981m (–73.9%) | p.48 |
-| Share of associates | R1.364m | R4.449m | p.48 |
-| Net finance expense | (R289.476m) | (R272.244m) | p.48 |
-| (Loss)/profit before tax | (R50.864m) | R641.186m | p.48 |
-| Taxation | (R2.400m) | (R167.467m) | p.48 |
-| (Loss)/profit after tax | (R53.264m) | R473.720m | p.48 |
-| EBITDA (pre IFRS 16) | R697.408m | R1,093.271m (–36.2%) | p.48 |
-| Additional ECL/write-off provisions | R273m (mainly KZN & SR); R58m G&L write-offs | — | p.48 |
-| **Ireland** | | | `[p. 49]` |
-| Revenue – sale of merchandise | €855.652m | €836.849m (+2.2%) | p.49 |
-| Gross profit | €117.385m | €112.798m (+4.1%) | p.49 |
-| Gross margin % | 13.7% | 13.5% | p.49 |
-| Revenue other + other income | €14.529m | €14.152m (+2.7%) | p.49 |
-| Net operating expenses | (€107.031m) | (€102.271m) (+4.7%) | p.49 |
-| OP before extraordinary | €24.883m | €24.679m (+0.8%) | p.49 |
-| OP before extraordinary margin % | 2.9% | 2.9% | p.49 |
-| Extraordinary items | €0.403m | €0.159m | p.49 |
-| Operating profit | €25.286m | €24.838m (+1.8%) | p.49 |
-| Share of associates losses | (€0.317m) | — | p.49 |
-| Net finance expense | (€3.763m) | (€4.874m) (–22.8%) | p.49 |
-| Profit before tax | €21.206m | €19.964m (+6.2%) | p.49 |
-| Taxation | (€3.528m) | (€3.097m) | p.49 |
-| Profit after tax | €17.678m | €16.867m (+4.8%) | p.49 |
-| EBITDA (pre IFRS 16) | €29.773m | €28.712m (+3.7%) | p.49 |
-| **SPAR Sri Lanka** | | | `[p. 50]` |
-| Revenue – sale of merchandise | Rs8,341.595m | Rs7,751.808m (+7.6%) | p.50 |
-| Gross profit | Rs1,618.475m | Rs1,527.941m (+5.9%) | p.50 |
-| Operating profit | Rs40.525m | Rs142.223m (–71.5%) | p.50 |
-| Gross margin % | 19.4% | 19.7% | p.50 |
-| Operating profit % | 0.5% | 1.8% | p.50 |
-| Footfall / items sold | +8% / +5% | — | p.50 |
-| Corporate stores / independent retailers | 12 / 13 | 11 / 17 | p.50 |
-| **UK (Discontinued)** | | | `[p. 51]` |
-| Revenue – sale of merchandise | €110.362m | €123.017m (–10.3%) | p.51 |
-| Gross profit | €27.409m | €32.642m (–16.0%) | p.51 |
-| Gross margin % | 24.8% | 26.5% | p.51 |
-| Revenue other + other income | €2.453m | €2.667m (–8.0%) | p.51 |
-| Net operating expenses | (€37.016m) | (€38.314m) (–3.4%) | p.51 |
-| Operating loss before extraordinary | (€7.154m) | (€3.005m) | p.51 |
-| Extraordinary items | (€0.253m) | (€0.217m) | p.51 |
-| Operating loss | (€7.407m) | (€3.222m) | p.51 |
-| Net finance expense | (€1.474m) | (€1.405m) | p.51 |
-| Profit before tax | (€8.881m) | (€4.627m) | p.51 |
-| Profit after tax | (€8.881m) | (€4.627m) | p.51 |
-| EBITDA loss | c.€5.8m | — | p.51 |
-| Held-for-sale impairment | R1.5bn (€78.5m) | — | p.51 |
-| Period days | 182 | 179 | p.51 |
-| **Returns on capital (continuing)** | | | `[p. 55]` |
-| Group ROIC / ROCE / ROE | 8.3% / 11.7% / 7.8% | — | p.55 |
-| Southern Africa ROIC / ROCE / ROE | 3.7% / 6.5% / –6.8% | — | p.55 |
-| Ireland ROIC / ROCE / ROE | 14.1% / 17.4% / 17.4% | — | p.55 |
-| **Retail KPIs (pro forma)** | | | `[p. 56]` |
-| Combined footfall/transactions | –2.30% | — | p.56 |
-| Supermarkets footfall | –2.35% | — | p.56 |
-| TOPS at SPAR Liquor footfall | –2.02% | — | p.56 |
-| Combined average basket spend | +3.53% | — | p.56 |
-| Supermarkets basket | +3.40% | — | p.56 |
-| TOPS at SPAR Liquor basket | +4.20% | — | p.56 |
-| **Ireland market position** | | | `[p. 58]` |
-| Stores across Ireland | 1,068 | — | p.58 |
-| People employed | 2,142 | — | p.58 |
-| Supplier relationships | 650+ | — | p.58 |
-| Cash & Carrys | 20 | — | p.58 |
-| Retail properties (franchise/CoCo) | 127 (102/25) | — | p.58 |
-| Convenience market share | 38% | — | p.58 |
-| Shoppers per day | 1m+ | — | p.58 |
-| Service level | 98.5% | — | p.58 |
-| BWG Foodservice growth since 2021 | 80% | — | p.58 |
-| **SAP guidance** | | | `[p. 57]` |
-| Finance Go-Live | FY2026 | — | p.57 |
-| DC Integration | FY2027 | — | p.57 |
-| Capex | "Total capex budget unchanged" | — | p.57 |
+| Metric | Value | Source |
+| --- | --- | --- |
+| **Southern Africa (Appendix 1)** | | `[p. 48]` |
+| Revenue — sale of merchandise | R50,783,212k (+1.7%) | |
+| Gross profit | R4,843,195k (–1.4%) | |
+| Gross margin % | 9.5% (vs 9.8%) | |
+| Revenue other + other income | R887,644k (+54.0%) | |
+| Net operating expenses | (R5,334,438k) (+18.5%) | |
+| Operating profit before extraordinary items | R396,400k (–59.9%) | |
+| OP before extraordinary margin % | 0.8% (vs 2.0%) | |
+| Extraordinary items | (R159,153k) | |
+| Operating profit | R237,247k (–73.9%) | |
+| Share of associates | R1,364k | |
+| Net finance expense | (R289,476k) | |
+| (Loss)/profit before tax | (R50,864k) | |
+| Taxation | (R2,400k) | |
+| (Loss)/profit after tax | (R53,264k) | |
+| EBITDA (pre IFRS 16) | R697,408k (–36.2%) | |
+| Additional provisions (KZN, SR) | R273m | |
+| G&L write-offs | R58m | |
+| **Ireland (Appendix 2)** | | `[p. 49]` |
+| Revenue — sale of merchandise | EUR 855,652k (+2.2%) | |
+| Gross profit | EUR 117,385k (+4.1%) | |
+| Gross margin % | 13.7% (vs 13.5%) | |
+| Revenue other + other income | EUR 14,529k (+2.7%) | |
+| Net operating expenses | (EUR 107,031k) (+4.7%) | |
+| Operating profit before extraordinary items | EUR 24,883k (+0.8%) | |
+| OP before extraordinary margin % | 2.9% | |
+| Extraordinary items | EUR 403k | |
+| Operating profit | EUR 25,286k (+1.8%) | |
+| Share of associates losses | (EUR 317k) | |
+| Net finance expense | (EUR 3,763k) | |
+| Profit before tax | EUR 21,206k (+6.2%) | |
+| Taxation | (EUR 3,528k) | |
+| Profit after tax | EUR 17,678k (+4.8%) | |
+| EBITDA (pre IFRS 16) | EUR 29,773k (+3.7%) | |
+| **SPAR Sri Lanka JV (Appendix 3)** | | `[p. 50]` |
+| Revenue — sale of merchandise | Rs 8,341,595k (+7.6%) | |
+| Gross profit | Rs 1,618,475k (+5.9%) | |
+| Gross margin % | 19.4% (vs 19.7%) | |
+| Operating profit | Rs 40,525k (–71.5%) | |
+| Operating profit % | 0.5% (vs 1.8%) | |
+| Corporate stores | 12 (Sep 2025: 11) | |
+| Independent retailers | 13 (Sep 2025: 17) | |
+| Footfall / items sold | +8% / +5% | |
+| **UK — Discontinued (Appendix 4)** | | `[p. 51]` |
+| Revenue — sale of merchandise | EUR 110,362k (–10.3%) | |
+| Gross profit | EUR 27,409k (–16.0%) | |
+| Gross margin % | 24.8% (vs 26.5%) | |
+| Revenue other + other income | EUR 2,453k (–8.0%) | |
+| Net operating expenses | (EUR 37,016k) (–3.4%) | |
+| Operating loss before extraordinary items | (EUR 7,154k) | |
+| Extraordinary items | (EUR 253k) | |
+| Operating loss | (EUR 7,407k) | |
+| Net finance expense | (EUR 1,474k) | |
+| Profit after tax | (EUR 8,881k) | |
+| EBITDA loss | c.EUR 5.8m | |
+| HFS impairment loss | R1.5bn (EUR 78.5m) | |
+| Day count | 182 (H1 2026) vs 179 (H1 2025) | |
+| **Returns (Appendix 8)** | | `[p. 55]` |
+| Group ROIC / ROCE / ROE | 8.3% / 11.7% / 7.8% | |
+| Southern Africa ROIC / ROCE / ROE | 3.7% / 6.5% / –6.8% | |
+| Ireland ROIC / ROCE / ROE | 14.1% / 17.4% / 7.8% | |
+| **SA G&L Retail KPIs (Appendix 9, pro forma)** | | `[p. 56]` |
+| Combined transactions | –2.30% | |
+| Supermarkets transactions | –2.35% | |
+| TOPS at SPAR Liquor transactions | –2.02% | |
+| Combined average basket spend | +3.53% | |
+| Supermarkets basket | +3.40% | |
+| TOPS at SPAR Liquor basket | +4.20% | |
+| **SAP (Appendix 10)** | | `[p. 57]` |
+| Strategy revised | H2 FY25 | |
+| Finance Go-Live | FY2026 | |
+| DC Integration | FY2027 | |
+| Capex | No increase; total budget unchanged | |
+| **Ireland BWG (Appendix 11)** | | `[p. 58]` |
+| Stores across Ireland | 1,068 | |
+| People employed | 2,142 | |
+| Supplier relationships | 650+ | |
+| Cash & Carry sites | 20 | |
+| Retail properties | 127 (102 franchise / 25 CoCo) | |
+| Convenience market share | 38% (#1) | |
+| Service level | 98.5% | |
+| Shoppers per day | 1m+ | |
+| Foodservice wholesale share | 9% | |
+| BWG Foodservice growth since 2021 | 80% | |
+| **SPAR Health (Appendix 6)** | | `[p. 53]` |
+| Pharmacies signed (P125) | 47 | |
+| Pharmacies launched | 28 | |
+| Loyalty (P125 stores) | 65%+ | |
+| Wholesale purchases growth | +27%+ | |
 
 ---
 
 ### 6. Next Section to Capture
 
-**Next section: the group statement of cash flows and debt note (the section containing the continuing FCF –R2,011.9m, the R2,742m → R585m net debt waterfall, and the p.28 leverage note).**
+**Next section to capture: the consolidated income statement / HEPS reconciliation and the IFRS 5 discontinued-operations note** (the section containing the group income statement, headline earnings per share reconciliation, and the note on discontinued operations / held-for-sale).
 
-This is the single most useful next capture because it resolves the highest-priority open items:
-- **Q15 [High]** — reconcile continuing FCF to the net debt waterfall and confirm no double-count with the R1.5bn UK impairment (Q39).
-- **Q19 [Medium]** — debt mix, fixed/floating split, interest-rate sensitivity for H2 net finance cost.
-- **Q31 [Low]** — H2 net debt target and deleveraging source.
-- **Q21 [Medium]** — NWC reconciliation to balance sheet lines.
-- **Q33 [High]** — Swiss discontinued figures and confirmation of no double-count with continuing FCF.
-- **Q39 [High]** — placement of the R1.5bn held-for-sale impairment.
+This will resolve the highest-priority open items:
+- **Q38** (UK R1.5bn impairment excluded from HEPS; no further H2 write-down)
+- **Q28 / Q45** (gain/loss on disposal; Switzerland discontinued status)
+- **Q46** (gross UK HFS assets/liabilities)
+- **Q35** (as-reported vs restated bridge; calendar basis)
+- **Q29** (full group revenue growth and Feb–Mar run-rate)
+- **Q26 / Q37** (Ireland EBITDA basis and translation rate)
 
-If the cash flow/debt note is not available, the next-best capture is the **group income statement and HEPS reconciliation** (resolves Q14/Q36 and the extraordinary-items composition) or the **debtors/credit note** (resolves Q5/Q13/Q37).
+If the consolidated income statement is not available, the **debtors/credit note** (for Q5/Q14/Q39) is the next most valuable capture, as the R273m provisioning is the single largest driver of the SA profit collapse.
 
 ================================================================================
 ## PART 2: AFS FINANCIAL STATEMENTS & NOTES (`Unaudited_interim_results_for_the_26_weeks_ended_27_March_2026.pdf` — 2 Sections)
@@ -3904,165 +3994,269 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-**Q14 [High] — SA extraordinary items R159.153m vs group implied R151.3m vs component sum R156.1m**
-- **Status**: `Partially resolved (remainder stays open for HEPS reconciliation note / tax note)`
-- **Answer & evidence**: The HEPS reconciliation on `[unmapped, physical PDF p. 8]` shows the group-level adjustments: (profit)/loss on sale of PPE & intangibles –R29.5m; gain on bargain purchase –R0.7m; impairment of goodwill +R47.4m; impairment of assets held for sale +R13.1m; impairment of PPE & intangibles +R41.2m; (profit)/loss on disposal of businesses –R0.9m; impairment to right-of-use asset +R26.9m; tax effects –R6.8m. Net adjustment = +R90.7m (147.3 → 238.0 HE). This is a **group** reconciliation, not the SA-only R159.153m figure. The SA-specific R159.153m cannot be rebuilt from this page because the SA-only tax effect and SA-only bargain-purchase/disposal lines are not separately disclosed here. **Still open**: reconcile SA R159.153m to group R90.7m net adjustment and to the R151.3m/R156.1m figures; confirm tax effect split and H2 recurrence.
+**Q15 [High]: Locate the definition of footnote [^R] on opening cash balance 2,742 (missing from p. 32 capture).**
+- **Status**: `Resolved`
+- **Answer & evidence**: The opening cash balance of R2,742.4m is confirmed in the cash flow statement `[unmapped, physical PDF p. 7]`. The footnote marker `*` attached to the opening balance line is defined at the bottom of the same page: *"The prior period comparative information for the period ended 28 March 2025 has been restated to correct an error in classification of the movement in general banking facilities of R494.0 million from Cash and cash equivalents to net movement on banking facilities as part of Cash flows (used in)/from financing activities to correctly reflect the treatment under IAS 7 Statement of Cash Flows. Refer to note 4."* Note 4 `[unmapped, physical PDF p. 12]` provides the full reconciliation, confirming the R494.0m reclassification and that the restated 28 March 2025 closing cash was R1,328.9m (previously R881.9m). The opening balance of R2,742.4m at 26 September 2025 is the audited closing balance and is not itself restated.
 
-**Q17 [Medium] — SA opex +18.5% to R5,334.4m; drivers not quantified**
-- **Status**: `Partially resolved (remainder stays open for opex note)`
-- **Answer & evidence**: Segmental note `[unmapped, physical PDF p. 9]` gives SA cost lines for H1 FY2026 vs `[p. 10]` H1 FY2025:
-  - Employment costs: 2,006.5 vs 1,825.0 = **+R181.5m (+9.9%)**
-  - Delivery costs: 460.3 vs 385.5 = **+R74.8m (+19.4%)**
-  - Advertising: 887.8 vs 606.8 = **+R281.0m (+46.3%)**
-  - D&A: 261.2 vs 258.7 = +R2.5m
-  - Impairments (goodwill/PPE/ROU/HFS): 31.0+13.1+25.1+47.4 = R116.6m vs R2.0m = **+R114.6m**
-  - Sum of disclosed SA cost lines: +R654.4m, which is **more than** the stated +R834.2m opex increase — so a residual ~R180m of SA opex increase sits in lines not disclosed in the segment note (IT, warehousing/occupancy, consultancy, VSP). **Still open**: VSP R27.3m H1/H2 split; opex growth ex-VSP and ex-Black Friday marketing; marketing quantum; residual R180m line-item split.
+**Q16 [High]: Quantify the reclassification of bond perfected stores from non-current to current assets (footnote [^1]).**
+- **Status**: `Resolved`
+- **Answer & evidence**: The footnote `*` on the statement of financial position `[unmapped, physical PDF p. 5]` states: *"During the current financial period, the Group identified a prior period error pertaining to March 2025 of R457.8 million (September 2025: R215.6 million) in relation to current loans and receivables that was incorrectly classified as non-current."* This is a reclassification within "Loans and other receivables" — R457.8m moved from non-current to current at 28 March 2025, and R215.6m at 26 September 2025. It had no impact on equity, P&L, or cash flows.
 
-**Q32 [High] — Ireland EUR'000 only; no FX rate**
-- **Status**: `Still open (not resolvable from this section)`
-- **Answer & evidence**: Ireland segment revenue is disclosed in ZAR in the segment note (`[p. 9]`: R16,975.7m; `[p. 11]`: merchandise R16,699.1m + other R276.6m). No EUR figures or FX rates appear in this capture. Carry forward.
+**Q17 [High]: Quantify UK held-for-sale assets and liabilities included in "Other current assets/liabilities".**
+- **Status**: `Resolved`
+- **Answer & evidence**: Note 9 `[unmapped, physical PDF p. 18]` provides the full held-for-sale balance sheet: **Assets R1,266.9m** (PPE R122.4m, ROU R417.6m, lease receivable R17.8m, goodwill/intangible R76.0m, deferred tax R0.9m, inventories R340.7m, trade receivables R260.5m, prepayments R31.0m) and **Liabilities R1,396.2m** (lease liability R940.0m, trade payables R436.6m, deferred tax R19.6m). Note the statement of financial position shows total "Assets held for sale" of R1,332.9m `[p. 5]`, which includes the UK HFS assets of R1,266.9m plus other assets held for sale (land R61.0m + corporate store assets R5.0m = R66.0m) per `[p. 18]`. R1,266.9m + R66.0m = R1,332.9m — reconciles exactly.
 
-**Q36 [High] — Reconcile SA extraordinary R159.153m vs group implied R151.3m vs component sum R156.1m**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: See Q14 above — group net adjustment per `[p. 8]` is +R90.7m, not R151.3m/R156.1m. The three-way reconciliation remains unresolved; the group HEPS note does not present an SA-only column. Carry forward.
+**Q46 [Medium]: Get gross HFS assets and liabilities for UK at 31 Mar 2026; confirm net carrying value after R1.5bn impairment.**
+- **Status**: `Resolved`
+- **Answer & evidence**: Gross HFS assets R1,266.9m and liabilities R1,396.2m `[unmapped, physical PDF p. 18]`. Net liability position of R129.3m. The R1.5bn impairment was recognised in the prior period (H1 2025: impairment of assets held for sale R4,295.3m per note 2.2 `[p. 8]`; FY2025: R4,684.3m). In H1 2026, the only HFS impairment is R13.1m relating to Beyers Ridge land `[p. 16, note 7(1)]`, not UK. The UK carrying values above are post the prior-period impairment.
 
-**Q15 [High] — Reconcile continuing FCF –R2,011.9m to group waterfall R2,742m → R585m**
-- **Status**: `Partially resolved (remainder stays open for discontinued cash flow note)`
-- **Answer & evidence**: Cash flow statement `[p. 7]`: operating –R974.0m; investing –R135.0m; financing –R1,027.7m; net decrease –R2,136.7m; opening R2,742.4m; FX –R21.2m; closing R584.5m. Note 9 `[p. 18]` gives discontinued cash flows: operating –R77.3m; investing –R2.8m; financing +R27.4m (excl. inter-group financing from SPAR). Sum of discontinued = –R52.7m. **Still open**: the R2,157m gap between continuing FCF and the group waterfall is not explained by the R52.7m discontinued outflow — need the continuing-only cash flow reconciliation and confirmation of no double-count with the p.28 leverage note and R1.5bn UK impairment.
+**Q28 [High]: Confirm whether AWG is presented as discontinued operations in H1 2026 (IFRS 5), gain/loss on disposal, and H2 trading loss phasing (~£5m).**
+- **Status**: `Partially resolved (remainder stays open for [disposal note / H2 trading])`
+- **Answer & evidence**: UK is confirmed as discontinued operations and held for sale `[unmapped, physical PDF p. 17, note 9]`. H1 2026 UK discontinued operating loss was R115.7m (group discontinued operating loss), with loss after tax of R144.4m including R46.0m Poland disposal costs `[p. 17]`. The disposal agreement with A.F. Blakemore & Son was announced 18 May 2026 (post-reporting date) `[p. 20, note 13]`: gross proceeds ~GBP 13.0m, net cash broadly breakeven after transaction costs, completion staged June–September 2026. **Gain/loss on disposal is NOT yet quantified** — note 13 states "The full financial and reporting effect of the transaction is being assessed by management." H2 trading loss phasing (~£5m) is not addressed in this section.
 
-**Q19 [Medium] — Debt mix, fixed/floating split, interest-rate sensitivity**
-- **Status**: `Still open`
-- **Answer & evidence**: Balance sheet `[p. 5]` shows borrowings non-current R6,403.6m + current R573.9m = R6,977.5m; lease liability R6,930.4m + R1,489.8m = R8,420.2m; bank overdrafts R1,430.7m. No fixed/floating split or rate profile disclosed in this capture. Carry forward.
+**Q38 [High]: Confirm UK HFS impairment R1.5bn excluded from headline earnings; locate HEPS reconciliation; confirm no further H2 write-down.**
+- **Status**: `Partially resolved (remainder stays open for [H2 guidance])`
+- **Answer & evidence**: The HEPS reconciliation `[unmapped, physical PDF p. 8, note 2.2]` shows "Impairment of assets held for sale" of R13.1m (H1 2026) vs R4,295.3m (H1 2025) and R4,684.3m (FY2025) — these are added back to arrive at headline earnings, confirming HFS impairments are excluded from HE. The R1.5bn UK impairment sits in the H1 2025 comparative (R4,295.3m total HFS impairment), not in H1 2026. **No further H2 write-down guidance is given in this section** — note 13 says the full effect is still being assessed.
 
-**Q31 [Low] — H2 net debt target/guidance**
-- **Status**: `Still open`
-- **Answer & evidence**: No guidance in this section. Carry forward.
+**Q35 [High]: Confirm both H1 2026 and H1 2025 revenue, GP, and operating profit are on the 26-week calendar basis; check for "as reported vs restated" bridge.**
+- **Status**: `Resolved`
+- **Answer & evidence**: Note 3 `[unmapped, physical PDF p. 11]` confirms the 52-week/26-week Friday-ending calendar was adopted prospectively, and both H1 2026 (26 weeks ended 27 March 2026) and H1 2025 (26 weeks ended 28 March 2025) are on this basis. However, an **"as reported vs as adjusted" bridge** is provided `[pp. 11–12]` for the 2025 comparative to strip out additional trading days: H1 2025 revenue as reported R65,890.4m vs **as adjusted R66,822.4m** (+R932.0m); operating profit as reported R1,353.7m vs **as adjusted R1,403.4m** (+R49.7m); PBT as reported R994.2m vs **as adjusted R1,039.3m** (+R45.1m). H1 2026 has no adjustment (as reported = as adjusted). This is a critical comparability bridge.
 
-**Q5 [High] — Debtors/credit metrics**
-- **Status**: `Partially resolved (remainder stays open for debtors note)`
-- **Answer & evidence**: `[p. 13]` note 5: "Movement in provisions raised against trade receivables and loans" = **R150.7m** (H1 FY2026) vs R45.5m (H1 FY2025) — this is the cash-flow-statement charge, which is **lower** than the R273.1m specific impairment charge cited earlier; the difference (~R122m) must be non-cash/reclassification or sit in discontinued. Trade and other receivables `[p. 5]`: R15,975.2m vs R15,216.3m (restated) vs R16,107.3m (Sep-25). **Still open**: satisfactory-paid %, collection rate %, total ECL allowance, write-offs, gross vs net book, reconciliation of R8.9bn debtor book to R15,975.2m trade receivables, and reconciliation of R150.7m provision movement to R273.1m charge.
+**Q44 [Medium]: Confirm H1 2025 UK comparatives not restated to 182 days; quantify 3-day impact; check H2 ~£5m loss phasing on matched-day basis.**
+- **Status**: `Partially resolved (remainder stays open for [H2 phasing])`
+- **Answer & evidence**: The as-reported vs as-adjusted bridge `[pp. 11–12]` applies to **continuing operations** (SA and Ireland), not to UK discontinued operations. The UK discontinued note `[p. 17]` shows H1 2025 revenue R10,461.8m and operating loss R4,916.8m with no day-count adjustment disclosed. The 3-day impact on UK is not separately quantified. H2 ~£5m loss phasing is not addressed.
 
-**Q13 [High] — Same as Q5**
-- **Status**: `Partially resolved (remainder stays open)` — see Q5.
+**Q29 [High]: Locate full H1 2026 group revenue growth and Feb–Mar run-rate; confirm Easter calendar shift impact on H2 y-o-y comparatives.**
+- **Status**: `Partially resolved (remainder stays open for [trading update / H2 guidance])`
+- **Answer & evidence**: Group revenue from contracts with customers (continuing) = **R68,592.1m** `[unmapped, physical PDF p. 9]`, vs H1 2025 as reported R65,890.4m (+4.1%) and as adjusted R66,822.4m (+2.6%). Merchandise revenue R67,482.5m vs R65,160.2m as reported (+3.6%). Other revenue R1,109.6m vs R730.2m (+51.9%). Feb–Mar run-rate and Easter shift impact are not addressed in this section.
 
-**Q37 [High] — Locate R273m additional provisions and R58m G&L write-offs**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Only R150.7m provision movement is visible in note 5 `[p. 13]`; the R273m and R58m figures are not located in this capture. **Still open**: locate in debtors note; confirm opex vs below-OP; KZN vs SR split; recurring vs one-off.
+**Q43 [Medium]: Decompose other revenue +54.0% to R887.6m (VSP fees, G&L liquor, other); confirm recurring vs one-off and GP vs operating income treatment.**
+- **Status**: `Partially resolved (remainder stays open for [revenue note])`
+- **Answer & evidence**: Note 3 `[unmapped, physical PDF p. 11]` disaggregates total other revenue of **R1,109.6m** (not R887.6m — that figure appears to relate to a different scope): Marketing and service revenues R839.5m (vs R471.0m, +78.2%), Franchise fees R127.1m (vs R116.1m, +9.5%), Other services R143.0m (vs R143.1m, flat). By segment: SA other revenue R833.0m (vs R468.0m), Ireland R276.6m (vs R262.2m). Other revenue is presented **below gross profit** in the P&L `[p. 4]`, so it flows to operating income, not gross profit. Recurring vs one-off split is not explicitly stated.
 
-**Q6 / Q16 / Q26 / Q38 [High] — KZN segment OP/loss H1 and 3-month run-rate**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Segment note `[p. 9]` gives **Southern Africa** (not KZN) operating profit R237.7m and loss before tax –R50.9m for H1 FY2026, vs OP R867.7m / PBT R602.9m in H1 FY2025 `[p. 10]`. The SA swing is **–R630.0m at OP level** and **–R653.8m at PBT**. KZN is not separately disclosed in this capture. **Still open**: KZN segment OP/loss quantum, 3-month positive run-rate value, pre/post-ECL confirmation.
+**Q26 [High]: Confirm basis of "~EUR 70m EBITDA* — *12 months to March 2026" (pre/post IFRS 16, pre/post exceptionals, BWG-only vs all Ireland). Reconcile to Ireland segment operating profit.**
+- **Status**: `Partially resolved (remainder stays open for [Ireland segment note])`
+- **Answer & evidence**: Ireland segment operating profit H1 2026 = **R502.8m** `[unmapped, physical PDF p. 9]`; H1 2025 = R486.0m as reported, R494.4m as adjusted `[p. 12]`. Ireland D&A H1 2026 = R288.1m `[p. 9]`. Implied Ireland EBITDA (op profit + D&A) = R790.9m for 26 weeks, annualised ~R1,581.8m. At implied ~R19.11/EUR (from Q37), that is ~EUR 82.8m — above the ~EUR 70m figure, suggesting the ~EUR 70m may be pre-IFRS 16 or exclude some items. **Basis still not confirmed in this section.**
 
-**Q46 [Medium] — Sri Lanka independent retailers 17 → 13**
-- **Status**: `Still open` — not in this capture. Carry forward.
+**Q31 [Medium]: Check whether management guides to a wholesale GP% trade-off from "retailer profitability as primary operating metric".**
+- **Status**: `Partially resolved (remainder stays open for [Ireland segment note])`
+- **Answer & evidence**: Group gross profit H1 2026 = R7,111.7m on merchandise revenue R67,482.5m = **10.54% GP margin** `[unmapped, physical PDF p. 4]`. H1 2025: R6,998.0m / R65,160.2m = **10.74%**. GP% declined ~20bps. Ireland segment: revenue R16,975.7m, cost of sales R14,408.2m → GP R2,567.5m = **15.12%** (note: this includes other revenue in the revenue line per segment note `[p. 9]`). SA segment: revenue R51,616.4m, cost of sales R45,962.6m → GP R5,653.8m = **10.95%**. No explicit trade-off guidance in this section.
 
-**Q8 [Medium] — SA wholesale +1.1%, retail +1.1%, internal price inflation +2.6%**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: `[p. 11]` SA merchandise revenue R50,783.4m vs R49,229.9m = **+3.15%** (not +1.1%). Brand splits: SPAR 37,727.9 vs 36,876.9 = +2.31%; Liquor 6,406.1 vs 6,122.4 = +4.63%; Build It 5,150.3 vs 5,074.8 = +1.49%; SPAR Health 1,203.1 vs 943.8 = +27.5%; Encore 264.7 vs 212.0 = +24.9%; Pet Storey 31.3 vs nil. **Still open**: reconcile +3.15% SA merchandise growth to the +1.1% wholesale / +1.1% retail / +4.9% wholesale / –2.3% transactions figures cited earlier; basket vs footfall.
+**Q42 [High]: Quantify "change in accounting estimates" (YTD depreciation catch-up Nov 2025; RCC amortisation timing Dec 2025) impact on Ireland opex; confirm recurrence in H2.**
+- **Status**: `Partially resolved (remainder stays open for [Ireland segment note])`
+- **Answer & evidence**: Group D&A H1 2026 = R549.3m `[unmapped, physical PDF p. 9]` vs H1 2025 R551.7m (continuing) — flat. Ireland D&A R288.1m vs R293.0m — slightly down. No explicit "change in accounting estimates" line or quantum is disclosed in this section. **Still open.**
 
-**Q23 [Low] — Footfall/transactions and basket**
-- **Status**: `Resolved` — captured earlier (p.56); no new evidence here.
+**Q36 [Medium]: Locate IFRS 5 note: confirm Switzerland and UK both presented as discontinued; get Switzerland disposal status/gain-loss and held-for-sale balances.**
+- **Status**: `Partially resolved (remainder stays open for [Switzerland status])`
+- **Answer & evidence**: Note 9 `[unmapped, physical PDF p. 17]` confirms: *"The comparative periods ended 28 March 2025 and 26 September 2025 included the Group's Switzerland and Poland operations, which were classified and presented as discontinued operations in those periods."* In H1 2026, only UK remains in discontinued operations. Switzerland and Poland are no longer in discontinued ops — they have been disposed of or deconsolidated. **Switzerland disposal gain/loss and HFS balances are not disclosed in this section** (they were in prior periods).
 
-**Q25 [High] — Reconcile +2.1% Feb–Mar revenue growth**
-- **Status**: `Still open` — not in this capture. Carry forward.
+**Q45 [Medium]: Locate Switzerland disposal status, gain/loss, and held-for-sale balances; confirm both UK and Switzerland in discontinued.**
+- **Status**: `Partially resolved (remainder stays open for [prior-year notes])`
+- **Answer & evidence**: As above — Switzerland was in discontinued operations in H1 2025 and FY2025 but is **not** in H1 2026 discontinued operations `[unmapped, physical PDF p. 17]`. The H1 2025 discontinued loss of R5,026.4m included Switzerland and Poland. No Switzerland-specific gain/loss or HFS balance is disclosed in this H1 2026 section.
 
-**Q45 [Medium] — Pro forma footfall/basket cross-check**
-- **Status**: `Still open` — carry forward.
+**Q37 [Low]: Confirm ZAR/EUR translation rate used and whether ~EUR 70m EBITDA (Q26) is translated at the same rate as Ireland segment operating profit.**
+- **Status**: `Partially resolved (remainder stays open for [FX note])`
+- **Answer & evidence**: No explicit ZAR/EUR rate is stated in this section. Implied rate from UK HFS impairment (Q17/Q46): R1.5bn / EUR 78.5m ≈ R19.11/EUR (from prior capture). Ireland segment figures are translated at the average rate for the period. **Explicit rate still not confirmed.**
 
-**Q27 / Q41 [Medium] — G&L GP% and markdown/rebate bridge**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Group gross profit `[p. 4]`: R7,111.7m vs R6,998.0m = **+1.62%**; GM% = 7,111.7/67,482.5 = **10.54%** vs 6,998.0/65,160.2 = **10.74%** — a **–20bps** decline. SA GM% = (51,616.4–45,962.6)/51,616.4 = **10.95%**; Ireland GM% = (16,975.7–14,408.2)/16,975.7 = **15.12%**. G&L (Build It) GP% still not separately disclosed. **Still open**: G&L GP% H1 and Feb–Mar GP growth; markdown/rebate bridge; H2 reversal of promotional drag.
+**Q32 [Medium]: Confirm net debt/EBITDA ratio at 31 March 2026 and any stated deleveraging target.**
+- **Status**: `Partially resolved (remainder stays open for [debt note])`
+- **Answer & evidence**: From the balance sheet `[unmapped, physical PDF p. 5]`: Borrowings non-current R6,403.6m + current R573.9m = **R6,977.5m**; Bank overdrafts R1,430.7m; Cash – SPAR R1,069.5m; Cash – Guilds/trusts R527.7m. Net debt (borrowings + overdrafts – cash) = R6,977.5m + R1,430.7m – R1,069.5m – R527.7m = **R6,811.0m**. Lease liabilities R6,930.4m + R1,489.8m = R8,420.2m (IFRS 16). **Net debt/EBITDA ratio and deleveraging target not stated in this section.**
 
-**Q11 / Q18 / Q30 / Q44 [Low–Medium] — Store count, capex, trading space**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: `[p. 19]` note 11: capital commitments contracted R427.5m, approved but not contracted R884.9m, total R1,312.4m (vs R1,514.0m). Additions to PPE & intangibles R394.0m (2025: R460.9m); disposals R70.6m (2025: R54.7m). Cash flow `[p. 7]`: expansion capex R197.8m, maintenance R170.8m. **Still open**: full-year capex guidance, H2 SAP/omni spend, precise group store count, net openings, trading space m².
+**Q23 [Low]: Confirm split of hedged vs unhedged debt and interest rate sensitivity (hedged rate applies to R800m).**
+- **Status**: `Partially resolved (remainder stays open for [debt note])`
+- **Answer & evidence**: Finance costs H1 2026 = R667.5m `[unmapped, physical PDF p. 4]` vs R669.0m H1 2025 — flat. Finance income R304.6m vs R307.3m — flat. Net finance costs R362.9m vs R361.7m as reported `[p. 11]`. **Hedged vs unhedged split not disclosed in this section.**
 
-**Q20 / Q28 / Q33 / Q39 / Q50 [Medium–High] — Discontinued ops / UK / AWG**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Note 9 `[p. 17]`: discontinued revenue R2,153.9m vs R10,461.8m; operating loss –R115.7m vs –R4,916.8m; loss after tax –R144.4m vs –R5,026.4m. **Poland disposal provision R46.0m** recognised within discontinued ops (new detail). Note 13 `[p. 20]`: APA with A.F. Blakemore signed 18 May 2026; South-West England licence, 71 owned stores, warehouse/logistics, independent retailer supply agreements; further 63 stores being disposed to third parties; completion staged June–September 2026; gross proceeds ~GBP 13.0m; net cash broadly breakeven after costs. **Still open**: Swiss discontinued figures; confirm R1.5bn (€78.5m) held-for-sale impairment sits in discontinued line and no double-count with p.28 leverage note; AWG gain/loss on disposal; UK H2 trading loss run-rate; confirm 36 of top 40 landlord consents.
+**Q24 [Low]: Reconcile working capital chart (excludes Poland and Switzerland) to balance sheet lines.**
+- **Status**: `Partially resolved (remainder stays open for [working capital note])`
+- **Answer & evidence**: Cash flow note 5 `[unmapped, physical PDF p. 13]` shows net working capital changes of **(R1,839.7m)** vs (R508.0m) H1 2025. Components: decrease in inventories R63.0m (vs increase R367.4m), increase in trade receivables (R61.0m) (vs R463.4m), decrease in trade payables and provisions **(R1,841.7m)** (vs increase R322.8m). The massive payables outflow is the key driver of the cash absorption. **Chart reconciliation to balance sheet lines still open.**
 
-**Q29 / Q40 / Q43 / Q49 [Medium–High] — Ireland EBITDA and FX**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: Ireland segment `[p. 9]`: OP R502.8m; finance income R8.6m; finance costs R82.1m; PBT R413.9m; D&A R288.1m → **Ireland EBITDA ≈ R790.9m** (OP + D&A). H1 FY2025 `[p. 10]`: OP R486.0m, D&A R293.0m → EBITDA ≈ R779.0m. **Still open**: reconcile ~€70m TTM EBITDA to segment and group EBITDA pre-IFRS 16 R976.4m; FX rate; Ireland depreciation catch-up and RCC amortisation timing.
+**Q39 [High]: Confirm whether R273m is specific or portfolio ECL; get ECL allowance balance, satisfactory-paid %, collection rate, ageing buckets; check H2 provisioning guidance.**
+- **Status**: `Partially resolved (remainder stays open for [debtors note])`
+- **Answer & evidence**: Note 5 `[unmapped, physical PDF p. 13]` shows "Movement in provisions raised against trade receivables and loans" of **R150.7m** (vs R45.5m H1 2025) — this is the P&L charge for the period, not the R273m specific impairment referenced in prior captures. The R273m figure is not visible in this section. **ECL allowance balance, satisfactory-paid %, collection rate, ageing buckets, and H2 guidance are not in this section.**
 
-**Q21 [Medium] — NWC reconciliation**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: `[p. 13]` note 5: net working capital changes –R1,839.7m (vs –R508.0m), driven by **trade payables decrease –R1,841.7m** (vs +R322.8m), inventories +R63.0m, receivables –R61.0m. **Still open**: reconcile to balance sheet lines; confirm H2 payables timing reversal.
+**Q14 [High]: Get ECL allowance, satisfactory-paid %, collection rate, write-offs, and ageing analysis. Reconcile to the R273m specific impairment charge.**
+- **Status**: `Partially resolved (remainder stays open for [debtors note])`
+- **Answer & evidence**: As above — only the R150.7m P&L movement in provisions is visible `[p. 13]`. The R273m specific impairment and R58m G&L write-offs are not in this section. **Still open.**
 
-**Q22 [Low] — Diesel price inconsistency**
-- **Status**: `Still open` — not in this capture. Carry forward.
+**Q5 [High]: Gross debtors, ECL allowance, satisfactory-paid %, collection rate, write-offs — explain "increase in overdues".**
+- **Status**: `Partially resolved (remainder stays open for [debtors note])`
+- **Answer & evidence**: Trade and other receivables on balance sheet = **R15,975.2m** `[unmapped, physical PDF p. 5]` vs R15,216.3m (restated) at 28 March 2025 and R16,107.3m at 26 September 2025. The R150.7m provision movement `[p. 13]` is the only credit-quality data point in this section. **Satisfactory-paid %, collection rate, ageing, and overdues explanation still open.**
 
-**Q42 [Medium] — Split SA opex R834.2m increase by line**
-- **Status**: `Partially resolved (remainder stays open)` — see Q17 above; residual ~R180m unidentified.
+**Q18 [Medium]: Break down the R143m "Legacy matters" column on OP analysis into its components.**
+- **Status**: `Partially resolved (remainder stays open for [OP analysis note])`
+- **Answer & evidence**: Note 7 `[unmapped, physical PDF p. 16]` details impairments totalling R128.6m: HFS R13.1m (Beyers Ridge land), goodwill R47.4m (Hajimarkos stores — The Square and 2nd Avenue), PPE/intangible R41.2m (GiCom software R30.7m SA + Ireland property R10.2m), ROU asset R26.9m (3 SA stores R22.7m + Ireland vacant property R1.8m). Note 6.5 `[p. 15]` shows business acquisition costs R9.8m (R4.5m completed + R5.3m not yet finalised). Note 12 `[p. 19]` shows R5.1m settlement provision for Giannacopoulos SAP claim. **The R143m "Legacy matters" column is not directly visible in this section** — these are the underlying components that likely feed it.
 
-**Q24 [Low] — Bond-perfected stores reclassification**
-- **Status**: `Still open` — carry forward.
+**Q19 [Medium]: Confirm where the VSP cost R27.3m is recorded and the phasing of the R33.2m annual savings.**
+- **Status**: `Partially resolved (remainder stays open for [VSP note])`
+- **Answer & evidence**: Not visible in this section. **Still open.**
 
-**Q34 / Q48 [Medium/Low] — Week counts**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: `[p. 11]` confirms 26 weeks ended 27 March 2026 and 26 weeks ended 28 March 2025, with prior period **re-presented** for the change in reporting weeks (52-week Friday-ending calendar adopted prospectively). `[p. 12]` gives the "as adjusted" comparative: revenue R66,822.4m (vs as reported R65,890.4m), OP R1,403.4m (vs R1,353.7m), PBT R1,039.3m (vs R994.2m). **Still open**: FY2026/FY2025 full-year week counts for the annual build.
+**Q6 [Medium]: Corporate store count, losses, closure/transfer plans.**
+- **Status**: `Partially resolved (remainder stays open for [store network note])`
+- **Answer & evidence**: Note 7(4) `[unmapped, physical PDF p. 16]` confirms *"corporate-owned stores continue to be assessed as separate cash-generating units"* and *"Certain stores transitioned from profit-making to loss-making positions during the current period"* — three SA stores had ROU assets impaired by R22.7m. Note 6.1 `[p. 13]` confirms 8 SA retail stores acquired (Hajimarkos group, 1 Feb 2026, R162.0m consideration, R149.8m goodwill). Note 6.6 `[p. 15]` confirms 5 SA retail stores sold. **Corporate store count and closure/transfer plans still open.**
 
-**Q35 [Low] — SAP dated guidance**
-- **Status**: `Still open` — not in this capture. Carry forward.
+**Q12 [Low]: Absolute revenue and profit contribution of SPAR Health (+26.1% growth) and Build it.**
+- **Status**: `Resolved`
+- **Answer & evidence**: Note 3 `[unmapped, physical PDF p. 11]`: SPAR Health revenue R1,203.1m (vs R943.8m, +27.5%); Build it revenue R5,150.3m (vs R5,074.8m, +1.5%). SPAR R37,727.9m (+2.3%); Liquor R6,406.1m (+4.6%); Encore R264.7m (+24.9%); Pet Storey R31.3m (new). **Profit contribution by brand is not disclosed** — only revenue.
 
-**Q47 [Low] — SA ROE capital base**
-- **Status**: `Partially resolved (remainder stays open)`
-- **Answer & evidence**: `[p. 5]` equity R5,401.3m (vs R6,529.1m restated Mar-25, R5,312.3m Sep-25). The R1.5bn UK impairment is not visible in this capture; group equity movement `[p. 6]` shows FY2025 loss –R569.8m and FCTR reclassification –R752.9m. **Still open**: confirm SA ROE –6.8% capital base and whether R1.5bn UK impairment sits in group equity.
+**Q51 [Low]: Get SPAR Health absolute revenue and profit; confirm +26.1% growth base and H2 run-rate.**
+- **Status**: `Partially resolved (remainder stays open for [H2 run-rate])`
+- **Answer & evidence**: SPAR Health revenue R1,203.1m vs R943.8m = **+27.5%** (not +26.1% — slight discrepancy with prior capture; the +26.1% may have been a different metric or period). Profit not disclosed. H2 run-rate not addressed.
+
+**Q40 [High]: Confirm whether Sri Lanka is equity-accounted or consolidated; get contribution to group operating profit and whether it sits in "6 countries".**
+- **Status**: `Partially resolved (remainder stays open for [associates note])`
+- **Answer & evidence**: "Share of equity-accounted associate (losses)/profits" = **(R4.8m)** H1 2026 vs R4.4m H1 2025 `[unmapped, physical PDF p. 4]`. By segment `[p. 9]`: SA +R1.4m, Ireland **(R6.2m)**. Investment in associates and JVs = R141.7m `[p. 5]`. **Sri Lanka is equity-accounted** (it sits in the associate line, and the Ireland segment shows the R6.2m loss — suggesting Sri Lanka is reported within the Ireland segment or separately). The R6.2m Ireland associate loss likely includes Sri Lanka. **Whether Sri Lanka sits in "6 countries" still open.**
+
+**Q27 [High]: Confirm which entities are consolidated vs retailer/licence footprint given "6 countries" vs "SA and Ireland only". Check geographic segment note for Namibia, Botswana, Swaziland, Mozambique revenue/profit.**
+- **Status**: `Partially resolved (remainder stays open for [geographic note])`
+- **Answer & evidence**: Note 3 `[unmapped, physical PDF p. 9]` states the Group has **two reportable segments: Southern Africa and Ireland**. No separate disclosure for Namibia, Botswana, Swaziland, Mozambique. The segment note says *"The Group deals with a broad spread of customers, with no single customer exceeding 10% of the Group's revenue."* **Geographic breakdown within Southern Africa still not disclosed.**
+
+**Q7 [Medium]: Whether foreign ops (Swaziland, Namibia, Mozambique, Botswana — loyalty 59.4%) flagged for impairment/exit.**
+- **Status**: `Partially resolved (remainder stays open for [geographic note])`
+- **Answer & evidence**: No impairment or exit flag for these operations in this section. Note 9 `[p. 17]` confirms only UK remains in discontinued operations; Switzerland and Poland were disposed of in prior periods. **Still open.**
+
+**Q21 [Medium]: Check if any of these foreign ops are flagged for impairment/exit.**
+- **Status**: `Partially resolved (remainder stays open for [geographic note])`
+- **Answer & evidence**: As above — no flag in this section. **Still open.**
+
+**Q33 [Low]: Reconcile store counts (2000+ stores, 1000+ retailers, ~1 068 Ireland stores) to operational metrics; confirm net store movement H1 2026.**
+- **Status**: `Partially resolved (remainder stays open for [store network note])`
+- **Answer & evidence**: Note 6.1 `[p. 13]`: 8 SA retail stores acquired, 0 BWG retail stores acquired (vs 3 in Ireland H1 2025). Note 6.6 `[p. 15]`: 5 SA retail stores sold. Note 13 `[p. 20]`: UK disposal includes 71 owned company stores + 63 stores being disposed to third parties. **Net store movement by segment still not fully reconciled.**
+
+**Q49 [Medium]: Get net store movement H1 2026 by segment (SA, Ireland, Sri Lanka); confirm total group store count.**
+- **Status**: `Partially resolved (remainder stays open for [store network note])`
+- **Answer & evidence**: SA: +8 acquired, –5 sold = net +3 retail stores (plus corporate store impairments). Ireland: 0 acquired. UK: 71 + 63 being disposed. **Total group store count and Sri Lanka movement still open.**
+
+**Q34 [Low]: Confirm date and scope (SA-only vs group) of "Convenience 38% *AC Nielsen" market share.**
+- **Status**: `Partially resolved (remainder stays open for [market share note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
+
+**Q52 [Low]: Confirm Nielsen date/as-at period and whether 38% is value or volume, Republic of Ireland only.**
+- **Status**: `Partially resolved (remainder stays open for [market share note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
+
+**Q48 [Medium]: Reconcile pro-forma SA G&L transactions –2.30%/basket +3.53% to group SA revenue +1.7%; confirm KZN-specific split.**
+- **Status**: `Partially resolved (remainder stays open for [trading update])`
+- **Answer & evidence**: SA merchandise revenue H1 2026 = R50,783.4m vs R49,229.9m = **+3.2%** `[unmapped, physical PDF p. 11]`. SA total revenue from contracts with customers R51,616.4m vs R49,697.9m = **+3.9%** as reported, or vs R50,441.6m as adjusted `[p. 12]` = **+2.3%**. The +1.7% figure from prior capture may be a different metric (perhaps like-for-like or a specific sub-segment). **KZN-specific split still open.**
+
+**Q10 [Medium]: Reconcile KZN sales +4.9% y-o-y vs group retail sales +c.1% vs transactions –2.3% (volume vs basket inflation).**
+- **Status**: `Partially resolved (remainder stays open for [trading update])`
+- **Answer & evidence**: As above — SA merchandise revenue +3.2% as reported. **KZN-specific split still open.**
+
+**Q9 [Medium]: Quantify KZN H2 run-rate profit vs R123m H1 hit; confirm GP% recovery trajectory and "3 consecutive months of profit".**
+- **Status**: `Partially resolved (remainder stays open for [KZN note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
+
+**Q20 [Medium]: Confirm the exact months and profit quantum for the "3 consecutive months of profit" claim.**
+- **Status**: `Partially resolved (remainder stays open for [KZN note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
+
+**Q30 [Medium]: Get rand quantum of Jan–Mar KZN operating profit and GP% by month; reconcile to R123m H1 hit.**
+- **Status**: `Partially resolved (remainder stays open for [KZN note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
+
+**Q50 [Low]: Confirm SA segment PAT and equity base; reconcile negative ROE –6.8% to R273m provisions and R159m extraordinary items.**
+- **Status**: `Partially resolved (remainder stays open for [segment note])`
+- **Answer & evidence**: SA segment **loss before tax = (R50.9m)** `[unmapped, physical PDF p. 9]` vs profit R602.9m H1 2025. SA taxation = **+R2.4m** (a tax credit) vs R167.3m charge. SA segment total assets R28,097.2m, total liabilities R26,690.1m → **net assets R1,407.1m**. Ireland: PBT R413.9m, tax R68.9m, total assets R16,751.0m, liabilities R12,756.8m → net assets R3,994.2m. Group equity R5,401.3m. **SA ROE on R1,407.1m net assets with near-zero PAT is deeply negative — consistent with the –6.8% figure. The R273m provisions and R159m extraordinary items are not separately visible in this section but the SA PBT collapse from R602.9m to (R50.9m) is the key driver.**
+
+**Q13 [Low]: Capitalised vs expensed SAP costs; go-live timeline; "various investments ongoing".**
+- **Status**: `Partially resolved (remainder stays open for [SAP note])`
+- **Answer & evidence**: Note 7(3) `[unmapped, physical PDF p. 16]` confirms **R30.7m GiCom software module impairment** — software "remains under development" but "would not be deployed due to limited expected utilisation" and was "fully impaired." This is a SAP-adjacent IT write-off. Note 12 `[p. 19]` references the Giannacopoulos SAP ERP claim at KZN DC. **Capitalised vs expensed SAP split and go-live timeline still open.**
+
+**Q22 [Medium]: Get capitalised vs expensed SAP costs and go-live timeline.**
+- **Status**: `Partially resolved (remainder stays open for [SAP note])`
+- **Answer & evidence**: As above — GiCom impairment R30.7m confirmed. **Split and timeline still open.**
+
+**Q47 [Medium]: Get capitalised vs expensed SAP split for H1 2026 and FY2026 guidance; confirm Finance Go-Live FY2026 and DC Integration FY2027 timing.**
+- **Status**: `Partially resolved (remainder stays open for [SAP note])`
+- **Answer & evidence**: As above. **Still open.**
+
+**Q25 [Low]: Confirm the phasing and treatment (discontinued ops) of forecast H2 trading losses (UK) ~£5m.**
+- **Status**: `Partially resolved (remainder stays open for [UK disposal note])`
+- **Answer & evidence**: UK is confirmed discontinued `[unmapped, physical PDF p. 17]`. H1 2026 UK operating loss R115.7m (group discontinued). Note 13 `[p. 20]` confirms disposal completion staged June–September 2026. **H2 ~£5m loss phasing not addressed.**
+
+**Q8 [Medium]: Locate missing footnote definitions for loyalty chart markers [^a], [^M], [^A], [^l], [^t], [^2], [^i].**
+- **Status**: `Partially resolved (remainder stays open for [loyalty note])`
+- **Answer & evidence**: Not addressed in this section. **Still open.**
 
 ---
 
 ### 2. Footnote & Qualification Deep-Dive
 
-**a) Prior-period error — current loans and receivables misclassified as non-current (`*`, `[p. 5]`)**
-- R457.8m (Mar-25) / R215.6m (Sep-25) reclassified from non-current to current "Loans and other receivables." This **inflates** the restated Mar-25 current assets and **reduces** non-current assets by the same amount. No P&L or equity impact. **Verify**: whether the R457.8m is a genuine timing error or a working-capital deterioration signal; check the loans/receivables note for ageing and ECL.
+**Footnote `*` — Prior period error: current vs non-current loans and receivables** `[unmapped, physical PDF p. 5]`
+- **Text**: *"During the current financial period, the Group identified a prior period error pertaining to March 2025 of R457.8 million (September 2025: R215.6 million) in relation to current loans and receivables that was incorrectly classified as non-current."*
+- **Implication**: This is a reclassification within "Loans and other receivables" — R457.8m moved from non-current to current at 28 March 2025, and R215.6m at 26 September 2025. It has **no impact on equity, P&L, or cash flows**. For forecasting, the current/non-current split of loans and receivables should use the restated figures: current R550.3m (restated) at 28 March 2025 and R278.8m at 26 September 2025; non-current R224.4m (restated) and R190.7m. **Verify in note 4** whether the R457.8m/R215.6m are the only reclassifications or whether there are further adjustments.
 
-**b) Prior-period error — general banking facilities R494.0m (`[^#]`, `[p. 5]`; note 4, `[p. 12]`)**
-- R494.0m reclassified from cash and cash equivalents to bank overdrafts. Restated Mar-25 closing cash on the cash flow statement rises from R881.9m to R1,375.9m. **Implication**: headline "net cash" is overstated by R494m pre-restatement; the true liquidity position at Mar-25 was R1,375.9m net cash, not R1,869.9m. **Verify**: whether the same R494m is embedded in the p.28 leverage note and the R2,742m opening cash figure used in Q15.
+**Footnote `[^#]` — Prior period error: general banking facilities reclassification** `[unmapped, physical PDF p. 5]`
+- **Text**: *"The prior period comparative information as at 28 March 2025 has been restated to correct an error in the classification of general banking facilities of R494.0 million from cash and cash equivalents to bank overdrafts. Refer to note 4 for further detail."*
+- **Implication**: At 28 March 2025, cash and cash equivalents were restated **down** by R494.0m and bank overdrafts restated **up** by R494.0m. This flows through to the cash flow statement `[p. 7]` where the closing cash balance was restated from R881.9m to R1,328.9m (note 4 `[p. 12]` clarifies the R494.0m increase in closing cash on the cash flow statement). **Critical for forecasting**: the "Net cash and cash equivalents" line of R584.5m at 27 March 2026 `[p. 12]` excludes R418.0m of general banking facility overdrafts, which are shown separately. The "Net cash and banking facilities" of R166.5m is the true liquidity position. **Verify in note 4** the full reconciliation and whether the R494.0m is the only restatement.
 
-**c) Prior-period error — inter-company receivable/payable R672.0m (`(1)`, `[p. 5]`)**
-- R672.0m not eliminated; restated Mar-25 trade receivables and trade payables both reduced by R672.0m. No equity/P&L/cash flow impact. **Verify**: whether this affects the R15,975.2m trade receivables reconciliation (Q5/Q13) and the NWC chart (Q21).
+**Footnote `(1)` — Prior period error: inter-company receivable/payable elimination** `[unmapped, physical PDF p. 5]`
+- **Text**: *"The prior period comparative information as at 28 March 2025 has been restated to correct an error relating to inter-company receivable and payable balances which was not correctly eliminated of R672.0 million."*
+- **Implication**: At 28 March 2025, trade and other receivables and trade and other payables were both restated **down** by R672.0m (gross-up eliminated). This has **no impact on equity, P&L, or cash flows** but reduces both current assets and current liabilities by R672.0m. **Critical for working capital forecasting**: the restated 28 March 2025 receivables of R15,216.3m and payables of R20,315.9m are the correct comparatives. The H1 2026 receivables of R15,975.2m and payables of R20,561.9m should be compared to these restated figures, not the originally reported ones.
 
-**d) Change in reporting weeks (`[p. 11]`, `[p. 12]`)**
-- FY changed prospectively to 52-week Friday-ending calendar. Prior period **re-presented** with "as adjusted" comparatives: revenue R66,822.4m (+R932.0m vs as reported), OP R1,403.4m (+R49.7m), PBT R1,039.3m (+R45.1m). **Critical for forecasting**: all H1 growth rates must be computed on the **as-adjusted** base, not the as-reported base. The +1.62% group GP growth and +3.15% SA merchandise growth computed in Section 1 are on **as-reported** bases and therefore **understate** like-for-like growth. **Verify**: recompute all growth rates on the as-adjusted base (revenue +1.4% not +4.1%; OP –47.2% not –45.3%; PBT –65.1% not –63.5%).
+**Footnote `*` — Cash flow statement: general banking facilities restatement** `[unmapped, physical PDF p. 7]`
+- **Text**: *"The prior period comparative information for the period ended 28 March 2025 has been restated to correct an error in classification of the movement in general banking facilities of R494.0 million from Cash and cash equivalents to net movement on banking facilities as part of Cash flows (used in)/from financing activities to correctly reflect the treatment under IAS 7 Statement of Cash Flows. Refer to note 4."*
+- **Implication**: The H1 2025 "Net movement on banking facilities" was restated from (R2,199.0m) to include the R494.0m, and the closing cash balance was restated from R881.9m to R1,328.9m. **For forecasting**: the H1 2026 net movement on banking facilities of (R252.0m) is on the corrected basis. The opening cash of R2,742.4m is the audited 26 September 2025 closing balance and is not restated.
 
-**e) Encore re-presentation (`[^#]`, `[p. 11]`)**
-- Encore revenue (R264.7m vs R212.0m) split out of SPAR. No impact on totals. **Verify**: whether Encore is loss-making and drags SA OP (relevant to KZN/SA segment loss).
+**Footnote `(1)` — General banking facilities: 364-day contracted, overnight call** `[unmapped, physical PDF p. 7]`
+- **Text**: *"General banking facilities are contracted for a 364-day period, however individual drawdowns are utilised on an overnight call basis, thereby allowing the Group to access these facilities on a short-term basis to manage daily liquidity requirements."*
+- **Implication**: The R418.0m of general banking facility overdrafts `[p. 12]` are technically short-term but roll over daily. **For forecasting**: treat these as part of the working capital/liquidity management, not as long-term debt. The "Net cash and banking facilities" of R166.5m is the true liquidity buffer.
 
-**f) Discontinued operations — Poland disposal provision R46.0m (`(1)`, `[p. 17]`)**
-- R46m provision for settlement/dispute costs on Poland exit, recognised **within discontinued operations**. This is a **new one-off** not previously flagged. **Verify**: whether any further Poland provisions are expected in H2; whether the R46m is cash or non-cash; whether it is excluded from HEPS (it is, via the discontinued line).
+**Footnote `[^#]` — Segment note: Encore re-presentation** `[unmapped, physical PDF p. 11]`
+- **Text**: *"Comparative information has been re-presented to separately disclose Encore revenue from SPAR. In the prior period, Encore revenue was included within SPAR and was not presented as a separate line item. This re-presentation has been made to enhance the transparency and comparability of segmental revenue disclosures and has no impact on previously reported total Group revenue or profit."*
+- **Implication**: Encore revenue H1 2026 = R264.7m vs R212.0m H1 2025 (re-presented). SPAR revenue H1 2026 = R37,727.9m vs R36,876.9m (re-presented). **For forecasting**: use the re-presented H1 2025 figures for like-for-like brand growth. Encore growth = +24.9%; SPAR growth = +2.3%.
 
-**g) Contingent liability — Giannacopoulos R2.1bn + R168m (`[p. 19]`)**
-- R2.1bn membership dispute (no provision, legal opinion favours company) plus **new R168m SAP/KZN claim**, against which a **R5.1m settlement provision** has been recognised. **Implication**: the R168m claim is KZN-specific and SAP-implementation-related — directly relevant to the KZN recovery narrative and to the SAP go-live guidance (Q35). **Verify**: whether the R5.1m sits in SA opex or below OP; whether further KZN retailer claims are probable; whether the R2.1bn claim has any settlement range disclosed.
+**Footnote `[^#]` — Segment note: Change in reporting weeks** `[unmapped, physical PDF p. 11]`
+- **Text**: *"In the prior reporting period, the CODM changed the Group's financial year end to align with the retail industry's general practice of dividing the financial reporting calendar into 52 weeks of seven days, with each reporting week ending on a Friday, allowing for better comparability between the reporting periods. This change was adopted prospectively. The results for the 26 weeks ended 27 March 2026 have been prepared on this basis. The prior period results ended 28 March 2025 were also prepared on this basis."*
+- **Implication**: Both H1 2026 and H1 2025 are on the 26-week Friday-ending basis. **However**, the "as reported vs as adjusted" bridge `[pp. 11–12]` shows the H1 2025 comparative had **additional trading days** that need to be stripped out for true like-for-like comparison: revenue as reported R65,890.4m vs as adjusted R66,822.4m (+R932.0m); operating profit R1,353.7m vs R1,403.4m (+R49.7m); PBT R994.2m vs R1,039.3m (+R45.1m). **Critical for forecasting**: the H1 2026 vs H1 2025 as-adjusted comparison shows group revenue +2.6% (not +4.1%), operating profit –47.2% (not –45.3%), and PBT –65.1% (not –63.5%). The as-adjusted figures are the correct like-for-like comparatives.
 
-**h) Contingent consideration — Perrys R79.5m (`[p. 15]`)**
-- Payable Feb-2027, based on 12-month retained sales from 1 Feb 2026. **Implication**: R79.5m cash outflow in H1 FY2027; a sales-performance contingency that could be reduced if Perrys underperforms. **Verify**: Perrys revenue run-rate vs the retained-sales threshold.
+**Footnote `*` — Note 4: Cash and cash equivalents reconciliation** `[unmapped, physical PDF p. 12]`
+- **Text**: *"The Group's general banking facilities, which include call accounts and associated overdraft balances, included banking facilities that have been separately disclosed in the current period to correct an error in classification between Cash and cash equivalents and Cash flows (used in)/from financing activities and to provide improved transparency over the composition of cash and cash equivalents. As a result, movements in these facilities are now presented separately. Comparative figures for the period ended 28 March 2025 have been restated accordingly to ensure consistency with the current period's presentation. The adjustment to the comparative figures for the period ended 28 March 2025 was a R494.0 million increase in the closing balance of cash and cash equivalents on the statement of cash flows (previously R881.9 million)."*
+- **Implication**: The cash reconciliation `[p. 12]` shows: Bank balances – Guilds/trusts R527.7m + SPAR R1,069.5m – SPAR other overdrafts (R1,012.7m) = **Net cash and cash equivalents R584.5m**. Then – general banking facilities (R418.0m) = **Net cash and banking facilities R166.5m**. **For forecasting**: the R584.5m is the IFRS cash flow statement figure; the R166.5m is the true liquidity position including all facilities. The R1,012.7m "SPAR other" overdrafts are separate from the R418.0m general banking facilities.
 
-**i) Goodwill impairment — Hajimarkos acquisition (`(2)`, `[p. 16]`)**
-- R149.8m goodwill recognised on the R162.0m acquisition of eight stores (1 Feb 2026); **two stores (The Square, 2nd Avenue) impaired within two months of acquisition**. **Implication**: the acquisition was priced above market-related valuations and is already underperforming — a red flag on SA retail trading density and on management's capital allocation. **Verify**: quantum of the goodwill impairment (not separately disclosed — only total R47.4m group goodwill impairment); whether the remaining R102.4m Hajimarkos goodwill is at risk.
+**Footnote `(1)` — Note 7: Beyers Ridge land impairment** `[unmapped, physical PDF p. 16]`
+- **Text**: *"Beyers Ridge land, classified as an asset held for sale, was previously impaired in FY2025 based on an estimated recoverable value of approximately R80 million. During the current period, a contractual selling price of R65 million was negotiated, resulting in a further impairment loss being recognised at 27 March 2026 to reduce the carrying amount to the agreed fair value less costs to sell."*
+- **Implication**: R13.1m further impairment in H1 2026. The land is now carried at R65m (fair value less costs to sell). **For forecasting**: this is a one-off, non-recurring item. The R13.1m is added back in the HEPS reconciliation `[p. 8]`.
 
-**j) GiCom software impairment R30.7m (`(3)`, `[p. 16]`)**
-- Software under development fully impaired — "limited expected utilisation." **Implication**: capitalised IT spend written off; relevant to SAP/omni capex guidance (Q35/Q44) and to the credibility of the technology roadmap. **Verify**: whether further IT impairments are expected; whether GiCom spend was previously capitalised in intangibles (goodwill & intangibles R6,500.2m vs R6,651.6m).
+**Footnote `(2)` — Note 7: Hajimarkos goodwill impairment** `[unmapped, physical PDF p. 16]`
+- **Text**: *"On 1 February 2026, Southern Africa acquired eight stores from the Hajimarkos group. In terms of the acquisition agreement, the purchase consideration amounted to R162.0 million, which exceeded current market-related valuations, resulting in goodwill of R149.8 million being recognised on acquisition. Following an impairment assessment performed at 27 March 2026, two stores, namely The Square and 2nd Avenue, were identified as experiencing operational performance challenges. Consequently, an impairment loss was recognised against goodwill during the period."*
+- **Implication**: R47.4m goodwill impairment (per note 7 table) on the Hajimarkos acquisition, just two months after acquisition. This is a **red flag** on acquisition discipline — R149.8m goodwill recognised, R47.4m (31.6%) impaired within 2 months. **For forecasting**: question whether further Hajimarkos goodwill impairment is likely in H2. The R47.4m is added back in HEPS `[p. 8]`.
 
-**k) ROU asset impairments — three SA stores R22.7m + Ireland R1.8m (`(4)`, `[p. 16]`)**
-- "Certain stores transitioned from profit-making to loss-making" — three SA corporate stores impaired. **Implication**: store-level profitability deterioration beyond KZN; relevant to store network rationalisation and lease liability (R8,420.2m). **Verify**: which stores/regions; whether closures follow; lease exit costs.
+**Footnote `(3)` — Note 7: GiCom software and Ireland property impairment** `[unmapped, physical PDF p. 16]`
+- **Text**: *"Southern Africa recognised an impairment of R30.7 million relating to the GiCom software module, which remains under development at 27 March 2026. Based on an assessment performed by the Technology team together with the National Merchandising Executive, it was determined that the software would not be deployed due to limited expected utilisation. Accordingly, the software development costs were fully impaired. In Ireland, an independent valuation performed by a professional valuer identified that the recoverable amount of a property was below its carrying value, resulting in an impairment loss of R10.2 million being recognised during the period."*
+- **Implication**: R30.7m SA GiCom software write-off (failed IT project) + R10.2m Ireland property impairment = R41.2m total PPE/intangible impairment. **For forecasting**: the GiCom write-off is a one-off but signals IT project risk — check whether other software projects (SAP, etc.) are at risk. The R41.2m is added back in HEPS `[p. 8]`.
 
-**l) Beyers Ridge land — further R13.1m impairment (`(1)`, `[p. 16]`)**
-- Carrying value reduced to R65m negotiated price (from ~R80m). **Verify**: whether sale completes in H2 and at what gain/loss.
+**Footnote `(4)` — Note 7: ROU asset impairment** `[unmapped, physical PDF p. 16]`
+- **Text**: *"In Southern Africa, corporate-owned stores continue to be assessed as separate cash-generating units, consistent with the approach adopted in FY2025. Certain stores transitioned from profit-making to loss-making positions during the current period, representing an indicator of impairment. Based on the impairment assessment performed, right-of-use assets relating to three stores were impaired by R22.7 million at 27 March 2026. In Ireland, a tenant occupying one of the Group's properties experienced financial difficulties, resulting in the property becoming vacant. Management was subsequently unable to secure a suitable replacement tenant and, following an impairment assessment, an impairment loss of R1.8 million was recognised at 27 March 2026."*
+- **Implication**: R22.7m SA corporate store ROU impairment (3 stores) + R1.8m Ireland vacant property = R26.9m total. **For forecasting**: the SA corporate store portfolio is under pressure — 3 stores transitioned from profit to loss in H1. Check H2 for further corporate store impairments. The R26.9m is added back in HEPS `[p. 8]`.
 
-**m) Financial guarantees (`[p. 16]`)**
-- Total guarantees R544.3m (Wesbank R297.4m, Numlite R219.0m, retailer finance R27.9m). Board limits R1.0bn and R250m. **Implication**: contingent credit exposure to independent retailers — a leading indicator of retailer distress and hence debtor-book risk. **Verify**: whether any guarantees have been called; whether guarantee growth tracks the debtor book.
+**Footnote `(1)` — Note 8: Wesbank loan guarantees** `[unmapped, physical PDF p. 16]`
+- **Text**: *"SPAR assists retailers to obtain loans at the prime interest rate through an approved financial institution. These loans are backed by a guarantee from SPAR in favour of the institution, enabling our retailers access to finance at attractive rates. The financial institution fulfils all administrative activities relating to the repayment of these loans, and will only revert to SPAR in the unusual instance of default on the part of the retailer. Retailer loans are secured by notarial bonds over assets, deeds of suretyship, cession and pledge of shares and in some instances, lease options. The recoverability of amounts owed by retailers is regularly reviewed and assessed on an individual basis. The Board of Directors of SPAR (Board) has limited the guarantee facility to R1.0 billion (2025: R1.0 billion)."*
+- **Implication**: R297.4m guarantee exposure to Wesbank retailer loans (down from R376.2m). The R1.0bn facility limit means there is R702.6m of headroom. **For forecasting**: this is a contingent liability, not on balance sheet. The decline in exposure suggests either retailer repayments or reduced uptake. Check whether the R150.7m provision movement `[p. 13]` includes any Wesbank-related provisions.
 
-**n) Note 5 — "Stock provision relating to the closure of Imports Warehouse" R22.4m (`[p. 13]`)**
-- New one-off stock provision. **Verify**: whether this is SA or group; whether further Imports Warehouse costs follow; whether it sits in SA opex (contributing to the R834.2m increase).
+**Footnote `(2)` — Note 8: Numlite guarantee** `[unmapped, physical PDF p. 16]`
+- **Text**: *"The Board has limited the guarantee facility to R250.0 million (2025: R250.0 million) relating to Numlite (Pty) Limited, which provides retail computer equipment to our independent retailers."*
+- **Implication**: R219.0m guarantee exposure to Numlite (flat vs R217.6m). R31.0m headroom. **For forecasting**: stable contingent liability.
 
-**o) Note 5 — "Movement in provisions raised against trade receivables and loans" R150.7m (`[p. 13]`)**
-- This is the **cash-flow** charge, materially below the R273.1m specific impairment charge cited earlier. **Implication**: ~R122m of the R273m charge is non-cash, reclassified, or sits in discontinued ops. **Verify**: reconcile R150.7m to R273.1m; confirm whether the R58m G&L write-offs are within the R150.7m.
+**Footnote `*` — Note 9: Discontinued operations loss composition** `[unmapped, physical PDF p. 17]`
+- **Text**: *"Included in the profit or loss of the discontinued operations in the current period are the following: United Kingdom loss after tax 98.4; Poland disposal costs 46.0; Total 144.4."*
+- **Implication**: The R144.4m discontinued loss comprises **R98.4m UK loss after tax** + **R46.0m Poland disposal costs**. The Poland provision relates to *"estimated settlement and dispute resolution costs associated with the exit process"* `[p. 17, note 9(1)]`. **For forecasting**: the R46.0m Poland cost is a one-off; the R98.4m UK loss is the run-rate to model for H2 (though disposal completion June–September 2026 will truncate it). The UK H1 operating loss was R115.7m; after finance costs (R29.1m) and tax (nil), the loss after tax is R144.4m — but this includes Poland R46.0m, so **UK-only loss after tax = R98.4m**.
 
-**p) Note 9 — discontinued cash flows (`[p. 18]`)**
-- Operating –R77.3m, investing –R2.8m, financing +R27.4m (excl. inter-group financing from SPAR). **Implication**: the discontinued outflow is only ~R53m, so it **cannot** explain the R2,157m gap in Q15. **Verify**: the continuing-only cash flow reconciliation.
+**Footnote `[^#]` — Note 9: Cash flow excludes inter-group financing** `[unmapped, physical PDF p. 18]`
+- **Text**: *"Excludes inter-group financing from SPAR."*
+- **Implication**: The discontinued operations cash flow of net inflows R27.4m from financing activities excludes inter-group financing from SPAR. **For forecasting**: the true cash drain of UK discontinued ops on the group is higher than the R77.3m operating outflow + R2.8m investing outflow – R27.4m financing inflow = R52.7m net outflow, because inter-group financing is not captured. Check note 9 or the UK disposal note for the inter-group funding amount.
 
-**q) Note 13 — UK disposal (`[p. 20]`)**
-- Gross proceeds ~GBP 13.0m; net cash broadly breakeven after costs; staged completion June–September 2026; 71 owned stores + 63 to third parties. **Implication**: no disposal gain expected; the R1.5bn impairment already taken means book value ≈ proceeds. **Verify**: FX rate for GBP 13.0m; whether the 63 third-party disposals generate additional proceeds; whether any further impairment is needed at completion.
+**Footnote `(1)` — Note 9: Poland disposal provision** `[unmapped, physical PDF p. 17]`
+- **Text**: *"The Group recognised a provision of R46 million within discontinued operations relating to the settlement of matters arising from the disposal and closure of the Poland operations. The provision primarily relates to estimated settlement and dispute resolution costs associated with the exit process."*
+- **Implication**: R46.0m one-off Poland exit cost. **For forecasting**: non-recurring. Check whether further Poland costs are expected in H2.
+
+**Note 12 — Contingent liability: Giannacopoulos Group** `[unmapped, physical PDF p. 19]`
+- **Text**: *"As was initially reported in the annual financial statements in respect of the year ended 30 September 2022, summons was served on the Company by one of its retailers, the Giannacopoulos Group, for alleged damages of R2.1 billion arising from a membership dispute. The Company denied any liability and has filed a plea to defend the matter. Management have engaged extensively with the retailer and while many issues have been successfully resolved, a few major dispute matters could not be finalised. The parties have agreed that the dispute be dealt with through a legal process. The Company continues to remain satisfied that, based on legal opinion, there is insufficient evidence to substantiate the claim and does not recognise any liability for damages. During the current period, summons was served on the Company by the Giannacopoulos Group in respect of an additional claim for alleged damages of R168 million arising from the implementation of SAP ERP software at the KwaZulu-Natal Distribution Centre. Through the approved SAP compensation process at the time, the Giannacopoulos Group was 'entitled' to R1.55 million. This compensation calculation was agreed to and signed off by the Company and the KZN regional guild and aligned to settlements agreed to with other retailers. The Giannacopoulos Group countered, requesting compensation of R5.1 million at the time. Based on the legal experts' view and the previous settlements with other retailers, a settlement provision of R5.1 million has been recognised in this regard at 27 March 2026."*
+- **Implication**: **R2.1bn original claim + R168m new SAP claim = R2.268bn total contingent liability**, not recognised on balance sheet. Only R5.1m provision recognised for the SAP claim. **For forecasting**: this is a material tail risk. If the R2.1bn claim were to crystallise, it would wipe out ~39% of group equity (R5,401.3m). The R5.1m provision is immaterial. Check the FY2026 annual report for any update on the legal process.
+
+**Note 13 — Events after reporting date: UK disposal** `[unmapped, physical PDF p. 20]`
+- **Text**: *"On 18 May 2026, the Group announced that it had entered into an asset purchase agreement with A.F. Blakemore & Son for the disposal of the South-West England SPAR licence, 71 owned company stores, associated warehouse and logistics infrastructure and related independent retailer supply agreements. In addition, a further 63 stores are in the process of being disposed of to third-party operators. Completion of the transaction is expected to occur in stages between June and September 2026. Total gross proceeds are estimated of approximately GBP 13.0 million and the net cash outcome is expected to be broadly breakeven after transaction costs. The full financial and reporting effect of the transaction is being assessed by management. These stores are currently included within assets held for sale and discontinued operations."*
+- **Implication**: **Critical for H2 forecasting**: UK disposal proceeds ~GBP 13.0m (~R248m at R19.11/GBP) but net cash broadly breakeven after costs. The 71 owned stores + 63 third-party stores = 134 stores being disposed. Completion June–September 2026 means H2 will have partial UK trading. **The full financial effect is NOT yet quantified** — no gain/loss on disposal, no H2 trading loss guidance. This is the single biggest open item for H2 forecasting.
 
 ---
 
@@ -4070,126 +4264,24 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q51 | High | Debtors / credit note | Provision movement R150.7m `[p. 13]` vs specific impairment charge R273.1m cited earlier | Reconcile R150.7m cash-flow charge to R273.1m P&L charge; identify the ~R122m difference (non-cash, reclass, discontinued) | Determines true H1 credit cost and H2 provisioning run-rate |
-| Q52 | High | Debtors / credit note | R58m G&L write-offs and R273m additional provisions not located in this capture | Locate both in debtors note; confirm opex vs below-OP; KZN vs SR split; recurring vs one-off | Credit cost is the single largest swing factor in SA profitability |
-| Q53 | High | Cash flow / debt note | Discontinued cash outflow only –R52.7m `[p. 18]` vs R2,157m Q15 gap | Obtain continuing-only cash flow reconciliation; confirm no double-count with p.28 leverage note and R1.5bn UK impairment | Needed to forecast H2 FCF and deleveraging |
-| Q54 | High | Segmental (KZN) | SA OP swing –R630.0m `[p. 9 vs p. 10]`; KZN not separately disclosed | Get KZN segment OP/loss H1 and 3-month positive run-rate; confirm pre/post-ECL | KZN recovery is the key H2 earnings driver |
-| Q55 | High | Revenue decomposition | SA merchandise +3.15% as-reported `[p. 11]` vs +1.1% wholesale cited earlier; as-adjusted base R66,822.4m `[p. 12]` | Recompute all growth rates on as-adjusted base; reconcile +3.15% to +1.1%/+4.9% wholesale and –2.3% transactions | Growth rate is the top-line forecast anchor |
-| Q56 | High | Ireland segment / FX | Ireland EBITDA ≈ R790.9m `[p. 9]`; no EUR figures or FX rate in capture | Get EUR/ZAR average and closing rates; restate Ireland revenue/EBITDA in ZAR; reconcile ~€70m TTM EBITDA | Ireland is ~25% of group revenue and the profit engine |
-| Q57 | Medium | Gross margin / G&L | Group GM% 10.54% vs 10.74% (–20bps) `[p. 4]`; SA GM% 10.95%, Ireland 15.12% | Get G&L GP% H1 and Feb–Mar GP growth; markdown/rebate bridge; confirm H2 reversal of promotional drag | Margin is the second-largest forecast lever after credit |
-| Q58 | Medium | Opex note | SA opex +R834.2m vs disclosed lines +R654.4m `[p. 9 vs p. 10]`; residual ~R180m | Split residual by IT, warehousing/occupancy, consultancy, VSP; isolate KZN delivery cost and VSP R27.3m | Opex growth ex-one-offs drives H2 EBIT |
-| Q59 | Medium | Discontinued ops / UK | Poland provision R46.0m `[p. 17]`; UK APA GBP 13.0m, staged Jun–Sep 2026 `[p. 20]` | Confirm Swiss discontinued figures; confirm R1.5bn impairment in discontinued line; AWG gain/loss; UK H2 trading loss run-rate | Determines whether discontinued losses persist into FY2027 |
-| Q60 | Medium | Contingent liabilities | Giannacopoulos R2.1bn + new R168m KZN SAP claim; R5.1m provision `[p. 19]` | Confirm where R5.1m sits (opex vs below OP); whether further KZN retailer claims probable; any settlement range on R2.1bn | Tail risk to SA earnings and KZN recovery |
-| Q61 | Medium | Business combinations | Hajimarkos R149.8m goodwill; two stores impaired within 2 months `[p. 16]` | Get quantum of Hajimarkos goodwill impairment; assess remaining R102.4m at risk; Perrys R79.5m contingent consideration timing | Capital allocation quality and H1 FY2027 cash outflow |
-| Q62 | Medium | Working capital | Payables decrease –R1,841.7m `[p. 13]` | Reconcile NWC chart to balance sheet; confirm H2 payables timing reversal | H2 cash flow and leverage forecast |
-| Q63 | Low | Store network / capex | Capital commitments R1,312.4m `[p. 19]`; additions R394.0m | Confirm full-year capex guidance, H2 SAP/omni spend, store count, net openings, trading space m² | Capex drives FCF and leverage |
-| Q64 | Low | Accounting policies | Prior-period errors R457.8m, R494.0m, R672.0m `[p. 5]` | Confirm no further restatements; check whether R494m is embedded in p.28 leverage note and R2,742m opening cash | Data integrity for the forecast model |
-| Q65 | Low | Returns on capital | Equity R5,401.3m `[p. 5]`; SA ROE –6.8% cited earlier | Confirm SA ROE capital base; whether R1.5bn UK impairment sits in group equity | Validates ROE-based valuation |
+| Q53 | High | Debtors / credit note | Trade receivables R15,975.2m `[p. 5]`; provision movement R150.7m `[p. 13]`; prior capture R273m specific impairment and R58m G&L write-offs not visible here | Locate the debtors note: gross debtors, ECL allowance, satisfactory-paid %, collection rate, ageing buckets, write-offs. Reconcile R150.7m P&L movement to R273m specific impairment and R58m write-offs. | Credit book health is the #1 risk to SA profitability; R273m provisions drove SA PBT collapse. |
+| Q54 | High | Ireland segment note | Ireland op profit R502.8m `[p. 9]`; D&A R288.1m; implied EBITDA ~R790.9m H1; ~EUR 70m FY claim (Q26) | Reconcile Ireland segment op profit + D&A to ~EUR 70m EBITDA. Confirm pre/post IFRS 16, pre/post exceptionals, BWG-only vs all Ireland. Get explicit ZAR/EUR rate. | Ireland is now the profit engine; mispricing its EBITDA distorts group valuation. |
+| Q55 | High | UK disposal / discontinued note | Note 13 `[p. 20]`: GBP 13.0m gross proceeds, net broadly breakeven, completion June–Sept 2026, "full financial effect being assessed" | Get gain/loss on disposal, H2 UK trading loss phasing (~£5m), inter-group financing amount excluded from note 9 cash flow `[p. 18]`, and whether further HFS impairment is expected. | UK disposal is the biggest H2 swing factor; no gain/loss or H2 loss guidance yet. |
+| Q56 | High | HEPS / dividend note | HEPS 123.6c `[p. 8]`; no DPS disclosed in this section; prior capture DPS target | Locate DPS declared, payout ratio vs HEPS, and dividend sustainability given R974m operating cash outflow `[p. 7]`. | Cash flow is negative; dividend may be unfunded. |
+| Q57 | High | Cash flow / working capital note | Operating cash outflow R974.0m `[p. 7]`; payables outflow R1,841.7m `[p. 13]`; receivables up R61.0m; inventories down R63.0m | Explain the R1,841.7m payables outflow — is it timing, settlement of prior overdues, or structural? Check creditor days vs prior periods. | Working capital absorption is the key cash flow risk; if structural, H2 cash flow stays negative. |
+| Q58 | High | Contingent liability / legal note | Note 12 `[p. 19]`: R2.1bn + R168m Giannacopoulos claims; only R5.1m provision | Check FY2026 annual report / subsequent events for legal process update. Any settlement or judgment? | R2.268bn tail risk = 39% of equity; binary risk to forecast. |
+| Q59 | Medium | SAP / IT note | GiCom software R30.7m fully impaired `[p. 16]`; Giannacopoulos SAP claim R168m `[p. 19]`; prior capture Finance Go-Live FY2026, DC Integration FY2027 | Get capitalised vs expensed SAP costs H1 2026, FY2026 guidance, and whether other IT projects are at risk of impairment. | IT project risk is crystallising (GiCom write-off); SAP delays could hit H2 opex. |
+| Q60 | Medium | Store network note | 8 SA stores acquired (Hajimarkos, R162.0m, R149.8m goodwill, R47.4m impaired within 2 months) `[pp. 13, 16]`; 5 SA stores sold `[p. 15]`; 3 corporate stores ROU impaired `[p. 16]` | Get total store count by segment, net movement H1 2026, corporate store count and losses, closure/transfer plans. | Store network dynamics drive revenue and lease liability forecasts. |
+| Q61 | Medium | KZN note | SA PBT collapsed from R602.9m to (R50.9m) `[p. 9]`; prior capture R123m KZN hit, "3 consecutive months of profit" Jan–Mar 2026 | Get rand quantum of KZN H1 hit and Jan–Mar profit; GP% by month; H2 run-rate. | KZN recovery is the key SA profit swing factor. |
+| Q62 | Medium | Revenue / trading update | Group revenue +2.6% as adjusted `[pp. 11–12]`; SA +2.3% as adjusted; Ireland +3.5% as adjusted (R16,975.7m vs R16,410.8m) | Get Feb–Mar run-rate, Easter calendar shift impact on H2, and like-for-like growth by segment. | H2 revenue forecast depends on run-rate and calendar effects. |
+| Q63 | Medium | Debt / treasury note | Borrowings R6,977.5m + overdrafts R1,430.7m – cash R1,597.2m = net debt R6,811.0m `[p. 5]`; lease liabilities R8,420.2m; no net debt/EBITDA stated | Get net debt/EBITDA ratio, deleveraging target, hedged vs unhedged split, interest rate sensitivity. | Leverage and refinancing risk affect forecast and valuation. |
+| Q64 | Medium | Other revenue note | Other revenue R1,109.6m (+51.9%) `[p. 11]`; marketing/services R839.5m (+78.2%), franchise R127.1m (+9.5%), other services R143.0m (flat) | Confirm recurring vs one-off split of marketing/services revenue; GP vs operating income treatment (currently below GP `[p. 4]`). | Other revenue growth is a key profit driver; sustainability matters. |
+| Q65 | Medium | Associates / JV note | Share of associates (R4.8m) `[p. 4]`; Ireland associate loss (R6.2m) `[p. 9]`; investment R141.7m `[p. 5]` | Confirm Sri Lanka is equity-accounted, its contribution, and whether it sits in "6 countries". Get associate/JV detail. | Sri Lanka loss is a drag; need to understand if it's in group profit. |
+| Q66 | Low | Geographic / foreign ops note | Two reportable segments only (SA, Ireland) `[p. 9]`; no Namibia/Botswana/Swaziland/Mozambique disclosure; "6 countries" vs "SA and Ireland only" tension | Get geographic revenue/profit breakdown within Southern Africa; confirm which entities are consolidated vs licence footprint. | Foreign ops exposure and risk not visible in segment note. |
+| Q67 | Low | Market share / loyalty note | Prior capture "Convenience 38% AC Nielsen" (Ireland); loyalty 59.4% foreign ops | Confirm Nielsen date, value vs volume, Republic of Ireland only; locate loyalty chart footnote definitions. | Market share and loyalty metrics inform revenue forecast. |
+| Q68 | Low | Dividend / capital allocation note | No DPS in this section; treasury shares acquired R3.9m `[p. 6]`; share-based payments R21.0m `[p. 6]` | Get DPS declared, payout ratio, share buyback activity, and capital allocation priorities. | Capital allocation affects shareholder returns and forecast. |
 
 ---
-
-### 5. Baseline Forecast Inputs Captured Here
-
-| Metric | H1 FY2026 | H1 FY2025 (as reported) | H1 FY2025 (as adjusted) | FY2025 |
-| --- | --- | --- | --- | --- |
-| Revenue – merchandise | 67,482.5 | 65,160.2 | — | 131,457.7 |
-| Revenue – other | 1,109.6 | 730.2 | — | 1,950.6 |
-| Total revenue | 68,592.1 | 65,890.4 | 66,822.4 | 133,408.3 |
-| Cost of sales | (60,370.8) | (58,162.2) | — | (117,312.9) |
-| Gross profit | 7,111.7 | 6,998.0 | — | 14,144.8 |
-| GM% | 10.54% | 10.74% | — | 10.60% |
-| Other income | 61.6 | 104.0 | — | 171.8 |
-| Net operating expenses | (7,542.4) | (6,478.5) | — | (14,283.7) |
-| Operating profit | 740.5 | 1,353.7 | 1,403.4 | 1,983.5 |
-| Other non-operating items | (9.8) | (2.2) | — | (8.9) |
-| Finance income | 304.6 | 307.3 | — | 613.8 |
-| Finance costs | (667.5) | (669.0) | — | (1,304.8) |
-| Share of associates | (4.8) | 4.4 | — | 4.2 |
-| PBT | 363.0 | 994.2 | 1,039.3 | 1,287.8 |
-| Taxation | (71.3) | (226.1) | (212.1) | (468.0) |
-| PAT continuing | 291.7 | 768.1 | — | 819.8 |
-| Discontinued ops | (144.4) | (5,026.4) | — | (5,647.9) |
-| PAT total | 147.3 | (4,258.3) | — | (4,828.1) |
-| HEPS (cents) | 123.6 | 296.2 | — | 507.5 |
-| HEPS continuing (cents) | 199.9 | 433.8 | — | 768.9 |
-| Basic EPS (cents) | 76.5 | (2,211.1) | — | (2,507.0) |
-| SA revenue | 51,616.4 | 49,697.9 | 50,441.6 | 98,352.4 |
-| SA merchandise | 50,783.4 | 49,229.9 | — | 96,948.2 |
-| SA OP | 237.7 | 867.7 | 909.0 | 844.4 |
-| SA PBT | (50.9) | 602.9 | 641.2 | 335.8 |
-| SA GM% | 10.95% | — | — | — |
-| Ireland revenue | 16,975.7 | 16,192.5 | 16,410.8 | 35,055.9 |
-| Ireland merchandise | 16,699.1 | 15,930.3 | — | 34,509.5 |
-| Ireland OP | 502.8 | 486.0 | 494.4 | 1,139.1 |
-| Ireland PBT | 413.9 | 391.3 | 398.1 | 952.0 |
-| Ireland D&A | 288.1 | 293.0 | — | 601.3 |
-| Ireland EBITDA (derived) | 790.9 | 779.0 | — | 1,740.4 |
-| Ireland GM% | 15.12% | — | — | — |
-| SA employment costs | 2,006.5 | 1,825.0 | — | 3,641.6 |
-| SA delivery costs | 460.3 | 385.5 | — | 871.7 |
-| SA advertising | 887.8 | 606.8 | — | 1,278.0 |
-| SA D&A | 261.2 | 258.7 | — | 533.3 |
-| SA impairments (total) | 116.6 | 2.0 | — | 675.6 |
-| Group D&A | 549.3 | 551.7 | — | 1,134.6 |
-| Group employment costs | 3,040.7 | 2,802.4 | — | 5,699.9 |
-| Group delivery costs | 670.1 | 587.7 | — | 1,298.5 |
-| Group advertising | 1,028.7 | 734.7 | — | 1,544.6 |
-| Cash generated from ops | (297.3) | 1,866.1 | — | 5,445.9 |
-| Operating cash flow | (974.0) | 1,346.9 | — | 4,285.9 |
-| Investing cash flow | (135.0) | (651.2) | — | (901.5) |
-| Financing cash flow | (1,027.7) | 54.8 | — | (1,285.4) |
-| Net decrease in cash | (2,136.7) | 750.5 | — | 2,099.0 |
-| Opening cash | 2,742.4 | 618.3 | — | 618.3 |
-| FX translation | (21.2) | 7.1 | — | 25.1 |
-| Closing cash | 584.5 | 1,375.9 | — | 2,742.4 |
-| Expansion capex | 197.8 | 284.0 | — | 515.6 |
-| Maintenance capex | 170.8 | 130.2 | — | 340.2 |
-| Additions PPE & intangibles | 394.0 | 460.9 | — | — |
-| Capital commitments (total) | 1,312.4 | 1,514.0 | — | — |
-| — contracted | 427.5 | 279.2 | — | — |
-| — approved not contracted | 884.9 | 1,234.8 | — | — |
-| NWC change | (1,839.7) | (508.0) | — | — |
-| — inventories | 63.0 | (367.4) | — | — |
-| — receivables | (61.0) | (463.4) | — | — |
-| — payables | (1,841.7) | 322.8 | — | — |
-| Provision movement (receivables/loans) | 150.7 | 45.5 | — | — |
-| Discontinued revenue | 2,153.9 | 10,461.8 | — | 20,697.7 |
-| Discontinued operating loss | (115.7) | (4,916.8) | — | (5,260.8) |
-| Discontinued loss after tax | (144.4) | (5,026.4) | — | (5,647.9) |
-| Discontinued cash flow (op+inv+fin) | (52.7) | — | — | — |
-| Poland disposal provision | 46.0 | — | — | — |
-| Total assets | 44,848.2 | 55,243.7 | — | 46,221.4 |
-| Total liabilities | 39,446.9 | — | — | 40,909.1 |
-| Equity | 5,401.3 | 6,529.1 | — | 5,312.3 |
-| Borrowings (non-current) | 6,403.6 | 6,740.9 | — | 6,514.5 |
-| Borrowings (current) | 573.9 | 337.8 | — | 532.8 |
-| Lease liability (non-current) | 6,930.4 | 7,067.8 | — | 7,075.6 |
-| Lease liability (current) | 1,489.8 | 1,413.2 | — | 1,462.0 |
-| Bank overdrafts | 1,430.7 | 1,078.9 | — | 680.2 |
-| Trade receivables | 15,975.2 | 15,216.3 | — | 16,107.3 |
-| Inventories | 4,617.2 | 4,739.3 | — | 4,653.1 |
-| Trade payables | 20,561.9 | 20,315.9 | — | 22,336.8 |
-| Assets held for sale | 1,332.9 | 11,827.6 | — | 1,472.2 |
-| Liabilities held for sale | 1,396.2 | 11,030.0 | — | 1,538.0 |
-| Financial guarantees | 544.3 | 624.9 | — | 581.6 |
-| — Wesbank | 297.4 | 376.2 | — | 333.2 |
-| — Numlite | 219.0 | 217.6 | — | 219.1 |
-| — retailer finance | 27.9 | 31.1 | — | 29.3 |
-| Contingent consideration (Perrys) | 79.5 | — | — | — |
-| Giannacopoulos provision | 5.1 | — | — | — |
-| UK gross proceeds (GBP) | 13.0m | — | — | — |
-| UK stores in APA | 71 | — | — | — |
-| UK stores to third parties | 63 | — | — | — |
-| Treasury shares acquired | 3.9 | 6.8 | — | 8.4 |
-| Share-based payment expense | 21.0 | 5.0 | — | — |
-
----
-
-### 6. Next Section to Capture
-
-**Next section: the debtors / credit note (trade receivables and loans note, including IFRS 9 ECL allowance, satisfactory-paid %, collection rates, write-offs, and the reconciliation of the R8.9bn debtor book to R15,975.2m trade receivables).**
-
-This section will resolve the highest-priority open items: **Q5, Q13, Q37, Q51, Q52** (credit cost and provisioning), and will also inform **Q21/Q62** (working capital) and **Q54** (KZN credit losses). If the debtors note is not available, the next-best capture is the **cash flow / debt note (p.28 leverage note)** to resolve **Q15, Q19, Q53** and confirm the R494m banking-facility reclass is not double-counted.
 
 ================================================================================
 ## PART 2 (AFS) - SECTION 2: [unmapped] Corporate information
@@ -4249,38 +4341,35 @@ Scrutinize key accounting policies, unusual movements, and forward guidance.
 ### [SECTION READING RESPONSE / DETERMINATION]
 ### 1. Answers to Stored Questions for This Section
 
-No stored questions can be tested, answered, or partially answered using the evidence in this section. The captured evidence is limited to the "Corporate information" page (directors, auditor, sponsor, bankers, registered office, transfer secretaries, registration number, ISIN, share codes, website). It contains no financial figures, no footnotes, no credit metrics, no segment data, and no forward guidance. All stored questions remain open and are carried forward in Section 4.
+No stored questions can be tested, answered, or partially answered using the evidence in this section. The captured page (physical PDF p. 21) contains only corporate information (directors, auditor, sponsor, bankers, registered office, transfer secretaries) and no financial data, footnotes, credit metrics, or forward guidance. All stored questions remain open and are carried forward in Section 4.
 
 ### 2. Footnote & Qualification Deep-Dive
 
-No footnote markers (`[^1]`, `*`, note references) with accompanying footnote definitions, table notes, or embedded qualifications appear in the captured evidence. The only asterisk present is the director-independence marker ("* Independent non-executive") on the directors list `[unmapped, physical PDF p. 21]` — this is a governance designation, not a financial qualification, and has no bearing on revenue, margin, credit, lease, or working-capital drivers.
-
-No missing-footnote situation arises here because no footnote markers reference absent definitions. No verification question is triggered by this page for footnote text.
+No footnotes, table notes, or embedded qualifications are present in this section. The only annotation is the asterisk (`*`) against certain director names, which is defined in-line as "* Independent non-executive." — this is a governance designation, not a financial qualification, and has no bearing on revenue, margin, credit, lease, or working-capital drivers. No footnote text is missing from this capture because no financial footnote markers appear.
 
 ### 3. New Questions to Check in Future Sections
 
 | Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
 | --- | --- | --- | --- | --- | --- |
-| Q65 | Low | Next financial section (e.g., D003/D004/D005/D006 — whichever contains the auditor's review conclusion or basis of preparation) | Corporate information page lists PricewaterhouseCoopers Inc. as auditor `[unmapped, p. 21]` but no review conclusion or basis-of-preparation statement is in this capture | Locate the independent auditor's review conclusion (or statement that the interim results are unaudited/not reviewed) and the basis-of-preparation note; confirm whether figures are reviewed, unreviewed, or subject to any qualification/emphasis of matter | Determines reliability tier of all forecast inputs (reviewed vs unaudited) and whether any going-concern/emphasis paragraph affects credit-loss or lease assumptions |
-| Q66 | Low | Next financial section containing the share capital / issued shares note | ISIN ZAE000058517 and JSE/A2X code SPP confirmed `[unmapped, p. 21]`; no share count, treasury shares, or weighted-average shares in this capture | Confirm issued share count, treasury shares held, and weighted-average shares used for HEPS/DPS; check for any share issuance/buyback in the period | Needed to compute HEPS, DPS payout ratio, and per-share forecast drivers |
-| Q67 | Low | Next section containing the basis of preparation / accounting policies | No basis-of-preparation statement in this capture; report title says "Unaudited interim results" | Confirm the basis of preparation (IAS 34), any new/amended standards adopted (e.g., IFRS 9 amendments, IFRS 16 changes), and whether comparatives are restated | Accounting policy changes can shift ECL provisioning, lease liability measurement, and revenue recognition, directly affecting forecast baselines |
+| Q58 | Low | Next financial section (e.g., D003/D004) | Corporate information lists PwC as auditor and One Capital as sponsor `[unmapped, p. 21]` — no audit opinion or review conclusion is shown on this page | Confirm whether the interim results carry an independent review conclusion (and whether it is unmodified/emphasis-of-matter) in the auditor's review report section | A modified review conclusion or going-concern emphasis would materially change forecast risk weighting |
+| Q59 | Low | Next financial section | No report map supplied; page 21 is corporate information only `[unmapped, p. 21]` | Identify the actual Report Map section IDs and page ranges for the debtors note, cash flow note, and segment note so stored questions Q5/Q14/Q39/Q53/Q57 can be targeted | Ensures high-priority credit and cash-flow questions are routed to the correct sections rather than guessed |
 
 ### 5. Baseline Forecast Inputs Captured Here
 
+No financial figures, guidance, or forecast-relevant metrics are present in this section. The only factual items captured are non-financial corporate details:
+
 | Item | Value | Source |
 | --- | --- | --- |
-| Company / registration | The SPAR Group Ltd, reg. 1967/001572/06 | `[unmapped, p. 21]` |
-| ISIN | ZAE000058517 | `[unmapped, p. 21]` |
-| JSE / A2X share code | SPP | `[unmapped, p. 21]` |
-| Auditor | PricewaterhouseCoopers Inc. | `[unmapped, p. 21]` |
-| Sponsor | One Capital | `[unmapped, p. 21]` |
-| Bankers / corporate brokers | Rand Merchant Bank (FirstRand Bank Ltd) | `[unmapped, p. 21]` |
-| Transfer secretaries | JSE Investor Services (Pty) Ltd | `[unmapped, p. 21]` |
-| Group CEO / CFO | MR Isaacs / M Pydigadu | `[unmapped, p. 21]` |
-| Report status | Unaudited interim results (per report title) | `[unmapped, p. 21]` |
-
-No financial, credit, margin, store, lease, or capital-allocation figures are present in this capture.
+| Company | The SPAR Group Ltd | [unmapped, p. 21] |
+| Registration number | 1967/001572/06 | [unmapped, p. 21] |
+| ISIN | ZAE000058517 | [unmapped, p. 21] |
+| JSE / A2X share code | SPP | [unmapped, p. 21] |
+| Auditor | PricewaterhouseCoopers Inc. | [unmapped, p. 21] |
+| Sponsor | One Capital | [unmapped, p. 21] |
+| Group CEO | MR Isaacs | [unmapped, p. 21] |
+| Group CFO | M Pydigadu | [unmapped, p. 21] |
+| Chairman | MJ Bosman (independent non-executive) | [unmapped, p. 21] |
 
 ### 6. Next Section to Capture
 
-The most useful next section is whichever Report Map section contains the **basis of preparation / accounting policies and the independent auditor's review conclusion** (likely `D003` or `D004`, immediately following the corporate information page). It will resolve **Q65** (review status/qualification), **Q67** (basis of preparation and standards adopted), and **Q66** (share capital note, if placed there), and will establish the reliability tier for all downstream forecast inputs. If the report map places the share capital note and HEPS reconciliation earlier, capture that section instead to close **Q66** and support **Q14/Q36**.
+Capture the **debtors / credit note section** (the section containing the trade receivables note and ECL/ageing analysis, referenced in stored questions as pp. 30 and 48). This will resolve the highest-priority open items: **Q5, Q14, Q39, Q53** (gross debtors, ECL allowance, satisfactory-paid %, collection rate, ageing, write-offs, and reconciliation of the R150.7m P&L provision movement to the R273m specific impairment and R58m write-offs). If the debtors note is not immediately available, capture the **cash flow statement / notes section** next to resolve **Q57** (R1,841.7m payables outflow).

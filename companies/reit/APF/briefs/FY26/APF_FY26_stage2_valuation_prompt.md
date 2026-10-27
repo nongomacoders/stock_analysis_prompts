@@ -1,14 +1,14 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
-**Target Asset:** APF Properties (APF)  
+**Target Asset:** APF_IAR_2026_Combined_V21 (APF)  
 **Sector:** Real Estate Investment Trusts (JS3512 / Reit)  
-**Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
+**Input Mode:** Full Company Results PDF + Subsequent SENS Notices (`20260806_sens_4901_Notification_of_Partial_Capital_Reduction_of_Listed_Debt_Sec.txt`; `20260807_sens_4931_Censure_imposed_by_the_JSE_on_Accelerate_Property_Fund_Ltd.txt`; `20260807_sens_4939_Revised_Notification_in_respect_of_the_Partial_Capital_Reduc.txt`; `20260825_sens_5097_Interest_payment_notification.txt`; `20260903_sens_5369_Results_of_AGM.txt`; `20260904_sens_5406_Notification_of_partial_capital_reduction_of_listed_debt_sec.txt`; `20260918_sens_5577_B_BBEE_annual_compliance_report.txt`; `20260925_sens_8265_Disposal_by_Accelerate_of_KPMG_Crescent_and_parkade_85_Empir.txt`; `README.md`) + Audited Stage 1 Determinations  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
 
-### INSTRUCTIONS FOR GEMINI 4 ARGON:
+### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):
 You are acting as an elite **Managing Director & Head of Listed Property & REIT Equity Research** at a premier institutional investment bank.
-You are conducting a definitive 2-year operational and valuation forecast for **APF Properties (APF)**.
+You are conducting a definitive 2-year operational and valuation forecast for **APF_IAR_2026_Combined_V21 (APF)**.
 
 ### CORE OPERATING RULES & EVIDENCE HIERARCHY:
 1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below as your 99% confidence baseline (e.g. SA REIT distributable income adjustments, like-for-like NPI growth, GLA vacancies, WALE, nominal vs look-through LTV, cost of debt, interest rate hedging ratio, and cap rates). Do not revert to high-level PR narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, and providing your quantitative justification.
@@ -538,28 +538,52 @@ In the Commercial sector specifically, 4 office buildings (Portside, 73 Hertzog,
      ```json
      {
        "ticker": "APF",
-       "company_name": "APF Properties",
+       "company_name": "APF_IAR_2026_Combined_V21",
        "sector": "reit",
        "jse_sector_code": "JS3512",
        "jse_sector_name": "Real Estate Investment Trusts",
        "recommendation": "BUY | HOLD | SELL",
-       "reference_price_zar": 0.00,
+       "reference_price_zar": 0.48,
        "target_price_zar": 0.00,
        "implied_upside_pct": 0.0,
        "forward_dividend_yield_pct": 0.0,
-       "projected_12m_tsr_pct": 0.0
+       "projected_12m_tsr_pct": 0.0,
+       "rating_bands": {
+         "strong_buy_max_zar": 0.00,
+         "buy_max_zar": 0.00,
+         "hold_max_zar": 0.00,
+         "sell_max_zar": 0.00,
+         "strong_sell_above_zar": 0.00
+       }
      }
      ```
-   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
+   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for APF on the JSE is **R0.48**. You MUST use `0.48` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R0.48 baseline.
+   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:
+     ### Source Documents & Disclosures Considered
+     | # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |
+     | :---: | :--- | :---: | :---: | :---: | :--- |
+     | 1 | `APF_IAR_2026_Combined_V21.pdf` | [AR] General Annual Report (AR) | 328 | FY26 | [Summarize primary financial & operational disclosures] |
+     | 2 | `20260806_sens_4901_Notification_of_Partial_Capital_Reduction_of_Listed_Debt_Sec.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 3 | `20260807_sens_4931_Censure_imposed_by_the_JSE_on_Accelerate_Property_Fund_Ltd.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 4 | `20260807_sens_4939_Revised_Notification_in_respect_of_the_Partial_Capital_Reduc.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 5 | `20260825_sens_5097_Interest_payment_notification.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 6 | `20260903_sens_5369_Results_of_AGM.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 7 | `20260904_sens_5406_Notification_of_partial_capital_reduction_of_listed_debt_sec.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 8 | `20260918_sens_5577_B_BBEE_annual_compliance_report.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 9 | `20260925_sens_8265_Disposal_by_Accelerate_of_KPMG_Crescent_and_parkade_85_Empir.txt` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+     | 10 | `README.md` | [SENS] SENS / Continuous Disclosure (SENS) | 1 | — | [Summarize post-balance-sheet / trading update evidence incorporated] |
+   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).
+   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:
      | Metric | Determination | Basis & Key Commentary |
      | :--- | :---: | :--- |
      | **Sector** | REIT / Listed Property (Real Estate Investment Trusts — JS3512 / ICB 351020) | [Sub-sector classification] |
-     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
+     | **Current Reference Share Price** | R0.48 | Verified closing share price (APF.JO via Yahoo Finance / confirmed input) |
      | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
      | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
      | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
      | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
      | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |
    - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Property Operating Forecast (FY27E & FY28E):** Like-for-like NPI growth, vacancy rates by sector, contractual escalations, renewal reversions, and WALE.
 3. **Distributable Income (DIPS) & Balance Sheet Bridge:** Reconciliation of IFRS profit to SA REIT distributable earnings, debt schedule, average cost of debt, interest rate hedging %, and LTV trajectory.
@@ -570,6 +594,26 @@ In the Commercial sector specifically, 4 office buildings (Portside, 73 Hertzog,
    - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb (e.g. 'Every 25 bps movement in weighted average cap rate shifts NAV by R X.XX/share; every 50 bps rise in cost of debt impacts DIPS by Y%').
    - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. successful non-core asset disposals, de-gearing milestones, accretive development completions).
    - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. distribution declaration dates, lease expiry cliff dates) for portfolio managers to mark.
+
+---
+
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: REIT)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-CROSS-SECTION-METRIC-SYNC` | **UNIVERSAL** | **Cross-Section HEPS, Multiple & Target Price Identity** *(Origin: SPP)* | Compute your Section 3 (P&L and HEPS) and Section 4 (DCF and P/E / EV/EBITDA valuation) numbers BEFORE writing the Section 1 Executive Summary Card commentary. The 12-Month Target Price, Reference Price, Forecast HEPS (e.g. FY27E HEPS in R or cents), and Target P/E or EV/EBITDA multiple cited in the Section 1 Executive Summary Card 'Basis & Key Commentary' cell MUST be 100% identical to Section 3 and Section 4 (never cite one HEPS/multiple in Section 1 commentary and a different HEPS/multiple in Section 4). |
+| `ALL-RATING-BANDS-MONOTONIC` | **UNIVERSAL** | **Strictly Ascending ZAR Rating Bands** *(Origin: SPP)* | In the opening JSON block and Section 1 table, rating_bands thresholds MUST be strictly ascending in ZAR per share: strong_buy_max_zar < buy_max_zar < hold_max_zar < sell_max_zar == strong_sell_above_zar, anchored around target_price_zar (Strong Buy <= Target/1.30, Buy <= Target/1.15, Hold <= Target/0.95, Sell <= Target/0.85, Strong Sell > Target/0.85). Never output identical ZAR values for Hold and Sell thresholds. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-HISTORICAL-BASE-COLUMN` | **UNIVERSAL** | **Mandatory Historical Actuals Base Column & Currency Unit Consistency** *(Origin: SPP)* | In Section 2 (Operational Forecast) and Section 3 (Income Statement & Cash Flow Bridge), always include the reported historical base period column(s) (e.g. FY25A and/or 1H26A) alongside FY26E, FY27E, and FY28E so annualized run-rates, operating expenses, and margins are anchored to audited actuals. Never label a ZAR-converted segment revenue row as EUR'm or USD'm; ensure every row's currency unit label matches the numbers in that row. |
+| `ALL-PAT-HEPS-RECONCILIATION` | **UNIVERSAL** | **Forecast PAT-to-HEPS Reconciliation & Net Finance Sign Integrity** *(Origin: CGR)* | Forecast HEPS (cents) MUST equal (Forecast Headline Earnings in R'm / Weighted-Average Shares in millions * 100) and move directionally with Forecast PAT unless explicit non-headline items (e.g. PPE/investment property fair-value gains or goodwill impairments) are itemized in the bridge. Never forecast a sharp drop in PAT alongside an unexplained rise in HEPS. Also verify whether historical Net Finance is net finance income (+, e.g. when JV finance income exceeds P&L finance cost after interest capitalisation) or net finance expense (-), and preserve the exact sign so the P&L sums vertically. |
+| `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT` | **UNIVERSAL** | **Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting** *(Origin: CGR)* | In Section 4 SOTP / DCF valuation tables, every component row MUST sum vertically to Total Enterprise Value (TEV), Equity Value (TEV less Net Debt), SOTP Fair Value per Share (Equity Value / Net Shares), and Target Price (ZAR). If a percentage risk/liquidity discount is applied (e.g. 25% discount), the discount ZAR per share and resulting Target Price MUST equal SOTP Fair Value per Share * (1 - discount%); never switch denominators mid-table. Never add book working capital (Inventory, Contract Assets/WIP) or Goodwill on top of a segment DCF/NPV that already discounts the cash flows generated by those operating assets. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary. |
+| `REIT-SAREIT-FFO-LTV-BRIDGE` | **REIT** | **SA REIT BPR Distributable Income & Look-Through LTV Reconciliation** | Strip non-cash fair value property revaluations, straight-line rental accruals, and derivative mark-to-market movements from IFRS profit to arrive at SA REIT Funds From Operations (FFO) / Distributable Income per Share (DIPS), and reconcile nominal balance sheet LTV against look-through LTV including JV/associate debt. |
 
 ---
 

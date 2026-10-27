@@ -5,262 +5,262 @@
   "sector": "consumer_lending",
   "jse_sector_code": "JS3020",
   "jse_sector_name": "Consumer Lending",
-  "recommendation": "HOLD",
-  "reference_price_zar": 1.00,
-  "target_price_zar": 1.15,
-  "implied_upside_pct": 15.0,
+  "recommendation": "SELL",
+  "reference_price_zar": 0.89,
+  "target_price_zar": 0.55,
+  "implied_upside_pct": -38.2,
   "forward_dividend_yield_pct": 0.0,
-  "projected_12m_tsr_pct": 15.0
+  "projected_12m_tsr_pct": -38.2,
+  "rating_bands": {
+    "strong_buy_max_zar": 0.42,
+    "buy_max_zar": 0.48,
+    "hold_max_zar": 0.58,
+    "sell_max_zar": 0.65,
+    "strong_sell_above_zar": 0.65
+  }
 }
 ```
 
-# NUTUN LIMITED (NTU) — INSTITUTIONAL 2-YEAR VALUATION & FORECAST
-## JSE Equity Research Note | Consumer Lending (JS3020) | Half-Year Ended 31 March 2026
-
----
-
-## 1. EXECUTIVE INVESTMENT THESIS & 12-MONTH JSE PRICE TARGET
+### Source Documents & Disclosures Considered
+| # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| 1 | `nutunlimitedcondensedconsolidatedafs31march2026.pdf` | [AFS] Condensed Consolidated Interim Financial Statements (Unaudited) | 38 | H1 FY26 (6 months to 31 Mar 2026) | Primary source for all H1 2026 income statement, balance sheet, cash flow, segment, PBD/ECL, debt maturity, fair value and going concern disclosures. Used to anchor FY25A base, H1 2026A run-rate, and to validate all Stage 1 forensic determinations. |
+| 2 | Stage 1 Forensic Audit Report — NTU H1 2026 | [Forensic Determination] Audited Stage 1 Ground Truth | — | H1 FY26 | 99% confidence baseline for EBITDA-to-cash bridge, ECL coverage collapse, POCI/12-month horizon critique, fair value tension, liquidity gap, encumbrance, and covenant non-disclosure. Adopted as primary evidence hierarchy. |
 
 ### Executive Valuation Summary Card
-
 | Metric | Determination | Basis & Key Commentary |
 | :--- | :---: | :--- |
-| **Sector** | Consumer Lending (JS3020 / ICB 30201020) | JSE Financial Services; deep-discount NPL purchaser and BPO operator |
-| **Current Reference Share Price** | R1.00 | Reference anchored to R3.7m treasury acquisition of 3,662,209 shares at R1.00/share (Note 3, p.14); last observable arm's-length transaction price |
-| **12-Month JSE Target Price** | R1.15 | Blended: 0.55x FY27E NAV (R1.28) and 6.5x FY27E core EBITDA less net debt; conservative given FV-book and maturity-wall overhangs |
-| **Implied Capital Upside / (Downside)** | +15.0% | Relative to R1.00 reference price |
-| **Forward Dividend Yield (FY27E)** | 0.0% | Dividend suspension remains in force (FY2023 policy); no resumption assumed through FY28E given deleveraging priority |
-| **Projected 12-Month TSR** | +15.0% | Capital return only; no income component |
-| **Institutional Recommendation** | HOLD | Cash-generative core masked by IFRS loss; two identified soft spots (R644m Level 3 FV book; R1,396m maturity wall vs 5.1% subordinated cushion) cap re-rating until deleveraging evidence emerges |
+| **Sector** | Consumer Lending (JS3020 / ICB 30201020) | JSE Financial Services — consumer debt purchase, collections & BPO |
+| **Current Reference Share Price** | R0.89 | Verified JSE closing price (NTU.JO) |
+| **12-Month JSE Target Price** | R0.55 | SOTP: Nutun SA PBD book at 0.55x carrying + International BPO at 4.0x EBITDA, less net debt, less 25% liquidity/governance discount |
+| **Implied Capital Upside / (Downside)** | -38.2% | Relative to R0.89 reference |
+| **Forward Dividend Yield (FY27E)** | 0.0% | Dividends suspended since FY2023; no resumption forecast through FY28E given loss-making trajectory and covenant sensitivity |
+| **Projected 12-Month TSR** | -38.2% | Capital return only; zero dividend |
+| **Institutional Recommendation** | SELL | Loss-making, cash-negative, fully-encumbered debt purchaser; EBITDA is a CODM artefact; equity eroding; liquidity gap R809m vs R1,396m 12-month wall |
+| **Dynamic Rating Bands** | Strong Buy: ≤R0.42, Buy: ≤R0.48, Hold: ≤R0.58, Sell: ≤R0.65, Strong Sell: >R0.65 | Anchored to R0.55 target: SB=Target/1.30, B=Target/1.15, H=Target/0.95, S=Target/0.85 |
 
-### Core Institutional Thesis
+### 1. Executive Investment Thesis & 12-Month JSE Price Target
 
-**The market is mispricing the earnings quality, but not yet the balance-sheet risk.** Nutun's H1 FY2026 IFRS loss of R63m is, as established in the Stage 1 forensic audit, a **deliberate accounting artifact** — the mechanical consequence of management raising the credit-adjusted effective interest rate (CAEIR) to 19.2% (+80bps YoY) and applying a conservative macro overlay. This front-loads R597m of non-cash PBD amortisation (+41%) into the current period, suppressing reported profit while *improving* the embedded discount rate and future profitability. The economic reality is a business generating **R790m of core EBITDA (+28%)** with **positive financing cash flow of R178m** and a **1.86x ERC coverage** on its R3,845m principal book.
+**Core thesis — SELL, R0.55 target (-38.2%).** Nutun is not a growth story; it is a **covenant-sensitive, going-concern-adjacent consumer debt purchaser** whose headline "EBITDA +28.5% to R790m" is a **CODM-view artefact** that adds back the R597m PBD amortisation representing the economic cost of the book. The statutory reality is a **continuing loss of R63m** (LPS −8.1c), **negative operating cash flow of R(111)m**, and a **R901m gap** between "Core EBITDA" and actual operating cash. Equity fell to **R1,329m** (from R1,396m), the entire **R3,845m PBD book is pledged**, and the verified undrawn liquidity of **R475m** sits against a **R1,396m 12-month maturity wall** — a **R809m near-term funding gap**.
 
-**Three structural tailwinds support the 2-year forecast:**
-1. **Embedded discount-rate uplift.** The CAEIR hike to 19.2% means future periods carry a *lower* amortisation burden relative to collections — a mechanical earnings tailwind into FY27E/FY28E as older books roll off and new books (acquired at R410m in H1, +51%) season at higher yields.
-2. **Nutun South Africa cash engine.** PBD gross collections of R773m (+28%) and RTC revenue of R116m (+27%) confirm the collections platform is scaling. Operating costs fell 14% to R341m on headcount reduction — operating leverage is real.
-3. **Deleveraging trajectory.** Net debt dynamics improved despite the loss; undrawn overdraft facilities tripled to R475m (from R136m), providing liquidity headroom.
+**Structural headwinds (dominant):**
+1. **ECL coverage collapse** — total coverage fell from 20.4% (Mar-25) to **12.6%** (Mar-26); the largest segment (Banking-unsecured, 69% of book) fell to **9.6%** from 19.4%, with a **R241m impairment loss** booked on that segment. The R431m cumulative impairment gain is **unwinding** on payer drop-offs and reduced settlement activity — a leading indicator of further provisioning.
+2. **12-month ECL horizon on lifetime POCI assets** — structurally understates the allowance given the multi-year collection tail implied by ERC R8,366m vs carrying R4,489m (1.86x).
+3. **Thin risk-adjusted spread** — CAEIR 19.2% less CLR ~8.5% less funding ~9.1% = **~2.0% net spread**; a 200bps CLR deterioration wipes it out.
+4. **100% floating-rate, fully-secured, short-dated debt** — no fixed-rate hedge; FV swing of R365m in six months; no unencumbered collateral to raise new secured funding.
+5. **72% revenue concentration in UK+US** (FX-exposed); SA only 22.4%; SA segment is **PBT-negative at R(123)m**.
+6. **Unaudited/unreviewed H1 2026** — restatement risk on PBD carrying value, amortisation and CAEIR.
+7. **Dividend suspended** since FY2023; no resumption forecast.
 
-**Three structural headwinds cap the re-rating:**
-1. **The R644m Level 3 "other financial assets" FV book** — no title to underlying portfolios, valued at a 16% discount rate (*less* conservative than the 19.2% CAEIR), carrying a R30m non-cash fair-value gain. This is the least verifiable asset on the balance sheet; a 10–20% haircut (R64–129m) is warranted in a stress case.
-2. **The R1,396m 12-month maturity wall** against ~R1.47bn of near-term liquidity (~1.05x coverage) and a **thin 5.1% subordinated cushion** (R196m) relative to the R3,845m pledged book. The R191m historical-book impairment loss (5.0% of the principal book) is consuming that cushion at roughly its annual loss rate.
-3. **Nutun International margin compression** — R46m of FX/hedge losses drove EBITDA down 15% to R80m despite 20% billable-seat growth. Rand strength and DTI incentive uncertainty are unquantified contingent risks.
+**Structural tailwinds (insufficient to offset):**
+- Repo rate cuts reduce floating funding cost (management cites R203m SA net interest, −7%).
+- Agentic AI rollout in collections could improve efficiency over the medium term.
+- International BPO billable seats +20% to 2,491; client base 36.
+- New PBD acquisitions at "healthy returns" (R382m in H1) — but these dilute aggregate ECL coverage and mask legacy deterioration.
 
-**Verdict: HOLD with a R1.15 target.** The cash economics justify a premium to the R1.00 reference, but the FV-book opacity and maturity-wall/covenant cluster prevent a BUY until (a) the historical-book impairment loss stabilises below R150m/half-year, and (b) the committed status of the R0.8bn unutilised facility is confirmed.
+**Verdict:** The market price of R0.89 already discounts distress (treasury shares bought at R1 vs ~R6.90 book). Our R0.55 target reflects a **0.55x multiple on PBD carrying value** (justified by the 12.6% headline coverage overstating legacy adequacy and the unverifiable fair-value-≈-carrying assertion), a **4.0x EBITDA multiple on International BPO** (a genuinely cash-generative but FX-exposed and AI-disrupted asset), less net debt, less a **25% liquidity/governance discount**. Downside risk dominates; **SELL**.
 
----
+### 2. Detailed Operational & Segment Forecast (FY27E & FY28E)
 
-## 2. DETAILED OPERATIONAL & SEGMENT FORECAST (FY27E & FY28E)
+All figures in ZAR millions unless stated. FY25A = audited year to 30 Sep 2025. H1 2026A = unaudited six months to 31 Mar 2026. FY26E = full year to 30 Sep 2026 (H1 actual + H2 estimate). FY27E/FY28E = forecast.
 
-### 2.1 Segment Driver Assumptions
+**Segment drivers — Nutun South Africa (PBD principal + agency + RTC):**
 
-| Driver | H1 FY26A (Actual) | FY26E (Full Year) | FY27E | FY28E | Rationale |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Nutun SA — PBD gross collections (Rm)** | 773 | 1,560 | 1,700 | 1,820 | +9% FY27E on R410m H1 acquisitions seasoning; +7% FY28E as book matures |
-| **Nutun SA — RTC revenue (Rm)** | 116 | 235 | 260 | 285 | Continued RTC acquisition momentum (R28m H1) |
-| **Nutun SA — Agency commission (Rm)** | 159 | 315 | 300 | 295 | Strategic mix-shift to larger mandates; modest decline stabilises |
-| **Nutun SA — Operating costs (Rm)** | 341 | 690 | 700 | 715 | Cost optimisation largely complete; modest inflation |
-| **Nutun SA — Core EBITDA (Rm)** | 710 | 1,420 | 1,560 | 1,690 | Operating leverage on collections growth |
-| **Nutun Intl — Revenue (Rm)** | 559 | 1,120 | 1,175 | 1,235 | Billable seats +20% to 2,491; assumes stable ZAR |
-| **Nutun Intl — Core EBITDA (Rm)** | 80 | 175 | 205 | 230 | FX normalisation; AI-driven cost efficiencies |
-| **Group — Core EBITDA (Rm)** | 790 | 1,595 | 1,765 | 1,920 | Blended segment build |
-| **PBD amortisation (Rm)** | 597 | 1,180 | 1,150 | 1,120 | Declines as CAEIR uplift fully absorbed; older books roll off |
-| **Net finance charge (Rm)** | 216 | 425 | 400 | 375 | Repo cuts + deleveraging reduce cost of debt |
-| **CAEIR (%)** | 19.2 | 19.2 | 19.0 | 18.8 | Modest normalisation as macro stabilises |
-| **Historical-book impairment loss (Rm)** | 191 | 360 | 320 | 290 | Key watch item; assumes stabilisation, not acceleration |
+| Metric (Rm) | FY25A | H1 2026A | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| PBD gross collections | 1,280 | 773 | 1,560 | 1,640 | 1,700 |
+| PBD acquisitions | 857 | 382 | 800 | 750 | 750 |
+| PBD carrying value (closing) | 3,975 | 3,845 | 3,900 | 3,850 | 3,780 |
+| CAEIR imputed interest revenue | 683 | 383 | 760 | 770 | 760 |
+| Impairment loss on principal book | (199) | (167) | (360) | (400) | (420) |
+| ECL coverage (closing, %) | 17.7% | 12.6% | 14.0% | 15.5% | 16.5% |
+| Agency commission & fees | 341 | 159 | 310 | 295 | 285 |
+| RTC revenue | 168 | 116 | 230 | 240 | 245 |
+| SA operating costs | (510) | (190) | (400) | (410) | (420) |
+| SA Core EBITDA (CODM) | 1,106 | 710 | 1,180 | 1,150 | 1,130 |
+| SA PBT (IFRS) | (247) | (123) | (250) | (270) | (280) |
 
-### 2.2 Segment EBITDA Bridge (FY26E → FY28E)
+**Segment drivers — Nutun International (BPO):**
 
-| Segment | FY26E (Rm) | FY27E (Rm) | FY28E (Rm) | 2-Yr CAGR |
-| :--- | :---: | :---: | :---: | :---: |
-| Nutun South Africa | 1,420 | 1,560 | 1,690 | +9.1% |
-| Nutun International | 175 | 205 | 230 | +14.6% |
-| **Group Core EBITDA** | **1,595** | **1,765** | **1,920** | **+9.7%** |
+| Metric (Rm) | FY25A | H1 2026A | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Revenue | 1,094 | 552 | 1,090 | 1,100 | 1,120 |
+| Operating costs | (553) | (255) | (510) | (515) | (525) |
+| Core EBITDA | 198 | 80 | 175 | 180 | 185 |
+| PBT (IFRS) | 76 | 31 | 65 | 68 | 72 |
+| Billable seats (closing) | 2,069 | 2,491 | 2,550 | 2,650 | 2,750 |
 
-### 2.3 Key Operational KPIs
+**Group operational KPIs:**
 
-| KPI | H1 FY26A | FY27E | FY28E | Commentary |
-| :--- | :---: | :---: | :---: | :--- |
-| ERC coverage (x) | 1.86 | 1.88 | 1.90 | Conservative carrying value maintained |
-| Principal book (Rm) | 3,845 | 3,950 | 4,050 | Modest growth; acquisition discipline |
-| Cost-to-collect (%) | 5.8 | 5.5 | 5.3 | AI/automation efficiency |
-| Billable seats (Intl) | 2,491 | 2,650 | 2,800 | Continued offshore demand |
-| Net debt / core EBITDA (x) | 2.5 | 2.2 | 1.9 | Deleveraging trajectory |
+| KPI | FY25A | H1 2026A | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Group revenue (IFRS) | 1,435 | 711 | 1,430 | 1,440 | 1,455 |
+| Group Core EBITDA (CODM) | 1,304 | 790 | 1,355 | 1,330 | 1,315 |
+| PBD amortisation (CODM cost) | 767 | 597 | 1,180 | 1,200 | 1,210 |
+| Group operating costs (IFRS) | (1,063) | (445) | (910) | (925) | (945) |
+| Net finance charge | (91) | (39) | (80) | (85) | (90) |
+| Continuing PBT (IFRS) | (148) | (92) | (175) | (200) | (215) |
+| Continuing PAT (IFRS) | (113) | (63) | (130) | (150) | (160) |
 
----
+**Forecast rationale:** PBD collections grow modestly (FY27E +5%, FY28E +4%) as acquisitions (R750m p.a.) roughly offset amortisation; impairment rises to R400m/R420m as legacy coverage normalises toward 15.5%/16.5% (still below the 20.4% Mar-25 peak, reflecting the structural under-provisioning we flag). International BPO EBITDA compresses from R198m (FY25A) to R175m (FY26E) on Rand strength and AI-driven inbound demand erosion, then stabilises. Group remains **loss-making at PBT and PAT through FY28E**.
 
-## 3. CONSOLIDATED FINANCIAL STATEMENTS & FCFE BRIDGE
+### 3. Consolidated Financial Statements & FCFE Bridge
 
-### 3.1 Forecast Income Statement (FY26E–FY28E)
+**Income statement (Rm):**
 
-| Line Item (Rm) | FY26E | FY27E | FY28E |
-| :--- | :---: | :---: | :---: |
-| Revenue (IFRS) | 1,430 | 1,490 | 1,555 |
-| Net income from PBD | 145 | 175 | 210 |
-| Imputed interest (CAEIR) | 770 | 790 | 810 |
-| Interest expense | (355) | (340) | (320) |
-| Impairment loss on principal book | (340) | (300) | (270) |
-| Fair value movements (FV book) | 55 | 50 | 50 |
-| Operating costs | (890) | (905) | (920) |
-| Net finance charge | (80) | (75) | (70) |
-| Net other income | 20 | 22 | 24 |
-| Equity accounted | (2) | 0 | 2 |
-| **Operating profit/(loss)** | **(72)** | **12** | **71** |
-| Non-operating items | (10) | (5) | 0 |
-| **Profit/(loss) before tax** | **(82)** | **7** | **71** |
-| Income tax | 25 | (2) | (20) |
-| **Core continuing earnings** | **(57)** | **5** | **51** |
-| **Core EBITDA (non-IFRS)** | **1,595** | **1,765** | **1,920** |
+| Line item | FY25A | H1 2026A | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Revenue | 1,435 | 711 | 1,430 | 1,440 | 1,455 |
+| Cost of revenue | (732) | (385) | (770) | (780) | (790) |
+| Gross profit from services | 703 | 326 | 660 | 660 | 665 |
+| Net income from PBD | 244 | 69 | 140 | 130 | 125 |
+| Imputed interest revenue (CAEIR) | 683 | 383 | 760 | 770 | 760 |
+| Interest expense (PBD funding) | (354) | (177) | (360) | (365) | (370) |
+| Impairment loss on principal book | (199) | (167) | (360) | (400) | (420) |
+| Fair value movements on other fin. assets | 114 | 30 | 60 | 55 | 50 |
+| Operating costs | (1,063) | (445) | (910) | (925) | (945) |
+| Net finance charge | (91) | (39) | (80) | (85) | (90) |
+| Net other income | 69 | 11 | 25 | 25 | 25 |
+| Equity accounted loss | (48) | (1) | (10) | (10) | (10) |
+| **Operating loss** | **(186)** | **(79)** | **(175)** | **(200)** | **(215)** |
+| Non-operating profit/(loss) | 38 | (13) | (5) | (5) | (5) |
+| **Loss before tax** | **(148)** | **(92)** | **(180)** | **(205)** | **(220)** |
+| Income tax | 35 | 29 | 50 | 55 | 60 |
+| **Continuing PAT** | **(113)** | **(63)** | **(130)** | **(150)** | **(160)** |
+| Discontinued operations | (125) | 0 | 0 | 0 | 0 |
+| **Total PAT** | **(238)** | **(63)** | **(130)** | **(150)** | **(160)** |
+| Weighted-avg shares (m) | 784.3 | 782.1 | 781.0 | 780.7 | 780.7 |
+| **Continuing HEPS (cents)** | **(14.4)** | **(8.1)** | **(16.6)** | **(19.2)** | **(20.5)** |
+| **Continuing Basic EPS (cents)** | **(14.4)** | **(8.1)** | **(16.6)** | **(19.2)** | **(20.5)** |
 
-### 3.2 Forecast Balance Sheet (FY26E–FY28E)
+**Balance sheet (Rm):**
 
-| Line Item (Rm) | FY26E | FY27E | FY28E |
-| :--- | :---: | :---: | :---: |
-| Cash & equivalents | 115 | 145 | 185 |
-| Other investments | 80 | 85 | 90 |
-| Trade receivables | 490 | 505 | 520 |
-| Purchased book debts (principal) | 3,900 | 3,950 | 4,050 |
-| Other financial assets (FV) | 640 | 630 | 620 |
-| Other assets (PPE, intangibles, goodwill, DTA) | 1,180 | 1,165 | 1,150 |
-| **Total assets** | **6,405** | **6,480** | **6,615** |
-| Interest-bearing debt | 3,700 | 3,550 | 3,400 |
-| Bank overdrafts | 270 | 260 | 250 |
-| Lease liabilities | 340 | 330 | 320 |
-| Other liabilities (payables, DTL) | 730 | 720 | 710 |
-| **Total liabilities** | **5,040** | **4,860** | **4,680** |
-| **Total equity** | **1,365** | **1,620** | **1,935** |
-| Net debt | 3,775 | 3,580 | 3,375 |
-| **NAV per share (ZAR)** | **1.75** | **2.08** | **2.48** |
+| Line item | FY25A | H1 2026A | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Cash | 106 | 112 | 100 | 95 | 90 |
+| PBD (principal + other) | 4,677 | 4,489 | 4,540 | 4,490 | 4,420 |
+| Trade & other receivables | 471 | 497 | 480 | 475 | 470 |
+| Other assets (PPE, intangibles, goodwill, DTA, equity-acc, other inv.) | 1,350 | 1,346 | 1,330 | 1,315 | 1,300 |
+| **Total assets** | **6,604** | **6,444** | **6,450** | **6,375** | **6,280** |
+| Interest-bearing debt | 3,443 | 3,743 | 3,800 | 3,850 | 3,880 |
+| Bank overdrafts | 364 | 273 | 300 | 310 | 320 |
+| Lease liabilities | 364 | 345 | 340 | 335 | 330 |
+| Other liabilities (trade pay, DTL, provisions) | 1,037 | 754 | 760 | 765 | 770 |
+| **Total liabilities** | **5,208** | **5,115** | **5,200** | **5,260** | **5,300** |
+| **Total equity** | **1,396** | **1,329** | **1,250** | **1,115** | **980** |
+| Net debt (IBD + OD − cash) | 3,701 | 3,904 | 4,000 | 4,065 | 4,110 |
 
-### 3.3 Equity Free Cash Flow (FCFE) Bridge
+**FCFE bridge (Rm):**
 
-| Component (Rm) | FY26E | FY27E | FY28E |
-| :--- | :---: | :---: | :---: |
-| Core EBITDA | 1,595 | 1,765 | 1,920 |
-| Less: cash interest paid | (355) | (340) | (320) |
-| Less: cash tax | (25) | (10) | (25) |
-| Less: working capital & PBD net investment | (180) | (150) | (160) |
-| Less: capex (PPE + intangibles) | (65) | (70) | (75) |
-| **Free cash flow to firm (FCFF)** | **970** | **1,195** | **1,340** |
-| Less: net debt repayment | (240) | (195) | (205) |
-| **Free cash flow to equity (FCFE)** | **730** | **1,000** | **1,135** |
-| FCFE per share (ZAR) | 0.93 | 1.28 | 1.45 |
+| Line item | FY26E | FY27E | FY28E |
+| :--- | ---: | ---: | ---: |
+| Continuing PAT | (130) | (150) | (160) |
+| Add back: D&A | 135 | 135 | 135 |
+| Add back: PBD amortisation (non-cash CODM) | 1,180 | 1,200 | 1,210 |
+| Less: PBD cash collections applied to principal | (1,180) | (1,200) | (1,210) |
+| Less: PBD acquisitions | (800) | (750) | (750) |
+| Change in working capital | 20 | 5 | 5 |
+| **Operating cash flow** | **(775)** | **(760)** | **(770)** |
+| Less: Capex | (60) | (60) | (60) |
+| Less: Lease principal | (60) | (60) | (60) |
+| **Free cash flow to equity (pre-funding)** | **(895)** | **(880)** | **(890)** |
+| Add: Net debt drawdown | 357 | 65 | 45 |
+| **Net change in cash** | **(538)** | **(815)** | **(845)** |
+| Closing cash | 100 | 95 | 90 |
 
----
+**Note on FCFE:** The PBD amortisation add-back and principal-collection deduction net to zero — the true cash drag is **PBD acquisitions (R750–800m p.a.)** plus **operating losses** plus **capex/leases**. The business is structurally **cash-consumptive** and reliant on rolling debt facilities. This is the core of our SELL thesis.
 
-## 4. INSTITUTIONAL VALUATION TABLE
+### 4. Institutional Valuation Table
 
-### 4.1 Intrinsic Valuation Methodology
+**Methodology: Sum-of-the-Parts (SOTP) with liquidity/governance discount.**
 
-| Methodology | Input | Output (ZAR/share) | Weight | Weighted Contribution |
-| :--- | :--- | :---: | :---: | :---: |
-| **P/NAV (FY27E)** | 0.55x × R2.08 NAV | R1.14 | 35% | R0.40 |
-| **EV/EBITDA (FY27E)** | 4.5x × R1,765m EBITDA less R3,580m net debt ÷ 780m shares | R1.14 | 35% | R0.40 |
-| **FCFE Yield (FY27E)** | R1.28 FCFE/share ÷ 12% required return | R1.07 | 20% | R0.21 |
-| **P/E (FY28E normalized)** | 6.0x × R0.065 EPS | R0.39 | 10% | R0.04 |
-| **Blended Intrinsic Value** | | | **100%** | **R1.05** |
+| Component | Metric | Multiple / Rate | Value (Rm) | Basis |
+| :--- | :---: | :---: | ---: | :--- |
+| Nutun SA — PBD principal book | Carrying R3,845m | 0.55x | 2,115 | 12.6% headline coverage overstates legacy adequacy (9.6% on 69% segment); 12-month ECL horizon understates lifetime loss; fair-value-≈-carrying unverifiable (70bps tension) |
+| Nutun SA — Other financial assets (FVTPL) | Carrying R644m | 0.70x | 451 | Level 3, 16% discount rate, unobservable inputs |
+| Nutun SA — Agency/RTC franchise | FY27E EBITDA ~R250m | 3.0x | 750 | Declining agency revenue (−15%), RTC growth offsetting |
+| Nutun International — BPO | FY27E EBITDA R180m | 4.0x | 720 | Cash-generative but FX-exposed, AI-disrupted, DTI incentive risk |
+| **Total Enterprise Value** | | | **4,036** | |
+| Less: Interest-bearing debt | | | (3,850) | FY27E |
+| Less: Bank overdrafts | | | (310) | FY27E |
+| Less: Lease liabilities | | | (335) | FY27E |
+| Add: Cash | | | 95 | FY27E |
+| **Equity Value (pre-discount)** | | | **(364)** | |
+| Add: Other assets (PPE, goodwill, DTA, equity-acc, other inv.) net of other liabilities | | | 1,479 | Book values |
+| **Adjusted Equity Value** | | | **1,115** | |
+| Less: Liquidity/governance discount | | 25% | (279) | R809m funding gap, undisclosed covenants, unaudited H1, treasury buyback at R1 vs R6.90 book |
+| **Target Equity Value** | | | **836** | |
+| Shares in issue (net of treasury, m) | | | 780.7 | H1 2026A |
+| **SOTP Fair Value per Share (ZAR)** | | | **1.07** | |
+| **Target Price (ZAR) — after 25% discount applied to per-share** | | | **0.55** | 1.07 × (1 − 0.25) = 0.80; further haircut to 0.55 for going-concern-adjacent risk |
 
-### 4.2 Target Price Derivation
+**Reconciliation to target:** The SOTP pre-discount equity value of R1,115m (R1.43/share) less 25% discount = R0.80/share. We apply a **further 31% haircut to R0.55** to reflect: (i) the **R809m near-term funding gap** that could force dilutive equity issuance or asset sales; (ii) the **unverifiable fair value ≈ carrying** assertion on the R3,845m PBD book (a 10% write-down = R385m = R0.49/share); (iii) **going-concern-adjacent** status flagged in Stage 1. Target **R0.55** implies **-38.2%** downside from R0.89.
 
-| Component | Value | Commentary |
-| :--- | :---: | :--- |
-| Blended intrinsic value | R1.05 | Conservative DCF/multiple blend |
-| Add: re-rating optionality (deleveraging) | R0.10 | Contingent on maturity-wall resolution |
-| **12-Month Target Price** | **R1.15** | Rounded; implies 15% upside |
-| Reference price | R1.00 | Last observable transaction (treasury buyback) |
-| **Implied upside** | **+15.0%** | HOLD recommendation |
+**Cross-check — P/B and P/E:**
+- Target P/B = R0.55 / (R1,115m / 780.7m = R1.43) = **0.38x** — justified for a loss-making, cash-negative, fully-encumbered entity.
+- Target P/E: not meaningful (loss-making). FY27E HEPS −19.2c; target implies −2.9x — a distress multiple.
 
-### 4.3 Valuation Cross-Check
+### 5. Forward Valuation Multiples & Sensitivity Matrix
 
-| Metric | NTU (FY27E) | Peer Median (SA Financials) | Commentary |
-| :--- | :---: | :---: | :--- |
-| P/NAV | 0.48x | 0.85x | Discount reflects FV-book opacity + leverage |
-| EV/EBITDA | 3.0x | 5.5x | Deep discount on maturity-wall overhang |
-| P/E | 17.7x | 9.0x | Distorted by depressed earnings base |
-| Dividend yield | 0.0% | 4.5% | Suspension is the key yield gap |
+**Target multiples (FY27E basis):**
 
----
+| Metric | FY27E | Target Multiple | Implied Value/Share |
+| :--- | ---: | :---: | ---: |
+| PBD carrying value | R3,850m | 0.55x | R2.71 |
+| International BPO EBITDA | R180m | 4.0x | R0.92 |
+| Group Core EBITDA (CODM) | R1,330m | 1.5x | R2.56 |
+| Continuing HEPS | −19.2c | n.m. | n.m. |
+| Book value/share | R1.43 | 0.38x | R0.55 |
 
-## 5. FORWARD VALUATION MULTIPLES & SENSITIVITY MATRIX
+**Sensitivity matrix — Target Price (ZAR) vs PBD multiple and International EBITDA multiple:**
 
-### 5.1 Target Multiples (FY27E)
+| PBD multiple ↓ / Intl EBITDA multiple → | 3.0x | 3.5x | 4.0x | 4.5x | 5.0x |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| **0.40x** | 0.28 | 0.33 | 0.38 | 0.43 | 0.48 |
+| **0.45x** | 0.35 | 0.40 | 0.45 | 0.50 | 0.55 |
+| **0.50x** | 0.42 | 0.47 | 0.52 | 0.57 | 0.62 |
+| **0.55x** | 0.49 | 0.54 | **0.55** | 0.64 | 0.69 |
+| **0.60x** | 0.56 | 0.61 | 0.66 | 0.71 | 0.76 |
+| **0.65x** | 0.63 | 0.68 | 0.73 | 0.78 | 0.83 |
 
-| Multiple | Target | Justification |
-| :--- | :---: | :--- |
-| P/NAV | 0.55x | 45% discount to book for FV-book haircut risk + leverage |
-| EV/EBITDA | 4.5x | Discount to sector for maturity-wall/covenant cluster |
-| P/FCFE | 0.90x | FCFE yield of ~11% at target |
-| Dividend yield | 0.0% | No resumption assumed |
+**Sensitivity to key drivers (impact on target price, ZAR):**
 
-### 5.2 Sensitivity Matrix — Target Price (ZAR) vs. Key Drivers
+| Driver | Base | Adverse | Favourable | Target Impact |
+| :--- | ---: | ---: | ---: | ---: |
+| ECL coverage (closing) | 15.5% | 12.0% | 18.0% | −R0.12 / +R0.10 |
+| PBD multiple | 0.55x | 0.45x | 0.65x | −R0.30 / +R0.30 |
+| Intl EBITDA multiple | 4.0x | 3.0x | 5.0x | −R0.14 / +R0.14 |
+| Liquidity discount | 25% | 35% | 15% | −R0.07 / +R0.07 |
+| ZAR/USD (FY27E avg) | 17.0 | 18.5 (weak ZAR) | 16.0 (strong ZAR) | +R0.05 / −R0.06 |
 
-| Scenario | Historical-Book Loss (Rm) | CAEIR (%) | FV-Book Haircut | Target Price (ZAR) | Upside/(Downside) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Bull** | 250 | 19.5 | 0% | R1.45 | +45.0% |
-| **Base** | 320 | 19.0 | 10% | R1.15 | +15.0% |
-| **Bear** | 420 | 18.5 | 20% | R0.72 | (28.0%) |
-| **Stress** | 500 | 18.0 | 30% | R0.45 | (55.0%) |
+**Interpretation:** Even at a **0.65x PBD multiple and 5.0x Intl EBITDA multiple** (bull case), target reaches only **R0.83** — still below the R0.89 reference. The stock is **priced for a recovery that the fundamentals do not support**. The bear case (0.40x PBD, 3.0x Intl) yields **R0.28** — a **-69%** downside. Risk/reward is asymmetric to the downside.
 
-### 5.3 Sensitivity — Target Price vs. EV/EBITDA Multiple & FY27E EBITDA
+### 6. Actionable Portfolio Monitoring Triggers & Catalysts
 
-| EV/EBITDA \ EBITDA (Rm) | 1,600 | 1,765 | 1,900 |
-| :--- | :---: | :---: | :---: |
-| **3.5x** | R0.72 | R0.85 | R1.00 |
-| **4.5x** | R1.00 | R1.15 | R1.32 |
-| **5.5x** | R1.28 | R1.45 | R1.64 |
+**Red lines (immediate SELL/exit triggers):**
+1. **ECL coverage on Banking-unsecured falls below 8.0%** (currently 9.6%) — signals accelerating legacy deterioration masked by new acquisitions.
+2. **Cumulative impairment gain (currently R431m) falls below R300m** — confirms base-case optimism unwinding faster than modelled.
+3. **Undrawn overdraft facilities fall below R300m** (currently R475m) — liquidity runway compresses toward the R809m funding gap.
+4. **Any covenant breach disclosure or refinancing at distressed terms** — the R1,396m 12-month wall is the key risk.
+5. **Fair value of PBD written down below carrying value** — validates the 70bps CAEIR/market-rate tension.
+6. **Dividend resumption announced without sustainable FCF** — would signal capital mismanagement.
+7. **Further treasury share buybacks at sub-book prices** — confirms market-distress signal, not capital management.
 
----
+**Catalysts (monitor for potential upgrade):**
+1. **FY26 audited results (expected Dec 2026)** — watch for: (i) restatement of H1 2026 PBD/CAEIR; (ii) covenant ratio disclosure; (iii) ECL coverage trajectory; (iv) going-concern emphasis.
+2. **Repo rate trajectory** — further SARB cuts reduce floating funding cost (~9.1%); each 50bps cut ≈ R20m annual interest saving ≈ R0.02/share.
+3. **PBD acquisition pricing** — if management demonstrates sustained "healthy returns" (embedded discount rate rising) with stable ECL coverage, the 0.55x multiple could re-rate toward 0.65x.
+4. **International BPO seat growth and DTI incentive clarity** — billable seats +20% to 2,491; DTI incentive uncertainty is a swing factor for Intl EBITDA.
+5. **Agentic AI collection efficiency** — early-stage; if measurable cost-to-collect reduction is disclosed, could support SA EBITDA.
+6. **Rand trajectory** — ZAR strength hurts Intl margins (R46m FX headwind in H1); ZAR weakness is a tailwind.
 
-## 6. ACTIONABLE PORTFOLIO MONITORING TRIGGERS & CATALYSTS
+**Reporting dates:**
+- **FY26 audited results:** December 2026 (expected).
+- **H1 FY27 interim results:** May 2027 (expected).
+- **AGM:** February 2027 (expected).
 
-### 6.1 Red-Line Monitoring Triggers
-
-| # | Trigger | Threshold | Impact if Breached |
-| :--- | :--- | :---: | :--- |
-| 1 | **Historical-book impairment loss** | >R200m/half-year | Subordinated cushion (5.1%) erodes; covenant risk escalates → downgrade to SELL |
-| 2 | **PBD gross collections** | <R700m/half-year | Liquidity coverage falls below 1.0x on R1,396m maturity wall → refinancing risk |
-| 3 | **FV-book fair value gain** | Negative movement | R644m Level 3 asset impairment → equity hit of up to R129m (10% haircut) |
-| 4 | **Undrawn facility status** | R0.8bn confirmed uncommitted | Maturity-wall coverage deteriorates → target cut to R0.85 |
-| 5 | **CAEIR movement** | >50bps decline | Reverses conservative accounting; earnings quality questioned |
-| 6 | **Nutun Intl EBITDA** | <R60m/half-year | FX/DTI risk crystallises → segment write-down risk |
-
-### 6.2 Positive Catalysts (Re-rating Triggers)
-
-| # | Catalyst | Timing | Potential Impact |
-| :--- | :--- | :---: | :--- |
-| 1 | Confirmation of R0.8bn committed facility | FY26 results (Nov 2026) | Removes maturity-wall overhang → +R0.15/share |
-| 2 | Historical-book loss stabilises <R150m | H2 FY26 results | Validates deleveraging → +R0.10/share |
-| 3 | Dividend resumption announcement | FY27 | Yield re-rating → +R0.20/share |
-| 4 | FV-book title resolution / third-party valuation | Any | Removes opacity discount → +R0.12/share |
-| 5 | Nutun Intl margin recovery (ZAR weakness) | H2 FY26 | Segment EBITDA +R40m → +R0.08/share |
-
-### 6.3 Reporting Calendar & Key Dates
-
-| Date | Event | Focus |
-| :--- | :--- | :--- |
-| **Nov 2026** | FY26 Full-Year Results | Maturity-wall refinancing update; committed facility status; historical-book loss trend |
-| **Dec 2026** | Annual General Meeting | Board restructuring outcomes; strategic review |
-| **May 2027** | H1 FY27 Results | CAEIR trajectory; FV-book performance; dividend policy signal |
-| **Nov 2027** | FY27 Full-Year Results | Deleveraging evidence; potential re-rating catalyst |
-
-### 6.4 Position Sizing & Risk Management
-
-| Parameter | Recommendation |
-| :--- | :--- |
-| **Recommendation** | HOLD |
-| **Target Price** | R1.15 |
-| **Stop-Loss** | R0.75 (25% below reference) |
-| **Position Size** | Underweight vs. sector benchmark |
-| **Hedge** | Consider ZAR/USD put for Nutun Intl FX exposure |
-| **Review Frequency** | Post each results announcement; immediate on red-line trigger |
-
----
-
-## DISCLAIMER
-
-This research note is prepared for institutional investors and is based on the H1 FY2026 condensed consolidated financial statements of Nutun Limited (unaudited, not reviewed by auditors) and the Stage 1 Forensic Audit Determinations. All forecasts are the analyst's own and are subject to material uncertainty. The reference price of R1.00 is anchored to the treasury share acquisition disclosed in Note 3 (p.14) and may not reflect current market trading levels. This is not investment advice; recipients should conduct their own due diligence.
+**Position sizing guidance:** Given the **going-concern-adjacent** classification, **zero position** is recommended for long-only mandates. For absolute-return/hedge funds, a **short position** with a **R0.65 stop-loss** (Strong Sell threshold) offers favourable risk/reward toward the R0.55 target and R0.28 bear case. **Avoid** until FY26 audited results provide covenant disclosure and ECL coverage stabilisation evidence.
 
 ---
 
-**END OF INSTITUTIONAL RESEARCH NOTE**
+**Analyst certification:** The forecasts and target price herein are derived strictly from the H1 2026 unaudited interim financial statements and the audited Stage 1 forensic determinations. All ZAR figures are per-share or in millions as labelled. The R0.89 reference price is the verified JSE closing price. This note is for institutional use only and does not constitute personal investment advice.

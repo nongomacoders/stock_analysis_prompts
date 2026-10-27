@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-10-24 (Africa/Johannesburg).
+Last updated: 2026-10-26 (Africa/Johannesburg).
 
 ## Objective and boundary
 
@@ -10,6 +10,188 @@ Analyze and forecast from company presentations and reports section by section w
 3. **Tier 3 (Stage 2 Institutional Valuation)**: Automated prompt generation (`workflow/generate_stage2.py`) feeding Argon's Stage 1 synthesis report alongside the PDF back into Gemini 4 Argon for the final 2-year forecast, SOTP DCF, and JSE equity research valuation note (ZAR per share).
 
 ## Completed
+
+- **Robust JSE Ticker Lookup & Ground-Truth LLM Web Examination Architecture**:
+  - Addressed root cause of LLM hallucinations on ticker examination (e.g. `DCP` incorrectly hallucinated as unlisted "DCP (Pty) Ltd Construction" instead of Dis-Chem Pharmacies Limited):
+    1. **Verified Market Data Layer (`section_capture/market_data.py`)**: Added `fetch_jse_company_profile(ticker)` using `yfinance` (`<TICKER>.JO`) to extract authoritative corporate name, ICB sector, sub-industry classification, and official business description directly from JSE market data.
+    2. **OpenRouter Live Web Search Integration (`section_capture/openrouter.py`)**: Enhanced `query_openrouter()` with `web_search: bool = False` and `plugins: list` support, seamlessly attaching OpenRouter's live web search plugin (`[{"id": "web"}]`) with retry resilience.
+    3. **Ground-Truth LLM Ticker Prompting (`section_capture/ticker_lookup.py`)**:
+       - Updated `build_ticker_examination_prompt()` to inject verified JSE listing data as ground truth when available.
+       - Enforced a strict anti-hallucination directive: queries official JSE listings and SENS announcements (e.g. `jse.co.za`) to confirm the authentic public entity (e.g. `DCP` = Dis-Chem Pharmacies Ltd, `VOD` = Vodacom Group Ltd, `RBX` = Raubex Group Ltd, `DTC` = Datatec Ltd).
+       - Added robust fallback synthesis (`_synthesize_profile_response`) ensuring valid company and sector metadata is returned even if the LLM or network drops.
+    4. **Sector Registry Aliases (`companies/sectors.py`)**: Added industry aliases for healthcare/pharmacy retail (`pharmaceutical retailers`, `consumer staples`, `pharmacy`), telecommunications (`communication services`, `telecom services`), and construction (`industrials`, `engineering & construction`) so standard market classifications automatically map to our research sectors.
+    5. **Pre-populated High-Impact JSE Constituents (`section_capture/db.py`)**: Added top JSE stocks (`DCP`, `VOD`, `TKG`, `PIK`, `SRE`, `SHP`, `WHL`, `MRP`, `SPP`, `TBS`, `CLS`, `MTN`, `FSR`, `SBK`, `NED`, `ABG`, `INP`, `INL`, `CPI`, `SLM`, `DSY`, `IMP`, `AMS`, `SSW`, `EXX`, `KIO`, `NPH`, `SOL`) to `KNOWN_COMPANIES` for zero-latency local resolution.
+    6. **GUI Feedback (`section_capture/new_company_dialog.py`)**: Updated status header to reflect live JSE web search and prompt evaluation.
+  - Added new unit tests in [`tests/test_ticker_lookup.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/tests/test_ticker_lookup.py). Full test suite verified: **139 / 139 tests passing** (100% exit code 0).
+
+- **TKG (`FY26`) Telco Evaluation & Guardrail Codification (`evaluate_stock.py TKG`)**:
+  - Evaluated Telkom SA SOC Limited (`TKG`, `FY26`): live price **R57.10**, target price **R62.50** (**+9.5%** capital upside, forward dividend yield **4.8%**, projected 12M TSR **+14.3%**, **`HOLD`**).
+  - All 5 forensic checks passed cleanly (`CHK-PRICE-SYNC`, `CHK-BANDS-MONO`, `CHK-SOTP-MATH`, `CHK-GUARDRAILS`, `CHK-TEXT-CLEAN`).
+  - Codified 2 new telco sector guardrails into `DEFAULT_SECTOR_GUARDRAILS` in `section_capture/db.py` and `sector_guardrails` table in `documents/analysis.sqlite`, bringing total enabled rules to **29**:
+    1. `TELCOS-GOODWILL-DISCOUNT-RATE-SENSITIVITY`: Forbids accepting a "no impairment" conclusion on declining telco CGUs (e.g. BCX) achieved solely by slashing the pre-tax discount rate (>200 bps) without underlying risk profile improvement; mandates counterfactual sensitivity testing.
+    2. `TELCOS-CLEAN-FCF-DIVIDEND-COVER`: Requires stripping non-operating cash inflows (cell-captive dividends, factoring proceeds, asset disposal gains) when calculating dividend cover against free cash flow payout policies.
+
+- **OpenRouter `:nitro` Socket Drop Root Cause Analysis & Multi-Tier Resilience Architecture**:
+  - Diagnosed `[WinError 10054] An existing connection was forcibly closed by the remote host` and `RemoteDisconnected` errors during large-context section audits under `:nitro`:
+    - OpenRouter's `:nitro` router dynamically targets highest-throughput endpoints, which under heavy sequential loads (e.g. 11k+ token sections) or upstream provider congestion drop TCP connections with TCP RST packets.
+    - Python `urllib.request` on Windows defaulted to keep-alive; half-closed idle sockets dropped by Cloudflare/upstream proxies caused immediate `WinError 10054` on next use.
+    - `query_openrouter` reused a single `Request` object across attempts, and `OneShotView` previously had zero section-level retry, causing the entire autonomous pipeline to abort on any transient socket blip.
+  - Implemented multi-tier HTTP and GUI pipeline retry system:
+    1. **HTTP Keep-Alive Fix**: Added `"Connection": "close"` request header to enforce fresh, clean TCP sessions per request and avoid half-closed keep-alive socket drops.
+    2. **Fresh `Request` Reconstruction**: Re-instantiates `urllib.request.Request` per attempt with fresh buffers.
+    3. **Expanded Exception Handling**: Catches all connection drops (`ConnectionResetError`, `RemoteDisconnected`, `IncompleteRead`, `URLError`, `TimeoutError`, HTTP 429/5xx) with exponential backoff (`2 ** attempt` seconds).
+    4. **Automatic `:nitro` Fallback**: If a `:nitro` endpoint fails repeatedly (attempts 1–2), attempts 3–4 automatically fall back to the standard base model without `:nitro`, preventing run failures from provider-specific Nitro instability.
+    5. **GUI Pipeline Section Retry**: In `OneShotView._process_next_section`, transient section failures are retried up to 3 times with 3s backoff and live user notifications (`⚠️ Network hiccup on Section #X... Retrying in Ys`) before giving up. Added 2-attempt retries for Stage 1 and Stage 2.
+  - Added unit tests `test_query_openrouter_retry_on_winerror_10054` and `test_query_openrouter_nitro_fallback_to_standard` in [`tests/test_openrouter.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/tests/test_openrouter.py).
+  - Full test suite verified: **136 / 136 tests passing** (100% exit code 0).
+
+- **OpenRouter DeepSeek Model Configured to `:nitro` (`deepseek/deepseek-v4.1-flash-1017:nitro`)**:
+  - Configured preferred OpenRouter model setting to high-throughput, low-latency Nitro variant:
+    - Updated `EXTERNAL_SECRETS_PATH` (`secrets.env`) setting `OPENROUTER_MODEL=deepseek/deepseek-v4.1-flash-1017:nitro`.
+    - Updated `DEFAULT_MODEL` fallback in [`section_capture/openrouter.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/section_capture/openrouter.py) to `"deepseek/deepseek-v4.1-flash-1017:nitro"`.
+    - Verified live OpenRouter API completion: succeeded in 2.09s via Nitro endpoint.
+    - Updated unit tests in [`tests/test_openrouter.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/tests/test_openrouter.py). Full test suite verified with 134/134 passing (100% exit code 0).
+
+- **NTU (`1H26`) Migration & Blank Period Combo Mandatory Validation**:
+  - Corrected Nutun Limited (`NTU`) interim reporting period from `FY26` to `1H26` (Nutun fiscal year ends 30 September; reports for 6 months ended 31 March 2026 are `1H26`):
+    - Migrated briefs directory to `companies/consumer_lending/NTU/briefs/1H26/` and renamed all Stage 1 & Stage 2 prompts and notes to `NTU_1H26_*`.
+    - Migrated archived PDF directory to `companies/consumer_lending/NTU/sources/completed/1H26/`.
+    - Updated `reports` table in `documents/analysis.sqlite` setting `period = '1H26'` and updating `original_path`.
+    - Re-evaluated NTU via `evaluate_stock.py NTU`: perfectly resolved `1H26`, confirming **R0.55** target price (**-38.2%** downside vs live R0.89, **STRONG SELL**) with all 5 forensic checks passing cleanly.
+  - Eliminated automatic period combo box pre-population in PySide6 app (`section_capture/one_shot_view.py` and `section_capture/window.py`):
+    - Initialized `period_combo` with an empty string `""` as index 0 and placeholder text `"Select / Enter Period"`.
+    - Disallowed automatic pre-selection of fallback `FY26` or detected period when selecting companies or scanning files.
+    - Updated `start_pipeline()` to enforce mandatory reporting period validation: if the combo is left blank, a blocking `QMessageBox.critical` ("Reporting Period Required") is triggered and execution is immediately aborted.
+    - Added dedicated test `test_period_combo_blank_by_default_blocks_auto_pipeline` in `tests/test_one_shot_pipeline.py`.
+    - Full test suite verified with 134/134 tests passing (100% exit code 0).
+
+- **NTU (`1H26`) Consumer Lending Evaluation & Guardrail Codification (`evaluate_stock.py NTU`)**:
+  - Freshly audited and evaluated Nutun Limited (`NTU`) following complete re-capture by user.
+  - Live JSE closing price **`R0.89`** (`NTU.JO`), derived 12-Month Target Price of **`R0.55` (`STRONG SELL`)**, implying **`-38.2%` capital downside** (forward dividend yield: 0.0%; expected 12M TSR: **`-38.2%`**).
+  - Monotonic dynamic rating bands established: `Strong Buy ≤ R0.42`, `Buy ≤ R0.48`, `Hold ≤ R0.58`, `Sell ≤ R0.65`, `Strong Sell > R0.65`.
+  - At live price **`R0.89`** (> R0.65), NTU dynamically evaluates to a high-conviction **`STRONG SELL`**.
+  - All 5 forensic checks pass cleanly (`CHK-PRICE-SYNC`, `CHK-BANDS-MONO`, `CHK-SOTP-MATH`, `CHK-GUARDRAILS`, `CHK-TEXT-CLEAN`).
+  - Codified newly discovered consumer lending guardrail `CONSUMER-LENDING-PBD-AMORTISATION-EBITDA-ADD-BACK` into `documents/analysis.sqlite` (`sector_guardrails` table) bringing total enabled rules to **27**.
+  - Synchronized SQLite `reports` table with `target_price_zar = 0.55`, `reference_price_zar = 0.89`, `recommendation = SELL`, `upside_pct = -38.2`, and dynamic rating bands.
+
+- **Reset and Fresh Start for NTU (Nutun) and TKG (Telkom)**:
+  - Purged all database records for NTU and TKG from `documents/analysis.sqlite`: deleted 3 report rows and 129 linked section captures.
+  - Cleared all generated brief directories on disk: `companies/consumer_lending/NTU/briefs/1H26/` and `companies/telcos/TKG/briefs/FY26/`.
+  - Cleared `sources/completed/` archives for both tickers, restoring un-analyzed status.
+  - Preserved original source PDFs in `companies/consumer_lending/NTU/sources/` and `companies/telcos/TKG/sources/`, ready for fresh section capture in the PySide6 app.
+
+- **IOC (`FY26`) IT Services Valuation Refresh & Hold Re-Rating (`evaluate_stock.py IOC --rerun`)**:
+  - Codified new IT sector guardrail `IT-HARDWARE-PASSTHROUGH-MARGIN-DILUTION` into `documents/analysis.sqlite` (`sector_guardrails` table) bringing total enabled rules to 26.
+  - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified live closing price **`R4.22`** (`IOC.JO`), incorporating post-balance sheet debt restructuring (margin cut by 50 bps, maturity extended to March 2030), M&A cash obligations, and hardware margin disaggregation.
+  - Derived 12-Month Target Price of **`R4.60` (`HOLD`)**, implying **`+9.0%` capital upside** (forward dividend yield: 0.0% as capital is prioritized for share buybacks and bolt-ons; expected 12M TSR: **`+9.0%`**).
+  - Monotonic dynamic rating bands established: `Strong Buy ≤ R3.54`, `Buy ≤ R4.00`, `Hold ≤ R4.84`, `Sell ≤ R5.41`, `Strong Sell > R5.41`.
+  - At live price **`R4.22`**, IOC dynamically migrates to **`HOLD`** (`R4.01 – R4.84`).
+  - Stripped illegal HTML tags and verified all 5 forensic checks pass cleanly (`CHK-PRICE-SYNC`, `CHK-BANDS-MONO`, `CHK-SOTP-MATH`, `CHK-GUARDRAILS`, `CHK-TEXT-CLEAN`).
+  - Synchronized SQLite `reports` table with `target_price_zar = 4.60`, `reference_price_zar = 4.22`, `recommendation = HOLD`, `upside_pct = 9.0`, and dynamic rating bands.
+  - Archived primary source PDFs to `companies/it/IOC/sources/completed/FY26/` (`iOCO-AFS-July2026.pdf`, `iOCO-IAR-2026.pdf`).
+
+- **Codification of 6 New Sector Guardrails & Interactive Database Prompt Workflow**:
+  - Inserted 6 newly discovered valuation guardrails into `documents/analysis.sqlite` (`sector_guardrails` table) bringing total enabled rules to 25:
+    1. `REIT-YIELD-STRIP-ICR-DEFAULT`: Prohibits unanalyzed yield-stripping asset sales that accelerate ICR covenant defaults.
+    2. `REIT-SWAP-NOTIONAL-MATCHING`: Penalizes debt paydowns that trigger over-hedged swap books (>100% of gross borrowings).
+    3. `MINING-BYPRODUCT-AISC-SEPARATION`: Prohibits applying consolidated by-product subsidized AISC to standalone starter mining phases.
+    4. `MINING-INFERRED-RESOURCE-HAIRCUT`: Mandates explicit 25%–50% risk discounts on unproven Inferred mineral resources in LOM plans.
+    5. `RETAIL-APM-OPERATING-MARGIN`: Distinguishes merchandise-only APM EBIT margins from statutory total revenue operating margins.
+    6. `RETAIL-HIDDEN-ARREARS-AUDIT`: Mandates forensic extraction of overdue debt concealed within "satisfactory paid" credit accounts.
+  - Updated [`docs/STOCK_EVALUATION_FORMAT.md`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/docs/STOCK_EVALUATION_FORMAT.md) and [`AGENTS.md`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/AGENTS.md) to mandate that after every evaluation or rerun, the assistant must explicitly prompt the user to codify newly discovered rules into the SQLite database.
+
+- **APF (`FY26`) REIT Valuation Refresh & Strong Sell Re-Rating (`evaluate_stock.py APF --rerun`)**:
+  - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified live closing price **`R0.48`** (`APF.JO`), incorporating all 8 subsequent SENS notices (KPMG Crescent disposal to RMA, JSE censure, DMTN partial capital redemptions).
+  - Derived 12-Month Target Price of **`R0.30` (`STRONG SELL`)**, implying **`-37.5%` capital downside** (forward dividend yield: 0.0% due to Section 46 liquidity blockade; expected 12M TSR: **`-37.5%`**).
+  - Monotonic dynamic rating bands established: `Strong Buy ≤ R0.23`, `Buy ≤ R0.26`, `Hold ≤ R0.32`, `Sell ≤ R0.35`, `Strong Sell > R0.35`.
+  - At live price **`R0.48`** (> R0.35), APF dynamically migrates to a high-conviction **`STRONG SELL`**.
+  - Cleaned all token stutter loops in Section 3 and stripped illegal HTML tags. All 5 forensic checks pass cleanly (`CHK-PRICE-SYNC`, `CHK-BANDS-MONO`, `CHK-SOTP-MATH`, `CHK-GUARDRAILS`, `CHK-TEXT-CLEAN`).
+  - Synchronized SQLite `reports` table with `target_price_zar = 0.30`, `reference_price_zar = 0.48`, `recommendation = SELL`, `upside_pct = -37.5`, `tsr_pct = -37.5`, and rating bands.
+  - Archived primary source PDF to `companies/reit/APF/sources/completed/FY26/APF_IAR_2026_Combined_V21.pdf`.
+
+- **Stock Evaluation Protocol & Output Specification (`docs/STOCK_EVALUATION_FORMAT.md`)**:
+  - Authored comprehensive operating guide [`docs/STOCK_EVALUATION_FORMAT.md`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/docs/STOCK_EVALUATION_FORMAT.md) standardizing CLI execution commands, 5-part user response structure, and sector-specific forensic checklists.
+  - Mandated the inclusion of a dedicated **Valuation Errors Found & Analytical Lessons Learned** section on every stock evaluation and rerun response, breaking down operational distortions, financing facility asymmetries, hidden credit arrears, and tax mechanics.
+  - Codified the post-rerun synchronization checklist: SQLite database update, PDF archival, test suite execution, and state documentation.
+
+- **ORN (`FY26`) Mining Valuation Refresh (`evaluate_stock.py ORN --rerun`)**:
+  - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified live closing price **`R0.25`** (`ORN.JO`), incorporating post-SENS financing updates (Glencore Tranche A & B facilities) and mining sector guardrails.
+  - Derived 12-Month Target Price of **`R0.28` (`HOLD`)**, implying **`+12.0%` capital upside** (forward dividend yield: 0.0%, TSR: `+12.0%`).
+  - Monotonic dynamic rating bands established: `Strong Buy ≤ R0.22`, `Buy ≤ R0.24`, `Hold ≤ R0.29`, `Sell ≤ R0.33`, `Strong Sell > R0.33`.
+  - At live price **`R0.25`**, ORN is dynamically rated **`HOLD`**.
+  - All 5 forensic checks pass cleanly (`CHK-PRICE-SYNC`, `CHK-BANDS-MONO`, `CHK-SOTP-MATH`, `CHK-GUARDRAILS`, `CHK-TEXT-CLEAN`).
+  - Synchronized SQLite `reports` table (`d20cdd6e34bde68c871b45bc80f57dea9ce6b963d607464e3c28f0456ba9eae0`) with `target_price_zar = 0.28`, `reference_price_zar = 0.25`, `recommendation = HOLD`, `upside_pct = 12.0`, `rating_bands`.
+  - Archived source PDF to `companies/mining/ORN/sources/completed/FY26/20260917-ORN-ASX-JSE-Annual-Report-2026.pdf`.
+
+- **LEW (`FY26`) Retail Valuation Refresh & OpenRouter Transient Retry Architecture**:
+  - **Refreshed Stage 2 Institutional Valuation (`evaluate_stock.py LEW --rerun`)**:
+    - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified live closing price **`R90.19`** (`LEW.JO`).
+    - Derived 12-Month Target Price of **`R95.00` (`HOLD`)**, implying **`+5.3%` capital return** plus **`9.4%` forward dividend yield** = **`+14.8%` expected 12M TSR**.
+    - Monotonic dynamic rating bands established: `Strong Buy ≤ R73.08`, `Buy ≤ R82.61`, `Hold ≤ R100.00`, `Sell ≤ R111.76`, `Strong Sell > R111.76`.
+    - At the live JSE price of **`R90.19`**, LEW is rated **`HOLD`** (`R82.62 – R100.00`).
+    - Stripped out all deprecated `<br>` HTML tags from Markdown table cells and embedded clean JSON rating bands.
+    - Synchronized SQLite `reports` table (`4f42a10cf4986783285887e8458999c314edb3c4dcc6985c18e1a46795b82e14`) with `target_price_zar = 95.00`, `reference_price_zar = 90.19`, `recommendation = HOLD`, `upside_pct = 5.3`, `dividend_yield_pct = 9.4`, `tsr_pct = 14.8`, and dynamic rating bands.
+    - Archived source PDF to `companies/retail/LEW/sources/completed/FY26/lewis-iar-2026.pdf`.
+  - **OpenRouter Transient Connection Retry**:
+    - Added automatic exponential backoff retry loop (3 attempts) to `query_openrouter` in [`section_capture/openrouter.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/section_capture/openrouter.py) to gracefully absorb transient remote socket resets (`WinError 10054`) and HTTP 5xx errors.
+
+- **Automated Stock Valuation Evaluator & Autonomous Rerun Engine (`evaluate_stock.py`)**:
+  - Implemented standalone CLI and programmatic engine [`evaluate_stock.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/evaluate_stock.py) to standardize and automate forensic evaluations when asked to evaluate any stock (`python evaluate_stock.py <TICKER> [--period <PERIOD>] [--rerun] [--json]`).
+  - **Programmatic Forensic Audit Checks**:
+    - `CHK-PRICE-SYNC`: Fetches live JSE quote (`XYZ.JO`), evaluates live upside vs note reference price, and recomputes 12M TSR.
+    - `CHK-BANDS-MONO`: Confirms strictly ascending rating bands (`Strong Buy < Buy < Hold < Sell < Strong Sell`) and evaluates live dynamic rating.
+    - `CHK-SOTP-MATH`: Scans SOTP tables for vertical summation, proper Net Cash/Debt signs, and flags blended target price arithmetic hallucinations.
+    - `CHK-GUARDRAILS`: Verifies compliance against active sector-specific and universal rules in `sector_guardrails`.
+    - `CHK-TEXT-CLEAN`: Scans for LLM token repetition/sampling stutters, broken HTML tags (`<br>`, `<span>`), and template placeholders.
+  - **Autonomous `--rerun` Capability**:
+    - Automatically builds multi-document dossier (Stage 1 audit determinations + source PDFs from `sources/` or `sources/completed/<period>/` + SENS notices).
+    - Queries OpenRouter DeepSeek Flash with temperature 0.1, sanitizes markdown, repairs rating bands, saves note, updates SQLite `reports`, and archives PDFs.
+  - **Verified Test Suite**:
+    - Added unit test suite [`tests/test_evaluator.py`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/tests/test_evaluator.py) testing discovery, audit execution across active stocks (`PAN`, `SSK`, `CGR`, `SPP`), and detection of non-monotonic bands, arithmetic hallucinations, and HTML tags.
+    - All **133 tests passing (100%)**.
+
+- **PAN (`FY26`) Mining Valuation Refresh & Dynamic Strong Buy Re-Rating**:
+  - **Refreshed Stage 2 Institutional Valuation**:
+    - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified live closing price **`R24.60`** (`PAN.JO`), incorporating the dedicated mining sector guardrail (`MINING-SECTION36-CAPEX-TAX`) and the 10 universal guardrails.
+    - Derived 12-Month Target Price of **`R34.50` (`BUY`)**, implying **`+40.2%` capital upside** (plus `3.9%` dividend yield = `+44.1%` TSR) across 2,106.3m economic shares (net of PAR Gold 306.4m treasury shares and the R500m on-market share buyback).
+    - Monotonic dynamic rating bands established: `Strong Buy ≤ R26.54`, `Buy ≤ R30.00`, `Hold ≤ R36.32`, `Sell ≤ R40.59`, `Strong Sell > R40.59`.
+    - At the live JSE closing price of **`R24.60`**, PAN is dynamically rated **`STRONG BUY`** (`≤ R26.54`).
+    - Fixed arithmetic SOTP DCF table to sum vertically line-by-line to `US$4,274.7m` and `R34.50/share` without arbitrary discounts or net cash deductions.
+    - Synchronized [`documents/analysis.sqlite`](file:///c:/Users/diond/Desktop/Projects/stock_analysis_prompts/documents/analysis.sqlite) `reports` row (`62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd`) with `target_price_zar = 34.50`, `reference_price_zar = 24.60`, `recommendation = BUY`, `upside_pct = 40.2`, `dividend_yield_pct = 3.9`, `tsr_pct = 44.1`, and dynamic rating bands.
+    - Cleaned token stutter in Section 6 catalysts and archived primary results PDF to `companies/mining/PAN/sources/completed/FY26/`.
+
+- **SSK (`FY26`) Valuation Refresh & Generic Sector Guardrails Enforcement**:
+  - **Cleaned Sector Guardrails Registry (`sector_guardrails`)**:
+    - Strictly enforced user rule: guardrails must be 100% generic institutional principles applicable across any company in a sector, with zero company-specific names, tickers, or numbers in the rule text, and never forced if unnecessary.
+    - Cleaned `ALL-ENTITY-ACRONYM-DISAMBIGUATION` and `RETAIL-IFRS16-HEADLEASE-SUBLEASE` to remove company-specific identifiers (`SPAR`, `CGR`, `BDC`).
+    - Kept 11 core generic rules active in SQLite `sector_guardrails` across universal and sector domains (`ALL-IFRS16-EV-BRIDGE`, `ALL-PNL-VERTICAL-ARITHMETIC`, `ALL-CROSS-SECTION-METRIC-SYNC`, `ALL-RATING-BANDS-MONOTONIC`, `ALL-SHARE-COUNT-ANCHOR`, `ALL-HISTORICAL-BASE-COLUMN`, `ALL-PAT-HEPS-RECONCILIATION`, `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT`, `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE`, `ALL-ENTITY-ACRONYM-DISAMBIGUATION`, `CONSTRUCTION-POC-WIP-RETENTIONS`).
+  - **Refreshed SSK (`FY26`) Institutional Valuation**:
+    - Re-ran Stage 2 Institutional Valuation via DeepSeek Flash using verified JSE quote `R5.78` (`SSK.JO`).
+    - Revised target price to **`R6.20` (`HOLD`)**, implying **`+7.3%` upside** (down from old `R8.50 BUY`), properly accounting for the `R133m` working capital deficit, `R2.65bn` excess billings, and stripping out the `R492m` post-tax Kusile settlement windfall to anchor on `R328m` normalised OP.
+    - Generated and registered `companies/construction/SSK/briefs/FY26/SSK_FY26_stage2_valuation_note.md` and synced SQLite `reports` table with `target_price_zar = 6.20`, `reference_price_zar = 5.78`, `recommendation = HOLD`, and dynamic rating bands (`Strong Buy <= R4.77`, `Buy <= R5.39`, `Hold <= R6.53`, `Sell <= R7.29`, `Strong Sell > R7.29`).
+    - Archived source PDFs to `companies/construction/SSK/sources/completed/FY26/`.
+
+- **Streamlined Portfolio Coverage Table (`section_capture/portfolio_view.py`)**:
+  - Removed redundant `Note Ref Price` and `Note Upside` columns from the Portfolio Coverage table (streamlining from 13 columns to 11 columns: `Ticker`, `Company Name`, `Sector`, `Latest JSE Price`, `12M Target`, `Live Upside`, `Div Yield`, `12M TSR`, `Rating`, `Stage 1 / S2 Status`, `Analysis Date`) as well as from the KPI header strip and Markdown clipboard export.
+  - Added seamless fallback in `Latest JSE Price` and `Live Upside` to `reference_price_zar` / `upside_pct` when no cached `market_quotes` row is present, and made `12M TSR` dynamically reflect `Live Upside + Div Yield` when live quotes are active.
+
+- **SQLite Sector Guardrails Registry (`sector_guardrails`) & Zero-Move Post-SENS Resubmission Workflow**:
+  - **CGR (`FY26`) Forensic Guardrails & Re-Run (`R3.10 SELL` vs Live JSE `R3.65`)**:
+    - Added 4 universal guardrails derived from Calgro M3 (`CGR` `FY26`): `ALL-PAT-HEPS-RECONCILIATION` (enforces PAT-to-HEPS directional reconciliation and Net Finance income/expense sign integrity), `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT` (enforces strict vertical SOTP summation and forbids adding working capital/goodwill on top of DCF), `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` (reconciles gross vs net treasury shares on parent vs consolidated dividends), and `ALL-ENTITY-ACRONYM-DISAMBIGUATION` (prevents conflating distinct legal entities such as Bankenveld District City vs Belhar Calgro M3).
+    - Re-ran CGR (`FY26`) Stage 1 and Stage 2 (`companies/construction/CGR/briefs/FY26/CGR_FY26_stage2_valuation_note.md`), archiving PDFs to `sources/completed/FY26/`.
+  - **SQLite `sector_guardrails` Table (`section_capture/db.py`)**:
+    - Added persistent `sector_guardrails` table (`rule_code`, `sector`, `stage`, `title`, `rule_text`, `origin_ticker`, `enabled`, `created_at`, `updated_at`) auto-seeded via `_migrate_schema()` with universal (`all`) and sector-specific (`retail`, `mining`, `reit`, `it`, `construction`, `consumer_lending`, `finance`, `telcos`) accounting and valuation guardrails.
+    - Codified forensic guardrails from SPP (`1H26`): `ALL-IFRS16-EV-BRIDGE` (forbids subtracting capitalised IFRS 16 lease liabilities from Pre-IFRS 16 EBITDA/FCFF Enterprise Value), `ALL-PNL-VERTICAL-ARITHMETIC` (enforces vertical P&L row summation and forbids double-subtracting Note 7 impairments from statutory Operating Profit), `ALL-CROSS-SECTION-METRIC-SYNC` (enforces Section 1 ↔ Section 3 ↔ Section 4 HEPS/multiple/target price identity), `ALL-RATING-BANDS-MONOTONIC` (enforces strictly ascending ZAR rating band thresholds), `RETAIL-IFRS16-HEADLEASE-SUBLEASE`, and `RETAIL-ECL-CASHFLOW-VS-ALLOWANCE`.
+    - Added `upsert_sector_guardrail()`, `get_sector_guardrails()`, and `format_sector_guardrails_block()`, automatically injecting active guardrails into Stage 1 (`workflow/export_stage1.py`), Stage 2 (`workflow/generate_stage2.py`), and Stage 2-U SENS updates (`workflow/generate_sens_update.py`).
+    - Added `validate_and_repair_rating_bands()` (`section_capture/db.py`) and `sanitize_stage2_valuation_markdown()` (`workflow/generate_stage2.py`) to deterministically repair degenerate JSON `rating_bands` (e.g. `hold_max_zar == sell_max_zar`).
+  - **In-Place Archived PDF/SENS Discovery & SQLite Stage 1 Reuse (`section_capture/one_shot_view.py`)**:
+    - Updated `discover_company_documents()` to automatically discover archived report PDFs in `sources/completed/<period>/` (`is_archived=True`) and prior completed SENS notices in `sources/sens/completed/` (`is_archived=True`) alongside new SENS notices in `sources/sens/` (`is_archived=False`), eliminating the need to manually pull PDFs out of `completed/` to resubmit.
+    - Added `_load_existing_stage1_response()` to load `stage1_response` from `documents/analysis.sqlite` or `briefs/<period>/` so both Smart SENS Update Mode (`_run_phase4_sens_only_update`) and full Stage 2 resubmission (`_run_phase3_stage1` $
+ightarrow$ `_run_phase4_stage2`) reuse Stage 1 from SQLite without re-running Tier 1 or Stage 1.
+    - Upgraded `_run_phase4_sens_only_update()` and `build_sens_update_prompt_content()` to inject the Stage 1 Forensic Audit (`stage1_audit_report`), full document inventory (`ensure_documents_considered_table()`), and sector guardrails into every SENS valuation update.
+  - **Test Suite (`tests/test_one_shot_pipeline.py`)**:
+    - Added 4 new tests (`test_sector_guardrails_table_and_prompt_injection`, `test_sanitize_stage2_valuation_markdown_repairs_degenerate_bands`, `test_discover_archived_pdfs_and_sens_in_place_and_smart_sens_update`, `test_resubmit_stage2_from_completed_pdfs_and_sqlite_stage1`).
+    - All **127 tests passing (100%)**.
 
 - **One-Shot Autonomous End-to-End Pipeline (`one_shot` branch — `section_capture/one_shot_view.py`)**:
   - Streamlined User Experience:
@@ -829,13 +1011,19 @@ ew_company.py:create_company() to automatically scaffold sources/sens/ and sourc
 
 ## Next steps
 
-1. **Active Coverage Universe (5 Assets Tracked)**:
-   - `PAN`: BUY | Target R43.50 | Ref R30.69 (+41.7% upside / +47.6% TSR) | Mining
-   - `APF`: SELL | Target R0.42 | Ref R0.60 (-30.0% upside) | REIT
-   - `ORN`: HOLD | Target R0.26 | Ref R0.28 (-8.5% upside) | Mining
-   - `LEW`: HOLD | Target R84.50 | Ref R79.00 (+6.96% upside / +18.86% TSR) | Retail
-   - `IOC`: BUY | Target R4.90 | Ref R3.96 (+23.7% upside / TSR) | IT
-2. **Construction Sector Deployment**:
-   - Ready to scaffold construction and materials companies (e.g. `python new_company.py WBO --sector construction --name "Wilson Bayly Holmes-Ovcon"` or `RBX` Raubex, `PPC` PPC Ltd, `AFT` Afrimat).
+1. **Active Coverage Universe (10 Assets Evaluated & Maintained)**:
+   - `PAN` (`FY26`): **STRONG BUY** | Live R24.60 | Target R34.50 (+40.2% upside / +44.1% TSR) | Mining
+   - `SSK` (`FY26`): **HOLD** | Live R5.78 | Target R6.20 (+7.3% upside) | Construction
+   - `CGR` (`FY26`): **SELL** | Live R3.65 | Target R3.10 (-15.1% downside) | Construction
+   - `SPP` (`1H26`): **HOLD** | Live R148.50 | Target R162.00 (+9.1% upside / +13.5% TSR) | Retail
+   - `PIK` (`FY26`): **SELL** | Live R22.40 | Target R20.50 (-8.5% downside) | Retail
+   - `LEW` (`FY26`): **HOLD** | Live R90.19 | Target R95.00 (+5.3% upside / +14.8% TSR) | Retail
+   - `ORN` (`FY26`): **HOLD** | Live R0.25 | Target R0.28 (+12.0% upside) | Mining
+   - `APF` (`FY26`): **STRONG SELL** | Live R0.48 | Target R0.30 (-37.5% downside) | REIT
+   - `IOC` (`FY26`): **HOLD** | Live R4.22 | Target R4.60 (+9.0% upside) | IT
+   - `NTU` (`FY26`): **STRONG SELL** | Live R0.89 | Target R0.55 (-38.2% downside) | Consumer Lending
+2. **Execute Onboarding or Evaluation for New Stocks**:
+   - Use `evaluate_stock.py <TICKER>` for existing coverage checks.
+   - Follow `docs/STOCK_EVALUATION_FORMAT.md` for output format, always presenting the mandatory **Valuation Errors Found & Analytical Lessons Learned** section.
 
 

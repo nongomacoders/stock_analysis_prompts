@@ -150,3 +150,46 @@ def test_new_company_dialog_examine_callback_simulation(qapp):
         assert "P/NAV & 2-Stage DDM" in dlg.assessment_details.text()
     finally:
         dlg.deleteLater()
+
+
+def test_examine_ticker_locally_dcp():
+    """Verify DCP is recognized in local registry as Dis-Chem Pharmacies Limited under retail."""
+    res = examine_ticker_locally("DCP")
+    assert res is not None
+    assert res["ticker"] == "DCP"
+    assert res["company_name"] == "Dis-Chem Pharmacies Limited"
+    assert res["sector_code"] == "retail"
+
+
+def test_build_ticker_examination_prompt_with_verified_profile():
+    """Verify verified profile ground truth and live search directive are embedded."""
+    profile = {
+        "company_name": "Dis-Chem Pharmacies Limited",
+        "sector": "Healthcare",
+        "industry": "Pharmaceutical Retailers",
+        "business_summary": "Retail and wholesale of healthcare products.",
+    }
+    prompt = build_ticker_examination_prompt("DCP", verified_profile=profile)
+    assert "VERIFIED JSE LISTING GROUND TRUTH" in prompt
+    assert "Dis-Chem Pharmacies Limited" in prompt
+    assert "Pharmaceutical Retailers" in prompt
+    assert "CRITICAL ACCURACY & SEARCH DIRECTIVE" in prompt
+    assert "Search live JSE listings" in prompt
+
+
+def test_ticker_worker_synthesize_profile_response(qapp):
+    """Verify worker can synthesize a full response directly from verified profile."""
+    from section_capture.ticker_lookup import TickerExamineWorker
+    worker = TickerExamineWorker("DCP")
+    profile = {
+        "company_name": "Dis-Chem Pharmacies Limited",
+        "sector": "Healthcare",
+        "industry": "Pharmaceutical Retailers",
+        "business_summary": "Retail chain of pharmacy stores across South Africa.",
+    }
+    resp = worker._synthesize_profile_response(profile)
+    assert resp["ticker"] == "DCP"
+    assert resp["company_name"] == "Dis-Chem Pharmacies Limited"
+    assert resp["matched_sector_code"] == "retail"
+    assert resp["stage1_appropriateness"]["status"] == "Appropriate"
+    assert resp["stage2_appropriateness"]["status"] == "Appropriate"

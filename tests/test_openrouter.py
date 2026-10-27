@@ -27,7 +27,7 @@ from section_capture.openrouter import (
 
 def test_get_openrouter_model_default(monkeypatch):
     monkeypatch.delenv("OPENROUTER_MODEL", raising=False)
-    assert get_openrouter_model() == "deepseek/deepseek-v4.1-flash-1017"
+    assert get_openrouter_model() == "deepseek/deepseek-v4.1-flash-1017:nitro"
 
 
 def test_get_openrouter_model_env_override(monkeypatch):
@@ -36,12 +36,16 @@ def test_get_openrouter_model_env_override(monkeypatch):
 
 
 def test_get_model_display_name_and_short_tag(monkeypatch):
-    # Default model
+    # Default model (:nitro)
     monkeypatch.delenv("OPENROUTER_MODEL", raising=False)
     with patch("section_capture.openrouter.EXTERNAL_SECRETS_PATH") as mock_path:
         mock_path.exists.return_value = False
-        assert get_model_display_name() == "DeepSeek Flash"
-        assert get_model_short_tag() == "DeepSeek"
+        assert get_model_display_name() == "DeepSeek Flash (nitro)"
+        assert get_model_short_tag() == "DeepSeek:nitro"
+
+    # Base model without :nitro
+    assert get_model_display_name("deepseek/deepseek-v4.1-flash-1017") == "DeepSeek Flash"
+    assert get_model_short_tag("deepseek/deepseek-v4.1-flash-1017") == "DeepSeek"
 
     # With :nitro
     assert get_model_display_name("deepseek/deepseek-v4.1-flash-1017:nitro") == "DeepSeek Flash (nitro)"
@@ -309,3 +313,62 @@ def test_resubmit_sections_missing_only(isolated_map_cache, monkeypatch):
     assert len(results) == 1
     assert results[0]["section_number"] == 2
     assert len(call_counts) == 1
+
+
+def test_query_openrouter_retry_on_winerror_10054(monkeypatch):
+    """Verifies that query_openrouter transparently retries on connection reset (10054)."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-xyz")
+    monkeypatch.setattr("time.sleep", lambda s: None)  # fast tests
+
+    attempts = []
+
+    def mock_urlopen(req, timeout=180):
+        attempts.append(req)
+        if len(attempts) < 3:
+            raise ConnectionResetError(10054, "An existing connection was forcibly closed by the remote host")
+        mock_resp = io.BytesIO(
+            json.dumps({
+                "id": "gen-retry-ok",
+                "choices": [{"message": {"content": "Retry successful after drops!"}}],
+                "usage": {"prompt_tokens": 100, "completion_tokens": 50, "total_tokens": 150},
+            }).encode("utf-8")
+        )
+        return mock_resp
+
+    with patch("urllib.request.urlopen", side_effect=mock_urlopen):
+        result = query_openrouter("Test prompt", model="deepseek/deepseek-v4.1-flash-1017:nitro")
+        assert result == "Retry successful after drops!"
+        assert len(attempts) == 3
+
+
+def test_query_openrouter_nitro_fallback_to_standard(monkeypatch):
+    """Verifies that on repeated drops, query_openrouter gracefully falls back from :nitro to standard endpoint."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-xyz")
+    monkeypatch.setattr("time.sleep", lambda s: None)
+
+    models_seen = []
+
+    def mock_urlopen(req, timeout=180):
+        body = json.loads(req.data.decode("utf-8"))
+        models_seen.append(body["model"])
+        if len(models_seen) < 3:
+            import http.client
+            raise http.client.RemoteDisconnected("Remote end closed connection without response")
+        mock_resp = io.BytesIO(
+            json.dumps({
+                "id": "gen-fallback-ok",
+                "choices": [{"message": {"content": "Fallback successful!"}}],
+                "usage": {"prompt_tokens": 100, "completion_tokens": 50, "total_tokens": 150},
+            }).encode("utf-8")
+        )
+        return mock_resp
+
+    with patch("urllib.request.urlopen", side_effect=mock_urlopen):
+        result = query_openrouter("Test prompt", model="deepseek/deepseek-v4.1-flash-1017:nitro")
+        assert result == "Fallback successful!"
+        assert len(models_seen) == 3
+        # First 2 attempts used :nitro
+        assert models_seen[0] == "deepseek/deepseek-v4.1-flash-1017:nitro"
+        assert models_seen[1] == "deepseek/deepseek-v4.1-flash-1017:nitro"
+        # 3rd attempt stepped down to standard endpoint
+        assert models_seen[2] == "deepseek/deepseek-v4.1-flash-1017"

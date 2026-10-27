@@ -1,14 +1,14 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
-**Target Asset:** PAN Resources (PAN)  
-**Sector:** Mining  
+**Target Asset:** Pan African Resources PLC (PAN)  
+**Sector:** Precious Metals and Mining (JS5513 / Mining)  
 **Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
 
-### INSTRUCTIONS FOR GEMINI 4 ARGON:
+### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):
 You are acting as an elite **Managing Director & Head of Mining Equity Research** at a premier institutional investment bank.
-You are conducting a definitive 2-year operational and valuation forecast for **PAN Resources (PAN)**.
+You are conducting a definitive 2-year operational and valuation forecast for **Pan African Resources PLC (PAN)**.
 
 ### CORE OPERATING RULES & EVIDENCE HIERARCHY:
 1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, and providing your quantitative justification.
@@ -1149,26 +1149,43 @@ The current local time is: 2026-10-18T19:47:21+02:00.
      ```json
      {
        "ticker": "PAN",
-       "company_name": "PAN Resources",
+       "company_name": "Pan African Resources PLC",
        "sector": "mining",
+       "jse_sector_code": "JS5513",
+       "jse_sector_name": "Precious Metals and Mining",
        "recommendation": "BUY | HOLD | SELL",
-       "reference_price_zar": 0.00,
+       "reference_price_zar": 24.60,
        "target_price_zar": 0.00,
        "implied_upside_pct": 0.0,
        "forward_dividend_yield_pct": 0.0,
-       "projected_12m_tsr_pct": 0.0
+       "projected_12m_tsr_pct": 0.0,
+       "rating_bands": {
+         "strong_buy_max_zar": 0.00,
+         "buy_max_zar": 0.00,
+         "hold_max_zar": 0.00,
+         "sell_max_zar": 0.00,
+         "strong_sell_above_zar": 0.00
+       }
      }
      ```
-   - **Executive Valuation Summary Card Table:** Follow the JSON block immediately with your publication-grade Markdown table:
+   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for PAN on the JSE is **R24.60**. You MUST use `24.60` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R24.60 baseline.
+   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:
+     ### Source Documents & Disclosures Considered
+     | # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |
+     | :---: | :--- | :---: | :---: | :---: | :--- |
+     | 1 | `Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf` | [AR] General Annual Report (AR) | 54 | FY26 | [Summarize primary financial & operational disclosures] |
+   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).
+   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:
      | Metric | Determination | Basis & Key Commentary |
      | :--- | :---: | :--- |
-     | **Sector** | Mining | [Sub-sector classification] |
-     | **Current Reference Share Price** | R[0.00] | [Closing date & reference price baseline] |
+     | **Sector** | Mining (Precious Metals and Mining — JS5513 / ICB 551030) | [Sub-sector classification] |
+     | **Current Reference Share Price** | R24.60 | Verified closing share price (PAN.JO via Yahoo Finance / confirmed input) |
      | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
      | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
      | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
      | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
      | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |
    - Followed by the core institutional thesis and structural headwinds/tailwinds.
 2. **Detailed Asset-by-Asset Operational Forecast (FY27E & FY28E):** Throughput, recovered grade, production (oz), cash costs, and AISC per asset.
 3. **Consolidated Financial Statements & FCFE Bridge:** Revenue, EBITDA, Section 36 Cash Tax, Net Profit, and Free Cash Flow to Equity.
@@ -1179,6 +1196,26 @@ The current local time is: 2026-10-18T19:47:21+02:00.
    - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb for each catalyst (e.g. 'Every $50/oz move in gold price or R0.50 move in USD/ZAR impacts FCFE by R X million and fair value by R Y/share').
    - **Expansion & Delivery Catalysts:** Specific milestones required to trigger an upgrade (e.g. MTR / Soweto tailings commercial commissioning, Section 36 capex cliff release).
    - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, production reports, SENS announcements) for portfolio managers to mark.
+
+---
+
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: MINING)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-CROSS-SECTION-METRIC-SYNC` | **UNIVERSAL** | **Cross-Section HEPS, Multiple & Target Price Identity** *(Origin: SPP)* | Compute your Section 3 (P&L and HEPS) and Section 4 (DCF and P/E / EV/EBITDA valuation) numbers BEFORE writing the Section 1 Executive Summary Card commentary. The 12-Month Target Price, Reference Price, Forecast HEPS (e.g. FY27E HEPS in R or cents), and Target P/E or EV/EBITDA multiple cited in the Section 1 Executive Summary Card 'Basis & Key Commentary' cell MUST be 100% identical to Section 3 and Section 4 (never cite one HEPS/multiple in Section 1 commentary and a different HEPS/multiple in Section 4). |
+| `ALL-RATING-BANDS-MONOTONIC` | **UNIVERSAL** | **Strictly Ascending ZAR Rating Bands** *(Origin: SPP)* | In the opening JSON block and Section 1 table, rating_bands thresholds MUST be strictly ascending in ZAR per share: strong_buy_max_zar < buy_max_zar < hold_max_zar < sell_max_zar == strong_sell_above_zar, anchored around target_price_zar (Strong Buy <= Target/1.30, Buy <= Target/1.15, Hold <= Target/0.95, Sell <= Target/0.85, Strong Sell > Target/0.85). Never output identical ZAR values for Hold and Sell thresholds. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-HISTORICAL-BASE-COLUMN` | **UNIVERSAL** | **Mandatory Historical Actuals Base Column & Currency Unit Consistency** *(Origin: SPP)* | In Section 2 (Operational Forecast) and Section 3 (Income Statement & Cash Flow Bridge), always include the reported historical base period column(s) (e.g. FY25A and/or 1H26A) alongside FY26E, FY27E, and FY28E so annualized run-rates, operating expenses, and margins are anchored to audited actuals. Never label a ZAR-converted segment revenue row as EUR'm or USD'm; ensure every row's currency unit label matches the numbers in that row. |
+| `ALL-PAT-HEPS-RECONCILIATION` | **UNIVERSAL** | **Forecast PAT-to-HEPS Reconciliation & Net Finance Sign Integrity** *(Origin: CGR)* | Forecast HEPS (cents) MUST equal (Forecast Headline Earnings in R'm / Weighted-Average Shares in millions * 100) and move directionally with Forecast PAT unless explicit non-headline items (e.g. PPE/investment property fair-value gains or goodwill impairments) are itemized in the bridge. Never forecast a sharp drop in PAT alongside an unexplained rise in HEPS. Also verify whether historical Net Finance is net finance income (+, e.g. when JV finance income exceeds P&L finance cost after interest capitalisation) or net finance expense (-), and preserve the exact sign so the P&L sums vertically. |
+| `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT` | **UNIVERSAL** | **Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting** *(Origin: CGR)* | In Section 4 SOTP / DCF valuation tables, every component row MUST sum vertically to Total Enterprise Value (TEV), Equity Value (TEV less Net Debt), SOTP Fair Value per Share (Equity Value / Net Shares), and Target Price (ZAR). If a percentage risk/liquidity discount is applied (e.g. 25% discount), the discount ZAR per share and resulting Target Price MUST equal SOTP Fair Value per Share * (1 - discount%); never switch denominators mid-table. Never add book working capital (Inventory, Contract Assets/WIP) or Goodwill on top of a segment DCF/NPV that already discounts the cash flows generated by those operating assets. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary. |
+| `MINING-SECTION36-CAPEX-TAX` | **MINING** | **SA Mining Section 36 Capital Allowance & Sustaining vs. Growth Capex Split** | Separate sustaining capital (included in AISC) from expansionary/growth project capital (excluded from AISC), and apply 100% upfront Section 36 capital redemption shields before modeling cash tax step-ups under the South African Gold Mining Tax Formula or corporate tax rate. |
 
 ---
 

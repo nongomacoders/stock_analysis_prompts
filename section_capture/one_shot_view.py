@@ -98,11 +98,13 @@ from section_capture.section_matcher import (
 from workflow.export_stage1 import build_stage1_prompt_content
 from workflow.generate_sens_update import (
     build_sens_update_prompt_content,
+    get_sens_completed_dir,
     move_analyzed_sens_files,
 )
 from workflow.generate_stage2 import (
     build_stage2_prompt_content,
     ensure_documents_considered_table,
+    sanitize_stage2_valuation_markdown,
 )
 
 
@@ -249,7 +251,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                         pdf_path = pdfs[0]
                 status = "Scaffolded"
                 sha = ""
-                period_val = "FY26"
+                period_val = ""
                 if pdf_path and resolved_db.exists():
                     with connect_db(resolved_db) as conn:
                         row = conn.execute(
@@ -258,7 +260,7 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
                         ).fetchone()
                         if row:
                             sha = row["sha256"]
-                            period_val = row["period"] or "FY26"
+                            period_val = row["period"] or ""
                             sec_cnt = conn.execute(
                                 "SELECT COUNT(*) FROM sections WHERE report_sha256 = ?", (sha,)
                             ).fetchone()[0]
@@ -308,13 +310,12 @@ def discover_company_documents(
         except Exception:
             pass
 
-    # 1. Discover primary/companion PDFs in sources/ directly (do not re-pull completed/ PDFs)
+    # 1. Discover primary/companion PDFs in sources/ and fallback to sources/completed/<period>/
     active_pdfs = sorted(
         f for f in sources_dir.glob("*.pdf") if f.is_file() and "sens" not in f.name.lower()
     )
-    # If no active PDFs in sources/, auto-detect period from completed/ or briefs/
+    comp_root = sources_dir / "completed"
     if not active_pdfs and not period:
-        comp_root = sources_dir / "completed"
         if comp_root.exists():
             subdirs = sorted([d.name for d in comp_root.iterdir() if d.is_dir()], reverse=True)
             if subdirs:
@@ -326,7 +327,24 @@ def discover_company_documents(
                 if bsubdirs:
                     period = bsubdirs[0]
 
-    # 2. Discover SENS files in sources/sens/
+    archived_pdfs: list[Path] = []
+    if comp_root.exists():
+        target_comp_dir = (comp_root / period) if (period and (comp_root / period).exists()) else None
+        if target_comp_dir is None:
+            subdirs = sorted([d for d in comp_root.iterdir() if d.is_dir()], key=lambda d: d.name, reverse=True)
+            if subdirs:
+                target_comp_dir = subdirs[0]
+                if not period:
+                    period = target_comp_dir.name
+        if target_comp_dir and target_comp_dir.exists():
+            active_names = {p.name for p in active_pdfs}
+            archived_pdfs = sorted(
+                f
+                for f in target_comp_dir.glob("*.pdf")
+                if f.is_file() and "sens" not in f.name.lower() and f.name not in active_names
+            )
+
+    # 2. Discover SENS files in sources/sens/ and sources/sens/completed/
     sens_files = sorted(
         f
         for f in sens_dir.iterdir()
@@ -334,13 +352,29 @@ def discover_company_documents(
         and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"}
         and f.name.lower() != "readme.md"
     )
+    active_sens_names = {f.name for f in sens_files}
+    archived_sens_files: list[Path] = []
+    sens_comp_dir = get_sens_completed_dir(company_dir)
+    if sens_comp_dir.exists():
+        archived_sens_files = sorted(
+            f
+            for f in sens_comp_dir.iterdir()
+            if f.is_file()
+            and f.suffix.lower() in {".pdf", ".txt", ".text", ".md"}
+            and f.name.lower() != "readme.md"
+            and f.name not in active_sens_names
+        )
 
     import pypdfium2 as pdfium
 
     detected_period = period or ""
     docs: list[dict[str, Any]] = []
 
-    for pdf_path in active_pdfs:
+    all_report_pdfs: list[tuple[Path, bool]] = [(p, False) for p in active_pdfs] + [
+        (p, True) for p in archived_pdfs
+    ]
+
+    for pdf_path, is_arch in all_report_pdfs:
         info = db_info.get(pdf_path.name, {})
         dt = info.get("doc_type")
         ann_date = None
@@ -395,7 +429,7 @@ def discover_company_documents(
             "page_count": page_cnt,
             "sha256": sha,
             "is_sens": False,
-            "is_archived": False,
+            "is_archived": is_arch,
             "sec_total": sec_total,
             "sec_done": sec_done,
             "order_prio": order_prio,
@@ -405,8 +439,11 @@ def discover_company_documents(
     # Sort report PDFs by default analytical priority (Presentation -> IAR -> AFS)
     docs.sort(key=lambda d: (d["order_prio"], d["filename"].lower()))
 
-    # Append SENS files at the end
-    for sf in sens_files:
+    # Append SENS files at the end (prior archived SENS first, then new unarchived SENS chronologically)
+    all_sens_items: list[tuple[Path, bool]] = [(sf, True) for sf in archived_sens_files] + [
+        (sf, False) for sf in sens_files
+    ]
+    for sf, is_arch in all_sens_items:
         page_cnt = 1
         if sf.suffix.lower() == ".pdf":
             try:
@@ -429,7 +466,7 @@ def discover_company_documents(
             "page_count": page_cnt,
             "sha256": sha,
             "is_sens": True,
-            "is_archived": False,
+            "is_archived": is_arch,
             "sec_total": 0,
             "sec_done": 0,
             "order_prio": 9,
@@ -784,9 +821,13 @@ class OneShotView(QWidget):
 
         self.period_combo = QComboBox()
         self.period_combo.setEditable(True)
-        self.period_combo.setMinimumWidth(110)
-        for p in ["FY26", "1H26", "2H26", "1H27", "FY27", "FY25", "1H25"]:
+        self.period_combo.setMinimumWidth(130)
+        self.period_combo.addItem("")  # Blank by default to prevent unintended run
+        for p in ["1H26", "2H26", "FY26", "1H27", "2H27", "FY27", "1H25", "2H25", "FY25"]:
             self.period_combo.addItem(p)
+        self.period_combo.setCurrentIndex(0)
+        if self.period_combo.lineEdit():
+            self.period_combo.lineEdit().setPlaceholderText("Select / Enter Period")
         self.period_combo.currentTextChanged.connect(self._on_period_changed)
         row_b.addWidget(self.period_combo)
 
@@ -1056,6 +1097,13 @@ class OneShotView(QWidget):
         sector = comp.get("sector", "retail")
         self.sector_badge.setText(get_sector_short_label(sector))
         self.sector_badge.setStyleSheet(get_sector_badge_style(sector))
+
+        # Do not prepopulate period combo; leave it blank so running auto requires explicit user choice
+        self.period_combo.blockSignals(True)
+        self.period_combo.setCurrentIndex(0)
+        self.period_combo.setEditText("")
+        self.period_combo.blockSignals(False)
+
         self.scan_current_company_files()
 
     def _get_current_company_dir(self) -> Path | None:
@@ -1071,39 +1119,36 @@ class OneShotView(QWidget):
         if not comp_dir:
             return
         ticker = self.current_company["ticker"]
-        hint_period = self.current_company.get("period")
+        hint_period = self.period_combo.currentText().strip() or None
         docs, detected_period = discover_company_documents(
             comp_dir, period=hint_period, db_path=self.db_path
         )
         self.discovered_docs = docs
 
-        # Set period combo
-        if detected_period:
-            idx = self.period_combo.findText(detected_period)
-            if idx >= 0:
-                self.period_combo.setCurrentIndex(idx)
-            else:
-                self.period_combo.setEditText(detected_period)
+        # Note: Do not prepopulate self.period_combo from detected_period.
+        # Leave it blank so running auto triggers a validation error if not selected.
 
         self._populate_docs_table()
         self._load_existing_artifacts_preview()
 
         pdf_cnt = sum(1 for d in docs if not d.get("is_sens"))
         sens_cnt = sum(1 for d in docs if d.get("is_sens"))
+        curr_p = self.period_combo.currentText().strip()
+        period_label = f" ({curr_p})" if curr_p else ""
         if docs:
             self.docs_header_lbl.setText(
                 f"<b>📄 Discovered Documents for {ticker} ({pdf_cnt} Report PDF(s), {sens_cnt} SENS Notice(s)):</b>"
             )
             names = ", ".join(d["filename"] for d in docs)
             self.live_banner_label.setText(
-                f"Ready — Found {len(docs)} document(s) for {ticker} ({self.period_combo.currentText()}): {names}"
+                f"Ready — Found {len(docs)} document(s) for {ticker}{period_label}: {names}"
             )
             self.start_btn.setEnabled(True)
             self.start_btn.setToolTip("Start the 5-phase autonomous pipeline for these documents")
         else:
-            active_p = self.period_combo.currentText().strip() or "FY26"
+            active_p = curr_p or "completed"
             self.docs_header_lbl.setText(
-                f"<b>✓ All source reports for {ticker} ({active_p}) have been analyzed and moved to <code>sources/completed/{active_p}/</code>.</b>"
+                f"<b>✓ All source reports for {ticker} have been analyzed and moved to <code>sources/completed/{active_p}/</code>.</b>"
             )
             self.live_banner_label.setText(
                 f"✓ Analysis Complete: All source documents for {ticker} ({active_p}) are archived. "
@@ -1148,16 +1193,27 @@ class OneShotView(QWidget):
             # Col 4: Sections
             if d.get("is_sens"):
                 sec_str = "Post-balance sheet"
-                status_str = "Queued for Stage 2 / SENS"
+                status_str = (
+                    "📦 Archived SENS (Included)"
+                    if d.get("is_archived")
+                    else "🆕 Queued for Stage 2 / SENS"
+                )
             else:
                 st = d.get("sec_total", 0)
                 sd = d.get("sec_done", 0)
                 if st > 0:
                     sec_str = f"{st} sections ({sd}/{st} done)"
-                    status_str = "✓ All Sections Audited" if sd == st else f"⏳ {st - sd} Pending Audit"
+                    if sd == st:
+                        status_str = (
+                            "📦 Archived · ✓ All Sections Audited"
+                            if d.get("is_archived")
+                            else "✓ All Sections Audited"
+                        )
+                    else:
+                        status_str = f"⏳ {st - sd} Pending Audit"
                 else:
                     sec_str = "Auto-map on start"
-                    status_str = "Ready to Ingest"
+                    status_str = "📦 Archived in completed/" if d.get("is_archived") else "Ready to Ingest"
 
             sec_item = QTableWidgetItem(sec_str)
             sec_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -1224,11 +1280,11 @@ class OneShotView(QWidget):
         if not comp_dir or not self.current_company:
             return
         ticker = self.current_company["ticker"]
-        period = self.period_combo.currentText().strip() or "FY26"
-        briefs_dir = comp_dir / "briefs" / period
+        period = self.period_combo.currentText().strip()
+        briefs_dir = (comp_dir / "briefs" / period) if period else None
 
-        # If current period has no brief files, find if any other period subfolder has them
-        if not (briefs_dir / f"{ticker}_{period}_stage1_audit_response.md").exists() and not (briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md").exists():
+        # If period is blank or current period has no brief files, find if any other period subfolder has them to preview
+        if not briefs_dir or (not (briefs_dir / f"{ticker}_{period}_stage1_audit_response.md").exists() and not (briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md").exists()):
             b_root = comp_dir / "briefs"
             if b_root.exists():
                 for cand_dir in sorted([d for d in b_root.iterdir() if d.is_dir()], reverse=True):
@@ -1236,15 +1292,8 @@ class OneShotView(QWidget):
                     cand_s1 = cand_dir / f"{ticker}_{cand_p}_stage1_audit_response.md"
                     cand_s2 = cand_dir / f"{ticker}_{cand_p}_stage2_valuation_note.md"
                     if cand_s1.exists() or cand_s2.exists():
-                        period = cand_p
                         briefs_dir = cand_dir
-                        self._is_loading_period = True
-                        idx = self.period_combo.findText(period)
-                        if idx >= 0:
-                            self.period_combo.setCurrentIndex(idx)
-                        else:
-                            self.period_combo.setEditText(period)
-                        self._is_loading_period = False
+                        # NOTE: Do NOT alter self.period_combo here so it remains blank by default!
                         break
 
         # Check Questions Ledger in DB across discovered PDFs or reports table for this ticker
@@ -1273,19 +1322,21 @@ class OneShotView(QWidget):
             self.output_tabs.setTabText(0, f"📋 Questions Ledger ({q_cnt})")
 
         # Check Stage 1 & Stage 2 files on disk
-        s1_file = briefs_dir / f"{ticker}_{period}_stage1_audit_response.md"
-        if s1_file.exists():
-            try:
-                self.stage1_preview.setPlainText(s1_file.read_text(encoding="utf-8"))
-            except Exception:
-                pass
+        if briefs_dir and briefs_dir.exists():
+            resolved_p = briefs_dir.name
+            s1_file = briefs_dir / f"{ticker}_{resolved_p}_stage1_audit_response.md"
+            if s1_file.exists():
+                try:
+                    self.stage1_preview.setPlainText(s1_file.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
 
-        s2_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
-        if s2_file.exists():
-            try:
-                self.stage2_preview.setPlainText(s2_file.read_text(encoding="utf-8"))
-            except Exception:
-                pass
+            s2_file = briefs_dir / f"{ticker}_{resolved_p}_stage2_valuation_note.md"
+            if s2_file.exists():
+                try:
+                    self.stage2_preview.setPlainText(s2_file.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
 
     # =========================================================================
     # FOLDER & DIALOG ACTIONS
@@ -1365,6 +1416,17 @@ class OneShotView(QWidget):
             QMessageBox.warning(self, "No Company Selected", "Please select or create a company first.")
             return
 
+        period = self.period_combo.currentText().strip()
+        if not period:
+            QMessageBox.critical(
+                self,
+                "Reporting Period Required",
+                "Please select or enter the reporting period (e.g. 1H26, FY26) before running autonomous analysis.\n\n"
+                "The reporting period is left blank by default to prevent misclassifying reports. "
+                "Please select or type the reporting period before starting.",
+            )
+            return
+
         selected_docs = self.get_selected_ordered_documents()
         if not selected_docs:
             QMessageBox.warning(
@@ -1387,8 +1449,11 @@ class OneShotView(QWidget):
         ticker = self.current_company["ticker"]
         company_title = self.current_company["company_title"]
         sector = self.current_company.get("sector", "retail")
-        period = self.period_combo.currentText().strip() or "FY26"
         force_rerun = self.force_rerun_cb.isChecked()
+        self._current_run_period = period
+        self._s1_retry_count = 0
+        self._s2_retry_count = 0
+        self._sens_retry_count = 0
 
         self._set_running_ui(True)
         self.reset_phase_cards()
@@ -1410,20 +1475,32 @@ class OneShotView(QWidget):
         briefs_dir = comp_dir / "briefs" / period
         s2_note_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
         sens_docs = [d for d in selected_docs if d.get("is_sens")]
+        unarchived_sens_docs = [d for d in sens_docs if not d.get("is_archived")]
         pdf_docs = [d for d in selected_docs if not d.get("is_sens")]
         all_pdfs_archived = all(d.get("is_archived") for d in pdf_docs) if pdf_docs else True
 
-        if sens_docs and s2_note_file.exists() and all_pdfs_archived and not force_rerun:
+        if unarchived_sens_docs and s2_note_file.exists() and all_pdfs_archived and not force_rerun:
+            existing_s1 = self._load_existing_stage1_response(ticker, period, pdf_docs)
             self.append_log(
                 f"⚡ <b>Smart SENS Update Mode Detected:</b> Baseline valuation note "
-                f"<code>{s2_note_file.name}</code> already exists and {len(sens_docs)} new SENS notice(s) found."
+                f"<code>{s2_note_file.name}</code> already exists and {len(unarchived_sens_docs)} new SENS notice(s) found."
             )
-            self.set_phase_state(0, "Skipped (Baseline exists)", "done")
-            self.set_phase_state(1, "Skipped (Baseline exists)", "done")
-            self.set_phase_state(2, "Skipped (Baseline exists)", "done")
+            self.set_phase_state(0, "Skipped (Archived PDFs loaded)", "done")
+            self.set_phase_state(1, "Skipped (Sections in DB)", "done")
+            self.set_phase_state(
+                2,
+                "✓ Stage 1 Loaded from DB" if existing_s1 else "Skipped (Baseline exists)",
+                "done",
+            )
+            if existing_s1:
+                self.stage1_preview.setPlainText(existing_s1)
             self.overall_progress.setValue(65)
             self._ingested_docs = pdf_docs
-            self._run_phase4_sens_only_update(sens_docs, s2_note_file.read_text(encoding="utf-8"))
+            self._run_phase4_sens_only_update(
+                sens_docs,
+                s2_note_file.read_text(encoding="utf-8"),
+                stage1_audit_text=existing_s1,
+            )
             return
 
         # Phase 1: Launch IngestionWorker
@@ -1537,7 +1614,7 @@ class OneShotView(QWidget):
 
         curr_idx = self._completed_sections_in_run + 1
         total_q = self._total_sections_to_run
-        period = self.period_combo.currentText().strip() or "FY26"
+        period = getattr(self, "_current_run_period", None) or self.period_combo.currentText().strip()
         sector = self.current_company.get("sector", "retail")
 
         # Rebuild prompt with the latest accumulated Questions Ledger from SQLite
@@ -1642,7 +1719,25 @@ class OneShotView(QWidget):
             self._process_next_section()
 
         def on_sec_err(err_msg: str):
-            self._on_pipeline_error(f"Section Audit failed on '{sec.heading}' ({fn}): {err_msg}")
+            if not self._is_running:
+                return
+            retries = item.get("retry_count", 0)
+            if retries < 3:
+                item["retry_count"] = retries + 1
+                wait_sec = 3 * item["retry_count"]
+                self.append_log(
+                    f"⚠️ <b>Network hiccup on Section #{sec.section_number} ({sec.heading}):</b> {err_msg}. "
+                    f"Retrying section in {wait_sec}s (Attempt {item['retry_count']}/3)..."
+                )
+                self.live_banner_label.setText(
+                    f"⚠️ Network hiccup on Section #{sec.section_number}. Retrying in {wait_sec}s (Attempt {item['retry_count']}/3)..."
+                )
+                self._pending_section_queue.insert(0, item)
+                from PySide6.QtCore import QTimer
+                QTimer.singleShot(wait_sec * 1000, self._process_next_section)
+                return
+
+            self._on_pipeline_error(f"Section Audit failed on '{sec.heading}' ({fn}) after 3 retries: {err_msg}")
 
         self._section_worker.finished_query.connect(on_sec_done)
         self._section_worker.error_query.connect(on_sec_err)
@@ -1651,6 +1746,57 @@ class OneShotView(QWidget):
     # =========================================================================
     # PHASE 3: STAGE 1 COGNITIVE FORENSIC AUDIT
     # =========================================================================
+    def _load_existing_stage1_response(
+        self,
+        ticker: str,
+        period: str,
+        docs: list[dict[str, Any]] | None = None,
+    ) -> str:
+        """Loads existing Stage 1 Forensic Audit from disk or SQLite without re-running Stage 1."""
+        comp_dir = self._get_current_company_dir()
+        s1_out_file = (comp_dir / "briefs" / period / f"{ticker}_{period}_stage1_audit_response.md") if comp_dir else None
+        if s1_out_file and s1_out_file.exists():
+            txt = s1_out_file.read_text(encoding="utf-8").strip()
+            if txt:
+                return txt
+
+        # Check SQLite by SHA-256 across discovered/ingested docs
+        for d in (docs or []):
+            sha = d.get("sha256")
+            if sha:
+                try:
+                    rep = get_stage1_report(sha, db_path=self.db_path)
+                    if rep and (rep.get("stage1_response") or "").strip():
+                        txt = rep["stage1_response"].strip()
+                        if s1_out_file:
+                            s1_out_file.parent.mkdir(parents=True, exist_ok=True)
+                            s1_out_file.write_text(txt, encoding="utf-8")
+                        return txt
+                except Exception:
+                    pass
+
+        # Fallback: query SQLite reports table by ticker
+        try:
+            with connect_db(self.db_path) as conn:
+                row = conn.execute(
+                    """
+                    SELECT stage1_response FROM reports
+                    WHERE (original_path LIKE ? OR filename LIKE ?)
+                      AND stage1_response IS NOT NULL AND TRIM(stage1_response) != ''
+                    ORDER BY stage1_updated_at DESC, updated_at DESC LIMIT 1
+                    """,
+                    (f"%{ticker}%", f"%{ticker}%"),
+                ).fetchone()
+                if row and (row["stage1_response"] or "").strip():
+                    txt = row["stage1_response"].strip()
+                    if s1_out_file:
+                        s1_out_file.parent.mkdir(parents=True, exist_ok=True)
+                        s1_out_file.write_text(txt, encoding="utf-8")
+                    return txt
+        except Exception:
+            pass
+        return ""
+
     def _run_phase3_stage1(self):
         if not self._is_running or not self.current_company:
             return
@@ -1658,7 +1804,7 @@ class OneShotView(QWidget):
         ticker = self.current_company["ticker"]
         company_title = self.current_company["company_title"]
         sector = self.current_company.get("sector", "retail")
-        period = self.period_combo.currentText().strip() or "FY26"
+        period = getattr(self, "_current_run_period", None) or self.period_combo.currentText().strip()
         comp_dir = self._get_current_company_dir()
         briefs_dir = comp_dir / "briefs" / period
         briefs_dir.mkdir(parents=True, exist_ok=True)
@@ -1675,15 +1821,15 @@ class OneShotView(QWidget):
         primary_sha = primary_doc["sha256"]
         primary_filename = primary_doc["filename"]
 
-        # Check if Stage 1 already exists and Force Re-run is unchecked
+        # Check if Stage 1 already exists (on disk or in SQLite) and Force Re-run is unchecked
         s1_out_file = briefs_dir / f"{ticker}_{period}_stage1_audit_response.md"
-        if not self.force_rerun_cb.isChecked() and s1_out_file.exists():
-            existing_s1 = s1_out_file.read_text(encoding="utf-8").strip()
-            if existing_s1 and self._total_sections_to_run == 0:
+        if not self.force_rerun_cb.isChecked() and self._total_sections_to_run == 0:
+            existing_s1 = self._load_existing_stage1_response(ticker, period, self._ingested_docs)
+            if existing_s1:
                 self.stage1_preview.setPlainText(existing_s1)
                 self.set_phase_state(2, f"✓ Reused ({len(existing_s1):,} chars)", "done")
                 self.append_log(
-                    f"✓ <b>Phase 3 (Stage 1 Audit):</b> Reusing existing Stage 1 response "
+                    f"✓ <b>Phase 3 (Stage 1 Audit):</b> Reusing existing Stage 1 Forensic Audit from SQLite/disk "
                     f"<code>{s1_out_file.name}</code> ({len(existing_s1):,} chars)."
                 )
                 self.overall_progress.setValue(75)
@@ -1744,6 +1890,7 @@ class OneShotView(QWidget):
             sens_reports=None,
             final_questions_ledger=final_ledger,
             compact=True,
+            db_path=self.db_path,
         )
 
         # Save Stage 1 prompt to DB & disk
@@ -1786,6 +1933,17 @@ class OneShotView(QWidget):
             self._run_phase4_stage2(resp_text)
 
         def on_s1_err(err_msg: str):
+            if not self._is_running:
+                return
+            s1_retries = getattr(self, "_s1_retry_count", 0)
+            if s1_retries < 2:
+                self._s1_retry_count = s1_retries + 1
+                self.append_log(
+                    f"⚠️ <b>Stage 1 Forensic Audit network drop:</b> {err_msg}. Retrying in 5s (Attempt {self._s1_retry_count}/2)..."
+                )
+                from PySide6.QtCore import QTimer
+                QTimer.singleShot(5000, self._run_phase3_stage1)
+                return
             self._on_pipeline_error(f"Stage 1 Forensic Audit failed: {err_msg}")
 
         self._s1_worker.finished_query.connect(on_s1_done)
@@ -1860,7 +2018,7 @@ class OneShotView(QWidget):
         ticker = self.current_company["ticker"]
         company_title = self.current_company["company_title"]
         sector = self.current_company.get("sector", "retail")
-        period = self.period_combo.currentText().strip() or "FY26"
+        period = getattr(self, "_current_run_period", None) or self.period_combo.currentText().strip()
         comp_dir = self._get_current_company_dir()
         briefs_dir = comp_dir / "briefs" / period
         briefs_dir.mkdir(parents=True, exist_ok=True)
@@ -1919,6 +2077,7 @@ class OneShotView(QWidget):
             sens_announcements=sens_labels if sens_labels else None,
             reference_price_zar=ref_price,
             source_documents=source_documents_meta,
+            db_path=self.db_path,
         )
 
         s2_prompt_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_prompt.md"
@@ -2002,6 +2161,7 @@ class OneShotView(QWidget):
         def on_s2_done(resp_text: str, elapsed: float, stats: dict):
             if not self._is_running:
                 return
+            resp_text = sanitize_stage2_valuation_markdown(resp_text, reference_price_hint=ref_price)
             resp_text = ensure_documents_considered_table(resp_text, source_documents_meta)
             save_stage2_report(primary_sha, response=resp_text, db_path=self.db_path)
             s2_out_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
@@ -2020,13 +2180,29 @@ class OneShotView(QWidget):
             self._run_phase5_finalize(resp_text)
 
         def on_s2_err(err_msg: str):
+            if not self._is_running:
+                return
+            s2_retries = getattr(self, "_s2_retry_count", 0)
+            if s2_retries < 2:
+                self._s2_retry_count = s2_retries + 1
+                self.append_log(
+                    f"⚠️ <b>Stage 2 Institutional Valuation network drop:</b> {err_msg}. Retrying in 5s (Attempt {self._s2_retry_count}/2)..."
+                )
+                from PySide6.QtCore import QTimer
+                QTimer.singleShot(5000, lambda: self._run_phase4_stage2(stage1_response_text))
+                return
             self._on_pipeline_error(f"Stage 2 Institutional Valuation failed: {err_msg}")
 
         self._s2_worker.finished_query.connect(on_s2_done)
         self._s2_worker.error_query.connect(on_s2_err)
         self._s2_worker.start()
 
-    def _run_phase4_sens_only_update(self, sens_docs: list[dict[str, Any]], baseline_note: str):
+    def _run_phase4_sens_only_update(
+        self,
+        sens_docs: list[dict[str, Any]],
+        baseline_note: str,
+        stage1_audit_text: str = "",
+    ):
         """Runs Stage 2-U SENS Event Update when baseline valuation already exists."""
         if not self._is_running or not self.current_company:
             return
@@ -2034,15 +2210,39 @@ class OneShotView(QWidget):
         ticker = self.current_company["ticker"]
         company_title = self.current_company["company_title"]
         sector = self.current_company.get("sector", "retail")
-        period = self.period_combo.currentText().strip() or "FY26"
+        period = getattr(self, "_current_run_period", None) or self.period_combo.currentText().strip()
         comp_dir = self._get_current_company_dir()
         briefs_dir = comp_dir / "briefs" / period
         briefs_dir.mkdir(parents=True, exist_ok=True)
 
+        if not stage1_audit_text:
+            stage1_audit_text = self._load_existing_stage1_response(
+                ticker, period, self._ingested_docs
+            )
+
         import pypdfium2 as pdfium
+
+        source_documents_meta: list[dict[str, Any]] = []
+        for d in self._ingested_docs:
+            source_documents_meta.append({
+                "filename": d["filename"],
+                "doc_type": d.get("doc_type", "annual_report"),
+                "badge": d.get("badge", "[AR]"),
+                "page_count": d.get("page_count"),
+                "period": d.get("period") or period,
+                "is_sens": False,
+            })
 
         sens_entries: list[dict[str, Any]] = []
         for sd in sens_docs:
+            source_documents_meta.append({
+                "filename": sd["filename"],
+                "doc_type": "sens",
+                "badge": "[SENS]",
+                "page_count": sd.get("page_count"),
+                "announcement_date": sd.get("announcement_date") or period,
+                "is_sens": True,
+            })
             sf = Path(sd["path"])
             if not sf.exists():
                 continue
@@ -2079,6 +2279,9 @@ class OneShotView(QWidget):
             detected_sector=sector,
             sens_entries=sens_entries,
             reference_price_zar=ref_price,
+            stage1_audit_report=stage1_audit_text,
+            source_documents=source_documents_meta,
+            db_path=self.db_path,
         )
         sens_prompt_file = briefs_dir / f"{ticker}_{period}_stage2_sens_update_prompt.md"
         sens_prompt_file.write_text(sens_prompt, encoding="utf-8")
@@ -2102,6 +2305,8 @@ class OneShotView(QWidget):
         def on_sens_done(resp_text: str, elapsed: float, stats: dict):
             if not self._is_running:
                 return
+            resp_text = sanitize_stage2_valuation_markdown(resp_text, reference_price_hint=ref_price)
+            resp_text = ensure_documents_considered_table(resp_text, source_documents_meta)
             # Preserve baseline before overwriting
             s2_out_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
             baseline_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note_baseline.md"
@@ -2110,8 +2315,14 @@ class OneShotView(QWidget):
             s2_out_file.write_text(resp_text, encoding="utf-8")
 
             primary_sha = self.current_company.get("sha256")
+            if not primary_sha and self._ingested_docs:
+                primary_doc = next(
+                    (d for d in self._ingested_docs if d.get("doc_type") in ("iar", "annual_report")),
+                    self._ingested_docs[0],
+                )
+                primary_sha = primary_doc.get("sha256")
             if primary_sha:
-                save_stage2_report(primary_sha, response=resp_text, db_path=self.db_path)
+                save_stage2_report(primary_sha, prompt=sens_prompt, response=resp_text, db_path=self.db_path)
 
             self.stage2_preview.setPlainText(resp_text)
             self.output_tabs.setCurrentIndex(2)
@@ -2124,6 +2335,17 @@ class OneShotView(QWidget):
             self._run_phase5_finalize(resp_text)
 
         def on_sens_err(err_msg: str):
+            if not self._is_running:
+                return
+            sens_retries = getattr(self, "_sens_retry_count", 0)
+            if sens_retries < 2:
+                self._sens_retry_count = sens_retries + 1
+                self.append_log(
+                    f"⚠️ <b>SENS Valuation Update network drop:</b> {err_msg}. Retrying in 5s (Attempt {self._sens_retry_count}/2)..."
+                )
+                from PySide6.QtCore import QTimer
+                QTimer.singleShot(5000, lambda: self._run_phase4_sens_only_update(sens_docs, baseline_note, stage1_audit_text))
+                return
             self._on_pipeline_error(f"SENS Valuation Update failed: {err_msg}")
 
         self._s2_worker.finished_query.connect(on_sens_done)
@@ -2137,7 +2359,7 @@ class OneShotView(QWidget):
         if not self.current_company:
             return
         ticker = self.current_company["ticker"]
-        period = self.period_combo.currentText().strip() or "FY26"
+        period = getattr(self, "_current_run_period", None) or self.period_combo.currentText().strip()
         comp_dir = self._get_current_company_dir()
 
         self.set_phase_state(4, "Archiving & syncing portfolio...", "active")

@@ -109,11 +109,19 @@ stock_analysis_prompts/
   python new_sector.py healthcare --name "Healthcare" --jse-code JS2011 --icb-code 201010 --jse-name "Pharmaceuticals and Biotechnology"
   ```
   Dynamically registers the sector, UI badges, and institutional persona in [`companies/sectors.py`](file:///c:/Users/Dion/Desktop/Projects/stock_analysis_prompts/companies/sectors.py).
-- **New Company**:
-  ```bash
-  python new_company.py NPH --sector healthcare --name "Netcare Limited"
-  ```
-  Scaffolds `companies/healthcare/NPH/{sources,briefs}` ready for PDFs.
+- **New Company (CLI & Intelligent GUI Hub)**:
+  - **CLI Scaffolding**:
+    ```bash
+    python new_company.py DCP --sector retail --name "Dis-Chem Pharmacies Limited"
+    ```
+    Scaffolds `companies/retail/DCP/{sources,briefs}` ready for PDFs.
+  - **Intelligent Ticker Examination & Live JSE Web Discovery (GUI)**:
+    When using the **New Company Hub** dialog (`section_capture/new_company_dialog.py`), typing any 3-letter JSE ticker (e.g. `DCP`, `VOD`, `RBX`, `DTC`, `PIK`) and clicking **🔍 Examine Ticker** triggers a multi-layer verification pipeline:
+    1. **Pre-populated Registry (`KNOWN_COMPANIES`)**: Instantly resolves known JSE constituents (e.g. `DCP`, `VOD`, `TKG`, `LEW`, `NTU`) with zero latency.
+    2. **Verified JSE Market Data Layer (`market_data.py`)**: Queries `fetch_jse_company_profile(ticker)` via `yfinance` (`<TICKER>.JO`) to extract authoritative legal name, FTSE/JSE sub-industry, and official business description.
+    3. **OpenRouter Live Web Search (`openrouter.py`)**: Executes an online web-search-grounded LLM query (`plugins: [{"id": "web"}]`) targeting official JSE listings and SENS announcements (e.g. `jse.co.za`). This prevents private/unlisted company hallucinations.
+    4. **Sector Auto-Mapping & Appropriateness**: Automatically maps the company to the closest registered sector (`retail`, `telcos`, `reit`, `construction`, etc.), confirms dedicated Stage 1 & Stage 2 prompt availability, and displays a formatted audit preview.
+    5. **Fallback Synthesis**: If the LLM endpoint or network experiences high latency or downtime, the system synthesizes a complete, valid company profile directly from verified market data so scaffolding is never blocked.
 
 ---
 

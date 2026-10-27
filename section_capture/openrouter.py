@@ -15,7 +15,7 @@ import urllib.error
 from PySide6.QtCore import QThread, Signal
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash-1017"
+DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash-1017:nitro"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EXTERNAL_SECRETS = REPO_ROOT.parent / "EXTERNAL_TO_REPOS" / "credentials" / "secrets.env"
 EXTERNAL_SECRETS_PATH = Path(os.environ.get("EXTERNAL_SECRETS_PATH", str(DEFAULT_EXTERNAL_SECRETS))).expanduser()
@@ -174,9 +174,12 @@ def query_openrouter(
     timeout: int = 180,
     return_details: bool = False,
     max_tokens: int = 16384,
+    plugins: list[dict[str, Any]] | None = None,
+    web_search: bool = False,
 ) -> str | tuple[str, dict]:
     """Executes a synchronous completion query via OpenRouter API.
     
+    If web_search is True and plugins is None, automatically attaches the OpenRouter web search plugin.
     If return_details is True, returns (content, stats_dict).
     Raises RuntimeError if key is missing or API call fails.
     """
@@ -186,75 +189,100 @@ def query_openrouter(
 
     active_model = model or get_openrouter_model()
 
-    payload = {
-        "model": active_model,
-        "messages": [
-            {"role": "user", "content": prompt}
-        ],
-        "temperature": 0.1,
-        "max_tokens": max_tokens,
-        "reasoning": {"effort": "none"},
-    }
+    active_plugins = plugins
+    if web_search and not active_plugins:
+        active_plugins = [{"id": "web"}]
 
-    req_data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        OPENROUTER_ENDPOINT,
-        data=req_data,
-        headers={
-            "Authorization": f"Bearer {key}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://github.com/dion/stock_analysis_prompts",
-            "X-Title": "Stock Analysis Section Capture",
-            "User-Agent": "Antigravity/1.0",
-        },
-        method="POST",
-    )
+    attempts = 4
+    for attempt in range(1, attempts + 1):
+        # Fallback from :nitro to standard model if nitro endpoint drops repeatedly
+        current_model = active_model
+        if attempt >= 3 and ":nitro" in active_model.lower():
+            current_model = active_model.replace(":nitro", "").strip()
 
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            res_body = response.read().decode("utf-8")
-            data = json.loads(res_body)
-            choices = data.get("choices", [])
-            if not choices:
-                raise RuntimeError("OpenRouter returned empty choices array.")
-            msg = choices[0].get("message", {})
-            content = (msg.get("content") or "").strip()
-            reasoning = (msg.get("reasoning") or "").strip()
-            finish_reason = choices[0].get("finish_reason")
-            usage = data.get("usage") or {}
+        payload: dict[str, Any] = {
+            "model": current_model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.1,
+            "max_tokens": max_tokens,
+            "reasoning": {"effort": "none"},
+        }
+        if active_plugins:
+            # On final attempt, if earlier attempts failed, try omitting plugins in case of endpoint incompatibility
+            if attempt < attempts or not active_plugins:
+                payload["plugins"] = active_plugins
 
-            if not content:
-                if finish_reason == "length":
-                    comp_tok = usage.get("completion_tokens", 0)
-                    raise RuntimeError(
-                        f"Model reached completion limit ({comp_tok:,} tokens) before generating response content (finish_reason: length)."
-                    )
-                if reasoning:
-                    content = reasoning
-                else:
-                    raise RuntimeError(f"OpenRouter returned empty response (finish_reason: {finish_reason}).")
+        req_data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            OPENROUTER_ENDPOINT,
+            data=req_data,
+            headers={
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://github.com/dion/stock_analysis_prompts",
+                "X-Title": "Stock Analysis Section Capture",
+                "User-Agent": "Antigravity/1.0",
+                "Connection": "close",
+            },
+            method="POST",
+        )
 
-            if not return_details:
-                return content
-            stats = {
-                "generation_id": data.get("id", ""),
-                "model": active_model,
-                "prompt_tokens": int(usage.get("prompt_tokens", 0) or 0),
-                "completion_tokens": int(usage.get("completion_tokens", 0) or 0),
-                "total_tokens": int(usage.get("total_tokens", 0) or 0),
-                "cost_usd": None,
-            }
-            return content, stats
-    except urllib.error.HTTPError as err:
         try:
-            err_body = err.read().decode("utf-8")
-            err_json = json.loads(err_body)
-            msg = err_json.get("error", {}).get("message", str(err))
-        except Exception:
-            msg = f"HTTP Error {err.code}: {err.reason}"
-        raise RuntimeError(f"OpenRouter API error ({active_model}): {msg}") from None
-    except Exception as exc:
-        raise RuntimeError(f"OpenRouter connection error ({active_model}): {exc}") from None
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                res_body = response.read().decode("utf-8")
+                data = json.loads(res_body)
+                choices = data.get("choices", [])
+                if not choices:
+                    raise RuntimeError("OpenRouter returned empty choices array.")
+                msg = choices[0].get("message", {})
+                content = (msg.get("content") or "").strip()
+                reasoning = (msg.get("reasoning") or "").strip()
+                finish_reason = choices[0].get("finish_reason")
+                usage = data.get("usage") or {}
+
+                if not content:
+                    if finish_reason == "length":
+                        comp_tok = usage.get("completion_tokens", 0)
+                        raise RuntimeError(
+                            f"Model reached completion limit ({comp_tok:,} tokens) before generating response content (finish_reason: length)."
+                        )
+                    if reasoning:
+                        content = reasoning
+                    else:
+                        raise RuntimeError(f"OpenRouter returned empty response (finish_reason: {finish_reason}).")
+
+                if not return_details:
+                    return content
+                stats = {
+                    "generation_id": data.get("id", ""),
+                    "model": current_model,
+                    "prompt_tokens": int(usage.get("prompt_tokens", 0) or 0),
+                    "completion_tokens": int(usage.get("completion_tokens", 0) or 0),
+                    "total_tokens": int(usage.get("total_tokens", 0) or 0),
+                    "cost_usd": None,
+                }
+                return content, stats
+        except urllib.error.HTTPError as err:
+            if err.code in (429, 500, 502, 503, 504, 520, 524) and attempt < attempts:
+                retry_after = err.headers.get("Retry-After") if err.headers else None
+                wait_sec = float(retry_after) if retry_after and retry_after.isdigit() else (2 ** attempt)
+                time.sleep(wait_sec)
+                continue
+            try:
+                err_body = err.read().decode("utf-8")
+                err_json = json.loads(err_body)
+                msg = err_json.get("error", {}).get("message", str(err))
+            except Exception:
+                msg = f"HTTP Error {err.code}: {err.reason}"
+            raise RuntimeError(f"OpenRouter API error ({current_model}): {msg}") from None
+        except Exception as exc:
+            if attempt < attempts:
+                time.sleep(2 ** attempt)
+                continue
+            err_desc = str(exc) or exc.__class__.__name__
+            raise RuntimeError(f"OpenRouter connection error ({current_model}): {err_desc}") from None
 
 
 import time

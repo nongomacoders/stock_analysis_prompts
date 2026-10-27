@@ -1,17 +1,17 @@
 # STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT
-**Target Asset:** LEW Group (LEW)  
-**Sector:** Retail  
+**Target Asset:** lewis iar 2026 (LEW)  
+**Sector:** Retailers (JS4041 / Retail)  
 **Input Mode:** Full Company Results PDF (Attached) + Audited Stage 1 Forensic Determinations (Below)  
 **Target Deliverable:** 2-Year Forecast Model, Valuation Bridge, and JSE Equity Research Note (ZAR per Share)
 
 ---
 
-### INSTRUCTIONS FOR GEMINI 4 ARGON:
+### INSTRUCTIONS FOR INSTITUTIONAL RESEARCH ANALYST (LLM):
 You are acting as an elite **Managing Director & Head of Retail & Consumer Equity Research** at a premier institutional investment bank.
-You are conducting a definitive 2-year operational and valuation forecast for **LEW Group (LEW)**.
+You are conducting a definitive 2-year operational and valuation forecast for **lewis iar 2026 (LEW)**.
 
 ### CORE OPERATING RULES & EVIDENCE HIERARCHY:
-1. **Audited Ground Truth:** The Stage 1 Forensic Determinations provided below are audited and verified. Treat them as authoritative ground truth (e.g. merchandise vs credit revenue split, gross margin bridges, debtor costs & IFRS 9 ECL provisioning, store count expansion, and IFRS 16 lease liabilities). Do not revert to high-level headline narratives from the PDF where Stage 1 has established an audited reconciliation.
+1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below as your 99% confidence baseline (e.g. merchandise vs credit revenue split, gross margin bridges, debtor costs & IFRS 9 ECL provisioning, store count expansion, and IFRS 16 lease liabilities). Do not revert to high-level PR narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, and providing your quantitative justification.
 2. **Primary Reporting & Trading Currency:** South African retail equities trade primarily on the **Johannesburg Stock Exchange (JSE)**. All final valuation targets, earnings per share, and dividends per share must be presented in **ZAR (Rands per share or ZAR cents)**.
 3. **Retail Operating Model:** Model explicit operational drivers across:
    - Merchandise sales growth by chain/brand and region.
@@ -311,8 +311,87 @@ Thus, ROE is computed using **Net Profit ÷ Average Equity**, directly refuting 
 
 ## REQUIRED SECTIONS OF THE INSTITUTIONAL VALUATION NOTE
 
-1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share)**
-2. **Detailed Operational Forecast (FY27E & FY28E):** Merchandise sales, credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.
-3. **Consolidated Financial Statements & Cash Flow Bridge:** Revenue, Gross Profit, Operating Expenses, Operating Profit, PAT, HEPS, and Free Cash Flow to Equity (FCFE).
+1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**
+   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:
+     ```json
+     {
+       "ticker": "LEW",
+       "company_name": "lewis iar 2026",
+       "sector": "retail",
+       "jse_sector_code": "JS4041",
+       "jse_sector_name": "Retailers",
+       "recommendation": "BUY | HOLD | SELL",
+       "reference_price_zar": 90.19,
+       "target_price_zar": 0.00,
+       "implied_upside_pct": 0.0,
+       "forward_dividend_yield_pct": 0.0,
+       "projected_12m_tsr_pct": 0.0,
+       "rating_bands": {
+         "strong_buy_max_zar": 0.00,
+         "buy_max_zar": 0.00,
+         "hold_max_zar": 0.00,
+         "sell_max_zar": 0.00,
+         "strong_sell_above_zar": 0.00
+       }
+     }
+     ```
+   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for LEW on the JSE is **R90.19**. You MUST use `90.19` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R90.19 baseline.
+   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:
+     ### Source Documents & Disclosures Considered
+     | # | Document Filename | Document Type | Pages | Period / Date | Primary Analytical Role & Key Evidence Considered |
+     | :---: | :--- | :---: | :---: | :---: | :--- |
+     | 1 | `lewis-iar-2026.pdf` | [AR] General Annual Report (AR) | 84 | FY26 | [Summarize primary financial & operational disclosures] |
+   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).
+   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:
+     | Metric | Determination | Basis & Key Commentary |
+     | :--- | :---: | :--- |
+     | **Sector** | Retail (Retailers — JS4041 / ICB 404010) | [Sub-sector classification] |
+     | **Current Reference Share Price** | R90.19 | Verified closing share price (LEW.JO via Yahoo Finance / confirmed input) |
+     | **12-Month JSE Target Price** | R[0.00] | [Target price & primary valuation methodology] |
+     | **Implied Capital Upside / (Downside)** | [+/-0.0]% | [Relative to reference price] |
+     | **Forward Dividend Yield (FY27E)** | [0.0]% | [Distribution policy & payout ratio] |
+     | **Projected 12-Month TSR** | [+/-0.0]% | [Capital return + forward dividend yield] |
+     | **Institutional Recommendation** | [BUY | HOLD | SELL] | [Primary investment thesis] |
+     | **Dynamic Rating Bands** | Strong Buy: ≤R[0.00], Buy: ≤R[0.00], Hold: ≤R[0.00], Sell: ≤R[0.00], Strong Sell: >R[0.00] | [Live rating adjustment thresholds across price fluctuations] |
+   - Followed by the core institutional thesis and structural headwinds/tailwinds.
+2. **Detailed Operational Forecast (Historical Base Period + FY26E, FY27E & FY28E):** Include historical actuals column(s) alongside forecasts for merchandise sales by segment (with exact currency units, e.g. R'm vs EUR'm), credit vs cash mix, gross margin %, debtor cost %, store count, trading space m², and trading density.
+3. **Consolidated Financial Statements & Cash Flow Bridge:** Include historical actuals column(s) alongside forecasts for Revenue, Cost of Sales, Gross Profit, Other Revenue/Income, Net Operating Expenses, Operating Profit, Net Finance Costs, PBT, Tax, PAT (Continuing), Discontinued Operations, PAT (Total), Weighted-Average Shares (m), Continuing HEPS (cents), and Free Cash Flow to Equity (FCFE).
 4. **Valuation Multiples & DCF Table:** Forward P/E, EV/EBITDA, dividend yield, and per-share equity value in ZAR.
 5. **Sensitivity Matrix:** 2D sensitivity table (Sales Growth vs Debtor Cost % or P/E Multiple).
+6. **Actionable Portfolio Monitoring Triggers & Catalysts ('What to Watch For That Will Move the Stock'):**
+   - **Operational & Financial Red Lines:** Explicitly list 3-5 specific triggers or warning thresholds (e.g. collection rate dipping below bonus hurdle, margin floors, working capital burn) that would break the thesis and trigger a de-rating.
+   - **Quantified Sensitivity Impacts:** Exact quantified rule of thumb for each catalyst (e.g. 'Every 75 bps swing in gross margin alters HEPS by X cents and fair value by R Y/share').
+   - **Re-Rating Catalysts:** Specific milestones required to trigger an upgrade (e.g. Speciality margin inflecting positive, credit book seasoning).
+   - **Upcoming Milestones & Reporting Dates:** Key calendar dates (e.g. Interim results date, AGM, trading updates) for portfolio managers to mark.
+
+---
+
+## MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: RETAIL)
+
+The following institutional guardrails are enforced from the SQLite `sector_guardrails` registry based on prior forensic audits. Violating any of these rules invalidates the report:
+
+| Rule Code | Scope | Guardrail Title | Mandatory Enforcement Rule |
+| :--- | :---: | :--- | :--- |
+| `ALL-IFRS16-EV-BRIDGE` | **UNIVERSAL** | **IFRS 16 EV-to-Equity & Cash Flow Consistency** *(Origin: SPP)* | Never mix Pre-IFRS 16 cash flows/EBITDA with Post-IFRS 16 lease debt in an Enterprise Value (EV) to Equity bridge. If EV is derived by discounting or applying a multiple to Pre-IFRS 16 EBITDA/FCFF (where cash lease rental payments are already deducted as an operating outflow), DO NOT subtract capitalised IFRS 16 lease liabilities again in the EV-to-Equity bridge (and do not subtract lease principal payments a second time in FCFE). Conversely, if subtracting net IFRS 16 lease liabilities in the EV bridge, you must discount Post-IFRS 16 EBITDA/FCFF before lease payments. Always state explicitly whether your valuation bridge is on a Pre-IFRS 16 or Post-IFRS 16 basis. |
+| `ALL-PNL-VERTICAL-ARITHMETIC` | **UNIVERSAL** | **Statutory vs. Normalized P&L Vertical Arithmetic & Impairment Bridge** *(Origin: SPP)* | Every income statement table must sum vertically line-by-line (Revenue - Cost of sales = Gross profit; Gross profit + Other revenue/income - Net operating expenses = Operating profit). Always verify from the primary AFS notes whether statutory Operating Profit is already stated AFTER impairments, restructuring, or extraordinary items before subtracting them; never subtract Note 7/exceptional impairments a second time from a statutory Operating Profit that already includes them, and ensure historical continuing PAT and HEPS match the statutory AFS reconciliation identically. |
+| `ALL-CROSS-SECTION-METRIC-SYNC` | **UNIVERSAL** | **Cross-Section HEPS, Multiple & Target Price Identity** *(Origin: SPP)* | Compute your Section 3 (P&L and HEPS) and Section 4 (DCF and P/E / EV/EBITDA valuation) numbers BEFORE writing the Section 1 Executive Summary Card commentary. The 12-Month Target Price, Reference Price, Forecast HEPS (e.g. FY27E HEPS in R or cents), and Target P/E or EV/EBITDA multiple cited in the Section 1 Executive Summary Card 'Basis & Key Commentary' cell MUST be 100% identical to Section 3 and Section 4 (never cite one HEPS/multiple in Section 1 commentary and a different HEPS/multiple in Section 4). |
+| `ALL-RATING-BANDS-MONOTONIC` | **UNIVERSAL** | **Strictly Ascending ZAR Rating Bands** *(Origin: SPP)* | In the opening JSON block and Section 1 table, rating_bands thresholds MUST be strictly ascending in ZAR per share: strong_buy_max_zar < buy_max_zar < hold_max_zar < sell_max_zar == strong_sell_above_zar, anchored around target_price_zar (Strong Buy <= Target/1.30, Buy <= Target/1.15, Hold <= Target/0.95, Sell <= Target/0.85, Strong Sell > Target/0.85). Never output identical ZAR values for Hold and Sell thresholds. |
+| `ALL-SHARE-COUNT-ANCHOR` | **UNIVERSAL** | **Verified Weighted-Average Share Count & Continuing HEPS Denominator** *(Origin: SPP)* | Always extract and state the exact basic and diluted weighted-average number of ordinary shares (in millions, net of treasury shares) from the AFS EPS/HEPS note. Never confuse Headline Earnings in R'm with the share count in millions. In Stage 2 Section 3, include an explicit 'Weighted-Average Shares (m)' row immediately above 'Continuing HEPS (cents)', divide Continuing Headline Earnings (excluding discontinued operations and capital/Note 7 items) by that exact share count, and verify that full-year forecast HEPS is consistent with H1 continuing HEPS already banked. |
+| `ALL-HISTORICAL-BASE-COLUMN` | **UNIVERSAL** | **Mandatory Historical Actuals Base Column & Currency Unit Consistency** *(Origin: SPP)* | In Section 2 (Operational Forecast) and Section 3 (Income Statement & Cash Flow Bridge), always include the reported historical base period column(s) (e.g. FY25A and/or 1H26A) alongside FY26E, FY27E, and FY28E so annualized run-rates, operating expenses, and margins are anchored to audited actuals. Never label a ZAR-converted segment revenue row as EUR'm or USD'm; ensure every row's currency unit label matches the numbers in that row. |
+| `ALL-PAT-HEPS-RECONCILIATION` | **UNIVERSAL** | **Forecast PAT-to-HEPS Reconciliation & Net Finance Sign Integrity** *(Origin: CGR)* | Forecast HEPS (cents) MUST equal (Forecast Headline Earnings in R'm / Weighted-Average Shares in millions * 100) and move directionally with Forecast PAT unless explicit non-headline items (e.g. PPE/investment property fair-value gains or goodwill impairments) are itemized in the bridge. Never forecast a sharp drop in PAT alongside an unexplained rise in HEPS. Also verify whether historical Net Finance is net finance income (+, e.g. when JV finance income exceeds P&L finance cost after interest capitalisation) or net finance expense (-), and preserve the exact sign so the P&L sums vertically. |
+| `ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT` | **UNIVERSAL** | **Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting** *(Origin: CGR)* | In Section 4 SOTP / DCF valuation tables, every component row MUST sum vertically to Total Enterprise Value (TEV), Equity Value (TEV less Net Debt), SOTP Fair Value per Share (Equity Value / Net Shares), and Target Price (ZAR). If a percentage risk/liquidity discount is applied (e.g. 25% discount), the discount ZAR per share and resulting Target Price MUST equal SOTP Fair Value per Share * (1 - discount%); never switch denominators mid-table. Never add book working capital (Inventory, Contract Assets/WIP) or Goodwill on top of a segment DCF/NPV that already discounts the cash flows generated by those operating assets. |
+| `ALL-TREASURY-SHARE-DIVIDEND-BRIDGE` | **UNIVERSAL** | **Gross vs. Net Treasury Share Count & Parent vs. Consolidated Dividend Reconciliation** *(Origin: CGR)* | Before flagging an arithmetic discrepancy between parent-company dividends paid/declared and net shares in issue, always check gross issued shares vs treasury shares held by subsidiaries or share trusts (e.g. in the Integrated Report dividend declaration or Stated Capital note). Under South African corporate law, the parent company pays the gross dividend on all gross issued shares, whereas the Consolidated Statement of Changes in Equity and Cash Flow Statement eliminate intra-group dividends paid on treasury shares. |
+| `ALL-ENTITY-ACRONYM-DISAMBIGUATION` | **UNIVERSAL** | **Full Legal Entity Name Verification Across Notes (No Acronym Conflation)** *(Origin: CGR)* | Never abbreviate two distinct legal entities to the same acronym and claim an accounting classification contradiction. When evaluating entities with similar names, acronyms, or operating divisions, always compare and cross-check full legal entity names across notes before concluding on whether an entity is a joint venture, joint operation, associate, or subsidiary. |
+| `RETAIL-IFRS16-HEADLEASE-SUBLEASE` | **RETAIL** | **Retail Head-Lease Liability vs. Back-to-Back Franchisee Lease Receivable Netting** *(Origin: SPP)* | For wholesale/franchise retailers that sign head-leases on properties and sub-lease them back-to-back to independent retailers, always net the IFRS 16 finance lease receivables (Current + Non-current) against gross IFRS 16 lease liabilities to isolate the group's true net store/DC lease exposure, and distinguish Pre-IFRS 16 covenant EBITDA from Post-IFRS 16 statutory EBITDA. |
+| `RETAIL-ECL-CASHFLOW-VS-ALLOWANCE` | **RETAIL** | **Retail & Trade Receivable ECL Non-Cash Movement vs. Balance Sheet Allowance Bridge** *(Origin: SPP)* | When auditing trade/retailer receivables and loan allowances, reconcile the Cash Flow Statement non-cash ECL movement against the Balance Sheet allowance movement by accounting for final write-offs against the allowance and fair-value discounting, and verify whether elevated credit loss run-rates persist in post-balance-sheet SENS updates. |
+
+---
+
+## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)
+
+To ensure institutional publication quality and 100% deterministic parsing, you MUST follow these formatting rules:
+1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native float numbers (e.g. `0.42`, `-30.0`), not text descriptions.
+2. **Zero HTML Tags:** DO NOT use any HTML tags (`<br>`, `<br/>`, `<span>`, `<div>`, etc.). Use standard Markdown newlines.
+3. **Single-Line Table Rows:** Every Markdown table row MUST be on a single continuous line starting and ending with `|`. DO NOT insert blank lines (`\n\n`) within table rows or split cells across multiple lines.
+4. **Isolated Numeric Determination Cells:** In the Valuation Summary Card, keep the Determination column strictly limited to the metric value (e.g. `R0.42` or `-30.0%`). Reserve all commentary and secondary notes strictly for the Commentary column.
+5. **No Special Symbols or Arbitrary Code Blocks:** DO NOT wrap ordinary numbers or percentages in backticks (`). Reserve backticks solely for the initial JSON block and formal code/file identifiers.

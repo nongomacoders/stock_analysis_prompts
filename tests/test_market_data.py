@@ -198,11 +198,12 @@ def test_portfolio_view_columns(tmp_path, qapp):
 
     pv = PortfolioView(db_path=test_db)
     try:
-        assert pv.table.columnCount() == 13
+        assert pv.table.columnCount() == 11
         headers = [pv.table.horizontalHeaderItem(i).text() for i in range(pv.table.columnCount())]
         assert "Latest JSE Price" in headers
         assert "Live Upside" in headers
-        assert "Note Ref Price" in headers
+        assert "Note Ref Price" not in headers
+        assert "Note Upside" not in headers
         assert "12M Target" in headers
         assert hasattr(pv, "fetch_quotes_btn")
     finally:

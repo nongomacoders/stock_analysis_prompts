@@ -22,8 +22,10 @@ from companies.sectors import get_sector_config, get_jse_sector_code, get_jse_se
 from section_capture.db import (
     connect_db,
     detect_company_meta,
+    format_sector_guardrails_block,
     resolve_db_path,
 )
+from workflow.generate_stage2 import format_documents_considered_table
 
 
 def get_sens_completed_dir(company_dir: Path) -> Path:
@@ -82,6 +84,9 @@ def build_sens_update_prompt_content(
     sens_filename: str | None = None,
     sens_entries: list[dict] | None = None,
     reference_price_zar: float | None = None,
+    stage1_audit_report: str | None = None,
+    source_documents: list[dict] | None = None,
+    db_path: str | Path | None = None,
 ) -> str:
     """Constructs the simplified SENS Valuation Update prompt with PDF and/or embedded text notices."""
     md_lines: list[str] = []
@@ -159,8 +164,9 @@ def build_sens_update_prompt_content(
 
     md_lines.append("")
     md_lines.append(
-        "2. **Evaluate the Valuation & Balance Sheet Impact:**\n"
-        "   - Cross-examine the new evidence against the established Final Valuation Report below.\n"
+        "2. **Evaluate the Valuation & Balance Sheet Impact (Anchored to Stage 1 Forensic Ground Truth):**\n"
+        "   - Cross-examine the new SENS evidence against BOTH the **Audited Stage 1 Forensic Determinations** (if provided below) and the established **Baseline Valuation Report**.\n"
+        "   - Audit the prior Baseline Valuation Report for any mathematical or accounting inconsistencies (such as double-counting IFRS 16 lease liabilities against Pre-IFRS 16 cash flows, or double-subtracting impairments from statutory Operating Profit) and correct them in the updated valuation model.\n"
         "   - Determine whether the **12-Month Target Price (ZAR)**, **Current Reference Price**, or **Recommendation (BUY / HOLD / SELL)** "
         "should be revised or reaffirmed. Quantify the exact financial impact."
     )
@@ -232,12 +238,34 @@ def build_sens_update_prompt_content(
             md_lines.append("```")
             md_lines.append("")
 
+    if source_documents:
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## INVENTORY OF SOURCE REPORTS & SENS DISCLOSURES TO INCLUDE IN SECTION 1")
+        md_lines.append("")
+        md_lines.extend(format_documents_considered_table(source_documents, include_placeholder_roles=True))
+        md_lines.append("")
+
+    if stage1_audit_report and stage1_audit_report.strip():
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH FROM SQLITE)")
+        md_lines.append("")
+        md_lines.append(stage1_audit_report.strip())
+        md_lines.append("")
+
     md_lines.append("---")
     md_lines.append("")
-    md_lines.append("## ESTABLISHED FINAL INSTITUTIONAL VALUATION REPORT (GROUND TRUTH)")
+    md_lines.append("## ESTABLISHED FINAL INSTITUTIONAL VALUATION REPORT (BASELINE TO UPDATE)")
     md_lines.append("")
     md_lines.append(baseline_valuation_report.strip())
     md_lines.append("")
+
+    guardrails_md = format_sector_guardrails_block(detected_sector, stage="sens", db_path=db_path)
+    if guardrails_md:
+        md_lines.append("---")
+        md_lines.append("")
+        md_lines.append(guardrails_md)
 
     md_lines.append("---")
     md_lines.append("")
@@ -288,7 +316,7 @@ def generate_sens_update_prompt(
         cur = conn.cursor()
         rows = cur.execute(
             """
-            SELECT sha256, filename, stage2_response
+            SELECT sha256, filename, stage1_response, stage2_response
             FROM reports
             WHERE (filename LIKE ? OR original_path LIKE ?) AND parent_report_sha256 IS NULL
             ORDER BY CASE WHEN stage2_response IS NOT NULL THEN 1 ELSE 2 END ASC, updated_at DESC
@@ -300,6 +328,7 @@ def generate_sens_update_prompt(
             raise RuntimeError(f"No existing Stage 2 valuation report found in database for ticker {ticker}.")
 
         baseline_report = rows[0]["stage2_response"]
+        stage1_report = next((r["stage1_response"] for r in rows if r["stage1_response"]), None)
 
     sens_dir = company_dir / "sources/sens"
     sens_entries: list[dict] = []
@@ -353,6 +382,8 @@ def generate_sens_update_prompt(
         detected_sector=detected_sector,
         sens_filename=effective_sens_file,
         sens_entries=sens_entries,
+        stage1_audit_report=stage1_report,
+        db_path=resolved_db,
     )
 
     if output_path is None:
