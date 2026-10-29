@@ -2,6 +2,12 @@
 
 Last updated: 2026-10-29 (Africa/Johannesburg).
 
+## Agentic report build direction opened (2026-10-29, this branch only)
+
+- New branch `agentic-report-build` (worktree `..\stock_prompts_agentic`, off `one_shot@37bfaba`) for the proposed agentic report-build experiment: OpenCode builds a report like software (plan → SQLite extraction with page-cited lineage → pytest reconciliation suite → hypothesis branches/worktrees → narrative/Excel view → Gemini/Codex review gates → 1A audit). Charter `workflow/changes/20261029_agentic_report_build/CHARTER.md` (status PROPOSED, nothing implemented), runbook `RUNBOOK.md`, machine-readable scoring baseline `ground_truth/pan_d009_expected.json` (PAN D009 pp.48-50 verified identities/conflicts, transcribed from 20261029T123636Z_open_code_three_pass_review).
+- Key covenants: never replace a printed source figure (conflicts are recorded data); all arithmetic executes in code, never asserted in prose; ledger stays open on ambiguity; production files, sources and `one_shot` branch untouched. First run scoped to one section.
+- Worktree setup emitted one pre-existing `Filename too long` warning checkout item (deep pilot `inputs/.../prompts/.../.gitattributes`); unrelated to this scaffold, verify its presence separately if it matters.
+
 ## Project summary and commit preparation (2026-10-29)
 
 - User requested project summary,commit and push on current `one_shot` branch. Updated README with capture/ledger/analysis/review workflow,Fireworks routing,withholding policy and demonstrated/remaining limits. Preserved all pending work; no app behavior changes during commit preparation.
