@@ -10,6 +10,7 @@ Governed by CHARTER covenants:
       3. Conflicts (78 rows): Audited arithmetic & structural conflicts
       4. Questions (8 rows): Tracked ledger questions with status & lineage
 """
+
 from __future__ import annotations
 
 import pathlib
@@ -74,7 +75,7 @@ def build_excel_view():
     q_d009 = """
         SELECT id, physical_page, table_region, row_label, fiscal_year,
                column_index, column_label, value_raw, value_num, unit, extraction_commit
-        FROM cells WHERE table_region NOT LIKE 'primary_%'
+        FROM cells WHERE table_region IN ('A_production','B_costs','C_financial_summary')
         ORDER BY physical_page, row_index, fiscal_year, column_index
     """
     for r in con.execute(q_d009):
@@ -92,7 +93,35 @@ def build_excel_view():
             str(r["extraction_commit"]),
         ])
 
-    # --------------------------------------------------------- 3. Conflicts Tab
+    # ---------------------------------------- 3. Note 3 Segment Analysis Tab
+    ws_seg = wb.create_sheet(title="Segment_Analysis_p21_24")
+    headers_seg = [
+        "Cell ID", "Physical Page", "Fiscal Year", "Row Label", "Column Index",
+        "Segment", "Value Raw", "Value Num (USD '000)", "Unit", "Extraction Commit"
+    ]
+    ws_seg.append(headers_seg)
+
+    q_seg = """
+        SELECT id, physical_page, fiscal_year, row_label, column_index, column_label,
+               value_raw, value_num, unit, extraction_commit
+        FROM cells WHERE table_region LIKE 'note3_%'
+        ORDER BY physical_page, table_region, row_index, fiscal_year, column_index
+    """
+    for r in con.execute(q_seg):
+        ws_seg.append([
+            int(r["id"]),
+            int(r["physical_page"]),
+            str(r["fiscal_year"]),
+            str(r["row_label"]),
+            int(r["column_index"]),
+            str(r["column_label"]),
+            str(r["value_raw"]),
+            float(r["value_num"]) if r["value_num"] is not None else None,
+            str(r["unit"]),
+            str(r["extraction_commit"]),
+        ])
+
+    # --------------------------------------------------------- 4. Conflicts Tab
     ws_conflicts = wb.create_sheet(title="Conflicts")
     conflict_headers = [
         "Conflict ID", "Check ID", "Kind", "Physical Page", "Ledger Question ID", "Status", "Description"
@@ -138,7 +167,9 @@ def build_excel_view():
     con.close()
 
     # Style all sheets and auto-fit column widths
-    for ws, fill in [(ws_primary, header_fill_green), (ws_d009, header_fill_blue), (ws_conflicts, header_fill_blue), (ws_questions, header_fill_blue)]:
+    for ws, fill in [(ws_primary, header_fill_green), (ws_d009, header_fill_blue),
+                     (ws_seg, header_fill_green), (ws_conflicts, header_fill_blue),
+                     (ws_questions, header_fill_blue)]:
         ws.views.sheetView[0].showGridLines = True
         for col_idx in range(1, ws.max_column + 1):
             cell = ws.cell(row=1, column=col_idx)
@@ -162,6 +193,7 @@ def build_excel_view():
     print(f"Sheets: {[s.title for s in wb.worksheets]}")
     print(f"Primary Statements cells: {ws_primary.max_row - 1}")
     print(f"Production & Costs cells: {ws_d009.max_row - 1}")
+    print(f"Segment Analysis (Note 3) cells: {ws_seg.max_row - 1}")
     print(f"Conflicts: {ws_conflicts.max_row - 1}")
     print(f"Questions: {ws_questions.max_row - 1}")
 

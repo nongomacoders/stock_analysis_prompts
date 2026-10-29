@@ -13,19 +13,21 @@ DB = pathlib.Path(__file__).resolve().parent.parent / "build" / "report.sqlite"
 
 CONFLICTS = [
     dict(
-        check_id="N3_APM_SCOPE|p22|Adjusted EBITDA|FY26|delta=53.669",
+        check_id="N3_APM_SCOPE|p22|Adjusted EBITDA|FY26|delta=53.670",
         kind="ambiguity",
         physical_page=22,
         ledger_question_id="Q-c1e6100f7a674873",
         description=(
-            "Adjusted EBITDA is printed twice with different scope: Note 3 p.22 Group total "
-            "609,431 US$ thousand (US$609.4m) versus Group production summary p.50 "
-            "663.1 US$m (delta US$53.669m). Note 3 reconciles operating profit 545,838 + "
-            "D&A 60,288 + other D&A 2,179 = EBITDA 608,305, then +781 disposal loss +345 "
-            "impairment = 609,431, i.e. it carries the Corporate (-52,429) and Funding (-231) "
-            "columns. The p.50 figure is the operating-segment measure. Neither printed value "
-            "is replaced; the scope difference is recorded and the APM definition question "
-            "stays open."
+            "Adjusted EBITDA prints at two scopes. Note 3 p.22 Group total = 609,431 US$k; "
+            "Group production summary p.50 = 663.1 US$m. Bridge proved in code: the D009 figure "
+            "equals Note 3 operating segments only (Barberton 171,874 + Evander 292,316 + "
+            "MTR 155,899 + Tennant 43,012 = 663,101 -> 663.1), i.e. it excludes Solar (-988), "
+            "Exploration (-222), ESG (-345), Corporate (-51,884) and Funding (-231), which sum "
+            "to -53,670. FY25 reproduces identically (93,798 + 97,761 + 51,763 + 2,443 = "
+            "245,765 -> 245.8 vs Note 3 Group 226,584). This also closes the 0.1 residual left "
+            "open at D009 P2: the p.50 Group total is the sum of unrounded segment figures while "
+            "the printed p.50 leaves are each rounded to one decimal. Neither printed value is "
+            "replaced; the APM definition question stays open."
         ),
     ),
     dict(
@@ -49,6 +51,7 @@ def main():
     con = sqlite3.connect(str(DB))
     try:
         cur = con.cursor()
+        cur.execute("DELETE FROM conflicts WHERE check_id LIKE 'N3_%'")
         cur.executemany(
             """INSERT INTO conflicts (check_id, description, kind, physical_page,
                evidence_path, ledger_question_id, status)

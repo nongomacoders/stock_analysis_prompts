@@ -23,7 +23,7 @@
 | Scoring Fixture | `workflow/changes/20261029_agentic_report_build/ground_truth/pan_d009_expected.json` | `7cec693` | Reviewer scoring key only (never read by build code) |
 | Extraction Code | `workflow/changes/20261029_agentic_report_build/build/extraction/` | `a6c86c2` | Word-box and coordinate extraction engine (D009 + Primary Statements) |
 | SQLite Database | `workflow/changes/20261029_agentic_report_build/build/report.sqlite` | `a6c86c2` | Reconciled printed-values database (1,388 cells, 78 conflicts, 5 pages) |
-| Reconcile Suite | `workflow/changes/20261029_agentic_report_build/tests_reconcile/` | `826373c` | Deterministic pytest suite (34/34 tests green) |
+| Reconcile Suite | `workflow/changes/20261029_agentic_report_build/tests_reconcile/` | `826373c` | Deterministic pytest suite (52/52 tests green) |
 | Reading Briefs | `workflow/changes/20261029_agentic_report_build/READING_BRIEF*.md` | `191ac00` | Reconciled section brief and primary statements brief |
 | Excel View | `workflow/changes/20261029_agentic_report_build/build/report_view.xlsx` | `191ac00` | 4-tab static values-only workbook (openpyxl 3.1.5) |
 
@@ -91,5 +91,7 @@ All checks were executed locally with the verified Python interpreter:
 
 ### 5. Scope Boundaries and Limitations
 
-- **Bounded Scope**: PAN Section D009 (pp.48-50) only. Production tables and prompt templates untouched.
+- **Bounded Scope**: PAN sections D009 (pp.48-50), S006 primary statements (pp.17-18) and S007 Note 3 segment analysis (pp.21-24) only. Production tables and prompt templates untouched.
+- **Note 3 (S007)**: 880 cells / 72 segment rows; all 72 rows tie on both horizontal identities at zero tolerance, and all seven cross-section ties to the primary statements hold. Two conflicts recorded (APM scope, intra-group block). Reviews: `reviews/20261029T165125Z_{gemini,codex}/`.
+- **Residual risks accepted at S007**: the 594 revenue cell is assigned to Agricultural ESG by geometry alone (arithmetic cannot distinguish it from Corporate since only one is non-zero); the D009 ZAR-to-USD translation basis is not evidenced in pp.21-24 and is left pending; each new section brings its own identity set rather than reusing one generic engine.
 - **Open User Action**: Pin `openpyxl==3.1.5` in the production dev lockfile to prevent environment drift on future `uv sync`.
