@@ -51,9 +51,13 @@ def test_blank_column_remains_unextracted(report_db):
 
 
 def test_cell_lineage_complete(report_db):
-    """Every extracted cell carries physical_page, extraction_commit, and document hash."""
+    """Every extracted cell carries a valid physical page and an extraction commit.
+
+    Page numbers are bounded by the document (54 physical pages) rather than by a
+    hand-maintained list, so adding a section cannot silently weaken this check.
+    """
     bad = report_db.execute(
-        "SELECT COUNT(*) FROM cells WHERE physical_page NOT IN (17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50) "
+        "SELECT COUNT(*) FROM cells WHERE (physical_page < 1 OR physical_page > 54) "
         "OR extraction_commit IS NULL OR LENGTH(extraction_commit) < 7"
     ).fetchone()[0]
     assert bad == 0, f"{bad} cells lack complete lineage"

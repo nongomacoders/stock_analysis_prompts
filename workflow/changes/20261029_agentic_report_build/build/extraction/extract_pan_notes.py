@@ -21,7 +21,7 @@ PDF_PATH = pathlib.Path(
     r"companies/mining/PAN/sources/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf")
 EXPECTED_SHA = "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
 EXTRACTION_COMMIT = "p1_notes_generic_v1"
-PAGES = list(range(25, 38))
+PAGES = (list(range(1, 16)) + [19, 20] + list(range(25, 40)) + [51])
 MIN_VALUES, MAX_VALUES = 2, 16
 
 VALUE_RE = re.compile(r"\(?[\d,]+(?:\.\d+)?\)?|[–—\-]")
