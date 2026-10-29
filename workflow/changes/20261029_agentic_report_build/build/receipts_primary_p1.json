@@ -1,0 +1,21 @@
+{
+  "total_cells": 1388,
+  "primary_statements_cells": 192,
+  "cells_by_region": {
+    "A_production": 442,
+    "B_costs": 416,
+    "C_financial_summary": 338,
+    "primary_balance_sheet_assets": 32,
+    "primary_balance_sheet_equity_liab": 50,
+    "primary_cash_flows": 58,
+    "primary_income_statement": 52
+  },
+  "cells_by_page": {
+    "17": 82,
+    "18": 110,
+    "48": 442,
+    "49": 416,
+    "50": 338
+  },
+  "pages_tracked": 5
+}

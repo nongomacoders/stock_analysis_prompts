@@ -18,6 +18,9 @@ Last updated: 2026-10-29 (Africa/Johannesburg).
   - **P5 Codex Review** (`reviews/20261029T152604Z_codex/codex_review.md`): Adversarial inspection against original PDF pages 48-50. Verified printed number preservation (zero hallucinated/modified values); verified openpyxl static values view (zero formulas); verified ledger closure discipline (refuting prior reviewer claims of premature MTR closure); verdict: PASSED WITH COMMENDATION.
   - **P6 §1A Audit Record** (`workflow/changes/20261029_agentic_report_build/AUDIT.md`): Comprehensive input manifest (PDF hash, render paths/hashes, schema, test suite, outputs), command execution log, evidentiary findings, and cost accounting ($0.00 paid API cost vs $0.03107 historical baseline; 100% deterministic local Python execution).
   - All definition of done (DoD) criteria satisfied: suite 15/15 green with all conflicts recorded; zero covenant-1 violations; all survey detections independently reproduced; review records preserved; production untouched.
+- **PRIMARY FINANCIAL STATEMENTS P0 & P1 COMPLETE (2026-10-29)**: Scoped and extracted Section S006 Primary Financial Statements (physical pages 17 and 18, printed pages 30–33):
+  * **P0 Blueprint**: `WORKPLAN_PRIMARY_STATEMENTS.md` targeting Balance Sheet, Profit or Loss, and Cash Flows.
+  * **P1 Extraction**: `build/extraction/extract_pan_primary_statements.py` and `build/extraction/render_primary_pages.py`. Extracted **192 cells** across 4 primary statements (Assets: 32 cells, Equity & Liabilities: 50 cells, Income Statement: 52 cells, Cash Flows: 58 cells) into `build/report.sqlite`. Total cells in DB: **1,388**. Rendered physical pages 17 and 18 to high-res PNGs and recorded paths/hashes in `pages` table (5 pages now tracked). Receipts saved in `build/receipts_primary_p1.json`. Next: **P2** Primary Statements reconciliation suite.
 
 ## Project summary and commit preparation (2026-10-29)
 
