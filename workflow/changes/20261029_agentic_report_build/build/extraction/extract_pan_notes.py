@@ -22,7 +22,7 @@ PDF_PATH = pathlib.Path(
 EXPECTED_SHA = "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
 EXTRACTION_COMMIT = "p1_notes_generic_v1"
 PAGES = list(range(25, 38))
-MIN_VALUES, MAX_VALUES = 1, 8
+MIN_VALUES, MAX_VALUES = 2, 16
 
 VALUE_RE = re.compile(r"\(?[\d,]+(?:\.\d+)?\)?|[–—\-]")
 DASH_RE = re.compile(r"^[–—\-]$")
@@ -42,21 +42,24 @@ def text_lines(page):
 
 
 def split_row(raw):
-    """(label, values) if the line ends in a run of MIN..MAX value tokens."""
+    """All candidate (label, values) splits whose trailing run is all value tokens.
+
+    Returns every possible split so the caller can keep only the modal column count for
+    the page - the reliable signal for how wide a table really is (PPE rows carry 14,
+    a two-column note carries 2).
+    """
     tokens = raw.split()
+    out = []
     for k in range(len(tokens)):
         rest = tokens[k:]
         if not (MIN_VALUES <= len(rest) <= MAX_VALUES):
             continue
         if not all(VALUE_RE.fullmatch(t) for t in rest):
             continue
-        # A single trailing number is almost always prose or a note reference.
-        if len(rest) == 1:
-            continue
         label = " ".join(tokens[:k]).strip()
         if label and not label.endswith(","):
-            return label, rest
-    return None
+            out.append((label, rest))
+    return out
 
 
 def run():
@@ -68,32 +71,43 @@ def run():
         for page in PAGES:
             region = f"note_p{page}"
             rows, prev = [], ""
+            cands = []
             dropped = 0
             for raw in text_lines(page):
                 if raw.startswith(SKIP_START):
                     continue
-                parsed = split_row(raw)
-                if not parsed:
+                splits = split_row(raw)
+                if not splits:
                     prev = raw
                     continue
-                label = parsed[0]
+                cands.append((splits, prev))
+                prev = raw
+            if not cands:
+                print(f"  p{page}: no candidate rows", file=sys.stderr)
+                continue
+            from collections import Counter
+            modal = Counter(len(v) for sp, _p in cands for _l, v in sp).most_common(1)[0][0]
+            for splits, prev_line in cands:
+                pick = [sp for sp in splits if len(sp[1]) == modal]
+                if not pick:
+                    dropped += 1
+                    continue
+                label, values = pick[0]
                 if label[0].islower() or label.startswith("("):
-                    label = f"{prev} {label}"
+                    label = f"{prev_line} {label}"
                 label = re.sub(r"\s+", " ", label).strip()
                 # Quality gate: legitimate labels carry at most two small numbers
-                # ('Balance as at 1 July', 'General banking facility2'). Multi-column
-                # tables interleave many numbers into the "label" - those are prose
-                # fragments or PPE column bleed and are not stored.
+                # ('Balance as at 1 July', 'General banking facility2'). More than that is
+                # column bleed from a table the text layer interleaved.
                 if len(re.findall(r"\d+", label)) >= 3:
                     dropped += 1
-                    prev = raw
                     continue
-                rows.append((label, parsed[1]))
-                prev = raw
+                rows.append((label, values))
             if dropped and dropped > len(rows):
-                print(f"  p{page}: DEFERRED - {dropped} contaminated rows vs {len(rows)} clean",
-                      file=sys.stderr)
+                print(f"  p{page}: DEFERRED - {dropped} contaminated vs {len(rows)} clean "
+                      f"(modal width {modal})", file=sys.stderr)
                 continue
+            print(f"  p{page}: {len(rows)} rows at width {modal}", file=sys.stderr)
             for idx, (label, values) in enumerate(rows, start=1):
                 ncols = len(values)
                 for col, raw in enumerate(values):
