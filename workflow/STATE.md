@@ -28,9 +28,13 @@ Last updated: 2026-10-29 (Africa/Johannesburg).
   * Proved Cash Flow roll-up ($556,991 - 352,144 - 155,874 = 48,973$) and full cash roll-forward ($49,532 + 48,973 + 9,807 = 108,312$).
   * Proved cross-statement cash tie: Balance Sheet Cash (p.17) == Cash Flow Statement Closing Cash (p.18) ($108,312\text{k} == 108,312\text{k}$).
   * Proved cross-section tie connecting to open ledger question `Q-a0b503d7ac044eee`: IFRS Revenue ($1,156,451\text{k} US$) at average exchange rate 16.90 US$/ZAR implies 19,544.0 ZARm vs D009 production revenue 17,249.1 ZARm ($\Delta 2,294.9\text{ ZARm}$).
-- **PRIMARY FINANCIAL STATEMENTS P3 & P4 COMPLETE (2026-10-29)**: View layer and hypotheses recorded:
+- **PRIMARY FINANCIAL STATEMENTS P3 & P4 COMPLETE (2026-10-29, commit `191ac00`)**: View layer and hypotheses recorded:
   * **P3 Hypotheses**: Evaluated Footnote 1 reciprocal dividend cash flow re-presentation ($49,532k comparative roll-forward holds) and documented the ZAR 2,294.9m IFRS revenue bridge in `HYPOTHESES.md`.
-  * **P4 View Layer**: Updated `build/generate_excel_view.py` and regenerated `build/report_view.xlsx` with a new `Primary_Statements` tab containing all 192 extracted cells (US$ thousand). 0 formulas in any cell (Covenant 2 preserved). Generated dedicated reading brief `READING_BRIEF_PRIMARY_STATEMENTS.md`. Next: **P5 & P6** Primary Statements review gates & audit update.
+  * **P4 View Layer**: Updated `build/generate_excel_view.py` and regenerated `build/report_view.xlsx` with a new `Primary_Statements` tab containing all 192 extracted cells (US$ thousand). 0 formulas in any cell (Covenant 2 preserved). Generated dedicated reading brief `READING_BRIEF_PRIMARY_STATEMENTS.md`.
+- **PRIMARY FINANCIAL STATEMENTS P5 & P6 COMPLETE (2026-10-29)**: Two-reviewer audit and updated evidence record:
+  * **P5 Gemini Review** (`reviews/20261029T161425Z_gemini/gemini_review_primary_statements.md`): Verified covenants, fundamental Balance sheet equality, income statement roll-downs, cash flow roll-forward, and cross-section revenue tie. Verdict: ACCEPT WITHOUT AMENDMENT.
+  * **P5 Codex Review** (`reviews/20261029T161425Z_codex/codex_review_primary_statements.md`): Adversarial audit against PDF pages 17-18; verified 100% printed number fidelity, zero formula cells in Excel, and exact cross-statement cash tie ($108,312k == $108,312k). Verdict: PASSED WITH COMMENDATION.
+  * **P6 §1A Audit Record** (`workflow/changes/20261029_agentic_report_build/AUDIT.md`): Updated input manifest (1,388 cells, 5 pages rendered and tracked) and execution log. Cost remains $0.00. Entire suite 34/34 tests green. All DoD criteria satisfied across both D009 and S006.
 
 ## Project summary and commit preparation (2026-10-29)
 
