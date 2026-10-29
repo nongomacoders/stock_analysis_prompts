@@ -98,3 +98,39 @@ Derived geometry for reference (13 edges, tolerance 5.0pt, min count 3):
 - [x] Printed cross-table discrepancy quoted from the source, explicitly marked unproved.
 - [x] Two failed extraction attempts and their causes recorded rather than discarded.
 - [x] No partial extraction committed; DB remains at 2,268 cells with the S007 regions only.
+
+---
+
+## 6. Progress after P0
+
+**Done**: p.45 Adjusted EBITDA (130 cells) and p.46 NAV / levered FCF / cash-flow yield
+(38 cells) are extracted and reconciled; see `tests_reconcile/test_apm_ebitda.py` and
+`test_apm_ratios.py`. The 0.1 D009 EBITDA residual is now proved (142.5 vs 142.4).
+
+**Attempted and reverted (2026-10-29): p.44 capital expenditure and net debt.**
+
+What worked: the capital table's six value columns were recovered from geometry
+(`[172.77, 215.14, 257.94, 300.06, 342.72, 385.2]`), the debt columns from
+`[746.84, 805.71]`, and sustaining + expansion = total held on every captured row
+(e.g. 12.2 + 25.3 = 37.5; 8.3 + 16.6 = 24.9).
+
+Why it was reverted rather than shipped:
+
+1. **11 of 12 capital rows captured.** The `Solar projects` row (printed
+   `– – 7.2 3.5 7.2 3.5`) was missed, and the `Agricultural ESG projects` label arrived
+   truncated as `projects`. A table with a missing row and a wrong label is worse than no
+   table, because downstream reads cannot tell.
+2. **8 of 13 debt rows captured.** The two debt blocks print in the right-hand column at
+   the *same y range* as the capital table in the left-hand column, so y-band separation
+   is invalid on this page. Rows were also lost where one printed cell in a pair is a
+   dash whose x1 snaps outside SNAP_TOL.
+3. **Label assignment order is unreliable.** The PDF geometry order (net debt block first)
+   does not match the text-layer order (capital table first), so cursor-based matching
+   mis-assigned rows (`Financial instrument liability` took a six-value capital row).
+
+Next attempt should: build the label map keyed on the full normalised value tuple per
+column-count pool (started here), add an explicit `Solar projects` label rather than
+relying on the wrap, and separate the two debt blocks by their heading y values *within
+the right-hand column only* (x > 700), not by page-level y bands.
+
+The blank line count in the DB is unchanged at 2,436 cells after the revert.
