@@ -132,8 +132,8 @@ def build_excel_view():
     q_apm = """
         SELECT id, physical_page, fiscal_year, row_label, column_index, column_label,
                value_raw, value_num, unit, extraction_commit
-        FROM cells WHERE table_region = 'apm_adjusted_ebitda'
-        ORDER BY row_index, fiscal_year, column_index
+        FROM cells WHERE table_region LIKE 'apm_%'
+        ORDER BY table_region, row_index, fiscal_year, column_index
     """
     for r in con.execute(q_apm):
         ws_apm.append([
