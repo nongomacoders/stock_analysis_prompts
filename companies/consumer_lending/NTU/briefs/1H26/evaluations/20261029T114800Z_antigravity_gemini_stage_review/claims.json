@@ -1,0 +1,92 @@
+[
+  {
+    "id": "C001",
+    "claim_and_origin": "Three-pass movement calculation worksheet computes correct net -130 (-3.27%), cumulative gain -167 (-27.93%), Unsecured net -352 (-11.93%), and Debt review net +227 (+26.24%) with valid percentage denominators. (ntu_assets_movement.md)",
+    "classification": "Derived calculation",
+    "primary_evidence": "nutunlimitedcondensedconsolidatedafs31march2026.pdf physical p.22-23 (31 Mar 2026 vs 30 Sep 2025). Net carrying: 3,975 to 3,845 (-130, -3.27%); Cumulative gain: 598 to 431 (-167, -27.93%); Unsecured: 2,950 to 2,598 (-352, -11.93%); Debt review: 865 to 1,092 (+227, +26.24%).",
+    "independent_check": "Re-executed independently in scripts/calculations.py: ntu.h1_movements and ntu.segment_h1. All math matches source table inputs exactly.",
+    "verdict": "PASS",
+    "consequence": "F001 (Supported within NTU sample; calculation pass generates valid signed % movements)."
+  },
+  {
+    "id": "C002",
+    "claim_and_origin": "Question Q-08aa5c3f257440ab is resolved in both NTU single and staged final outputs based on POCI/amortised cost/CAEIR disclosure on p.21-22. (ntu_assets_single.md & ntu_assets_why.md)",
+    "classification": "Model assumption",
+    "primary_evidence": "Incoming question closure condition requires PBD measurement basis and applicable ECL model stated AND reconciled to the carrying value. Physical p.22 shows principal book net 3,845 Rm + Other financial assets 644 Rm = 4,489 Rm, matching the pending R4,489m figure referenced in Q-e4497d9112cd4e9d. Total-scope reconciliation was deferred, yet both models proposed status 'resolved'.",
+    "independent_check": "Verified in closure_comparison.json and ntu_assets_why.validation.json. Three-pass final ledger passed validator syntax and accepted premature closure in memory; single was rejected due to short quote '3 414'.",
+    "verdict": "FAIL",
+    "consequence": "F002 (Premature question closure without satisfying complete closure condition; validator syntax pass does not equal semantic validity)."
+  },
+  {
+    "id": "C003",
+    "claim_and_origin": "NTU Meaning pass defines PBD-only net carrying value as 3,845 Rm and treats other assets (644 Rm) as outside PBD, propagating this scope reduction through movement and final why passes. (ntu_assets_meaning.md)",
+    "classification": "Model assumption",
+    "primary_evidence": "nutunlimitedcondensedconsolidatedafs31march2026.pdf physical p.21 states: 'Other financial assets, recognised within the purchase book debts, include a receivables balance measured at fair value.' Physical p.22 includes them under 'Financial assets subject to risk' (644 Rm), and p.13 confirms total PBD is 4,489 Rm (3,845 + 644).",
+    "independent_check": "Traced prompt outputs: meaning pass asserted 3,845 as 'PBD-only', movement worksheet repeated 'PBD-only net = 3,845', and final why repeated 'PBD-only net = 3,845'. The qualification that other assets are within PBD was acknowledged but the scope mismatch was never reconciled.",
+    "verdict": "FAIL",
+    "consequence": "F003 (Intermediate error propagation: early narrowing of PBD scope persists unchallenged across subsequent passes)."
+  },
+  {
+    "id": "C004",
+    "claim_and_origin": "NTU single-pass response was rejected by ledger validator solely due to literal quote length constraints. (ntu_assets_single.validation.json)",
+    "classification": "Historical result",
+    "primary_evidence": "ntu_assets_single.validation.json records error: 'Evidence quote for Q-08aa5c3f257440ab, physical page 22 is not literal: '3 414''.",
+    "independent_check": "Physical p.22 text contains '3 414'. The quote is verbatim in the document, but failed validator rule requiring >= 8 characters. Rejection is an engineering rule artifact, not evidence of financial hallucination.",
+    "verdict": "PASS",
+    "consequence": "F004 (Literal validation acceptance does not signify superior financial reasoning, nor does rejection imply hallucination)."
+  },
+  {
+    "id": "C005",
+    "claim_and_origin": "PAN Meaning pass defines capex and costs as outflows reducing profit/assets, and revenue/EBITDA as cash inflows. (pan_dense_meaning.md)",
+    "classification": "Model assumption",
+    "primary_evidence": "pan_dense_meaning.md line: 'Signs: Costs and capex are outflows (reduce profit/assets); revenue and EBITDA inflows.'",
+    "independent_check": "Under IFRS/IAS 16, capital expenditure capitalizes into PP&E (exchanging cash/liability for asset) rather than immediately reducing profit. Revenue and EBITDA are accrual accounting figures, not direct cash inflows. Definitions are technically flawed generic assumptions.",
+    "verdict": "FAIL",
+    "consequence": "F005 (Unsound accounting definitions generated in dictionary pass; not grounded in specific source note disclosures)."
+  },
+  {
+    "id": "C006",
+    "claim_and_origin": "PAN movement pass reports FY25 Group gold produced as 197,608 oz vs 196,527 oz printed, asserting a 1,081 oz double-count risk without completing disjoint reconciliation. (pan_dense_movement.md)",
+    "classification": "Derived calculation",
+    "primary_evidence": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf physical p.48-49. Disjoint components sum to 196,527 oz: Underground 92,643 + Surface 2,654 + Tailings 98,636 + Buy-in 1,081 + Surface feedstock 1,513 = 196,527 oz.",
+    "independent_check": "Re-executed in scripts/calculations.py: pan_production.fy25_disjoint = 196,527. The 197,608 sum arises when taking the Evander Mines total-column figure (93,724) which already embeds the 1,081 oz buy-in, and adding buy-in again. The movement pass flagged the overlap but left it unresolved.",
+    "verdict": "FAIL",
+    "consequence": "F006 (Staging failed to eliminate double-counting confusion; inherited unresolved overlap into final pass)."
+  },
+  {
+    "id": "C007",
+    "claim_and_origin": "PAN movement pass claims Barberton Mines total gold produced FY26 = 71,997 = 65,233 underground + 2,428 surface + 4,337 buy-in. (pan_dense_movement.md)",
+    "classification": "Derived calculation",
+    "primary_evidence": "Physical p.48: 65,233 + 2,428 + 4,337 = 71,998 oz. The printed table row on p.49 shows 71,997 oz (a 1 oz rounding residual in primary source).",
+    "independent_check": "Calculated in scripts/calculations.py: pan_production.fy26_barberton_mines_mining_col = 71,998. The model asserted exact equality without acknowledging the 1 oz primary disclosure discrepancy.",
+    "verdict": "FAIL",
+    "consequence": "F006 (Failure to preserve 1 oz primary source rounding residual)."
+  },
+  {
+    "id": "C008",
+    "claim_and_origin": "Physical p.49 of PAN report contains an internal 10,000 oz inconsistency: FY26 Barberton total printed 94,929 oz vs components 71,997 + 12,932 = 84,929 oz; sum of total-operation columns is 282,310 oz vs Group printed 272,310 oz. (Independent source verification)",
+    "classification": "Historical result",
+    "primary_evidence": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf physical p.49 table rows 'Gold produced - total' for Barberton Mines total (94,929), Evander Mines total (103,330), MTR operation total (51,927), Tennant Mines total (32,124), Group total (272,310).",
+    "independent_check": "Verified against rendered source image PAN_49.png and calculations.py: 94,929 + 103,330 + 51,927 + 32,124 = 282,310 (diff +10,000 oz vs 272,310). Barberton components: Mining 71,997 + BTRP 12,932 = 84,929 (diff -10,000 oz vs 94,929).",
+    "verdict": "PASS",
+    "consequence": "F008 (Demonstrated primary source typographical error in company report; not detected by single-pass or three-pass models)."
+  },
+  {
+    "id": "C009",
+    "claim_and_origin": "FY25 MTR operation gold produced from tailings on physical p.48 shows 25,043 oz in leaf column but 30,806 oz in Total operations MTR total column, a difference of 5,763 oz. (pan_dense_single.md & pan_dense_why.md)",
+    "classification": "Historical result",
+    "primary_evidence": "PAN physical p.48: MTR operation tailings cell = 25,043 oz. Total operations MTR column = 30,806 oz. The difference 30,806 - 25,043 = 5,763 oz exactly matches FY26 MTR third-party buy-in feedstock (5,763 oz).",
+    "independent_check": "Verified on PAN_48.png and calculations.py: pan_production.fy25_mtr_gap = 5,763. Both single-pass and three-pass models detected this gap and framed relevant verification questions.",
+    "verdict": "PASS",
+    "consequence": "F009 (Valid question raised by both arms identifying source mismatch)."
+  },
+  {
+    "id": "C010",
+    "claim_and_origin": "Three-pass workflow provides superior analytical robustness over single-pass workflow across company evaluations. (Experimental hypothesis)",
+    "classification": "Model assumption",
+    "primary_evidence": "Experimental runs across NTU (1H26) and PAN (FY26). NTU three-pass cost $0.010517 vs single $0.004702 (2.24x). PAN three-pass cost $0.011184 vs single $0.004671 (2.39x).",
+    "independent_check": "NTU: three-pass accepted unsupported closure in ledger; single correctly rejected (via syntax). PAN: single pass identified 118,853 + 153,458 = 272,311 arithmetic check and cross-checked per-oz costs against ZAR million tables; three-pass inherited dictionary flaws and unresolved overlaps. Robustness was not improved; only layout/verbosity changed.",
+    "verdict": "FAIL",
+    "consequence": "F010 (Hypothesis refuted within experimental sample; three passes increase cost and token budget without preventing semantic or accounting errors)."
+  }
+]

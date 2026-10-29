@@ -1,0 +1,37 @@
+{
+  "question": {
+    "question": "Do the group's purchased book debts fall within POCI, amortised cost or FVTPL, and does the generic contractual-cash-flow ECL policy in Note 6.1 (discounted at original EIR, max contractual period) actually apply to PBD, or is a lifetime-ECL-since-initial-recognition / fair-value model used instead? Provide the PBD measurement basis and any POCI credit-risk classification disclosure.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.4 Note 1 Purchased book debts (p.13); D003.1 statement of financial position (p.8)",
+    "evidence_required": "Explicit measurement basis for PBD (POCI/amortised cost/FVTPL), whether lifetime ECL since initial recognition applies, and any POCI credit-risk classification; Rm carrying values at 31 Mar 2026 vs 30 Sep 2025 vs 31 Mar 2025",
+    "closure_condition": "PBD measurement basis and applicable ECL model stated and reconciled to the carrying value, or confirmed not disclosed; benign explanations (PBD held at FVTPL with separate ECL on other assets) acceptable. Forecast consequence: credit-loss treatment, amortisation projection and earnings volatility.",
+    "question_id": "Q-08aa5c3f257440ab",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  "proposed_update": {
+    "question_id": "Q-08aa5c3f257440ab",
+    "status": "resolved",
+    "answer": "PBDs are classified as POCI (Stage 3) at initial recognition and do not change classification thereafter. Measured at amortised cost using a credit-adjusted EIR (weighted average 19.2% at 31 Mar 2026; 17.9% at 31 Mar 2025; 18.4% at 30 Sep 2025). Lifetime ECL changes recognised in P&L; favourable changes recognised as impairment gains. Principal book portfolio net carrying value: 3,845 (Mar 2026), 3,690 (Mar 2025), 3,975 (Sep 2025). The generic contractual-cash-flow ECL policy does not apply; a lifetime-ECL-since-initial-recognition model on amortised cost applies. The R4,489m carrying value referenced in the question is not visible in this capture; scope reconciliation carried to a new question.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 21,
+        "quote": "PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 21,
+        "quote": "weighted average credit-adjusted effective interest rate at period end is 19.2%"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 22,
+        "quote": "Carrying value of financial assets | 5 | 390 | 3 845 | 644 | 4 884"
+      }
+    ]
+  },
+  "verdict": "partial required; measurement basis supported, total-scope reconciliation deferred"
+}

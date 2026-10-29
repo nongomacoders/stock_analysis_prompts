@@ -1,0 +1,3 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+pan_dense_single_attempt1,gen-1793274160-JFCWdeQ7iOggydhkjzK2,True,0.004670988,response_usage,11107,2904,0,490,2904,16.914,3.035,Fireworks,16507,2757,stop,retrieved
+pan_dense_why_attempt1,gen-1793274140-nteezk5aZ5ony0yuqoQw,True,0.0048133344,response_usage,13640,2475,0,632,2475,15.235,4.297,Fireworks,13306,2481,stop,retrieved

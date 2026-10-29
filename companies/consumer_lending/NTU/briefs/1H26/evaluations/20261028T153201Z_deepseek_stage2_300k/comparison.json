@@ -1,0 +1,23 @@
+{
+  "old": {
+    "id": "gen-1793198050-Upqz6ZCEclvS9IjpDysx",
+    "finish_reason": "length",
+    "elapsed_seconds": 286.947,
+    "cost_usd": 0.06803556,
+    "provider": "Relace",
+    "max_tokens": null
+  },
+  "new": {
+    "id": "gen-1793201532-XYrLv1o6agOsBZ8doOXx",
+    "finish_reason": null,
+    "elapsed_seconds": 786.281,
+    "cost_usd": 0,
+    "provider": "Relace",
+    "max_tokens": 300000
+  },
+  "previous_completion_tokens": 131072,
+  "new_usage": {},
+  "identical_prompt": true,
+  "only_request_change": "max_tokens=300000",
+  "conclusion": "Generation completion is not financial validation; account/provider effective internal limits remain unverified."
+}

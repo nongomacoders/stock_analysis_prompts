@@ -11,11 +11,26 @@ import os
 from pathlib import Path
 import urllib.request
 import urllib.error
+from typing import Any
 
 from PySide6.QtCore import QThread, Signal
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash-1017:nitro"
+DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash-1017"
+# Reasoning and final answer share the completion ceiling. Sections retain their fast defaults.
+STAGE_REASONING_EFFORT = "max"
+STAGE_MAX_TOKENS = 65536
+STAGE_TIMEOUT = 900
+STAGE_ANALYSIS_OPTIONS = {
+    "reasoning_effort": STAGE_REASONING_EFFORT,
+    "max_tokens": STAGE_MAX_TOKENS,
+    "timeout": STAGE_TIMEOUT,
+}
+
+
+class IncompleteCompletionError(RuntimeError):
+    """A reasoning-only or truncated response must not be saved as a finished report."""
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EXTERNAL_SECRETS = REPO_ROOT.parent / "EXTERNAL_TO_REPOS" / "credentials" / "secrets.env"
 EXTERNAL_SECRETS_PATH = Path(os.environ.get("EXTERNAL_SECRETS_PATH", str(DEFAULT_EXTERNAL_SECRETS))).expanduser()
@@ -61,7 +76,7 @@ def get_openrouter_api_key() -> str:
 
 
 def get_openrouter_model() -> str:
-    """Retrieves the preferred OpenRouter model, defaulting to deepseek/deepseek-chat."""
+    """Retrieves the preferred OpenRouter model, defaulting to DeepSeek Flash."""
     model = os.environ.get("OPENROUTER_MODEL", "").strip()
     if model:
         return model
@@ -176,6 +191,7 @@ def query_openrouter(
     max_tokens: int = 16384,
     plugins: list[dict[str, Any]] | None = None,
     web_search: bool = False,
+    reasoning_effort: str = "none",
 ) -> str | tuple[str, dict]:
     """Executes a synchronous completion query via OpenRouter API.
     
@@ -183,6 +199,8 @@ def query_openrouter(
     If return_details is True, returns (content, stats_dict).
     Raises RuntimeError if key is missing or API call fails.
     """
+    if reasoning_effort not in {"none", "minimal", "low", "medium", "high", "xhigh", "max"}:
+        raise ValueError(f"Unsupported reasoning effort: {reasoning_effort}")
     key = get_openrouter_api_key()
     if not key:
         raise RuntimeError("OpenRouter API key not found in secrets.env or environment.")
@@ -207,8 +225,17 @@ def query_openrouter(
             ],
             "temperature": 0.1,
             "max_tokens": max_tokens,
-            "reasoning": {"effort": "none"},
+            "reasoning": {"effort": reasoning_effort, "exclude": True},
         }
+        if current_model.lower().startswith("deepseek/"):
+            payload["provider"] = {
+                "only": ["fireworks"],
+                "allow_fallbacks": False,
+                "require_parameters": True,
+            }
+        elif reasoning_effort != "none":
+            # Do not route analysis to a provider that ignores the reasoning parameter.
+            payload["provider"] = {"require_parameters": True}
         if active_plugins:
             # On final attempt, if earlier attempts failed, try omitting plugins in case of endpoint incompatibility
             if attempt < attempts or not active_plugins:
@@ -238,20 +265,18 @@ def query_openrouter(
                     raise RuntimeError("OpenRouter returned empty choices array.")
                 msg = choices[0].get("message", {})
                 content = (msg.get("content") or "").strip()
-                reasoning = (msg.get("reasoning") or "").strip()
                 finish_reason = choices[0].get("finish_reason")
                 usage = data.get("usage") or {}
 
+                if finish_reason == "length":
+                    comp_tok = usage.get("completion_tokens", 0)
+                    raise IncompleteCompletionError(
+                        f"Model reached completion limit ({comp_tok:,} tokens); response is incomplete (finish_reason: length)."
+                    )
                 if not content:
-                    if finish_reason == "length":
-                        comp_tok = usage.get("completion_tokens", 0)
-                        raise RuntimeError(
-                            f"Model reached completion limit ({comp_tok:,} tokens) before generating response content (finish_reason: length)."
-                        )
-                    if reasoning:
-                        content = reasoning
-                    else:
-                        raise RuntimeError(f"OpenRouter returned empty response (finish_reason: {finish_reason}).")
+                    raise IncompleteCompletionError(
+                        f"OpenRouter returned no final response content (finish_reason: {finish_reason}); reasoning is not a report."
+                    )
 
                 if not return_details:
                     return content
@@ -262,8 +287,17 @@ def query_openrouter(
                     "completion_tokens": int(usage.get("completion_tokens", 0) or 0),
                     "total_tokens": int(usage.get("total_tokens", 0) or 0),
                     "cost_usd": None,
+                    "reasoning_effort_requested": reasoning_effort,
+                    "reasoning_tokens": (usage.get("completion_tokens_details") or {}).get("reasoning_tokens"),
+                    "max_tokens_requested": max_tokens,
+                    "finish_reason": finish_reason,
+                    "provider": data.get("provider"),
+                    "provider_requested": payload.get("provider"),
                 }
                 return content, stats
+        except IncompleteCompletionError:
+            # Retrying the same exhausted budget would waste another paid generation.
+            raise
         except urllib.error.HTTPError as err:
             if err.code in (429, 500, 502, 503, 504, 520, 524) and attempt < attempts:
                 retry_after = err.headers.get("Retry-After") if err.headers else None
@@ -295,19 +329,23 @@ class OpenRouterWorker(QThread):
     finished_query = Signal(str, float, object)  # Emits (response_text, elapsed_seconds, stats_dict)
     error_query = Signal(str)  # Emits error message
 
-    def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens: int = 16384):
+    def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens: int = 16384, reasoning_effort: str = "none"):
         super().__init__(parent)
         self.prompt = prompt
         self.model = model or get_openrouter_model()
         self.timeout = timeout
         self.max_tokens = max_tokens
+        self.reasoning_effort = reasoning_effort
         self.last_stats: dict = {}
 
     def run(self):
         self.started_query.emit(self.model)
         start_t = time.time()
         try:
-            res, stats = query_openrouter(self.prompt, self.model, timeout=self.timeout, return_details=True, max_tokens=self.max_tokens)
+            res, stats = query_openrouter(
+                self.prompt, self.model, timeout=self.timeout, return_details=True,
+                max_tokens=self.max_tokens, reasoning_effort=self.reasoning_effort,
+            )
             elapsed = time.time() - start_t
             stats["elapsed_seconds"] = round(elapsed, 2)
             gen_id = stats.get("generation_id")

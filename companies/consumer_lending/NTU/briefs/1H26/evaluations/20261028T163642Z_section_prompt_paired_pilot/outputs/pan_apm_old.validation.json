@@ -1,0 +1,80 @@
+{
+  "case": "pan_apm",
+  "version": "old",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question": "Reconcile the ~0.3% non-gold revenue (gold = 99.7% of Group revenue) and quantify by-product revenue deducted from operating costs in the AISC definition.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2",
+      "evidence_required": "Segment revenue split (gold vs by-product/non-gold) for FY26 and FY25 in US$ and %, plus the by-product credit amount deducted in the AISC reconciliation.",
+      "closure_condition": "Segment revenue confirms gold share and the by-product credit quantum is identified and ties to the AISC build; benign explanation accepted if immaterial.",
+      "question_id": "Q-ed35d3028434455f",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Identify which operations comprise the lower-cost (247,219 oz @ US$1,702/oz) and higher-cost (25,154 oz @ US$3,487/oz) AISC buckets and confirm the allocation ties to segment and production data.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2",
+      "evidence_required": "Mine-level AISC and oz sold for FY26/FY25 reconciling to the 247,219/25,154 oz and US$420.686m/US$87.718m totals; note any reclassification between buckets.",
+      "closure_condition": "Mine-level costs sum to the bucket totals and the bucket membership is stated; forecast consequence for blended AISC noted.",
+      "question_id": "Q-2cdcc04bf2f34e9d",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Quantify the items excluded from net (cash)/debt and net senior debt (IFRS 9 adjustments, restricted cash, financial liabilities) and reconcile to the statement of financial position.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.8",
+      "evidence_required": "Borrowings/lease note figures for each excluded item in US$, and a reconciliation of net debt and net senior debt to D005 statement of financial position balances.",
+      "closure_condition": "Each exclusion is quantified and the reconciliation to the primary statement balances; benign explanation accepted if immaterial.",
+      "question_id": "Q-126015923f084c93",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Identify the amount of capital expenditure funded through permitted indebtedness deducted in the free cash flow definition and the relevant facilities.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006",
+      "evidence_required": "Capex-funded-by-debt amount in US$ for FY26, the facility names, and the FCF reconciliation showing the deduction.",
+      "closure_condition": "Amount and facility identified and FCF reconciliation ties; forecast consequence for FCF vs conventional definition stated.",
+      "question_id": "Q-bd6c460540fe4bbd",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Trace the actual headline earnings reconciling items (disposal of PPE, impairments, bargain purchase, tax effect) per SAICA Circular 1/2023 and confirm the HEPS reconciliation.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.11",
+      "evidence_required": "Itemised headline earnings adjustments with tax effects in US$ and the HEPS/basic EPS reconciliation for FY26 and FY25.",
+      "closure_condition": "Each adjustment is quantified with tax effect and reconciles to HEPS; forecast consequence for normalised earnings noted.",
+      "question_id": "Q-363ea5f5b1234209",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Identify non-gold operations' sustaining and development capex excluded from AISC and confirm it is captured in total group capex.",
+      "priority": "low",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.5",
+      "evidence_required": "Non-gold capex amount in US$ excluded from AISC and its inclusion in the PPE/capex note totals.",
+      "closure_condition": "Non-gold capex quantified and reconciled into total capex; benign explanation accepted if immaterial.",
+      "question_id": "Q-72b56cb2fb5c4116",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

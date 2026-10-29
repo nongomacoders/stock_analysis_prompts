@@ -1,0 +1,113 @@
+Group APM
+Related IFRS 
+Accounting 
+Standards 
+measure
+Adjustments to reconcile to primary 
+statements Rationale for adjustment
+Free cash flow Profit after tax • Income tax
+• Depreciation and amortisation
+• Net finance costs
+• Impairment loss or impairment 
+reversals
+• Unrealised fair value gains or losses 
+on financial derivatives undertaken 
+in the normal course of business
+• Adjusted for working capital changes
+• Adjusted for non-cash flow items as 
+determined in accordance with IAS 7
+• Less capital expenditure funded 
+through permitted indebtedness
+• Less tax paid
+Reflects available cash flow to 
+service debt obligations
+Performance
+Levered free 
+cash flow
+Profit after tax • Income tax
+• Depreciation and amortisation
+• Net finance costs
+• Impairment loss or impairment 
+reversals
+Adjusted for: 
+• Finance costs paid
+• Income tax paid 
+• Net working capital changes 
+• Capital expenditure 
+• Proceeds from borrowings 
+• Repayment of borrowings
+Reflects available cash flow to 
+service debt obligations
+Headline 
+earnings
+Profit after tax • (Profit)/loss on disposal of property, 
+plant and equipment
+• Impairment or impairment reversals
+• Bargain purchase gain
+• Tax effect of the above adjustments
+Indicates the extent of the 
+Group’s normalised earnings 
+to shareholders determined 
+in accordance with SAICA’s 
+Circular 1/2023
+ALTERNATIVE PERFORMANCE MEASURES continued
+Group APM
+Related IFRS 
+Accounting 
+Standards 
+measure
+Adjustments to reconcile to primary 
+statements Rationale for adjustment
+Statement of financial position
+Net (cash)/debt Borrowings from 
+financial institutions 
+less cash and 
+related hedges
+• IFRS 9 accounting adjustments
+• IFRS 16 lease liabilities
+• Restricted cash
+• Financial liabilities
+Excludes the impact of 
+accounting adjustments from 
+the net debt obligations of 
+the Group
+Net senior debt Borrowings from 
+financial institutions 
+less net (cash)/
+senior debt
+• IFRS 9 accounting adjustments
+• IFRS 16 lease liabilities
+• Restricted cash
+• Financial liabilities
+Excludes the impact of 
+accounting adjustments from 
+the net debt obligations of 
+the Group
+All-in sustaining costs
+This incorporates costs related to sustaining current production. AISC are defined by the World Gold Council as 
+operating costs plus costs not already included therein relating to sustaining the current production, including sustaining 
+capital expenditure. The value of by-product revenue is deducted from operating costs as it effectively reduces the cost 
+of gold production.
+Lower-cost/higher-cost operation AISC
+Total 
+lower-cost
+ operations
+Total 
+higher-cost
+ operations
+Total 
+Group
+FY26
+All-in sustaining cost (US$ million) 420,686 87,718 508,405
+Gold sold (oz) 247,219 25,154 272,373
+All-in sustaining cost (US$/oz) 1,702 3,487 1,867
+FY25
+All-in sustaining cost (US$ million) 241,957 73,111 315,068
+Gold sold (oz) 168,781 28,146 196,927
+All-in sustaining cost (US$/oz) 1,434 2,598 1,600
+FINANCIAL APMs continued
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+74 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+75

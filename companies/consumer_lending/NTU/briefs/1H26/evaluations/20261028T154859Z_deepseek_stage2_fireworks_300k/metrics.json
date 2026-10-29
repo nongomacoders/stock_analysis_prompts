@@ -1,0 +1,50 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "model default; controls omitted",
+  "rows": [
+    {
+      "label": "stage2",
+      "generation_id": "gen-1793202549-WH7Nojp6J6BhWcpfHL8P",
+      "success": true,
+      "cost_usd": 0.02148888,
+      "cost_source": "response_usage",
+      "prompt_tokens": 35708,
+      "completion_tokens": 16655,
+      "reasoning_tokens": 11727,
+      "cached_prompt_tokens": 0,
+      "estimated_nonreasoning_completion_tokens": 4928,
+      "elapsed_seconds": 50.43,
+      "time_to_first_content_seconds": 38.837,
+      "provider": "Fireworks",
+      "generation_time_ms": null,
+      "latency_ms": null,
+      "finish_reason": "stop",
+      "metadata_status": "unavailable"
+    }
+  ],
+  "totals": {
+    "cost_usd": 0.02148888,
+    "prompt_tokens": 35708,
+    "completion_tokens": 16655,
+    "reasoning_tokens": 11727,
+    "cached_prompt_tokens": 0,
+    "elapsed_seconds": 50.43
+  },
+  "missing_fields_by_call": {
+    "cost_usd": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 0,
+    "elapsed_seconds": 0
+  },
+  "calls": 1,
+  "successful_generations": 1,
+  "observed_first_dispatch_to_last_accounting_seconds": 56.051579,
+  "notes": [
+    "Reasoning tokens are part of completion tokens, not additional tokens.",
+    "Known cost subtotal is not a complete bill when any cost is missing.",
+    "Client elapsed, provider generation time and provider latency are distinct; check provider metadata units.",
+    "Provider/account routing defaults may affect routing; no speed or priority override was sent."
+  ]
+}

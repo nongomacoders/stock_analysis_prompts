@@ -1,0 +1,174 @@
+{
+  "created_utc": "2026-10-28T14:10:47.792624+00:00",
+  "ticker": "NTU",
+  "period": "1H26",
+  "sector": "consumer_lending",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "Omit reasoning controls; preserve model default (catalog currently default_enabled=true, default_effort=high). Raw reasoning not persisted.",
+  "routing": "Base slug; no nitro, provider sort, provider order or priority service tier requested. Account routing preferences may still apply.",
+  "authorization": "User approved plan review, small difficult-section pilot, then full chronological NTU rerun if pilot succeeds; Gemini remains manual Antigravity.",
+  "destination": "https://openrouter.ai/api/v1/chat/completions",
+  "metadata_endpoints": [
+    "https://openrouter.ai/api/v1/models",
+    "https://openrouter.ai/api/v1/generation"
+  ],
+  "payload": "Public NTU report text, scoped ledger, approved registry and review lessons; new DeepSeek outputs for later stages. Credentials sent only as OpenRouter Authorization header.",
+  "design": "Reviewed24-unit logical plan;22 analytical units,2 navigation units captured without standalone calls. Three-call independent pilot before full chronological run; no causal one-variable benchmark.",
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "period": "1H26",
+      "page_count": 38,
+      "captured_page_count": 38,
+      "captures": 9,
+      "detected_sections": 4
+    }
+  ],
+  "reference_price_zar": 0.89,
+  "reference_basis": "Frozen stored baseline for comparison; NOT a verified current quote.",
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\incomplete_section_coverage.json",
+      "sha256": "84e09a76a3cbef13f9aa3142285aeee7f1e8557ca26f9ba69fbe135feb30066a"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\independent_checks.json",
+      "sha256": "f313e0f496de2b243296e54f8978ebb383231ff1d7c5e1867ef66efe309becaf"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\ledger_summary.json",
+      "sha256": "36084fe0c490b2688faa0f5002280108b1dc32348ffd633eaf073b518f4e1b36"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\publication_assessment.json",
+      "sha256": "45174f7b9cd57fbd5f5c205319d7d3ac7fb0eae4da70994c49fc655b203abe91"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\questions_ledger.md",
+      "sha256": "7d5688e37186d984c109863e444baeb52008edde90524857dcc8b95211bca496"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\section_06_uncapped_v4.md",
+      "sha256": "2a15c9947f502924b19d1257cd928808457d99b81c1d5bc83be4feef983f4ea3"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\stage1.md",
+      "sha256": "45fb2119603b33c26761cec3cdb07ee9ba7d811925512587ae3090a35e8a52ba"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\stage2.md",
+      "sha256": "07fe725e24e72b820fc5f107050354e27e2a5b53239a4f740da90e7de4656488"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\outputs\\stage2_publication.md",
+      "sha256": "a76330a575bd6eb323974d2d2af3f954c3ce52662aeee973a3d684f235ed114f"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\section_06_uncapped_v4.json",
+      "sha256": "5c9c516a1571e3053699a67da6afdbb6814aed3f18dcd8173ecb4aea727c7e30"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\section_06_uncapped_v4.md",
+      "sha256": "aeec6954b0f17528491e6a8e4fe7ba10f277ce033b77dbb4bbc2759150a64c04"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\stage1.json",
+      "sha256": "dc7bff8f3778baf0c6383e23b86aafa4762ec53f50c93013aad2864533766242"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\stage1.md",
+      "sha256": "3e294d1b8d3fc804a97b30c8812fecf454f01875a2a749a428dc37f2c45660e7"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\stage2.json",
+      "sha256": "6009addfbb7cbef7a5fe2c8bae3f19a3d4c4a1d4e3cdae25372163e1341fd699"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\requests\\stage2.md",
+      "sha256": "46e6bee895360495178fff190ce94b4f5871430ff977c9c7e32dd515917fa4de"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\receipts\\section_06_uncapped_v4.json",
+      "sha256": "391300a9c5ff4279f3fee839b07df5482c0d50946fdcbe58ec1ef36f1b7239e6"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\receipts\\stage1.json",
+      "sha256": "ea8cb8200bd75ec2a093c542292678b65ce8db426e2016d55b5e30676c2b3ec0"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap\\receipts\\stage2.json",
+      "sha256": "ae29412d1689fa70adcd1cc6470a90fd1943be976038ba8cbe40fbdb94c828d5"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "planned_calls": 24,
+  "budgets": {
+    "section": null,
+    "stage1": null,
+    "stage2": null
+  },
+  "retry_policy": "One ledger repair if needed; no silent resubmission of incomplete generations. Any provider/default limit will be recorded.",
+  "pilot_sections": 2,
+  "production_writes": false,
+  "section_prompt_revision": "uncapped_v4",
+  "revisions": [
+    {
+      "utc": "2026-10-28T10:17:18.570611+00:00",
+      "reason": "Pilot section2 exhausted32768 tokens entirely in reasoning, no final answer.",
+      "changes": "Run-only concise section contract, four relevant questions per capture, four applicable registry rules. Full ledger retained; full Stage1/2 registry unchanged.",
+      "unchanged": "Base model, default thinking, routing, evidence, approved registry, token ceilings and one-repair limit unchanged.",
+      "prior_failure_preserved": true
+    },
+    {
+      "utc": "2026-10-28T10:23:18.054786+00:00",
+      "reason": "Section6 exhausted32768 completion tokens;24710 reported reasoning; no final content delivered.",
+      "changes": "Split original pages22-27 into pages22-24 and25-27, keep all text, two relevant questions per capture. Other completed analyses retained.",
+      "unchanged": "Model, reasoning controls, routing and budgets unchanged. Raw prior attempts retained."
+    },
+    {
+      "utc": "2026-10-28T10:25:37.276270+00:00",
+      "reason": "Smaller portfolio capture also incomplete at same ceiling; no further repeat/budget increase.",
+      "changes": "Mark incomplete section analyses explicitly; apply no ledger updates and provide their original captured source directly to Stage1. Continue other captures and full analysis stages.",
+      "limits": "This tests the end-to-end workflow with disclosed section-generation gaps; do not claim every section analysis succeeded."
+    },
+    {
+      "utc": "2026-10-28T11:45:21.733516+00:00",
+      "authorization": "User: rerun the incomplete sections with no token limit",
+      "changes": "No requested completion-token ceiling on outstanding capture, refreshed Stage1 or Stage2. Other model controls unchanged. Previous outputs remain in parent run."
+    }
+  ],
+  "questions_per_capture": 2,
+  "planned_calls_after_split": 12,
+  "continue_with_explicit_failed_section_source": false,
+  "parent_run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap",
+  "token_limit_policy": "Omit max_tokens and max_completion_tokens entirely; provider/model/account limits still apply. Default thinking/routing retained.",
+  "planned_scope": "Outstanding pages22-24 capture, refreshed Stage1 for updated evidence, full Stage2 retry. Nine accepted captures reused without paid reruns.",
+  "pilot_pages": [
+    [
+      21,
+      23
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      25,
+      25
+    ]
+  ],
+  "pilot_gate": "All3 finish; literal ledger valid after at most one repair; independent POCI/sign/period/ECL-scope checks; stop broad trial on a failure."
+}

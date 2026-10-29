@@ -1,0 +1,85 @@
+{
+  "evaluation_utc": "2026-10-28T09:28:08Z",
+  "evaluator": "gemini",
+  "ticker": "DCP",
+  "period": "FY26",
+  "source_trial": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison",
+  "source_pdfs": [
+    {
+      "filename": "1780031707-FY2026AnnualFinancialStatements.pdf",
+      "path": "companies/retail/DCP/sources/completed/FY26/1780031707-FY2026AnnualFinancialStatements.pdf",
+      "sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb",
+      "pages": 87
+    },
+    {
+      "filename": "1780031786-FY2026AnalystPresentation.pdf",
+      "path": "companies/retail/DCP/sources/completed/FY26/1780031786-FY2026AnalystPresentation.pdf",
+      "sha256": "6cd395850b7a642b19ecd5e1c1b5f6eb0d00d15d40374d72d5383b661f285f06",
+      "pages": 40
+    },
+    {
+      "filename": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf",
+      "path": "companies/retail/DCP/sources/completed/FY26/1785744572-DIS-CHEMIR2026INTERACTIVE.pdf",
+      "sha256": "fec45259c705c9e6e1c07249c8349ac24b4379707108758cfcbd08329487dee6",
+      "pages": 132
+    }
+  ],
+  "preserved_files": [
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage1.md",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\stage1.md",
+      "filename": "stage1.md",
+      "sha256": "7dd9c6c5825c6519a6af01c14224917de131d4004b864e0413ee7d81301cdf6d",
+      "bytes": 52539
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2.md",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\stage2.md",
+      "filename": "stage2.md",
+      "sha256": "c4507ceffc6c621c6b401a7c4f3b19425cfbe61ebc96c941c416fd657416790c",
+      "bytes": 36068
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\publication_assessment.json",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\publication_assessment.json",
+      "filename": "publication_assessment.json",
+      "sha256": "e2654e210f81925c88580448867cbc6b130b225a8aca4489822ff473480596cd",
+      "bytes": 9875
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\comparison_metrics.json",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\comparison_metrics.json",
+      "filename": "comparison_metrics.json",
+      "sha256": "1eb4da3b167afef72ed3f3ffd3230f00ce5db5454d9af7d142edda77ef628bbe",
+      "bytes": 658
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\status.json",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\status.json",
+      "filename": "status.json",
+      "sha256": "b8e92119b9688cf00f074519e0227e42b38e2efce726f6dfbdd1d7ab967be9e1",
+      "bytes": 10185
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\inputs\\manifest.json",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\trial_manifest.json",
+      "filename": "trial_manifest.json",
+      "sha256": "0996d34c4be07f236bbe031602ce86f4d3496bc49f93c98f83d70b4ca0492149",
+      "bytes": 1368848
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\inputs\\DCP_FY26_stage1_audit_response.md",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\baseline_stage1.md",
+      "filename": "baseline_stage1.md",
+      "sha256": "3391d40e6141b2d6aa1bbade0f3c62ae6042e83f12fd3805bc8bf2c41063474c",
+      "bytes": 11552
+    },
+    {
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T081850Z_codex_workload_comparison\\inputs\\DCP_FY26_stage2_valuation_note.md",
+      "preserved_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\retail\\DCP\\briefs\\FY26\\evaluations\\20261028T092808Z_gemini\\inputs\\baseline_stage2.md",
+      "filename": "baseline_stage2.md",
+      "sha256": "726a34a9c80209060c958039f5b93bebd56a0f538f71268f4b9d5d487b48eb82",
+      "bytes": 13882
+    }
+  ]
+}

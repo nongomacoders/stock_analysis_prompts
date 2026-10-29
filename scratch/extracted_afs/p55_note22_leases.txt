@@ -1,0 +1,76 @@
+NOTES TO THE GROUP AND COMPANY
+ANNUAL FINANCIAL STATEMENTS
+23. Loans payable
+for the year ended 28 February 2026
+Loans payable are accounted for as financial liabilities in accordance with the accounting policy disclosed in note 29.
+22. Lease liability Group Company
+2026 2025 2026 2025
+At inception, the Group assesses whether a contract is or contains a lease. The Group recognises a right-of-use (ROU) asset R’000 R’000 R’000 R’000
+and lease liability at the commencement date of the lease.
+Non-current loans
+The lease liability is measured at the present value of the lease payments net of cash lease incentives that are not paid at the
+Absa Bank 642 090 722 090 642 090 722 090
+reporting date. Lease payments are apportioned between the finance charges and reduction of the lease liability using the
+incremental borrowing rate to achieve a constant rate of interest on the remaining balance of the liability. Lease payments Standard Bank 846 812 942 045 – –
+for buildings exclude service fees and other costs. FNB Bank 15 757 – – –
+Investec Bank 5 283 14 600 – –
+Group Company
+1 509 942 1 678 735 642 090 722 090
+2026 2025 2026 2025
+Current loans
+R’000 R’000 R’000 R’000
+Absa Bank 80 000 80 000 80 000 80 000
+Minimum payments due
+Standard Bank 139 000 130 000 – –
+– Within one year 910 197 813 222 690 103 577 185
+FNB Bank 7 759 – – –
+– Within five years 2 277 389 2 022 128 1 844 165 1 569 681
+– Over five years 394 800 409 485 347 519 345 051 Investec Bank 8 576 6 889 – –
+Supply Chain Finance 239 128 308 923 – –
+3 582 386 3 244 835 2 881 787 2 491 917
+Less: future finance charges (639 153) (580 986) (532 085) (458 223) NCI shareholders loans 5 656 10 005 – –
+Present value of minimum payments 2 943 233 2 663 849 2 349 702 2 033 694 Related parties (note 28) 37 517 39 307 991 529 785 799
+517 636 575 124 1 071 529 865 799
+Present value of minimum payment due:
+– Within one year 695 209 617 851 515 923 432 488 The Absa loan consists of two parts:
+– Within five years 1 900 843 1 681 784 1 529 230 1 295 476 • R400 million unsecured loan is repayable over a period of five years (31 July 2028) in quarterly instalments at a three-
+– Over five years 347 181 364 214 304 549 305 730 month JIBAR plus 1.4%.
+2 943 233 2 663 849 2 349 702 2 033 694 • A bullet loan taken out in the 2024 financial year of R502 million repayable in three years with a 2 year optional extension
+at a three-month JIBAR plus 1.3%. The loan is secured by the underlying warehouse in Longmeadow with a cost of R502
+Non-current liabilities 2 248 024 2 045 998 1 833 779 1 601 206
+million.
+Current liabilities 695 209 617 851 515 923 432 488
+The Standard Bank loan consists of three parts:
+2 943 233 2 663 849 2 349 702 2 033 694
+• A bullet facility with a maturity date of five years (31 May 2027) and earns interest at the three-month JIBAR plus 1.44%.
+The loan is secured by the underlying properties with a cost of R421 million.
+The lease liability relates to land and buildings, motor vehicles and equipment. The capitalised lease liability relating to • A loan of R650 million repayable over a five year period in quarterly instalments at a three-month JIBAR plus 1.27%. The
+motor vehicles and equipment are secured by the underlying asset (refer to note 12). There are no leases with residual value loan is secured by the underlying warehouse in Midrand.
+guarantees.
+• A revolving credit facility of R44 million at a one-month JIBAR plus 1.35%.
+Many of the store leases across the Group contain extension options. In many cases these terms are not reflected in
+The Investec loan consists of two separate loans payable in quarterly instalments:
+measuring the lease liabilities until management is reasonably certain they will be exercised. The Group considers all
+• R24 million facility with a maturity date of five years (31 August 2027) and earns interest at Investec prime rate less 0.25%.
+relevant facts and circumstances that create an economic incentive to exercise, or not to exercise, the option, including any
+This loan is secured by the underlying property with a cost of R36.3 million.
+expected changes in facts and circumstances from the commencement date until the exercise date of the option.
+• R12 million facility with a maturity date of five years (31 August 2027) and earns interest at Investec prime rate less 0.25%.
+Future cash flow in the 2027 financial year relating to variable lease payments is expected to be approximately R2.7 million This loan is secured by the underlying property with a cost of R12.5 million.
+for the Group and Rnil for the company (2025 financial year: R2.2 million for the Group and Rnil for the company).
+R29.5 million FNB loan with a maturity date of 5 years and earns interest at prime minus 40 basis points. The loan is secured
+by the underlying property in Eton Road of R45 million.
+The import supply chain finance programme allows Dis-Chem to make payments to foreign suppliers through a funding
+institution using a cloud-based system. Dis-Chem then receives extended terms of up to 150 days in which to make payment
+to said financial institution instead of prepaying the suppliers. As at 28 February 2026, R239 million (2025: R309 million) of the
+suppliers have already received payment from the financial institution. Dis-Chem is charged an interest rate in line with SONIA
+or a similar reference rate.
+The South African Reserve Bank has confirmed that JIBAR will cease on 31 December 2026, after which South Africa will
+transition to alternative reference rates. JIBAR is expected to be replaced by ZARONIA, a near risk free rate administered
+under the oversight of the South African Reserve Bank. Any margin adjustments required as part of the transition will be
+calibrated to replicate the equivalent JIBAR based pricing, such that there is no material impact on the overall interest rates
+agreed. The majority of the loan agreements already provide for the JIBAR rates to transition to ZARONIA, the remaining loan
+agreements will be amended before JIBAR ceases on 31 December 2026.
+Related party and NCI shareholders loans in the Group are considered to be short-term in nature as they are payable on
+demand and do not earn interest. These loans are unsecured.
+54 Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026

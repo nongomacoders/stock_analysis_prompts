@@ -1,0 +1,61 @@
+{
+  "question": {
+    "question": "Do the group's purchased book debts fall within POCI, amortised cost or FVTPL, and does the generic contractual-cash-flow ECL policy in Note 6.1 (discounted at original EIR, max contractual period) actually apply to PBD, or is a lifetime-ECL-since-initial-recognition / fair-value model used instead? Provide the PBD measurement basis and any POCI credit-risk classification disclosure.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.4 Note 1 Purchased book debts (p.13); D003.1 statement of financial position (p.8)",
+    "evidence_required": "Explicit measurement basis for PBD (POCI/amortised cost/FVTPL), whether lifetime ECL since initial recognition applies, and any POCI credit-risk classification; Rm carrying values at 31 Mar 2026 vs 30 Sep 2025 vs 31 Mar 2025",
+    "closure_condition": "PBD measurement basis and applicable ECL model stated and reconciled to the carrying value, or confirmed not disclosed; benign explanations (PBD held at FVTPL with separate ECL on other assets) acceptable. Forecast consequence: credit-loss treatment, amortisation projection and earnings volatility.",
+    "question_id": "Q-08aa5c3f257440ab",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  "updates": {
+    "ntu_assets_single": {
+      "question_id": "Q-08aa5c3f257440ab",
+      "status": "resolved",
+      "answer": "PBDs are POCI (Stage 3) financial assets at initial recognition, measured at amortised cost using a credit-adjusted EIR (weighted average 19.2% at 31 Mar 2026; 17.9% Mar 2025; 18.4% Sep 2025). Lifetime ECLs since initial recognition apply; favourable changes are impairment gains. The generic contractual-cash-flow ECL policy does not apply. Principal book carrying values: R3,845m (31 Mar 2026), R3,975m (30 Sep 2025), R3,690m (31 Mar 2025).",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 21,
+          "quote": "purchased credit-impaired (POCI) financial assets (stage 3)"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 21,
+          "quote": "19.2% (31 March 2025: 17.9%"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 22,
+          "quote": "3 414"
+        }
+      ]
+    },
+    "ntu_assets_why": {
+      "question_id": "Q-08aa5c3f257440ab",
+      "status": "resolved",
+      "answer": "PBDs are POCI (Stage 3) on initial recognition, irrevocable; measured at amortised cost using a rolling 12-month net cash-flow model discounted at a credit-adjusted EIR (wavg 19.2% at 31 Mar 2026; 17.9% Mar 2025; 18.4% Sep 2025). Lifetime ECL changes go to P&L; favourable changes recognised as impairment gain. Generic contractual-cash-flow ECL policy does not apply. Principal book net carrying values: 3,845 (Mar 2026), 3,690 (Mar 2025), 3,975 (Sep 2025).",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 21,
+          "quote": "PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 21,
+          "quote": "weighted average credit-adjusted effective interest rate at period end is 19.2%"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 22,
+          "quote": "Carrying value of financial assets | 5 | 390 | 3 845 | 644 | 4 884"
+        }
+      ]
+    }
+  },
+  "assessment": "Both propose resolved without total-scope reconciliation. Single delta rejected; three-pass accepted in memory. Production unchanged."
+}

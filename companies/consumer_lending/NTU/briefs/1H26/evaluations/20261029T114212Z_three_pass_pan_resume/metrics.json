@@ -1,0 +1,70 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "none/exclude=true",
+  "rows": [
+    {
+      "label": "pan_dense_single_attempt1",
+      "generation_id": "gen-1793274160-JFCWdeQ7iOggydhkjzK2",
+      "success": true,
+      "cost_usd": 0.004670988,
+      "cost_source": "response_usage",
+      "prompt_tokens": 11107,
+      "completion_tokens": 2904,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 490,
+      "estimated_nonreasoning_completion_tokens": 2904,
+      "elapsed_seconds": 16.914,
+      "time_to_first_content_seconds": 3.035,
+      "provider": "Fireworks",
+      "generation_time_ms": 16507,
+      "latency_ms": 2757,
+      "finish_reason": "stop",
+      "metadata_status": "retrieved"
+    },
+    {
+      "label": "pan_dense_why_attempt1",
+      "generation_id": "gen-1793274140-nteezk5aZ5ony0yuqoQw",
+      "success": true,
+      "cost_usd": 0.0048133344,
+      "cost_source": "response_usage",
+      "prompt_tokens": 13640,
+      "completion_tokens": 2475,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 632,
+      "estimated_nonreasoning_completion_tokens": 2475,
+      "elapsed_seconds": 15.235,
+      "time_to_first_content_seconds": 4.297,
+      "provider": "Fireworks",
+      "generation_time_ms": 13306,
+      "latency_ms": 2481,
+      "finish_reason": "stop",
+      "metadata_status": "retrieved"
+    }
+  ],
+  "totals": {
+    "cost_usd": 0.0094843224,
+    "prompt_tokens": 24747,
+    "completion_tokens": 5379,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 1122,
+    "elapsed_seconds": 32.149
+  },
+  "missing_fields_by_call": {
+    "cost_usd": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 0,
+    "elapsed_seconds": 0
+  },
+  "calls": 2,
+  "successful_generations": 2,
+  "observed_first_dispatch_to_last_accounting_seconds": 42.049247,
+  "notes": [
+    "Reasoning tokens are part of completion tokens, not additional tokens.",
+    "Known cost subtotal is not a complete bill when any cost is missing.",
+    "Client elapsed, provider generation time and provider latency are distinct; check provider metadata units.",
+    "Fireworks only, none reasoning explicitly requested.",
+    "New continuation accounting only; earlier reused passes and original429 tracked separately."
+  ]
+}

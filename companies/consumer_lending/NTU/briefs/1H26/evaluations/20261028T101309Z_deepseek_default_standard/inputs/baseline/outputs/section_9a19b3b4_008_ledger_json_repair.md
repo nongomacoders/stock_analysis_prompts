@@ -1,0 +1,3 @@
+```json
+{"ledger_version": 1, "updates": [{"question_id": "Q-3df04995df2f4c6a", "status": "partial", "answer": "Page offset re-confirmed (printed = physical - 2). No headline advances/CLR/NIM/HEPS/DPS in this capture. Segment revenue captured: Nutun SA R1,047m vs R882m vs R1,790m; Nutun International R552m vs R557m vs R1,094m; Group total revenue R1,599m vs R1,439m vs R2,884m (CODM basis, not IFRS R711m).", "evidence": [{"source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc", "physical_page": 36, "quote": "Nutland SA"}]}]}
+```

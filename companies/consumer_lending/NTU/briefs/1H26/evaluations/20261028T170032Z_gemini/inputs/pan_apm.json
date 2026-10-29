@@ -1,0 +1,2189 @@
+{
+  "case": "pan_apm",
+  "ticker": "PAN",
+  "sector": "mining",
+  "manifest": {
+    "schema_version": "section_reading_package_v1",
+    "package_id": "section-b40a9b163106463997e21665e978461b",
+    "section_name": "15-D008.1-Alternative-performance-measures-FINANCIAL-APMs-20261018-115506-e978461b",
+    "section_number": 15,
+    "section_ids": [
+      "D008.1"
+    ],
+    "task": "analyst_reading_brief",
+    "response_format": "markdown",
+    "created_at": "2026-10-18T09:55:06.818082+00:00",
+    "heading": "Alternative performance measures",
+    "subheading": "FINANCIAL APMs",
+    "analyst_question": null,
+    "stored_questions": "",
+    "source": {
+      "filename": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "original_path": "C:\\Users\\Dion\\Desktop\\Projects\\stock_analysis_prompts\\companies\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+      "byte_size": 1986020,
+      "physical_page_count": 54
+    },
+    "document_map": {
+      "schema_version": "coarse_report_map_v1",
+      "map_id": "map-f92f73857b7b4c0e8d0c89f8cb2a4359",
+      "created_at": "2026-10-17T17:08:48.263194+00:00",
+      "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+      "source_filename": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "physical_page_count": 54,
+      "status": "automatic_draft",
+      "method": "native_large_titles_and_running_headings_v1",
+      "scanned_physical_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "sections": [
+        {
+          "section_id": "D001",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 1,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 1,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D002",
+          "kind": "highlights",
+          "title": "Highlights",
+          "start": {
+            "physical_page": 2,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 4,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 2,
+              "location": "full",
+              "printed_label": null,
+              "heading": "KEY F26 FEATURES"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D003",
+          "kind": "ceo_commentary",
+          "title": "CEO's statement",
+          "start": {
+            "physical_page": 5,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 15,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 5,
+              "location": "full",
+              "printed_label": null,
+              "heading": "CHIEF EXECUTIVE OFFICER S STATEMENT"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D004",
+          "kind": "statements_overview",
+          "title": "Financial statements overview / contents",
+          "start": {
+            "physical_page": 16,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 16,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 16,
+              "location": "full",
+              "printed_label": null,
+              "heading": "ANNUAL FINANCIAL STATEMENTS"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D005",
+          "kind": "financial_statements",
+          "title": "Primary financial statements",
+          "start": {
+            "physical_page": 17,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 19,
+            "location": "left",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 17,
+              "location": "full",
+              "printed_label": null,
+              "heading": "CONSOLIDATED STATEMENT OF FINANCIAL POSITION"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "subsections": [
+            {
+              "subsection_id": "D005.1",
+              "parent_id": "D005",
+              "title": "SUMMARISED CONSOLIDATED STATEMENT \nOF CHANGES IN EQUITY\nfor the year ended 30 June 2026",
+              "start": {
+                "physical_page": 17,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 19,
+                "location": "left",
+                "printed_label": null
+              }
+            }
+          ],
+          "parent_heading": "Primary financial statements"
+        },
+        {
+          "section_id": "D006",
+          "kind": "financial_notes",
+          "title": "Financial notes",
+          "start": {
+            "physical_page": 19,
+            "location": "right",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 36,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 19,
+              "location": "right",
+              "printed_label": null,
+              "heading": "NOTES TO THE SUMMARISED CONSOLIDATED ANNUAL FINANCIAL STATEMENTS"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "subsections": [
+            {
+              "subsection_id": "D006.1",
+              "parent_id": "D006",
+              "title": "Notes1,2",
+              "start": {
+                "physical_page": 19,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 20,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.2",
+              "parent_id": "D006",
+              "title": "Note 3 SEGMENT ANALYSIS",
+              "start": {
+                "physical_page": 20,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 24,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.3",
+              "parent_id": "D006",
+              "title": "Note 5. NET FINANCE COSTS",
+              "start": {
+                "physical_page": 25,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 25,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.4",
+              "parent_id": "D006",
+              "title": "Note 6. INCOME TAX",
+              "start": {
+                "physical_page": 25,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 26,
+                "location": "right",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.5",
+              "parent_id": "D006",
+              "title": "Note 7. PROPERTY, PLANT AND EQUIPMENT",
+              "start": {
+                "physical_page": 27,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 28,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.6",
+              "parent_id": "D006",
+              "title": "Notes 8,9,10,11",
+              "start": {
+                "physical_page": 29,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 29,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.7",
+              "parent_id": "D006",
+              "title": "Notes 12,13,14",
+              "start": {
+                "physical_page": 30,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 30,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.8",
+              "parent_id": "D006",
+              "title": "Notes 15,16",
+              "start": {
+                "physical_page": 31,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 33,
+                "location": "left",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.9",
+              "parent_id": "D006",
+              "title": "Note 17,18",
+              "start": {
+                "physical_page": 33,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 34,
+                "location": "right",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.10",
+              "parent_id": "D006",
+              "title": "Notes 19,20,21",
+              "start": {
+                "physical_page": 35,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 36,
+                "location": "left",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.11",
+              "parent_id": "D006",
+              "title": "Notes 22,23,24",
+              "start": {
+                "physical_page": 36,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 36,
+                "location": "right",
+                "printed_label": null
+              }
+            }
+          ],
+          "parent_heading": "Financial notes"
+        },
+        {
+          "section_id": "D007",
+          "kind": "other_items_overview",
+          "title": "Other items overview / contents",
+          "start": {
+            "physical_page": 37,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 37,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 37,
+              "location": "full",
+              "printed_label": null,
+              "heading": "OTHER ITEMS"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D008",
+          "kind": "apms",
+          "title": "Alternative performance measures",
+          "start": {
+            "physical_page": 38,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 47,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 38,
+              "location": "full",
+              "printed_label": null,
+              "heading": "ALTERNATIVE PERFORMANCE MEASURES"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "parent_heading": "Alternative performance measures",
+          "subsections": [
+            {
+              "subsection_id": "D008.1",
+              "parent_id": "D008",
+              "title": "FINANCIAL APMs",
+              "start": {
+                "physical_page": 38,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 39,
+                "location": "right",
+                "printed_label": null
+              }
+            }
+          ]
+        },
+        {
+          "section_id": "D009",
+          "kind": "production_summary",
+          "title": "Group production summary",
+          "start": {
+            "physical_page": 48,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 50,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 48,
+              "location": "full",
+              "printed_label": null,
+              "heading": "GROUP PRODUCTION SUMMARY"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D010",
+          "kind": "glossary",
+          "title": "Glossary",
+          "start": {
+            "physical_page": 51,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 52,
+            "location": "left",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 51,
+              "location": "full",
+              "printed_label": null,
+              "heading": "GLOSSARY"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D011",
+          "kind": "corporate_information",
+          "title": "Corporate information",
+          "start": {
+            "physical_page": 52,
+            "location": "right",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 52,
+            "location": "right",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 52,
+              "location": "right",
+              "printed_label": null,
+              "heading": "CORPORATE INFORMATION"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D012",
+          "kind": "reporting_suite",
+          "title": "Reporting suite",
+          "start": {
+            "physical_page": 53,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 53,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 53,
+              "location": "full",
+              "printed_label": null,
+              "heading": "OUR REPORTING SUITE"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D013",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 54,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 54,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": []
+        }
+      ],
+      "primary_statement_sightings": [
+        {
+          "kind": "financial_position",
+          "physical_page": 17,
+          "location": "left"
+        },
+        {
+          "kind": "profit_or_loss",
+          "physical_page": 18,
+          "location": "left"
+        },
+        {
+          "kind": "other_comprehensive_income",
+          "physical_page": 18,
+          "location": "left"
+        },
+        {
+          "kind": "cash_flows",
+          "physical_page": 18,
+          "location": "right"
+        },
+        {
+          "kind": "changes_in_equity",
+          "physical_page": 19,
+          "location": "left"
+        }
+      ],
+      "unclassified_physical_pages": [
+        1,
+        54
+      ],
+      "issues": [],
+      "limitations": [
+        "Navigation only; section contents have not been analysed or supplied to the model by this scan.",
+        "Ranges between heading observations are inferred and need checking; native-text scans may miss headings.",
+        "Relative left/right locations do not establish printed-page labels. No OCR or full financial verification."
+      ]
+    },
+    "coordinate_system": {
+      "origin": "top-left of displayed original page",
+      "unit": "PDF point (1/72 inch)",
+      "bbox_order": [
+        "x0",
+        "top",
+        "x1",
+        "bottom"
+      ]
+    },
+    "prompt": {
+      "stage": "12-analyst-reading-brief",
+      "version": "1.1.0",
+      "template_sha256": "35d4c13bc81b955e8dedf42112c42ead9ff9bf03256d20f21e0a37dbb160ffe8",
+      "submitted_candidate_sha256": "0a5ec093cb873cc8ba38b8d647a431e5ead1ab9d022e7e7e458a004bf49aa257",
+      "report_map_sha256": "38c8008bab3424a849a14cbd4182a10ba689dd2f39a38a8883cc4248a9bbc560",
+      "report_overview_sha256": "6a48bf6c5e6a39d0ddd12d0b9cc6cfa1468fa93e6601a58e9b3ad7f6802c3aa4",
+      "stored_questions_sha256": "de12b53ee704813382d16aa4f659d76badb68cc93c6545813e2981cfef79a6b6"
+    },
+    "review": {
+      "model_brief": "recorded",
+      "response_time_seconds": 97.61,
+      "cost_usd": 0.004815,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "tokens": {
+        "prompt_tokens": 10352,
+        "completion_tokens": 12019,
+        "total_tokens": 22371
+      }
+    },
+    "selections": [
+      {
+        "section_id": "D008.1",
+        "physical_page": 38,
+        "selection_mode": "text",
+        "content_type": "commentary",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          28.0,
+          93.0,
+          808.0,
+          516.0
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [
+          [
+            [
+              29.0,
+              93.0
+            ],
+            [
+              63.0,
+              93.0
+            ],
+            [
+              63.0,
+              100.0
+            ],
+            [
+              29.0,
+              100.0
+            ],
+            [
+              29.0,
+              93.0
+            ]
+          ],
+          [
+            [
+              64.0,
+              93.0
+            ],
+            [
+              98.0,
+              93.0
+            ],
+            [
+              98.0,
+              100.0
+            ],
+            [
+              64.0,
+              100.0
+            ],
+            [
+              64.0,
+              93.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              105.0
+            ],
+            [
+              361.0,
+              105.0
+            ],
+            [
+              361.0,
+              112.0
+            ],
+            [
+              28.0,
+              112.0
+            ],
+            [
+              28.0,
+              105.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              114.0
+            ],
+            [
+              386.0,
+              114.0
+            ],
+            [
+              386.0,
+              121.0
+            ],
+            [
+              29.0,
+              121.0
+            ],
+            [
+              29.0,
+              114.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              123.0
+            ],
+            [
+              323.0,
+              123.0
+            ],
+            [
+              323.0,
+              130.0
+            ],
+            [
+              28.0,
+              130.0
+            ],
+            [
+              28.0,
+              123.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              138.0
+            ],
+            [
+              286.0,
+              138.0
+            ],
+            [
+              286.0,
+              144.0
+            ],
+            [
+              28.0,
+              144.0
+            ],
+            [
+              28.0,
+              138.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              150.0
+            ],
+            [
+              31.0,
+              150.0
+            ],
+            [
+              31.0,
+              152.0
+            ],
+            [
+              29.0,
+              152.0
+            ],
+            [
+              29.0,
+              150.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              148.0
+            ],
+            [
+              382.0,
+              148.0
+            ],
+            [
+              382.0,
+              155.0
+            ],
+            [
+              37.0,
+              155.0
+            ],
+            [
+              37.0,
+              148.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              157.0
+            ],
+            [
+              385.0,
+              157.0
+            ],
+            [
+              385.0,
+              164.0
+            ],
+            [
+              37.0,
+              164.0
+            ],
+            [
+              37.0,
+              157.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              166.0
+            ],
+            [
+              390.0,
+              166.0
+            ],
+            [
+              390.0,
+              173.0
+            ],
+            [
+              37.0,
+              173.0
+            ],
+            [
+              37.0,
+              166.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              175.0
+            ],
+            [
+              376.0,
+              175.0
+            ],
+            [
+              376.0,
+              182.0
+            ],
+            [
+              37.0,
+              182.0
+            ],
+            [
+              37.0,
+              175.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              184.0
+            ],
+            [
+              374.0,
+              184.0
+            ],
+            [
+              374.0,
+              191.0
+            ],
+            [
+              37.0,
+              191.0
+            ],
+            [
+              37.0,
+              184.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              193.0
+            ],
+            [
+              44.0,
+              193.0
+            ],
+            [
+              44.0,
+              198.0
+            ],
+            [
+              37.0,
+              198.0
+            ],
+            [
+              37.0,
+              193.0
+            ]
+          ],
+          [
+            [
+              47.0,
+              193.0
+            ],
+            [
+              61.0,
+              193.0
+            ],
+            [
+              61.0,
+              198.0
+            ],
+            [
+              47.0,
+              198.0
+            ],
+            [
+              47.0,
+              193.0
+            ]
+          ],
+          [
+            [
+              63.0,
+              193.0
+            ],
+            [
+              80.0,
+              193.0
+            ],
+            [
+              80.0,
+              198.0
+            ],
+            [
+              63.0,
+              198.0
+            ],
+            [
+              63.0,
+              193.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              205.0
+            ],
+            [
+              31.0,
+              205.0
+            ],
+            [
+              31.0,
+              208.0
+            ],
+            [
+              29.0,
+              208.0
+            ],
+            [
+              29.0,
+              205.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              204.0
+            ],
+            [
+              390.0,
+              204.0
+            ],
+            [
+              390.0,
+              210.0
+            ],
+            [
+              37.0,
+              210.0
+            ],
+            [
+              37.0,
+              204.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              213.0
+            ],
+            [
+              178.0,
+              213.0
+            ],
+            [
+              178.0,
+              219.0
+            ],
+            [
+              37.0,
+              219.0
+            ],
+            [
+              37.0,
+              213.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              224.0
+            ],
+            [
+              31.0,
+              224.0
+            ],
+            [
+              31.0,
+              227.0
+            ],
+            [
+              29.0,
+              227.0
+            ],
+            [
+              29.0,
+              224.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              223.0
+            ],
+            [
+              385.0,
+              223.0
+            ],
+            [
+              385.0,
+              230.0
+            ],
+            [
+              37.0,
+              230.0
+            ],
+            [
+              37.0,
+              223.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              232.0
+            ],
+            [
+              387.0,
+              232.0
+            ],
+            [
+              387.0,
+              239.0
+            ],
+            [
+              37.0,
+              239.0
+            ],
+            [
+              37.0,
+              232.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              241.0
+            ],
+            [
+              326.0,
+              241.0
+            ],
+            [
+              326.0,
+              248.0
+            ],
+            [
+              37.0,
+              248.0
+            ],
+            [
+              37.0,
+              241.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              254.0
+            ],
+            [
+              40.0,
+              254.0
+            ],
+            [
+              40.0,
+              255.0
+            ],
+            [
+              37.0,
+              255.0
+            ],
+            [
+              37.0,
+              254.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              252.0
+            ],
+            [
+              377.0,
+              252.0
+            ],
+            [
+              377.0,
+              258.0
+            ],
+            [
+              46.0,
+              258.0
+            ],
+            [
+              46.0,
+              252.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              261.0
+            ],
+            [
+              73.0,
+              261.0
+            ],
+            [
+              73.0,
+              267.0
+            ],
+            [
+              46.0,
+              267.0
+            ],
+            [
+              46.0,
+              261.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              274.0
+            ],
+            [
+              40.0,
+              274.0
+            ],
+            [
+              40.0,
+              274.0
+            ],
+            [
+              37.0,
+              274.0
+            ],
+            [
+              37.0,
+              274.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              271.0
+            ],
+            [
+              365.0,
+              271.0
+            ],
+            [
+              365.0,
+              277.0
+            ],
+            [
+              46.0,
+              277.0
+            ],
+            [
+              46.0,
+              271.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              280.0
+            ],
+            [
+              367.0,
+              280.0
+            ],
+            [
+              367.0,
+              286.0
+            ],
+            [
+              46.0,
+              286.0
+            ],
+            [
+              46.0,
+              280.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              289.0
+            ],
+            [
+              375.0,
+              289.0
+            ],
+            [
+              375.0,
+              295.0
+            ],
+            [
+              46.0,
+              295.0
+            ],
+            [
+              46.0,
+              289.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              302.0
+            ],
+            [
+              40.0,
+              302.0
+            ],
+            [
+              40.0,
+              303.0
+            ],
+            [
+              37.0,
+              303.0
+            ],
+            [
+              37.0,
+              302.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              299.0
+            ],
+            [
+              365.0,
+              299.0
+            ],
+            [
+              365.0,
+              306.0
+            ],
+            [
+              46.0,
+              306.0
+            ],
+            [
+              46.0,
+              299.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              313.0
+            ],
+            [
+              40.0,
+              313.0
+            ],
+            [
+              40.0,
+              313.0
+            ],
+            [
+              37.0,
+              313.0
+            ],
+            [
+              37.0,
+              313.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              310.0
+            ],
+            [
+              382.0,
+              310.0
+            ],
+            [
+              382.0,
+              316.0
+            ],
+            [
+              46.0,
+              316.0
+            ],
+            [
+              46.0,
+              310.0
+            ]
+          ],
+          [
+            [
+              46.0,
+              319.0
+            ],
+            [
+              261.0,
+              319.0
+            ],
+            [
+              261.0,
+              325.0
+            ],
+            [
+              46.0,
+              325.0
+            ],
+            [
+              46.0,
+              319.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              334.0
+            ],
+            [
+              354.0,
+              334.0
+            ],
+            [
+              354.0,
+              340.0
+            ],
+            [
+              28.0,
+              340.0
+            ],
+            [
+              28.0,
+              334.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              342.0
+            ],
+            [
+              335.0,
+              342.0
+            ],
+            [
+              335.0,
+              349.0
+            ],
+            [
+              29.0,
+              349.0
+            ],
+            [
+              29.0,
+              342.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              363.0
+            ],
+            [
+              109.0,
+              363.0
+            ],
+            [
+              109.0,
+              370.0
+            ],
+            [
+              29.0,
+              370.0
+            ],
+            [
+              29.0,
+              363.0
+            ]
+          ],
+          [
+            [
+              110.0,
+              365.0
+            ],
+            [
+              114.0,
+              365.0
+            ],
+            [
+              114.0,
+              370.0
+            ],
+            [
+              110.0,
+              370.0
+            ],
+            [
+              110.0,
+              365.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              375.0
+            ],
+            [
+              391.0,
+              375.0
+            ],
+            [
+              391.0,
+              382.0
+            ],
+            [
+              28.0,
+              382.0
+            ],
+            [
+              28.0,
+              375.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              384.0
+            ],
+            [
+              389.0,
+              384.0
+            ],
+            [
+              389.0,
+              391.0
+            ],
+            [
+              29.0,
+              391.0
+            ],
+            [
+              29.0,
+              384.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              393.0
+            ],
+            [
+              375.0,
+              393.0
+            ],
+            [
+              375.0,
+              400.0
+            ],
+            [
+              28.0,
+              400.0
+            ],
+            [
+              28.0,
+              393.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              402.0
+            ],
+            [
+              39.0,
+              402.0
+            ],
+            [
+              39.0,
+              407.0
+            ],
+            [
+              28.0,
+              407.0
+            ],
+            [
+              28.0,
+              402.0
+            ]
+          ],
+          [
+            [
+              42.0,
+              402.0
+            ],
+            [
+              188.0,
+              402.0
+            ],
+            [
+              188.0,
+              409.0
+            ],
+            [
+              42.0,
+              409.0
+            ],
+            [
+              42.0,
+              402.0
+            ]
+          ],
+          [
+            [
+              28.0,
+              417.0
+            ],
+            [
+              253.0,
+              417.0
+            ],
+            [
+              253.0,
+              423.0
+            ],
+            [
+              28.0,
+              423.0
+            ],
+            [
+              28.0,
+              417.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              429.0
+            ],
+            [
+              31.0,
+              429.0
+            ],
+            [
+              31.0,
+              431.0
+            ],
+            [
+              29.0,
+              431.0
+            ],
+            [
+              29.0,
+              429.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              427.0
+            ],
+            [
+              347.0,
+              427.0
+            ],
+            [
+              347.0,
+              434.0
+            ],
+            [
+              37.0,
+              434.0
+            ],
+            [
+              37.0,
+              427.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              436.0
+            ],
+            [
+              360.0,
+              436.0
+            ],
+            [
+              360.0,
+              443.0
+            ],
+            [
+              37.0,
+              443.0
+            ],
+            [
+              37.0,
+              436.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              445.0
+            ],
+            [
+              381.0,
+              445.0
+            ],
+            [
+              381.0,
+              452.0
+            ],
+            [
+              37.0,
+              452.0
+            ],
+            [
+              37.0,
+              445.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              454.0
+            ],
+            [
+              388.0,
+              454.0
+            ],
+            [
+              388.0,
+              461.0
+            ],
+            [
+              37.0,
+              461.0
+            ],
+            [
+              37.0,
+              454.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              463.0
+            ],
+            [
+              298.0,
+              463.0
+            ],
+            [
+              298.0,
+              470.0
+            ],
+            [
+              37.0,
+              470.0
+            ],
+            [
+              37.0,
+              463.0
+            ]
+          ],
+          [
+            [
+              29.0,
+              475.0
+            ],
+            [
+              31.0,
+              475.0
+            ],
+            [
+              31.0,
+              477.0
+            ],
+            [
+              29.0,
+              477.0
+            ],
+            [
+              29.0,
+              475.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              474.0
+            ],
+            [
+              381.0,
+              474.0
+            ],
+            [
+              381.0,
+              480.0
+            ],
+            [
+              37.0,
+              480.0
+            ],
+            [
+              37.0,
+              474.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              483.0
+            ],
+            [
+              388.0,
+              483.0
+            ],
+            [
+              388.0,
+              489.0
+            ],
+            [
+              37.0,
+              489.0
+            ],
+            [
+              37.0,
+              483.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              492.0
+            ],
+            [
+              381.0,
+              492.0
+            ],
+            [
+              381.0,
+              498.0
+            ],
+            [
+              37.0,
+              498.0
+            ],
+            [
+              37.0,
+              492.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              501.0
+            ],
+            [
+              387.0,
+              501.0
+            ],
+            [
+              387.0,
+              507.0
+            ],
+            [
+              37.0,
+              507.0
+            ],
+            [
+              37.0,
+              501.0
+            ]
+          ],
+          [
+            [
+              37.0,
+              510.0
+            ],
+            [
+              282.0,
+              510.0
+            ],
+            [
+              282.0,
+              516.0
+            ],
+            [
+              37.0,
+              516.0
+            ],
+            [
+              37.0,
+              510.0
+            ]
+          ],
+          [
+            [
+              448.0,
+              95.0
+            ],
+            [
+              451.0,
+              95.0
+            ],
+            [
+              451.0,
+              97.0
+            ],
+            [
+              448.0,
+              97.0
+            ],
+            [
+              448.0,
+              95.0
+            ]
+          ],
+          [
+            [
+              457.0,
+              93.0
+            ],
+            [
+              803.0,
+              93.0
+            ],
+            [
+              803.0,
+              100.0
+            ],
+            [
+              457.0,
+              100.0
+            ],
+            [
+              457.0,
+              93.0
+            ]
+          ],
+          [
+            [
+              457.0,
+              102.0
+            ],
+            [
+              802.0,
+              102.0
+            ],
+            [
+              802.0,
+              109.0
+            ],
+            [
+              457.0,
+              109.0
+            ],
+            [
+              457.0,
+              102.0
+            ]
+          ],
+          [
+            [
+              457.0,
+              111.0
+            ],
+            [
+              808.0,
+              111.0
+            ],
+            [
+              808.0,
+              118.0
+            ],
+            [
+              457.0,
+              118.0
+            ],
+            [
+              457.0,
+              111.0
+            ]
+          ],
+          [
+            [
+              457.0,
+              121.0
+            ],
+            [
+              803.0,
+              121.0
+            ],
+            [
+              803.0,
+              127.0
+            ],
+            [
+              457.0,
+              127.0
+            ],
+            [
+              457.0,
+              121.0
+            ]
+          ],
+          [
+            [
+              448.0,
+              135.0
+            ],
+            [
+              790.0,
+              135.0
+            ],
+            [
+              790.0,
+              142.0
+            ],
+            [
+              448.0,
+              142.0
+            ],
+            [
+              448.0,
+              135.0
+            ]
+          ],
+          [
+            [
+              448.0,
+              144.0
+            ],
+            [
+              796.0,
+              144.0
+            ],
+            [
+              796.0,
+              151.0
+            ],
+            [
+              448.0,
+              151.0
+            ],
+            [
+              448.0,
+              144.0
+            ]
+          ],
+          [
+            [
+              448.0,
+              153.0
+            ],
+            [
+              620.0,
+              153.0
+            ],
+            [
+              620.0,
+              160.0
+            ],
+            [
+              448.0,
+              160.0
+            ],
+            [
+              448.0,
+              153.0
+            ]
+          ]
+        ],
+        "text_indices": [
+          0,
+          4882
+        ],
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "INTRODUCTION\r\nWhen assessing and discussing Pan African’s reported financial performance, financial position and cash flows, \r\nmanagement makes reference to alternative performance measures (APMs) of historical or future financial performance, \r\nfinancial position or cash flows that are not defined or specified under IFRS Accounting Standards.\r\nThe APMs include financial APMs, non-financial APMs and ratios, as described below.\r\n• Financial APMs: These financial measures are usually derived from the annual financial statements which have been \r\nprepared in accordance with IFRS Accounting Standards. Certain financial measures cannot be directly derived from \r\nthe annual financial statements as they contain additional information such as financial information from earlier periods \r\nor profit estimates or projections. The accounting policies applied when calculating APMs are, where relevant and \r\nunless otherwise stated, the same as those disclosed in the consolidated financial statements for the year ended \r\n30 June 2026.\r\n• Non-financial APMs: These measures incorporate certain non-financial information that management believes is useful \r\nwhen assessing the performance of the Group.\r\n• Ratios: Ratios may be calculated using any of the APMs referred to above, IFRS Accounting Standards measures or \r\na combination of APMs and IFRS Accounting Standards measures. APMs are not uniformly defined by all companies \r\nand may not be comparable with APM disclosures made by other companies, and they exclude:\r\n– measures defined or specified by an applicable reporting framework such as revenue, profit or loss or earnings \r\nper share\r\n– physical or non-financial measures such as number of employees, number of subscribers, revenue per unit \r\nmeasure (when the revenue figures are extracted directly from the annual financial statements) or social and \r\nenvironmental measures such as gas emissions, breakdown of workforce by contract or geographical location\r\n– information on major shareholdings, acquisition or disposal of own shares and total number of voting rights\r\n– information to explain the compliance with the terms of an agreement or legislative requirements such as lending \r\ncovenants or the basis of calculating director or executive remuneration.\r\nAPMs should be considered in addition to, and not as a substitute for or as superior to, measures of financial \r\nperformance, financial position or cash flows reported in accordance with IFRS Accounting Standards.\r\nPURPOSE OF APMs\r\nThe Group uses APMs to improve the comparability of information between reporting periods and reporting segments by \r\nadjusting for uncontrollable or once-off factors which impact IFRS Accounting Standards measurements and disclosures \r\nto aid the user of the integrated annual report in understanding the activity taking place across the Group’s portfolio. \r\nThe directors are responsible for preparing the APMs.\r\nTheir use is driven by characteristics particularly visible in the mining sector.\r\n• Earnings volatility: The sector is characterised by significant volatility in earnings driven by movements in \r\nmacroeconomic factors, primarily commodity prices and foreign exchange rates. This volatility is outside the \r\ncontrol of management and can mask underlying changes in performance. As such, when comparing year-on-year \r\nperformance, management excludes certain non-recurring items to aid comparability and then quantifies and isolates \r\nuncontrollable factors to improve understanding of the controllable portion of variances.\r\n• Nature of investment: Investments in the sector are typically capital-intensive and occur over several years requiring \r\nsignificant funding before generating cash. These investments are often made through debt and equity providers, and \r\nthe nature of the Group’s ownership interest affects how the financial results of these operations are reflected in the \r\nGroup’s results, for example, whether full consolidation (subsidiaries), consolidation of the Group’s attributable assets \r\nand liabilities (joint operations) or equity-accounted (associates and joint ventures).\r\n• Portfolio complexity: At year-end, the Group’s operating portfolio remains largely in commodities, mainly gold, which \r\naccounts for 99.7% of the Group’s revenue. The cost, value of and return from each saleable unit (such as tonne or \r\nounce) therefore do not differ materially between each operating business. This makes understanding both the overall \r\nportfolio performance and the relative performance of each mining operation on a like-for-like basis less challenging.\r\nConsequently, APMs are used by the board and management for planning and reporting. A subset is also used by \r\nmanagement in setting director and management remuneration. The measures are also used in discussions with the \r\ninvestment analyst community and credit rating agencies.",
+        "text_sha256": "4a4c57eaeca9aff78e23f81f9da9e7866b2b7b7cea2edd4b5dbaf960b32045bf",
+        "warnings": [
+          "Native PDF text order may differ from visual reading order; check the image."
+        ]
+      },
+      {
+        "section_id": "D008.1",
+        "physical_page": 38,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          440.58556633632907,
+          169.23154203647076,
+          830.985227103222,
+          563.1325450523941
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "FINANCIAL APMs                                       \n                                                      \n          Related IFRS                                \n          Accounting                                  \n          Standards Adjustments to reconcile to primary\n  Group APM measure statements        Rationale for adjustment\n  Performance                                         \n  All-in sustaining Cost of production • Other related costs as defined by the The objective of AISC and\n  costs (AISC)       World Gold Council, including royalty all-in cost (AIC) metrics is\n                     costs, community costs, sustaining to provide key stakeholders\n                     and development capital (excluding with comparable metrics that\n                     non-gold operations) reflect, as close as possible,\n                                      the full cost of producing\n                                      and selling an ounce of\n                                      gold, and which are fully and\n                                      transparently reconcilable\n                                      back to amounts reported\n                                      under IFRS Accounting\n                                      Standards       \n  All-in costs Cost of production • Once-off capital costs As per the above for AISC\n                                      with additional expansionary\n                                      capital and once-off\n                                      non-production-related\n                                      cost adjustments\n  EBITDA  Profit after tax • Income tax Excludes the impact of\n                    • Depreciation and amortisation non-recurring items or certain\n                    • Net finance costs accounting adjustments that\n                                      can mask underlying changes\n                                      in performance  \n  Adjusted Profit after tax • Income tax Excludes the impact of non-\n  EBITDA            • Depreciation and amortisation recurring items or certain\n                    • Net finance costs accounting adjustments that\n                                      can mask underlying changes\n                    • Impairment loss or impairment   \n                                      in performance  \n                     reversals                        \n                    • Bargain purchase gain           \n                    • Unrealised fair value gains or losses\n                     on financial derivatives undertaken\n                     in the normal course of business",
+        "text_sha256": "08d85c2d1f2cb5cae20e0ee12642c613e180aee1d85e56347b73d252a709c74a",
+        "warnings": []
+      },
+      {
+        "section_id": "D008.1",
+        "physical_page": 39,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          14.005368996121717,
+          68.27617385609338,
+          410.24060017806534,
+          503.0261697773717
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "FINANCIAL APMs continued                             \n           Related IFRS                                \n           Accounting                                  \n           Standards Adjustments to reconcile to primary\n   Group APM measure statements        Rationale for adjustment\n   Free cash flow Profit after tax • Income tax Reflects available cash flow to\n                     • Depreciation and amortisation service debt obligations\n                     • Net finance costs               \n                     • Impairment loss or impairment   \n                      reversals                        \n                     • Unrealised fair value gains or losses\n                      on financial derivatives undertaken\n                      in the normal course of business \n                     • Adjusted for working capital changes\n                     • Adjusted for non-cash flow items as\n                      determined in accordance with IAS 7\n                     • Less capital expenditure funded \n                      through permitted indebtedness   \n                     • Less tax paid                   \n   Performance                                         \n   Levered free Profit after tax • Income tax Reflects available cash flow to\n   cash flow         • Depreciation and amortisation service debt obligations\n                     • Net finance costs               \n                     • Impairment loss or impairment   \n                      reversals                        \n                     Adjusted for:                     \n                     • Finance costs paid              \n                     • Income tax paid                 \n                     • Net working capital changes     \n                     • Capital expenditure             \n                     • Proceeds from borrowings        \n                     • Repayment of borrowings         \n   Headline Profit after tax • (Profit)/loss on disposal of property, Indicates the extent of the\n   earnings           plant and equipment Group’s normalised earnings\n                     • Impairment or impairment reversals to shareholders determined\n                     • Bargain purchase gain in accordance with SAICA’s\n                                       Circular 1/2023 \n                     • Tax effect of the above adjustments",
+        "text_sha256": "d54eef4a0364d838af13aa9f66d036120d3e64be650bcb8070144d8bf2d5dd6d",
+        "warnings": []
+      },
+      {
+        "section_id": "D008.1",
+        "physical_page": 39,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          429.4979825477327,
+          78.78020060318467,
+          824.5660996466662,
+          484.9359014907145
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "Related IFRS\nAccounting\nStandards Adjustments to reconcile to primary\n\n| Group APM measure |  |  |  |  |  | statements |  | Rationale for adjustment |  |  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| **Statement of financial position** | | | | | | | | | | |\n| Net (cash)/debt Borrowings from |  |  |  |  |  | • IFRS 9 accounting adjustments |  | Excludes the impact of |  |  |\n| financial institutions • IFRS 16 lease liabilities |  |  |  |  |  |  |  | accounting adjustments from |  |  |\n| less cash and |  |  |  |  |  | • Restricted cash |  | the net debt obligations of |  |  |\n| related hedges |  |  |  |  |  |  |  | the Group |  |  |\n|  |  |  |  |  |  | • Financial liabilities |  |  |  |  |\n| Net senior debt Borrowings from |  |  |  |  |  | • IFRS 9 accounting adjustments |  | Excludes the impact of |  |  |\n| financial institutions • IFRS 16 lease liabilities |  |  |  |  |  |  |  | accounting adjustments from |  |  |\n| less net (cash)/ |  |  |  |  |  | • Restricted cash |  | the net debt obligations of |  |  |\n| senior debt |  |  |  |  |  |  |  | the Group |  |  |\n|  |  |  |  |  |  | • Financial liabilities |  |  |  |  |\n| **All-in sustaining costs** | | | | | | | | | | |\n| **This incorporates costs related to sustaining current production. AISC are defined by the World Gold Council as** | | | | | | | | | | |\n| **operating costs plus costs not already included therein relating to sustaining the current production, including sustaining** | | | | | | | | | | |\n| **capital expenditure. The value of by-product revenue is deducted from operating costs as it effectively reduces the cost** | | | | | | | | | | |\n| **of gold production.** | | | | | | | | | | |\n| **Lower-cost/higher-cost operation AISC** | | | | | | | | | | |\n|  |  |  |  |  |  |  | Total | Total |  |  |\n|  |  |  |  |  |  |  | lower-cost | higher-cost | Total |  |\n|  |  |  |  |  |  |  | operations | operations | Group |  |\n| **FY26** | | | | | | | | | | |\n| All-in sustaining cost (US$ million) |  |  |  |  |  |  | 420,686 | 87,718 | 508,405 |  |\n| Gold sold (oz) |  |  |  |  |  |  | 247,219 | 25,154 | 272,373 |  |\n| All-in sustaining cost (US$/oz) |  |  |  |  |  |  | 1,702 | 3,487 | 1,867 |  |\n| **FY25** | | | | | | | | | | |\n| All-in sustaining cost (US$ million) |  |  |  |  |  |  | 241,957 | 73,111 | 315,068 |  |\n| Gold sold (oz) |  |  |  |  |  |  | 168,781 | 28,146 | 196,927 |  |\n| All-in sustaining cost (US$/oz) |  |  |  |  |  |  | 1,434 | 2,598 | 1,600 |  |",
+        "text_sha256": "ff8079dcffd7233bfd1b9f00aff7c531e2dc70b5738c93d6c2f217a52591a089",
+        "warnings": []
+      }
+    ],
+    "sector": "mining",
+    "ledger_contract": 1
+  },
+  "texts": [
+    "INTRODUCTION\r\nWhen assessing and discussing Pan African’s reported financial performance, financial position and cash flows, \r\nmanagement makes reference to alternative performance measures (APMs) of historical or future financial performance, \r\nfinancial position or cash flows that are not defined or specified under IFRS Accounting Standards.\r\nThe APMs include financial APMs, non-financial APMs and ratios, as described below.\r\n• Financial APMs: These financial measures are usually derived from the annual financial statements which have been \r\nprepared in accordance with IFRS Accounting Standards. Certain financial measures cannot be directly derived from \r\nthe annual financial statements as they contain additional information such as financial information from earlier periods \r\nor profit estimates or projections. The accounting policies applied when calculating APMs are, where relevant and \r\nunless otherwise stated, the same as those disclosed in the consolidated financial statements for the year ended \r\n30 June 2026.\r\n• Non-financial APMs: These measures incorporate certain non-financial information that management believes is useful \r\nwhen assessing the performance of the Group.\r\n• Ratios: Ratios may be calculated using any of the APMs referred to above, IFRS Accounting Standards measures or \r\na combination of APMs and IFRS Accounting Standards measures. APMs are not uniformly defined by all companies \r\nand may not be comparable with APM disclosures made by other companies, and they exclude:\r\n– measures defined or specified by an applicable reporting framework such as revenue, profit or loss or earnings \r\nper share\r\n– physical or non-financial measures such as number of employees, number of subscribers, revenue per unit \r\nmeasure (when the revenue figures are extracted directly from the annual financial statements) or social and \r\nenvironmental measures such as gas emissions, breakdown of workforce by contract or geographical location\r\n– information on major shareholdings, acquisition or disposal of own shares and total number of voting rights\r\n– information to explain the compliance with the terms of an agreement or legislative requirements such as lending \r\ncovenants or the basis of calculating director or executive remuneration.\r\nAPMs should be considered in addition to, and not as a substitute for or as superior to, measures of financial \r\nperformance, financial position or cash flows reported in accordance with IFRS Accounting Standards.\r\nPURPOSE OF APMs\r\nThe Group uses APMs to improve the comparability of information between reporting periods and reporting segments by \r\nadjusting for uncontrollable or once-off factors which impact IFRS Accounting Standards measurements and disclosures \r\nto aid the user of the integrated annual report in understanding the activity taking place across the Group’s portfolio. \r\nThe directors are responsible for preparing the APMs.\r\nTheir use is driven by characteristics particularly visible in the mining sector.\r\n• Earnings volatility: The sector is characterised by significant volatility in earnings driven by movements in \r\nmacroeconomic factors, primarily commodity prices and foreign exchange rates. This volatility is outside the \r\ncontrol of management and can mask underlying changes in performance. As such, when comparing year-on-year \r\nperformance, management excludes certain non-recurring items to aid comparability and then quantifies and isolates \r\nuncontrollable factors to improve understanding of the controllable portion of variances.\r\n• Nature of investment: Investments in the sector are typically capital-intensive and occur over several years requiring \r\nsignificant funding before generating cash. These investments are often made through debt and equity providers, and \r\nthe nature of the Group’s ownership interest affects how the financial results of these operations are reflected in the \r\nGroup’s results, for example, whether full consolidation (subsidiaries), consolidation of the Group’s attributable assets \r\nand liabilities (joint operations) or equity-accounted (associates and joint ventures).\r\n• Portfolio complexity: At year-end, the Group’s operating portfolio remains largely in commodities, mainly gold, which \r\naccounts for 99.7% of the Group’s revenue. The cost, value of and return from each saleable unit (such as tonne or \r\nounce) therefore do not differ materially between each operating business. This makes understanding both the overall \r\nportfolio performance and the relative performance of each mining operation on a like-for-like basis less challenging.\r\nConsequently, APMs are used by the board and management for planning and reporting. A subset is also used by \r\nmanagement in setting director and management remuneration. The measures are also used in discussions with the \r\ninvestment analyst community and credit rating agencies.",
+    "FINANCIAL APMs                                       \n                                                      \n          Related IFRS                                \n          Accounting                                  \n          Standards Adjustments to reconcile to primary\n  Group APM measure statements        Rationale for adjustment\n  Performance                                         \n  All-in sustaining Cost of production • Other related costs as defined by the The objective of AISC and\n  costs (AISC)       World Gold Council, including royalty all-in cost (AIC) metrics is\n                     costs, community costs, sustaining to provide key stakeholders\n                     and development capital (excluding with comparable metrics that\n                     non-gold operations) reflect, as close as possible,\n                                      the full cost of producing\n                                      and selling an ounce of\n                                      gold, and which are fully and\n                                      transparently reconcilable\n                                      back to amounts reported\n                                      under IFRS Accounting\n                                      Standards       \n  All-in costs Cost of production • Once-off capital costs As per the above for AISC\n                                      with additional expansionary\n                                      capital and once-off\n                                      non-production-related\n                                      cost adjustments\n  EBITDA  Profit after tax • Income tax Excludes the impact of\n                    • Depreciation and amortisation non-recurring items or certain\n                    • Net finance costs accounting adjustments that\n                                      can mask underlying changes\n                                      in performance  \n  Adjusted Profit after tax • Income tax Excludes the impact of non-\n  EBITDA            • Depreciation and amortisation recurring items or certain\n                    • Net finance costs accounting adjustments that\n                                      can mask underlying changes\n                    • Impairment loss or impairment   \n                                      in performance  \n                     reversals                        \n                    • Bargain purchase gain           \n                    • Unrealised fair value gains or losses\n                     on financial derivatives undertaken\n                     in the normal course of business",
+    "FINANCIAL APMs continued                             \n           Related IFRS                                \n           Accounting                                  \n           Standards Adjustments to reconcile to primary\n   Group APM measure statements        Rationale for adjustment\n   Free cash flow Profit after tax • Income tax Reflects available cash flow to\n                     • Depreciation and amortisation service debt obligations\n                     • Net finance costs               \n                     • Impairment loss or impairment   \n                      reversals                        \n                     • Unrealised fair value gains or losses\n                      on financial derivatives undertaken\n                      in the normal course of business \n                     • Adjusted for working capital changes\n                     • Adjusted for non-cash flow items as\n                      determined in accordance with IAS 7\n                     • Less capital expenditure funded \n                      through permitted indebtedness   \n                     • Less tax paid                   \n   Performance                                         \n   Levered free Profit after tax • Income tax Reflects available cash flow to\n   cash flow         • Depreciation and amortisation service debt obligations\n                     • Net finance costs               \n                     • Impairment loss or impairment   \n                      reversals                        \n                     Adjusted for:                     \n                     • Finance costs paid              \n                     • Income tax paid                 \n                     • Net working capital changes     \n                     • Capital expenditure             \n                     • Proceeds from borrowings        \n                     • Repayment of borrowings         \n   Headline Profit after tax • (Profit)/loss on disposal of property, Indicates the extent of the\n   earnings           plant and equipment Group’s normalised earnings\n                     • Impairment or impairment reversals to shareholders determined\n                     • Bargain purchase gain in accordance with SAICA’s\n                                       Circular 1/2023 \n                     • Tax effect of the above adjustments",
+    "Related IFRS\nAccounting\nStandards Adjustments to reconcile to primary\n\n| Group APM measure |  |  |  |  |  | statements |  | Rationale for adjustment |  |  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| **Statement of financial position** | | | | | | | | | | |\n| Net (cash)/debt Borrowings from |  |  |  |  |  | • IFRS 9 accounting adjustments |  | Excludes the impact of |  |  |\n| financial institutions • IFRS 16 lease liabilities |  |  |  |  |  |  |  | accounting adjustments from |  |  |\n| less cash and |  |  |  |  |  | • Restricted cash |  | the net debt obligations of |  |  |\n| related hedges |  |  |  |  |  |  |  | the Group |  |  |\n|  |  |  |  |  |  | • Financial liabilities |  |  |  |  |\n| Net senior debt Borrowings from |  |  |  |  |  | • IFRS 9 accounting adjustments |  | Excludes the impact of |  |  |\n| financial institutions • IFRS 16 lease liabilities |  |  |  |  |  |  |  | accounting adjustments from |  |  |\n| less net (cash)/ |  |  |  |  |  | • Restricted cash |  | the net debt obligations of |  |  |\n| senior debt |  |  |  |  |  |  |  | the Group |  |  |\n|  |  |  |  |  |  | • Financial liabilities |  |  |  |  |\n| **All-in sustaining costs** | | | | | | | | | | |\n| **This incorporates costs related to sustaining current production. AISC are defined by the World Gold Council as** | | | | | | | | | | |\n| **operating costs plus costs not already included therein relating to sustaining the current production, including sustaining** | | | | | | | | | | |\n| **capital expenditure. The value of by-product revenue is deducted from operating costs as it effectively reduces the cost** | | | | | | | | | | |\n| **of gold production.** | | | | | | | | | | |\n| **Lower-cost/higher-cost operation AISC** | | | | | | | | | | |\n|  |  |  |  |  |  |  | Total | Total |  |  |\n|  |  |  |  |  |  |  | lower-cost | higher-cost | Total |  |\n|  |  |  |  |  |  |  | operations | operations | Group |  |\n| **FY26** | | | | | | | | | | |\n| All-in sustaining cost (US$ million) |  |  |  |  |  |  | 420,686 | 87,718 | 508,405 |  |\n| Gold sold (oz) |  |  |  |  |  |  | 247,219 | 25,154 | 272,373 |  |\n| All-in sustaining cost (US$/oz) |  |  |  |  |  |  | 1,702 | 3,487 | 1,867 |  |\n| **FY25** | | | | | | | | | | |\n| All-in sustaining cost (US$ million) |  |  |  |  |  |  | 241,957 | 73,111 | 315,068 |  |\n| Gold sold (oz) |  |  |  |  |  |  | 168,781 | 28,146 | 196,927 |  |\n| All-in sustaining cost (US$/oz) |  |  |  |  |  |  | 1,434 | 2,598 | 1,600 |  |"
+  ],
+  "questions": [],
+  "source_original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+  "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+  "existing_output": "### 1. Answers to Stored Questions for This Section\n\n- **Q2 & Q20 (AISC reconciliation by operation and group; confirm vs guidance US$1,820–1,870/oz; reconcile Elikhulu/MTR/BTRP to group AISC)**\n  - **Status**: `Partially resolved (remainder stays open for D009)`\n  - **Answer & evidence**: D008.1 provides the group AISC reconciliation at the \"lower-cost vs higher-cost operations\" level only, not by individual mine. FY26 group AISC = US$508,405k ÷ 272,373oz = **US$1,867/oz** [D008.1, p. 39]. This sits at the **top of the US$1,820–1,870/oz guidance range** (Q2 confirmed on the group number). Split: lower-cost operations US$420,686k ÷ 247,219oz = US$1,702/oz; higher-cost operations US$87,718k ÷ 25,154oz = US$3,487/oz. FY25 comparative: US$315,068k ÷ 196,927oz = US$1,600/oz (lower-cost US$1,434/oz; higher-cost US$2,598/oz). **The by-mine reconciliation (Elikhulu US$1,231/oz, MTR US$1,389/oz, BTRP US$1,564/oz) is NOT in this section** — it must be checked in D009 (Group production summary). Note the higher-cost bucket AISC deteriorated sharply YoY (US$2,598→US$3,487/oz) on lower ounces (28,146→25,154oz) — this is the \"~US$3,500/oz tail\" referenced in Q1 and needs mine-level attribution in D009.\n\n- **Q34 (remainder) (Confirm APM reconciliation; AISC/APM definitions tie to IFRS)**\n  - **Status**: `Partially resolved (remainder stays open for D008.2+)`\n  - **Answer & evidence**: D008.1 confirms AISC is defined per the **World Gold Council** and is reconciled to \"Cost of production\" per IFRS, with adjustments for \"other related costs as defined by the World Gold Council, including royalty costs, community costs, sustaining and development capital (excluding non-gold operations)\" [D008.1, p. 38]. This confirms royalties ARE inside AISC (relevant to Q110). The actual line-by-line AISC reconciliation table (the \"page 72 APM reconciliation\" referenced in Q34) is **not in this capture** — still open.\n\n- **Q36 (Confirm Adjusted EBITDA definition; restate FY25)**\n  - **Status**: `Resolved (definition confirmed)`\n  - **Answer & evidence**: Adjusted EBITDA = Profit after tax + income tax + depreciation & amortisation + net finance costs + impairment loss/reversals + bargain purchase gain + unrealised FV gains/losses on financial derivatives in the normal course of business [D008.1, p. 38]. Note: **SBP expense is NOT listed as an add-back** — so the US$57,272k SBP charge (Q101) sits INSIDE Adjusted EBITDA unless separately adjusted. The FY25 restatement arithmetic (249,724 + 2,954 = 252,678) cannot be re-verified here as the EBITDA reconciliation table is not in this capture.\n\n- **Q63 (Confirm AISC uses production D&A US$60,288k, not total PPE depreciation US$61,733k; identify US$2,179k \"other D&A\")**\n  - **Status**: `Partially resolved (definitional only)`\n  - **Answer & evidence**: D008.1 confirms AISC reconciles to \"Cost of production\" (not total D&A), consistent with using production D&A. The specific US$60,288k vs US$61,733k split and the US$2,179k \"other D&A\" identification are **not in this capture** — still open for D008.2+ / D006.5.\n\n- **Q81 (Confirm whether STI FV gain US$1,142k is excluded from Adjusted EBITDA/AISC; STI treatment in net debt)**\n  - **Status**: `Partially resolved`\n  - **Answer & evidence**: Adjusted EBITDA explicitly adds back \"unrealised fair value gains or losses on financial derivatives undertaken in the normal course of business\" [D008.1, p. 38] — so the STI FV gain is excluded from Adjusted EBITDA **if** the STI is classified as a derivative in the normal course. AISC is defined off \"Cost of production\" and does not reference FV gains, so the STI gain is **not** in AISC. Net debt definition (p. 39) references \"cash and related hedges\" and \"financial liabilities\" — STI treatment in net debt still needs confirmation in the net debt reconciliation table (not in this capture).\n\n- **Q89 (Net debt definition — are gold loan facility US$25,557k and gold trading facilities US$58,931k included or excluded as trading?)**\n  - **Status**: `Partially resolved (definition captured; application not yet verified)`\n  - **Answer & evidence**: Net (cash)/debt = \"Borrowings from financial institutions + IFRS 16 lease liabilities − cash and related hedges\", adjusted for IFRS 9 accounting adjustments, restricted cash, and financial liabilities [D008.1, p. 39]. The definition is **facility-type agnostic** — it does not carve out gold loans or gold trading facilities as \"trading\". This suggests they may be included, but the actual net debt reconciliation table (with the US$25,557k and US$58,931k lines) is **not in this capture** — still open.\n\n- **Q50 (Confirm restricted cash 2,612 nature)**\n  - **Status**: `Partially resolved`\n  - **Answer & evidence**: Net debt definition explicitly adjusts for \"Restricted cash\" [D008.1, p. 39] — confirming restricted cash is excluded from the cash netted against debt. The nature of the US$2,612k (Note 20.1) is not detailed here — still open.\n\n- **Q86 (RCF renewal/refinancing plans before 30 June 2027 maturity; FY27 liquidity headroom)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: D008.1 defines \"Net senior debt\" (borrowings from financial institutions + IFRS 16 lease liabilities − net cash/senior debt, adjusted for IFRS 9, restricted cash, financial liabilities) [D008.1, p. 39] but contains **no commentary on RCF renewal or refinancing plans**. Still open for D008.2+ / D003.\n\n- **Q87 (Quantified JIBAR→ZARONIA interest rate impact)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No interest rate benchmark commentary in D008.1. Still open.\n\n- **Q94 (Exploration asset carrying value US$142,244k; D008 AISC exclusion)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: AISC is defined off \"Cost of production\" with World Gold Council adjustments; exploration asset carrying value/depletion is **not** an AISC line item per the definition [D008.1, p. 38]. Confirms exploration asset is excluded from AISC. The carrying value itself is not in this capture.\n\n- **Q95 (Emmerson transaction costs US$11,879k capitalised; APM add-back/exclusion)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: Adjusted EBITDA add-backs are limited to impairment, bargain purchase gain, and unrealised FV gains/losses [D008.1, p. 38]. **Transaction costs are NOT an explicit add-back** — so if capitalised (not in P&L), they are outside Adjusted EBITDA by construction; if any portion hit P&L, it would NOT be added back. Confirms no APM add-back for Emmerson costs. Still need to confirm capitalisation in D006.9 (already noted).\n\n- **Q96 (Reconcile Note 18.2 \"no disposals\" against solar disposal expectation)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No disposal commentary in D008.1. Still open.\n\n- **Q100 (Cash-settled SBP current portion US$43,969k in net debt/liquidity)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: Net debt definition adjusts for \"financial liabilities\" [D008.1, p. 39] — a cash-settled SBP liability could fall under this, but the definition is not explicit. Still needs confirmation in the net debt reconciliation table (not in this capture).\n\n- **Q101 (SBP expense US$57,272k excluded from Adjusted EBITDA/AISC?)**\n  - **Status**: `Resolved (definitional — NOT excluded)`\n  - **Answer & evidence**: Adjusted EBITDA add-backs list does **not** include SBP expense [D008.1, p. 38]. Therefore the US$57,272k SBP charge **remains inside Adjusted EBITDA** and inside AISC (via cost of production). This is a material forecast point — FY27 SBP must be modelled as a real cost, not an add-back.\n\n- **Q108 (STI 137,867 treatment in net debt and Adjusted EBITDA/AISC)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: As per Q81 — unrealised FV gains/losses on derivatives are added back to Adjusted EBITDA [D008.1, p. 38]; STI is not in AISC (defined off cost of production). Net debt treatment still open (see Q89).\n\n- **Q110 (Royalty cash outflow; whether royalties are in AISC)**\n  - **Status**: `Resolved (definitional — royalties ARE in AISC)`\n  - **Answer & evidence**: AISC adjustments explicitly include \"**royalty costs**\" [D008.1, p. 38]. This confirms royalties are inside AISC (consistent with Note 19 add-back of 14,609 and headline 712,119 being before royalties). FY27 royalty forecast should be modelled as an AISC component.\n\n- **Q112 (Rehab fund FV assumption; gain excluded from Adjusted EBITDA?)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: Adjusted EBITDA adds back \"unrealised fair value gains or losses on financial derivatives undertaken in the normal course of business\" [D008.1, p. 38]. A rehabilitation fund FV gain would only be excluded if classified as a derivative in the normal course — the definition does not explicitly cover rehab fund FV movements. Still needs confirmation.\n\n- **Q114 (Whether AISC/electricity cost reflects external PPA only; external electricity cost post solar disposal)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No electricity/PPA commentary in D008.1. Still open.\n\n- **Q26/Q32/Q39/Q53/Q58 (FY27 ETR, tax split, tax losses, Barberton DTL rate)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: D008.1 contains no tax rate or ETR commentary. Still open for D008.2+ / D009.\n\n- **Q30 (FY27 budget gold price deck)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No price deck commentary in D008.1. Still open.\n\n- **Q57 (ZAR/AUD FX rate FY26 close vs FY25)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No FX rate commentary in D008.1. Still open.\n\n- **Q40/Q72 (Solar segment, disposal timing/gain, electricity step-up)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No solar commentary in D008.1. Still open.\n\n- **Q42 (Segment AISC/APMs before or after intra-group management fee allocation)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: D008.1 gives only group-level lower-cost/higher-cost AISC, not segment-level. Still open for D009.\n\n- **Q47 (remainder) (FY27 capex interest-capitalisation; finance cost run-rate)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No finance cost commentary in D008.1. Still open.\n\n- **Q64 (No further FY27 impairment; CGU headroom)**\n  - **Status**: `Partially resolved (definitional)`\n  - **Answer & evidence**: Adjusted EBITDA adds back \"impairment loss or impairment reversals\" [D008.1, p. 38] — confirming impairments are excluded from Adjusted EBITDA. No forward impairment commentary. Still open.\n\n- **Q66/Q68/Q70/Q71/Q75 (Tailings feed, cyanide/prepayments, Tennant capex, MTR/Elikhulu capex, other receivables)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No operational commentary in D008.1. Still open for D009.\n\n- **Q102 (PAR Gold G-share vesting/settlement; I-share FY27 expense)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No G-share/I-share commentary in D008.1. Still open.\n\n- **Q105 (Board-approved commitments 309,076 and open orders 94,580 — which projects)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No commitments commentary in D008.1. Still open.\n\n- **Q107 (PPA with NOA Group cost commitment and start date)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No PPA commentary in D008.1. Still open.\n\n- **Q113 (Intra-group management fee and Evander Solar electricity charge eliminate on consolidation)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No related-party commentary in D008.1. Still open.\n\n- **Q11 (Renewable energy US$5.1m FY26 base; water savings US$1.4m/yr)**\n  - **Status**: `Not resolved here`\n  - **Answer & evidence**: No renewable energy/water savings commentary in D008.1. Still open for D002/D003.\n\n---\n\n### 2. Footnote & Qualification Deep-Dive\n\nNo footnote markers (`[^1]`, `*`) appear in the supplied D008.1 evidence. However, several embedded qualifications in the APM definitions carry material forecast implications:\n\n- **AISC definition — \"excluding non-gold operations\"** [D008.1, p. 38]: The AISC adjustment explicitly excludes sustaining/development capital for non-gold operations. Since gold is 99.7% of revenue [D008.1, p. 38], this is immaterial for FY26 but must be checked in D009/D006.2 for any non-gold (e.g., chrome, PGM by-product) capital that is excluded from AISC but still consumes cash — a potential hidden cash drag not captured in AISC.\n\n- **AISC definition — \"value of by-product revenue is deducted from operating costs\"** [D008.1, p. 39]: Confirms AISC is a **net** cost after by-product credits. For forecasting, any change in by-product (e.g., uranium, silver, chrome) prices/volumes will move AISC inversely. Need to check D009/D006.2 for by-product revenue quantum to model this sensitivity.\n\n- **Adjusted EBITDA — SBP NOT an add-back** [D008.1, p. 38]: As flagged in Q101, the US$57,272k SBP charge sits inside Adjusted EBITDA. This is a **material** qualification: FY27 Adjusted EBITDA will be depressed by the FY27 SBP charge (which depends on share price and vesting). Forecast must model SBP as a real cost, not strip it out.\n\n- **Adjusted EBITDA — \"unrealised fair value gains or losses on financial derivatives undertaken in the normal course of business\"** [D008.1, p. 38]: The qualifier \"in the normal course of business\" is important — it means hedging derivatives are added back, but speculative/non-normal-course derivatives are not. Need to confirm in D008.2+ whether the STI (137,867) and gold trading facilities (58,931) are classified as \"normal course\" derivatives for this purpose.\n\n- **Free cash flow — \"Less capital expenditure funded through permitted indebtedness\"** [D008.1, p. 39]: This is a non-obvious adjustment. FCF is reduced by capex funded through permitted indebtedness — meaning debt-funded capex is treated as a cash outflow in FCF even though it may not hit the cash flow statement as capex. For FY27 forecasting, need to identify which capex (Tennant crusher/mill/filter, MTR expansion, solar) is \"permitted indebtedness\"-funded and therefore deducted in FCF but not in reported capex. This could create a gap between reported capex and FCF-deducted capex.\n\n- **Free cash flow — \"Adjusted for non-cash flow items as determined in accordance with IAS 7\"** [D008.1, p. 39]: This is a catch-all that could include SBP, rehabilitation provisions, etc. Need to check the FCF reconciliation table (not in this capture) to see exactly which non-cash items are adjusted — particularly whether SBP is added back in FCF (even though it's not in Adjusted EBITDA).\n\n- **Levered free cash flow — includes \"Proceeds from borrowings\" and \"Repayment of borrowings\"** [D008.1, p. 39]: This means LFCF is a **post-financing** metric. For FY27, the RCF maturity (30 June 2027) and any refinancing will flow through LFCF. Need to check D008.2+ for the LFCF reconciliation and whether the RCF repayment is modelled.\n\n- **Net debt — \"cash and related hedges\"** [D008.1, p. 39]: The phrase \"related hedges\" is ambiguous — does it mean hedges related to cash (e.g., FX forwards on cash balances) or hedges related to debt (e.g., interest rate swaps)? This affects whether the STI (137,867) is netted against debt. Need to check the net debt reconciliation table.\n\n- **Net debt — \"Financial liabilities\" adjustment** [D008.1, p. 39]: This is a broad catch-all. Could include the cash-settled SBP current portion (43,969), the gold loan facility (25,557), and gold trading facilities (58,931). Need to check the reconciliation table to confirm which financial liabilities are added to net debt.\n\n- **Headline earnings — per SAICA Circular 1/2023** [D008.1, p. 39]: Confirms headline earnings is calculated per SAICA Circular 1/2023, with adjustments for (profit)/loss on disposal of PPE, impairment/reversals, bargain purchase gain, and tax effect. This is the JSE-listed headline EPS metric — relevant for dividend cover and valuation, but not directly for AISC/EBITDA forecasting.\n\n- **\"Portfolio complexity\" — gold 99.7% of revenue** [D008.1, p. 38]: Confirms the group is essentially a pure gold play. For forecasting, this means the gold price deck (Q30) is the dominant revenue driver, and by-product credits are immaterial (<0.3% of revenue).\n\n- **\"Earnings volatility\" — management excludes non-recurring items and quantifies uncontrollable factors** [D008.1, p. 38]: This is a forward-looking statement of intent — management will continue to present APMs that strip out price/FX volatility. For forecasting, this means reported APMs may diverge from IFRS numbers in FY27 if there are further \"non-recurring\" items (e.g., Emmerson integration costs, solar disposal gain).\n\n---\n\n### 3. New Questions to Check in Future Sections\n\n| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |\n| --- | --- | --- | --- | --- | --- |\n| Q118 | High | D008.2 (APM reconciliations, p. 40+) | AISC reconciliation table not in this capture — only lower-cost/higher-cost split given [D008.1, p. 39] | Locate the full AISC reconciliation table (cost of production → AISC) and confirm the line items: royalties, community costs, sustaining capex, development capex, by-product credits. Confirm the US$508,405k total ties to the sum of line items. | Needed to build a bottom-up FY27 AISC forecast and to verify Q2/Q20 by-mine reconciliation. |\n| Q119 | High | D008.2 (APM reconciliations, p. 40+) | Adjusted EBITDA reconciliation table not in this capture — only definition given [D008.1, p. 38] | Locate the Adjusted EBITDA reconciliation and confirm: (a) SBP expense is NOT added back (per definition); (b) STI FV gain IS added back; (c) impairment add-back quantum; (d) FY25 restated EBITDA = 252,678. | Confirms Q36 and Q101; critical for FY27 EBITDA forecast. |\n| Q120 | High | D008.2 (APM reconciliations, p. 40+) | Net debt reconciliation table not in this capture — only definition given [D008.1, p. 39] | Locate the net debt reconciliation and confirm treatment of: gold loan facility (25,557), gold trading facilities (58,931), STI (137,867), cash-settled SBP current portion (43,969), restricted cash (2,612), IFRS 16 lease liabilities. | Resolves Q89, Q100, Q108; critical for FY27 net debt and leverage forecast. |\n| Q121 | High | D008.2 (APM reconciliations, p. 40+) | Free cash flow reconciliation not in this capture — definition includes \"capex funded through permitted indebtedness\" and \"non-cash flow items per IAS 7\" [D008.1, p. 39] | Locate the FCF reconciliation and identify: (a) which capex is \"permitted indebtedness\"-funded (Tennant, MTR, solar?); (b) which non-cash items are adjusted (SBP? rehab?); (c) reconcile FCF to cash flow statement. | Needed for FY27 FCF forecast and dividend cover; the \"permitted indebtedness\" adjustment could create a gap vs reported capex. |\n| Q122 | Medium | D008.2 (APM reconciliations, p. 40+) | Levered free cash flow definition includes borrowings proceeds/repayments [D008.1, p. 39] | Locate the LFCF reconciliation and confirm whether the RCF repayment (30 June 2027 maturity) is modelled; confirm LFCF ties to net debt movement. | Resolves Q86 (RCF refinancing) and Q84 (debt repayments). |\n| Q123 | Medium | D008.2 (APM reconciliations, p. 40+) | Headline earnings reconciliation not in this capture — definition per SAICA Circular 1/2023 [D008.1, p. 39] | Locate the headline earnings reconciliation and confirm: (a) profit/loss on disposal of PPE (solar disposal?); (b) impairment quantum; (c) tax effect; (d) headline EPS denominator (links Q77/Q93/Q117). | Needed for dividend cover and JSE valuation; confirms whether solar disposal gain flows through headline earnings. |\n| Q124 | Medium | D009 (Group production summary) | AISC by-mine reconciliation (Elikhulu US$1,231/oz, MTR US$1,389/oz, BTRP US$1,564/oz) not in D008.1 [D008.1, p. 39] | In D009, locate the by-mine AISC table and reconcile each mine's AISC × ounces to the group US$508,405k. Confirm which mines sit in \"lower-cost\" (US$1,702/oz) vs \"higher-cost\" (US$3,487/oz) buckets. | Resolves Q2/Q20 remainder; needed for FY27 by-mine AISC forecast. |\n| Q125 | Medium | D009 (Group production summary) | Higher-cost operations AISC deteriorated US$2,598→US$3,487/oz on lower ounces (28,146→25,154oz) [D008.1, p. 39] | In D009, identify which mines are in the higher-cost bucket and why AISC rose ~34% YoY. Confirm FY27 outlook for these mines (closure? turnaround?). | The \"~US$3,500/oz tail\" (Q1) is a drag on group AISC; FY27 forecast needs to know if it persists. |\n| Q126 | Medium | D008.2 (APM reconciliations, p. 40+) | AISC definition \"excluding non-gold operations\" [D008.1, p. 38] | Confirm whether any non-gold capital (chrome, PGM, uranium by-product) is excluded from AISC but still consumes cash. Quantify if material. | Potential hidden cash drag not in AISC; affects FCF forecast. |\n| Q127 | Medium | D008.2 (APM reconciliations, p. 40+) | AISC deducts by-product revenue [D008.1, p. 39] | Quantify by-product revenue (silver, chrome, uranium?) deducted from AISC. Confirm FY27 by-product assumption. | By-product credits reduce AISC; a change in by-product prices moves AISC inversely. |\n| Q128 | Low | D008.2 (APM reconciliations, p. 40+) | \"Unrealised FV gains/losses on financial derivatives undertaken in the normal course of business\" add-back [D008.1, p. 38] | Confirm whether STI (137,867) and gold trading facilities (58,931) are classified as \"normal course\" derivatives for the add-back. Confirm FY26 add-back quantum. | Resolves Q81/Q108; affects Adjusted EBITDA forecast. |\n| Q129 | Low | D008.2 (APM reconciliations, p. 40+) | \"Financial liabilities\" adjustment in net debt [D008.1, p. 39] | Confirm which financial liabilities are added to net debt (SBP? gold loan? trading facilities?). | Resolves Q89/Q100; affects net debt forecast. |\n| Q130 | Low | D008.2 (APM reconciliations, p. 40+) | \"Cash and related hedges\" in net debt [D008.1, p. 39] | Confirm whether \"related hedges\" means FX hedges on cash or interest rate swaps on debt; confirm whether STI is netted. | Affects net debt definition and FY27 leverage. |\n| Q131 | Low | D008.2 (APM reconciliations, p. 40+) | Rehab fund FV gain treatment in Adjusted EBITDA [D008.1, p. 38] | Confirm whether rehab fund FV movements are added back (as \"normal course\" derivatives) or left in EBITDA. | Resolves Q112; affects Adjusted EBITDA forecast. |\n| Q132 | Low | D008.2 (APM reconciliations, p. 40+) | \"Non-cash flow items as determined in accordance with IAS 7\" in FCF [D008.1, p. 39] | Identify which non-cash items are adjusted in FCF (SBP? rehab? D&A already added back?). Confirm whether SBP is added back in FCF even though not in Adjusted EBITDA. | Affects FCF forecast; potential inconsistency between EBITDA and FCF treatment of SBP. |\n\n---\n\n### 4. Updated Open Questions Ledger (Copy to App)\n\n```markdown\n# OPEN QUESTIONS LEDGER — after D008.1 (Financial APMs, pp. 38–39)\n\n## Pending: D008.2+ (APM reconciliations, pp. 40–47)\n- Q118: Locate full AISC reconciliation table (cost of production → AISC); confirm line items (royalties, community, sustaining/development capex, by-product credits); tie US$508,405k total. [D008.1, p. 39]\n- Q119: Locate Adjusted EBITDA reconciliation; confirm SBP NOT added back, STI FV gain added back, impairment quantum, FY25 restated 252,678. [D008.1, p. 38]\n- Q120: Locate net debt reconciliation; confirm treatment of gold loan 25,557, gold trading 58,931, STI 137,867, cash-settled SBP 43,969, restricted cash 2,612, IFRS 16 leases. [D008.1, p. 39]\n- Q121: Locate FCF reconciliation; identify \"permitted indebtedness\"-funded capex and IAS 7 non-cash adjustments; reconcile to cash flow statement. [D008.1, p. 39]\n- Q122: Locate LFCF reconciliation; confirm RCF repayment (30 June 2027 maturity) modelled; tie to net debt movement. [D008.1, p. 39]\n- Q123: Locate headline earnings reconciliation; confirm disposal/impairment/tax adjustments and EPS denominator. [D008.1, p. 39]\n- Q126: Confirm non-gold capital excluded from AISC; quantify if material. [D008.1, p. 38]\n- Q127: Quantify by-product revenue deducted from AISC; confirm FY27 assumption. [D008.1, p. 39]\n- Q128: Confirm STI (137,867) and gold trading (58,931) classified as \"normal course\" derivatives for Adjusted EBITDA add-back. [D008.1, p. 38]\n- Q129: Confirm which financial liabilities added to net debt (SBP? gold loan? trading?). [D008.1, p. 39]\n- Q130: Confirm \"cash and related hedges\" meaning; whether STI netted in net debt. [D008.1, p. 39]\n- Q131: Confirm rehab fund FV gain treatment in Adjusted EBITDA. [D008.1, p. 38]\n- Q132: Identify IAS 7 non-cash items adjusted in FCF; confirm SBP treatment in FCF. [D008.1, p. 39]\n- Q34 (remainder): Confirm page 72 APM reconciliation; AISC/APM definitions tie to IFRS. [D006.1, p.19; D006.2, p.22,24; D008.1, p.38–39]\n- Q36 (remainder): Confirm FY25 restated Adjusted EBITDA 252,678 in reconciliation table. [D006.2, p.22,24; D008.1, p.38]\n- Q63 (remainder): Confirm AISC uses production D&A US$60,288k (not total PPE depreciation US$61,733k); identify US$2,179k \"other D&A\". [D006.5, p.28; D006.10, p.35; D008.1, p.38]\n- Q81 (remainder): Confirm STI FV gain US$1,142k excluded from Adjusted EBITDA/AISC; confirm STI treatment in net debt. [D006.7, p.30; D006.10, p.35; D008.1, p.38–39]\n- Q86: Confirm RCF renewal/refinancing plans before 30 June 2027 maturity; FY27 liquidity headroom. [D006.8, p.31; D008.1, p.39]\n- Q87: Quantify JIBAR→ZARONIA interest rate impact; confirm ZARONIA vs JIBAR. [D006.8, pp.31–32; D008.1, p.39]\n- Q89 (remainder): Confirm gold loan 25,557 and gold trading 58,931 included/excluded from net debt. [D006.8, p.33; D008.1, p.39]\n- Q94 (remainder): Confirm exploration asset carrying value US$142,244k; FY27 depletion/impairment; AISC exclusion confirmed. [D006.9, p.34; D008.1, p.38]\n- Q95 (remainder): Confirm Emmerson transaction costs US$11,879k capitalised (not in P&L/Adjusted EBITDA); no APM add-back. [D006.9, p.34; D008.1, p.38]\n- Q96: Reconcile Note 18.2 \"no disposals\" against solar disposal expectation; confirm timing/gain and FY27 electricity step-up. [D006.9, p.34; D008.1, p.39]\n- Q100 (remainder): Confirm cash-settled SBP current portion US$43,969k in net debt/liquidity; FY27 cash settlement. [D006.9, p.33; D006.10, p.35; D008.1, p.39]\n- Q101 (resolved definitional — SBP NOT excluded from Adjusted EBITDA/AISC; model as real cost). [D008.1, p.38]\n- Q102: Confirm PAR Gold G-share vesting/settlement (11,541,455, vest 30 June 2026) in FY27 cash flow; I-share FY27 expense. [D006.9, p.34; D008.1, p.38]\n- Q105: Identify projects for 309,076 board-approved commitments and 94,580 open orders; tie to FY27 capex. [D006.10, p.36; D008.1, p.39]\n- Q107: Quantify PPA with NOA Group (3 July 2025, 10+5 years) cost commitment and start date; FY27 electricity step-up. [D006.10, p.36; D008.1, p.39]\n- Q108 (remainder): Confirm STI 137,867 treatment in net debt; FY27 FV assumption. [D006.10, p.35–36; D008.1, p.38–39]\n- Q110 (resolved definitional — royalties ARE in AISC; model as AISC component). [D008.1, p.38]\n- Q112 (remainder): Confirm rehab fund FV assumption and Adjusted EBITDA treatment. [D006.10, p.35–36; D008.1, p.38]\n- Q114: Confirm AISC/electricity reflects external PPA only; quantify external electricity post solar disposal. [D006.11, p.36; D008.1, p.39]\n- Q26 (remainder): FY27 expected effective tax rate — check D008/D009. [D006.1, p.19–20]\n- Q32 (remainder): FY27 ETR from deferred tax note. [D006.1, p.19–20]\n- Q39 (remainder): FY27 ETR, mining tax vs corporate tax split. [D006.2, p.21,23]\n- Q53: Confirm no remaining tax losses; model FY27 current tax at full statutory rates. [D006.4, p.26]\n- Q58: Confirm Barberton deferred tax rate step 24.00%→28.29%; FY27 stability. [D006.4, p.26]\n- Q30: Confirm FY27 budget gold price deck (base US$4,600→US$4,900/oz; downside US$3,680/oz +10% production cut) and FX assumption. [D006.1, p.19]\n- Q57: Confirm ZAR/AUD FX rate FY26 close vs FY25; FY27 FX sensitivity on DTL. [D006.4, p.26]\n- Q40: Confirm no FY27 solar segment; electricity cost step-up post-disposal; disposal gain/loss; solar capex 7,159 in FY26. [D006.2, p.20–21; D006.6, p.29; D006.10, p.36; D006.11, p.36]\n- Q42: Confirm segment AISC/APMs before or after intra-group management fee allocation. [D006.2, p.21]\n- Q47 (remainder): Check FY27 capex interest-capitalisation; FY27 finance cost run-rate; DMTN coupon rates. [D006.4, p.25; D006.8, pp.31–32]\n- Q50 (remainder): Confirm restricted cash 2,612 nature; finance income 60 FY26 vs nil FY25. [D006.10, p.35; D008.1, p.39]\n- Q64 (remainder): Confirm no further FY27 impairment; CGU headroom (Barberton land claim — Note 23). [D006.5, p.28; D006.11, p.36; D008.1, p.38]\n- Q66: Confirm FY27 tailings/stockpile feed assumption; quantify tailings contribution to FY26 ounces. [D006.6, p.29]\n- Q68: Check cyanide cost per tonne and prepayments 15,914 unwind in FY27; working capital movement. [D006.6, p.29]\n- Q70: Confirm FY27 Tennant capex guidance; crusher/mill/filter/White Devil completion. [D006.6, p.29]\n- Q71: Confirm FY27 MTR and Elikhulu capex guidance; MTR expansion completion. [D006.6, p.29]\n- Q72: Confirm solar projects status at FY26 year-end, disposal timing/gain, FY27 electricity step-up. [D006.6, p.29; D006.10, p.36; D006.11, p.36]\n- Q75: Confirm nature/collectability of other receivables 7,828 (Evander/Barberton); loss allowance adequacy. [D006.6, p.29]\n- Q113: Confirm intra-group management fee and Evander Solar electricity charge eliminate on consolidation. [D006.11, p.36]\n\n## Pending: D009 (Group production summary)\n- Q1: Confirm total group ounces, Sheba+Consort ounces and AISC; reconcile to ~US$3,500/oz tail. [D002, p.2–3]\n- Q2 (remainder): By-mine AISC reconciliation (Elikhulu US$1,231/oz, MTR US$1,389/oz, BTRP US$1,564/oz) to group US$508,405k. [D002, p.3; D008.1, p.39]\n- Q6: Confirm Elikhulu 56,475oz @ US$1,231/oz and MTR 51,927oz @ US$1,389/oz full-year; MTR expansion run-rate FY27. [D002, p.3]\n- Q9: Reconcile White Devil ~3Mt @ 3.8g/t (~350Koz) to 50→100Koz/yr ramp over 5 years. [D002, p.3]\n- Q5 (remainder): Confirm Tennant FY27 capex $; White Devil first blast date and grade ramp. [D002, p.3; D003, p.6]\n- Q7 (remainder): Confirm Evander underground grade >11g/t FY26 sustainability into FY27. [D002, p.3]\n- Q10 (remainder): Confirm Royal Sheba first production timing; not double-counted with BTRP. [D002, p.3; D003, p.6]\n- Q14: Check FY27 MTR production split; H1 FY27 below nameplate, Q2–Q4 step-up to ~60Koz annualised. [D003, p.6]\n- Q15: Check FY27 BTRP guidance; flotation benefit FY27 or FY28. [D003, p.6]\n- Q17: Check Elikhulu FY27 guidance vs FY26 56,475oz; Winkelhaak feed contribution. [D003, p.6]\n- Q18: Check FY27 Tennant grade assumption and White Devil strip ratio/grade. [D003, p.6]\n- Q20 (remainder): Reconcile Elikhulu/MTR/BTRP AISC to group AISC. [D003, p.6; D008.1, p.39]\n- Q21: Confirm Fairview 47,678oz vs table 47,677oz rounding. [D003, p.6–7]\n- Q37: Confirm Tennant FY27 capex guidance; crusher/mill/filter complete or continuing. [D006.2, p.22; D006.6, p.29]\n- Q45: Confirm FY26 Tennant full-year production/grade to anchor FY27 run-rate. [D006.2, p.23]\n- Q46: Confirm July 2026 deliveries against contract liability 8,030 included in FY27 ounces/revenue, not double-counted. [D006.3, p.25; D006.10, p.35]\n- Q48: Reconcile Australia revenue 132,804 to Tennant segment revenue in D006.2. [D006.3, p.25, fn 1]\n- Q65: Extract segment-level D&A from Note 3 to split Tennant/Emmerson vs SA. [D006.5, p.28]\n- Q66: Confirm FY27 tailings/stockpile feed assumption; quantify tailings contribution to FY26 ounces. [D006.6, p.29]\n- Q67: Reconcile inventory charged to production 57,468 to production volumes. [D006.6, p.29]\n- Q70: Confirm FY27 Tennant capex guidance and completion status. [D006.6, p.29]\n- Q71: Confirm FY27 MTR and Elikhulu capex guidance. [D006.6, p.29]\n- Q97: Check D009 for any Emmerson/Tennant Creek ounces, exploration spend or royalty contribution in FY27 guidance; confirm not double-counted with Tennant. [D006.9, p.34]\n- Q124: By-mine AISC table; reconcile each mine to group US$508,405k; confirm lower-cost vs higher-cost bucket membership. [D008.1, p.39]\n- Q125: Identify higher-cost bucket mines; explain AISC rise US$2,598→US$3,487/oz; FY27 outlook. [D008.1, p.39]\n\n## Pending: D005.1 (Primary financial statements)\n- Q52: Extract pre-tax profit from P&L; compute FY26/FY25 ETR; confirm 33.2%/28.5%. [D006.4, p.25]\n- Q24 (remainder): Confirm reciprocal dividend (8,847) cash round-trip on 13.1% treasury; net vs gross; FY27 dividend policy. [D005.1, p.18–19; D006.7, p.30; D006.11, p.36]\n- Q25 (remainder): Extract FY26 SBP P&L charge and FY27 expected charge; explain \"Other expenses\" 85,958 vs 36,484. [D005.1, p.17–18; D006.2, p.21,23]\n- Q31 (remainder): Reconcile cash+STI US$246.2m and debt facilities US$78.9m to cash flow statement and Emmerson/equity issuance. [D006.1, p.19; D006.8, p.31,33; D006.10, p.35]\n- Q44: Reconcile segment net assets 1,017,559 + goodwill 18,438 = 1,035,997 to group total equity. [D006.2, p.22]\n- Q67: Reconcile \"Inventory recognised in cost of production\" 57,468 vs 27,358 (+US$30,110k) to cost of sales in P&L and production volumes. [D006.6, p.29; D006.10, p.35]\n- Q69: Check cash flow statement for VAT/GST receivable 18,107 timing and expected FY27 unwind. [D006.6, p.29; D006.10, p.35]\n- Q77: Confirm FY27 weighted average share count including 102,641,421 Emmerson shares issued 1 July 2026; check EPS and DPS calculations. [D006.7, p.30; D006.9, p.34; D006.11, p.36]\n- Q78: Confirm share buy-back cash cost (~US$1,322k) in cash flow statement financing activities; further buy-backs FY27. [D006.7, p.30]\n- Q79: Confirm working capital movement for other payables +US$29,480k in cash flow statement; reconcile to Note 19 trade and other payables increase 50,354. [D006.7, p.30; D006.10, p.35]\n- Q80: Confirm VAT payable US$5,836k payment timing in cash flow statement; jurisdiction. [D006.7, p.30]\n- Q83 (remainder): Confirm treasury share treatment in EPS and dividend calculations; cancellation/reissue. [D006.7, p.30; D006.8, p.31]\n- Q84: Check cash flow statement financing activities for total debt repayments US$149,311k; reconcile to net debt movement. [D006.8, pp.31–32; D006.10, p.35]\n- Q85: Check P&L net finance costs line; reconcile Note 19 finance costs 17,318 and income (4,706) = net 12,612 vs D006.8 gross 12,666 (4,652 gap). [D006.8, pp.31–32; D006.10, p.35]\n- Q90: Check SOCIE for US$10,877k share premium cancellation reclassification to retained earnings; distributable reserves. [D006.8, p.31]\n- Q92: Confirm 24,917,607 Tennant lender shares (issued FY25) in FY26 weighted average share count; EPS denominator. [D006.8, p.31, fn 1]\n- Q93: Confirm 102,641,421 Emmerson shares excluded from 30 June 2026 issued count and included in FY27 weighted average from 1 July 2026; EPS/DPS denominators. [D006.9, p.34; D006.11, p.36]\n- Q98: Confirm reserve for shares to be issued US$148,218k presented in equity (Note 14) and reconciles to SOCIE; no cash outflow. [D006.9, p.34]\n- Q103: Identify missing ~43,831 FY26 adjustment line in Note 19 \"Adjusted for\" subtotal 143,482. [D006.10, p.35]\n- Q109: Confirm FY27 payables unwind assumption; reconcile Note 19 trade and other payables increase 50,354 to D006.7 29,480. [D006.10, p.35; D006.7, p.30]\n- Q117: Confirm FY27 weighted average share count and EPS/DPS denominators include 102,641,421 Emmerson shares from 1 July 2026. [D006.11, p.36]\n\n## Pending: D002 / D003 (Highlights / CEO statement)\n- Q3: Reconcile dividend implied share counts: 2,436m / 2,333m / 2,420m; issued/weighted count, Emmerson shares, treasury. [D002, p.2; D006.7, p.30; D006.9, p.34]\n- Q4: Confirm FX rate/date for dividend US$ conversion (implied ~16.40–16.46 vs stated avg 16.90). [D002, p.2]\n- Q8: Confirm Soweto Cluster DFS gold price assumption; FID timing Dec 2026; financing plan; capex post-FY27. [D002, p.3]\n- Q11: Confirm renewable energy US$5.1m in FY26 base; water savings US$1.4m/yr incremental FY27+. [D002, p.2–3]\n- Q12: Quantify SBP expense FY26 vs FY25 and FY27 assumption. [D002, p.3; D006.9, p.33]\n- Q16: Locate Tennant FY27 capex $ for fixed crusher, secondary mill, belt filter; capitalised vs expensed. [D003, p.6]\n- Q19: Extract total FY27 group capex guidance and Tennant-specific split (FY26 actual 223,995 captured). [D003, p.6; D006.6, p.29]\n- Q115: Confirm 8,847 reciprocal dividend is intra-group (eliminated), not external cash outflow; treasury-share mechanics. [D006.11, p.36]\n- Q116: Confirm no provision/impairment for Barberton CGU or Evander litigation; contingent liability quantum. [D006.11, p.36]\n```\n\n---\n\n### 5. Baseline Forecast Inputs Captured Here\n\n| Metric | FY26 | FY25 | Source |\n| --- | --- | --- | --- |\n| Group AISC (US$k) | 508,405 | 315,068 | [D008.1, p. 39] |\n| Group gold sold (oz) | 272,373 | 196,927 | [D008.1, p. 39] |\n| Group AISC (US$/oz) | 1,867 | 1,600 | [D008.1, p. 39] |\n| Lower-cost operations AISC (US$k) | 420,686 | 241,957 | [D008.1, p. 39] |\n| Lower-cost gold sold (oz) | 247,219 | 168,781 | [D008.1, p. 39] |\n| Lower-cost AISC (US$/oz) | 1,702 | 1,434 | [D008.1, p. 39] |\n| Higher-cost operations AISC (US$k) | 87,718 | 73,111 | [D008.1, p. 39] |\n| Higher-cost gold sold (oz) | 25,154 | 28,146 | [D008.1, p. 39] |\n| Higher-cost AISC (US$/oz) | 3,487 | 2,598 | [D008.1, p. 39] |\n| Gold % of group revenue | 99.7% | — | [D008.1, p. 38] |\n| AISC guidance range (FY26) | US$1,820–1,870/oz | — | [D002, p. 3] (referenced) |\n| AISC definition basis | World Gold Council; reconciles to IFRS \"Cost of production\" | — | [D008.1, p. 38] |\n| AISC adjustments include | Royalty costs, community costs, sustaining & development capital (excl. non-gold ops); by-product revenue deducted | — | [D008.1, p. 38–39] |\n| Adjusted EBITDA add-backs | Income tax, D&A, net finance costs, impairment/reversals, bargain purchase gain, unrealised FV gains/losses on normal-course derivatives | — | [D008.1, p. 38] |\n| SBP expense in Adjusted EBITDA? | **No add-back — remains inside** | — | [D008.1, p. 38] |\n| Net debt definition | Borrowings from financial institutions + IFRS 16 leases − cash & related hedges; adj. IFRS 9, restricted cash, financial liabilities | — | [D008.1, p. 39] |\n| FCF definition | PAT + tax + D&A + net finance costs + impairment + unrealised FV − WC changes − IAS 7 non-cash − capex funded via permitted indebtedness − tax paid | — | [D008.1, p. 39] |\n| LFCF definition | PAT + tax + D&A + net finance costs + impairment + unrealised FV − finance costs paid − tax paid − NWC − capex + borrowings proceeds − repayments | — | [D008.1, p. 39] |\n| Headline earnings basis | SAICA Circular 1/2023; adj. (profit)/loss on PPE disposal, impairment/reversals, bargain purchase gain, tax effect | — | [D008.1, p. 39] |\n\n---\n\n### 6. Next Section to Capture\n\n**`D008.2` (APM reconciliations, physical PDF pp. 40–47)** — this is the single most useful next section because it should contain the actual reconciliation tables (AISC, Adjusted EBITDA, net debt, FCF, LFCF, headline earnings) that will resolve the highest-priority open items: **Q118, Q119, Q120, Q121, Q122, Q123, Q34 (remainder), Q36 (remainder), Q63 (remainder), Q81 (remainder), Q86, Q87, Q89 (remainder), Q100 (remainder), Q108 (remainder), Q112 (remainder)**. If D008.2 is not available, **`D009` (Group production summary, pp. 48–50)** is the next best — it will resolve **Q2 (remainder), Q20 (remainder), Q124, Q125** and the by-mine AISC reconciliation."
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "C001",
+    "claim": "All 22 Fireworks generations completed covering 38 physical pages once across 24 units; empty initial ledger; 18 validated deltas and 4 rejected deltas; zero repair calls.",
+    "classification": "Historical result / pipeline execution",
+    "primary_evidence": "calls.csv, plan.json, coverage.json, verification.json",
+    "independent_check": "Verified 22 successful call receipts, token and cost logs ($0.0702), coverage mapping of 38 pages, and verification.json summary.",
+    "verdict": "PASS",
+    "consequence": "Structural execution verified; operational pipeline completed cleanly.",
+    "linked_finding": "F001"
+  },
+  {
+    "id": "C002",
+    "claim": "Income/equity pp.9-11, purchased debt p.13, EPS pp.18-19, and segment pp.30-31 deltas failed literal-quote checks, holding back 7 proposed new questions and 2 valid resolutions.",
+    "classification": "System validation check",
+    "primary_evidence": "rejected_ledger_deltas.json, coverage.json, outputs/section_*.validation.json",
+    "independent_check": "Inspected all 4 rejected deltas, verbatim failure strings, unapplied updates, and verified 7 questions were not applied to final_ledger.json.",
+    "verdict": "PASS",
+    "consequence": "Ledger update reliability bottleneck confirmed; 18.2% delta rejection rate.",
+    "linked_finding": "F002"
+  },
+  {
+    "id": "C003",
+    "claim": "p.13 prose correctly computes both portfolio rolls (principal 3,845; other 644; total 4,489) and excludes ordinary Stage 1/2 SICR migration under POCI framework.",
+    "classification": "Derived calculation / accounting policy interpretation",
+    "primary_evidence": "source_pages/NTU_13.txt, section_09.prose.md",
+    "independent_check": "Re-executed 3,975 + 382 - 728 + 383 - 167 = 3,845; 702 + 28 - 116 + 30 = 644; total 4,489; verified POCI note text.",
+    "verdict": "PASS",
+    "consequence": "Prose improvements from refined prompts confirmed, though ledger persistence failed.",
+    "linked_finding": "F003"
+  },
+  {
+    "id": "C004",
+    "claim": "p.22 other-loan (5) and net trade-receivable (390) cells were merged into 5390, yielding false sum 9,879 vs printed 4,884.",
+    "classification": "Model assumption / OCR extraction failure",
+    "primary_evidence": "source_pages/NTU_22.txt, section_15.prose.md",
+    "independent_check": "Verified primary table row: 5 + 390 + 3,845 + 644 = 4,884. Reconstructed model sum: 5,390 + 3,845 + 644 = 9,879 (delta 4,995).",
+    "verdict": "FAIL",
+    "consequence": "Confirmed model/extraction failure; false asset discrepancy flag of R4,995m.",
+    "linked_finding": "F004"
+  },
+  {
+    "id": "C005",
+    "claim": "p.24 model scrambled 4 column headers, assigned -241 to Debt review instead of Unsecured, and inverted economic direction of cumulative gain reduction; FY25 full year historical loss is 259.",
+    "classification": "Table interpretation / arithmetic / accounting direction",
+    "primary_evidence": "source_pages/NTU_24.txt, section_16.prose.md",
+    "independent_check": "Verified column headers (Unsecured, Debt review, Retail, Secured); verified movements (-241 is Unsecured, +69 is Debt review); verified FY25 loss 77 + 182 = 259; verified net carrying value decreases when gain decreases.",
+    "verdict": "FAIL",
+    "consequence": "Confirmed model attribution failure and accounting sign inversion; ground truth established.",
+    "linked_finding": "F005"
+  },
+  {
+    "id": "C006",
+    "claim": "p.25 prose swapped 31 March 2025 and 30 September 2025 closing exchange rate comparatives.",
+    "classification": "Comparative period mapping",
+    "primary_evidence": "source_pages/NTU_25.txt, section_17.prose.md",
+    "independent_check": "Verified closing rate columns: Col 5 is 31 Mar 2025 (USD 18.4 / GBP 23.9), Col 6 is 30 Sep 2025 (USD 17.3 / GBP 23.2). Model wrote USD 18.4 (Sep-25) / 17.3 (Mar-25).",
+    "verdict": "FAIL",
+    "consequence": "Confirmed comparative date inversion by model.",
+    "linked_finding": "F006"
+  },
+  {
+    "id": "C007",
+    "claim": "p.31 model added tax 29 as +29 in core EBITDA bridge alleging false 58 gap, and invented all-positive sum (1,424 vs 597) for footnote components.",
+    "classification": "Accounting bridge arithmetic / footnote interpretation",
+    "primary_evidence": "source_pages/NTU_31.txt, section_20.prose.md",
+    "independent_check": "Verified printed subtotal foots exactly: -63 - 29 + 68 + 597 + 1 + 216 = 790. Verified model wrong sum: -63 + 29 + ... = 848 (848 - 790 = 58). Verified signed footnote reconstruction yields 598 (1 residual vs 597).",
+    "verdict": "FAIL",
+    "consequence": "Confirmed false accounting defect allegation by model.",
+    "linked_finding": "F007"
+  },
+  {
+    "id": "C008",
+    "claim": "Full report contains 32 persistent questions (15 partial, 15 open, 1 contradicted, 1 resolved) with instances of question duplication and scope overlap.",
+    "classification": "Ledger state and semantic evolution",
+    "primary_evidence": "final_ledger.json, calls.csv, section_*.prose.md",
+    "independent_check": "Audited all 32 questions; confirmed Q-8612694a3a674266 contradicted; confirmed Q-08aa5c3f257440ab resolved; identified duplications between Q-e4497d9112cd4e9d, Q-08aa5c3f257440ab, Q-d22e0c2b395a427e, Q-f6689319fb3a49ff, and between Q-4de5fe06ec4d4f67 and Q-86df863491ca4eae.",
+    "verdict": "PASS",
+    "consequence": "Question evolution verified; deduplication filter needed.",
+    "linked_finding": "F008"
+  },
+  {
+    "id": "C009",
+    "claim": "Combined portfolio net cash of R434m less portfolio income of R246m equals carrying decline of R188m, leaving an unexplained R6m residual against statutory cash flow amortisation of R182m.",
+    "classification": "Cash flow and balance sheet reconciliation",
+    "primary_evidence": "NTU 1H26 AFS pp.8, 12, 13; independent_calculations.json",
+    "independent_check": "Executed portfolio cash: (773 + 116) - (382 + 28) - 45 = 434; portfolio income: (383 - 167) + 30 = 246; carrying decline: 434 - 246 = 188; statutory cash flow: 182; residual: 188 - 182 = 6.",
+    "verdict": "PASS",
+    "consequence": "Verified mathematical truth of the R6m statutory cash flow residual.",
+    "linked_finding": "F009"
+  }
+]

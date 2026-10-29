@@ -1,0 +1,44 @@
+{
+  "case": "pan_apm",
+  "version": "new",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question": "What is the definition/basis of the 'lower-cost' vs 'higher-cost' operations grouping used in the AISC table, and does Group AISC reconcile to IFRS cost of production (including by-product revenue credit)?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures (pp. 40-47); D006.2 Note 3 Segment analysis",
+      "evidence_required": "AISC-to-cost-of-production reconciliation table, by-product revenue figure, and definition of lower/higher-cost operation grouping for FY26 and FY25, in US$ and oz.",
+      "closure_condition": "Reconciliation from IFRS cost of production to AISC is shown and the lower/higher-cost grouping basis is stated; or confirmed absent from the report.",
+      "question_id": "Q-27a7e2e6ebb74b4a",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What drove the +16.7% YoY increase in Group AISC per ounce (US$1,600 to US$1,867) despite gold sold rising 38.3% (196,927 to 272,373 oz)?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 APM reconciliations (pp. 40-47); D006.2 Segment analysis; D003 CEO statement",
+      "evidence_required": "Breakdown of AISC movement by cost component (operating costs, royalties, sustaining capex, by-product credits) and by operation, FY26 vs FY25, with units and currency.",
+      "closure_condition": "Cost-component or operation-level bridge explains the unit-cost increase, allowing for mix/ramp-up explanations; or confirmed not disclosed.",
+      "question_id": "Q-9b071fccf19d4465",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What are the quantified net (cash)/debt and net senior debt balances and the IFRS 9, restricted cash and financial liability adjustments excluded from them?",
+      "priority": "low",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 APM reconciliations (pp. 40-47); D005 statement of financial position (p. 17)",
+      "evidence_required": "Net debt / net senior debt reconciliation to borrowings and cash, with each adjustment quantified, at 30 June 2026 and 30 June 2025.",
+      "closure_condition": "Reconciliation table with quantified adjustments is provided; or confirmed absent.",
+      "question_id": "Q-6e3afad2d4bb43a2",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

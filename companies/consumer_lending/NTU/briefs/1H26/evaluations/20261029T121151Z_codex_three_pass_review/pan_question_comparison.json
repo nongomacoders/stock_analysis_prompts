@@ -1,0 +1,42 @@
+{
+  "single": [
+    {
+      "priority": "high",
+      "question": "How are cash cost, AISC, all-in cost and 'AISC excluding third-party buy-in' defined and reconciled to IFRS cost of production for FY26/FY25, and do the Group per-oz figures (1,600/1,867/2,576 US$/oz) tie to the ZAR million cost tables on p.50 at the 16.90 US$/ZAR rate?"
+    },
+    {
+      "priority": "medium",
+      "question": "Are the p.49 outliers genuine or typographical: Elikhulu ZAR all-in cost FY25 68,843 ZAR/kg (vs FY26 853,597); Tennant A$ all-in cost FY25 1,584,835 A$/kg (vs FY26 205,143); Tennant US$ all-in cost FY25 32,041 US$/oz (vs FY26 4,339)?"
+    },
+    {
+      "priority": "medium",
+      "question": "Why does FY25 'Total operations MTR' gold produced (30,806 oz) exceed the MTR operation component (25,043 oz) by 5,763 oz, when the FY26 buy-in row shows 5,763 oz for MTR but FY25 buy-in shows nil?"
+    },
+    {
+      "priority": "medium",
+      "question": "Is Tennant's revenue (A$195.3m FY26; A$5.9m FY25) excluded from the Group ZAR revenue total of 17,249.1 ZARm, and how is the Australian operation consolidated into Group revenue and Adjusted EBITDA (US$663.1m)?"
+    }
+  ],
+  "why": [
+    {
+      "priority": "medium",
+      "question": "Reconcile FY25 Group gold produced: printed total 196,527 oz vs sum of components (93,724 underground + 2,654 surface + 98,636 tailings + 1,081 buy-in + 1,513 surface feedstock = 197,608 oz). Is the 1,081 oz buy-in already embedded in another column, or is the total misstated?"
+    },
+    {
+      "priority": "medium",
+      "question": "Explain FY25 Evander underground gold produced: 26,748 oz in the underground column vs 27,829 oz in the Evander Mines total column (difference 1,081 oz = FY25 buy-in). Which figure is correct and why does the total exceed the underground component?"
+    },
+    {
+      "priority": "medium",
+      "question": "Explain FY25 Elikhulu all-in cost ZAR/kg printed as 68,843 vs FY26 853,597 — is this a typo, a units error, or a genuine one-off? What is the correct FY25 figure?"
+    },
+    {
+      "priority": "low",
+      "question": "Explain Tennant A$ all-in cost swing from 1,584,835 A$/kg (FY25) to 205,143 A$/kg (FY26) — is the FY25 figure anomalous (tiny base, ramp-up) or a genuine cost collapse? What drove the change?"
+    },
+    {
+      "priority": "high",
+      "question": "Provide APM definitions used in D009: AISC, all-in cost, AISC excluding third-party buy-in feedstock, and Adjusted EBITDA — including which cost lines (royalties, sustaining capex, expansion capex, G&A, exploration) are included and how buy-in feedstock is treated."
+    }
+  ]
+}

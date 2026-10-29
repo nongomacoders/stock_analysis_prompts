@@ -20,6 +20,7 @@ import pypdfium2 as pdfium
 from companies import find_company_dir
 from section_capture.db import parse_valuation_summary
 from section_capture.openrouter import (
+    STAGE_MAX_TOKENS, STAGE_REASONING_EFFORT, STAGE_TIMEOUT,
     estimate_cost,
     get_openrouter_api_key,
     get_openrouter_model,
@@ -74,8 +75,8 @@ def main():
     parser = argparse.ArgumentParser(description="Test DeepSeek on Stage 2 Institutional Valuation with full PDF ingestion.")
     parser.add_argument("--ticker", default="APF", help="Company ticker symbol (default: APF)")
     parser.add_argument("--model", default=None, help="OpenRouter model ID override (defaults to configured model)")
-    parser.add_argument("--timeout", type=int, default=360, help="HTTP timeout in seconds (default: 360)")
-    parser.add_argument("--max-tokens", type=int, default=16384, help="Max completion tokens (default: 16384)")
+    parser.add_argument("--timeout", type=int, default=STAGE_TIMEOUT, help="HTTP timeout in seconds (default: 900)")
+    parser.add_argument("--max-tokens", type=int, default=STAGE_MAX_TOKENS, help="Combined reasoning and answer token ceiling (default: 65536)")
     args = parser.parse_args()
 
     api_key = get_openrouter_api_key()
@@ -157,6 +158,7 @@ def main():
             timeout=args.timeout,
             return_details=True,
             max_tokens=args.max_tokens,
+            reasoning_effort=STAGE_REASONING_EFFORT,
         )
         elapsed = time.time() - start_time
     except Exception as exc:

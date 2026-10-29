@@ -1,0 +1,114 @@
+[
+  {
+    "ticker": "NTU",
+    "page": 9,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 2681,
+    "after_chars": 2292
+  },
+  {
+    "ticker": "NTU",
+    "page": 13,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 4824,
+    "after_chars": 4172
+  },
+  {
+    "ticker": "NTU",
+    "page": 18,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 2193,
+    "after_chars": 1814
+  },
+  {
+    "ticker": "NTU",
+    "page": 22,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 3254,
+    "after_chars": 2736
+  },
+  {
+    "ticker": "NTU",
+    "page": 24,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 2995,
+    "after_chars": 2444
+  },
+  {
+    "ticker": "NTU",
+    "page": 25,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 4534,
+    "after_chars": 4112
+  },
+  {
+    "ticker": "NTU",
+    "page": 30,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 3184,
+    "after_chars": 2411
+  },
+  {
+    "ticker": "NTU",
+    "page": 31,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "before_chars": 1692,
+    "after_chars": 1477
+  },
+  {
+    "ticker": "PAN",
+    "page": 4,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 8816,
+    "after_chars": 7856
+  },
+  {
+    "ticker": "PAN",
+    "page": 38,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 9289,
+    "after_chars": 9289
+  },
+  {
+    "ticker": "PAN",
+    "page": 39,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 7537,
+    "after_chars": 7537
+  },
+  {
+    "ticker": "PAN",
+    "page": 48,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 5857,
+    "after_chars": 5473
+  },
+  {
+    "ticker": "PAN",
+    "page": 49,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 7207,
+    "after_chars": 5697
+  },
+  {
+    "ticker": "PAN",
+    "page": 50,
+    "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "before_chars": 4632,
+    "after_chars": 4374
+  }
+]

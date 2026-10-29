@@ -1,0 +1,42 @@
+
+===== PHYSICAL PAGE 8 =====
+Condensed consolidated statement of financial position
+at 31 March 2026
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited Audited
+Notes Rm Rm Rm
+Assets
+Cash and cash equivalents 112 118 106 
+Other investments 81 237 41 
+Tax receivables – 3 5 
+Trade and other receivables 497 556 471 
+Assets classified as held for sale 4 2 4 
+Purchased book debts 1 4 489 4 353 4 677 
+Other loans receivables 5 2 4 
+Equity accounted investments 87 109 98 
+Intangible assets 67 82 63 
+Property and equipment 418 495 450 
+Goodwill 511 511 511 
+Deferred tax assets 173 193 174 
+Total assets 6 444 6 661 6 604 
+Liabilities
+Bank overdrafts 2 273 457 364 
+Tax payables 5 – – 
+Trade and other payables 221 266 482 
+Provisions – 7 – 
+Liabilities directly associated with assets held for sale 6 1 4 
+Derivative liabilities 9 – –
+Interest-bearing debt 2 3 743 3 407 3 443 
+Senior debt 3 547 3 182 3 293 
+Subordinated debt 196 225 150 
+Lease liabilities 345 395 364 
+Deferred tax liabilities 513 577 551 
+Total liabilities 5 115 5 110 5 208 
+Equity
+Ordinary share capital 3 5 410 5 414 5 414 
+Other reserves 30 10 30 
+Retained loss (4 111) (3 873) (4 048)
+Total equity 1 329 1 551 1 396 
+Total equity and liabilities 6 444 6 661 6 604 
+Condensed consolidated financial statements for the half year ended 31 March 2026 6

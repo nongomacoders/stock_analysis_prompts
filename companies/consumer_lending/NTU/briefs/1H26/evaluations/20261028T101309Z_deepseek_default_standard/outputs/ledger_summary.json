@@ -1,0 +1,12 @@
+{
+  "question_count": 12,
+  "statuses": {
+    "resolved": 2,
+    "partial": 4,
+    "open": 6
+  },
+  "validation_attempts": {
+    "rejected": 1,
+    "valid": 9
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "timestamp_utc": "2026-10-27T18:57:32.455872+02:00",
+  "user_authorized": true,
+  "new_rules": [
+    {
+      "rule_code": "ALL-CASH-ROLLFORWARD-CONSISTENCY",
+      "sector": "all",
+      "stage": "all",
+      "title": "Forecast Cash and Financing Must Reconcile",
+      "rule_text": "For every forecast period, reconcile opening cash plus operating, investing and financing cash flows and separately identified FX or scope changes to closing cash on the forecast balance sheet. Reconcile new borrowing, repayments and equity issuance to debt balances, equity and dilution. State the cash definition and rounding tolerance; bridge restricted cash, held-for-sale cash and overdrafts included in cash equivalents explicitly, without double counting. An unresolved material residual invalidates the forecast and dependent valuation; missing inputs are NOT VERIFIED, never PASS. Example: opening 100 + operating 20 - capex 10 + financing 5 = closing 115 passes; opening 100 plus net change -815 cannot produce closing 95 without an explicit 810 reconciling inflow.",
+      "origin_ticker": "NTU"
+    },
+    {
+      "rule_code": "ALL-SENSITIVITY-REPRODUCIBILITY",
+      "sector": "all",
+      "stage": "all",
+      "title": "Sensitivity Cells Must Reproduce the Valuation",
+      "rule_text": "Recalculate every sensitivity cell using the same documented base valuation formula, changing only the named inputs. The central case MUST reproduce the published base target within a declared rounding tolerance. Preserve debt, share count, cash-flow basis, valuation bridges and all discounts unless explicitly varied. Show the formula and full transformation for any additional haircut; unexplained cells invalidate the sensitivity conclusions. Nonlinear models are allowed when their actual formulas are used; do not impose constant derivatives from another method. Missing formulas or inputs are NOT VERIFIED. Example: with 3,845 million of PBD assets, a 0.05 multiple change and one 25% discount over 780.7 million shares imply a 0.18469 ZAR/share change; 0.07 without a disclosed transformation fails. This supplements SOTP arithmetic and prohibits double counting adjustments.",
+      "origin_ticker": "NTU"
+    },
+    {
+      "rule_code": "CONSUMER-LENDING-POCI-GAIN-VS-ECL-RESERVE",
+      "sector": "consumer_lending",
+      "stage": "all",
+      "title": "POCI Cumulative Gains, Loss Allowances and Portfolio Scope",
+      "rule_text": "For purchased or originated credit-impaired (POCI) principal portfolios, identify the acquisition baseline and reconcile gross carrying amount, signed cumulative changes in lifetime expected credit losses, and net carrying amount using the original notes. A favourable cumulative impairment gain is NOT a conventional loss-coverage reserve: do not divide it by gross carrying amount and call the result loss coverage or describe its decline as a coverage collapse. Preserve reported labels such as ECL allowance while explaining their economic sign. Reconcile opening balance, gains or losses on new and historical portfolios, and closing balance. Separate amortised-cost POCI principal portfolios from other purchased-book-debt assets measured at FVTPL; do not apply one ECL regime to both. Example: gross 3,414 plus cumulative gain 431 = net 3,845; 431/3,414 is not conventional loss coverage. A rolling 12-month modelling disclosure warrants a lifetime/tail-methodology check, not an unsupported conclusion about the amount or direction of misstatement. Missing methodology is NOT VERIFIED.",
+      "origin_ticker": "NTU"
+    },
+    {
+      "rule_code": "ALL-EQUITY-NAV-VS-CONTRIBUTED-CAPITAL",
+      "sector": "all",
+      "stage": "all",
+      "title": "Ordinary Shareholder NAV versus Contributed Capital",
+      "rule_text": "Calculate statutory ordinary book value/NAV per share from equity attributable to parent ordinary shareholders, excluding non-controlling interests and preference or other non-ordinary claims, divided by ordinary shares outstanding net of treasury shares at the same measurement date. Reconcile retained earnings or accumulated losses and reserves; never label contributed share capital alone as NAV. Use date-matched closing shares rather than silently substituting an earnings weighted-average denominator. Adjusted or tangible NAV is permitted only when clearly labelled and reconciled to statutory ordinary equity, with every adjustment disclosed. NAV is not automatically market fair value. Example: parent ordinary equity 1,329 million / 780.651033 million net shares = approximately 1.70 ZAR/share; share capital 5,410 million / those shares is not book NAV.",
+      "origin_ticker": "NTU"
+    }
+  ],
+  "before_affected": [],
+  "after_affected": [
+    {
+      "id": 31301,
+      "rule_code": "ALL-CASH-ROLLFORWARD-CONSISTENCY",
+      "sector": "all",
+      "stage": "all",
+      "title": "Forecast Cash and Financing Must Reconcile",
+      "rule_text": "For every forecast period, reconcile opening cash plus operating, investing and financing cash flows and separately identified FX or scope changes to closing cash on the forecast balance sheet. Reconcile new borrowing, repayments and equity issuance to debt balances, equity and dilution. State the cash definition and rounding tolerance; bridge restricted cash, held-for-sale cash and overdrafts included in cash equivalents explicitly, without double counting. An unresolved material residual invalidates the forecast and dependent valuation; missing inputs are NOT VERIFIED, never PASS. Example: opening 100 + operating 20 - capex 10 + financing 5 = closing 115 passes; opening 100 plus net change -815 cannot produce closing 95 without an explicit 810 reconciling inflow.",
+      "origin_ticker": "NTU",
+      "enabled": 1,
+      "created_at": "2026-10-27T18:57:32.455872+02:00",
+      "updated_at": "2026-10-27T18:57:32.455872+02:00"
+    },
+    {
+      "id": 31302,
+      "rule_code": "ALL-SENSITIVITY-REPRODUCIBILITY",
+      "sector": "all",
+      "stage": "all",
+      "title": "Sensitivity Cells Must Reproduce the Valuation",
+      "rule_text": "Recalculate every sensitivity cell using the same documented base valuation formula, changing only the named inputs. The central case MUST reproduce the published base target within a declared rounding tolerance. Preserve debt, share count, cash-flow basis, valuation bridges and all discounts unless explicitly varied. Show the formula and full transformation for any additional haircut; unexplained cells invalidate the sensitivity conclusions. Nonlinear models are allowed when their actual formulas are used; do not impose constant derivatives from another method. Missing formulas or inputs are NOT VERIFIED. Example: with 3,845 million of PBD assets, a 0.05 multiple change and one 25% discount over 780.7 million shares imply a 0.18469 ZAR/share change; 0.07 without a disclosed transformation fails. This supplements SOTP arithmetic and prohibits double counting adjustments.",
+      "origin_ticker": "NTU",
+      "enabled": 1,
+      "created_at": "2026-10-27T18:57:32.455872+02:00",
+      "updated_at": "2026-10-27T18:57:32.455872+02:00"
+    },
+    {
+      "id": 31303,
+      "rule_code": "CONSUMER-LENDING-POCI-GAIN-VS-ECL-RESERVE",
+      "sector": "consumer_lending",
+      "stage": "all",
+      "title": "POCI Cumulative Gains, Loss Allowances and Portfolio Scope",
+      "rule_text": "For purchased or originated credit-impaired (POCI) principal portfolios, identify the acquisition baseline and reconcile gross carrying amount, signed cumulative changes in lifetime expected credit losses, and net carrying amount using the original notes. A favourable cumulative impairment gain is NOT a conventional loss-coverage reserve: do not divide it by gross carrying amount and call the result loss coverage or describe its decline as a coverage collapse. Preserve reported labels such as ECL allowance while explaining their economic sign. Reconcile opening balance, gains or losses on new and historical portfolios, and closing balance. Separate amortised-cost POCI principal portfolios from other purchased-book-debt assets measured at FVTPL; do not apply one ECL regime to both. Example: gross 3,414 plus cumulative gain 431 = net 3,845; 431/3,414 is not conventional loss coverage. A rolling 12-month modelling disclosure warrants a lifetime/tail-methodology check, not an unsupported conclusion about the amount or direction of misstatement. Missing methodology is NOT VERIFIED.",
+      "origin_ticker": "NTU",
+      "enabled": 1,
+      "created_at": "2026-10-27T18:57:32.455872+02:00",
+      "updated_at": "2026-10-27T18:57:32.455872+02:00"
+    },
+    {
+      "id": 31304,
+      "rule_code": "ALL-EQUITY-NAV-VS-CONTRIBUTED-CAPITAL",
+      "sector": "all",
+      "stage": "all",
+      "title": "Ordinary Shareholder NAV versus Contributed Capital",
+      "rule_text": "Calculate statutory ordinary book value/NAV per share from equity attributable to parent ordinary shareholders, excluding non-controlling interests and preference or other non-ordinary claims, divided by ordinary shares outstanding net of treasury shares at the same measurement date. Reconcile retained earnings or accumulated losses and reserves; never label contributed share capital alone as NAV. Use date-matched closing shares rather than silently substituting an earnings weighted-average denominator. Adjusted or tangible NAV is permitted only when clearly labelled and reconciled to statutory ordinary equity, with every adjustment disclosed. NAV is not automatically market fair value. Example: parent ordinary equity 1,329 million / 780.651033 million net shares = approximately 1.70 ZAR/share; share capital 5,410 million / those shares is not book NAV.",
+      "origin_ticker": "NTU",
+      "enabled": 1,
+      "created_at": "2026-10-27T18:57:32.455872+02:00",
+      "updated_at": "2026-10-27T18:57:32.455872+02:00"
+    }
+  ],
+  "enabled_before": 32,
+  "enabled_after": 36,
+  "unrelated_rules_unchanged": true,
+  "enforcement": "SQLite registry and default seeds injected into prompts; no new numeric detector implemented",
+  "validation": {
+    "targeted_tests": 6,
+    "targeted_exit_code": 0,
+    "full_suite_tests": 145,
+    "full_suite_exit_code": 0,
+    "sqlite_default_parity_verified": true,
+    "application_numeric_detectors_added": false,
+    "cleanup_status": "Combined cleanup command rejected: sandbox approval disabled; task-created temporary files remain."
+  }
+}

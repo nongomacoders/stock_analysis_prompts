@@ -1,0 +1,6 @@
+{
+  "generation_exit_code": 1,
+  "reason": "HTTP429,stop-on-error plan",
+  "review_exit_code": 0,
+  "paid_retries": 0
+}

@@ -892,7 +892,7 @@ class SectionComparisonDialog(QDialog):
                 self.status_label.setText(f"Doc {doc_idx+1}/{len(ordered_docs)} ({doc_name}): {title} (p.{start_p}-p.{end_p})...")
                 QApplication.processEvents()
                 try:
-                    auto_capture_section(
+                    saved = auto_capture_section(
                         source=doc_source,
                         title=title,
                         start_page=start_p,
@@ -900,7 +900,7 @@ class SectionComparisonDialog(QDialog):
                         sector=self.sector,
                         output_root=self.db_path,
                     )
-                    total_extracted += 1
+                    total_extracted += (getattr(saved, 'manifest', {}) or {}).get('capture_coverage', {}).get('chunk_count', 1)
                 except Exception as exc:
                     errors.append(f"{doc_name} - {title}: {exc}")
 
@@ -1159,6 +1159,10 @@ class SavedSectionsDialog(QDialog):
             idx = self.section_combo.currentIndex()
             self.sections[idx] = updated
             self.section_combo.setItemText(idx, self._combo_label(updated))
+            if updated.manifest.get('review', {}).get('ledger_validation') == 'rejected':
+                self.status_label.setText('Response preserved; ledger update rejected: '
+                                          + '; '.join(updated.manifest['review']['ledger_errors']))
+                return
             self.response_edit.clear()
             self.status_label.setText(
                 f"✓ Cleared LLM response for {updated.section_number:02d}-{updated.section_id}. Ready to resubmit."

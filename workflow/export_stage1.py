@@ -18,6 +18,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from section_capture.valuation_policy import valuation_gate_prompt
+
 from companies import find_company_dir
 from companies.sectors import get_sector_config
 from section_capture.db import KNOWN_COMPANIES, format_sector_guardrails_block
@@ -337,6 +339,11 @@ def build_stage1_prompt_content(
         md_lines.append("")
         _render_sections(sections)
 
+    md_lines.append('## Stage 2 handoff: unresolved material dependencies')
+    md_lines.append('List material FAIL/NOT VERIFIED claims with source pages, calculations and evidence needed. '
+                    'Carry them forward explicitly; do not declare a 99% confidence baseline. '
+                    'Stage 2 must withhold valuation while a material dependency remains unresolved. '
+                    'Do not produce a target or recommendation in Stage 1.')
     return "\n".join(md_lines)
 
 

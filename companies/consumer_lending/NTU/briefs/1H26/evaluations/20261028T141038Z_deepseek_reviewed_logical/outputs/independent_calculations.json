@@ -1,0 +1,19 @@
+{
+  "source_basis": "Original identical-hash NTU PDF,physical pp.8,9,12,13,16,22,24,31; source-transcribed inputs independently checked in prior Codex audit.",
+  "calculations": {
+    "poci_net": 3845,
+    "principal_close": 3845,
+    "other_close": 644,
+    "portfolio_net_cash": 434,
+    "portfolio_income": 246,
+    "portfolio_decline": 188,
+    "residual_to_statutory": 6,
+    "nonfinancial_receivables": 107,
+    "conventional_etr": 31.521739130434785,
+    "fy25_historical_book_loss": 259,
+    "amortisation": 598,
+    "nav": 1.702425211547757,
+    "cash_close": 113
+  },
+  "limits": "Historical arithmetic only; no automatic validation of forecast assumptions or price."
+}

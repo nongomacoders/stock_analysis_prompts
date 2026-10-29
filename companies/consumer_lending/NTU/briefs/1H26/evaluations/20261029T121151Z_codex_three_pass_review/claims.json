@@ -1,0 +1,102 @@
+[
+  {
+    "id": "C001",
+    "origin": "Gemini findings.json F001",
+    "claim": "The intermediate calculation worksheet generates accurate signed absolute and percentage movements (-130 Rm / -3.27% net carrying, -167 Rm / -27.93% cumulative gain, -352 Rm / -11.93% unsecured, +227 Rm / +26.24% debt review), correctly distinguishing meaningful percentage bases from unit-rate or percentage-point changes.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "NTU signed movements/percentages reproduce; useful clarity/precision, not standalone proof of workflow superiority.",
+    "verdict": "PASS",
+    "assessment": "supported"
+  },
+  {
+    "id": "C002",
+    "origin": "Gemini findings.json F002",
+    "claim": "Both single-pass and three-pass final outputs proposed status 'resolved' for question Q-08aa5c3f257440ab despite failing its explicit closure condition requiring reconciliation to carrying value. The three-pass output passed syntax validation and accepted the premature closure into memory, whereas single-pass was rejected due to a short quote.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Both raw NTU deltas resolve original question without completing total4489scope; staged literal-valid update accepted only in isolated memory. Do not strengthen original closure into a universal mandatory SoFP reconciliation.",
+    "verdict": "PASS",
+    "assessment": "supported"
+  },
+  {
+    "id": "C003",
+    "origin": "Gemini findings.json F003",
+    "claim": "The dictionary pass restricted PBD to 'principal book only' (R3,845m), treating 'Other financial assets' (R644m) as external to PBD despite Note 6.1 explicitly stating other financial assets are recognized within purchased book debts. This narrow framing propagated uncorrected across movement and final passes.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Staged meaning/movement/final repeat PBD-only3845 despite acknowledging fair-value assets. Fresh single explicitly identifies mixed measurement and644withinPBD; Gemini audit incorrectly extends same scope exclusion to both arms. Copying suggests propagation but causation versus repeated model bias not isolated.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  },
+  {
+    "id": "C004",
+    "origin": "Gemini findings.json F004",
+    "claim": "Ledger validator rejected single-pass delta due to literal quote length ('3 414' < 8 characters) rather than factual hallucination. Syntax validation success in three-pass gave a false impression of analytical superiority while admitting an invalid semantic closure.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Literal5char3 414 fails minimum8; atomic rejection confirmed. This does not make rejected analysis financially valid. Actual function is question_ledger.apply_delta; proposed ledger_validator.py does not exist.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  },
+  {
+    "id": "C005",
+    "origin": "Gemini findings.json F005",
+    "claim": "The dictionary pass generated technically incorrect accounting definitions, asserting that capex directly reduces profit/assets and treating revenue/EBITDA as cash inflows. It also provided provisional AISC definitions without source grounding.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "PAN meaning conflates capex/profit and revenue/EBITDA/cash; provisional AISC definitions lack supplied definitions. Final does not repeat all generic errors, so final-stage propagation not established merely from interim error.",
+    "verdict": "PASS",
+    "assessment": "supported"
+  },
+  {
+    "id": "C006",
+    "origin": "Gemini findings.json F006",
+    "claim": "The movement pass perpetuated ambiguity around the FY25 Group production sum (197,608 vs 196,527 oz) instead of demonstrating that disjoint rows sum exactly to 196,527 oz. It also asserted 71,997 = 65,233 + 2,428 + 4,337 without noting the 1 oz primary rounding discrepancy (71,998).",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "PAN worksheet and final three-pass retain197608vs196527overlap; one-oz identity71997vs71998 is false exact equality. Rounding plausible, not proven cause. Single identifies1081scope more directly; its own other arithmetic errors remain.",
+    "verdict": "PASS",
+    "assessment": "supported"
+  },
+  {
+    "id": "C007",
+    "origin": "Gemini findings.json F007",
+    "claim": "PAN three-pass why request failed with HTTP 429 Too Many Requests on first experiment run, requiring a preserved continuation. Continuation completed on first attempt without backoff wait.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "429and successful continuation confirmed;3times calls means more requests, not measured3times failure probability or demonstrated cause of429. Failed billing remains unknown.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  },
+  {
+    "id": "C008",
+    "origin": "Gemini findings.json F008",
+    "claim": "PAN FY26 report physical p.49 contains a 10,000 oz primary typographical error: Barberton total printed as 94,929 oz (components 71,997 + 12,932 = 84,929 oz), causing the sum of total-operation columns to equal 282,310 oz vs Group total 272,310 oz. Neither model arm detected this inconsistency.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Original PAN49 contains confirmed10000oz subtotal inconsistency,missed by both outputs.84929 restores additive agreement conditionally; no definitive issuer typo/correct replacement or42.35m revenue overstatement established.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  },
+  {
+    "id": "C009",
+    "origin": "Gemini findings.json F009",
+    "claim": "Both single-pass and three-pass models correctly detected the 5,763 oz mismatch in FY25 MTR tailings production (25,043 vs 30,806 oz) and framed high-quality verification questions connecting it to third-party buy-in feedstock.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Both PAN prose mentionMTR5763gap. Only single has a dedicated MTR ledger question,prioritymedium; staged final five authoritative questions omit it. Claim both preserve targeted high-priority MTR questions is false.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  },
+  {
+    "id": "C010",
+    "origin": "Gemini findings.json F010",
+    "claim": "Three-pass workflow incurs 2.24x to 2.39x higher cost and 1.62x to 1.80x longer latency without improving analytical robustness. It introduces error propagation across passes and provides no protection against premature question closure or source typographical errors.",
+    "classification": "Evaluator assessment of historical source and experiment",
+    "primary_evidence": "OriginalNTU13,21–23;PAN48–50;exact model files/receipts as specified",
+    "independent_check": "Observed cost/request-duration ratios confirmed and adoption not justified. Two unreplicated captures neither establish universal failure nor refute staging. Longer summed durations are not full wall latency. Both correct sign is not isolated proof of prior prompt effectiveness.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported"
+  }
+]

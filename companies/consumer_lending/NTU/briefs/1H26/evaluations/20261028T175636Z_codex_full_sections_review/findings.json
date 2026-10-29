@@ -1,0 +1,56 @@
+[
+  {
+    "id": "F001",
+    "gemini": "F001/C001",
+    "verdict": "SUPPORTED WITH SCOPE LIMIT",
+    "finding": "22 completions,18 accepted/4 rejected,7 unapplied new questions,32 persistent questions andUSD0.0702026388 verified.38 captured pages include2 navigation units without analyses. Cost/time comparisons to an older24-call run are not equivalent section benchmarks."
+  },
+  {
+    "id": "F002",
+    "gemini": "F002/C002",
+    "verdict": "PARTLY SUPPORTED;CAUSE/REMEDY CORRECTION",
+    "finding": "Atomic rejection/blocking is real. Existing validator already collapses spaces,tabs,newlines.9 failed evidence strings across4 deltas remain nonliteral even after diagnostic pipe removal. Long reconstructed wrapped labels/bold/prose/row formatting differ. Global stripping is not a demonstrated fix and can erase cell boundaries. No matcher relaxation applied."
+  },
+  {
+    "id": "F003",
+    "gemini": "F002/F003 valid resolutions",
+    "verdict": "NOT VERIFIED AS COMPLETE CLOSURES",
+    "finding": "The proposed p13 resolved answer explicitly says SoFP p8 tie-out pending,while its original closure condition requires SoFP reconciliation. Correct portfolio math alone does not prove full closure. EPS question additionally requires qualifying core exclusions/policy explanation;not independently established here. These were never persisted,not accepted then reverted. No automatic partial acceptance justified from the current evidence."
+  },
+  {
+    "id": "F004",
+    "gemini": "F003/C003",
+    "verdict": "SUPPORTED WITHIN EXAMPLE",
+    "finding": "p13 rolls and ordinary POCI Stage1/2 caveat are accurate in prose. Does not establish universal improvement or accepted ledger closure."
+  },
+  {
+    "id": "F005",
+    "gemini": "F004–F007/C004–C007",
+    "verdict": "SUPPORTED;TERMINOLOGY CORRECTION",
+    "finding": "Primary p22 confirms5 and390 are separate and total4884,not model9879. p24 Unsecured/Debt review/Retail/Secured headers and gain direction;p25 FX periods;p31 negative tax and invented positive operators errors confirmed. This is native PDF extraction/formatting and model interpretation;no OCR engine ran. A prose component list is not an all-positive identity;598 bridge remains conditional with1 residual."
+  },
+  {
+    "id": "F006",
+    "gemini": "F008/C008",
+    "verdict": "PARTLY SUPPORTED",
+    "finding": "Question overlap/recreation is present,but PBD classification-only and complete roll-forward/driver questions have different closure scopes. Resolving one does not resolve the other. Semantic embedding/keyword auto-merges are not a demonstrated minimal remedy;show known relevant IDs and review scope first. Overdraft correction is recorded in saved ledger;primary14–15 not newly viewed this turn."
+  },
+  {
+    "id": "F007",
+    "gemini": "F009/C009",
+    "verdict": "ARITHMETIC SUPPORTED;LABEL CORRECTED",
+    "finding": "434 cash−246 income=188 carrying decline;188−182=6 remains unexplained. p12 calls182 Purchased book debts under Decrease in operating assets,not an amortisation subtotal. No issuer cause,rounding or FX explanation established."
+  },
+  {
+    "id": "F008",
+    "gemini": "Prior-run comparison",
+    "verdict": "CONTRADICTED/NOT COMPARABLE",
+    "finding": "Old full chronological p25 output already includes currency risk;Gemini confused it with an earlier pilot omission. OldUSD0.24456 includes22 sections+Stage1+failedStage2,so it is not Total Section Cost. Provider/reasoning/seeds differ too. The70%-style cost-saving statement is not a controlled prompt-efficiency finding;old validator-logic difference not established."
+  },
+  {
+    "id": "F009",
+    "gemini": "Recommendations",
+    "verdict": "RECOMMEND MINIMAL OFFLINE EXTRACTION WORK",
+    "finding": "Preserve each physical numeric column and its wrapped header,keep prose as prose,then use short exact quote anchors. Test native extraction on NTU22/24/25 plus PAN complex tables before paid sample. Defer global normalization,partial-delta acceptance,new accounting guardrails and embedding deduplication;not implemented in this review."
+  }
+]

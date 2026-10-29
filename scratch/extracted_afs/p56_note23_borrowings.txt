@@ -1,0 +1,53 @@
+23. Loans payable
+Loans payable are accounted for as financial liabilities in accordance with the accounting policy disclosed in note 29.
+Group Company
+2026 2025 2026 2025
+R’000 R’000 R’000 R’000
+Non-current loans
+Absa Bank 642 090 722 090 642 090 722 090
+Standard Bank 846 812 942 045 – –
+FNB Bank 15 757 – – –
+Investec Bank 5 283 14 600 – –
+1 509 942 1 678 735 642 090 722 090
+Current loans
+Absa Bank 80 000 80 000 80 000 80 000
+Standard Bank 139 000 130 000 – –
+FNB Bank 7 759 – – –
+Investec Bank 8 576 6 889 – –
+Supply Chain Finance 239 128 308 923 – –
+NCI shareholders loans 5 656 10 005 – –
+Related parties (note 28) 37 517 39 307 991 529 785 799
+517 636 575 124 1 071 529 865 799
+The Absa loan consists of two parts:
+• R400 million unsecured loan is repayable over a period of five years (31 July 2028) in quarterly instalments at a three-
+month JIBAR plus 1.4%.
+• A bullet loan taken out in the 2024 financial year of R502 million repayable in three years with a 2 year optional extension
+at a three-month JIBAR plus 1.3%. The loan is secured by the underlying warehouse in Longmeadow with a cost of R502
+million.
+The Standard Bank loan consists of three parts:
+• A bullet facility with a maturity date of five years (31 May 2027) and earns interest at the three-month JIBAR plus 1.44%.
+The loan is secured by the underlying properties with a cost of R421 million.
+• A loan of R650 million repayable over a five year period in quarterly instalments at a three-month JIBAR plus 1.27%. The
+loan is secured by the underlying warehouse in Midrand.
+• A revolving credit facility of R44 million at a one-month JIBAR plus 1.35%.
+The Investec loan consists of two separate loans payable in quarterly instalments:
+• R24 million facility with a maturity date of five years (31 August 2027) and earns interest at Investec prime rate less 0.25%.
+This loan is secured by the underlying property with a cost of R36.3 million.
+• R12 million facility with a maturity date of five years (31 August 2027) and earns interest at Investec prime rate less 0.25%.
+This loan is secured by the underlying property with a cost of R12.5 million.
+R29.5 million FNB loan with a maturity date of 5 years and earns interest at prime minus 40 basis points. The loan is secured
+by the underlying property in Eton Road of R45 million.
+The import supply chain finance programme allows Dis-Chem to make payments to foreign suppliers through a funding
+institution using a cloud-based system. Dis-Chem then receives extended terms of up to 150 days in which to make payment
+to said financial institution instead of prepaying the suppliers. As at 28 February 2026, R239 million (2025: R309 million) of the
+suppliers have already received payment from the financial institution. Dis-Chem is charged an interest rate in line with SONIA
+or a similar reference rate.
+The South African Reserve Bank has confirmed that JIBAR will cease on 31 December 2026, after which South Africa will
+transition to alternative reference rates. JIBAR is expected to be replaced by ZARONIA, a near risk free rate administered
+under the oversight of the South African Reserve Bank. Any margin adjustments required as part of the transition will be
+calibrated to replicate the equivalent JIBAR based pricing, such that there is no material impact on the overall interest rates
+agreed. The majority of the loan agreements already provide for the JIBAR rates to transition to ZARONIA, the remaining loan
+agreements will be amended before JIBAR ceases on 31 December 2026.
+Related party and NCI shareholders loans in the Group are considered to be short-term in nature as they are payable on
+demand and do not earn interest. These loans are unsecured.
+Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026 55

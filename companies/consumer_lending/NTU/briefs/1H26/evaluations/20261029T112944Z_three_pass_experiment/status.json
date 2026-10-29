@@ -1,0 +1,14 @@
+{
+  "status": "partial_experiment_reviewed_rate_limited",
+  "calls": 7,
+  "stage": "pan_dense_why",
+  "last_dispatch_utc": "2026-10-29T11:31:29.430365+00:00",
+  "first_dispatch_utc": "2026-10-29T11:29:55.383446+00:00",
+  "error_type": "HTTPError",
+  "completed_utc": "2026-10-29T11:31:31.297143+00:00",
+  "reviewed_utc": "2026-10-29T11:35:31.686447+00:00",
+  "pending": [
+    "pan_dense_why (failed429)",
+    "pan_dense_single (not dispatched)"
+  ]
+}

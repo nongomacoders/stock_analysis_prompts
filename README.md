@@ -2,6 +2,39 @@
 
 Scan a company PDF report into major sections, capture selected sections as visual + native-text evidence packs, and prompt an LLM to summarize the important points and advise how to verify claims in upcoming sections.
 
+## Current project summary
+
+The aim is to make DeepSeek's report analysis more reliable through better evidence,
+manageable sections, focused prompts and an evolving ledger of questions. The local
+PySide6 app maps report headings, captures native text and page images, and preserves
+source filenames, SHA-256 hashes and physical PDF page numbers.
+
+- **Read and question:** DeepSeek analyzes captured sections using a shared reading
+  task and conditional sector notes. Relevant unresolved questions carry forward;
+  structured updates require evidence from the current capture. Oversized captures
+  are split without silently dropping remaining pages.
+- **Synthesize and evaluate:** DeepSeek performs Stage 1 and Stage 2 analysis.
+  Material unresolved valuation dependencies require withholding the target and
+  recommendation. A successful API call or valid ledger is not financial validation.
+- **Review and improve:** the user runs Gemini reviews in Antigravity; Codex checks
+  those reviews against original evidence. Additional GLM/OpenCode comparisons are
+  preserved as independent, reviewable claims. Verified lessons inform prompt and
+  question improvements; raw model outputs and earlier valuations remain preserved.
+
+DeepSeek requests currently use Fireworks through OpenRouter, with provider fallback
+disabled. Experiment records retain request settings, generation identifiers, tokens,
+cost and timing. Credentials are loaded externally and excluded from those records.
+
+Recent work improves table/prose extraction, portfolio sign guidance, disjoint
+aggregation and question-closure instructions. Small NTU/PAN experiments found that
+three separate meaning/calculation/explanation calls improve presentation but have
+not demonstrated sufficient reliability to replace the current single-call section
+workflow. Scope errors and premature closures remain known limitations.
+
+See [workflow/STATE.md](workflow/STATE.md) for current results and next work,
+[docs/SECTION_READING_PROMPT.md](docs/SECTION_READING_PROMPT.md) for prompt assembly,
+and [docs/VALUATION_WITHHOLDING.md](docs/VALUATION_WITHHOLDING.md) for publication checks.
+
 ## Quick start
 
 Double-click **`Run Capture.cmd`**, or run:
@@ -35,7 +68,7 @@ setup.ps1                                 Environment setup script (uv)
 section_capture/                          PySide6 PDF section scanner, canvas, and pack exporter
 prompts/mining/00-report-orientation/     Report map orientation prompt template (v1.0.0)
 prompts/mining/12-analyst-reading-brief/  Section analysis & upcoming-verification prompt template (v1.1.0)
-companies/<ticker>/                         Multi-company workbench hubs (sources, briefs, models, research)
+companies/<sector>/<ticker>/                Company sources, briefs, models, research and evaluation records
 ARCHITECTURE.md                           Comprehensive technical specification and pipeline architecture
 docs/                                     App, report map, and reading workflow guides
 tests/                                    Automated offscreen Qt, crop, map, and export tests

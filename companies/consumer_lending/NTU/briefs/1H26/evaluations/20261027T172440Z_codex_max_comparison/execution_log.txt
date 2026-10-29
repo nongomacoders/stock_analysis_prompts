@@ -1,0 +1,5 @@
+Command: .venv/Scripts/python.exe -u scratch/run_ntu_max_comparison.py
+PDF hash verified. Captured sections: 2 Stage 1 prompt characters: 176400
+Submitting stage1 model deepseek/deepseek-v4.1-flash-1017:nitro with max reasoning
+RUN FAILED: RuntimeError OpenRouter connection error (deepseek/deepseek-v4.1-flash-1017): <urlopen error [Errno 11001] getaddrinfo failed>
+Actual process exit code: 1

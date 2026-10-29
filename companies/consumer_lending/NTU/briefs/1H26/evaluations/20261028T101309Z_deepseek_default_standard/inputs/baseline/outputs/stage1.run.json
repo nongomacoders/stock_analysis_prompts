@@ -1,0 +1,15 @@
+{
+  "generation_id": "gen-1793176538-xiGqgLwh1BhleksyaBY3",
+  "model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+  "prompt_tokens": 84092,
+  "completion_tokens": 29155,
+  "total_tokens": 113247,
+  "cost_usd": null,
+  "reasoning_effort_requested": "max",
+  "reasoning_tokens": 20729,
+  "max_tokens_requested": 65536,
+  "finish_reason": "stop",
+  "provider": "Together",
+  "elapsed_seconds": 124.28,
+  "request_sha256": "08c669535f42e680615b7abf8a1f20e268606e12f708af42d5438ec57d7c947d"
+}

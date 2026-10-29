@@ -1,0 +1,158 @@
+{
+  "created_utc": "2026-10-28T15:49:01.861529+00:00",
+  "ticker": "NTU",
+  "period": "1H26",
+  "sector": "consumer_lending",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "Omit reasoning controls; preserve model default (catalog currently default_enabled=true, default_effort=high). Raw reasoning not persisted.",
+  "routing": "Base slug; no nitro, provider sort, provider order or priority service tier requested. Account routing preferences may still apply.",
+  "authorization": "User explicitly requested trying Fireworks after Relace300k failure.",
+  "destination": "https://openrouter.ai/api/v1/chat/completions",
+  "metadata_endpoints": [
+    "https://openrouter.ai/api/v1/models",
+    "https://openrouter.ai/api/v1/generation"
+  ],
+  "payload": "Public NTU report text, scoped ledger, approved registry and review lessons; new DeepSeek outputs for later stages. Credentials sent only as OpenRouter Authorization header.",
+  "design": "Reviewed24-unit logical plan;22 analytical units,2 navigation units captured without standalone calls. Three-call independent pilot before full chronological run; no causal one-variable benchmark.",
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "period": "1H26",
+      "page_count": 38,
+      "captured_page_count": 38,
+      "captures": 9,
+      "detected_sections": 4
+    }
+  ],
+  "reference_price_zar": 0.89,
+  "reference_basis": "Frozen stored baseline for comparison; NOT a verified current quote.",
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T141038Z_deepseek_reviewed_logical\\requests\\stage2.json",
+      "sha256": "be52cb7b0512575f5bcf74cefeb6157a5256619d8f50f29b73a2c9aa6e4db3ea",
+      "saved": "inputs/original_stage2_request.json"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T153201Z_deepseek_stage2_300k\\requests\\stage2.json",
+      "sha256": "5c9a79f25f2fbda39f454b6ef85707dd86c4b53054d58a23a1e008c042977105",
+      "saved": "inputs/relace_300k_request.json"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T153201Z_deepseek_stage2_300k\\receipts\\stage2.json",
+      "sha256": "395999106da7b431ccf2b8324dd2a1d72b06423d2262d93cb122e1d0f447591c",
+      "saved": "inputs/relace_300k_receipt.json"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T141038Z_deepseek_reviewed_logical\\outputs\\stage1.md",
+      "sha256": "2e27b355ce36f3bea290dd06d8f64ec32ee5423c45b88438ba44e6ebfa3c59cc",
+      "saved": "inputs/stage1.md"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T141038Z_deepseek_reviewed_logical\\inputs\\source_pages.json",
+      "sha256": "093e10b612353989723ceb8c8b473692d01871adca0711eb72bfe11fe1b7a1a6",
+      "saved": "inputs/source_pages.json"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T141038Z_deepseek_reviewed_logical\\plan.json",
+      "sha256": "68b162d491d32390dfebe07153ee7757118bb3191640bffd0ac83a99d78ec1c6",
+      "saved": "inputs/previous_plan.json"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_ntu_default_run\\rerun.py",
+      "sha256": "ed9e0a7f1716b242818b2f1f1737cb9ba8cb1f0d0f95b9509d0f49ed943ce004",
+      "saved": "inputs/transport_engine.py"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_logical_capture\\stage2_300k.py",
+      "sha256": "a31aec5270ecdb14cc9f86588da228ca4d69a6b98c58d41fa79bd9c5c50e7e09",
+      "saved": "inputs/prior_comparison_driver.py"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_logical_capture\\stage2_fireworks.py",
+      "sha256": "9d2efb4c76866a5da8359c2d4e48ab140efce113d65c716cf2329c902b1fa952",
+      "saved": "inputs/fireworks_driver.py"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "planned_calls": 1,
+  "budgets": {
+    "stage2": 300000
+  },
+  "retry_policy": "One paid attempt; no fallback providers or automatic resubmission.",
+  "pilot_sections": 2,
+  "production_writes": false,
+  "section_prompt_revision": "uncapped_v4",
+  "revisions": [
+    {
+      "utc": "2026-10-28T10:17:18.570611+00:00",
+      "reason": "Pilot section2 exhausted32768 tokens entirely in reasoning, no final answer.",
+      "changes": "Run-only concise section contract, four relevant questions per capture, four applicable registry rules. Full ledger retained; full Stage1/2 registry unchanged.",
+      "unchanged": "Base model, default thinking, routing, evidence, approved registry, token ceilings and one-repair limit unchanged.",
+      "prior_failure_preserved": true
+    },
+    {
+      "utc": "2026-10-28T10:23:18.054786+00:00",
+      "reason": "Section6 exhausted32768 completion tokens;24710 reported reasoning; no final content delivered.",
+      "changes": "Split original pages22-27 into pages22-24 and25-27, keep all text, two relevant questions per capture. Other completed analyses retained.",
+      "unchanged": "Model, reasoning controls, routing and budgets unchanged. Raw prior attempts retained."
+    },
+    {
+      "utc": "2026-10-28T10:25:37.276270+00:00",
+      "reason": "Smaller portfolio capture also incomplete at same ceiling; no further repeat/budget increase.",
+      "changes": "Mark incomplete section analyses explicitly; apply no ledger updates and provide their original captured source directly to Stage1. Continue other captures and full analysis stages.",
+      "limits": "This tests the end-to-end workflow with disclosed section-generation gaps; do not claim every section analysis succeeded."
+    },
+    {
+      "utc": "2026-10-28T11:45:21.733516+00:00",
+      "authorization": "User: rerun the incomplete sections with no token limit",
+      "changes": "No requested completion-token ceiling on outstanding capture, refreshed Stage1 or Stage2. Other model controls unchanged. Previous outputs remain in parent run."
+    }
+  ],
+  "questions_per_capture": 2,
+  "planned_calls_after_split": 12,
+  "continue_with_explicit_failed_section_source": false,
+  "parent_run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T114521Z_deepseek_default_no_requested_cap",
+  "token_limit_policy": "Omit max_tokens and max_completion_tokens entirely; provider/model/account limits still apply. Default thinking/routing retained.",
+  "planned_scope": "Outstanding pages22-24 capture, refreshed Stage1 for updated evidence, full Stage2 retry. Nine accepted captures reused without paid reruns.",
+  "pilot_pages": [
+    [
+      21,
+      23
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      25,
+      25
+    ]
+  ],
+  "pilot_gate": "All3 finish; literal ledger valid after at most one repair; independent POCI/sign/period/ECL-scope checks; stop broad trial on a failure.",
+  "full_prompt_revision": "shared_topic_and_resolved_index_v2",
+  "pilot_scope_revision": "Original3 captures +1 ledger repair +1 page25 scope recheck; preserved separately",
+  "pilot_gate_passed": true,
+  "provider": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "comparison_parent": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T153201Z_deepseek_stage2_300k",
+  "comparison": "Only provider object differs from Relace300k request; exact messages/model/temperature/stream/max_tokens retained. Omitted reasoning controls preserve provider default; implementations may differ.",
+  "known_input_error": "Original Stage1 R370m discrepancy claim unsupported; prior independently executed reconciliation leavesR6m. Input retained unchanged to compare providers; not financial validation."
+}

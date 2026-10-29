@@ -1,0 +1,10 @@
+{
+  "status": "completed_after_semantic_review",
+  "stage": "scope_recheck_complete",
+  "calls": 5,
+  "last_dispatch_utc": "2026-10-28T14:17:26.692787+00:00",
+  "first_dispatch_utc": "2026-10-28T14:11:52.780221+00:00",
+  "completed_utc": "2026-10-28T14:17:52.288718+00:00",
+  "semantic_gate": "PASS",
+  "status_finalized_utc": "2026-10-28T14:54:56.496747+00:00"
+}

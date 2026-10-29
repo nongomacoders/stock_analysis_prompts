@@ -1,0 +1,57 @@
+> APPLICATION QUALIFICATION: DeepSeek ledger updates failed evidence validation. No existing question was resolved by this response. All prior questions remain open; any resolution claim in the narrative is unverified. Only valid new questions were retained.
+
+### 1. Answers to Stored Questions for This Section
+
+- **Q-0386067925cb46f1** (auditor's report / going concern):
+  - **Status**: `Partially resolved (remainder stays open for D003/D004)`
+  - **Answer & evidence**: This section confirms the *directors'* going-concern assertion only, not the auditor's opinion. Verbatim: "The Group's financial statements have been prepared on the basis that the Group operates as a going concern. After a thorough review of the Group's budget and cash flow forecast, the Directors are content with the Group's robust financial standing. They affirm that the Group possesses adequate access to borrowing facilities, ensuring it can meet its anticipated cash needs." `[D001, physical PDF p. 69]`. Also names the external auditor: "Forvis Mazars provides independent assurance on the Annual Financial Statements and reports on key audit matters" `[D001, physical PDF p. 70]`. The auditor's opinion paragraph, going-concern material-uncertainty paragraph, and KAM balances remain unverified — carry forward to D003/D004.
+
+- **Q-d248d8f662874252** (audit committee / internal control deficiencies):
+  - **Status**: `Partially resolved (remainder stays open for D002/D003)`
+  - **Answer & evidence**: Board asserts no material control breakdowns: "The Board is satisfied that the internal control environment operated effectively throughout the year and that no material breakdowns in controls occurred that could have a material impact on the Group's reported results or stakeholder interests." `[D001, physical PDF p. 69]`. Audit and Risk Committee reviewed "financial controls, cybersecurity maturity, data privacy, AI risk management, supply chain resilience and pharmacy dispensing accuracy" `[D001, physical PDF p. 69]`. The formal JSE 5.7(h) compliance statement and any quantified deficiencies are not in this capture — carry forward.
+
+- **Q-cbbfe2e5a90d4260** (IT/cyber incident costs):
+  - **Status**: `Partially resolved (remainder stays open for D002/D006)`
+  - **Answer & evidence**: No IT/cyber incident cost, fine, impairment or contingency is disclosed in this capture; the only related statement is the absence of material breakdowns (p. 69) and the new "Data and Artificial Intelligence Governance Policy (April 2026)" `[D001, physical PDF p. 69]`. No amounts stated — carry forward to financial review/notes.
+
+- **Q-65a1c0ff751b4c5e**, **Q-30355183667642da**, **Q-9dcda868ba3541df**, **Q-2791af76c6484354**, **Q-17cae78f48974478**, **Q-a51cb599eb934775**, **Q-2894bf378ec84eca**, **Q-f9bd0d6e26184619**, **Q-a0b5279a24d84ae3**: not addressed by this capture (governance/compliance pages only) — carried forward unchanged in Section 4.
+
+### 2. Footnote & Qualification Deep-Dive
+
+- No footnote markers (`[^1]`, `*`, note refs) appear in the supplied pages 68–70; no footnote definitions are missing from this capture. No verification question on missing footnote text is required for D001 here.
+- **Qualification — "reasonable assurance" scope**: p. 69 states the control environment provides "reasonable assurance of the reliability of financial reporting… and the safeguarding of assets." This is a standard limitation, not a quantified caveat; it does not change any headline number but means control-effectiveness claims cannot be treated as audit-level assurance. Cross-check against the auditor's KAMs (D003/D004).
+- **Qualification — "no material breakdowns"**: the Board's satisfaction statement is unquantified and self-assessed; it is not evidence of zero deficiencies. Must be tested against the audit committee report and any internal-audit findings (D002/D003).
+- **Forward-looking claim — AI/data governance**: "newly implemented Data and Artificial Intelligence Governance Policy (April 2026)" and intent to "strengthen these arrangements as it scales its digital, data and AI capabilities" `[D001, pp. 69–70]` implies future opex/capex on data/AI controls; no amount disclosed — flag for cost guidance in D002.
+- **Assurance-provider split**: PwC = internal audit; Forvis Mazars = external audit `[D001, p. 70]`. Confirm no independence/rotation issue and that KAMs are Forvis Mazars' (D003/D004).
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D003 / D004 | Directors affirm going concern and "adequate access to borrowing facilities" `[D001, p. 69]` | Extract Forvis Mazars opinion paragraph verbatim; confirm presence/absence of going-concern material uncertainty; list each KAM with FY2026 vs FY2025 balance (debtors ECL, inventory, revenue recognition) | Determines reliability of forecasts and any ECL/inventory risk premium |
+| N2 | High | D002 / D003 | "No material breakdowns in controls" and "internal control environment operated effectively" `[D001, p. 69]` | Check audit committee report and auditor's report for any reported deficiency, significant finding, or emphasis-of-matter; confirm JSE 5.7(h) statement | Control weaknesses can signal earnings-quality/restatement risk |
+| N3 | Medium | D002 / D006 | New "Data and Artificial Intelligence Governance Policy (April 2026)"; scaling of digital/data/AI `[D001, pp. 69–70]` | Locate any disclosed data/AI/cyber spend (opex vs capex), POPIA/ISO 27001/PCI-DSS assurance costs, or contingent liabilities in financial review and notes | Affects opex run-rate and capex forecast |
+| N4 | Medium | D002 / D003 | PwC internal audit; Forvis Mazars external audit `[D001, p. 70]` | Confirm auditor names/rotation in auditor's report and whether internal audit fees are disclosed separately | Fee/independence check; minor opex input |
+| N5 | Low | D002 | "Combined assurance model… adequate and effective for the year ended 28 February 2026" `[D001, p. 70]` | Confirm financial year-end date (28 Feb 2026) and period comparatives in financial review | Fixes forecast period boundaries |
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [], "new_questions": [{"question": "Extract Forvis Mazars' opinion paragraph verbatim, confirm presence/absence of a going-concern material uncertainty paragraph, and list each KAM with the specific account balance/estimate (debtors ECL, inventory valuation, revenue recognition) for FY2026 vs FY2025.", "priority": "high", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D003 / D004", "evidence_required": "Auditor's report text with page citations; opinion paragraph verbatim; KAM titles and associated balances both years.", "closure_condition": "Opinion type stated verbatim; going-concern paragraph presence/absence confirmed; each KAM listed with balance/estimate and comparatives."}, {"question": "Confirm whether the audit committee report and auditor's report disclose any internal control deficiency, significant audit finding, or emphasis-of-matter, and confirm the JSE Listing Requirements 5.7(h) compliance statement.", "priority": "high", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D003", "evidence_required": "Audit committee report and auditor's report text with page citations; any deficiency/finding quantified; explicit statement if none.", "closure_condition": "Compliance statement confirmed with citation; deficiencies/findings quantified or confirmed absent."}, {"question": "Locate any disclosed data/AI/cyber spend (opex vs capex), POPIA/ISO 27001/PCI-DSS assurance costs, or contingent liabilities related to the new Data and AI Governance Policy (April 2026) and digital/AI scaling.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D006", "evidence_required": "Line items with amounts (Rm), treatment (opex vs capex), and page citations; explicit statement if none disclosed.", "closure_condition": "Presence/absence confirmed with citation; if present, amount and treatment stated."}, {"question": "Confirm the auditor names and any rotation/independence disclosure (PwC internal audit, Forvis Mazars external audit) and whether internal audit fees are separately disclosed.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D003", "evidence_required": "Auditor's report and notes text with page citations; fee disclosure if any.", "closure_condition": "Auditor names/rotation confirmed; internal audit fee disclosure presence/absence stated."}, {"question": "Confirm the financial year-end date (28 February 2026) and comparative period used throughout the financial review and primary statements.", "priority": "low", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002", "evidence_required": "Period-end statement and comparative dates with page citations.", "closure_condition": "Year-end and comparative period confirmed with citation."}]}
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Item | Value | Source |
+| --- | --- | --- |
+| Financial year-end | 28 February 2026 | `[D001, p. 70]` |
+| Going concern | Directors affirm adequate borrowing facilities | `[D001, p. 69]` |
+| External auditor | Forvis Mazars | `[D001, p. 70]` |
+| Internal auditor | PwC | `[D001, p. 70]` |
+| Material control breakdowns | None reported (Board assertion) | `[D001, p. 69]` |
+| New policy | Data and AI Governance Policy, April 2026 | `[D001, p. 69]` |
+
+No revenue, margin, debtor, store-count, capex, cash/debt, HEPS or DPS figures appear in this capture.
+
+### 6. Next Section to Capture
+
+**D002 (Financial review, pp. 103–107)** — resolves N1 (partially, via auditor cross-reference), N3, N4, N5, and carries forward Q-9dcda868ba3541df, Q-2894bf378ec84eca, Q-f9bd0d6e26184619, Q-a0b5279a24d84ae3 (segmental/revenue tables).

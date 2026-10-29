@@ -1,0 +1,360 @@
+{
+  "plan_original_file_hashes": [
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense.json",
+      "recorded": "d97da65d867648fb21e7cbd858047f9eff7608237bf4076cfef6ea32cb60acf5",
+      "actual": "d97da65d867648fb21e7cbd858047f9eff7608237bf4076cfef6ea32cb60acf5",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense_base.md",
+      "recorded": "7a3ade2c076969458d9b0e15244c63c75a3acf6fb570da1f56b6023d574fae45",
+      "actual": "7a3ade2c076969458d9b0e15244c63c75a3acf6fb570da1f56b6023d574fae45",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.md",
+      "recorded": "3f29b4bf554e71929bd05e681eaa3ee22967c8e76d75a4ceafb9db94b91ff916",
+      "actual": "3f29b4bf554e71929bd05e681eaa3ee22967c8e76d75a4ceafb9db94b91ff916",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.json",
+      "recorded": "bb8ea32297f904ddc19fd55bc48e288921325aef9818ec251442401d3e4b04c5",
+      "actual": "bb8ea32297f904ddc19fd55bc48e288921325aef9818ec251442401d3e4b04c5",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\pan_dense_why.json",
+      "recorded": "14cb37f642bec40582579b7cb46615f121b9864979dc7ccd23db0e88a1b888a8",
+      "actual": "14cb37f642bec40582579b7cb46615f121b9864979dc7ccd23db0e88a1b888a8",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_meaning.md",
+      "recorded": "06f2ea3f184b3197ce4e499c9513c8b0047b67d9bf7a3834add4d7cdacaf3fe5",
+      "actual": "06f2ea3f184b3197ce4e499c9513c8b0047b67d9bf7a3834add4d7cdacaf3fe5",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_movement.md",
+      "recorded": "31ec0ed2ab0fa8f3351c36c60bbe3e8f271d9e49d9e350d2fa055bc3a4490280",
+      "actual": "31ec0ed2ab0fa8f3351c36c60bbe3e8f271d9e49d9e350d2fa055bc3a4490280",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\comparison.json",
+      "recorded": "8e57a7a0953b7b53cf5e00e8bd70995383505806c22efec32e9f71f92699d3e2",
+      "actual": "8e57a7a0953b7b53cf5e00e8bd70995383505806c22efec32e9f71f92699d3e2",
+      "match": true
+    },
+    {
+      "path": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\audit.md",
+      "recorded": "8f692b37752092307e23f0889a09d9bbc7753882c9be78915eb03be4ea06b8d8",
+      "actual": "8f692b37752092307e23f0889a09d9bbc7753882c9be78915eb03be4ea06b8d8",
+      "match": true
+    },
+    {
+      "path": "workflow\\changes\\20261029_three_pass\\resume_pan.py",
+      "recorded": "8fba83df2b645b7a682bbe990efae3cc49618736e7faec6357bd9c1462a1de86",
+      "actual": "8fba83df2b645b7a682bbe990efae3cc49618736e7faec6357bd9c1462a1de86",
+      "match": true
+    }
+  ],
+  "plan_document_hashes": [
+    {
+      "path": "companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "match": true
+    },
+    {
+      "path": "companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "match": true
+    }
+  ],
+  "byte_identity": {
+    "failed_request_copy == original pan_dense_why request": true,
+    "new why request == original failed request (json)": true,
+    "new why prompt md == original failed prompt md": true,
+    "reused meaning == original meaning output": true,
+    "reused movement == original movement output": true,
+    "new single prompt md == frozen pan_dense_base.md": true,
+    "canonical why == attempt1 why": true,
+    "canonical single == attempt1 single": true,
+    "pan_dense.json capture copy == original": true,
+    "NTU single output copy == original": true,
+    "NTU why output copy == original": true
+  },
+  "request_settings": {
+    "ntu_single": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 38014
+    },
+    "ntu_meaning": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 35027
+    },
+    "ntu_movement": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 37754
+    },
+    "ntu_why": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 45002
+    },
+    "pan_meaning": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 26143
+    },
+    "pan_movement": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 28729
+    },
+    "pan_why_new": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 36868
+    },
+    "pan_single_new": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "temperature": 0.1,
+      "max_tokens": 16384,
+      "provider": {
+        "only": [
+          "fireworks"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "none",
+        "exclude": true
+      },
+      "stream": true,
+      "n_messages": 1,
+      "prompt_chars": 29130
+    }
+  },
+  "request_settings_identical": true,
+  "capture_containment": {
+    "ntu_single": {
+      "long_capture_strings": 9,
+      "contained": 8
+    },
+    "ntu_meaning": {
+      "long_capture_strings": 9,
+      "contained": 8
+    },
+    "ntu_movement": {
+      "long_capture_strings": 9,
+      "contained": 8
+    },
+    "ntu_why": {
+      "long_capture_strings": 9,
+      "contained": 8
+    },
+    "pan_meaning": {
+      "long_capture_strings": 6,
+      "contained": 6
+    },
+    "pan_movement": {
+      "long_capture_strings": 6,
+      "contained": 6
+    },
+    "pan_why_new": {
+      "long_capture_strings": 6,
+      "contained": 6
+    },
+    "pan_single_new": {
+      "long_capture_strings": 6,
+      "contained": 6
+    }
+  },
+  "pan_prompt_figures": {
+    "pan_meaning": {
+      "94,929": true,
+      "272,310": true,
+      "196,527": true,
+      "25,043": true,
+      "30,806": true,
+      "93,724": true,
+      "92,643": true,
+      "2,688": true,
+      "68,843": true,
+      "209.3": true,
+      "205,143": true
+    },
+    "pan_movement": {
+      "94,929": true,
+      "272,310": true,
+      "196,527": true,
+      "25,043": true,
+      "30,806": true,
+      "93,724": true,
+      "92,643": true,
+      "2,688": true,
+      "68,843": true,
+      "209.3": true,
+      "205,143": true
+    },
+    "pan_why_new": {
+      "94,929": true,
+      "272,310": true,
+      "196,527": true,
+      "25,043": true,
+      "30,806": true,
+      "93,724": true,
+      "92,643": true,
+      "2,688": true,
+      "68,843": true,
+      "209.3": true,
+      "205,143": true
+    },
+    "pan_single_new": {
+      "94,929": true,
+      "272,310": true,
+      "196,527": true,
+      "25,043": true,
+      "30,806": true,
+      "93,724": true,
+      "92,643": true,
+      "2,688": true,
+      "68,843": true,
+      "209.3": true,
+      "205,143": true
+    }
+  },
+  "ntu_prompt_figures": {
+    "ntu_single": {
+      "4,489": true,
+      "4 489": false,
+      "644": true,
+      "3 845": true,
+      "fair value": false
+    },
+    "ntu_meaning": {
+      "4,489": true,
+      "4 489": false,
+      "644": true,
+      "3 845": true,
+      "fair value": false
+    },
+    "ntu_movement": {
+      "4,489": true,
+      "4 489": false,
+      "644": true,
+      "3 845": true,
+      "fair value": true
+    },
+    "ntu_why": {
+      "4,489": true,
+      "4 489": false,
+      "644": true,
+      "3 845": true,
+      "fair value": true
+    }
+  }
+}

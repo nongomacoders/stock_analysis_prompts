@@ -1,0 +1,130 @@
+{
+  "created_utc": "2026-10-28T16:36:45.239387+00:00",
+  "authorization": "User approved simpler common section prompt and small NTU/non-lending Fireworks pilot.",
+  "cases": [
+    {
+      "case": "ntu_portfolio",
+      "ticker": "NTU",
+      "pages": [
+        13
+      ],
+      "old_prompt_chars": 23919,
+      "new_prompt_chars": 17406
+    },
+    {
+      "case": "ntu_shared_page",
+      "ticker": "NTU",
+      "pages": [
+        25
+      ],
+      "old_prompt_chars": 25038,
+      "new_prompt_chars": 18549
+    },
+    {
+      "case": "pan_apm",
+      "ticker": "PAN",
+      "pages": [
+        38,
+        39
+      ],
+      "old_prompt_chars": 27892,
+      "new_prompt_chars": 25018
+    },
+    {
+      "case": "pan_operations",
+      "ticker": "PAN",
+      "pages": [
+        48,
+        49,
+        50
+      ],
+      "old_prompt_chars": 32841,
+      "new_prompt_chars": 29967
+    }
+  ],
+  "planned_calls": 8,
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "max_tokens": 16384,
+  "reasoning": "none,exclude=true to match production section analysis",
+  "provider": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "comparison": "Paired exact capture text and question state. Old complete app templates versus shared task/conditional notes/topic context. No full chronological rerun; sample does not establish universal robustness.",
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
+    }
+  ],
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\section_capture\\packages.py",
+      "sha256": "829badf453c06b02c89b87b6d6284d468aa0767a4e3e8a42af08b6e141c27291"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\section_capture\\question_ledger.py",
+      "sha256": "100d818f48428e7095aaf03ff2be066ba558ea22814617e4641b49135303905f"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\section_capture\\__pycache__\\packages.cpython-313.pyc",
+      "sha256": "56fc5918f9a929cc70189009ba82af51e5843e9d8c767b8c20e82456ded72c27"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\telcos\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "57d16b09dc6715db542e1a629d8200400defbc0280ead9cb126fd9ece8c709aa"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\retail\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "27a67e99036c3124d6194636533706532f6ea9a658e383b2a3d0cea9699f9df7"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\reit\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "60813ab7e58a73c5a73051e7df12eaf8b95e84b9618f47cc95aa7b8a1fec9283"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\mining\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "502c50659729a034fcce5d86d891a4f58f17b674cb0c924596cd7a17378cefdd"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\it\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "c4018d38c02a046f80506abb6aab797fb7688ce7560562546ebffbcae5145751"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\finance\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "abe83141505f828c8b008d1e8f01a06c68ae20c33ccdc4ab426428e43b539ab1"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\consumer_lending\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "0e11876a619ba5d5f0ae10e68b84e155a4aa927c33b6eef4f85f6e16fe0b9efc"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\before\\prompts\\construction\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "ceb02bdd7fae57197c4b4bb6de5e11ae88043dab4aa1bc0f72520ca0b629272f"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_section_prompt\\pilot.py",
+      "sha256": "8232382d70c5f8df0072b13378b4882e9da29ef8050515ff8eb2c39847c75487"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "retry_policy": "One call per case/version; no automatic repair/resubmission. Stop on incomplete transport; retain rejected ledger outputs for diagnosis.",
+  "production_writes": false
+}

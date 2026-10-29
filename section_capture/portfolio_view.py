@@ -176,7 +176,7 @@ class PortfolioView(QWidget):
         filter_bar.addWidget(self.sector_combo)
 
         self.rec_combo = QComboBox()
-        self.rec_combo.addItems(["All Ratings", "STRONG BUY", "BUY", "HOLD", "SELL", "STRONG SELL", "IN PROGRESS"])
+        self.rec_combo.addItems(["All Ratings", "STRONG BUY", "BUY", "HOLD", "SELL", "STRONG SELL", "VALUATION WITHHELD", "IN PROGRESS"])
         self.rec_combo.currentIndexChanged.connect(self._apply_filters)
         filter_bar.addWidget(self.rec_combo)
 
@@ -507,7 +507,9 @@ class PortfolioView(QWidget):
             self.table.setItem(row_idx, 8, rec_item)
 
             # Stage 1 / S2 Status
-            if s["has_stage2"]:
+            if s.get('valuation_status') == 'WITHHELD':
+                status_str = 'Valuation withheld'
+            elif s["has_stage2"]:
                 status_str = f"Valued ({s['section_count']} sec)"
             elif s["has_stage1"]:
                 status_str = f"Audited ({s['section_count']} sec)"
@@ -592,6 +594,8 @@ class PortfolioView(QWidget):
         )
 
         triggers = s.get("monitoring_triggers", "").strip()
+        if s.get('valuation_status') == 'WITHHELD':
+            triggers = '### Valuation withheld\n\n' + '\n'.join('- ' + str(x) for x in s.get('blocking_issues', []))
         if triggers:
             self.triggers_browser.setMarkdown(normalize_markdown_for_qt(triggers))
         else:

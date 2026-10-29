@@ -1,3 +1,4 @@
+from valuation_examples import ready_note
 from pathlib import Path
 import shutil
 
@@ -350,7 +351,7 @@ def test_stage1_and_stage2_db_persistence(tmp_path):
     ok2 = save_stage2_report(
         "test-sha-pipeline",
         prompt="Stage 2 Valuation Prompt",
-        response="Stage 2 Valuation Note: Target ZAR 112/share, Buy recommendation",
+        response=ready_note("Stage 2 Valuation Note: Target ZAR 112/share, Buy recommendation", target_price_zar=112, recommendation='BUY'),
         db_path=db_file,
     )
     assert ok2 is True
@@ -583,7 +584,7 @@ def test_sens_valuation_update_prompt_generation(tmp_path):
         original_path="companies/mining/ORN/sources/20260917-ORN-ASX-JSE-Annual-Report-2026.pdf",
         db_path=db_file,
     )
-    save_stage2_report(sha, response=baseline_note, db_path=db_file)
+    save_stage2_report(sha, response=ready_note(baseline_note, target_price_zar=.21, recommendation='SELL'), db_path=db_file)
 
     sens_sha = "testsens" + "0" * 56
     upsert_report(

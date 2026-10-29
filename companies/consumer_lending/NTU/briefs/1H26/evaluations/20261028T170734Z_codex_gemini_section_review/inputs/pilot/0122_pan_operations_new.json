@@ -1,0 +1,55 @@
+{
+  "label": "pan_operations_new",
+  "started_utc": "2026-10-28T16:40:02.666052+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "36ef5d8c078397653cf4c1d073eb5ac0db07030274451f558cd8d71b37f92c0f",
+  "max_tokens": 16384,
+  "reasoning_controls_sent": false,
+  "success": true,
+  "usage": {
+    "prompt_tokens": 12271,
+    "completion_tokens": 2875,
+    "total_tokens": 15146,
+    "cost": 0.0048054552,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 906,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0048054552,
+      "upstream_inference_prompt_cost": 0.0023904552,
+      "upstream_inference_completions_cost": 0.002415
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "stream_done": true,
+  "response_headers_seconds": 2.487,
+  "http_status": 200,
+  "id": "gen-1793205602-lJ0r5yBSvnavqcHonlKS",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "Fireworks",
+  "created": 1793205602,
+  "delta_field_types": {
+    "content:str": 2871,
+    "role:str": 2871
+  },
+  "finish_reason": "stop",
+  "native_finish_reason": "stop",
+  "completed_utc": "2026-10-28T16:40:14.403304+00:00",
+  "elapsed_seconds": 11.736,
+  "time_to_first_event_seconds": 2.519,
+  "time_to_first_content_seconds": 2.519,
+  "metadata_status": "unavailable",
+  "metadata_error_type": "HTTPError",
+  "metadata_http_status": 404,
+  "cost_usd": 0.0048054552,
+  "cost_source": "response_usage",
+  "accounting_completed_utc": "2026-10-28T16:40:20.174713+00:00"
+}

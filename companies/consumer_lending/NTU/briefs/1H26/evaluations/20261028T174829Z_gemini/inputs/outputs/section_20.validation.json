@@ -1,0 +1,14 @@
+{
+  "label": "section_20",
+  "pages": [
+    30,
+    31
+  ],
+  "heading": "Segment results and core reconciliation — H1 2026",
+  "ledger_valid": false,
+  "errors": [
+    "Evidence quote for Q-e4497d9112cd4e9d, physical page 30 is not literal: 'In terms of IFRS reporting, collections are taken into account in the movement of the amortised cost'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+  ],
+  "questions_before": 27,
+  "questions_after": 27
+}

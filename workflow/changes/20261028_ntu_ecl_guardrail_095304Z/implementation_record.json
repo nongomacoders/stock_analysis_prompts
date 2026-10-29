@@ -1,0 +1,138 @@
+{
+  "completed_utc": "2026-10-28T09:53:08.822378+00:00",
+  "inserted_rule": {
+    "id": 32169,
+    "rule_code": "CONSUMER-LENDING-TRADE-RECEIVABLES-SIMPLIFIED-ECL",
+    "sector": "consumer_lending",
+    "stage": "all",
+    "title": "Establish the ECL model before alleging a staging defect",
+    "rule_text": "Classify the instrument and establish whether simplified lifetime ECL is mandatory or elected. For IFRS15 trade receivables without a significant financing component, use the required lifetime approach; for eligible receivables with a significant financing component, verify the entity's policy choice. Where simplified lifetime ECL applies, do not demand general-model Stage1/2 migrations or a 30-DPD SICR backstop. Evaluate provision-matrix losses using historical/current/forward-looking evidence. Zero ELRs alone prove neither adequacy nor manipulation. If policy applicability is uncertain, record the precise uncertainty rather than invent a staging breach. Required evidence: Instrument/transaction type, terms/financing component, policy where choice exists, aging/matrix and loss experience/forward adjustments; physical-page citations. Exceptions: General-model instruments, POCI and other eligible policy choices must be assessed under their own requirements; do not relabel purchased portfolios as trade-service receivables. Avoid double counting: Do not add an arbitrary credit haircut on top of an already modeled expected cash loss or add loss allowances twice. Fail example: “0% at31 days proves failure to transfer to Stage2” where simplified lifetime ECL is established. Pass example: “Lifetime ECL policy established; no SICR-stage test; zero matrix rates require portfolio-specific support, not automatic acceptance.”",
+    "origin_ticker": "NTU",
+    "enabled": 1,
+    "created_at": "2026-10-28T09:53:04.141010+00:00",
+    "updated_at": "2026-10-28T09:53:04.141010+00:00"
+  },
+  "changed_tables": [
+    "sector_guardrails",
+    "sqlite_sequence (sector_guardrails entry only)"
+  ],
+  "before_tables": {
+    "app_state": {
+      "rows": 1,
+      "sha256": "0438a1f104c9f222d4e9b9169bf937445ffe69f6da3b9812fd0514f1b57acc80"
+    },
+    "ledger_events": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ledger_questions": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "market_quotes": {
+      "rows": 14,
+      "sha256": "1a990d612351736718eb50f5435b43cda465277c845d4d7687497508a8d0fe96"
+    },
+    "reports": {
+      "rows": 21,
+      "sha256": "56cbc22e217bebb9de972225ea0be1b3c07ba9beaa8127f39c18067a1df3ea84"
+    },
+    "section_response_attempts": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sections": {
+      "rows": 338,
+      "sha256": "6d18a67c53af9f76b0412ff142189a8671ca983bd70fb48db2be75d34bac90fb"
+    },
+    "sector_guardrails": {
+      "rows": 37,
+      "sha256": "1166de4180df47d811878b7bc835319a295e464baa72d9e4d16a6835406c40a8"
+    },
+    "sqlite_sequence": {
+      "rows": 2,
+      "sha256": "22cf3626aa351ebb25d69e00ba9e81f4782b0c410d2c702546dbb0683bf9b4cd"
+    }
+  },
+  "after_tables": {
+    "app_state": {
+      "rows": 1,
+      "sha256": "0438a1f104c9f222d4e9b9169bf937445ffe69f6da3b9812fd0514f1b57acc80"
+    },
+    "ledger_events": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ledger_questions": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "market_quotes": {
+      "rows": 14,
+      "sha256": "1a990d612351736718eb50f5435b43cda465277c845d4d7687497508a8d0fe96"
+    },
+    "reports": {
+      "rows": 21,
+      "sha256": "56cbc22e217bebb9de972225ea0be1b3c07ba9beaa8127f39c18067a1df3ea84"
+    },
+    "section_response_attempts": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sections": {
+      "rows": 338,
+      "sha256": "6d18a67c53af9f76b0412ff142189a8671ca983bd70fb48db2be75d34bac90fb"
+    },
+    "sector_guardrails": {
+      "rows": 38,
+      "sha256": "3fb1286f92cad85c79bd36b42273f385c22e97c7af1b7532b3ec238cf8cd1fe4"
+    },
+    "sqlite_sequence": {
+      "rows": 2,
+      "sha256": "67547174b79030ecca721f334e6503a28b50121217e8e8290f5e92d75741c2e9"
+    }
+  },
+  "prompt_checks": [
+    {
+      "sector": "consumer_lending",
+      "stage": "stage1",
+      "rule_present": true,
+      "passed": true
+    },
+    {
+      "sector": "consumer_lending",
+      "stage": "stage2",
+      "rule_present": true,
+      "passed": true
+    },
+    {
+      "sector": "consumer_lending",
+      "stage": "sens",
+      "rule_present": true,
+      "passed": true
+    },
+    {
+      "sector": "retail",
+      "stage": "stage1",
+      "rule_present": false,
+      "passed": true
+    },
+    {
+      "sector": "retail",
+      "stage": "stage2",
+      "rule_present": false,
+      "passed": true
+    },
+    {
+      "sector": "retail",
+      "stage": "sens",
+      "rule_present": false,
+      "passed": true
+    }
+  ],
+  "other_business_rows_unchanged": true,
+  "network_disabled": true,
+  "paid_calls": 0,
+  "source_audit_unchanged": true,
+  "limits": "Registry/prompt wiring verified; future model compliance is not demonstrated. Section prompt integration unchanged."
+}

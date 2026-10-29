@@ -36,6 +36,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROMPT_VERSION = "1.1.0"
 PROMPT_STAGE = "12-analyst-reading-brief"
 PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
+COMMON_PROMPT_PATH = PROJECT_ROOT / f"prompts/common/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
 
 from companies.sectors import get_all_sector_codes, resolve_sector_alias
 
@@ -249,6 +250,21 @@ def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None =
         context.append('\n' + report_overview(mapping, manifest['selections'], sector=resolved_sector))
     else:
         context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
+    if manifest.get('capture_coverage'):
+        coverage = manifest['capture_coverage']
+        # Keep detailed font observations local; they are navigation evidence, not an LLM task.
+        prompt_coverage = {k: v for k, v in coverage.items() if k != 'heading_observations'}
+        context.append('CAPTURE COVERAGE (page presence is not source verification): '
+                       + json.dumps(prompt_coverage, ensure_ascii=False))
+        topics = [{'physical_page': page['physical_page'], 'heading': heading['text']}
+                  for page in coverage.get('heading_observations', [])
+                  for heading in page.get('heading_evidence', [])]
+        if topics:
+            context.append('OBSERVED TOPICS, INCLUDING STARTS ON SHARED PAGES: ' + json.dumps(topics, ensure_ascii=False))
+        if coverage.get('continuation_cut'):
+            context.append('Possible table/note continuation in the next capture: physical pages '
+                           + str(coverage.get('next_chunk_pages'))
+                           + '. Keep related evidence requests Pending; a capture boundary is not a missing disclosure.')
     stored_questions = (manifest.get('stored_questions') or '').strip()
     if stored_questions:
         relevant_lines, other_stored = partition_stored_questions(stored_questions, section_ids)
@@ -259,15 +275,15 @@ def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None =
             ])
         if other_stored:
             context.extend([
-                '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
+                '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer questions addressed by this evidence. The app retains omitted structured records; keep other manual questions pending:',
                 'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
                 other_stored,
                 'END STORED QUESTIONS FROM EARLIER SECTIONS',
             ])
     else:
         context.append(
-            '\nSTORED QUESTIONS FROM EARLIER SECTIONS: None supplied (first section capture). '
-            'Do not write narrative commentary; unpack footnotes with commentary and draw up verification questions for upcoming sections.'
+            '\nSTORED QUESTIONS FROM EARLIER SECTIONS: None supplied. '
+            'Capture material facts and qualifications; raise questions only where useful.'
         )
     has_subsection_id = any('.' in sid for sid in section_ids)
     for part, selected_text in zip(manifest["selections"], selected_texts, strict=True):
@@ -286,7 +302,12 @@ def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None =
             "Capture warnings: " + ('; '.join(part.get('warnings', [])) or 'none recorded; this is not source verification'),
             "BEGIN SELECTED REPORT EVIDENCE", selected_text, "END SELECTED REPORT EVIDENCE",
         ])
-    return prompt_file.read_text(encoding="utf-8") + "\n\n" + "\n".join(context) + "\n"
+    from .question_ledger import contract_prompt
+    template = COMMON_PROMPT_PATH.read_text(encoding="utf-8").replace(
+        '{sector_notes}', prompt_file.read_text(encoding="utf-8"))
+    if manifest.get('ledger_contract') == 1:
+        template = contract_prompt(template)
+    return template + "\n\n" + "\n".join(context) + "\n"
 
 
 def save_package(
@@ -297,6 +318,8 @@ def save_package(
     output_root: str | Path | None = None,
     subheading: str = "",
     sector: str | None = None,
+    ledger_contract: int = 0,
+    capture_coverage: dict | None = None,
 ) -> SavedSection:
     resolved_sector = sector or detect_sector_from_path(source.path)
     if not resolved_sector:
@@ -352,6 +375,9 @@ def save_package(
             save_map(source.report_map, cache_root=output_root)
     mapping = copy.deepcopy(source.report_map)
     disk_questions = load_questions_ledger(source.sha256, questions_root=output_root)
+    if ledger_contract == 1:
+        from .db import prepare_question_ledger
+        disk_questions = prepare_question_ledger(source.sha256, db_path=output_root, for_prompt=True)
     if disk_questions:
         source.questions_ledger = disk_questions
     stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
@@ -387,6 +413,8 @@ def save_package(
     created_at = datetime.now(timezone.utc).isoformat()
     section_name = f"{prefix}-{slug}-{datetime.now():%Y%m%d-%H%M%S}-{package_id[-8:]}"
     manifest = {
+        "ledger_contract": ledger_contract,
+        "capture_coverage": capture_coverage,
         "schema_version": "section_reading_package_v1",
         "package_id": package_id,
         "section_name": section_name,
@@ -420,6 +448,7 @@ def save_package(
             "version": PROMPT_VERSION,
             "sector": resolved_sector,
             "template_sha256": sha256(prompt_file),
+            "common_template_sha256": sha256(COMMON_PROMPT_PATH),
         },
         "review": {
             "selection_origin": "user_selected",

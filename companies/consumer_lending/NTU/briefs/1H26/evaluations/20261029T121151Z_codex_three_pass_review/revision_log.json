@@ -1,0 +1,17 @@
+[
+  {
+    "origin": "Gemini audit",
+    "revised": "No demonstrated robust gain sufficient for adoption;not refuted in general.",
+    "evidence": "Unreplicated two-case design"
+  },
+  {
+    "origin": "Gemini F008/source causes",
+    "revised": "Confirmed source inconsistencies;conditional reconstructions,not proven issuer correction or revenue impact.",
+    "evidence": "Original table/calculations"
+  },
+  {
+    "origin": "Gemini F009",
+    "revised": "Only single preserves dedicatedMTRledgerquestion.",
+    "evidence": "pan_question_comparison.json"
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "ntu_financial_assets_note_6_1": {
+    "description": "NTU 1H26 Note 6.1 (p. 22) Financial assets subject to credit risk carrying value footing",
+    "expression": "5 (Other loans) + 390 (Trade receivables) + 3845 (Principal book) + 644 (Other financial assets)",
+    "calculated": 4884,
+    "reported": 4884,
+    "residual": 0,
+    "prior_baseline_error": {
+      "expression": "5390 (merged 5 and 390) + 3845 + 644",
+      "calculated": 9879,
+      "reported": 4884,
+      "residual": 4995
+    },
+    "verdict": "PASS"
+  },
+  "ntu_principal_book_roll_note_1_1": {
+    "description": "NTU 1H26 Note 1.1 (p. 13) Principal book portfolio roll-forward H1 2026",
+    "expression": "3975 (Opening) + 382 (Additions) - 728 (Net collections) + 383 (CAEIR interest) - 167 (Impairment loss)",
+    "calculated": 3845,
+    "reported": 3845,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "ntu_other_financial_assets_roll_note_1_2": {
+    "description": "NTU 1H26 Note 1.2 (p. 13) Other financial assets roll-forward H1 2026",
+    "expression": "702 (Opening) + 28 (Additions) - 116 (Collections) + 30 (Fair value movements)",
+    "calculated": 644,
+    "reported": 644,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "ntu_total_pbd_carrying_value_scope": {
+    "description": "NTU 1H26 Note 1 (p. 13) Total Purchased book debts carrying value reconciliation to SoFP line",
+    "expression": "3845 (Principal book portfolio) + 644 (Other financial assets)",
+    "calculated": 4489,
+    "reported": 4489,
+    "residual": 0,
+    "recovery_split": {
+      "after_12_months": 3178,
+      "after_12_months_reported": 3178,
+      "within_12_months": 1311,
+      "within_12_months_reported": 1311,
+      "total_from_splits": 4489,
+      "total_reported": 4489,
+      "residual": 0
+    },
+    "verdict": "PASS"
+  },
+  "ntu_ecl_allowance_h1_26_movement_note_6_1": {
+    "description": "NTU 1H26 Note 6.1 (p. 24) ECL allowance movement across portfolio segments",
+    "expression": "-241 (Unsecured) + 69 (Debt review) + 4 (Retail) + 1 (Secured)",
+    "calculated": -167,
+    "reported": -167,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "ntu_ecl_allowance_vintage_breakdown_h1_26": {
+    "description": "NTU 1H26 Note 6.1 (p. 24) Acquired vs Historical vintage split of H1 2026 ECL movement",
+    "acquired_portfolios": 24,
+    "historical_portfolios": -191,
+    "net_movement_calculated": -167,
+    "net_movement_reported": -167,
+    "residual": 0,
+    "economic_interpretation": "167 is an impairment LOSS / reduction in cumulative impairment gain, NOT an impairment release.",
+    "verdict": "PASS"
+  },
+  "ntu_ecl_allowance_closing_balance_mar_26": {
+    "description": "NTU 1H26 Note 6.1 (p. 24) Balance roll-forward from Sep-25 to Mar-26",
+    "expression": "598 (Opening Sep-25) - 167 (Impairment loss H1-26)",
+    "calculated": 431,
+    "reported": 431,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "pan_fy25_gold_produced_disjoint_scope": {
+    "description": "PAN FY25 Group gold produced disjoint operational components reconciliation",
+    "expression": "92643 (Mining underground) + 2654 (Mining surface) + 98636 (Tailings) + 1081 (Buy-in) + 1513 (Surface feedstock)",
+    "calculated": 196527,
+    "reported": 196527,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "pan_fy25_gold_produced_model_overlap_error": {
+    "description": "PAN FY25 Model double-counting error by adding buy-in 1081 twice using Group total underground 93724",
+    "expression": "93724 (Underground Group Total, already includes 1081 buy-in) + 2654 + 98636 + 1081 + 1513",
+    "calculated": 197608,
+    "reported": 196527,
+    "residual": 1081,
+    "verdict": "FAIL_MODEL_ERROR"
+  },
+  "pan_fy26_gold_produced_disjoint_scope": {
+    "description": "PAN FY26 Group gold produced disjoint components reconciliation",
+    "expression": "105478 (Underground Group Total) + 2428 (Surface ops) + 113613 (Tailings) + 18667 (Buy-in) + 32124 (Surface feedstock)",
+    "calculated": 272310,
+    "reported": 272310,
+    "residual": 0,
+    "verdict": "PASS"
+  },
+  "pan_fy26_source_subtotal_differences": {
+    "description": "PAN FY26 Genuine source PDF 1-ounce subtotal differences across tables",
+    "underground_mining_components": "Barberton 65233 + Evander 40246",
+    "underground_mining_calc": 105479,
+    "underground_group_total_printed": 105478,
+    "underground_diff": 1,
+    "mining_total_components": "Barberton 71997 + Evander 46855",
+    "mining_total_calc": 118852,
+    "mining_total_printed": 118853,
+    "mining_total_diff": -1,
+    "group_total_sum": 272311,
+    "group_total_printed": 272310,
+    "group_total_diff": 1,
+    "verdict": "PASS_CONFIRMED_SOURCE_ROUNDING"
+  },
+  "pan_fy25_tailings_internal_column_variance": {
+    "description": "PAN FY25 MTR Tailings internal table variance between Column 6 and Column 14",
+    "surface_ops_col6_mtr": 25043,
+    "total_ops_col14_mtr": 30806,
+    "variance": 5763,
+    "subtotal_col8_using_col14": 98636,
+    "subtotal_col8_printed": 98636,
+    "subtotal_col8_using_col6": 92873,
+    "note": "Column 8 printed total 98636 incorporates 30806 from Column 14. 5763 oz equals FY26 MTR buy-in volume.",
+    "verdict": "SOURCE_TABLE_INCONSISTENCY"
+  }
+}

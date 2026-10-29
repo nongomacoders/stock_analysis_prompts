@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "exit_code": 0,
+  "deleted_task_test_directories": 7,
+  "remaining_task_test_directories": [],
+  "validation_receipts_preserved_in": "validation/",
+  "scope": "Only the explicitly named logical-capture-* directories in this workspace's tmp directory; all resolved paths verified before recursive deletion.",
+  "previously_blocked_test_folders": "Not touched"
+}

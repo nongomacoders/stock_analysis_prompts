@@ -1,0 +1,197 @@
+[
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\plan.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\audit.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\findings.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\calculations.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\metrics.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\preservation.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\validations.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\calls.csv",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\status.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\before_pdf_source.py",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\before_question_ledger.py",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_assets.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_assets_baseline.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_assets_prompt.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_fx.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_fx_baseline.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_fx_prompt.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_headers.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_headers_baseline.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_headers_prompt.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_prose.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_prose_baseline.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\ntu_prose_prompt.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\pan_dense.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\pan_dense_baseline.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\pan_dense_prompt.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\pdf_source.py",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\pilot.py",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\inputs\\question_ledger.py",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_assets.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_assets.validation.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_fx.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_fx.validation.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_headers.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_headers.validation.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_prose.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\ntu_prose.validation.json",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\pan_dense.md",
+    "original_match": true,
+    "copy_match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot\\outputs\\pan_dense.validation.json",
+    "original_match": true,
+    "copy_match": true
+  }
+]

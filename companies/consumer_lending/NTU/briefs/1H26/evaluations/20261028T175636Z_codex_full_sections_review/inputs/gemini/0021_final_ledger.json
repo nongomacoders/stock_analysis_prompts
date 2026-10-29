@@ -1,0 +1,528 @@
+[
+  {
+    "question": "Reconcile reported EBITDA (790) less PBD/RTC amortisation (597) less net interest cost (216) = -23 to the reported continuing core loss of -63 (residual -40). What items (D&A, impairments, other) bridge the gap?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 note 7 segmental reconciliation / income statement",
+    "evidence_required": "Line-item bridge from EBITDA to continuing core loss for H1 2026 and H1 2025, Rm, with IFRS reconciliation",
+    "closure_condition": "A signed reconciliation summing to -63 (and -71) is shown, or the residual is explicitly identified.",
+    "question_id": "Q-e0ca727b62be46df",
+    "status": "partial",
+    "answer": "FY2025 Group bridge foots: core continuing (45) + tax (27) + D&A 163 + PBD amortisation 767 + equity-accounted loss 1 + net finance charge 445 = core EBITDA 1,304. H1 2026 and H1 2025 equivalents still pending.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "Core EBITDA per segment* | 1 106 |  |  | 198 | 1 304"
+      }
+    ]
+  },
+  {
+    "question": "What is the revenue and EBITDA split between principal (owned NPL portfolio) collections and agency/fee-based collections within Nutun South Africa, and the PBD/RTC amortisation basis?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note 7 and PBD/RTC note",
+    "evidence_required": "Principal vs agent revenue split; PBD/RTC opening balance, acquisitions, amortisation, collections, closing balance; measurement basis (amortised cost vs FVTPL/POCI)",
+    "closure_condition": "Split and PBD/RTC roll-forward disclosed, or confirmed not disclosed.",
+    "question_id": "Q-86ab4a63039b4d7e",
+    "status": "partial",
+    "answer": "FY2025 PBD amortisation components disclosed (note 4): CAEIR imputed interest 683, impairment loss 199, net cash collections 1,197 (note 1.1); FV movements 114, cash collections 168 (note 1.2) = 767. Principal-vs-agent revenue split and full roll-forward still not disclosed in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "PBD amortisation is calculated as CAEIR imputed interest revenue of R683 million, impairment loss of R199 million and net cash collections of"
+      }
+    ]
+  },
+  {
+    "question": "Why did Nutun SA client count fall from 23 to 20 while revenue rose 15% — concentration or loss of clients, and any client-concentration disclosure?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental/risk notes",
+    "evidence_required": "Client concentration percentages, top-client revenue, retention commentary",
+    "closure_condition": "Explanation or concentration metric provided, or confirmed absent.",
+    "question_id": "Q-f8db08b395c448a9",
+    "status": "partial",
+    "answer": "Note 4 shows SA revenue fell from 188 to 159 (−15.4%) H1-on-H1, opposite in direction to the stored '15% rise' premise. No client-concentration disclosure in this note.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 17,
+        "quote": "Total revenue | 188 |  | 557 | 745"
+      }
+    ]
+  },
+  {
+    "question": "What portion of the R597m portfolio amortisation increase is volume/ageing-driven versus forward-looking macro-assumption-driven (elevated interest-rate forecast), and what is the PBD/RTC amortisation basis and remaining carrying value?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note 7 / PBD-RTC note",
+    "evidence_required": "PBD/RTC roll-forward (opening, acquisitions, collections, amortisation, closing) in Rm for H1 2026 and H1 2025; split of amortisation between volume and assumption changes; measurement basis (amortised cost/FVTPL/POCI)",
+    "closure_condition": "Roll-forward and amortisation driver split disclosed, or confirmed not disclosed; forecast consequence: ability to project amortisation and embedded discount rate.",
+    "question_id": "Q-c3d790bf20794c50",
+    "status": "partial",
+    "answer": "No split of the R597m amortisation between volume/ageing and macro-assumption drivers in this capture. p.28 discloses a 16% discount rate (12.93% at Mar-25) for FVTPL PBD, but this is the FVTPL pool, not the amortised-cost principal-book amortisation basis.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 28,
+        "quote": "The discount rate of 16% (31 March 2025: 12.93%; 30 September 2025: 16%) applied to the expected future cash flows"
+      }
+    ]
+  },
+  {
+    "question": "What is the signed bridge from Nutun International revenue FX drag of R27m to the R46m EBITDA FX impact, and what hedge loss is included?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note / FX note",
+    "evidence_required": "FX translation and hedge loss components, Rm, H1 2026 vs H1 2025; average vs closing rate basis",
+    "closure_condition": "Bridge reconciling 27 to 46 shown, or components identified; forecast consequence: FX sensitivity of International EBITDA.",
+    "question_id": "Q-23af9329edce40eb",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What are the specific funding covenant metrics and headroom at 31 March 2026, and the composition/maturity of the ~R0.8bn unutilised facilities?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 liquidity/funding note",
+    "evidence_required": "Covenant ratios, thresholds and headroom; facility amounts, maturities and drawn/undrawn split",
+    "closure_condition": "Covenant headroom and facility detail disclosed, or confirmed not disclosed; forecast consequence: refinancing and liquidity risk.",
+    "question_id": "Q-7ccb4721205d4f99",
+    "status": "partial",
+    "answer": "Total undrawn overdraft facilities R475m at 31 Mar 2026 (Sep-25 R136m; Mar-25 R43m). Covenant ratios, thresholds, headroom and term-debt facility limits/maturities are not disclosed in Note 2; remain open pending covenant/facility disclosures.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 14,
+        "quote": "Total undrawn overdraft facilities | 475 |  | 43 | 136"
+      }
+    ]
+  },
+  {
+    "question": "What is the basic-to-headline earnings bridge for H1 2026 and H1 2025 (continuing and discontinued), and were any H1 2026 once-off/option/associate items excluded from the nil-adjustment core reconciliation?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 income statement / headline earnings per share note",
+    "evidence_required": "Signed basic loss to headline loss reconciliation (Rm) for H1 2026 and H1 2025, continuing and discontinued, listing each exclusion (asset disposals, impairments, associate items); confirmation whether any H1 2026 adjustments met the core-earnings policy criteria",
+    "closure_condition": "Basic-to-headline bridge shown and summing, and H1 2026 core adjustments (or their absence) explained; benign explanation (e.g. no qualifying items) acceptable; forecast consequence: reliability of core earnings as a run-rate base",
+    "question_id": "Q-b18d8ce6d4804a50",
+    "status": "partial",
+    "answer": "FY2025 exceptional/core adjustments identified: transaction costs 29, tax (8), associate impairment 47 (continuing); settlement fee 176, profit on disposal of Nutun Transact 100, tax 29, transaction costs 16, tax (3) (discontinued). H1 2026/H1 2025 headline bridge still pending.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "Settlement fee | 1 - |  |  | 176 | 176"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "Profit on disposal | 2 (100) |  |  | - | (100)"
+      }
+    ]
+  },
+  {
+    "question": "What drove bank overdrafts from R364m (audited 30 Sep 2025) to R2,273m (unaudited 31 Mar 2026), and is any portion a reclassification from interest-bearing debt? What are the facility limits, maturities and drawn/undrawn split at 31 Mar 2026?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 funding/liquidity note (pp.9-11)",
+    "evidence_required": "Overdraft and short-term facility balances, limits, maturities, drawn/undrawn split, and any reclassification disclosure, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025",
+    "closure_condition": "Driver of the R1.9bn overdraft increase and facility detail disclosed, or confirmed not disclosed; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.",
+    "question_id": "Q-8612694a3a674266",
+    "status": "contradicted",
+    "answer": "Note 2 shows bank overdrafts of R273m at 31 Mar 2026, not R2,273m; overdrafts fell R91m from R364m at 30 Sep 2025 (273-364=-91). No R1.9bn increase exists in this note. Total undrawn overdraft facilities rose to R475m (Sep-25 R136m; Mar-25 R43m). Overdraft facility limits/maturities and drawn/undrawn split for term debt are not itemised here.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 14,
+        "quote": "Bank overdrafts | 273 |  | 457 | 364"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 14,
+        "quote": "Total undrawn overdraft facilities | 475 |  | 43 | 136"
+      }
+    ]
+  },
+  {
+    "question": "What is the composition and measurement basis of 'other investments' (R41m Sep-25, R237m Mar-25, R81m Mar-26) and the new R9m derivative liability at 31 Mar 2026?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 investments/derivatives note (pp.9-11)",
+    "evidence_required": "Line-item composition of other investments and derivative liabilities, measurement basis (amortised cost/FVTPL/hedge), fair-value movements in P&L/OCI, Rm, across the three dates",
+    "closure_condition": "Composition and measurement disclosed, or confirmed not disclosed; forecast consequence: earnings volatility and hedge effectiveness.",
+    "question_id": "Q-31753fb252ee4ed2",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What is the measurement basis of purchased book debts (amortised cost, FVTPL or POCI) and how does the R4,489m carrying value at 31 Mar 2026 reconcile to the PBD roll-forward (opening, acquisitions, collections, amortisation, closing)?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 PBD note (pp.9-11)",
+    "evidence_required": "PBD measurement basis, roll-forward in Rm for H1 2026 and H1 2025, and reconciliation to the R4,489m / R4,353m / R4,677m carrying values",
+    "closure_condition": "Basis and roll-forward disclosed and reconciling to the statement of financial position, or confirmed not disclosed; forecast consequence: amortisation projection and credit-loss treatment.",
+    "question_id": "Q-e4497d9112cd4e9d",
+    "status": "partial",
+    "answer": "p.27 shows principal book portfolio at amortised cost with carrying value equal to disclosed fair value (Level 3): R3,845m (31 Mar 2026), R3,690m (31 Mar 2025), R3,975m (30 Sep 2025). p.28 confirms a separate pool of purchased book debts is measured at FVTPL (R644m, Level 3) because collections are not solely P&I. The amortised-cost principal-book roll-forward (opening/acquisitions/collections/amortisation/closing) is not in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 27,
+        "quote": "Principal book portfolio | 3 845 3 845 –"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 28,
+        "quote": "Certain purchased book debts (other financial assets) are managed on a fair value basis."
+      }
+    ]
+  },
+  {
+    "question": "Reconcile the H1 FY26 net interest-bearing debt drawdown (+R303m) and net overdraft movement (-R91m) to the reported overdraft balance increase to R2,273m at 31 Mar 2026: is the balance-sheet overdraft rise funded by gross draw-downs not yet settled, a reclassification from interest-bearing debt, or seasonal PBD funding? Provide closing overdraft and interest-bearing debt balances, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 funding/liquidity note (pp.9-11) and D003.1 statement of financial position (p.8)",
+    "evidence_required": "Closing overdraft and interest-bearing debt balances (Rm) at 31 Mar 2026, 30 Sep 2025, 31 Mar 2025; gross vs net overdraft flows; any reclassification disclosure; facility limits/maturities",
+    "closure_condition": "A signed bridge from cash-flow financing movements to the balance-sheet overdraft/debt change is shown, or the driver is explicitly identified; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.",
+    "question_id": "Q-b6d6eda13d854fdf",
+    "status": "partial",
+    "answer": "The -R91m net overdraft movement matches Note 2 (273 vs 364 at 30 Sep 2025); no reclassification is indicated. Total interest-bearing liabilities rose R209m (4,016-3,807) vs Sep-25, driven by senior debt +254 (3,547-3,293) partly offset by revolving facility -74. A full signed cash-flow-to-balance bridge still requires the cash-flow statement (p.12) and Mar-25 closing debt.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 14,
+        "quote": "Total interest-bearing liabilities | 4 016 |  | 3 864 | 3 807"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 14,
+        "quote": "Senior debt | 3 547 |  | 3 182 | 3 293"
+      }
+    ]
+  },
+  {
+    "question": "Confirm the financing subtotal of R178m on the cash-flow statement is correctly labelled (the printed line reads 'Net cash generated/(utilised) by investing activities' but arithmetic sums to the financing section), and confirm no financing line is misclassified between investing and financing.",
+    "priority": "low",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.3 cash-flow statement (p.12)",
+    "evidence_required": "Corrected/confirmed subtotal label and confirmation that proceeds/settlements of interest-bearing liabilities and overdrafts are financing, not investing",
+    "closure_condition": "Label confirmed as a typographical error with correct subtotal, or a restated statement provided; benign explanation (label typo) acceptable. Forecast consequence: none material if typo only.",
+    "question_id": "Q-5973eb62939a4c48",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What are the gross facility limits, covenant metrics/thresholds and headroom, and the drawn/undrawn split and maturities for term debt (senior, subordinated, revolving) at 31 Mar 2026? Note 2 gives only total undrawn overdraft facilities (R475m) and maturity buckets (R1,396m within 12 months; R2,620m thereafter).",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.1 statement of financial position (p.8) / D003.3 cash-flow (p.12) / any covenant or facility note",
+    "evidence_required": "Gross facility limits, covenant ratios and thresholds with headroom, drawn/undrawn split and maturity dates for each term-debt class, Rm, at 31 Mar 2026 vs 30 Sep 2025",
+    "closure_condition": "Covenant headroom and term-debt facility detail disclosed, or confirmed not disclosed; benign explanations (e.g. covenant detail in a separate debt note) acceptable. Forecast consequence: refinancing and liquidity risk, net debt trajectory.",
+    "question_id": "Q-b67a0f132cee4d6d",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Confirm the bank overdraft balance at 31 Mar 2026: Note 2 (p.14) shows R273m, but stored questions reference R2,273m. Is R2,273m a misread (e.g. total liabilities or a transposition), and what is the correct closing overdraft on the statement of financial position (p.8)?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.1 statement of financial position (p.8)",
+    "evidence_required": "Bank overdraft line on the statement of financial position at 31 Mar 2026, 30 Sep 2025 and 31 Mar 2025, Rm, reconciled to Note 2",
+    "closure_condition": "Overdraft balance confirmed as R273m (or corrected) and reconciled to the statement of financial position; benign explanation (misread/transposition) acceptable. Forecast consequence: prevents a false liquidity alarm in net debt modelling.",
+    "question_id": "Q-75b10eb1d7a24740",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Confirm the treasury-share purchase terms: 3,662,209 shares for R3.7m implies ~R1.00/share, which appears inconsistent with a group carrying R5,414m share capital. Verify the average price, total consideration, counterparty (open-market vs off-market/employee trust/CSP trustee) and whether any related-party element exists; reconcile the R3.7m narrative to the R4m (rounded) deduction in the 3.1 reconciliation.",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.6 (p.16); D003.2 equity movements (pp.9-11); any CSP/remuneration note",
+    "evidence_required": "Number of shares acquired, total and average consideration (Rm and R/share), counterparty identity, date(s) of purchase, and reconciliation of R3.7m to the R4m share-capital movement; Rm and share counts at 31 Mar 2026 vs 30 Sep 2025",
+    "closure_condition": "Purchase price, consideration and counterparty confirmed and reconciled to the equity movement, or confirmed not disclosed; benign explanations (rounding, off-market CSP trustee transfer at nominal value) acceptable. Forecast consequence: EPS/NAV per share, CSP dilution and buy-back capacity.",
+    "question_id": "Q-73ba5052e544431c",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Reconcile the direction of Nutun South Africa revenue: Note 4 shows 159 (H1 FY26) vs 188 (H1 FY25), a 15.4% decline, whereas earlier stored commentary referenced a ~15% rise. Which is correct, and what drove the SA decline (client loss, volume, pricing)? Provide client-concentration metrics (top-client revenue, % of total) if disclosed.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.7 Note 4 (p.17); segmental note 7; D002 highlights",
+    "evidence_required": "SA revenue H1 FY26 vs H1 FY25 (Rm) reconciled to segmental note; client count and concentration percentages; management commentary on SA revenue driver",
+    "closure_condition": "Direction of SA revenue movement confirmed and driver/concentration disclosed, or confirmed not disclosed; benign explanations (client mix, pricing) acceptable. Forecast consequence: SA revenue trajectory and concentration risk.",
+    "question_id": "Q-9f66f520e55d4b48",
+    "status": "partial",
+    "answer": "Geographical note (p.36) shows Nutun South Africa CODM-view revenue rising from R882m (H1 FY25) to R1,047m (H1 FY26), +18.7%, opposite in direction to the Note 4 decline (159 vs 188) cited in the question. The footnote states the geographical total combines income-statement gross revenue and CODM-view PBD revenue, so the two measures are different scopes; the bridge and the SA driver/concentration remain undisclosed in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 36,
+        "quote": "Nutun South Africa | 1 047 |  | 882 | 1 790"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 36,
+        "quote": "Revenue comprises gross revenue as presented on the income statement, and revenue from purchased book debts as presented in the CODM view."
+      }
+    ]
+  },
+  {
+    "question": "Provide the principal (owned NPL portfolio) vs agency/fee-based revenue split within Nutun South Africa and the PBD/RTC amortisation basis and roll-forward, to reconcile Note 4 revenue (711) to segmental EBITDA and the PBD carrying value.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.4 PBD note (p.13); segmental note 7",
+    "evidence_required": "Principal vs agent revenue split (Rm); PBD/RTC opening, acquisitions, collections, amortisation, closing (Rm) H1 FY26 vs H1 FY25; measurement basis (amortised cost/FVTPL/POCI)",
+    "closure_condition": "Split and roll-forward disclosed and reconciling to Note 4 revenue and PBD carrying value, or confirmed not disclosed; forecast consequence: amortisation projection and revenue quality.",
+    "question_id": "Q-f8a0c48e3545479f",
+    "status": "partial",
+    "answer": "PBD amortisation components partly shown (see Q-86ab4a63039b4d7e) but do not foot to 422; principal/agency split and full roll-forward not disclosed in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 33,
+        "quote": "Amortisation of purchased book debts | 4 422"
+      }
+    ]
+  },
+  {
+    "question": "Do the group's purchased book debts fall within POCI, amortised cost or FVTPL, and does the generic contractual-cash-flow ECL policy in Note 6.1 (discounted at original EIR, max contractual period) actually apply to PBD, or is a lifetime-ECL-since-initial-recognition / fair-value model used instead? Provide the PBD measurement basis and any POCI credit-risk classification disclosure.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.4 Note 1 Purchased book debts (p.13); D003.1 statement of financial position (p.8)",
+    "evidence_required": "Explicit measurement basis for PBD (POCI/amortised cost/FVTPL), whether lifetime ECL since initial recognition applies, and any POCI credit-risk classification; Rm carrying values at 31 Mar 2026 vs 30 Sep 2025 vs 31 Mar 2025",
+    "closure_condition": "PBD measurement basis and applicable ECL model stated and reconciled to the carrying value, or confirmed not disclosed; benign explanations (PBD held at FVTPL with separate ECL on other assets) acceptable. Forecast consequence: credit-loss treatment, amortisation projection and earnings volatility.",
+    "question_id": "Q-08aa5c3f257440ab",
+    "status": "resolved",
+    "answer": "PBDs are classified as purchased credit-impaired (POCI), Stage 3, at initial recognition; classification irrevocable. Measured at amortised cost using a credit-adjusted EIR (weighted average 19.2% at 31 Mar 2026; 17.9% at 31 Mar 2025; 18.4% at 30 Sep 2025). Changes in lifetime ECLs recognised in P&L; favourable changes recognised as impairment gain even below initial-recognition ECL. Other financial assets within PBD are at fair value. Principal book net carrying value: R3,845m (31 Mar 2026), R3,690m (31 Mar 2025), R3,975m (30 Sep 2025).",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 21,
+        "quote": "PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 21,
+        "quote": "The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%; 30 September 2025: 18.4%)."
+      }
+    ]
+  },
+  {
+    "question": "Reconcile the p.22 'Financial assets subject to risk' table: the printed Total column (R4,884m at 31 Mar 2026; R4,859m at 31 Mar 2025; R5,059m at 30 Sep 2025) does not foot to the row components as captured (5,390 + 3,845 + 644 = 9,879), and the principal-book 'net carrying amount' equals gross + allowance rather than gross − allowance. Confirm the correct column mapping, sign convention and whether the Total column is a subtotal of a different scope. Provide the reconciled table in Rm for all three dates.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.10 p.22 (Financial assets subject to risk); cross-check D003.1 statement of financial position (p.8)",
+    "evidence_required": "Reconciled table with gross carrying value, ECL allowance (signed), net carrying value and total, footing to the statement of financial position at 31 Mar 2026, 31 Mar 2025 and 30 Sep 2025; explanation of the sign convention and any capture/OCR issue",
+    "closure_condition": "Table foots to the statement of financial position and the sign convention is explained, or the discrepancy is confirmed as a capture artefact; benign explanations (column mapping, OCR) acceptable. Forecast consequence: correct PBD net carrying value and ECL base for projection.",
+    "question_id": "Q-29ba2f276efb4af2",
+    "status": "partial",
+    "answer": "p.27 independently confirms principal book net carrying values of R3,845m (31 Mar 2026), R3,690m (31 Mar 2025) and R3,975m (30 Sep 2025), consistent with stored figures. The p.22 'Financial assets subject to risk' footing/sign-convention issue is not resolved by this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 27,
+        "quote": "Principal book portfolio | 3 845 3 845 –"
+      }
+    ]
+  },
+  {
+    "question": "Provide the PBD roll-forward for H1 FY26 and H1 FY25 (opening balance, acquisitions, collections, amortisation/interest accretion, ECL movements, closing balance) in Rm, reconciling to the principal book net carrying values (R3,975m at 30 Sep 2025 → R3,845m at 31 Mar 2026; R3,690m at 31 Mar 2025). Also split the R167m ECL release (598 → 431) between model/assumption changes and collections/portfolio performance.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.4 Note 1 Purchased book debts (p.13); D003.2 (pp.9-11)",
+    "evidence_required": "PBD roll-forward in Rm for H1 FY26 and H1 FY25; ECL release driver split; reconciliation to principal book net carrying values",
+    "closure_condition": "Roll-forward reconciles opening to closing principal book net carrying value and the ECL release driver is identified, or confirmed not disclosed; benign explanations (collections outperformance, model recalibration) acceptable. Forecast consequence: amortisation projection, ECL release sustainability and earnings quality.",
+    "question_id": "Q-d22e0c2b395a427e",
+    "status": "partial",
+    "answer": "FVTPL purchased-book-debt pool roll-forward now available (opening 702, gains 30, other movements -88, closing 644 for Mar-26; additions 28, collections 116). This is the FVTPL pool, not the amortised-cost principal book; principal-book roll-forward and ECL-release driver split still not disclosed in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 29,
+        "quote": "Other movements include additions of R28 million (31 March 2025: R7 million; 30 September 2025: R84 million) and cash collections of R116 million"
+      }
+    ]
+  },
+  {
+    "question": "Identify the unlabelled third numeric column in the D003.11 ECL reconciliation (values 30, 54, 47, 51 across the four dates) and confirm the full column-header mapping for all four portfolio columns plus Total. Is this a segment, a portfolio type, or a capture/layout artefact?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.11 p.24; cross-check D003.10 pp.21-23",
+    "evidence_required": "Full column headers for the ECL reconciliation table (all four portfolio columns and Total) as printed, Rm, at 31 Mar 2026, 30 Sep 2025, 31 Mar 2025 and 30 Sep 2024",
+    "closure_condition": "Each column is labelled and the Total foots to the sum of labelled columns, or the unlabelled column is confirmed as a capture artefact; benign explanations (layout/OCR) acceptable. Forecast consequence: correct segment attribution of ECL movements.",
+    "question_id": "Q-2a8672f28c4140e8",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Reconcile the D003.11 ECL-gain movement (598 to 431, net -167) to the p.22 principal-book net carrying values and to the R167m ECL release referenced in stored questions: confirm the allowance is the same signed quantity and that gross carrying value plus this allowance equals the reported net carrying value at 31 Mar 2026 and 30 Sep 2025.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.11 p.24; D003.10 p.22; D003.1 p.8",
+    "evidence_required": "Gross carrying value, signed ECL allowance/gain and net carrying value for principal book portfolios, Rm, at 31 Mar 2026 and 30 Sep 2025, footing to the statement of financial position",
+    "closure_condition": "Gross + signed allowance = net carrying value reconciles across p.24, p.22 and p.8, or the difference is explicitly identified; benign explanations (scope, rounding) acceptable. Forecast consequence: correct ECL base and net PBD value for projection.",
+    "question_id": "Q-51278219e10b4cd4",
+    "status": "partial",
+    "answer": "Net principal-book carrying values corroborated at p.27 (3,845 / 3,975). Gross carrying value plus signed ECL allowance reconciliation to p.22/p.24 remains outstanding.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 27,
+        "quote": "Financial assets at amortised cost | 3 845 3 845 –"
+      }
+    ]
+  },
+  {
+    "question": "What drove the trade-receivable 90+ days loss allowance to 100% coverage at 31 Mar 2026 (from 85.71% at 31 Mar 2025 and 81.82% at 30 Sep 2025), and why did total allowance fall from R10m (Sep-25) to R5m (Mar-26) while gross receivables rose from R364m to R374m? Split the movement between ageing/volume mix and forward-looking assumption changes.",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.12 p.25 (ECL on trade receivables); cross-check D003.9 credit risk (p.20) and D003.10 (pp.21-23)",
+    "evidence_required": "Trade-receivable ECL roll-forward (opening, charge/release, write-offs, closing) in Rm for H1 FY26 and H1 FY25; ageing migration; statement of the forward-looking assumptions and any change in provisioning policy for 90+ days; reconciliation of the R10m to R5m allowance movement",
+    "closure_condition": "Driver of the 90+ coverage step-up and the allowance decline is disclosed or explicitly identified, or confirmed not disclosed; benign explanations (ageing mix, write-offs, assumption change) acceptable. Forecast consequence: trade-receivable ECL charge and working-capital/credit-loss projection.",
+    "question_id": "Q-c518c32dd056479c",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What are the notional amounts, maturities and mark-to-market of the USD/GBP foreign-exchange contracts entered into to hedge Nutun International receipts, and what is the disclosed FX sensitivity? Confirm the FX table units are R per unit of foreign currency (not Rm).",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.12 p.25-26 (6.2 Currency risk continuation)",
+    "evidence_required": "FX hedge notional, maturity profile and fair value (Rm) at 31 Mar 2026; FX sensitivity analysis; confirmation of exchange-rate units; foreign-currency receivable balances by currency",
+    "closure_condition": "Hedge notionals/maturities and sensitivity disclosed, or confirmed not disclosed; benign explanations (immaterial, disclosed elsewhere) acceptable. Forecast consequence: FX translation and hedging impact on Nutun International earnings.",
+    "question_id": "Q-dab8ef060f454ad6",
+    "status": "partial",
+    "answer": "Foreign-currency monetary balances captured (Rm carrying amounts): USD assets 120 / liabilities 10; GBP assets 111 / liabilities 2; EUR assets 3; AUD nil at 31 Mar 2026. Asset footnote reconciles: receivables R207m + bank balances R27m = R234m = table asset total (120+3+111). Net long FX position +R222m (Mar 25 +R169m; Sep 25 +R215m). Table is in Rm carrying amounts, not R/unit. Hedge notionals, maturities, mark-to-market and FX sensitivity are NOT in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 26,
+        "quote": "US Dollar 10 5 1 120 98 135"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 26,
+        "quote": "Assets held in foreign currency relate to receivables of R207 million (31 March 2025: R171 million; 30 September 2025: R190 million) and bank balances of R27 million"
+      }
+    ]
+  },
+  {
+    "question": "Split the R88m Level 3 'other movements' (FVTPL other financial assets) between additions, cash collections and the effect of the discount-rate change from 12.93% (31 Mar 2025) to 16% (30 Sep 2025 / 31 Mar 2026); quantify the rate-driven fair-value effect separately from volume/collection effects.",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.14 p.28-29 (6.3/6.4); cross-check D003.4 p.13",
+    "evidence_required": "Reconciliation of the R644m FVTPL PBD pool showing opening, additions, collections, P&L gains and discount-rate/assumption effect, Rm, for H1 FY26 and H1 FY25; sensitivity of fair value to the 16% vs 12.93% discount rate",
+    "closure_condition": "Rate effect vs volume/collection effect on the R88m movement is disclosed or quantified, or confirmed not disclosed; benign explanations (rate-curve move) acceptable. Forecast consequence: FVTPL PBD fair-value sensitivity and earnings quality.",
+    "question_id": "Q-dd187398b68d412d",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Reconcile the R644m FVTPL 'other financial assets' (p.28) to the R3,845m amortised-cost principal book (p.27) and to total purchased book debt carrying value; confirm these are non-overlapping populations and state total PBD exposure at 31 Mar 2026, 31 Mar 2025 and 30 Sep 2025.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.14 p.27-28; D003.4 p.13; D003.10 pp.21-23",
+    "evidence_required": "Table reconciling amortised-cost principal book, FVTPL PBD pool and any other PBD to total PBD carrying value, Rm, at 31 Mar 2026, 31 Mar 2025 and 30 Sep 2025, footing to the statement of financial position",
+    "closure_condition": "Populations shown non-overlapping and total PBD reconciles to the statement of financial position, or overlap/scope difference explicitly identified; benign explanations (separate portfolios) acceptable. Forecast consequence: correct total PBD base for amortisation and credit-loss projection.",
+    "question_id": "Q-f6689319fb3a49ff",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Explain why interest-bearing liabilities' carrying value exceeded disclosed fair value by R339m at 30 Sep 2025 (3,807 vs 3,468) but was below fair value at 31 Mar 2026 (3,743 vs 3,769) and 31 Mar 2025 (3,407 vs 3,428); confirm the Level 3 fair-value basis and whether the Sep-25 figure is a capture/label issue.",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.14 p.27; cross-check D003.5 Note 2 pp.14-15",
+    "evidence_required": "Interest-bearing liability carrying vs fair value by instrument and rate basis (fixed/floating), Rm, at 31 Mar 2026, 31 Mar 2025 and 30 Sep 2025, with valuation method; confirmation of the Sep-25 figures",
+    "closure_condition": "Direction reversal explained (rate-curve move, instrument mix) or confirmed as capture artefact; benign explanations acceptable. Forecast consequence: fair-value vs carrying gap on debt for refinancing/valuation analysis.",
+    "question_id": "Q-171c9db752404272",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "The p.33 core continuing reconciliation does not foot as captured: (122)+51+5+(1)+47 = -20, not the stated core loss of (71). Confirm whether 'Exceptional items 51' is a subtotal of the following lines (transaction costs 5, tax (1), associate impairment 47) rather than an additive line, and provide the corrected signed bridge for H1 2025 and H1 2026.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.16 p.33 (and D003.15 p.30-31 for H1 2026)",
+    "evidence_required": "Corrected line-item core reconciliation (Rm) footing to core continuing loss (71) H1 2025 and the H1 2026 equivalent, with column/indent mapping clarified",
+    "closure_condition": "A signed bridge summing to (71) (and H1 2026 core loss) is shown, or the layout ambiguity is confirmed as a capture artefact; benign explanation (subtotal presentation) acceptable. Forecast consequence: reliability of core earnings as run-rate base.",
+    "question_id": "Q-4de5fe06ec4d4f67",
+    "status": "partial",
+    "answer": "FY2025 (audited, y/e 30 Sep 2025) Group core continuing bridge foots only if 'Exceptional items 68' is a subtotal of transaction costs 29, tax (8) and associate impairment 47 (=68): (113)+68=(45). This supports the subtotal-presentation reading of the H1 2025 layout, but H1 2025 and H1 2026 corrected bridges are still required.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "Exceptional items (core and headline adjustments) | 68 |  |  | – | 68"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 35,
+        "quote": "Core continuing (loss)/earnings per segment | (121) |  |  | 76 | (45)"
+      }
+    ]
+  },
+  {
+    "question": "PBD amortisation footnote 4 components (CAEIR 333 + impairment 173 - net collections 566 + FV 74 + cash 90) sum to 104, not the 422 amortisation charged. Reconcile the footnote to the 422 line and state whether components are gross/net and which portfolios (note 1.1 vs 1.2) they cover.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.16 p.33 footnote 4; cross-check D003.4 p.13 and D003.10 pp.21-23",
+    "evidence_required": "Signed reconciliation of footnote 4 components to 422 amortisation, Rm, H1 2025 and H1 2026, with portfolio scope and gross/net basis",
+    "closure_condition": "Footnote components reconcile to 422 (or the difference is explicitly identified); benign explanation (partial listing, sign convention) acceptable. Forecast consequence: PBD amortisation projection.",
+    "question_id": "Q-7918340c778b42ac",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Provide the H1 2026 segment and core reconciliation (Nutun SA, Nutun International, Group) equivalent to the H1 2025 tables on pp.32-33, including core continuing earnings, core EBITDA and core discontinued loss, to complete the H1 2026 vs H1 2025 comparison.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.15 pp.30-31",
+    "evidence_required": "H1 2026 segment income statement and core reconciliation tables, Rm, footing to core EBITDA and core continuing loss",
+    "closure_condition": "H1 2026 tables supplied and footing; forecast consequence: run-rate core earnings and segment EBITDA.",
+    "question_id": "Q-1b69b15beef94945",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Confirm the printed column/indent layout of the FY2025 core continuing reconciliation (p.35) — specifically whether 'Exceptional items 68' is a subtotal of transaction costs 29, tax (8) and associate impairment 47 — and provide the equivalent H1 2025 and H1 2026 bridges with the same layout clarified.",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.16 pp.32-33; D003.15 pp.30-31",
+    "evidence_required": "H1 2025 and H1 2026 core continuing reconciliation (Rm) with column/indent mapping, footing to core continuing loss",
+    "closure_condition": "Both H1 bridges foot to stated core continuing loss with layout confirmed, or ambiguity confirmed as capture artefact; benign explanation (subtotal presentation) acceptable. Forecast consequence: reliability of core earnings as run-rate base.",
+    "question_id": "Q-86df863491ca4eae",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Reconcile the Note 7 geographical CODM-view revenue total (R1,599m H1 FY26; R1,439m H1 FY25; R2,884m FY25) to Note 4 income-statement revenue and to segmental EBITDA, and explain why Nutun South Africa revenue rises +18.7% here while Note 4 shows a decline (159 vs 188). State the scope/basis difference and any reclassification.",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003.7 Note 4 (p.17); D003.15 pp.30-31; D003.18 p.36",
+    "evidence_required": "Bridge table in Rm for H1 FY26 and H1 FY25 reconciling CODM geographical revenue (1,599 / 1,439) to Note 4 revenue and to segment EBITDA, with the SA basis difference identified; benign explanations (CODM gross vs IFRS net, PBD revenue inclusion) acceptable",
+    "closure_condition": "Bridge shown and SA direction conflict explained, or confirmed not disclosed; forecast consequence: correct revenue base and SA growth trajectory for projection.",
+    "question_id": "Q-ba5787c1f0ac47cf",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  }
+]

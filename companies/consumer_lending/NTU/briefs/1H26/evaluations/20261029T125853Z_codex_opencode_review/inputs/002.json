@@ -1,0 +1,77 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN NTU SAMPLE",
+    "origin": "three_pass movement/final answer",
+    "finding": "Staged dictionary/worksheet is materially clearer and carries verified percentages (C003). Three-pass is the only arm whose final ledger was accepted literal-valid by the validator (NTU single rejected on non-literal quote '3 414').",
+    "limit": "Single also gets sign and principal sums right; validator acceptance is about quote format, not semantic correctness."
+  },
+  {
+    "id": "F002",
+    "verdict": "FAIL STAGED ARM (single better on this point)",
+    "origin": "NTU question closure; earliest stage: movement pass upgrades partial to resolved; final inherits and validator lets it through",
+    "finding": "Q-08aa5c3f257440ab closed in-memory with basis quotes only; required reconciliation 3,845+644=4,489 (printed p.13 total) never performed or stated. Single's closure attempt was literally rejected, question stayed open.",
+    "correction": "Closure condition must require the specific arithmetic (3,845+644=4,489 vs Note 1 total) as shown evidence, not a basis quote; validator should check numbers, not only literal quote format. No production status changed."
+  },
+  {
+    "id": "F003",
+    "verdict": "FAIL STAGED PAN ARM",
+    "origin": "meaning pass; propagated identically through movement and final why",
+    "finding": "False identity 71,997 = 65,233+2,428+4,337 (actual 71,998) repeated in all three staged passes; wrong dictionary entries (capex reduces profit/assets; revenue/EBITDA as cash flows) also carried through unrevised; final why adds unreconciled 'largely FX' attribution.",
+    "limit": "Staging preserved work product more faithfully than it verified it; 'earlier outputs untrusted' instruction did not trigger correction of any of these."
+  },
+  {
+    "id": "F004",
+    "verdict": "FAIL BOTH ARMS (staged worse: raised then left unresolved; single never raised)",
+    "origin": "PAN movement pass raised; final why preserved question Q-1f48aa6d4b884f09 (medium) without resolution",
+    "finding": "FY25 197,608 overlap sum vs printed 196,527 is resolvable from p.48 itself (92,643+2,654+98,636+1,081+1,513 = 196,527; 1,081 sits inside Group-UG 93,724 and Evander total 27,829). Neither arm performs this completion in-pass.",
+    "correction": "Prompt contract could direct the final pass to attempt each own open question against the original source once before deferring."
+  },
+  {
+    "id": "F005",
+    "verdict": "FAIL STAGED ARM; SINGLE UNIQUELY CORRECT",
+    "origin": "PAN all staged passes (silent); single final raises Q-3e8730dbd1994205 (medium)",
+    "finding": "MTR FY25 total-operations 30,806 vs leaf 25,043 (Δ5,763 = FY26 MTR buy-in; FY25 buy-in row nil for MTR) is never mentioned in the staged arm; its final why cites 30,806→51,927 as a plain driver.",
+    "limit": "Refutes gemini_review.md lines 78-81/F009 ('both flagged, high-priority') and Codex point-5 first clause. Single's flag priority is medium, not high."
+  },
+  {
+    "id": "F006",
+    "verdict": "FAIL SOURCE CONFLICT UNRESOLVED BY BOTH ARMS (hypothesis-level)",
+    "origin": "PAN source conflict, pp.48-49",
+    "finding": "Barberton total 94,929 vs components 84,929 (Δ10,000) and opsum 282,310 vs printed Group 272,310: real conflict; conditional agreement (84,929 gives exactly 272,310) does not establish which value is wrong; FY25 opsum reconciles exactly on printed values, so substituting by pattern is unsafe. Neither arm establishes replacement direction."
+  },
+  {
+    "id": "F007",
+    "verdict": "FAIL SINGLE ARM DISTINCT ERRORS; HYPOTHESIS STATED AS DRIVER IN BOTH",
+    "origin": "PAN single final; both finals",
+    "finding": "Single adds false check '272,310 = 118,853+153,458 ✓' (actual 272,311) and '(0.1 rounding) ✓' on EBITDA 663.0 vs 663.1; mislabels Evander totals as underground. Both finals present 'inventory timing' as the produced-vs-sold cause without reconciliation.",
+    "limit": "Error mass moves between arms rather than shrinking in one."
+  },
+  {
+    "id": "F008",
+    "verdict": "NOT DEMONSTRATED WITHIN COVERAGE",
+    "origin": "Comparative conclusion",
+    "finding": "Three-pass improves clarity artifacts (dictionary/worksheet) but not final-output error robustness in this experiment: propagation (F003), silent conflict drops (F005), unresolved receptions (F002, F004) offset the only literal-valid ledger (F001). Cost 2.24x-2.39x, time 1.62x-1.80x. Not isolated causal proof: n=1 per arm per case, no randomization/replication, different task wording between arms.",
+    "limit": "Failure to demonstrate a benefit here is not disproof of staging in general."
+  },
+  {
+    "id": "F009",
+    "verdict": "FAIL (PRIOR REVIEWER ERRORS)",
+    "origin": "gemini_review.md lines 78-81/F009; codex audit point 5 first clause",
+    "finding": "Gemini's 'both arms flagged MTR gap with high-priority questions' and Codex's 'Both PAN prose identify MTR5763 gap' are unsupported: no staged-pass output mentions 25,043/5,763/30,806; only the fresh single flags it (medium). Codex's refinement (only single preserves question, staged omits; medium priority) is correct. Other Codex critiques verified (C011).",
+    "correction": "Reviewer claims about both arms must be checked against the grep-level absence/presence in each arm's prose."
+  },
+  {
+    "id": "F010",
+    "verdict": "NOT APPLICABLE (SUPPORTS DECISION)",
+    "origin": "Operational integrity checks",
+    "finding": "Inputs, requests, receipts and preservation verified intact (C001, C002); retry policy configured but unexercised; failed-429 cost unknown so cost totals are known-subtotal only."
+  },
+  {
+    "id": "F011",
+    "verdict": "PROPOSED, NOT IMPLEMENTED (smallest useful next change)",
+    "origin": "This review",
+    "finding": "Next experiment should test the closure-perform-verb, not more samples first: add one rule to both arms (staged final pass and single) — 'resolved requires the closure condition's arithmetic shown and tying to the final printed figure; any question still unresolved in re-deriving must be attempted once against the original source before deferral' — and rerun PAN meaning+why (the case where staging says questions were reused verbatim and hadn't yet been committed) at the same model and settings; compare against the already-preserved outputs as identical-model baseline. Expected signal: whether Q-1f48aa6d4b884f09-style questions get resolved in-pass (196,527 disjoint) and whether repeated identities (71,998) get corrected by the source-rechallenge pass.",
+    "limit": "Prediction only; no code/prompt edits were made and no reruns were performed in this review."
+  }
+]

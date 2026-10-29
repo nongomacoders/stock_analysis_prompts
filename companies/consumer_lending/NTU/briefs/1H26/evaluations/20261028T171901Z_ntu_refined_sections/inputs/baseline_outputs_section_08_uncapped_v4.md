@@ -1,0 +1,16 @@
+Section reading brief — p.12 cash flow (historical, unaudited 1H26; comparatives). No management explanation or guidance in this capture.
+
+**Material facts and signed calculations (p.12)**
+- 1H26 OCF: -50 + 3 - 225 + 2 = -270; +182 purchased book debts -23 working capital = -111. Investing: -17 PPE -13 intangibles +6 dividends -37 other investments = -61. Financing: 1,145 borrowings -842 settlements +3,178 overdraft draw -3,269 overdraft settle -30 leases -4 treasury shares = 178. Net: -111 -61 +178 = 6; opening 107 +6 +0 FX = closing 113. HFS cash included R1m (1H25 R2m; FY25 R1m).
+- 1H25: OCF -103 +16 -251 -4 = -342; +390 -261 = -213. Investing -13 -5 +19 +398 +38 = 437. Financing 976 -1,812 +3,694 -3,519 -35 = -696. Net -213 +437 -696 = -472; 588 -472 +2 = 118.
+- FY25: OCF -338 +15 -468 -15 = -806; +681 -172 = -297. Investing -51 +10 -23 +25 +398 +243 +1 = 603. Financing 1,590 -2,396 +6,370 -6,289 -62 = -787. Components sum -297 +603 -787 = -481, but reported net decrease is (482); 588 + (482) +1 FX = 107. R1m residual unexplained; no plug invented. The financing subtotal is labelled “investing activities” though its arithmetic is financing.
+
+**Question answers and uncertainty**
+- Q-NTU-DEFAULT-09: partial. 1H26 and 1H25 signed totals reconcile; FY25 has a R1m arithmetic residual. Interest received/paid and tax are in OCF; capex is in investing; borrowings, overdrafts, leases and treasury shares are in financing; HFS cash scope is disclosed. No FCFE inferred from subtotals.
+- Q-NTU-DEFAULT-06: not addressed by p.12. Only cash-flow movement in trade/other receivables is shown (1H26 -25; 1H25 -63; FY25 +21). ECL policy and gross/net bridge remain pending pp.8,22,25.
+
+**Pending:** trade receivables ECL/gross-net at pp.8,22,25; any cash-definition/restricted-cash note outside this p.12 capture.
+
+```json
+{"ledger_version":1,"updates":[{"question_id":"Q-NTU-DEFAULT-09","status":"partial","answer":"1H26 and 1H25 cash-flow subtotals reconcile to closing cash; FY25 has a R1m residual: OCF -297 + investing 603 + financing -787 = -481 vs reported net decrease (482). Interest/tax are in OCF; capex in investing; borrowings/overdrafts/leases/treasury shares in financing; HFS cash included R1m at 31 Mar 2026. No FCFE inferred.","evidence":[{"source_sha256":"9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc","physical_page":12,"quote":"Net cash utilised by operating activities | (111) |  | (213) | (297)"},{"source_sha256":"9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc","physical_page":12,"quote":"Net increase/(decrease) in cash and cash equivalents | 6 |  | (472) | (482)"},{"source_sha256":"9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc","physical_page":12,"quote":"include R1 million (31 March 2025: R2 million; 30 September 2025: R1 million)"}]},{"question_id":"Q-NTU-DEFAULT-06","status":"partial","answer":"Page 12 does not provide the trade/other receivables gross-net bridge or ECL policy; it only shows cash-flow movement in trade and other receivables. ECL/financing-component evidence remains pending pp.8,22,25.","evidence":[{"source_sha256":"9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc","physical_page":12,"quote":"(Increase)/decrease in trade and other receivables | (25) |  | (63) | 21"}]}],"new_questions":[]}
+```

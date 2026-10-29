@@ -1,0 +1,56 @@
+{
+  "case": "pan_dense",
+  "ledger_valid": true,
+  "errors": [],
+  "questions_before": [],
+  "questions_after": [
+    {
+      "question": "What are the definitions and reconciliation of ZAR/US$ cash cost, all-in sustaining cost (AISC), all-in cost, and 'all-in sustainable cost of production' as used in the Group production summary (pp.48–50), and do they reconcile to the APM section?",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures (pp.38–47)",
+      "evidence_required": "Definitions of each cost metric, reconciliation from cost of production to AISC and all-in cost, and confirmation of whether third-party buy-in feedstock is included/excluded; period FY26 vs FY25; units ZAR/kg, US$/oz, A$/kg.",
+      "closure_condition": "Definitions and reconciliations located and matched to pp.48–50 figures, or explicit statement that no reconciliation is provided.",
+      "question_id": "Q-2bd9bf3a566147b7",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Do the segment revenue, cost of production, all-in cost of production and adjusted EBITDA figures on p.50 reconcile to Note 3 Segment analysis, and what explains any differences?",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Note 3 Segment analysis (pp.20–24)",
+      "evidence_required": "Segment revenue and EBITDA per Note 3 for FY26 and FY25, in ZAR and US$, with reconciliation to p.50 totals (Group revenue 17,249.1 ZARm; adjusted EBITDA 663.1 US$m).",
+      "closure_condition": "Segment note figures compared to p.50 and differences explained or flagged as unresolved.",
+      "question_id": "Q-2c4403549a7f46f6",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What explains the FY25 column inconsistencies in the Group production summary (Evander UG 26,748 vs 27,829; MTR tailings 25,043 vs 30,806; Barberton AISC excl. buy-in 1,880 vs 2,688; Elikhulu ZAR all-in cost 68,843)? Are these typos, reclassifications, or scope differences?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 Group production summary (pp.48–50) and D006.2 Note 3 Segment analysis",
+      "evidence_required": "Clarification or restated FY25 comparatives; explanation of whether third-party buy-in is included in column vs total; correction of any typographical errors.",
+      "closure_condition": "Each inconsistency explained (typo, reclassification, or scope) or confirmed as unresolved with management commentary.",
+      "question_id": "Q-f500e9de0c654ab3",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What drove the Tennant Mines ramp-up (surface feedstock 751,914 t vs 85,316 t; gold 32,124 oz vs 1,513 oz) and the sharp rise in third-party buy-in feedstock (887,646 t vs 92,536 t; 18,667 oz vs 1,081 oz), and what is the forward guidance/assumption for these volumes and their cost impact?",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D003 CEO's statement (pp.5–15) and D002 Highlights (pp.2–4)",
+      "evidence_required": "Management commentary on Tennant ramp-up timeline, buy-in feedstock strategy and economics, and any FY27 production/cost guidance; period and units stated.",
+      "closure_condition": "Drivers and forward assumptions located, or explicit statement that no guidance is given.",
+      "question_id": "Q-9c7e005153e646be",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

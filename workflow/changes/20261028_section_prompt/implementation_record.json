@@ -1,0 +1,87 @@
+{
+  "completed_utc": "2026-10-28T16:44:24.616610+00:00",
+  "run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T163642Z_section_prompt_paired_pilot",
+  "files": [
+    {
+      "path": "section_capture\\packages.py",
+      "sha256": "0b027bcabcbe63a2d2a1e1d1d5b1e9c390448250c4a477253268b7cf6fddbf35"
+    },
+    {
+      "path": "section_capture\\question_ledger.py",
+      "sha256": "6d3049342be8e268479ba7a40c3d3d65af65ef339e7aa169e833d579a884688f"
+    },
+    {
+      "path": "tests\\test_section_prompt.py",
+      "sha256": "c226534e2da57d816fd9c8dbb820ed982bd7951b1657fc1a15974a8eccea922c"
+    },
+    {
+      "path": "tests\\test_workload_reliability.py",
+      "sha256": "b46d2d0880492dc7365d7f506bcfef2fb99cbc5665664e29ff330aae2b759145"
+    },
+    {
+      "path": "prompts\\common\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "8c5cbdb1f3c8334bce68866024ef06e711d6493ab05051948ebc6cb920530800"
+    },
+    {
+      "path": "prompts\\construction\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "4b7fdf6e849284d853a5317cf904aa37c8259dc7ddab1b772571e6c9b3c650b4"
+    },
+    {
+      "path": "prompts\\consumer_lending\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "5378fe67b9e22d9aa917c4140ebee8a51cace06715c041518c7e2f9cd32ac0da"
+    },
+    {
+      "path": "prompts\\finance\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "7e504be43fd264b6c72d5853251a546bb7b1b2c40f77af5341eec0f5bf60686b"
+    },
+    {
+      "path": "prompts\\it\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "a69be93000e64959979326bb37afa71f5191c2312cbe755c225a5f77bad7ae6d"
+    },
+    {
+      "path": "prompts\\mining\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "cb2583acf68a5a0e5431135e5deb0dd671935024eedb22ba9dcacc8961934d7f"
+    },
+    {
+      "path": "prompts\\reit\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "f5a2ba011e137b52c6be985e60924ed20a0ba510f53fc713e296ea531b289f10"
+    },
+    {
+      "path": "prompts\\retail\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "73ea916ba7ccaf3dcc04cf22cc0db69258c89a7920b041959100009ccc5381ad"
+    },
+    {
+      "path": "prompts\\telcos\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "c65850d3efcbf82714ba4d474157454a801c000da25e2e7e449e7ccd4b4a1a93"
+    }
+  ],
+  "full_tests": {
+    "exit_code": 0,
+    "counts": {
+      "": 452,
+      "passed": 226
+    },
+    "network": "All Python DNS/connect/sendto denied for the test session"
+  },
+  "initial_targeted_tests": {
+    "exit_code": 1,
+    "counts": {
+      "": 106,
+      "passed": 52,
+      "failed": 1
+    },
+    "network": "All Python DNS/connect/sendto denied for the test session"
+  },
+  "test_folders_cleaned": true,
+  "all_originals_and_sources_preserved": {
+    "checked_utc": "2026-10-28T16:44:24.597721+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "paid_calls": 8,
+  "paid_repairs": 0,
+  "gemini_api_calls": 0,
+  "tooling_retrospective": "TOOL_CHEATSHEET.md section37;large reads/line-ending warnings covered by existing guidance.",
+  "decision": "Simpler first-pass prompt implemented;limited paired pilot supports usability,not universal financial accuracy;remaining errors preserved in versioned audit."
+}

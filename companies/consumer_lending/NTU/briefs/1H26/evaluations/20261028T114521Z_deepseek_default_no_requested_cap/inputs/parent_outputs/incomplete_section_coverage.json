@@ -1,0 +1,16 @@
+{
+  "incomplete_sections": [
+    {
+      "package_id": "section-3b654b8af5dc410386b630d330843f1b-split1",
+      "heading": "Primary financial statements (part 3/5, p.22-27) [physical pp.22-24]",
+      "physical_pages": [
+        22,
+        23,
+        24
+      ]
+    }
+  ],
+  "source_annexed_to_stage1": true,
+  "no_synthetic_section_answers": true,
+  "ledger_updates_not_applied_for_incomplete_calls": true
+}

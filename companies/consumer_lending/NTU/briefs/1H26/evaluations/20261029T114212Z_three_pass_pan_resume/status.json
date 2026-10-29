@@ -1,0 +1,10 @@
+{
+  "status": "complete_gemini_pack_ready",
+  "calls": 2,
+  "stage": "pan_dense_single_attempt1",
+  "last_dispatch_utc": "2026-10-29T11:42:40.666040+00:00",
+  "first_dispatch_utc": "2026-10-29T11:42:20.384838+00:00",
+  "error_type": null,
+  "completed_utc": "2026-10-29T11:43:03.663968+00:00",
+  "reviewed_utc": "2026-10-29T11:44:51.515710+00:00"
+}

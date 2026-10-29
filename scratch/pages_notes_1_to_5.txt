@@ -1,0 +1,249 @@
+
+--- PHYSICAL PAGE 13 ---
+Notes to the condensed consolidated
+financial statements
+for the half year ended 31 March 2026
+1 Purchased book debts
+Purchased credit-impaired financial assets (principal book portfolios) are those that, at the date of initial recognition 
+(acquisition), are credit-impaired. The group purchases its portfolios at a deep discount that reflects the incurred 
+credit losses.
+Principal book portfolios are portfolios of written-off consumer debts purchased at prices below the nominal 
+receivable amounts. Principal book portfolios are reflected at amortised cost on a portfolio basis. Cost includes 
+amounts payable to the vendor and other direct acquisition costs. Principal book portfolios reflected below include 
+cumulative changes in lifetime expected credit losses since acquisition as a loss allowance. The amount of the change 
+in lifetime expected credit losses is reflected as an impairment gain or loss in profit or loss. Favourable changes in 
+lifetime expected credit losses (where collections on portfolios are expected to outperform the collections expected 
+when the portfolios were acquired) are recognised as an impairment gain even if the lifetime expected credit losses 
+are less than the value of expected credit losses that were included in the estimated cash flows when acquired.
+Other financial assets relate to purchased book debt contracts where Nutun does not have title of the underlying 
+portfolio. The portfolios include non-performing accounts held by South African banks and credit providers. 
+Nutun’s return on the portfolio is driven mainly by its collection activities and performance. Nutun has no recourse 
+to the banks or credit providers. Under certain circumstances, the titleholder may retract some of the underlying 
+accounts and dispose thereof to third parties with Nutun being entitled to a portion of the proceeds. The terms of 
+these contracts therefore do not give rise to cash flows that are solely payments of principal and interest as it is not 
+consistent with a basic lending arrangement. Accordingly, these purchased book debts are measured on a fair value 
+basis. Refer to note 6.3.
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited Audited
+Rm Rm Rm
+Expected to be recovered after 12 months
+Principal book portfolio 2 688 2 592 2 853 
+Other financial assets 490 500 546 
+ 3 178 3 092 3 399 
+Expected to be recovered within 12 months
+Principal book portfolio 1 157 1 098 1 122 
+Other financial assets 154 163 156 
+ 1 311 1 261 1 278 
+Total purchased book debts 4 489 4 353 4 677 
+1.1 Principal book portfolio*
+Reconciliation of movements in the period
+Balance at the beginning of the period 3 975 3 831 3 831 
+Additions 382 265 857 
+Net cash collections** (728) (566) (1 197)
+Interest calculated using the credit-adjusted effective 
+interest rate (CAEIR) 383 333 683 
+Impairment loss (167) (173) (199)
+Balance at the end of the period 3 845 3 690 3 975 
+1.2 Other financial assets
+Reconciliation of movements in the period
+Balance at the beginning of the period 702 672 672 
+Additions 28 7 84 
+Cash collections (116) (90) (168)
+Fair value movements 30 74 114 
+Balance at the end of the period 644 663 702 
+* Purchased book debts of R3 845 million (31 March 2025: R3 690 million; 30 September 2025: R3 975 million) have been pledged as security for the 
+interest-bearing liabilities and bank overdrafts per the pledge agreement, refer to note 2. These assets are pledged for the duration of the agreement. 
+The terms of the pledges are usual and customary to such agreements.
+** Included in net collections are gross collections of R773 million (31 March 2025: R604 million; 30 September 2025: R1 280 million) and directly 
+attributable and incremental collection costs of R45 million (31 March 2025: R38 million; 30 September 2025: R83 million).
+Condensed consolidated financial statements for the half year ended 31 March 2026 11
+--- PHYSICAL PAGE 14 ---
+2 Interest-bearing liabilities and bank overdrafts
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited* Audited
+Rm Rm Rm
+Type of loan
+Notes 822 929 802 
+Loans 2 921 2 478 2 641 
+Bank overdrafts 273 457 364 
+Total interest-bearing liabilities 4 016 3 864 3 807 
+Classes of interest-bearing liabilities
+Senior debt 3 547 3 182 3 293 
+Subordinated debt 196 225 150 
+Bank overdrafts 273 457 364 
+Total interest-bearing liabilities 4 016 3 864 3 807 
+Maturity profile
+Payable within 12 months 1 396 1 039 1 237 
+Payable thereafter 2 620 2 825 2 570 
+Total interest-bearing liabilities 4 016 3 864 3 807 
+Total undrawn overdraft facilities 475 43 136 
+* Comparative disclosure for 31 March 2025 has been presented for the first time to enhance the overall presentation of the financial statements.
+Condensed consolidated financial statements for the half year ended 31 March 2026 12
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 15 ---
+2 Interest-bearing liabilities and bank overdrafts continued
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited** Audited
+2.1 Type of loan Description Date issued Interest rate Maturity date Rm Rm Rm
+Notes*
+Notes Bullet 15/11/2022 to 31/10/2025 3 Month JIBAR plus 2.8% to 3.7% 31/12/2026 to 31/03/2032 671 675 734 
+Notes Amortising 13/07/2023 to 23/10/2025 3 Month JIBAR plus 3.0% to 3.1% 29/09/2028 151 73 68 
+Notes Bullet 15/02/2022 3 Month JIBAR plus 3.39% 18/09/2025 – 181 – 
+Total 822 929 802 
+Loans 
+Senior* Amortising 13/07/2023 to 07/04/2025 3 Month JIBAR plus 2.85% to 5.2% 30/06/2026 to 31/12/2030 1 738 1 393 1 430 
+Senior* Bullet 09/12/2021 to 09/05/2025 3 Month JIBAR plus 3% to 3.28% 31/12/2026 to 28/06/2030 690 635 690 
+Subordinated Amortising 03/10/2025 3 Month JIBAR plus 4.6% 29/09/2028 46 – –
+Subordinated Bullet 18/03/2022 to 13/09/2023 3 Month JIBAR plus 5.0% 31/03/2027 to 30/09/2027 150 225 150 
+Senior* Revolving Facility 17/12/2024 to 20/02/2025 Prime minus 0.25% to 0.35% 30/09/2028 297 225 371
+Total 2 921 2 478 2 641
+* Purchased book debts, trade and other receivables and cash and cash equivalents have been pledged as security for the interest-bearing liabilities and bank overdrafts per the pledge agreement. These assets are pledged for the 
+duration of the agreement. The terms of the pledges are usual and customary to such agreements.
+** Comparative disclosure for 31 March 2025 has been presented for the first time to enhance the overall presentation of the financial statements.
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+Condensed consolidated financial statements for the half year ended 31 March 2026 13
+--- PHYSICAL PAGE 16 ---
+3 Ordinary share capital
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited Audited
+Number Number Number
+of shares of shares of shares
+Authorised
+Ordinary shares 1 000 000 000 1 000 000 000 1 000 000 000
+Issued and fully paid up
+Ordinary share capital 784 313 242 784 313 242 784 313 242
+Total ordinary shares outstanding 780 651 033 784 313 242 784 313 242
+Ordinary shares issued 784 313 242 784 313 242 784 313 242
+Treasury shares held by entities in the group (3 662 209) – – 
+3.1 Reconciliation of ordinary share capital
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited Audited
+Number
+of shares
+Share
+capital*
+Number
+of shares
+Share
+capital*
+Number
+of shares
+Share
+capital*
+million Rm million Rm million Rm
+Balance at the beginning
+of the period 784 5 414 784 5 414 784 5 414 
+Treasury shares bought (4) (4) – – – – 
+Balance at the end of the period 780 5 410 784 5 414 784 5 414 
+* Net of share issue costs.
+Share movements during the period
+Nutun acquired 3,662,209 shares for a consideration of R3.7 million (average share price of R1 per share) during 
+the period. This was for the purpose of holding the shares as treasury shares to be utilised on the vestings of the 
+Conditional Share Plan.
+Condensed consolidated financial statements for the half year ended 31 March 2026 14
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 17 ---
+4 Revenue
+Nutun Nutun
+South Africa International Total
+Rm Rm Rm
+Revenue comprises:
+31 March 2026 - Unaudited
+Service fees: Over a period of time – 552 552
+Commissions and fees: At a point in time 159 – 159
+Total revenue 159 552 711
+31 March 2025 - Unaudited*
+Service fees: Over a period of time – 557 557 
+Commissions and fees: At a point in time 188 – 188 
+Total revenue 188 557 745 
+30 September 2025 - Audited
+Service fees: Over a period of time – 1 094 1 094 
+Commissions and fees: At a point in time 341 – 341 
+Total revenue 341 1 094 1 435 
+* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall 
+presentation of the financial statements. Comparative disclosure for 31 March 2025 has been presented for the first time.
+4.1 Revenue disaggregation
+31 March 31 March 30 September
+2026 2025 2025
+Unaudited Unaudited* Audited
+Rm Rm Rm
+The group recognises revenue earned from the following 
+geographic regions:
+South Africa 159 188 341 
+Australia 27 74 127 
+United Kingdom 303 259 525 
+United States 212 224 428 
+Other 10 – 14 
+Total revenue 711 745 1 435 
+* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall 
+presentation of the financial statements. Comparative disclosure for 31 March 2025 has been presented for the first time.
+Condensed consolidated financial statements for the half year ended 31 March 2026 15
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 18 ---
+5 Loss per share
+5.1 From total operations
+31 March 31 March 30 September
+2026 2025 2025
+Units Unaudited Unaudited Audited
+Basic loss per share cents (8.1) (8.2) (30.3)
+Diluted loss per share cents (8.1) (8.2) (30.3)
+Headline loss per share cents (8.1) (17.2) (39.4)
+Diluted headline loss per share cents (8.1) (17.2) (39.4)
+The calculation of loss per share is based 
+on the following data:
+Loss
+Loss for the purposes of basic and diluted 
+loss per share Rm (63) (64) (238)
+Headline loss adjustments: Rm – (71) (71)
+Profit on disposal of business Rm - (100) (100)
+Tax impact Rm - 29 29 
+Loss for the purposes of headline and diluted
+headline loss per share Rm (63) (135) (309)
+Weighted average numbers of shares
+Number of ordinary shares in issue at the beginning
+of the period million 784.3 784.3 784.3 
+Effect of treasury shares bought million (2.2) – – 
+Weighted average number of ordinary shares for 
+the purposes of basic and headline loss per share million 782.1 784.3 784.3 
+Weighted average number of ordinary shares for 
+the purposes of diluted and diluted headline loss 
+per share* million 782.1 784.3 784.3 
+* The denominators used are the same as those used for basic and headline loss per share. Shares deemed to be issued for no consideration in respect 
+of the conditional share plan do not have a dilutive effect in the current period.
+Condensed consolidated financial statements for the half year ended 31 March 2026 16
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 19 ---
+5 Loss per share continued
+5.2 From continuing and discontinued operations 
+Continuing operations Discontinued operations
+31 March 31 March 30 September 31 March 31 March 30 September
+2026 2025 2025 2026 2025 2025
+Units Unaudited Unaudited Audited Unaudited Unaudited Audited
+Basic (loss)/earnings per share cents (8.1) (15.6) (14.4) – 7.4 (15.9)
+Diluted (loss)/earnings per share cents (8.1) (15.6) (14.4) – 7.4 (15.9)
+Headline loss per share cents (8.1) (15.6) (14.4) – (1.6) (25.0)
+Diluted headline loss per share cents (8.1) (15.6) (14.4) – (1.6) (25.0)
+The calculation of (loss)/earnings per share is based 
+on the following data:
+(Loss)/Earnings for the purposes of basic and diluted 
+loss per share Rm (63) (122) (113) – 58 (125)
+Headline earnings adjustments: Rm – – – – (71) (71)
+Profit on disposal of business Rm – – – – (100) (100)
+Tax impact Rm – – – – 29 29 
+Loss for the purposes of headline and diluted headline 
+loss per share Rm (63) (122) (113) – (13) (196)
+The denominators used are the same as those detailed above for both basic and diluted loss per share from continuing and discontinued operations. Shares deemed to be issued 
+for no consideration in respect of the conditional share plan do not have a dilutive effect in the current period.
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+Condensed consolidated financial statements for the half year ended 31 March 2026 17

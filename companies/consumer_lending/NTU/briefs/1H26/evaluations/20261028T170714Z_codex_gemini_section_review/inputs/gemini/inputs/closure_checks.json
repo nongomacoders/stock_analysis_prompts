@@ -1,0 +1,13 @@
+{
+  "checked_utc": "2026-10-28T16:42:14.170016+00:00",
+  "eight_unique_generations": true,
+  "all_costs_corroborated": true,
+  "production_and_source_preservation": {
+    "checked_utc": "2026-10-28T16:42:14.145438+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "financial_validation": "LIMITED;individual output corrections required",
+  "offline_full_test_exit_code": 0
+}

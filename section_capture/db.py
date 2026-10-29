@@ -9,6 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from section_capture.valuation_policy import assess_valuation_publication, enforce_valuation_publication
+from section_capture import question_ledger
+
 from companies import PACKAGE_DIR, SECTORS
 from companies.sectors import (
     get_icb_code,
@@ -34,6 +37,7 @@ CREATE TABLE IF NOT EXISTS reports (
     stage1_updated_at TEXT,
     stage2_prompt TEXT,
     stage2_response TEXT,
+    stage2_candidate_response TEXT,
     stage2_updated_at TEXT,
     target_price_zar REAL,
     reference_price_zar REAL,
@@ -104,6 +108,7 @@ CREATE TABLE IF NOT EXISTS sector_guardrails (
 
 
 DEFAULT_SECTOR_GUARDRAILS: list[dict[str, Any]] = [
+    {'rule_code': 'ALL-MATERIAL-ISSUES-VALUATION-WITHHOLD', 'sector': 'all', 'stage': 'all', 'title': 'Withhold Valuation Until Material Dependencies Are Resolved', 'rule_text': 'If a material cash-flow, forecast, financing, share-count, portfolio or valuation dependency fails reconciliation or remains unsupported, return VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED. Preserve verified historical analysis and risks, identify each blocker and the evidence or correction needed, and carry unresolved Stage 1 findings forward. Do not publish a target, rating bands, upside, dividend yield, TSR or investment recommendation; use JSON null, never zero or HOLD. Illustrative scenarios must remain clearly conditional and separate from the headline valuation. READY requires explicit source evidence, consistent periods and scopes, cash/debt/portfolio roll-forwards, equity financing and terminal-policy consistency, valuation-bridge and sensitivity checks. Assumptions may be used when supported and disclosed; they cannot conceal material missing inputs. Application checks of declared evidence and numeric reconciliations do not replace independent review.', 'origin_ticker': 'NTU'},
     {
         "rule_code": "ALL-IFRS16-EV-BRIDGE",
         "sector": "all",
@@ -357,6 +362,74 @@ DEFAULT_SECTOR_GUARDRAILS: list[dict[str, Any]] = [
             "Compute dividend cover strictly against recurring, clean operational FCF post-lease principal and interest."
         ),
         "origin_ticker": "TKG",
+    },
+    {
+        "rule_code": "ALL-DCF-REPRODUCIBILITY",
+        "sector": "all",
+        "stage": "all",
+        "title": "DCF Schedule Reproducibility & Anti-Handwaving Component Bridge",
+        "rule_text": (
+            "Mandates explicit disclosure of annual forecast FCFF/FCFE, terminal value, WACC/discount rate, and a step-by-step numerical EV-to-Equity bridge. "
+            "Forbids applying qualitative, unmodeled percentage uplifts to blended valuation components; any adjustment between underlying component valuations "
+            "(e.g. DCF and P/E) and the published target price must be modeled directly within the underlying cash flows or valuation multiples."
+        ),
+        "origin_ticker": "DCP",
+    },
+    {
+        "rule_code": "ALL-CASHFLOW-CLASSIFICATION-BRIDGE",
+        "sector": "all",
+        "stage": "all",
+        "title": "Statutory Operating Cash Flow to FCFF/FCFE Bridge & Capex/Lease Deduction",
+        "rule_text": (
+            "Prohibits labeling statutory Cash Generated from Operations (before capex, lease principal repayments, and interest) as Free Cash Flow to Equity (FCFE) "
+            "or Free Cash Flow to Firm (FCFF). Models must explicitly bridge operating cash flow to true free cash flow by deducting replacement and expansion capex, "
+            "IFRS 16 lease principal repayments, net finance costs, and working capital normalizations."
+        ),
+        "origin_ticker": "DCP",
+    },
+    {
+        "rule_code": "RETAIL-WORKING-CAPITAL-PAYABLE-STRETCH",
+        "sector": "retail",
+        "stage": "all",
+        "title": "Working Capital Payable Stretch & Cash Conversion Normalization",
+        "rule_text": (
+            "Forbids treating operating cash flow spikes as sustainable free cash flow when driven predominantly by elongation of trade creditor days "
+            "(>15% YoY increase in trade payables) or inventory freezes during network store expansion. Analysts must normalize working capital swings to "
+            "multi-year historical averages and isolate supplier rebate/allowance reclassifications from core merchandise gross margins."
+        ),
+        "origin_ticker": "DCP",
+    },
+    {
+        'rule_code': 'ALL-CASH-ROLLFORWARD-CONSISTENCY',
+        'sector': 'all',
+        'stage': 'all',
+        'title': 'Forecast Cash and Financing Must Reconcile',
+        'rule_text': 'For every forecast period, reconcile opening cash plus operating, investing and financing cash flows and separately identified FX or scope changes to closing cash on the forecast balance sheet. Reconcile new borrowing, repayments and equity issuance to debt balances, equity and dilution. State the cash definition and rounding tolerance; bridge restricted cash, held-for-sale cash and overdrafts included in cash equivalents explicitly, without double counting. An unresolved material residual invalidates the forecast and dependent valuation; missing inputs are NOT VERIFIED, never PASS. Example: opening 100 + operating 20 - capex 10 + financing 5 = closing 115 passes; opening 100 plus net change -815 cannot produce closing 95 without an explicit 810 reconciling inflow.',
+        'origin_ticker': 'NTU',
+    },
+    {
+        'rule_code': 'ALL-SENSITIVITY-REPRODUCIBILITY',
+        'sector': 'all',
+        'stage': 'all',
+        'title': 'Sensitivity Cells Must Reproduce the Valuation',
+        'rule_text': 'Recalculate every sensitivity cell using the same documented base valuation formula, changing only the named inputs. The central case MUST reproduce the published base target within a declared rounding tolerance. Preserve debt, share count, cash-flow basis, valuation bridges and all discounts unless explicitly varied. Show the formula and full transformation for any additional haircut; unexplained cells invalidate the sensitivity conclusions. Nonlinear models are allowed when their actual formulas are used; do not impose constant derivatives from another method. Missing formulas or inputs are NOT VERIFIED. Example: with 3,845 million of PBD assets, a 0.05 multiple change and one 25% discount over 780.7 million shares imply a 0.18469 ZAR/share change; 0.07 without a disclosed transformation fails. This supplements SOTP arithmetic and prohibits double counting adjustments.',
+        'origin_ticker': 'NTU',
+    },
+    {
+        'rule_code': 'CONSUMER-LENDING-POCI-GAIN-VS-ECL-RESERVE',
+        'sector': 'consumer_lending',
+        'stage': 'all',
+        'title': 'POCI Cumulative Gains, Loss Allowances and Portfolio Scope',
+        'rule_text': 'For purchased or originated credit-impaired (POCI) principal portfolios, identify the acquisition baseline and reconcile gross carrying amount, signed cumulative changes in lifetime expected credit losses, and net carrying amount using the original notes. A favourable cumulative impairment gain is NOT a conventional loss-coverage reserve: do not divide it by gross carrying amount and call the result loss coverage or describe its decline as a coverage collapse. Preserve reported labels such as ECL allowance while explaining their economic sign. Reconcile opening balance, gains or losses on new and historical portfolios, and closing balance. Separate amortised-cost POCI principal portfolios from other purchased-book-debt assets measured at FVTPL; do not apply one ECL regime to both. Example: gross 3,414 plus cumulative gain 431 = net 3,845; 431/3,414 is not conventional loss coverage. A rolling 12-month modelling disclosure warrants a lifetime/tail-methodology check, not an unsupported conclusion about the amount or direction of misstatement. Missing methodology is NOT VERIFIED.',
+        'origin_ticker': 'NTU',
+    },
+    {
+        'rule_code': 'ALL-EQUITY-NAV-VS-CONTRIBUTED-CAPITAL',
+        'sector': 'all',
+        'stage': 'all',
+        'title': 'Ordinary Shareholder NAV versus Contributed Capital',
+        'rule_text': 'Calculate statutory ordinary book value/NAV per share from equity attributable to parent ordinary shareholders, excluding non-controlling interests and preference or other non-ordinary claims, divided by ordinary shares outstanding net of treasury shares at the same measurement date. Reconcile retained earnings or accumulated losses and reserves; never label contributed share capital alone as NAV. Use date-matched closing shares rather than silently substituting an earnings weighted-average denominator. Adjusted or tangible NAV is permitted only when clearly labelled and reconciled to statutory ordinary equity, with every adjustment disclosed. NAV is not automatically market fair value. Example: parent ordinary equity 1,329 million / 780.651033 million net shares = approximately 1.70 ZAR/share; share capital 5,410 million / those shares is not book NAV.',
+        'origin_ticker': 'NTU',
     },
 ]
 
@@ -686,7 +759,15 @@ def parse_valuation_summary(text: str | None) -> dict[str, Any]:
     """Extract executive valuation metrics and monitoring triggers from a Stage 2 note."""
     if not text:
         return {}
-    res: dict[str, Any] = {}
+    gate = assess_valuation_publication(text, require_contract=False)
+    if gate['valuation_status'] == 'WITHHELD':
+        # Do not fall back to prose/scenario prices or regenerate rating bands.
+        return {**gate, 'target_price': None, 'reference_price': gate.get('reference_price'),
+                'recommendation': None, 'rating_bands': None, 'upside_pct': None,
+                'dividend_yield_pct': None, 'tsr_pct': None}
+    res: dict[str, Any] = gate if gate['valuation_status'] == 'READY' else {}
+    if res.get('reference_price') is None:
+        res.pop('reference_price', None)
 
     # ---------------------------------------------------------------------
     # Fast-Path: Standardized machine-readable JSON summary block (```json ... ```)
@@ -1433,6 +1514,7 @@ def _migrate_schema(conn: sqlite3.Connection):
         ("stage1_updated_at", "TEXT"),
         ("stage2_prompt", "TEXT"),
         ("stage2_response", "TEXT"),
+        ("stage2_candidate_response", "TEXT"),
         ("stage2_updated_at", "TEXT"),
         ("target_price_zar", "REAL"),
         ("reference_price_zar", "REAL"),
@@ -1496,8 +1578,21 @@ def connect_db(db_path: str | Path | None = None) -> sqlite3.Connection:
     conn = sqlite3.connect(str(path))
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA_SQL)
+    conn.executescript(question_ledger.SCHEMA)
     _migrate_schema(conn)
     return conn
+
+
+def prepare_question_ledger(sha: str, db_path=None, *, for_prompt: bool = False, context=None) -> str:
+    """Import legacy questions without losing text, then render persistent state."""
+    with connect_db(db_path) as conn:
+        suite = question_ledger.suite_key(conn, sha)
+        row = conn.execute('SELECT questions_ledger FROM reports WHERE sha256=?', (suite,)).fetchone()
+        question_ledger.seed_legacy(conn, suite, sha, row[0] if row else '', datetime.now(timezone.utc).isoformat())
+        questions = question_ledger.records(conn, suite)
+        if not questions:
+            return ''
+        return question_ledger.render_prompt(questions, context=context) if for_prompt else question_ledger.render(questions)
 
 
 def upsert_sector_guardrail(
@@ -1907,6 +2002,12 @@ def save_section_llm_response(
             return None, None
         manifest = json.loads(row["manifest_json"])
         review = manifest.setdefault("review", {})
+        if update_ledger and manifest.get('ledger_contract') == 1:
+            extracted_ledger, errors = question_ledger.apply_delta(
+                conn, row['report_sha256'], package_id, manifest, cleaned_resp, now
+            )
+            review['ledger_validation'] = 'rejected' if errors else 'valid'
+            review['ledger_errors'] = errors
         review["model_brief"] = "recorded" if cleaned_resp else "not_run"
         if response_time_seconds is not None:
             review["response_time_seconds"] = round(float(response_time_seconds), 2)
@@ -1921,7 +2022,7 @@ def save_section_llm_response(
             (cleaned_resp or None, json.dumps(manifest, ensure_ascii=False), now, package_id),
         )
 
-        if extracted_ledger:
+        if extracted_ledger is not None:
             conn.execute(
                 "UPDATE reports SET questions_ledger = ?, updated_at = ? WHERE sha256 = ?",
                 (extracted_ledger, now, row["report_sha256"]),
@@ -2025,6 +2126,7 @@ def save_stage2_report(
     response: str | None = None,
     sens_updates: list[dict] | None = None,
     db_path: str | Path | None = None,
+    candidate_response: str | None = None,
 ) -> bool:
     """Save Stage 2 Institutional Valuation prompt and/or response on a report row."""
     resolved = resolve_db_path(db_path)
@@ -2042,13 +2144,26 @@ def save_stage2_report(
             updates.append("sens_updates_json = ?")
             params.append(json.dumps(sens_updates, ensure_ascii=False))
         if response is not None:
-            # Preserve original baseline if this is the first subsequent update
-            cols = {col[1] for col in conn.execute("PRAGMA table_info(reports)").fetchall()}
-            if "stage2_baseline_response" in cols:
-                current_baseline = row["stage2_baseline_response"] if "stage2_baseline_response" in row.keys() else None
-                if row["stage2_response"] and not current_baseline and row["stage2_response"].strip() != response.strip():
-                    updates.extend(["stage2_baseline_response = ?", "stage2_baseline_updated_at = ?"])
-                    params.extend([row["stage2_response"], row["stage2_updated_at"] or now])
+            original = candidate_response if candidate_response is not None else response
+            # A publication already blocked by an evaluator cannot be promoted
+            # merely because the preserved candidate claims READY.
+            submitted_gate = assess_valuation_publication(response)
+            response = enforce_valuation_publication(response if submitted_gate['valuation_status'] == 'WITHHELD' else original)
+            updates.append('stage2_candidate_response = ?')
+            params.append(original)
+            # Preserve each report's own prior note before a child/parent sync.
+            report_ids = [report_sha256]
+            if row['parent_report_sha256']:
+                report_ids.append(row['parent_report_sha256'])
+            for prior_sha in report_ids:
+                conn.execute(
+                    """UPDATE reports SET stage2_baseline_response = stage2_response,
+                       stage2_baseline_updated_at = COALESCE(stage2_updated_at, ?)
+                       WHERE sha256 = ? AND stage2_response IS NOT NULL
+                       AND TRIM(stage2_response) != TRIM(?)
+                       AND (stage2_baseline_response IS NULL OR TRIM(stage2_baseline_response) = '')""",
+                    (now, prior_sha, response),
+                )
 
             updates.append("stage2_response = ?")
             params.append(response)
@@ -2102,7 +2217,7 @@ def get_stage2_report(report_sha256: str, db_path: str | Path | None = None) -> 
         row = conn.execute(
             """
             SELECT
-                sha256, filename, stage2_prompt, stage2_response, stage2_updated_at,
+                sha256, filename, stage2_prompt, stage2_response, stage2_candidate_response, stage2_updated_at,
                 target_price_zar, reference_price_zar, recommendation, upside_pct,
                 dividend_yield_pct, tsr_pct, monitoring_triggers, valuation_summary_json,
                 sens_updates_json, stage2_baseline_response, stage2_baseline_updated_at
@@ -2192,6 +2307,7 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
 
             # Rating bands & dynamic recommendation
             rating_bands = None
+            summary_dict = {}
             raw_summary = r["valuation_summary_json"]
             if raw_summary:
                 try:
@@ -2206,7 +2322,13 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
             static_rec = r["recommendation"] or ("ANALYZED" if r["s2_len"] else "IN PROGRESS")
             dynamic_rec = evaluate_dynamic_rating(live_price, rating_bands, fallback_rec=static_rec)
 
+            withheld = summary_dict.get('valuation_status') == 'WITHHELD'
+            if withheld:
+                tp_val = live_upside = rating_bands = None
+                static_rec = dynamic_rec = 'VALUATION WITHHELD'
             results.append({
+                'valuation_status': summary_dict.get('valuation_status', 'LEGACY'),
+                'blocking_issues': summary_dict.get('blocking_issues', []),
                 "sha256": r["sha256"],
                 "filename": r["filename"],
                 "original_path": r["original_path"],
@@ -2225,9 +2347,9 @@ def get_analyzed_stocks(db_path: str | Path | None = None) -> list[dict]:
                 "dynamic_recommendation": dynamic_rec,
                 "static_recommendation": static_rec,
                 "recommendation": dynamic_rec,
-                "upside_pct": r["upside_pct"],
-                "dividend_yield_pct": r["dividend_yield_pct"],
-                "tsr_pct": r["tsr_pct"],
+                "upside_pct": None if withheld else r["upside_pct"],
+                "dividend_yield_pct": None if withheld else r["dividend_yield_pct"],
+                "tsr_pct": None if withheld else r["tsr_pct"],
                 "monitoring_triggers": r["monitoring_triggers"] or "",
                 "has_stage1": bool(r["s1_len"] and r["s1_len"] > 0),
                 "has_stage2": bool(r["s2_len"] and r["s2_len"] > 0),

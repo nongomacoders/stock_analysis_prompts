@@ -1,0 +1,74 @@
+[
+  {
+    "id": "C001",
+    "claim": "Three-pass worksheet provides correct net -130(-3.3%),cumulative gain -167(-27.9%),Unsecured net-352(-11.9%),Debt review net+227(+26.2%). Final retains useful percentages.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "PASS",
+    "finding_id": "F001"
+  },
+  {
+    "id": "C002",
+    "claim": "Single and staged final both propose resolvedQ-08aa5c3f257440ab while total4489scope is deferred. Three-pass valid delta accepts unsupported semantic closure in memory; single rejection prevents its application.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "FAIL",
+    "finding_id": "F002"
+  },
+  {
+    "id": "C003",
+    "claim": "Meaning calls PBD-only net3845 while acknowledging other fair-value assets within PBD and unresolved4489scope. Movement and final repeat this narrowing; later passes do not fully challenge it.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "FAIL",
+    "finding_id": "F003"
+  },
+  {
+    "id": "C004",
+    "claim": "Single rejected for5-character3 414quote; three-pass final passes literal validation. This does not establish financial correctness or semantic closure.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "FAIL",
+    "finding_id": "F004"
+  },
+  {
+    "id": "C005",
+    "claim": "Defines costs/capex as outflows reducing profit/assets and revenue/EBITDA as inflows. Capex generally exchanges cash for a capital asset rather than immediately reducing profit; revenue/EBITDA are not cash inflows. AISC definitions are provisional because source definitions absent.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "FAIL",
+    "finding_id": "F005"
+  },
+  {
+    "id": "C006",
+    "claim": "Worksheet reproduces197608vs196527 FY25 overlap and leaves risk unresolved; dictionary correction71997=65233+2428+4337 actually sums71998, a1oz source difference must be retained.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "FAIL",
+    "finding_id": "F006"
+  },
+  {
+    "id": "C007",
+    "claim": "PAN why request HTTP429Too Many Requests,no output/ID/usage; PAN fresh single not dispatched. No paid retries. Specific router/provider/account quota cause unknown.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "NOT VERIFIED",
+    "finding_id": "F007"
+  },
+  {
+    "id": "C008",
+    "claim": "PAN49 prints FY26Barberton total94929; mining71997+BTRP12932=84929. Printed total-operation columns sum282310vsGroup272310, difference10000. Source inconsistency visible in original render and extracted capture; correct replacement/cause not established.",
+    "classification": "Historical source/model/transport assessment",
+    "primary_evidence": "NTU21–23,PAN48–50; exact requests/receipts as applicable",
+    "independent_check": "See calculations.json,closure_comparison.json and raw pass outputs",
+    "verdict": "NOT VERIFIED",
+    "finding_id": "F008"
+  }
+]

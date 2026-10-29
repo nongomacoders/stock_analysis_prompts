@@ -1,0 +1,22 @@
+{
+  "case": "ntu_shared_page",
+  "version": "old",
+  "ledger_valid": false,
+  "errors": [
+    "Evidence quote for Q-PILOT-ntu_shared_page, physical page 25 is not literal: 'credit risk is managed by reference to past default experience of the debtor and analysis of the deb'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+  ],
+  "questions": [
+    {
+      "question_id": "Q-PILOT-ntu_shared_page",
+      "question": "What does this capture establish about trade-receivable credit losses and the applicable measurement basis? Keep unsupported policy conclusions open.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Current captured note",
+      "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+      "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

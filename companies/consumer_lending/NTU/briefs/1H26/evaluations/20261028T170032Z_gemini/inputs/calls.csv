@@ -1,0 +1,9 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+ntu_portfolio_new,gen-1793205485-ZqVsV6LprnDrv4m48up5,True,0.00319536,response_usage,4244,2743,0,0,2743,11.271,3.041,Fireworks,9313,1226,stop,retrieved
+ntu_portfolio_old,gen-1793205463-nAoP1pav9K2eDjVeiNmJ,True,0.00375732,response_usage,5836,3014,0,0,3014,12.722,2.684,Fireworks,10624,911,stop,retrieved
+ntu_shared_page_new,gen-1793205533-i3JLrn771OgqqZac3IhY,True,0.0022093512,response_usage,4778,1665,0,936,1665,8.236,2.988,Fireworks,6168,911,stop,retrieved
+ntu_shared_page_old,gen-1793205505-MBTW0WuiLkbusmVf8PG5,True,0.0041156136,response_usage,6366,3947,0,2608,3947,16.366,3.671,Fireworks,13826,1695,stop,retrieved
+pan_apm_new,gen-1793205566-rBOeOBmo0BLwsImhH4TK,True,0.0026304012,response_usage,5327,1882,0,336,1882,8.037,1.383,Fireworks,7104,850,stop,retrieved
+pan_apm_old,gen-1793205547-5QdhQ3cXgkDaoV8fQpkY,True,0.00347319,response_usage,6079,2615,0,0,2615,12.749,3.972,Fireworks,11376,2696,stop,retrieved
+pan_operations_new,gen-1793205602-lJ0r5yBSvnavqcHonlKS,True,0.0048054552,response_usage,12271,2875,0,906,2875,11.736,2.519,Fireworks,10789,1640,stop,retrieved
+pan_operations_old,gen-1793205582-VlPuA5AsU4aoVIO3Mu9x,True,0.0058224432,response_usage,13023,4079,0,1646,4079,13.685,2.665,Fireworks,12217,1524,stop,retrieved

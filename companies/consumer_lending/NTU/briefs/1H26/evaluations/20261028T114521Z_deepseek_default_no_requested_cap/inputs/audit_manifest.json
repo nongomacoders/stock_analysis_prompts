@@ -1,0 +1,155 @@
+{
+  "recorded_utc": "2026-10-28T11:50:00.874431+00:00",
+  "files": [
+    {
+      "path": "requests\\section_06_uncapped_v4.json",
+      "sha256": "5c9c516a1571e3053699a67da6afdbb6814aed3f18dcd8173ecb4aea727c7e30"
+    },
+    {
+      "path": "requests\\section_06_uncapped_v4.md",
+      "sha256": "aeec6954b0f17528491e6a8e4fe7ba10f277ce033b77dbb4bbc2759150a64c04"
+    },
+    {
+      "path": "requests\\stage1.json",
+      "sha256": "dc7bff8f3778baf0c6383e23b86aafa4762ec53f50c93013aad2864533766242"
+    },
+    {
+      "path": "requests\\stage1.md",
+      "sha256": "3e294d1b8d3fc804a97b30c8812fecf454f01875a2a749a428dc37f2c45660e7"
+    },
+    {
+      "path": "requests\\stage2.json",
+      "sha256": "6009addfbb7cbef7a5fe2c8bae3f19a3d4c4a1d4e3cdae25372163e1341fd699"
+    },
+    {
+      "path": "requests\\stage2.md",
+      "sha256": "46e6bee895360495178fff190ce94b4f5871430ff977c9c7e32dd515917fa4de"
+    },
+    {
+      "path": "outputs\\incomplete_section_coverage.json",
+      "sha256": "84e09a76a3cbef13f9aa3142285aeee7f1e8557ca26f9ba69fbe135feb30066a"
+    },
+    {
+      "path": "outputs\\ledger_summary.json",
+      "sha256": "36084fe0c490b2688faa0f5002280108b1dc32348ffd633eaf073b518f4e1b36"
+    },
+    {
+      "path": "outputs\\publication_assessment.json",
+      "sha256": "45174f7b9cd57fbd5f5c205319d7d3ac7fb0eae4da70994c49fc655b203abe91"
+    },
+    {
+      "path": "outputs\\questions_ledger.md",
+      "sha256": "7d5688e37186d984c109863e444baeb52008edde90524857dcc8b95211bca496"
+    },
+    {
+      "path": "outputs\\section_06_uncapped_v4.md",
+      "sha256": "2a15c9947f502924b19d1257cd928808457d99b81c1d5bc83be4feef983f4ea3"
+    },
+    {
+      "path": "outputs\\stage1.md",
+      "sha256": "45fb2119603b33c26761cec3cdb07ee9ba7d811925512587ae3090a35e8a52ba"
+    },
+    {
+      "path": "outputs\\stage2.md",
+      "sha256": "07fe725e24e72b820fc5f107050354e27e2a5b53239a4f740da90e7de4656488"
+    },
+    {
+      "path": "outputs\\stage2_publication.md",
+      "sha256": "a76330a575bd6eb323974d2d2af3f954c3ce52662aeee973a3d684f235ed114f"
+    },
+    {
+      "path": "receipts\\section_06_uncapped_v4.json",
+      "sha256": "391300a9c5ff4279f3fee839b07df5482c0d50946fdcbe58ec1ef36f1b7239e6"
+    },
+    {
+      "path": "receipts\\stage1.json",
+      "sha256": "ea8cb8200bd75ec2a093c542292678b65ce8db426e2016d55b5e30676c2b3ec0"
+    },
+    {
+      "path": "receipts\\stage2.json",
+      "sha256": "ae29412d1689fa70adcd1cc6470a90fd1943be976038ba8cbe40fbdb94c828d5"
+    },
+    {
+      "path": "inputs\\parent_outputs\\execution_outcome.json",
+      "sha256": "d572d3453e97d706dbe5f1a166c5c26a93f407b54909739e0b93046c3bfffa26"
+    },
+    {
+      "path": "inputs\\parent_outputs\\incomplete_section_coverage.json",
+      "sha256": "f5ecace6a6747580dbcc195b58b1d3ad6854b2a916d141822f75445d2a854378"
+    },
+    {
+      "path": "inputs\\parent_outputs\\independent_checks.json",
+      "sha256": "3f1cae95089da9068199c2d2cc1d21cb4d3f6537bc21b56e356a3bf8088374c6"
+    },
+    {
+      "path": "inputs\\parent_outputs\\ledger_summary.json",
+      "sha256": "fddb2f606dc98010f277c10b3a592e68a30015f12fe5e7d800689f4a2559d023"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_01.md",
+      "sha256": "7504d2aa9bd62eae04a4132a1addd344bf8cd18fcf16b66f8bb574dc6aa5d8bd"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_02_compact_v2.effective.md",
+      "sha256": "d0a1a5a43fc1d3c61cf3f846ef0200f1dd4e83e50c3540c5ffa7bb58d845b060"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_02_compact_v2.md",
+      "sha256": "c87ee922ca1abd60a06416d94ac9f63f9e334ef2e6f1b7eae995e55bf20ed544"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_02_compact_v2.validation.json",
+      "sha256": "eeaa20c37944e350673bd3e0acf81b1d0732a31e1f169a4152449f759e3226ef"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_02_compact_v2_repair.md",
+      "sha256": "4c6a9604978d33f83bafa059cc3eab61634b41533552ca43ca74abef1232185f"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_03_compact_v2.md",
+      "sha256": "a77ffbf27c42d9e243c6dc23cde28f8f82a2ebe80500fc9ab691c62f4073497f"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_04_compact_v2.md",
+      "sha256": "eebf1e1eedccfaf6b4189327eb05039aa5d209aeb3833ec78f9395803a928b9d"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_05_compact_v2.md",
+      "sha256": "a2a8f721fccb91dca2a38d14dec8dbdfff58af6d0ae66c4db56a91340ffdb306"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_07_split_v3.md",
+      "sha256": "69b549439e748377df6c4b4d3e535a786d20dde4125e0a326dc772bc5ca14efd"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_08_split_v3.md",
+      "sha256": "111485abf5bdb8da2cebf6836d4e916884be5223b81afeed19634f594a82d061"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_09_split_v3.md",
+      "sha256": "41f8f8884af40d8606d9916d9947c6bdf109d7e86efb48477f39e6b3ba68517b"
+    },
+    {
+      "path": "inputs\\parent_outputs\\section_10_split_v3.md",
+      "sha256": "290e7f71a6e014b987ac37496e43544ffc78e9b3ebce9492a021b9efd9f5f373"
+    },
+    {
+      "path": "inputs\\parent_outputs\\stage1.md",
+      "sha256": "2fe8e318f989d380bb0f76a5ab93847ea5464d38b44113d8fab346c8b95fb794"
+    }
+  ],
+  "source_documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "period": "1H26",
+      "page_count": 38,
+      "captured_page_count": 38,
+      "captures": 9,
+      "detected_sections": 4
+    }
+  ],
+  "parent_inputs_preserved": true
+}

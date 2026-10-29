@@ -1,0 +1,28 @@
+{
+  "completed_utc": "2026-10-28T17:14:03.422756+00:00",
+  "verdict": "SUPPORTED WITHIN COVERAGE;GEMINI FINDING CORRECTIONS REQUIRED",
+  "paid_calls": 0,
+  "prompt_changes": 0,
+  "guardrail_changes": 0,
+  "independent_calculation_exit_code": 0,
+  "preservation": {
+    "original_files_unchanged": true,
+    "source_pdfs_unchanged": true,
+    "production_all_tables_unchanged": true,
+    "gemini_manifest_entries": 36,
+    "preserved_review_files": 148
+  },
+  "fully_rendered_and_viewed_pages": {
+    "NTU": [
+      13,
+      25
+    ],
+    "PAN": [
+      38,
+      39,
+      48,
+      49,
+      50
+    ]
+  }
+}

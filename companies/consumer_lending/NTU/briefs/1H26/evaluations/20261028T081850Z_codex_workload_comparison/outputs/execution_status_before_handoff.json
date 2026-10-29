@@ -1,0 +1,81 @@
+{
+  "status": "awaiting_user_antigravity_evaluation",
+  "ticker": "NTU",
+  "model_calls": 21,
+  "stage": "deepseek_complete",
+  "submitted_utc": "2026-10-28T08:52:25.013175+00:00",
+  "error_type": "IncompleteCompletionError",
+  "error": "Model reached completion limit (98,304 tokens); response is incomplete (finish_reason: length).",
+  "sources_unchanged": true,
+  "original_outputs_unchanged": true,
+  "production_database_unchanged": false,
+  "local_open_only_fallbacks": [
+    {
+      "section": "section_9a19b3b4_004",
+      "discarded_update_ids": [
+        "Q-3df04995ff2f4c6a",
+        "Q-995d98c7cabc40ba",
+        "Q-64b704d06ed84c90",
+        "Q-336536b6077249e3",
+        "Q-add37e0058a74df2"
+      ]
+    },
+    {
+      "section": "section_9a19b3b4_005",
+      "discarded_update_ids": [
+        "Q-3df04995ff2f4c6a",
+        "Q-64b704d06ed84c90",
+        "Q-336536b6077249e3",
+        "Q-007f8f020e154296",
+        "Q-59b88716280048c3",
+        "Q-ebf661d7f2e740cd",
+        "Q-019095eae85848d1",
+        "Q-0b9b00a6c7da4496"
+      ]
+    },
+    {
+      "section": "section_9a19b3b4_006",
+      "discarded_update_ids": [
+        "Q-d9efefdf22e5453b",
+        "Q-48250bf920104880",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a",
+        "Q-3df04995ff2f4c6a"
+      ]
+    },
+    {
+      "section": "section_9a19b3b4_008",
+      "discarded_update_ids": [
+        "Q-3df04995df2f4c6a"
+      ]
+    },
+    {
+      "section": "section_9a19b3b4_008",
+      "discarded_update_ids": [
+        "Q-3df04995df2f4c6a"
+      ]
+    }
+  ],
+  "completion_budget_retries": [
+    "section_9a19b3b4_008"
+  ],
+  "comparison_stage_headroom_retries": [
+    "stage2"
+  ],
+  "stage2_result_kind": "WITHHELD_RECOVERY_BRIEF_FULL_VALUATION_INCOMPLETE",
+  "gemini_api_calls": 0
+}

@@ -1,0 +1,41 @@
+{
+  "checked_utc": "2026-10-28T15:47:09.152240+00:00",
+  "one_generation": true,
+  "request_only_max_tokens_changed": true,
+  "dispatched_command_exit_code": 1,
+  "offline_review_exit_code": 0,
+  "metadata_refresh": {
+    "id": "gen-1793201532-XYrLv1o6agOsBZ8doOXx",
+    "model": "deepseek/deepseek-v4.1-flash-20261017",
+    "provider_name": "Relace",
+    "created_at": "2026-10-28T15:32:12.493Z",
+    "finish_reason": null,
+    "native_finish_reason": null,
+    "generation_time": 784898,
+    "latency": 1906,
+    "moderation_latency": null,
+    "total_cost": 0,
+    "usage": 0,
+    "cache_discount": null,
+    "native_tokens_prompt": 35325,
+    "native_tokens_completion": 183036,
+    "native_tokens_reasoning": 183036,
+    "native_tokens_cached": 0,
+    "tokens_prompt": 35325,
+    "tokens_completion": 183036,
+    "cancelled": false,
+    "streamed": true,
+    "service_tier": null,
+    "upstream_id": "chatcmpl-9a2f0ee21a560fc2",
+    "upstream_inference_cost": 0,
+    "is_byok": false
+  },
+  "preservation": {
+    "checked_utc": "2026-10-28T15:47:09.145125+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "financial_validation": "NOT VERIFIED",
+  "retry_submitted": false
+}

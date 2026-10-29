@@ -1,0 +1,2 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+stage2,gen-1793201532-XYrLv1o6agOsBZ8doOXx,False,0,generation_metadata,35325,183036,183036,0,0,786.281,,Relace,784898,1906,,retrieved

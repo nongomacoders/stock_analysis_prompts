@@ -1,0 +1,15 @@
+# DCP FY26 — Antigravity review
+
+Result type: **FULL_ATTEMPT_COMPLETED**. Financial validity awaits review.
+
+Start with [the concise Antigravity request](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/20261028T081850Z_codex_workload_comparison/gemini/START_HERE.md) and attach/access the original PDFs below. The [large bundled reference](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/20261028T081850Z_codex_workload_comparison/gemini/antigravity_evaluation_prompt.md) is available for selective consultation. It includes the required evidence protocol, preserved baseline note, new Stage 1/Stage 2 outputs, section analyses and full ledger. Source page presence is not source verification. Historical document-role registrations may be inaccurate; verify actual roles from the PDFs.
+
+- [1780031707-FY2026AnnualFinancialStatements.pdf](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/sources/completed/FY26/1780031707-FY2026AnnualFinancialStatements.pdf) — 87 physical pages; SHA-256 `f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb`.
+- [1780031786-FY2026AnalystPresentation.pdf](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/sources/completed/FY26/1780031786-FY2026AnalystPresentation.pdf) — 40 physical pages; SHA-256 `6cd395850b7a642b19ecd5e1c1b5f6eb0d00d15d40374d72d5383b661f285f06`.
+- [1785744572-DIS-CHEMIR2026INTERACTIVE.pdf](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/sources/completed/FY26/1785744572-DIS-CHEMIR2026INTERACTIVE.pdf) — 132 physical pages; SHA-256 `fec45259c705c9e6e1c07249c8349ac24b4379707108758cfcbd08329487dee6`.
+
+[Comparison metrics](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/20261028T081850Z_codex_workload_comparison/comparison_metrics.json) · [Stage 1](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/20261028T081850Z_codex_workload_comparison/outputs/stage1.md) · [Withholding/publication assessment](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/20261028T081850Z_codex_workload_comparison/outputs/publication_assessment.json)
+
+If full Stage 2 exhausted its budget, the withheld recovery brief is a narrower task; do not treat it as a completed full valuation. Rejected ledger evidence, local fallbacks and repairs must be assessed separately from valid model answers. Check source signs/units, cash/debt/portfolio roll-forwards, valuation and sensitivity, unsupported missing-disclosure claims, and whether prior errors were fixed or repeated. Propose prompt/ledger/guardrail improvements separately; do not change the SQLite registry.
+
+Save Gemini's full response under `C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/retail/DCP/briefs/FY26/evaluations/<current-UTC-timestamp>_gemini/audit.md`, preserving originals, and return the absolute path for Codex to review Gemini. No Gemini OpenRouter execution is part of this handoff.

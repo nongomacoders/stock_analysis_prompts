@@ -1,0 +1,512 @@
+"""Source-linked section captures stored in central SQLite database."""
+from __future__ import annotations
+
+import copy
+import hashlib
+import warnings
+import json
+import re
+import uuid
+from datetime import datetime, timezone
+from pathlib import Path
+
+from .content_types import CONTENT_TYPES
+from .db import (
+    SavedSection,
+    connect_db,
+    detect_doc_type_and_date,
+    get_doc_code,
+    insert_section,
+    next_section_number,
+    resolve_db_path,
+)
+from .pdf_source import Capture, PdfSource
+from .report_map import (
+    clean_single_line_text,
+    load_questions_ledger,
+    matching_section_ids,
+    register_subsection,
+    report_overview,
+    save_map,
+    section_requires_subheading,
+    validate_map,
+)
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROMPT_VERSION = "1.1.0"
+PROMPT_STAGE = "12-analyst-reading-brief"
+PROMPT_PATH = PROJECT_ROOT / f"prompts/mining/{PROMPT_STAGE}/v{PROMPT_VERSION}/prompt.md"
+
+from companies.sectors import get_all_sector_codes, resolve_sector_alias
+
+SUPPORTED_SECTORS = get_all_sector_codes()
+
+
+def detect_sector_from_path(path: Path | str | None) -> str | None:
+    """Infers the company sector from a file path if located under companies/<sector>/... Returns None if unresolved."""
+    if not path:
+        return None
+    p = Path(path).resolve()
+    parts = [part.lower() for part in p.parts]
+    if "companies" in parts:
+        idx = parts.index("companies")
+        if idx + 1 < len(parts):
+            candidate = parts[idx + 1]
+            resolved = resolve_sector_alias(candidate)
+            if resolved:
+                return resolved
+    # Check path string for sector keywords
+    s = str(p).lower()
+    for code in SUPPORTED_SECTORS:
+        if f"/{code}/" in s or f"\\{code}\\" in s:
+            return code
+    if "/tech/" in s or "\\tech\\" in s:
+        return "it"
+    if "reit" in s:
+        return "reit"
+    for sec, aliases in [("mining", ["gold", "platinum", "minerals", "resources"]),
+                         ("retail", ["consumer", "store", "fashion", "apparel"]),
+                         ("reit", ["real_estate", "property", "reits"]),
+                         ("it", ["tech", "software", "ict"]),
+                         ("construction", ["materials", "building", "infrastructure"]),
+                         ("finance", ["bank", "banking", "insurance"]),
+                         ("telcos", ["telecom", "telecommunications", "cellular"])]:
+        if any(a in s for a in aliases):
+            return sec
+    return None
+
+
+def has_sector_prompt(sector: str | None, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> bool:
+    """Returns True if a dedicated prompt file exists on disk for the given sector."""
+    if not sector:
+        return False
+    sec = sector.lower().strip()
+    custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
+    return custom.exists()
+
+
+def get_prompt_path(sector: str, stage: str = PROMPT_STAGE, version: str = PROMPT_VERSION) -> Path:
+    """Returns the prompt template path for the given sector, raising FileNotFoundError if missing on disk."""
+    if not sector:
+        raise ValueError("Sector must be explicitly specified to resolve prompt template; no defaults allowed.")
+    sec = sector.lower().strip()
+    custom = PROJECT_ROOT / f"prompts/{sec}/{stage}/v{version}/prompt.md"
+    if custom.exists():
+        return custom
+    raise FileNotFoundError(
+        f"No dedicated reading brief prompt template found on disk for sector '{sec}' at {custom}. "
+        f"A dedicated template must exist for every analyzed sector."
+    )
+
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def shorten_section_name(name: str | None, max_chars: int = 32) -> str:
+    """Shortens a section identifier string using an ellipsis (...) for compact UI display."""
+    if not name:
+        return ""
+    name_str = str(name).strip()
+    if len(name_str) <= max_chars:
+        return name_str
+    truncated = name_str[: max_chars - 3].rstrip("-._ ")
+    return truncated + "..."
+
+
+def _matching_stored_questions(stored_questions: str, section_ids: list[str]) -> list[str]:
+    """Return question lines whose Target column/tag/heading (or text) matches any current section or parent section ID."""
+    if not stored_questions or not section_ids:
+        return []
+    target_ids = []
+    for sid in section_ids:
+        base = sid.split(".")[0]
+        if base not in target_ids:
+            target_ids.append(base)
+        if sid not in target_ids:
+            target_ids.append(sid)
+    patterns = [re.compile(rf"\b{re.escape(tid)}\b", re.IGNORECASE) for tid in target_ids]
+    matched = []
+    current_heading = ""
+    for raw_line in stored_questions.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("#"):
+            current_heading = line.lstrip("#").strip()
+            continue
+        target_match = re.search(r"Target\s*:\s*([^\]\n]+)", line, re.IGNORECASE)
+        if target_match:
+            haystack = f"{current_heading} {target_match.group(1)}"
+        elif line.startswith("|") and line.count("|") >= 4:
+            cells = [c.strip() for c in line.split("|")]
+            haystack = cells[3] if len(cells) > 3 else line
+        elif current_heading:
+            haystack = current_heading
+        else:
+            haystack = line
+        if any(pat.search(haystack) for pat in patterns):
+            matched.append(line)
+    return matched
+
+
+def partition_stored_questions(stored_questions: str, section_ids: list[str]) -> tuple[list[str], str]:
+    """Partitions stored_questions into:
+    1. A list of question lines targeting the current section_ids (relevant_lines).
+    2. The remaining text of stored_questions with relevant_lines excluded (other_stored),
+       preserving structure and removing empty section headers whose questions were fully matched.
+    """
+    relevant_lines = _matching_stored_questions(stored_questions, section_ids)
+    if not relevant_lines:
+        return [], stored_questions
+
+    matched_set = {line.strip() for line in relevant_lines if line.strip()}
+    blocks = re.split(r"(?m)^(?=#{1,4}\s)", stored_questions)
+    kept_blocks: list[str] = []
+
+    for b in blocks:
+        b_stripped = b.strip()
+        if not b_stripped:
+            continue
+        lines = b_stripped.splitlines()
+        content_lines = [l for l in lines if not l.strip().startswith("#")]
+        if not content_lines:
+            kept_blocks.append(b_stripped)
+            continue
+        kept_content = [l for l in lines if l.strip().startswith("#") or l.strip() not in matched_set]
+        has_questions = any(not l.strip().startswith("#") and l.strip() for l in kept_content)
+        if has_questions:
+            kept_blocks.append("\n".join(kept_content).strip())
+
+    other_text = "\n\n".join(kept_blocks).strip()
+    return relevant_lines, other_text
+
+
+def extract_selection_texts(manifest: dict, selected_text: str | None = None, prompt: str | None = None) -> list[str]:
+    """Extracts per-selection text strings from manifest and fallback evidence.
+
+    1. Checks each selection dict for explicit 'text'.
+    2. Falls back to slicing 'selected_text' using 'text_indices' [start, end].
+    3. Falls back to extracting 'BEGIN SELECTED REPORT EVIDENCE' blocks from existing prompt.
+    4. Falls back to single-element [selected_text].
+    """
+    selections = manifest.get("selections") or []
+    if not selections:
+        return [selected_text or ""]
+
+    texts = []
+    has_any = False
+    for s in selections:
+        txt = (s.get("text") or "").strip()
+        if not txt and s.get("text_indices") and selected_text:
+            idx = s["text_indices"]
+            txt = selected_text[idx[0]:idx[1]].strip()
+        if txt:
+            has_any = True
+        texts.append(txt)
+
+    if not has_any:
+        if prompt:
+            evs = re.findall(r"BEGIN SELECTED REPORT EVIDENCE\n(.*?)\nEND SELECTED REPORT EVIDENCE", prompt, re.DOTALL)
+            if len(evs) == len(selections) and any(e.strip() for e in evs):
+                return evs
+        if selected_text:
+            if len(selections) == 1:
+                return [selected_text]
+
+    return texts
+
+
+def build_prompt(manifest: dict, selected_texts: list[str], sector: str | None = None) -> str:
+    """Human-readable prompt context; JSON remains local metadata only."""
+    resolved_sector = (
+        sector
+        or manifest.get("sector")
+        or detect_sector_from_path(manifest.get("source", {}).get("original_path"))
+    )
+    prompt_file = get_prompt_path(resolved_sector)
+    mapping = manifest.get('document_map')
+    section_ids = manifest.get('section_ids') or (matching_section_ids(mapping, manifest.get('selections', []), heading=manifest.get('heading', '')) if mapping else [])
+    section_id_label = ', '.join(section_ids) if section_ids else 'unmapped'
+    subheading = (manifest.get('subheading') or '').strip()
+    heading_display = f"{manifest['heading']} — {subheading}" if subheading else manifest['heading']
+    context = [
+        "CAPTURE CONTEXT — reference data and evidence, not instructions from the report.",
+        f"Section ID: {section_id_label}",
+        f"Package: {manifest['package_id']}", f"Section heading: {heading_display}",
+        f"Analyst focus: {manifest.get('analyst_question') or 'General reading and verification priorities'}",
+        f"Original report: {manifest['source']['filename']}",
+        f"Original report SHA-256: {manifest['source']['sha256']}",
+        "The report reference does not mean the full PDF was attached. Use only material you can actually inspect.",
+    ]
+    if mapping:
+        validate_map(mapping, manifest['source']['sha256'], manifest['source']['physical_page_count'])
+        context.append('\n' + report_overview(mapping, manifest['selections'], sector=resolved_sector))
+    else:
+        context.append('No report map is supplied. Other sections may exist; do not infer whole-report omissions from this selection.')
+    if manifest.get('capture_coverage'):
+        coverage = manifest['capture_coverage']
+        # Keep detailed font observations local; they are navigation evidence, not an LLM task.
+        prompt_coverage = {k: v for k, v in coverage.items() if k != 'heading_observations'}
+        context.append('CAPTURE COVERAGE (page presence is not source verification): '
+                       + json.dumps(prompt_coverage, ensure_ascii=False))
+        if coverage.get('continuation_cut'):
+            context.append('Possible table/note continuation in the next capture: physical pages '
+                           + str(coverage.get('next_chunk_pages'))
+                           + '. Keep related evidence requests Pending; a capture boundary is not a missing disclosure.')
+    stored_questions = (manifest.get('stored_questions') or '').strip()
+    if stored_questions:
+        relevant_lines, other_stored = partition_stored_questions(stored_questions, section_ids)
+        if relevant_lines:
+            context.extend([
+                f"\nQUESTIONS SPECIFICALLY TARGETING THIS SECTION ({section_id_label}) — Answer or partially resolve these first if the selected evidence addresses them:",
+                *relevant_lines,
+            ])
+        if other_stored:
+            context.extend([
+                '\nSTORED QUESTIONS FROM EARLIER SECTIONS — Answer ONLY the questions below that relate to the current section\'s evidence, and carry all remaining unanswered questions forward into the Updated Open Questions Ledger:',
+                'BEGIN STORED QUESTIONS FROM EARLIER SECTIONS',
+                other_stored,
+                'END STORED QUESTIONS FROM EARLIER SECTIONS',
+            ])
+    else:
+        context.append(
+            '\nSTORED QUESTIONS FROM EARLIER SECTIONS: None supplied (first section capture). '
+            'Do not write narrative commentary; unpack footnotes with commentary and draw up verification questions for upcoming sections.'
+        )
+    has_subsection_id = any('.' in sid for sid in section_ids)
+    for part, selected_text in zip(manifest["selections"], selected_texts, strict=True):
+        kind = part.get('content_type', 'unspecified')
+        if has_subsection_id:
+            part_sec_label = part.get('section_id') or section_id_label
+        else:
+            part_sections = matching_section_ids(mapping, [part]) if mapping else []
+            part_sec_label = ', '.join(part_sections) if part_sections else section_id_label
+        part_sub = part.get('subheading')
+        sub_suffix = f" ({part_sub})" if part_sub else ""
+        context.extend([
+            f"\n### Section {part_sec_label} | physical PDF page {part['physical_page']} | {CONTENT_TYPES.get(kind, 'Mixed / unspecified')}{sub_suffix}",
+            f"Selection method: {part['selection_mode']}; Section ID: {part_sec_label}; physical PDF page: {part['physical_page']}",
+            f"Printed page label (user-entered, unverified): {part.get('printed_page_label') or 'not supplied'}",
+            "Capture warnings: " + ('; '.join(part.get('warnings', [])) or 'none recorded; this is not source verification'),
+            "BEGIN SELECTED REPORT EVIDENCE", selected_text, "END SELECTED REPORT EVIDENCE",
+        ])
+    from .question_ledger import contract_prompt
+    template = prompt_file.read_text(encoding="utf-8")
+    if manifest.get('ledger_contract') == 1:
+        template = contract_prompt(template)
+    return template + "\n\n" + "\n".join(context) + "\n"
+
+
+def save_package(
+    source: PdfSource,
+    heading: str,
+    question: str,
+    captures: list[Capture],
+    output_root: str | Path | None = None,
+    subheading: str = "",
+    sector: str | None = None,
+    ledger_contract: int = 0,
+    capture_coverage: dict | None = None,
+) -> SavedSection:
+    resolved_sector = sector or detect_sector_from_path(source.path)
+    if not resolved_sector:
+        raise ValueError(
+            f"Sector could not be inferred from source path '{source.path}'. "
+            f"An explicit sector must be selected before saving sections."
+        )
+    prompt_file = get_prompt_path(resolved_sector)
+    raw_heading = clean_single_line_text(heading)
+    if raw_heading.startswith("✓ "):
+        raw_heading = raw_heading[2:].strip()
+    prefix_match = re.match(r"^(D[a-zA-Z0-9_\-\.]+)\s*[—:\-]\s*", raw_heading, flags=re.IGNORECASE)
+    prefix_id = prefix_match.group(1).upper() if prefix_match else ""
+    heading = clean_single_line_text(re.sub(r"^D[a-zA-Z0-9_\-\.]+\s*[—:\-]\s*", "", raw_heading, flags=re.IGNORECASE))
+    subheading = clean_single_line_text(subheading)
+    if not heading:
+        raise ValueError("Enter a section heading before saving.")
+    if not captures:
+        raise ValueError("Select some text or a page area first.")
+    if any(c.content_type not in CONTENT_TYPES for c in captures):
+        raise ValueError("Unknown data type. Choose Commentary, Table, Financial note or Mixed / unspecified.")
+    source.verify_unchanged()
+    selection_previews = [
+        {"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}
+        for cap in captures
+    ]
+    cap_subheadings = [clean_single_line_text(getattr(c, "subheading", None) or subheading) for c in captures]
+    distinct_subheadings: list[str] = []
+    for sh in cap_subheadings:
+        if sh and sh not in distinct_subheadings:
+            distinct_subheadings.append(sh)
+    effective_subheading = "; ".join(distinct_subheadings) if distinct_subheadings else (subheading or None)
+
+
+    sub_ids: list[str] = []
+    sub_ids_by_subheading: dict[str, list[str]] = {}
+    if source.report_map is not None:
+        validate_map(source.report_map, source.sha256, source.page_count)
+        if not distinct_subheadings:
+            req = section_requires_subheading(source.report_map, heading, selection_previews)
+            if req:
+                raise ValueError(f"Section {req} already has subsections. Enter a sub-heading before saving.")
+        else:
+            for sh in distinct_subheadings:
+                sh_previews = [
+                    p for p, c_sh in zip(selection_previews, cap_subheadings, strict=True) if c_sh == sh
+                ] or selection_previews
+                registered = register_subsection(source.report_map, sh, sh_previews, heading=heading)
+                sub_ids_by_subheading[sh] = registered
+                for sid in registered:
+                    if sid not in sub_ids:
+                        sub_ids.append(sid)
+            save_map(source.report_map, cache_root=output_root)
+    mapping = copy.deepcopy(source.report_map)
+    disk_questions = load_questions_ledger(source.sha256, questions_root=output_root)
+    if ledger_contract == 1:
+        from .db import prepare_question_ledger
+        disk_questions = prepare_question_ledger(source.sha256, db_path=output_root, for_prompt=True)
+    if disk_questions:
+        source.questions_ledger = disk_questions
+    stored_questions = (getattr(source, "questions_ledger", "") or "").strip() or None
+    seq_num = next_section_number(source.sha256, db_path=output_root)
+    if sub_ids:
+        section_ids = sub_ids
+    elif prefix_id:
+        section_ids = [prefix_id]
+    elif mapping:
+        section_ids = matching_section_ids(mapping, selection_previews, heading=raw_heading)
+    else:
+        section_ids = []
+    if not section_ids:
+        inferred_type, _ = detect_doc_type_and_date(source.path)
+        if inferred_type == "sens":
+            section_ids = [f"SENS-{seq_num:02d}"]
+    section_tag = "-".join(section_ids)
+    prefix = f"{seq_num:02d}-{section_tag}" if section_tag else f"{seq_num:02d}"
+    db_file = resolve_db_path(output_root)
+    doc_type = None
+    if db_file.exists():
+        with connect_db(db_file) as conn:
+            row = conn.execute("SELECT doc_type FROM reports WHERE sha256 = ?", (source.sha256,)).fetchone()
+            if row and row["doc_type"]:
+                doc_type = row["doc_type"]
+    if not doc_type:
+        doc_type, _ = detect_doc_type_and_date(source.path)
+    doc_code = get_doc_code(doc_type)
+
+    package_id = "section-" + uuid.uuid4().hex
+    combined_title = f"{heading}-{effective_subheading}" if effective_subheading else heading
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", combined_title).strip("-")[:55] or "section"
+    created_at = datetime.now(timezone.utc).isoformat()
+    section_name = f"{prefix}-{slug}-{datetime.now():%Y%m%d-%H%M%S}-{package_id[-8:]}"
+    manifest = {
+        "ledger_contract": ledger_contract,
+        "capture_coverage": capture_coverage,
+        "schema_version": "section_reading_package_v1",
+        "package_id": package_id,
+        "section_name": section_name,
+        "section_number": seq_num,
+        "section_ids": section_ids,
+        "sector": resolved_sector,
+        "task": "analyst_reading_brief",
+        "response_format": "markdown",
+        "created_at": created_at,
+        "heading": heading,
+        "subheading": effective_subheading or None,
+        "analyst_question": question.strip() or None,
+        "stored_questions": stored_questions,
+        "source": {
+            "filename": source.path.name,
+            "original_path": str(source.path),
+            "sha256": source.sha256,
+            "doc_type": doc_type,
+            "doc_code": doc_code,
+            "byte_size": len(source.data),
+            "physical_page_count": source.page_count,
+        },
+        "document_map": mapping,
+        "coordinate_system": {
+            "origin": "top-left of displayed original page",
+            "unit": "PDF point (1/72 inch)",
+            "bbox_order": ["x0", "top", "x1", "bottom"],
+        },
+        "prompt": {
+            "stage": PROMPT_STAGE,
+            "version": PROMPT_VERSION,
+            "sector": resolved_sector,
+            "template_sha256": sha256(prompt_file),
+        },
+        "review": {
+            "selection_origin": "user_selected",
+            "source_verification": "not_reviewed",
+            "model_brief": "not_run",
+            "analyst_review": "not_recorded",
+        },
+        "selections": [],
+    }
+    text_parts = []
+    for cap, c_sh in zip(captures, cap_subheadings, strict=True):
+        part_sec_ids = (
+            sub_ids_by_subheading.get(c_sh)
+            or sub_ids
+            or ([prefix_id] if prefix_id else None)
+            or (matching_section_ids(mapping, [{"physical_page": cap.page, "bbox": list(cap.bbox), "page_size_points": list(cap.page_size)}], heading=raw_heading) if mapping else [])
+        )
+        part_sec_label = ", ".join(part_sec_ids) if part_sec_ids else (section_tag or "unmapped")
+        manifest["selections"].append({
+            "section_id": part_sec_label,
+            "doc_code": doc_code,
+            "doc_type": doc_type,
+            "source_filename": source.path.name,
+            "subheading": c_sh or None,
+            "physical_page": cap.page,
+            "selection_mode": cap.mode,
+            "content_type": cap.content_type,
+            "content_type_origin": "not_specified" if cap.content_type == "unspecified" else "user_selected",
+            "bbox": list(cap.bbox),
+            "page_size_points": list(cap.page_size),
+            "text_polygons": cap.polygons,
+            "text_indices": cap.text_indices,
+            "printed_page_label": cap.printed_label,
+            "printed_label_origin": "user_entered_unverified" if cap.printed_label else "not_supplied",
+            "text": cap.text,
+            "text_sha256": sha256_text(cap.text),
+            "warnings": cap.warnings,
+        })
+        sub_tag = f" | {c_sh}" if c_sh else ""
+        text_parts.append(
+            f"--- Section {part_sec_label} | [{doc_code}] physical page {cap.page} | {cap.mode} selection | {CONTENT_TYPES[cap.content_type]}{sub_tag} ---\n{cap.text}\n"
+        )
+    selected_text = "\n".join(text_parts)
+    prompt = build_prompt(manifest, [cap.text for cap in captures], sector=resolved_sector)
+    manifest["prompt"]["submitted_candidate_sha256"] = sha256_text(prompt)
+    if mapping:
+        manifest["prompt"]["report_map_sha256"] = sha256_text(json.dumps(mapping, ensure_ascii=False, indent=2) + "\n")
+        manifest["prompt"]["report_overview_sha256"] = sha256_text(report_overview(mapping, manifest["selections"], sector=resolved_sector))
+    if stored_questions:
+        manifest["prompt"]["stored_questions_sha256"] = sha256_text(stored_questions + "\n")
+    source.verify_unchanged()
+    return insert_section(
+        package_id=package_id,
+        report_sha256=source.sha256,
+        section_number=seq_num,
+        section_id=section_tag or "unmapped",
+        name=section_name,
+        heading=heading,
+        subheading=effective_subheading or None,
+        analyst_question=question.strip() or None,
+        selected_text=selected_text,
+        selections=manifest["selections"],
+        stored_questions=stored_questions,
+        prompt=prompt,
+        manifest=manifest,
+        created_at=created_at,
+        db_path=output_root,
+    )
+

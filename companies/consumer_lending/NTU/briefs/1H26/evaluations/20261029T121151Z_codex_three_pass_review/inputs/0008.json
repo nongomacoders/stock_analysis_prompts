@@ -1,0 +1,57 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN NTU SAMPLE",
+    "origin": "movement pass/final answer",
+    "finding": "Three-pass worksheet provides correct net -130(-3.3%),cumulative gain -167(-27.9%),Unsecured net-352(-11.9%),Debt review net+227(+26.2%). Final retains useful percentages.",
+    "limit": "Single also gets sign and principal sums right. Extra detail is not proof of staging superiority."
+  },
+  {
+    "id": "F002",
+    "verdict": "FAIL BOTH ARMS",
+    "origin": "NTU question closure",
+    "finding": "Single and staged final both propose resolvedQ-08aa5c3f257440ab while total4489scope is deferred. Three-pass valid delta accepts unsupported semantic closure in memory; single rejection prevents its application.",
+    "earliest_stage": "Meaning says partially resolved; movement upgrades to resolved; final inherits.",
+    "correction": "Check original closure evidence, not earlier status. No production status changed."
+  },
+  {
+    "id": "F003",
+    "verdict": "FAIL THREE-PASS SCOPE",
+    "origin": "meaning pass propagated to movement/final",
+    "finding": "Meaning calls PBD-only net3845 while acknowledging other fair-value assets within PBD and unresolved4489scope. Movement and final repeat this narrowing; later passes do not fully challenge it.",
+    "correction": "Use principal-book3845, distinguish other assets644 and leave totalPBD scope pending rather than assert PBD-only."
+  },
+  {
+    "id": "F004",
+    "verdict": "PARTIAL PROCESS BENEFIT",
+    "origin": "NTU literal validation",
+    "finding": "Single rejected for5-character3 414quote; three-pass final passes literal validation. This does not establish financial correctness or semantic closure."
+  },
+  {
+    "id": "F005",
+    "verdict": "FAIL PAN INTERIM MEANING",
+    "origin": "meaning pass",
+    "finding": "Defines costs/capex as outflows reducing profit/assets and revenue/EBITDA as inflows. Capex generally exchanges cash for a capital asset rather than immediately reducing profit; revenue/EBITDA are not cash inflows. AISC definitions are provisional because source definitions absent.",
+    "correction": "Avoid generic unsupported definitions; separate cash,asset recognition,expense and performance metrics. PAN final unavailable, cannot judge correction."
+  },
+  {
+    "id": "F006",
+    "verdict": "FAIL/UNRESOLVED PAN INTERIM",
+    "origin": "movement pass",
+    "finding": "Worksheet reproduces197608vs196527 FY25 overlap and leaves risk unresolved; dictionary correction71997=65233+2428+4337 actually sums71998, a1oz source difference must be retained.",
+    "correction": "Disjoint reported underground92643 yields196527 using printed tailings subtotal, whose leaf consistency remains unresolved."
+  },
+  {
+    "id": "F007",
+    "verdict": "NOT EVALUABLE",
+    "origin": "transport",
+    "finding": "PAN why request HTTP429Too Many Requests,no output/ID/usage; PAN fresh single not dispatched. No paid retries. Specific router/provider/account quota cause unknown."
+  },
+  {
+    "id": "F008",
+    "verdict": "SOURCE UNCERTAINTY",
+    "origin": "independent source spot-check,not model-discovered",
+    "finding": "PAN49 prints FY26Barberton total94929; mining71997+BTRP12932=84929. Printed total-operation columns sum282310vsGroup272310, difference10000. Source inconsistency visible in original render and extracted capture; correct replacement/cause not established.",
+    "correction": "Retain source values and alternatives; previous exact-Group conclusions did not validate these totals. Not a demonstrated effect of staging."
+  }
+]

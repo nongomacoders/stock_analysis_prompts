@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Reconcile reported EBITDA (790) less PBD/RTC amortisation (597) less net interest cost (216) = -23 to the reported continuing core loss of -63 (residual -40). What items (D&A, impairments, other) bridge the gap?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 note 7 segmental reconciliation / income statement",
+    "evidence_required": "Line-item bridge from EBITDA to continuing core loss for H1 2026 and H1 2025, Rm, with IFRS reconciliation",
+    "closure_condition": "A signed reconciliation summing to -63 (and -71) is shown, or the residual is explicitly identified.",
+    "question_id": "Q-e0ca727b62be46df",
+    "status": "partial",
+    "answer": "Nutun SA EBITDA 710 less portfolio amortisation 597 less net interest 203 = -90, versus group continuing core loss of -63; residual ~27 unexplained in this capture. Report directs readers to group continuing core results on page 4 for the reconciliation, which is not in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "EBITDA improved by 36% to R710 million"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "Portfolio amortisation costs increased by 41% to R597 million"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "Net interest costs decreased by 7% to R203 million"
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "Refer to the group continuing core results on page 4 for a reconciliation of continuing core earnings to continuing headline earnings to continuing basic earnings."
+      }
+    ]
+  },
+  {
+    "question": "What is the revenue and EBITDA split between principal (owned NPL portfolio) collections and agency/fee-based collections within Nutun South Africa, and the PBD/RTC amortisation basis?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note 7 and PBD/RTC note",
+    "evidence_required": "Principal vs agent revenue split; PBD/RTC opening balance, acquisitions, amortisation, collections, closing balance; measurement basis (amortised cost vs FVTPL/POCI)",
+    "closure_condition": "Split and PBD/RTC roll-forward disclosed, or confirmed not disclosed.",
+    "question_id": "Q-86ab4a63039b4d7e",
+    "status": "partial",
+    "answer": "PBD collections +28% to R773m and RTC revenue +27% to R116m disclosed, with PBD acquisitions 593 (H2 FY2025) and 382 (H1 FY2026), RTC acquisitions 77 and 28. No principal-vs-agency revenue split, no PBD/RTC opening/closing roll-forward, and no measurement basis (amortised cost vs FVTPL/POCI) in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "PBD collections improved by 28% to R773 million impacted by PBD acquisitions in the second half of FY 2025 of R593 million and in the first half of FY 2026 of R382 million."
+      },
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "RTC revenue improved by 27% to R116 million impacted by acquisitions in the second half of FY 2025 of R77 million and in the first half of FY 2026 of R28 million"
+      }
+    ]
+  },
+  {
+    "question": "Why did Nutun SA client count fall from 23 to 20 while revenue rose 15% — concentration or loss of clients, and any client-concentration disclosure?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental/risk notes",
+    "evidence_required": "Client concentration percentages, top-client revenue, retention commentary",
+    "closure_condition": "Explanation or concentration metric provided, or confirmed absent.",
+    "question_id": "Q-f8db08b395c448a9",
+    "status": "partial",
+    "answer": "Agency commission and fee revenue fell 15% to R159m attributed to a strategic shift to larger, scalable, more profitable mandates resulting in fewer clients. No client-concentration percentage or top-client revenue disclosed in this capture.",
+    "evidence": [
+      {
+        "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "physical_page": 4,
+        "quote": "Agency commission and associated fee revenue declined by 15% to R159 million following the continued strategic shift to focus on larger, scalable and more profitable mandates resulting in fewer clients."
+      }
+    ]
+  },
+  {
+    "question": "What portion of the R597m portfolio amortisation increase is volume/ageing-driven versus forward-looking macro-assumption-driven (elevated interest-rate forecast), and what is the PBD/RTC amortisation basis and remaining carrying value?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note 7 / PBD-RTC note",
+    "evidence_required": "PBD/RTC roll-forward (opening, acquisitions, collections, amortisation, closing) in Rm for H1 2026 and H1 2025; split of amortisation between volume and assumption changes; measurement basis (amortised cost/FVTPL/POCI)",
+    "closure_condition": "Roll-forward and amortisation driver split disclosed, or confirmed not disclosed; forecast consequence: ability to project amortisation and embedded discount rate.",
+    "question_id": "Q-c3d790bf20794c50",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What is the signed bridge from Nutun International revenue FX drag of R27m to the R46m EBITDA FX impact, and what hedge loss is included?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note / FX note",
+    "evidence_required": "FX translation and hedge loss components, Rm, H1 2026 vs H1 2025; average vs closing rate basis",
+    "closure_condition": "Bridge reconciling 27 to 46 shown, or components identified; forecast consequence: FX sensitivity of International EBITDA.",
+    "question_id": "Q-23af9329edce40eb",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What are the specific funding covenant metrics and headroom at 31 March 2026, and the composition/maturity of the ~R0.8bn unutilised facilities?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 liquidity/funding note",
+    "evidence_required": "Covenant ratios, thresholds and headroom; facility amounts, maturities and drawn/undrawn split",
+    "closure_condition": "Covenant headroom and facility detail disclosed, or confirmed not disclosed; forecast consequence: refinancing and liquidity risk.",
+    "question_id": "Q-7ccb4721205d4f99",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  }
+]

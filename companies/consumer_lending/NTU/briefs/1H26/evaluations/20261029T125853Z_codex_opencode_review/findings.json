@@ -1,0 +1,38 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED CORRECTION TO CODEX",
+    "finding": "My prior review wrongly said both final PAN prose identifiedMTR5763conflict. Staged final only mentions30806in driver context,not the25043/5763conflict. Single identifies it and preserves medium-priority question; staged omits both.",
+    "revision": "Explicitly supersedes point5/assessmentF009 in20261029T121151Zreview; original unchanged."
+  },
+  {
+    "id": "F002",
+    "verdict": "GLM ARITHMETIC ERROR",
+    "finding": "GLM writes15224+52606+25043=98636exact; actual92873,short5763. Using30806reproduces98636. Its proposed25043+5763closure imports aFY26buy-in quantity intoFY25without evidence; numericfit alone cannot resolve source uncertainty."
+  },
+  {
+    "id": "F003",
+    "verdict": "GLM UNIT ERROR",
+    "finding": "GLM says5309.2kgfor53092oz; actual1651.3518kg.1130.9m/5309.2wouldnotyield6848xx; correct conversion does."
+  },
+  {
+    "id": "F004",
+    "verdict": "GLM VALIDATOR MISDIAGNOSIS",
+    "finding": "3 414 is literal but5chars below8minimum; spaces are not the reason. Whitespace-only differences already normalized. Do not weaken literal matching to fix length failure."
+  },
+  {
+    "id": "F005",
+    "verdict": "GLM OVERSTRICT ROUNDING",
+    "finding": "663.0versus663.1explicit0.1roundingresidual does not automatically invalidate financial arithmetic. Sixone-decimal components and rounded total permit this residual; cause plausible,not proved. Contrast with false exact272310=118853+153458check."
+  },
+  {
+    "id": "F006",
+    "verdict": "GLM OVERSTATEMENT",
+    "finding": "No staged output mentions30806 is false; final has driver30806to51927. Substantive absence ofMTRgap is correct. PAN generic false definitions are not repeated in final; propagation into final is unproved. Stage1doesnotcontain71997identity,so threefold identity propagation overstates trace."
+  },
+  {
+    "id": "F007",
+    "verdict": "SUPPORTED WITH LIMITS",
+    "finding": "Highercost,clearerworksheet,prematureNTUclosure and failure to demonstrate robust superiority supported. Do not adoptyet; no general refutation. Arithmetic-validator proposalneeds bounded schema/exception design and userauthorization; do not close cross-yearsourceconflicts by forced arithmetic."
+  }
+]

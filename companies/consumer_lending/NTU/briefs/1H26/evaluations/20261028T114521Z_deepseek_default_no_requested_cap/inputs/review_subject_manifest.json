@@ -1,0 +1,30 @@
+{
+  "preserved_utc": "2026-10-28T11:51:44.962959+00:00",
+  "files": [
+    {
+      "original": "outputs\\section_06_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\section_06_uncapped_v4.md",
+      "sha256": "2a15c9947f502924b19d1257cd928808457d99b81c1d5bc83be4feef983f4ea3"
+    },
+    {
+      "original": "outputs\\stage1.md",
+      "preserved": "inputs\\review_subject\\stage1.md",
+      "sha256": "45fb2119603b33c26761cec3cdb07ee9ba7d811925512587ae3090a35e8a52ba"
+    },
+    {
+      "original": "outputs\\stage2.md",
+      "preserved": "inputs\\review_subject\\stage2.md",
+      "sha256": "07fe725e24e72b820fc5f107050354e27e2a5b53239a4f740da90e7de4656488"
+    },
+    {
+      "original": "outputs\\stage2_publication.md",
+      "preserved": "inputs\\review_subject\\stage2_publication.md",
+      "sha256": "a76330a575bd6eb323974d2d2af3f954c3ce52662aeee973a3d684f235ed114f"
+    },
+    {
+      "original": "outputs\\publication_assessment.json",
+      "preserved": "inputs\\review_subject\\publication_assessment.json",
+      "sha256": "45174f7b9cd57fbd5f5c205319d7d3ac7fb0eae4da70994c49fc655b203abe91"
+    }
+  ]
+}

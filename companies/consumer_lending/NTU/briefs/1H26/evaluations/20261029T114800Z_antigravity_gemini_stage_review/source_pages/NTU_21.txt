@@ -1,0 +1,42 @@
+6 Financial risk management continued
+6.1 Credit risk continued
+Purchased book debts
+Investment process
+Prior to the acquisition of purchased book debts (PBDs), there is a defined investment process that is followed in 
+accordance with guidelines determined by a constituted investment committee. PBDs are acquired from various 
+credit providers in multiple sectors. Valuations are determined by projecting the present value of anticipated monthly 
+collections, net of directly attributable collection costs, using past performance characteristics applicable to similar 
+PBDs. Said valuations are ultimately presented to the investment committee to decide upon pricing and bidding 
+strategy.
+Collections process
+The Insights, Data & Enterprise Analytics (IDEA) team continually develops and recalibrates insights and analytics 
+used by operations to optimise the collection processes, and infrastructure, associated with non-performing debt 
+collected.
+Method of provisioning and fair valuing
+PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition based on the 
+presumption that events that have a detrimental impact on the estimated future cash flows of these financial assets 
+have occurred before acquisition and initial recognition. The classification of PBDs does not change subsequent 
+to initial recognition, even in the unlikely event of the expected cash flows associated thereto returning to full 
+contractual terms.
+Any changes in lifetime expected credit losses (ECLs) are recognised in profit or loss. The group recognises 
+favourable changes in lifetime ECLs as an impairment gain, even if lifetime ECLs are less than the amount of ECLs 
+that were included in the estimated cash flows on initial recognition.
+Nutun utilises statistical techniques and models to value PBDs on a monthly basis. Each PBD is modelled based on 
+the collection activity applied to it. A combination of inflows applicable to each PBD and the direct, activity-based, 
+cost projections applicable thereto are used to determine a net cash flow over a rolling 12-month period, which is 
+subsequently discounted to present value using a credit-adjusted effective interest rate to determine its amortised 
+cost value. The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%; 
+30 September 2025: 18.4%).
+Other financial assets, recognised within the purchase book debts, include a receivables balance measured at fair 
+value. The valuation technique applicable thereto calculates the present value of all future cash flows associated 
+thereto net of all associated costs. 
+Carrying value of purchased book debts
+The Nutun South Africa business model continues to gain relevance as slow economic growth drive up indebtedness 
+and impair consumers’ ability to service their debt, leaving consumer facing entities with significantly larger 
+non-performing loans (NPL) portfolios to manage. These impairment model parameters have been applied in 
+determining expected cash shortfalls arising from non-payment in the best estimate provision on the loan book as 
+at 31 March 2026. These books are not subsequently managed based on the credit risk rating but rather on a cash 
+collection basis.
+Condensed consolidated financial statements for the half year ended 31 March 2026 19
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026

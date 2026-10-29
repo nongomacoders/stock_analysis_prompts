@@ -1,0 +1,58 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "native PDF extraction",
+    "evidence": "NTU physical22 and 24, exact re-extracted capture inputs",
+    "finding": "5 and 390 remain separate; wrapped Unsecured/Debt review/Retail/Secured headings align. Asset sample reads 4884 and distinct 5/390; prior false 9879 allegation absent.",
+    "limit": "Five selected captures; no general arbitrary-table guarantee."
+  },
+  {
+    "id": "F002",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "native PDF extraction/model interpretation",
+    "evidence": "NTU physical25 and outputs/ntu_fx.md",
+    "finding": "Closing USD 17.2/18.4/17.3 and GBP 22.7/23.9/23.2 assigned to March26/March25/September25 respectively. Secondary currency topic retained.",
+    "limit": "No continuation26 or hedge valuation review."
+  },
+  {
+    "id": "F003",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "extraction and evidence-anchor prompt",
+    "evidence": "outputs/*.validation.json",
+    "finding": "Five complete generations and five valid deltas. Prose baseline section13 previously rejected; new prose delta validates and retains partial PBD question rather than premature full resolution.",
+    "limit": "Extraction plus anchor wording changed; no causal isolation, retries or complete chronological ledger run. Literal validation does not prove answers or closure."
+  },
+  {
+    "id": "F004",
+    "verdict": "CORRECTIONS REQUIRED",
+    "origin": "section model output",
+    "evidence": "NTU physical24 and outputs/ntu_headers.md",
+    "finding": "Still calls 167 impairment loss a release and asks about sustainability of that release; 598-167=431 is a reduction in cumulative gain. Calling +69 Debt review directionally consistent with payer drop-offs is unsupported; management describes aggregate historical-book deterioration.",
+    "correction": "Retain signed loss/gain meaning, distinguish overall loss from +24 acquired-book gain and -191 historical-book loss. Do not infer portfolio driver attribution."
+  },
+  {
+    "id": "F005",
+    "verdict": "CORRECTIONS REQUIRED",
+    "origin": "native grouped header extraction and model scope selection",
+    "evidence": "PAN physical48/49 and outputs/pan_dense.md",
+    "finding": "Adjacent tailings tonne cells now distinct, but multi-level parent labels remain imperfect. Model adds FY25 group underground93724 (already includes1081 buy-in) and buy-in1081 again, producing197608 versus196527. Disjoint mining underground92643 reconciles exactly.",
+    "correction": "Use disjoint scopes or show alternatives; no issuer-error conclusion from this model overlap. Preserve genuine FY26 one-ounce subtotal difference."
+  },
+  {
+    "id": "F006",
+    "verdict": "NOT VERIFIED",
+    "origin": "section model inference",
+    "evidence": "PAN physical49 and outputs/pan_dense.md",
+    "finding": "Model speculates Tennant FY25 A$ all-in cost is a printing/scale error and cost-conversion residuals are likely conventions. Source prints these values, but causes are not established from this capture.",
+    "correction": "Ask for definitions, scope, cost components and production denominator; do not label source error or explain residual without evidence."
+  },
+  {
+    "id": "F007",
+    "verdict": "PARTLY SUPPORTED",
+    "origin": "ledger semantic closure",
+    "evidence": "inputs/ntu_assets.json Q-08aa5c3f257440ab; outputs/ntu_assets.md",
+    "finding": "Measurement basis answer supported, but model marks question resolved while acknowledging total PBD scope reconciliation remains open under a new question. Original closure requires carrying-value reconciliation.",
+    "correction": "Keep partial until principal plus other assets ties to total scope; valid evidence anchors alone cannot establish closure."
+  }
+]

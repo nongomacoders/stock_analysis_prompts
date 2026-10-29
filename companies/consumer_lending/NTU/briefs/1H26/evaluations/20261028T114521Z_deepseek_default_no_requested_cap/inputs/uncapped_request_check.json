@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "example_payload": {
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Check only; not submitted"
+      }
+    ],
+    "temperature": 0.1,
+    "stream": true
+  },
+  "no_token_limit_fields": true,
+  "no_reasoning_or_routing_overrides": true,
+  "paid_calls": 0
+}

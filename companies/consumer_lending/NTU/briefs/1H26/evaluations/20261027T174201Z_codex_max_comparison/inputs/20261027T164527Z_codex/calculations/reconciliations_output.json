@@ -1,0 +1,147 @@
+{
+  "input_hash_checks": [
+    {
+      "name": "NTU_1H26_stage1_audit_response.md",
+      "hash_match": true,
+      "current_matches_snapshot": true
+    },
+    {
+      "name": "NTU_1H26_stage1_forensic_prompt.md",
+      "hash_match": true,
+      "current_matches_snapshot": true
+    },
+    {
+      "name": "NTU_1H26_stage2_valuation_note.md",
+      "hash_match": true,
+      "current_matches_snapshot": true
+    },
+    {
+      "name": "NTU_1H26_stage2_valuation_prompt.md",
+      "hash_match": true,
+      "current_matches_snapshot": true
+    }
+  ],
+  "gemini_script_overwrites_original_files": true,
+  "sotp": {
+    "ev": "4035.55",
+    "net_debt": "4400",
+    "pre_addback_equity": "-364.45",
+    "model_addback": "1479",
+    "model_net_other_assets": 550,
+    "unexplained_addback_excess": "929",
+    "one_discount_retaining_invalid_plug": "1.070721788138849750224157807",
+    "one_discount_with_no_addback_arithmetic_only": "-0.3501184834123222748815165877",
+    "one_discount_using_550_arithmetic_only": "0.1782534904572819264762392724",
+    "additional_haircut_after_two_discounts_pct": "31.51037538817360269964459995",
+    "cumulative_haircut_pct": "61.47458615584765151855008748"
+  },
+  "cash_rollforward": [
+    {
+      "year": "FY26E",
+      "opening": 106,
+      "stated_closing": 100,
+      "stated_change": -538,
+      "implied_closing": -432,
+      "unexplained_reconciling_inflow": 532
+    },
+    {
+      "year": "FY27E",
+      "opening": 100,
+      "stated_closing": 95,
+      "stated_change": -815,
+      "implied_closing": -715,
+      "unexplained_reconciling_inflow": 810
+    },
+    {
+      "year": "FY28E",
+      "opening": 95,
+      "stated_closing": 90,
+      "stated_change": -845,
+      "implied_closing": -750,
+      "unexplained_reconciling_inflow": 840
+    }
+  ],
+  "fcfe27": {
+    "stated_pre_funding": "-880",
+    "sign_flip_illustration_not_validated_forecast": "1520",
+    "missing_runoff_inflow_vs_zero_cancellation": 1200
+  },
+  "historical_ocf": {
+    "inputs": {
+      "operations": -50,
+      "interest_received": 3,
+      "interest_paid": -225,
+      "tax": 2,
+      "pbd_change": 182,
+      "working_capital": -23
+    },
+    "sum": -111,
+    "reported": -111,
+    "reconciles": true,
+    "capex_ppe_and_intangibles": 30,
+    "lease_principal": 30,
+    "ocf_less_capex_and_leases": -171,
+    "ebitda_rebuilt": 790,
+    "ebitda_to_ocf_difference": 901,
+    "ebitda_plus_diff_does_not_explain_bridge": true
+  },
+  "pbd_runoff": {
+    "principal": 512,
+    "other": 86,
+    "sum": 598,
+    "reported": 597,
+    "residual_possible_rounding_not_verified": 1
+  },
+  "gemini_cash_bridge": {
+    "collections_less_acquisitions_less_non_cash_income": 188,
+    "reported_asset_decrease": 182,
+    "unexplained_residual": 6
+  },
+  "poci": {
+    "gross": 3414,
+    "cumulative_gain": 431,
+    "net": 3845,
+    "prior_cumulative_gain": 598,
+    "current_change": -167,
+    "new_portfolio_gain": 24,
+    "historical_portfolio_loss": -191
+  },
+  "nav": {
+    "shares_net_m": 780.651033,
+    "parent_equity_m": 1329,
+    "nav": 1.702425211547757,
+    "contributed_capital_per_net_share": 6.930113163636844
+  },
+  "geographic_revenue": {
+    "uk_us": 515,
+    "statutory_services_revenue": 711,
+    "mixed_codm_total_revenue": 1599,
+    "uk_us_fraction_of_statutory_services": 0.7243319268635724,
+    "uk_us_fraction_of_codm_total": 0.3220762976860538
+  },
+  "sensitivity": {
+    "pbd_multiple_step": ".05",
+    "intl_multiple_step": ".5",
+    "table_claimed_steps_pbd": ".07",
+    "table_claimed_steps_intl": ".05",
+    "pbd_implied_price_step": "0.1846900217753298322018701166",
+    "intl_implied_price_step": "0.08646086845138977840399641348"
+  },
+  "liquidity": {
+    "maturities": 1396,
+    "cash": 112,
+    "undrawn_overdraft": 475,
+    "partial_static_gap": 809,
+    "management_total_undrawn_approx": 800,
+    "gap_if_management_total_fully_available": 484,
+    "unreconciled_facility_difference": 325,
+    "actual_future_cash_shortfall": "NOT VERIFIED"
+  },
+  "market": {
+    "gemini_quote": ".90",
+    "independently_verified_current_quote": false,
+    "conditional_target_upside_pct": "-38.88888888888888888888888889",
+    "ref_upside_pct": "-38.20224719101123595505617978",
+    "one_discount_invalid_plug_conditional_upside_pct": "18.96908757098330558046197860"
+  }
+}

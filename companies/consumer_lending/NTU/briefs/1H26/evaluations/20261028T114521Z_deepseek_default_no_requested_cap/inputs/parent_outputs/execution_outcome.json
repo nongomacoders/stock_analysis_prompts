@@ -1,0 +1,10 @@
+{
+  "process_status": "INCOMPLETE_STAGE2",
+  "valuation_status": "NOT_PUBLISHED_PROCESS_INCOMPLETE",
+  "reason": "Full Stage2 exhausted65536 tokens (all reported as reasoning), no final answer. Not an analyst decision to withhold a completed valuation.",
+  "target_price_zar": null,
+  "recommendation": null,
+  "upside_pct": null,
+  "dividend_yield_pct": null,
+  "tsr_pct": null
+}

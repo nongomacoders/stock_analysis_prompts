@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from .openrouter import get_openrouter_api_key, DEFAULT_MODEL, OPENROUTER_ENDPOINT
+from .capture_planner import DEFAULT_MAX_PAGES, DEFAULT_MAX_CHARS, inspect_page, plan_capture_groups
 
 # Standard executive and financial reporting synonym expansions
 ACRONYMS = {
@@ -379,6 +380,7 @@ JSON SCHEMA:
     }
     body = {
         "model": DEFAULT_MODEL,
+        "provider": {"only": ["fireworks"], "allow_fallbacks": False, "require_parameters": True},
         "messages": [
             {"role": "system", "content": "You are a financial research engine that partitions presentation decks into coherent institutional sections. Output strictly valid JSON."},
             {"role": "user", "content": prompt},
@@ -553,7 +555,8 @@ def auto_capture_section(
     end_page: int,
     sector: str | None = None,
     output_root: Any = None,
-    max_pages: int = 25,
+    max_pages: int = DEFAULT_MAX_PAGES,
+    max_chars: int = DEFAULT_MAX_CHARS,
 ) -> Any:
     """
     Extracts text for pages in [start_page, end_page] and saves as a SavedSection package in SQLite.
@@ -568,11 +571,10 @@ def auto_capture_section(
     start_p = max(1, min(start_page, total_pages))
     end_p = max(start_p, min(end_page, total_pages))
 
-    # Cap maximum pages per section to prevent accidental massive extractions
-    if end_p - start_p + 1 > max_pages:
-        end_p = start_p + max_pages - 1
-
+    if max_pages < 1 or max_chars < 1:
+        raise ValueError('Capture limits must be positive.')
     captures = []
+    profiles = []
     for page in range(start_p, end_p + 1):
         w, h = source.size(page)
         cap = source.capture_area(page, QRectF(0, 0, w, h))
@@ -584,15 +586,48 @@ def auto_capture_section(
             cap.content_type = "financial_note"
         else:
             cap.content_type = "commentary"
+        if len(cap.text.strip()) < 20:
+            cap.warnings.append('Sparse extracted text: page requires source inspection; not verified readable.')
+        if len(cap.text) > max_chars:
+            cap.warnings.append('Single page exceeds text budget; retained intact to preserve tables/footnotes.')
         captures.append(cap)
-
-    saved = save_package(
-        source=source,
-        heading=title,
-        question="Scrutinize key accounting policies, unusual movements, and forward guidance.",
-        captures=captures,
-        output_root=output_root,
-        sector=sector,
-    )
-    return saved
+        profile = inspect_page(source, page)
+        if profile['mixed_topics_on_page']:
+            cap.warnings.append('Several note topics share this physical page; retained intact, inspect topic/footnote boundaries.')
+        if profile['inspection'] == 'unavailable':
+            cap.warnings.append('Native heading inspection unavailable; capture boundary uses size fallback, not a verified topic boundary.')
+        profiles.append(profile)
+    groups = plan_capture_groups(captures, profiles, max_pages, max_chars)
+    spans = [g['pages'] for g in groups]
+    saved = []
+    for index, planned in enumerate(groups, 1):
+        group = planned['captures']
+        logical_heading = planned['heading']
+        if planned['continuation_cut']:
+            group[-1].warnings.append('Capture boundary may divide a note/table continuation; verify the next capture for related tables and footnotes.')
+        coverage = dict(parent_heading=title, requested_pages=[start_page, end_page],
+                        actual_document_range=[start_p, end_p], chunk_pages=spans[index-1],
+                        chunks=spans, chunk_index=index, chunk_count=len(groups),
+                        sparse_pages=[c.page for c in group if len(c.text.strip()) < 20],
+                        excluded_out_of_range=(start_page != start_p or end_page != end_p),
+                        planner='native_logical_pages_v1', logical_heading=logical_heading,
+                        boundary_reason=planned['start_reason'], continuation_cut=planned['continuation_cut'],
+                        continuation_reason=planned['continuation_reason'],
+                        previous_chunk_pages=spans[index-2] if index > 1 else None,
+                        next_chunk_pages=spans[index] if index < len(groups) else None,
+                        max_pages=max_pages, max_chars=max_chars, source_characters=sum(len(c.text) for c in group),
+                        heading_observations=[dict(physical_page=c.page, **p) for c,p in zip(group, planned['profiles'], strict=True)])
+        heading = title if len(groups) == 1 else f'{title} (part {index}/{len(groups)}, p.{group[0].page}-{group[-1].page})'
+        if logical_heading:
+            heading = f'{title} — {logical_heading} (p.{group[0].page}-{group[-1].page})'
+        saved.append(save_package(
+            source=source, heading=heading,
+            subheading=logical_heading,
+            question='Scrutinize key accounting policies, unusual movements, and forward guidance. '
+                     'This is one capture, not proof of whole-report coverage. Adjacent tables/footnotes may need verification.',
+            captures=group, output_root=output_root, sector=sector,
+            ledger_contract=1, capture_coverage=coverage,
+        ))
+    # Preserve the single-package API; every chunk is saved and queued from SQLite.
+    return saved[0]
 

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "F001",
+    "gemini": "F001",
+    "classification": "PARTLY SUPPORTED",
+    "finding": "Eight completions and sample metrics verified. Revised4/4 versus old3/4 literal-ledger passes,12 versus26 new questions,17.10% assembled-prompt character reduction. Client elapsed is not provider latency;total prompts include evidence,not just templates. Small sample/cache/order prevent universal robustness claims. Failed quote was288 characters,not a truncated100-character string;the validator diagnostic prints only its first100 characters."
+  },
+  {
+    "id": "F002",
+    "gemini": "F002",
+    "classification": "SUPPORTED",
+    "finding": "NTU p13 ledger equation702+28−116−30 evaluates584,not644;correct +30 matches source and prose. Difference60Rm. This is a copied equation/operator error,not evidence the company balance itself is wrong."
+  },
+  {
+    "id": "F003",
+    "gemini": "F003",
+    "classification": "SUPPORTED WITH SCOPE QUALIFICATION",
+    "finding": "NTU p13 identifies POCI/lifetime ECL changes since acquisition. Ordinary Stage1/2 SICR-migration demands are inapplicable. Do not extend the proposed ban to legitimate POCI recovery,measurement or credit-risk disclosures,or to issuer-specific credit-impaired labels. IFRS9 paragraphs5.5.13–14 support the separate treatment. Observed repeated demand does not prove a private model root cause."
+  },
+  {
+    "id": "F004",
+    "gemini": "F004",
+    "classification": "PARTLY SUPPORTED;EVALUATOR INTRODUCED UNSUPPORTED EXPLANATION",
+    "finding": "First-time presentation and displayed zero loss rates do not establish restatement/unreliable reporting or changed provisioning methodology. Gemini is right to reject those causal claims. However,p25 does not establish zero actual defaults or that rounding caused interim zero rates/dashes. September0.06%×286≈0.1716Rm and0.19%×52≈0.0988Rm are consistent with printed<1,not proof of the later period cause. Leave cause unverified."
+  },
+  {
+    "id": "F005",
+    "gemini": "F005",
+    "classification": "PARTLY SUPPORTED",
+    "finding": "PAN p48 FY25 left mining subtotal92643 plus Evander buy-in1081 equals right Group underground93724. Using92643+2654+98636+1081+1513 gives196527;using93724 with another1081 double counts and gives197608. This specific reconciliation is supported. Saved new answer contains no194954 or1573 gap;Gemini invented that attribution. DeepSeek explicitly suggested double counting/misattribution and kept the question open,so it did not establish or unambiguously allege a company error. Do not generalize this overlap to every year/row."
+  },
+  {
+    "id": "F006",
+    "gemini": "F006",
+    "classification": "SUPPORTED WITHIN ONE CASE",
+    "finding": "Revised NTU p25 covers trade ECL and currency-risk start with p26 pending. The old paired answer also covers currency;no unique secondary-coverage improvement established. Gemini C008 says without prompt engineering,but revised inputs explicitly contain shared-page-topic instructions and observed headings."
+  },
+  {
+    "id": "F007",
+    "gemini": "MISSED ISSUE",
+    "classification": "CONFIRMED SOURCE UNIT/NUMBER-FORMAT AMBIGUITY",
+    "finding": "PAN p39 labels AISC cost US$ million but prints420,686/87,718/508,405,while ounces247219/25154/272373 and per-ounce1702/3487/1867 imply roughly420.686/87.718/508.405 million. Literal508405 million divided by272373 gives1866576.35 peroz;interpreting displayed cost as thousands gives1866.58 peroz. Both DeepSeek arms,Gemini and prior Codex pilot calculations normalized silently. Conditional math is consistent,but the printed unit/number-format conflict needs an explicit flag;do not assert a source correction or factor1000 valuation error."
+  },
+  {
+    "id": "F008",
+    "gemini": "C012/PAN exactness",
+    "classification": "COVERAGE LIMIT",
+    "finding": "The selected FY26 Group production sum equals272310. However,p48 mining subtotal105479 versus right Group underground105478 differs1oz. p39 FY25 APM gold sold196927 versus p49 production-summary196926 differs1oz. These small printed differences do not invalidate the specific FY25 overlap bridge;they prevent blanket all-table exactness claims. Cause not verified;no materiality allegation."
+  }
+]

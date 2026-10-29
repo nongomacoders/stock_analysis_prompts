@@ -1,0 +1,13 @@
+{
+  "label": "section_09",
+  "pages": [
+    13
+  ],
+  "heading": "1 Purchased book debts",
+  "ledger_valid": false,
+  "errors": [
+    "Evidence quote for Q-86ab4a63039b4d7e, physical page 13 is not literal: 'Accordingly, these purchased book debts are measured on a fair value basis. Refer to note 6.3.'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+  ],
+  "questions_before": 12,
+  "questions_after": 12
+}

@@ -1,0 +1,28 @@
+{
+  "label": "pan_dense_why",
+  "started_utc": "2026-10-29T11:31:29.429748+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "e95b386301bf9827cc35c8db1438b2561eaa63e13209fab6573498d13aebdb7b",
+  "max_tokens": 16384,
+  "reasoning_controls_sent": true,
+  "success": false,
+  "usage": {},
+  "stream_done": false,
+  "error_type": "HTTPError",
+  "error": "HTTP Error 429: Too Many Requests",
+  "completed_utc": "2026-10-29T11:31:30.242217+00:00",
+  "elapsed_seconds": 0.811,
+  "time_to_first_event_seconds": null,
+  "time_to_first_content_seconds": null,
+  "cost_usd": null,
+  "cost_source": "unavailable",
+  "accounting_completed_utc": "2026-10-29T11:31:30.243320+00:00",
+  "reasoning_effort_requested": "none",
+  "provider_requested": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  }
+}

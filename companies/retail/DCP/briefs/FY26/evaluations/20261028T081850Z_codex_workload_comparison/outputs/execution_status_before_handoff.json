@@ -1,0 +1,371 @@
+{
+  "status": "awaiting_user_antigravity_evaluation",
+  "ticker": "DCP",
+  "model_calls": 130,
+  "stage": "deepseek_complete",
+  "submitted_utc": "2026-10-28T09:12:17.708408+00:00",
+  "error_type": "JSONDecodeError",
+  "error": "Expecting ',' delimiter: line 2 column 1 (char 9459)",
+  "sources_unchanged": true,
+  "original_outputs_unchanged": true,
+  "production_database_unchanged": false,
+  "local_open_only_fallbacks": [
+    {
+      "section": "section_f346d200_002",
+      "discarded_update_ids": [
+        "Q-d28094417ee641e1",
+        "Q-8f31c9dde0434bc2",
+        "Q-5890edf83d0d4546",
+        "Q-492b8e048b7b440a"
+      ]
+    },
+    {
+      "section": "section_f346d200_003",
+      "discarded_update_ids": [
+        "Q-d28094417ee641e1",
+        "Q-492b8e048b7b440a",
+        "Q-a681115dc72e461f",
+        "Q-98728268ed3b4aa5"
+      ]
+    },
+    {
+      "section": "section_f346d200_004",
+      "discarded_update_ids": [
+        "Q-d28094417ee641e1",
+        "Q-ffc94ad22da44416",
+        "Q-f99a0409785943ee"
+      ]
+    },
+    {
+      "section": "section_f346d200_006",
+      "discarded_update_ids": [
+        "Q-8f31c9dde0434bc2",
+        "Q-a0e1efc9e2fb465b",
+        "Q-a58a90436eef45cd",
+        "Q-4497778bcc6a42f2",
+        "Q-34972c8726714c9f",
+        "Q-62a60e0aef184987"
+      ]
+    },
+    {
+      "section": "section_f346d200_008",
+      "discarded_update_ids": [
+        "Q-492b8e048b7b440a",
+        "Q-6409698674ae47df",
+        "Q-efd31336131c4997",
+        "Q-8fe4b911f6944795",
+        "Q-02ff5b4e1af840d6",
+        "Q-f7d4ecccf9d845a2",
+        "Q-9c499ce17c37452f"
+      ]
+    },
+    {
+      "section": "section_f346d200_015",
+      "discarded_update_ids": [
+        "Q-d58da8bb87734e1c",
+        "Q-fd3755ff98be4f01",
+        "Q-64791be57c9f40a7",
+        "Q-3dd14b2a88a344b9",
+        "Q-9348bd1461904198",
+        "Q-4bfd19ac8ef14ea8",
+        "Q-ffc94ad22da44416",
+        "Q-8780c0625a534ae6",
+        "Q-9f29d949765e436c",
+        "Q-3990b3abd8b34753",
+        "Q-58dab274ace14d02",
+        "Q-9578a5bba18b476f"
+      ]
+    },
+    {
+      "section": "section_f346d200_017",
+      "discarded_update_ids": [
+        "Q-3990b3abd8b34753",
+        "Q-aace714505c14dd0",
+        "Q-c57cecfbcbd84dfe",
+        "Q-740992ca8c3945a3",
+        "Q-8113f4ff41654e36",
+        "Q-9c499ce17c37452f",
+        "Q-b0f460e7fe6e473e",
+        "Q-7ff806d39c484f14",
+        "Q-2aca374647d14f72",
+        "Q-96ae743b9da546f9",
+        "Q-ac9f8791ce8f44a9",
+        "Q-7bfff733fb8a4054",
+        "Q-c6e88f0c37234f82",
+        "Q-eb7a0da286e34567",
+        "Q-8c2d02e3c84e44cc",
+        "Q-98c28ccad886448c",
+        "Q-5834ccc62e7f4814",
+        "Q-d127e63b17d84ea9",
+        "Q-7a7389b78b3e4dfb",
+        "Q-492b8e048b7b440a"
+      ]
+    },
+    {
+      "section": "section_f346d200_018",
+      "discarded_update_ids": [
+        "Q-b8bbff1173f34f0d",
+        "Q-2d4dadf3e15740ce",
+        "Q-492b8e048b7b440a",
+        "Q-96ae743b9da546f9",
+        "Q-ac9f8791ce8f44a9",
+        "Q-7bfff733fb8a4054",
+        "Q-c6e88f0c37234f82",
+        "Q-eb7a0da286e34567",
+        "Q-8c2d02e3c84e44cc",
+        "Q-98c28ccad886448c",
+        "Q-5834ccc62e7f4814",
+        "Q-d127e63b17d84ea9",
+        "Q-7a7389b78b3e4dfb"
+      ]
+    },
+    {
+      "section": "section_f346d200_019",
+      "discarded_update_ids": [
+        "Q-de84ef9acbd5455c",
+        "Q-29ad8342e58b4dbb",
+        "Q-de875925a53e48c1",
+        "Q-9c499ce17c37452f",
+        "Q-8113f4ff41654e36",
+        "Q-2d4dadf3e15740ce",
+        "Q-b29de779e9f74366",
+        "Q-145f53a8de844f79",
+        "Q-3dd14b2a88a344b9",
+        "Q-4d2cf108e4844aeb",
+        "Q-75725cbbdfce460d",
+        "Q-43162f718fae4085",
+        "Q-8780c0625e534ae6",
+        "Q-e4d5587b4e3243ef",
+        "Q-3e72d5f6f2454d26",
+        "Q-ae621d5e27cb43c4",
+        "Q-dc149453df8d43a1",
+        "Q-6a037c6d0e0e4b9b",
+        "Q-53c05b9e2b9140d9",
+        "Q-3990b3abd8b34753",
+        "Q-908d113af57e40e2",
+        "Q-6409698674ae47df",
+        "Q-aaa95b891be14a74",
+        "Q-e3e7e9d7c3c84bfc",
+        "Q-b8bbff1173f34f0d",
+        "Q-9a73ef0a65a746df",
+        "Q-a4ccbe5daf034e3e",
+        "Q-0644fc1c056a4be4",
+        "Q-4dddc2038ee84eed",
+        "Q-8f31c9dde0434bc2",
+        "Q-a0e1efc9e2fb465b",
+        "Q-a58a90436eef45cd",
+        "Q-4497778bcc6a42f2",
+        "Q-9578a5bba18b476f",
+        "Q-817fc50047cd4734",
+        "Q-492b8e048b7b440a",
+        "Q-96ae743b9da546f9",
+        "Q-cc6982c386634c32"
+      ]
+    },
+    {
+      "section": "section_f346d200_020",
+      "discarded_update_ids": [
+        "Q-58da8bb8774e41c",
+        "Q-740992ca8c3945a3",
+        "Q-fec22f4d634847c2",
+        "Q-8113f4ff41654e36",
+        "Q-4dddc2038ee84eed",
+        "Q-0644fc1c056a4be4"
+      ]
+    },
+    {
+      "section": "section_f346d200_021",
+      "discarded_update_ids": [
+        "Q-98728268ed3b4aa5",
+        "Q-7617a68a41f246be",
+        "Q-2aca374647d14f72",
+        "Q-a5ae5b85bd4243d7",
+        "Q-0cc9dd62909d487d",
+        "Q-6d594e8c19a74df1",
+        "Q-41614adce9fc4a57",
+        "Q-4dddc2038ee84eed",
+        "Q-96ae743b9da546f9",
+        "Q-492b8e048b7b440a"
+      ]
+    },
+    {
+      "section": "section_f346d200_022",
+      "discarded_update_ids": [
+        "Q-9c499ce17c37452f",
+        "Q-53c05b9e2b9140d9",
+        "Q-b8bbff1173f34f0d",
+        "Q-3990b3abd8b34753",
+        "Q-8780c0625a534ae6",
+        "Q-aace714505c14dd0",
+        "Q-740992ca8c3945a3",
+        "Q-fec22f4d634847c2",
+        "Q-4bfd19ac8ef14ea8",
+        "Q-9f29d949765e436c",
+        "Q-829dd2e73360413f",
+        "Q-d58da8bb87734e1c",
+        "Q-908d113af57e40e2"
+      ]
+    },
+    {
+      "section": "section_f346d200_023",
+      "discarded_update_ids": [
+        "Q-54e62e806d0e4e79",
+        "Q-aace714505c14dd0",
+        "Q-4dddc2038ee84eed",
+        "Q-0a684c7fac304d80",
+        "Q-5f5d6b13a967452f",
+        "Q-4b2892cb4cf54fad",
+        "Q-6a037c6d0e0e4b9b",
+        "Q-291dbd919b6340c4",
+        "Q-72e3671873744cf3",
+        "Q-2c1a84ad1315403a",
+        "Q-40e7c8b9d1e1440a",
+        "Q-8f31c9dde0434bc2",
+        "Q-fec22f4d634847c2",
+        "Q-8780c0625a534ae6"
+      ]
+    },
+    {
+      "section": "section_fec45259_002",
+      "discarded_update_ids": [
+        "Q-9824693c875b48e5",
+        "Q-002",
+        "Q-d28094417ee641e1",
+        "Q-ac62c4dd63bf4c68",
+        "Q-cb1c85d41650471e",
+        "Q-be16064fca7945fd",
+        "Q-e3606f072f0447c9"
+      ]
+    },
+    {
+      "section": "section_fec45259_006",
+      "discarded_update_ids": [
+        "Q-2791af76c6484354",
+        "Q-4daff5c5bc3d4d40",
+        "Q-a0b5279a24d84ae3",
+        "Q-a28f7d49475d4aa2"
+      ]
+    },
+    {
+      "section": "section_fec45259_011",
+      "discarded_update_ids": [
+        "Q-0386067925cfb46f1",
+        "Q-2791af76c6484354",
+        "Q-9dcda868ba3541df",
+        "Q-17cae78f48974478",
+        "Q-6465fb7e99c5415d",
+        "Q-2894bf378ec84eca",
+        "Q-835cdbba5dab4949",
+        "Q-e554641ffc3b496a",
+        "Q-f9bd0d6e26184619",
+        "Q-a0b5279b9a27d4a6e",
+        "Q-0cb0839651674a6e",
+        "Q-40ba343a44284671"
+      ]
+    },
+    {
+      "section": "section_fec45259_016",
+      "discarded_update_ids": [
+        "Q-30355183667642da",
+        "Q-65a1c0ff751b4c5e",
+        "Q-0386067925cb46f1",
+        "Q-9dcda868ba3541df",
+        "Q-2791af76c6484354",
+        "Q-411cdfcbcd6b4a0e",
+        "Q-52e500bd9e4c4862",
+        "Q-0f73b8f185334371"
+      ]
+    },
+    {
+      "section": "section_fec45259_018",
+      "discarded_update_ids": [
+        "Q-c0abddef102f479a"
+      ]
+    },
+    {
+      "section": "section_fec45259_023",
+      "discarded_update_ids": [
+        "Q-0386067925cb46f1",
+        "Q-d248d8f662874252",
+        "Q-cbbfe2e5a90d4260"
+      ]
+    },
+    {
+      "section": "section_fec45259_025",
+      "discarded_update_ids": [
+        "Q-30355183667642da",
+        "Q-96d9240b68ad4b03",
+        "Q-d248d8f662874252",
+        "Q-f7b17b6c14404ad1"
+      ]
+    },
+    {
+      "section": "section_fec45259_027",
+      "discarded_update_ids": [
+        "Q-54415b5d341747e7",
+        "Q-c0abddef102f479a"
+      ]
+    },
+    {
+      "section": "section_fec45259_031",
+      "discarded_update_ids": [
+        "Q-c0abddef102f479a",
+        "Q-c08de916ece24aa2",
+        "Q-1d7a9c1fba464042",
+        "Q-a9bb4b924fdd4bfc"
+      ]
+    },
+    {
+      "section": "section_fec45259_033",
+      "discarded_update_ids": [
+        "Q-9dcda868ba3541df",
+        "Q-2791af76c6484354"
+      ]
+    },
+    {
+      "section": "section_fec45259_033",
+      "discarded_update_ids": [
+        "Q-9dcda868ba3541df",
+        "Q-2791af76c6484354"
+      ]
+    },
+    {
+      "section": "section_fec45259_034",
+      "discarded_update_ids": [
+        "Q-9dcda868ba3541df",
+        "Q-c744afc711774bb9",
+        "Q-82c93021f8a7448e",
+        "Q-d134c11b32f645eb",
+        "Q-c0abddef102f479a",
+        "Q-2894bf378ec84eca",
+        "Q-f9bd0d6e26184619"
+      ]
+    },
+    {
+      "section": "section_fec45259_036",
+      "discarded_update_ids": [
+        "Q-c744afc711774bb9",
+        "Q-335b06a0ce2649d5",
+        "Q-cdabe753e3ab46cb",
+        "Q-0406bad610e94bcf",
+        "Q-82d185add1014cd6",
+        "Q-e9df7e72a7c4457d",
+        "Q-cbbfe2e5a90d4260",
+        "Q-a2bc90ee61cf4284"
+      ]
+    },
+    {
+      "section": "section_fec45259_037",
+      "discarded_update_ids": []
+    }
+  ],
+  "completion_budget_retries": [
+    "section_f346d200_020",
+    "section_f346d200_023",
+    "section_f346d200_024",
+    "section_6cd39585_016",
+    "section_fec45259_015_ledger_json_repair"
+  ],
+  "stage2_result_kind": "FULL_ATTEMPT_COMPLETED",
+  "gemini_api_calls": 0
+}

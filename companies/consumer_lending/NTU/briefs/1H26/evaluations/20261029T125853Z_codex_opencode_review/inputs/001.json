@@ -1,0 +1,128 @@
+[
+  {
+    "id": "C001",
+    "claim": "Input integrity: all 86 input-manifest entries across both experiment runs verify (39 resume + 47 original, 0 problems); both source PDFs match plan.json SHA-256 (NTU 9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc, PAN 62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd); resume why request is byte-identical to the originally failed request (bb8ea322...), single request identical to pan_dense_base.md (7a3ade2c...); production tables unchanged; generation/handoff exit 0; backoff unexercised.",
+    "classification": "Historical transport/record assessment",
+    "primary_evidence": "input_manifest.json of both experiment runs; plan.json of both runs; preservation.json; execution.json; verification script run 2026-10-29",
+    "independent_check": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261029T123636Z_open_code_three_pass_review/calculations/build_manifest.py (42-entry self-manifest, bad=0); Temp verify_manifests.py run (TOTAL_PROBLEMS 0)",
+    "verdict": "PASS",
+    "finding_id": "F010"
+  },
+  {
+    "id": "C002",
+    "claim": "Cost/time accounting reproduces: NTU staged $0.01051743 = 0.00231378+0.002856+0.00534765 (2.2367x cost of single $0.00470211; 1.6230x summed request seconds 29.956 vs 18.457); PAN staged $0.0111837432 = 0.0027101004+0.0036603084+0.0048133344 (2.3943x cost vs single $0.004670988; 1.7986x time 30.421 vs 16.914); resume incremental $0.0094843224 (24,747 prompt / 5,379 completion tokens / 32.149s); combined known subtotal $0.0310742712; failed-429 billing remains unknown.",
+    "classification": "Historical cost/transport assessment",
+    "primary_evidence": "metrics.json of both runs; comparison.md; combined_comparison.json",
+    "independent_check": "calculations/reconciliations.py checks ntu_staged_cost..combined_known_subtotal (all OK, exit 0); reconciliations.json",
+    "verdict": "PASS",
+    "finding_id": null
+  },
+  {
+    "id": "C003",
+    "claim": "NTU staged final percentages and deltas are arithmetically correct against p.22/p.23: net -130 (-3.27%), gain -167 (-27.93%), YoY +155 (+4.2%), unsecured -352 (-11.9%), Debt review +227 (+26.2%).",
+    "classification": "Historical source/model assessment",
+    "primary_evidence": "NTU physical pp.21-23 (independent render, SHA-verified PDF, C:\\Users\\diond\\AppData\\Local\\Temp\\opencode\\opencode_review_renders\\NTU_21/22/23.png); outputs/ntu_assets_why.md; ntu_assets_movement.md",
+    "independent_check": "reconciliations.py keys ntu_net_h1..ntu_debt_review (all OK); original-run calculations.json agreement",
+    "verdict": "PASS",
+    "finding_id": "F001"
+  },
+  {
+    "id": "C004",
+    "claim": "NTU semantic closure of Q-08aa5c3f257440ab: staged final marked resolved quoting only p.21 (POCI/19.2%) and p.22 (carrying 4,884) and never performed or stated 3,845+644=4,489 (nor compared to p.13's printed 4,489, which was not in the supplied evidence); the literal validator accepted it (no error). The single arm's closure attempt was rejected for a non-literal p.22 quote ('3 414'), leaving the question open in its ledger. Staged simultaneously opened a new unresolvable Q-b216f186a7294901 (3,845 vs 4,489) and partial Q-e4497d9112cd4e9d.",
+    "classification": "Historical semantic/ledger assessment",
+    "primary_evidence": "outputs/ntu_assets_why.md + ntu_assets_why.validation.json (arm three_pass, ledger_valid true, no errors) vs outputs/ntu_assets_single.md + ntu_assets_single.validation.json (arm single, ledger_valid false, non-literal '3 414'); closure_comparison.json",
+    "independent_check": "reconciliations.py ntu_p13_principal_rollforward=3845, ntu_p13_ofa_rollforward=644, ntu_p13_pbd_total=4489 (NTU p.13/p.8 renders NTU_13_hi.png / NTU_08_hi.png — independent confirmation only; these pages were NOT supplied to the trial models)",
+    "verdict": "PASS",
+    "finding_id": "F002"
+  },
+  {
+    "id": "C005",
+    "claim": "PAN staged error propagation: the false identity 'Barberton total 71,997 = 65,233 underground + 2,428 surface + 4,337 buy-in' (actual leaf sum 71,998) is asserted identically in the meaning, movement and final why passes; the why also reuses unrevised wrong dictionary meanings (capex 'reduces profit/assets'; revenue/EBITDA called cash flows) and adds the unreconciled attribution that the US$ AISC increase is 'largely FX' (FX/ZAR roll-up explains ~+13.4pp of the +16.7% Group US$ AISC rise; the remainder is consistent with Tennant mix, unproven).",
+    "classification": "Historical model-output assessment",
+    "primary_evidence": "outputs/pan_dense_meaning.md (movement dictionary corrections bullet), outputs/pan_dense_movement.md, RES outputs/pan_dense_why.md (driver line 29); PAN p.48/49/50 hi-res renders PAN_48_hi/49_hi/50_hi.png",
+    "independent_check": "reconciliations.py pan_barberton_mining_leaf_fy26 (residual 1 oz), pan_staged_fx_only_sa (implied ~13.4pp vs printed 16.7)",
+    "verdict": "PASS",
+    "finding_id": "F003"
+  },
+  {
+    "id": "C006",
+    "claim": "PAN MTR conflict handling: the FY25 'Total operations MTR' 30,806 oz vs MTR leaf 25,043 oz gap (5,763 = FY26 MTR buy-in; FY25 buy-in row prints nil for MTR) is never mentioned in any staged-pass output (meaning, movement or final why); the staged final why cites 'MTR tailings 30,806→51,927' as a plain driver without flagging it. The single arm uniquely records question Q-3e8730dbd1994205, priority medium, targeting p.48-49/D006.2.",
+    "classification": "Historical model-output assessment",
+    "primary_evidence": "grep of all staged outputs (25,043|5,763|30,806 → 0 staged matches; only RES pan_dense_why line 29 and pan_dense_single use 30,806); PAN_48_hi.png render; RES outputs/pan_dense_single.validation.json Q-3e8730dbd1994205",
+    "independent_check": "reconciliations.py pan_mtr_fy25_tailings_total_check (Δ5,763), pan_mtr_fy25_summary_row (25,043+5,763=30,806), pan_mtr_fy26_summary_row (46,164+5,763=51,927)",
+    "verdict": "PASS",
+    "finding_id": "F005"
+  },
+  {
+    "id": "C007",
+    "claim": "PAN FY25 group total: printed 196,527 is exactly the disjoint decomposition 92,643+2,654+98,636+1,081+1,513; the 197,608 overlap-sum (raised as medium question Q-1f48aa6d4b884f09 by the staged arm) is resolvable from within the p.48 table itself because 26,748+1,081=27,829 (Evander) and 92,643+1,081=93,724 (Group underground) identify 1,081 as already-inside buy-in. Neither arm's final pass performed this resolution; the staged final preserved the open question only.",
+    "classification": "Historical source/model assessment",
+    "primary_evidence": "PAN_48_hi.png render; RES outputs/pan_dense_why.validation.json Q-1f48aa6d4b884f09/Q-e8c872e6edc94d18; outputs/pan_dense_movement.md (Evander 1,081 inconsistency preserved)",
+    "independent_check": "reconciliations.py pan_disjoint_fy25 (=196,527), pan_overlap_fy25 (=197,608), pan_evander_fy25 (=27,829), pan_group_ug_fy25 (=93,724)",
+    "verdict": "PASS",
+    "finding_id": "F004"
+  },
+  {
+    "id": "C008",
+    "claim": "PAN FY26 source-column conflict: Barberton Mines total prints 94,929 vs components 71,997+12,932=84,929 (Δ10,000); leaf-column operations sum 94,929+103,330+51,927+32,124=282,310 vs printed Group 272,310; with 84,929 the sum is exactly 272,310. Real conflict, but neither arm establishes which value to replace; FY25 opsum (83,773+80,435+30,806+1,513=196,527) reconciles exactly with printed values, so the FY25-exact pattern does not identify the FY26 culprit.",
+    "classification": "Historical source assessment",
+    "primary_evidence": "PAN_48_hi/49_hi.png renders; both final outputs' handling of the 10,000 gap (gemini_review.md lines 72/105 context; codex findings F003)",
+    "independent_check": "reconciliations.py pan_barberton_total_fy26 (Δ10,000), pan_fy26_opsum_printed_columns (Δ10,000), pan_fy26_opsum_with_84929 (=272,310), pan_fy25_group_from_opsum_printed (=196,527), pan_fy26_group_check_group_ug (=272,310 exact via 105,478)",
+    "verdict": "PASS",
+    "finding_id": "F006"
+  },
+  {
+    "id": "C009",
+    "claim": "PAN single-arm distinct errors: false closure check '272,310 = 118,853+153,458 (surface) ✓' (actual 272,311); '(0.1 rounding) ✓' marked on Adjusted EBITDA leaf-sum 663.0 vs printed 663.1; Evander totals 46,855/27,829 mislabelled 'underground'; both arms' final why assert an 'inventory timing' cause for the produced-vs-sold gap without reconciliation (hypothesis stated as driver).",
+    "classification": "Historical model-output assessment",
+    "primary_evidence": "RES outputs/pan_dense_single.md and /pan_dense_why.md; PAN_48/49/50_hi.png renders",
+    "independent_check": "reconciliations.py pan_single_false_check (=272,311), pan_p50_ebitda_leaves (663.0 vs 663.1), pan_evander_total_fy26 (=46,855 total, not underground)",
+    "verdict": "PASS",
+    "finding_id": "F007"
+  },
+  {
+    "id": "C010",
+    "claim": "Evaluator error(refuted prior claims): gemini_review.md lines 78-81 and its F009 row ('Both single-pass and three-pass models correctly flagged this mismatch and formulated high-priority questions') are unsupported; the staged arm never mentions 25,043/5,763/30,806 and there is no high-priority MTR question in either arm (single's is medium). Codex audit point 5's first clause ('Both PAN prose identify MTR5763 gap') is likewise unsupported; its second clause (only single preserves the question, staged omits, single=medium priority, single not preferred as proof) is correct.",
+    "classification": "Historical evaluator-output assessment",
+    "primary_evidence": "gemini_review.md lines 78-81, 105; codex audit.md point 5 / findings.json F005; staged outputs grep; pan_dense_single.validation.json Q-3e8730dbd1994205 (medium)",
+    "independent_check": "Task grep of ORIG/RES outputs for 25,043/5,763/30,806 (13 matches, all single-arm or final-why-driver mentions, none staged flags)",
+    "verdict": "PASS",
+    "finding_id": "F009"
+  },
+  {
+    "id": "C011",
+    "claim": "Prior Codex critiques otherwise verified against source: 10,000/5,763 handling, Elikhulu FY25 68,843 ZAR/kg implying ~684,8xx when rebuilt from 1,130.9 ZARm and ~5,309.2 kg sold (plausible omitted-digit order-of-magnitude error, cause not proved), Tennant FY25 A$/US$ cells internally consistent with the tiny oz base (~1,584,3xx built vs 1,584,835 printed; not a proved typo), and neither model arm demonstrates internal consistency on these outliers.",
+    "classification": "Historical evaluator-output assessment",
+    "primary_evidence": "codex findings.json F002-F007; PAN_48/49_hi.png renders (Elikhulu/Tennant cells, p.49; volumes p.48)",
+    "independent_check": "reconciliations.py pan_elikhulu_implied_allin (~684,8xx), pan_tennant_implied_allin_aud (~1,584,3xx), pan_tennant_usd_from_aud (32,041 consistent)",
+    "verdict": "PASS",
+    "finding_id": null
+  },
+  {
+    "id": "C012",
+    "claim": "Small 1-oz differences in FY26 (105,479 vs 105,478; leaf-sum 71,998 vs printed 71,997; 105,479+2,428+4,337+6,609=118,853 vs 118,853 coincidental print) are real, tiny, and not proved typos; neither arm's treatment established a mechanism.",
+    "classification": "Historical source assessment",
+    "primary_evidence": "PAN_48_hi.png render (Barberton rows, Minning series totals)",
+    "independent_check": "reconciliations.py pan_fy26_ug_mining_total, pan_barberton_mining_leaf_fy26, pan_minning_series_fy26",
+    "verdict": "PASS",
+    "finding_id": "F006"
+  },
+  {
+    "id": "C013",
+    "claim": "Robustness verdict: within this coverage, three-pass clearly improves staged dictionary/worksheet clarity and produced the only in-memory-accepted literal-valid ledger in NTU, but it propagates a same-fact error three times (C005), drops the MTR conflict the single arm flags (C006), leaves the FY25 reconciliation unresolved (C007), and accepts an unreconciled semantic closure (C004, versus single's rejection). Average error presence across final outputs is not lower in the staged arms; robustness improvement is NOT demonstrated. Not isolated causal proof (single sample per arm, no randomization/replication, different task wording).",
+    "classification": "Comparative assessment",
+    "primary_evidence": "All final outputs both arms both cases; validation JSONs; codex findings.json; gemini_review.md",
+    "independent_check": "Claims C003-C009 verdicts; reconciliations.py",
+    "verdict": "PASS",
+    "finding_id": "F008"
+  },
+  {
+    "id": "C014",
+    "claim": "Cost/clarity trade: three-pass costs 2.24x (NTU) / 2.39x (PAN) and 1.62x / 1.80x summed request seconds of the single arm; the extra-pass structure buys worksheet clarity but its final why does not repeat the intermediate arithmetic, so the clarity artifacts are not carried into the final reading (staged finals' key-facts tables are close to the single's).",
+    "classification": "Comparative transport assessment",
+    "primary_evidence": "combined_comparison.json; final outputs of both arms",
+    "independent_check": "reconciliations.py cost/time keys; text inspection of finals",
+    "verdict": "PASS",
+    "finding_id": "F008"
+  }
+]

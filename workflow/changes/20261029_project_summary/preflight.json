@@ -1,0 +1,114 @@
+{
+  "groups": {
+    ".gitignore": {
+      "files": 1,
+      "bytes": 311
+    },
+    ".python-version": {
+      "files": 1,
+      "bytes": 6
+    },
+    "AGENTS.md": {
+      "files": 1,
+      "bytes": 3760
+    },
+    "ARCHITECTURE.md": {
+      "files": 1,
+      "bytes": 15597
+    },
+    "README.md": {
+      "files": 1,
+      "bytes": 2990
+    },
+    "Run Capture.cmd": {
+      "files": 1,
+      "bytes": 226
+    },
+    "TOOL_CHEATSHEET.md": {
+      "files": 1,
+      "bytes": 39398
+    },
+    "app.py": {
+      "files": 1,
+      "bytes": 103
+    },
+    "companies": {
+      "files": 4370,
+      "bytes": 1510225904
+    },
+    "deep_research": {
+      "files": 2,
+      "bytes": 1941851
+    },
+    "docs": {
+      "files": 10,
+      "bytes": 76310
+    },
+    "documents": {
+      "files": 1,
+      "bytes": 72114176
+    },
+    "evaluate_stock.py": {
+      "files": 1,
+      "bytes": 33164
+    },
+    "forecast": {
+      "files": 6,
+      "bytes": 37442
+    },
+    "new_company.py": {
+      "files": 1,
+      "bytes": 16943
+    },
+    "new_sector.py": {
+      "files": 1,
+      "bytes": 10045
+    },
+    "prompts": {
+      "files": 18,
+      "bytes": 21737
+    },
+    "requirements-dev.lock.txt": {
+      "files": 1,
+      "bytes": 1329
+    },
+    "requirements-dev.txt": {
+      "files": 1,
+      "bytes": 116
+    },
+    "requirements.lock.txt": {
+      "files": 1,
+      "bytes": 1806
+    },
+    "requirements.txt": {
+      "files": 1,
+      "bytes": 121
+    },
+    "scratch": {
+      "files": 126,
+      "bytes": 448105
+    },
+    "section_capture": {
+      "files": 20,
+      "bytes": 533084
+    },
+    "setup.ps1": {
+      "files": 1,
+      "bytes": 858
+    },
+    "test_openrouter_live.py": {
+      "files": 1,
+      "bytes": 6613
+    },
+    "tests": {
+      "files": 20,
+      "bytes": 223717
+    },
+    "workflow": {
+      "files": 243,
+      "bytes": 149804549
+    }
+  },
+  "files_over_100MiB": [],
+  "credential_pattern_hits": []
+}

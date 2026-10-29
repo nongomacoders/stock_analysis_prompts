@@ -1,0 +1,65 @@
+[
+  {
+    "id": "F001",
+    "origin": "Gemini inference",
+    "severity": "medium",
+    "finding": "Refuted/zero robustness gain and categorical architectural claims exceed tiny unreplicated sample.",
+    "correction": "Retain do-not-adopt-yet decision; distinguish failure to demonstrate benefit from disproving an approach."
+  },
+  {
+    "id": "F002",
+    "origin": "DeepSeek staged output; Gemini characterization",
+    "severity": "high",
+    "finding": "NTU scope narrowing and premature closure confirmed. Fresh single acknowledges644withinPBD; do not attribute identical scope failure to both.",
+    "correction": "Judge each claim/arm independently. Preserve partial until original evidence condition met, not blanket external semantic engine."
+  },
+  {
+    "id": "F003",
+    "origin": "Gemini source certainty",
+    "severity": "medium",
+    "finding": "PAN10000oz difference real; typo/corrected output and revenue effect not proved. Elikhulu cost/volume implies684835ZAR/kg versusprinted68843, but exact missing-digit explanation unconfirmed.",
+    "correction": "Preserve original and conditional reconstruction; do not change company figures or infer revenue impact."
+  },
+  {
+    "id": "F004",
+    "origin": "Gemini arithmetic notation",
+    "severity": "low",
+    "finding": "Tennant audit writes58.1m/0.03667kg yet result uses36.67kg.",
+    "correction": "1179oz=36.671kg; derived1584358A$/kg broadly agrees with1584835 given rounded cost,not exact confirmation."
+  },
+  {
+    "id": "F005",
+    "origin": "Gemini question-quality finding",
+    "severity": "medium",
+    "finding": "Both PAN prose flagMTR but staged ledger drops dedicatedMTRquestion. Gemini parity/high-priority question claim contradicted by JSON.",
+    "correction": "Evaluate authoritative questions as well as narrative mentions; carry material uncertainty into ledger if it matters."
+  },
+  {
+    "id": "F006",
+    "origin": "DeepSeek PAN single; missed by Gemini",
+    "severity": "medium",
+    "finding": "Single asserts272310=118853+153458 withcheckmark; actual272311. Elsewhere explicitly notes some1oz source differences.",
+    "correction": "Do not mark false exact identity correct; label1oz residual and unknown cause."
+  },
+  {
+    "id": "F007",
+    "origin": "DeepSeek PAN final; missed/understated by Gemini",
+    "severity": "medium",
+    "finding": "Both finals assert produced/sold difference reflects inventory timing without inventory reconciliation; single labels46855vs27829 as Evander underground, but those are total-produced values. Single also treats FY26UG total40246as46855when explaining consistency.",
+    "correction": "Separate totals/underground and observed production-sales difference from unverified inventory cause. Staged final is more cautious on Tennant costs than single likely-error wording."
+  },
+  {
+    "id": "F008",
+    "origin": "Gemini implementation proposal",
+    "severity": "low",
+    "finding": "ledger_validator.py proposed path absent; proposed rules lack full exception/duplicate checking and add blanket balance-sheet closure requirements.",
+    "correction": "Actualvalidator question_ledger.apply_delta. Existing prompts already require closure/scope; no new SQL rules or semantic engine authorized."
+  },
+  {
+    "id": "F009",
+    "origin": "prior Codex terminology",
+    "severity": "low",
+    "finding": "Earlier reviews can sound like accepting every supplied paragraph or ledger-valid output validates accounting. Current experiment confirms distinction.",
+    "correction": "Read-only protocol checks and arithmetic do not establish all definitions/forecasts; retain supplied-but-unread coverage and limits."
+  }
+]

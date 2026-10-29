@@ -1,0 +1,116 @@
+{
+  "case": "pan_operations",
+  "version": "old",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question": "Reconcile group US$ AISC FY26 of 1,867/oz (incl. third-party buy-in feedstock) vs 1,798/oz (excl. buy-in) to the AISC build-up; confirm which is the headline APM and the buy-in cost/oz excluded.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.2 ALL-IN COSTS",
+      "evidence_required": "AISC reconciliation table (sustaining capex, royalties, G&A, by-product credits, buy-in adjustment) for FY26 and FY25, in US$/oz, with the 1,867 and 1,798 figures tied out.",
+      "closure_condition": "Both AISC figures reconciled to components; headline APM identified; buy-in exclusion quantified; forecast consequence stated.",
+      "question_id": "Q-637450276d8f43f1",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Split FY26 total capex of US$214.9m (vs US$163.6m FY25) into sustaining vs expansion, and confirm whether Tennant's US$71.3m (vs 35.8m) is expansion (MTR) or sustaining; obtain FY27 capex guidance.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.3 SUSTAINING CAPITAL, EXPANSION CAPITAL, NET (CASH)/DEBT",
+      "evidence_required": "Sustaining vs expansion capex table by operation for FY26/FY25 in US$m, plus any FY27 guidance; Tennant MTR project capex disclosure.",
+      "closure_condition": "Capex split confirmed and FY27 guidance captured; forecast capex line set.",
+      "question_id": "Q-03047e1194b0437d",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Reconcile segment revenue ZAR17,249.1m and cost of production ZAR6,431.7m (FY26) to the consolidated income statement, and confirm whether A$195.3m Tennant revenue is included translated or excluded.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+      "evidence_required": "Segment-to-group revenue and cost reconciliation in ZAR, with FX translation of Tennant A$ revenue at 16.90/1.47; tie to income statement totals.",
+      "closure_condition": "Segment totals reconcile to group income statement; Tennant translation treatment confirmed.",
+      "question_id": "Q-08f6ef8d6efb4c5f",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Reconcile segment Adjusted EBITDA (Barberton 142.4 + Evander 120.9 + surface 399.7 = 663.1 US$m) to group and confirm add-backs/one-offs and the FX swing (16.90 vs 18.17) contribution.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.4 ADJUSTED EBITDA",
+      "evidence_required": "Adjusted EBITDA reconciliation from operating profit, listing add-backs, and FX impact quantification FY26 vs FY25.",
+      "closure_condition": "EBITDA reconciliation complete; one-offs and FX isolated; clean FY26 EBITDA baseline established.",
+      "question_id": "Q-0dcd51cabdca4614",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm realized gold price definition (spot vs hedged) and reconcile group average US$4,235/oz FY26 to revenue divided by 272,373 oz sold.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.1 FINANCIAL APMs",
+      "evidence_required": "Realized price methodology note and revenue/oz reconciliation; hedge or pricing-lag disclosure.",
+      "closure_condition": "Realized price definition confirmed and reconciled to revenue; hedge/lag effects quantified.",
+      "question_id": "Q-922a8dc6361b4082",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm Evander FY26 production uplift to 46,855 oz (vs 27,829) split between underground, buy-in (6,609 oz) and tailings, and whether the buy-in component is sustainable into FY27.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+      "evidence_required": "Evander production split by source FY26/FY25 and any commentary on buy-in feedstock sustainability/contracts.",
+      "closure_condition": "Evander source split confirmed; sustainable vs one-off volume identified for FY27 forecast.",
+      "question_id": "Q-d7905d61f7774d8a",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Reconcile Barberton US$ AISC rise to 2,589/oz (vs 2,065) against capex (37.5 vs 24.9) and cost of production; confirm no one-off.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.2 ALL-IN COSTS",
+      "evidence_required": "Barberton AISC build-up FY26/FY25 with capex and cost components; note any one-off items.",
+      "closure_condition": "Barberton AISC rise fully explained; recurring vs one-off isolated.",
+      "question_id": "Q-f0b73f8044524000",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm Tennant FY25 low base (1,513 oz) and FY26 ramp (32,124 oz) and normalize unit costs (US$ all-in cost 4,339/oz FY26 vs 32,041 FY25) for a comparable run-rate.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+      "evidence_required": "Tennant production and cost history FY25/FY26 with ramp commentary and normalized unit cost.",
+      "closure_condition": "Tennant ramp understood; normalized cost/oz established for forecast.",
+      "question_id": "Q-5a4ea0c8913c40ed",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm definition of 'Surface operations MTR operation' vs 'Tennant Mines' columns and which columns aggregate to Group totals, given inconsistent column mapping in the production summary.",
+      "priority": "low",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D010 Glossary",
+      "evidence_required": "Glossary/definition of MTR operation and Tennant Mines; confirmation of segment aggregation to Group.",
+      "closure_condition": "Column definitions confirmed; segment attribution verified against printed table.",
+      "question_id": "Q-3d3e356ad1c14c5d",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "completed_utc": "2026-10-28T17:31:46.749001+00:00",
+  "status": "section_trial_complete_with_review_findings",
+  "analysis_generations": 22,
+  "paid_repairs": 0,
+  "gemini_calls": 0,
+  "test_exit_code": 0,
+  "live_exit_code": 0,
+  "accounting_verification_exit_code": 0,
+  "ledger_valid": 18,
+  "ledger_rejected": 4,
+  "preservation": {
+    "checked_utc": "2026-10-28T17:31:46.720293+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "primary_pages_viewed": [
+    13,
+    22,
+    24,
+    25,
+    31
+  ],
+  "financial_validation": "Corrections required within limited review;full semantic review pending"
+}

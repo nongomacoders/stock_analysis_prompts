@@ -1,0 +1,38 @@
+[
+  {
+    "case": "ntu_assets",
+    "question_id": "Q-08aa5c3f257440ab",
+    "quote": "3 414",
+    "characters": 5,
+    "literal_match": true,
+    "minimum_length": 8,
+    "reason": "below minimum"
+  },
+  {
+    "case": "ntu_assets",
+    "question_id": "Q-e4497d9112cd4e9d",
+    "quote": "3 845",
+    "characters": 5,
+    "literal_match": true,
+    "minimum_length": 8,
+    "reason": "below minimum"
+  },
+  {
+    "case": "ntu_assets",
+    "question_id": "Q-c3d790bf20794c50",
+    "quote": "431",
+    "characters": 3,
+    "literal_match": true,
+    "minimum_length": 8,
+    "reason": "below minimum"
+  },
+  {
+    "case": "ntu_assets",
+    "question_id": "Q-e0ca727b62be46df",
+    "quote": "431",
+    "characters": 3,
+    "literal_match": true,
+    "minimum_length": 8,
+    "reason": "below minimum"
+  }
+]

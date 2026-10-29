@@ -1,0 +1,98 @@
+{
+  "completed_utc": "2026-10-28T17:32:54.556794+00:00",
+  "run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections",
+  "files": [
+    {
+      "path": "prompts\\common\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "ae92e9e99253cca4dbed43385967f590f21181d356ddaecd68c366ee0877ee55"
+    },
+    {
+      "path": "prompts\\consumer_lending\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+      "sha256": "9bdffe86980efded6cddb94bf2dadd3ec8e7ded1cdeeeccd0c36820de2c11a1d"
+    },
+    {
+      "path": "workflow\\changes\\20261028_section_refinements\\ntu_sections.py",
+      "sha256": "6e213c8d8afe2df7885759d5bf5caee194f72f8c436fa1dc91721c4483d0cd5e"
+    }
+  ],
+  "tests": {
+    "exit_code": 0,
+    "counts": {
+      "": 54,
+      "passed": 27
+    },
+    "network": "All Python DNS/connect/sendto denied for the test session"
+  },
+  "test_folder_cleaned": true,
+  "verification": {
+    "captured_units": 24,
+    "analysis_generations": 22,
+    "navigation_units": 2,
+    "captured_physical_pages": 38,
+    "all_physical_pages_once": true,
+    "empty_initial_ledger": true,
+    "chronology_verified": true,
+    "valid_ledgers": 18,
+    "rejected_ledgers": 4,
+    "proposed_new_questions_including_rejected": 39,
+    "persistent_questions": 32,
+    "question_statuses": {
+      "partial": 15,
+      "open": 15,
+      "contradicted": 1,
+      "resolved": 1
+    },
+    "cost_and_tokens": {
+      "cost_usd": 0.0702026388,
+      "prompt_tokens": 151251,
+      "completion_tokens": 51535,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 23564,
+      "elapsed_seconds": 208.174
+    },
+    "first_dispatch_to_last_accounting_seconds": 340.451335,
+    "all_costs_metadata_corroborated": true,
+    "production_preservation": {
+      "checked_utc": "2026-10-28T17:25:37.557303+00:00",
+      "production_all_tables_unchanged": true,
+      "sources_unchanged": true,
+      "original_files_unchanged": true
+    },
+    "no_paid_repairs": true,
+    "note": "Rejected deltas were not applied;their new questions/answers remain in raw briefs and rejected_ledger_deltas.json,not in persistent downstream ledger. Coverage is not semantic correctness."
+  },
+  "completion": {
+    "completed_utc": "2026-10-28T17:31:46.749001+00:00",
+    "status": "section_trial_complete_with_review_findings",
+    "analysis_generations": 22,
+    "paid_repairs": 0,
+    "gemini_calls": 0,
+    "test_exit_code": 0,
+    "live_exit_code": 0,
+    "accounting_verification_exit_code": 0,
+    "ledger_valid": 18,
+    "ledger_rejected": 4,
+    "preservation": {
+      "checked_utc": "2026-10-28T17:31:46.720293+00:00",
+      "production_all_tables_unchanged": true,
+      "sources_unchanged": true,
+      "original_files_unchanged": true
+    },
+    "primary_pages_viewed": [
+      13,
+      22,
+      24,
+      25,
+      31
+    ],
+    "financial_validation": "Corrections required within limited review;full semantic review pending"
+  },
+  "preservation": {
+    "checked_utc": "2026-10-28T17:32:54.528326+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "retrospective": "No shell/encoding/edit failures during implementation. One in-flight output probe returned exit1 before output existed;read completed receipts/status before opening live outputs. No automatic paid repairs. App rejection behavior reused unchanged;raw proposed ledger changes preserved separately.",
+  "source_review": "Complete primary pages13,22,24,25,31 viewed read-only;financial corrections remain required;all other primary pages not independently visually reviewed this turn."
+}

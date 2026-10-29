@@ -1,0 +1,80 @@
+{
+  "arms": {
+    "ntu_single": {
+      "cost_usd": 0.00470211,
+      "request_seconds": 18.457,
+      "prompt_tokens": 8675,
+      "completion_tokens": 3429
+    },
+    "ntu_three": {
+      "cost_usd": 0.01051743,
+      "request_seconds": 29.956000000000003,
+      "prompt_tokens": 27675,
+      "completion_tokens": 5602
+    },
+    "pan_single": {
+      "cost_usd": 0.004670988,
+      "request_seconds": 16.914,
+      "prompt_tokens": 11107,
+      "completion_tokens": 2904
+    },
+    "pan_three": {
+      "cost_usd": 0.0111837432,
+      "request_seconds": 30.421,
+      "prompt_tokens": 35391,
+      "completion_tokens": 4845
+    }
+  },
+  "ratios": {
+    "ntu": {
+      "cost": 2.236746907239516,
+      "summed_request_duration": 1.623015658015929
+    },
+    "pan": {
+      "cost": 2.3942992788677686,
+      "summed_request_duration": 1.7985692325883882
+    }
+  },
+  "known_cost_usd": 0.0310742712,
+  "failed_request_cost": "unknown",
+  "ntu": {
+    "principal": 3845,
+    "total_pbd": 4489,
+    "net_change": -130,
+    "net_percent": -3.270440251572327,
+    "gain_change": -167,
+    "gain_percent": -27.926421404682273
+  },
+  "pan": {
+    "disjoint": 196527,
+    "overlap": 197608,
+    "barberton_components": 84929,
+    "printed_barberton": 94929,
+    "printed_operations_sum": 282310,
+    "printed_group": 272310,
+    "conditional_corrected_sum": 272310,
+    "one_oz_actual_sum": 71998,
+    "mtr_gap": 5763
+  },
+  "tennant": {
+    "rounded_cost_A_m": 58.1,
+    "sold_oz": 1179,
+    "sold_kg": 36.6709991472,
+    "derived_cost_per_kg": 1584358.249056222,
+    "printed_cost_per_kg": 1584835,
+    "assessment": "Consistent within rounded cost disclosure; audit denominator0.03667kg is a unit transcription error, should36.67kg."
+  },
+  "elikhulu": {
+    "rounded_cost_ZAR_m": 1130.9,
+    "sold_oz": 53092,
+    "sold_kg": 1651.3457902655998,
+    "derived_cost_per_kg": 684835.366805948,
+    "printed_cost_per_kg": 68843,
+    "assessment": "Printed rate and cost/volume do not reconcile under same basis; exact corrected figure and omitted-digit cause not independently confirmed."
+  },
+  "illustrative_value": {
+    "expression": "10000*4235",
+    "result": 42350000,
+    "assessment": "Arithmetic illustration only; not demonstrated revenue misstatement, Group total/revenue unaltered."
+  }
+}

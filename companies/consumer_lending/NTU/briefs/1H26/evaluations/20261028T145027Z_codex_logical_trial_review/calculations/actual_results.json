@@ -1,0 +1,25 @@
+{
+  "accounted_generations": 29,
+  "unique_generation_ids": true,
+  "combined_cost_usd": "0.2786526252",
+  "all_costs_corrobated": true,
+  "full_generations": 24,
+  "full_complete": 23,
+  "full_sections_complete": 22,
+  "full_repairs": 0,
+  "pilot_generations": 5,
+  "stage2_incomplete_tokens": 131072,
+  "caller_limits_omitted": true,
+  "source_pages_once": 38,
+  "navigation_captures": 2,
+  "remaining_portfolio_statutory_difference": 6,
+  "stage1_unsupported_claim": 370,
+  "earliest_observed_370": "Stage1,not present as R370m in earlier section answers",
+  "production_and_source_preservation": {
+    "checked_utc": "2026-10-28T14:50:26.316605+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "preliminary_evaluator": "MISSING_NOTE,offline,explicit experimental path"
+}

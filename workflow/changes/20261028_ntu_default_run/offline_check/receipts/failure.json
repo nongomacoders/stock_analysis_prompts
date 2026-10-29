@@ -1,0 +1,40 @@
+{
+  "label": "failure",
+  "started_utc": "2026-10-28T10:13:04.254260+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "998dfdd449c9f283982db3340999812879ff52477c80346e12dee41521f4af11",
+  "max_tokens": 32768,
+  "reasoning_controls_sent": false,
+  "success": false,
+  "usage": {
+    "prompt_tokens": 10,
+    "completion_tokens": 8,
+    "total_tokens": 18,
+    "cost": 0.001,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3
+    }
+  },
+  "stream_done": true,
+  "response_headers_seconds": 0.0,
+  "http_status": 200,
+  "id": "gen-offline",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "finish_reason": "length",
+  "error_type": "Incomplete",
+  "error": "Incomplete response: finish_reason=length",
+  "completed_utc": "2026-10-28T10:13:04.261971+00:00",
+  "elapsed_seconds": 0.0,
+  "time_to_first_event_seconds": 0.0,
+  "time_to_first_content_seconds": 0.0,
+  "metadata_status": "retrieved",
+  "generation_metadata": {
+    "total_cost": 0.001,
+    "native_tokens_prompt": 10,
+    "native_tokens_completion": 8,
+    "native_tokens_reasoning": 3
+  },
+  "cost_usd": 0.001,
+  "cost_source": "response_usage",
+  "accounting_completed_utc": "2026-10-28T10:13:04.263033+00:00"
+}

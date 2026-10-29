@@ -1,0 +1,32 @@
+{
+  "actual_cost_usd": "0.1893089364",
+  "failed_calls_cost_usd": "0.109956488",
+  "failed_calls": 4,
+  "all15_costs_corrobated_by_generation_metadata": true,
+  "all_requests_base_model_default_controls": true,
+  "selected_source_calculations": {
+    "poci_net": 3845,
+    "principal_close": 3845,
+    "other_close": 644,
+    "portfolio_net_cash": 434,
+    "portfolio_income_before_funding": 246,
+    "combined_carrying_decline": 188,
+    "statutory_movement_remaining_difference": 6,
+    "nonfinancial_receivables": 107,
+    "effective_tax_rate": 31.521739130434785,
+    "fy25_historical_impairment": 259,
+    "codm_amortisation": 598,
+    "net_asset_value": 1.702425211547757,
+    "cash_change": 6,
+    "cash_close": 113
+  },
+  "source_calculation_basis": "Inputs transcribed from source physical pp.8,9,12,13,16,22,24,31 and independently inspected in the preserved prior Codex audit; stable PDF hash reverified. No new PDF image inspection claimed.",
+  "stage1_preliminary_findings": [
+    "Correct107 gross/net residual, FY25 historical259, ETR+31.5%, signed POCI/NAV and static-liquidity distinction now present.",
+    "Still omits explicit combined434 cash minus246 income equals188 decline and remaining6 bridge.",
+    "Contradictory tax pitfall says treating credit as positive ETR is a mistake, despite its correct +31.5% calculation elsewhere.",
+    "Says no general-model staging applies to trade receivables while acknowledging policy applicability not established; keep conclusion conditional.",
+    "Materiality labels for ECL policy and debt/lease residuals lack quantified valuation sensitivity; not independently validated."
+  ],
+  "limits": "No completed Stage2 forecast/valuation to validate; not an end-to-end analytical success or isolated routing benchmark."
+}

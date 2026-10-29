@@ -1,0 +1,114 @@
+{
+  "sotp": {
+    "pbd_val": 3268,
+    "other_fin_val": 547,
+    "bpo_val": 680.0,
+    "agency_val": 500.0,
+    "tev_calc": 4995.0,
+    "equity_before_discount": 839.0,
+    "liq_discount_val": 101,
+    "equity_after_discount": 738.0,
+    "target_price_calc": 0.9454,
+    "published_target_price": 0.95,
+    "equity_after_no_wc": 495.44,
+    "target_price_no_wc": 0.6346
+  },
+  "sensitivity_matrix": {
+    "calculated": {
+      "10%": [
+        1.01,
+        1.2,
+        1.39
+      ],
+      "15%": [
+        0.75,
+        0.95,
+        1.14
+      ],
+      "20%": [
+        0.5,
+        0.69,
+        0.89
+      ]
+    },
+    "published": {
+      "10%": [
+        1.01,
+        1.2,
+        1.39
+      ],
+      "15%": [
+        0.76,
+        0.95,
+        1.14
+      ],
+      "20%": [
+        0.5,
+        0.69,
+        0.89
+      ]
+    },
+    "all_cells_reproduced_within_1c": true
+  },
+  "dcf": {
+    "ke_18": {
+      "tv": 2103.75,
+      "pv_tv": 1510.88,
+      "pv_fcf": 457.34,
+      "equity": 1968.22,
+      "per_share": 2.52
+    },
+    "ke_25": {
+      "tv": 1463.48,
+      "equity": 1355.83,
+      "per_share": 1.74
+    },
+    "ke_30": {
+      "tv": 1202.14,
+      "equity": 1106.59,
+      "per_share": 1.42
+    }
+  },
+  "cash_flow": {
+    "fcfe_vertical_sums": {
+      "1H26A": 140,
+      "FY26E": 196,
+      "FY27E": 260,
+      "FY28E": 330
+    },
+    "stated_fcfe": {
+      "1H26A": 140,
+      "FY26E": 196,
+      "FY27E": 260,
+      "FY28E": 330
+    },
+    "matches_stated": true,
+    "debt_residuals": {
+      "FY26E": {
+        "stated_repayment": 188,
+        "bs_debt_reduction": 166,
+        "bs_leases_reduction": 15,
+        "residual": 7
+      },
+      "FY27E": {
+        "stated_repayment": 250,
+        "bs_debt_reduction": 220,
+        "bs_leases_reduction": 20,
+        "residual": 10
+      },
+      "FY28E": {
+        "stated_repayment": 320,
+        "bs_debt_reduction": 280,
+        "bs_leases_reduction": 30,
+        "residual": 10
+      }
+    }
+  },
+  "rating_bands": {
+    "monotonic": true,
+    "dynamic_rating_at_0.89": "HOLD",
+    "dynamic_rating_at_0.90": "HOLD",
+    "static_note_rec": "HOLD",
+    "alignment": true
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "C001",
+    "claim": "Native extraction keeps NTU physical p. 22 cells 5 (other loans) and 390 (trade receivables) separate; total carrying value computes to 5 + 390 + 3,845 + 644 = 4,884 Rm, eliminating prior baseline false 9,879 Rm asset inflation allegation.",
+    "origin": "pilot/plan.json, outputs/ntu_assets.md, section_capture/pdf_source.py",
+    "classification": "Derived calculation / Table extraction",
+    "primary_evidence": "NTU 1H26 AFS physical p. 22, Note 6.1 table 'Financial assets subject to risk'",
+    "independent_check": "Executed reconciliations.py: 5 + 390 + 3845 + 644 = 4884 exact (residual 0). Prior baseline merged '5' and '390' into '5 390' yielding 5390 + 3845 + 644 = 9879 (residual +4995).",
+    "verdict": "PASS",
+    "consequence": "Extraction fix successfully eliminated false R4,995m asset inflation allegation against issuer. Linked finding: F001."
+  },
+  {
+    "id": "C002",
+    "claim": "Native extraction separates exchange rate columns on NTU physical p. 25, correctly assigning reporting date closing rates USD 17.2/18.4/17.3 and GBP 22.7/23.9/23.2 to 31 Mar 2026, 31 Mar 2025 and 30 Sep 2025 respectively.",
+    "origin": "outputs/ntu_fx.md, inputs/ntu_fx_baseline.md",
+    "classification": "Comparative period mapping / Table extraction",
+    "primary_evidence": "NTU 1H26 AFS physical p. 25, Note 6.2 'Significant exchange rates applied during the period'",
+    "independent_check": "Inspected original PDF p. 25 Note 6.2 table: Col 4 is 31 Mar 2026 (17.2 USD / 22.7 GBP); Col 5 is 31 Mar 2025 (18.4 USD / 23.9 GBP); Col 6 is 30 Sep 2025 (17.3 USD / 23.2 GBP). Outputs/ntu_fx.md correctly maps all 3 periods.",
+    "verdict": "PASS",
+    "consequence": "Eliminated comparative closing FX date inversion present in baseline. Linked finding: F002."
+  },
+  {
+    "id": "C003",
+    "claim": "Prose layout preservation on NTU physical p. 13 and short literal anchor prompt instructions enable successful ledger delta validation (5/5 deltas valid); signed roll-forward arithmetic is verified.",
+    "origin": "outputs/ntu_prose.md, outputs/ntu_prose.validation.json, section_capture/question_ledger.py",
+    "classification": "Pipeline validation check / Derived calculation",
+    "primary_evidence": "NTU 1H26 AFS physical p. 13, Note 1, 1.1 and 1.2 tables and prose paragraphs",
+    "independent_check": "Reconciled rolls: 3975 + 382 - 728 + 383 - 167 = 3845 (residual 0); 702 + 28 - 116 + 30 = 644 (residual 0); total 3845 + 644 = 4489 (residual 0). Validated outputs/ntu_prose.validation.json: ledger_valid=true, errors=[].",
+    "verdict": "PASS",
+    "consequence": "Demonstrates that preserving prose text outside markdown tables and providing short cell/sentence anchor guidance prevents delta validation rejections. Linked finding: F003."
+  },
+  {
+    "id": "C004",
+    "claim": "DeepSeek continues to misclassify the R167m impairment loss on principal book portfolios on NTU physical p. 24 as an 'impairment release' and questions the 'sustainability of that release'.",
+    "origin": "outputs/ntu_headers.md Section 1, Section 2, Section 3, Section 4",
+    "classification": "Model accounting interpretation / Sign error",
+    "primary_evidence": "NTU 1H26 AFS physical p. 24, Note 6.1 'Reconciliation of expected credit loss allowance on principal book portfolios'",
+    "independent_check": "Reconciled movement: -241 + 69 + 4 + 1 = -167; opening 598 - 167 = 431 closing. Because PBD assets carry a cumulative impairment gain (allowance = cumulative gain), a reduction from 598 to 431 is an impairment loss of 167 (debit to P&L), NOT a release.",
+    "verdict": "FAIL",
+    "consequence": "Inverts the economic and accounting direction of credit deterioration, falsely treating a P&L charge as earnings-boosting income. Linked finding: F004."
+  },
+  {
+    "id": "C005",
+    "claim": "DeepSeek prematurely resolves question Q-08aa5c3f257440ab in outputs/ntu_assets.md while explicitly acknowledging that the total R4,489m PBD carrying value reconciliation remains unverified in this capture.",
+    "origin": "outputs/ntu_assets.md Section 4, inputs/ntu_assets.json",
+    "classification": "Ledger semantic closure evaluation",
+    "primary_evidence": "NTU 1H26 AFS physical pp. 8, 13, 21-23; inputs/ntu_assets.json Q-08aa5c3f257440ab closure condition",
+    "independent_check": "Original closure condition: 'PBD measurement basis and applicable ECL model stated and reconciled to the carrying value'. DeepSeek answer: 'The R4,489m carrying value referenced in the question is not visible in this capture; scope reconciliation carried to a new question.' Model marked status: 'resolved'.",
+    "verdict": "FAIL",
+    "consequence": "Premature closure of central credit-risk question in persistent ledger; status should remain partial until tied to SoFP. Linked finding: F005."
+  },
+  {
+    "id": "C006",
+    "claim": "PAN FY25 Group gold production reconciles exactly to 196,527 oz across disjoint operational components (92,643 + 2,654 + 98,636 + 1,081 + 1,513 = 196,527 oz); DeepSeek double-counts 1,081 oz by adding the Group total underground column (93,724 oz) and buy-in (1,081 oz) again.",
+    "origin": "outputs/pan_dense.md Section 2 and Section 4; PAN physical pp. 48-49",
+    "classification": "Derived calculation / Table column selection error",
+    "primary_evidence": "PAN FY26 Results SENS physical pp. 48-49, Group Production Summary table",
+    "independent_check": "Executed reconciliations.py: disjoint sum 92643 + 2654 + 98636 + 1081 + 1513 = 196527 (residual 0). Model overlap sum: 93724 + 2654 + 98636 + 1081 + 1513 = 197608 (residual +1081).",
+    "verdict": "FAIL",
+    "consequence": "Model creates false +1,081 oz discrepancy against issuer due to double-counting buy-in feedstock. Linked finding: F006."
+  },
+  {
+    "id": "C007",
+    "claim": "Multi-tier grouped headers on PAN physical pp. 48-49 are flattened into a single markdown row, obscuring the hierarchy between Mining operations, Surface operations, and Total operations.",
+    "origin": "after/PAN_48.md, after/PAN_49.md, section_capture/pdf_source.py",
+    "classification": "Table extraction layout limitation",
+    "primary_evidence": "PAN FY26 Results SENS physical pp. 48-49; workflow/changes/20261028_table_extraction/after/PAN_48.md",
+    "independent_check": "Inspected after/PAN_48.md: Column 4-6 (Mining), Column 7-11 (Surface), Column 12-16 (Total ops) are concatenated into single text headers without hierarchical grouping.",
+    "verdict": "PASS",
+    "consequence": "Confirms fundamental Markdown table limitation for multi-tier column headers; layout limitation should be carried as uncertainty. Linked finding: F007."
+  },
+  {
+    "id": "C008",
+    "claim": "DeepSeek makes speculative claims of source printing/scale errors regarding Tennant FY25 A$ all-in cost (A$1,584,835/kg) and ZAR/kg to US$/oz AISC conversion residuals (~53 US$/oz).",
+    "origin": "outputs/pan_dense.md Section 2 and Section 4",
+    "classification": "Model inference / Speculative error attribution",
+    "primary_evidence": "PAN FY26 Results SENS physical pp. 48-50",
+    "independent_check": "Tennant surface feedstock in FY25 produced only 1,513 oz (47 kg) during initial commissioning; high initial capital/setup costs divided by 47 kg naturally produce extreme unit costs. Group AISC conversion translates asset costs at asset/transaction-specific FX and sales weights, not an annual average FX rate.",
+    "verdict": "FAIL",
+    "consequence": "Model invents speculative source error hypotheses rather than identifying operational commissioning and weighting factors. Linked finding: F008."
+  },
+  {
+    "id": "C009",
+    "claim": "PAN source PDF exhibits genuine 1-ounce subtotal differences across tables and an internal 5,763 oz MTR column variance between surface operations and total operations.",
+    "origin": "PAN physical pp. 48-49; independent audit inspection",
+    "classification": "Source document anomaly / Rounding verification",
+    "primary_evidence": "PAN FY26 Results SENS physical pp. 48-49",
+    "independent_check": "Underground FY26: 65233 + 40246 = 105479 vs 105478 printed (-1 oz). Mining Total FY26: 71997 + 46855 = 118852 vs 118853 printed (+1 oz). Mining + Surface FY26: 118853 + 153458 = 272311 vs 272310 printed (-1 oz). MTR FY25 tailings: Col 6 prints 25043, Col 14 prints 30806 (diff 5763 oz = FY26 MTR buy-in volume); printed subtotal 98636 uses 30806.",
+    "verdict": "PASS",
+    "consequence": "Proves that minor 1-ounce differences are genuine source rounding, and reveals an internal source inconsistency in MTR tailings. Linked finding: F009."
+  }
+]

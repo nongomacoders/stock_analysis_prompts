@@ -1,0 +1,95 @@
+{
+  "created_utc": "2026-10-29T11:42:14.351018+00:00",
+  "authorization": "User explicitly requested redo PAN with exponential backoff,three attempts,then manual Gemini review.",
+  "previous_run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment",
+  "reuse": [
+    "PAN meaning",
+    "PAN movement",
+    "completed NTU comparison"
+  ],
+  "pending": [
+    "pan_dense_why",
+    "pan_dense_single"
+  ],
+  "max_attempts_per_pending_call": 3,
+  "backoff_seconds": [
+    15,
+    30
+  ],
+  "respect_retry_after": true,
+  "retryable": "HTTP429/500/502/503/504 before generation ID/content only; no retry after partial generation/usage or incomplete length.",
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
+    }
+  ],
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense.json",
+      "sha256": "d97da65d867648fb21e7cbd858047f9eff7608237bf4076cfef6ea32cb60acf5"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense_base.md",
+      "sha256": "7a3ade2c076969458d9b0e15244c63c75a3acf6fb570da1f56b6023d574fae45"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.md",
+      "sha256": "3f29b4bf554e71929bd05e681eaa3ee22967c8e76d75a4ceafb9db94b91ff916"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.json",
+      "sha256": "bb8ea32297f904ddc19fd55bc48e288921325aef9818ec251442401d3e4b04c5"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\pan_dense_why.json",
+      "sha256": "14cb37f642bec40582579b7cb46615f121b9864979dc7ccd23db0e88a1b888a8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_meaning.md",
+      "sha256": "06f2ea3f184b3197ce4e499c9513c8b0047b67d9bf7a3834add4d7cdacaf3fe5"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_movement.md",
+      "sha256": "31ec0ed2ab0fa8f3351c36c60bbe3e8f271d9e49d9e350d2fa055bc3a4490280"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\comparison.json",
+      "sha256": "8e57a7a0953b7b53cf5e00e8bd70995383505806c22efec32e9f71f92699d3e2"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\audit.md",
+      "sha256": "8f692b37752092307e23f0889a09d9bbc7753882c9be78915eb03be4ea06b8d8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261029_three_pass\\resume_pan.py",
+      "sha256": "8fba83df2b645b7a682bbe990efae3cc49618736e7faec6357bd9c1462a1de86"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "reasoning": "none/exclude=true",
+  "max_tokens": 16384,
+  "production_writes": false
+}

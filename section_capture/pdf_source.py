@@ -21,6 +21,7 @@ def extract_structured_text(crop) -> str:
     chars = crop.chars
     if not chars:
         return ""
+    vertical_edges = [e for e in crop.edges if e.get('orientation') == 'v' and e['bottom'] - e['top'] >= 10]
     sorted_chars = sorted(chars, key=lambda c: (round(c["top"], 1), c["x0"]))
     lines = []
     for ch in sorted_chars:
@@ -52,7 +53,9 @@ def extract_structured_text(crop) -> str:
                 if c["text"].strip():
                     cur.append(c)
                 continue
-            if c["x0"] - cur[-1]["x1"] > max(8.0, main_size * 1.25):
+            crosses_cell = any(cur[0]['x0'] < e['x0'] <= c['x0'] and e['top'] <= line['mid'] <= e['bottom']
+                               for e in vertical_edges)
+            if crosses_cell or c["x0"] - cur[-1]["x1"] > max(3.0, main_size * 0.5):
                 segs.append((cur, main_size))
                 cur = [c] if c["text"].strip() else []
             else:
@@ -133,6 +136,9 @@ def extract_structured_text(crop) -> str:
 
     def is_table_row(pl):
         segs = pl["segs"]
+        root = getattr(crop, 'root_page', crop)
+        if crop.bbox == root.bbox and (pl['top'] < root.bbox[1] + 35 or pl['bottom'] > root.bbox[3] - 35):
+            return False  # Running headers/footers remain prose,not column anchors.
         return len(segs) >= 2 and all((s["x1"] - s["x0"]) < 95 and len(s["text"]) <= 25 for s in segs[1:])
 
     table_rows = [pl for pl in parsed_lines if is_table_row(pl)]
@@ -150,8 +156,16 @@ def extract_structured_text(crop) -> str:
         else:
             break
 
+    numeric = lambda text: bool(re.fullmatch(r'[\d\s.,()%+−–—-]+', text.strip()))
+    numeric_rows = [pl for pl in table_rows if sum(numeric(s['text']) for s in pl['segs']) >= 2]
+    anchors = [seg for pl in numeric_rows for seg in pl['segs'] if numeric(seg['text'])]
+    if anchors:
+        first_numeric = min(seg['x0'] for seg in anchors)
+        anchors += [seg for pl in table_rows for seg in pl['segs'] if seg['x1'] < first_numeric]
+    else:
+        anchors = [seg for pl in table_rows for seg in pl['segs']]
     cols = []
-    for s in sorted([seg for pl in table_rows for seg in pl["segs"]], key=lambda s: (s["x1"] - s["x0"], s["x0"])):
+    for s in sorted(anchors, key=lambda s: (s["x1"] - s["x0"], s["x0"])):
         x0, x1 = s["x0"], s["x1"]
         best = None
         for col in cols:
@@ -169,6 +183,18 @@ def extract_structured_text(crop) -> str:
         else:
             cols.append({"x0": x0, "x1": x1})
     cols.sort(key=lambda c: c["x0"])
+    # A wide heading/prose span can overlap several real columns. It must not
+    # become a competing column that swallows their numeric cells.
+    cols = [col for col in cols if sum(
+        other is not col and col['x0'] <= other['x0'] and other['x1'] <= col['x1']
+        for other in cols
+    ) < 2]
+    hits = [sum(any(numeric(seg['text']) and min(seg['x1'], col['x1']) > max(seg['x0'], col['x0'])
+                    for seg in pl['segs']) for pl in table_rows) for col in cols]
+    data_starts = [col['x0'] for col, count in zip(cols, hits) if count >= 2]
+    if data_starts:
+        first_data = min(data_starts)
+        cols = [col for col, count in zip(cols, hits) if col['x0'] < first_data or count >= 2]
     if len(cols) < 2:
         return crop.extract_text(layout=True) or ""
 
@@ -177,15 +203,21 @@ def extract_structured_text(crop) -> str:
 
     mapped_rows = []
     for pl in table_lines:
-        if len(pl["segs"]) == 1 and pl["segs"][0]["x1"] > cols[1]["x0"] + 5 and pl["segs"][0]["x0"] < cols[0]["x1"]:
-            mapped_rows.append({"type": "full", "top": pl["top"], "bottom": pl["bottom"], "text": pl["segs"][0]["text"]})
+        prose_span = (not any(numeric(s['text']) for s in pl['segs'])
+                      and any(s['x1'] - s['x0'] > 95 for s in pl['segs']))
+        spanned_columns = sum(min(pl['segs'][-1]['x1'], col['x1']) > max(pl['segs'][0]['x0'], col['x0']) for col in cols)
+        if (len(pl['segs']) == 1 or prose_span) and spanned_columns >= 2:
+            mapped_rows.append({"type": "full", "top": pl["top"], "bottom": pl["bottom"], "text": ' '.join(s['text'] for s in pl['segs'])})
             continue
         cells = [""] * len(cols)
         for seg in pl["segs"]:
             best_idx = min(
                 range(len(cols)),
-                key=lambda i: 0 if (min(seg["x1"], cols[i]["x1"]) - max(seg["x0"], cols[i]["x0"])) > 0
-                else min(abs(seg["x0"] - cols[i]["x1"]), abs(seg["x1"] - cols[i]["x0"])),
+                key=lambda i: (
+                    -max(0, min(seg['x1'], cols[i]['x1']) - max(seg['x0'], cols[i]['x0'])),
+                    min(abs(seg['x0'] - cols[i]['x1']), abs(seg['x1'] - cols[i]['x0'])),
+                    cols[i]['x1'] - cols[i]['x0'],
+                ),
             )
             cells[best_idx] = (cells[best_idx] + " " + seg["text"]).strip() if cells[best_idx] else seg["text"]
         mapped_rows.append({"type": "row", "top": pl["top"], "bottom": pl["bottom"], "cells": cells})
@@ -230,14 +262,25 @@ def extract_structured_text(crop) -> str:
         idx += 1
 
     out_lines = [" ".join(s["text"] for s in pl["segs"]) for pl in parsed_lines[:t_start]]
+    # A paragraph may finish beside the first date heading. Keep that sentence
+    # in the prose stream rather than inventing a table-column name for it.
+    if header_cells[0].endswith('.') and len(header_cells[0].split()) >= 4:
+        out_lines.append(header_cells[0])
+        header_cells[0] = ''
     if out_lines:
         out_lines.append("")
-    out_lines.append("| " + " | ".join(header_cells) + " |")
-    out_lines.append("| " + " | ".join("---" for _ in cols) + " |")
+    table_header = ["| " + " | ".join(header_cells) + " |",
+                    "| " + " | ".join("---" for _ in cols) + " |"]
+    out_lines.extend(table_header)
+    table_open = True
     for r in body_rows:
         if r["type"] == "full":
-            out_lines.append(f"| **{r['text']}** |" + " |" * (len(cols) - 1))
+            out_lines.extend(["", r['text'], ""])
+            table_open = False
         else:
+            if not table_open:
+                out_lines.extend(["| " + " | ".join("" for _ in cols) + " |", table_header[1]])
+                table_open = True
             out_lines.append("| " + " | ".join(r["cells"]) + " |")
     if t_end + 1 < len(parsed_lines):
         out_lines.append("")

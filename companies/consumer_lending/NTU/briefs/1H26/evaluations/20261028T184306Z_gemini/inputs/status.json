@@ -1,0 +1,10 @@
+{
+  "status": "complete_limited_review_gemini_pending",
+  "calls": 5,
+  "stage": "pan_dense",
+  "last_dispatch_utc": "2026-10-28T18:24:28.203173+00:00",
+  "first_dispatch_utc": "2026-10-28T18:23:09.359953+00:00",
+  "completed_utc": "2026-10-28T18:24:49.330736+00:00",
+  "error_type": null,
+  "reviewed_utc": "2026-10-28T18:29:40.334603+00:00"
+}

@@ -1,0 +1,586 @@
+[
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\audit.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\calculations.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\calls.csv",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\claims.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\closure_comparison.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\comparison.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\comparison.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\execution.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\findings.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\gemini\\review_prompt.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\input_manifest.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\code_2.py",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\code_3.py",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\code_4.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\code_5.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\code_6.py",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\ntu_assets.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\ntu_assets_base.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\ntu_assets_interim_context.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense_base.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\inputs\\pan_dense_interim_context.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\metrics.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_single.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_why.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\pan_dense_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\plan.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\preservation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\ntu_assets_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\ntu_assets_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\ntu_assets_single.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\ntu_assets_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\pan_dense_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\pan_dense_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts\\pan_dense_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\ntu_assets_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\ntu_assets_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\ntu_assets_single.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\ntu_assets_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\pan_dense_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\pan_dense_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\receipts_before_review\\pan_dense_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_single.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\ntu_assets_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\requests\\pan_dense_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\status.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\accepted_attempts.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\attempts.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\audit.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\calls.csv",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\combined_comparison.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\comparison.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\execution.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\gemini\\review_prompt.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\input_manifest.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\failed_request.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\original_failure.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\pan_dense.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\pan_dense_base.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\pan_dense_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\pan_dense_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\pan_dense_why_prompt.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_calculations.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_claims.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_closure_comparison.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_findings.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_single.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_outputs_ntu_assets_why.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_plan.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_receipts_ntu_assets_meaning.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_receipts_ntu_assets_movement.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_receipts_ntu_assets_single.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\previous_receipts_ntu_assets_why.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\prior_audit.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\prior_comparison.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\inputs\\resume_pan.py",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\metrics.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_single.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_single_attempt1.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_why.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_why_attempt1.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\plan.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\preservation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\receipts\\pan_dense_single_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\receipts\\pan_dense_why_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\receipts_before_refresh\\pan_dense_single_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\receipts_before_refresh\\pan_dense_why_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\requests\\pan_dense_single_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\requests\\pan_dense_single_attempt1.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\requests\\pan_dense_why_attempt1.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\requests\\pan_dense_why_attempt1.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\status.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_13.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_13.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_21.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_21.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_22.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_22.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_23.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_23.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_24.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_24.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_25.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\NTU_25.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_48.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_48.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_49.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_49.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_50.png",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T191648Z_codex_native_extraction_review\\source_pages\\PAN_50.txt",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\gemini_prompt.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_single.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\ntu_assets_why.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_meaning.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_movement.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_single.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_single.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_why.md",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114800Z_antigravity_gemini_stage_review\\inputs\\pan_dense_why.validation.json",
+    "match": true
+  },
+  {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261029_three_pass\\gemini_prompt.md",
+    "match": true
+  }
+]

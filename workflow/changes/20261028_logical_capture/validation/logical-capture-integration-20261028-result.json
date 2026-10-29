@@ -1,0 +1,9 @@
+{
+  "exit_code": 1,
+  "counts": {
+    "": 106,
+    "passed": 51,
+    "failed": 2
+  },
+  "network": "All Python DNS/connect/sendto denied for the test session"
+}

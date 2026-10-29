@@ -1,0 +1,20 @@
+{
+  "ticker": "DCP",
+  "period": "FY26",
+  "source_pages": 259,
+  "captures": 84,
+  "successful_generation_receipts": 124,
+  "reported_prompt_tokens": 3602514,
+  "reported_completion_tokens": 574183,
+  "reported_reasoning_tokens": 70045,
+  "token_scope": "Successful saved API receipts only; incomplete calls can add unrecorded billed usage. Not a full billing total.",
+  "question_records": 471,
+  "open_question_records": 462,
+  "validation_attempt_counts_including_local_replays": {
+    "rejected": 75,
+    "valid": 84
+  },
+  "local_open_only_fallbacks": 27,
+  "stage2_result_kind": "FULL_ATTEMPT_COMPLETED",
+  "gemini_api_calls": 0
+}

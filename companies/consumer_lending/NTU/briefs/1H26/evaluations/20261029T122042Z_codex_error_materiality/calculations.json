@@ -1,0 +1,30 @@
+{
+  "sign_flip_Rm": {
+    "correct": -167,
+    "misread": 167,
+    "difference": 334,
+    "qualification": "Potential earnings-input difference only if interpretation enters numerical model;not measured cash-flow or equity-value impact."
+  },
+  "fv_scope": {
+    "component_Rm": 644,
+    "total_PBD_Rm": 4489,
+    "share_percent": 14.346179550011138,
+    "qualification": "Portfolio carrying-value scope,not percentage of equity/company value. No demonstrated actual omission from a final valuation."
+  },
+  "pan_one_oz": {
+    "ounces": 1,
+    "group_produced": 272310,
+    "share_percent": 0.00036722852631192394
+  },
+  "pan_overlap": {
+    "ounces": 1081,
+    "group_FY25": 196527,
+    "share_percent": 0.550051646847507
+  },
+  "pan_source_subtotal": {
+    "ounces": 10000,
+    "group_FY26": 272310,
+    "share_percent": 3.6722852631192393,
+    "qualification": "Source column conflict,not proved Group production/revenue overstatement."
+  }
+}

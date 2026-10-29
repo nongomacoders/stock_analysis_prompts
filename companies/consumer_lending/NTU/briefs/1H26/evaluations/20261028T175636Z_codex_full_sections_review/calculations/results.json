@@ -1,0 +1,29 @@
+{
+  "values": {
+    "principal": 3845,
+    "other": 644,
+    "total_assets": 4884,
+    "merged_model_assets": 9879,
+    "false_assets_difference": 4995,
+    "p24_allowance_total": 431,
+    "p24_current_movement": -167,
+    "historical_full_year_loss": 259,
+    "core_ebitda": 790,
+    "false_tax_bridge": 848,
+    "conditional_amortisation": 598,
+    "conditional_residual": 1,
+    "portfolio_net_cash": 434,
+    "portfolio_income": 246,
+    "carrying_decline": 188,
+    "statutory_pbd_operating_asset_movement": 182,
+    "unexplained_residual": 6,
+    "old_all_stage_cost": "0.2445611328",
+    "old_section_only_cost": "0.1501426128",
+    "new_section_only_cost": "0.0702026388",
+    "failed_quote_count": 9,
+    "failed_matches_after_pipe_strip": 0,
+    "old_full_p25_currency_present": true
+  },
+  "gemini_manifest_entries": 116,
+  "basis": "Original primary pages12,13,22,24,25,31 independently viewed. Source originals verified. EPS18–19 and funding14–15 were not newly visually audited;closure claims remain limited. Gemini script not executed."
+}

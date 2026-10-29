@@ -1,0 +1,38 @@
+{
+  "p13_principal_book_close_H126": 3845,
+  "p13_other_fin_assets_close_H126": 644,
+  "p13_total_pbd_H126": 4489,
+  "p13_net_collections_H126": 728,
+  "p22_total_carrying_value_exact": 4884,
+  "p22_model_merged_cell_sum": 9879,
+  "p22_model_error_delta": 4995,
+  "p24_balances_31mar2026": {
+    "unsecured": 227,
+    "debt_review": 141,
+    "retail": 51,
+    "secured": 12,
+    "total": 431
+  },
+  "p24_historical_fy25_loss": 259,
+  "p25_trade_receivables_loss_rate_pct": 1.3368983957219251,
+  "p25_fx_rates": {
+    "usd_closing_mar26": 17.2,
+    "usd_closing_mar25": 18.4,
+    "usd_closing_sep25": 17.3,
+    "gbp_closing_mar26": 22.7,
+    "gbp_closing_mar25": 23.9,
+    "gbp_closing_sep25": 23.2
+  },
+  "p31_group_core_ebitda": 790,
+  "p31_nutun_sa_core_ebitda": 710,
+  "p31_nutun_intl_core_ebitda": 80,
+  "p31_model_wrong_ebitda": 848,
+  "p31_false_ebitda_gap": 58,
+  "p31_signed_amortisation_reconstruction": 598,
+  "p31_amortisation_residual": 1,
+  "portfolio_net_cash": 434,
+  "portfolio_income": 246,
+  "carrying_decline": 188,
+  "statutory_cf_amort": 182,
+  "residual_statutory_gap": 6
+}

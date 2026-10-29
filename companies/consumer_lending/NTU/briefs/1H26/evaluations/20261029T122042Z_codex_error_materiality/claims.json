@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C001",
+    "claim": "These experiments contain section outputs and no new Stage1/2 valuation.",
+    "verdict": "PASS",
+    "evidence": "Preserved experiment plans and previous run records."
+  },
+  {
+    "id": "C002",
+    "claim": "167gain versus167loss differs by334Rm.",
+    "verdict": "PASS",
+    "evidence": "calculations.json;conditionalearnings-input reading,not valuation effect."
+  },
+  {
+    "id": "C003",
+    "claim": "644is14.346%of4489PBD.",
+    "verdict": "PASS",
+    "evidence": "Prior originalNTU13,21–23 source review;calculations.json."
+  },
+  {
+    "id": "C004",
+    "claim": "OnePANozis0.000367%of272310oz.",
+    "verdict": "PASS",
+    "evidence": "Prior originalPAN48–50 source review;calculations.json."
+  },
+  {
+    "id": "C005",
+    "claim": "Exact effect on company/equity valuation.",
+    "verdict": "NOT VERIFIED",
+    "evidence": "No downstream propagation audit or paired final valuation recomputation in these experiments."
+  },
+  {
+    "id": "C006",
+    "claim": "10000ozcolumnconflictmeanscompanyproduction/revenuemisstated.",
+    "verdict": "NOT VERIFIED",
+    "evidence": "Prior source inconsistency supports conflicting subtotals only;correct replacement/cause not established."
+  }
+]

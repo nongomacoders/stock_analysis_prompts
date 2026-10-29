@@ -1,0 +1,364 @@
+{
+  "created_utc": "2026-10-28T10:13:11.478065+00:00",
+  "ticker": "NTU",
+  "period": "1H26",
+  "sector": "consumer_lending",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "Omit reasoning controls; preserve model default (catalog currently default_enabled=true, default_effort=high). Raw reasoning not persisted.",
+  "routing": "Base slug; no nitro, provider sort, provider order or priority service tier requested. Account routing preferences may still apply.",
+  "authorization": "User explicitly requested NTU rerun with lessons learned, default thinking, normal speed, and cost/token/time logging.",
+  "destination": "https://openrouter.ai/api/v1/chat/completions",
+  "metadata_endpoints": [
+    "https://openrouter.ai/api/v1/models",
+    "https://openrouter.ai/api/v1/generation"
+  ],
+  "payload": "Public NTU report text, scoped ledger, approved registry and review lessons; new DeepSeek outputs for later stages. Credentials sent only as OpenRouter Authorization header.",
+  "design": "Lessons + revised questions + default thinking + standard routing; not a controlled one-variable comparison.",
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "period": "1H26",
+      "page_count": 38,
+      "captured_page_count": 38,
+      "captures": 9,
+      "detected_sections": 4
+    }
+  ],
+  "reference_price_zar": 0.89,
+  "reference_basis": "Frozen stored baseline for comparison; NOT a verified current quote.",
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\execution_status_before_handoff.json",
+      "sha256": "22aef23d4d0acf94982d8f5ded0ce94df91c0624df1c510211e0641051058141"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\publication_assessment.json",
+      "sha256": "2b8cb1741ee7b5622c24da17cc57420e91add4180c9c0af3bacf11fb8b7dfa27"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_001.md",
+      "sha256": "b864a384f05a0234fea22593840663760b1d35ca731cfc348bfe6eca2ad8b4a9"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_001.run.json",
+      "sha256": "40a110cab8d93b3879b1f1dbef691df63633374518afe29844071a187e77c1cb"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002.md",
+      "sha256": "399a00d3e653d3818fc87fd3721714b387555e00847134ef54ba27fc3b95d2cd"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002.run.json",
+      "sha256": "67514ca08b142e67425e730b2617ffd6334435e6887c9a7c8e950532ea622510"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002_effective.md",
+      "sha256": "44c93330f1b06e717407737a43eaa0d3506b2d602920703c52214d8c774beded"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002_ledger_json_repair.md",
+      "sha256": "ccb21fe84a538e47d9e95e0068a552c5fd3411b013f72796ec99b9ecbf3ed120"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002_ledger_json_repair.run.json",
+      "sha256": "4a2517508fa957b3f4cfb7f2f8fe619f0513e9259231ca74180cc562bd1f5217"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002_ledger_repair.md",
+      "sha256": "919122ea3ca80db09fd96278b44e5b89f429bc14878662cde3a8cfbadca7baee"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_002_ledger_repair.run.json",
+      "sha256": "79bf4071f08f3f18f9c9f9965d2f06968ea189dee638fac9bef73fc0be5c3fcd"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_003.md",
+      "sha256": "52d9887b2d9897f3d289dcef25b0ca0787e21c587ce14ad4bdd0bfd36c3caeeb"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_003.run.json",
+      "sha256": "38e9824c03dd38e0591bd61d7f918c217b403249d0d415ade7ffb8b25495b952"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004.md",
+      "sha256": "ba8687e2c6e91f481905c7fb1d364bd32d2760d8ba8efe4e1e14ed40175da6be"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004.run.json",
+      "sha256": "01237334715c78a59d4268bc45b3fa1523ee24af719c3b27864b926fc78763a4"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004_effective.md",
+      "sha256": "fc538780d7f135d7c7c54478dc771c7311874b8122777ae0bd5cb2817c9aca6e"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004_ledger_json_repair.md",
+      "sha256": "c20e3fdc918c6a373b817bf8de92c3ee630dbb5fa610a72ad1d9f3576503aaa0"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004_ledger_json_repair.run.json",
+      "sha256": "b406822a25faf3cab30f2bb5446b78e6fcb12109771e171ae1de45599c6ee147"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_004_local_open_only_fallback.md",
+      "sha256": "d4e0cf5660cf62087b75b9d3bd414e5ef414149a3b030a6f37b98ade52c9f061"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005.md",
+      "sha256": "e5df06bc0696f9c9457def7576383a1ce71660439a4bb70de5fd5134084c9a06"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005.run.json",
+      "sha256": "2ac64773200a652ff4cff30bb5a268443eb1411288f260a2d9d166819ed9dbbd"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005_effective.md",
+      "sha256": "b1ea9c13af33c321075db2265563280e5ba153cc876efddc09acf6384adc9539"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005_ledger_json_repair.md",
+      "sha256": "5bb08e5edb0480a5f55e6f93d8ae361faa16db7e97541a61ba7c006c01cd64a8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005_ledger_json_repair.run.json",
+      "sha256": "dd44a3349ba77b3d1b103f42422bdfb6ccc5fa6b2fdf3a359ea8d03ec80774ed"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_005_local_open_only_fallback.md",
+      "sha256": "97c31a65af16dd86d3daadc5d1400027b143a02905aa92d8aa23766296a25c30"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006.md",
+      "sha256": "0936a845de6baf2287da330588afbd61c216a251caa8743afe79f51322e6e14b"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006.run.json",
+      "sha256": "8d97d37b2b65768092d1361cbb3f0ebc788392e446b8872ca578cadb277b3753"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006_effective.md",
+      "sha256": "925e69a9368a9b1fdee67ae0903706d7c26176d9c175a3fe9eeb72836fcd4182"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006_ledger_json_repair.md",
+      "sha256": "715a7b365ee1a05b3abee505a9a4f49b41bd4f1db8016efd360aa9dc75d673f4"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006_ledger_json_repair.run.json",
+      "sha256": "273c240f90ff7ad4f75616aa6b4adc6afc4b463572ae9f0238b9457e2e18639e"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_006_local_open_only_fallback.md",
+      "sha256": "7d40a7ee7ddafa20f744c77ee40b5f0e3d918bfb54f09a208f1b064db3a9f041"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_007.md",
+      "sha256": "bd9a8d87bc1bc81043c2e5413b0e2ca009c66d5f0a64495f46fd8ae05a41fb7b"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_007.run.json",
+      "sha256": "f22bfad2542f13a425fbf852c7b28d0cad1016ef1689214aa2374251ae4a984a"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008.md",
+      "sha256": "910c6bc490522e1478dbac1d94b2ca28ec5e3c45a1d6df98fb9e38fac24f847c"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008.run.json",
+      "sha256": "cacce3a25972162c6a7ea53b29eab1676b9b1e25abcb443b49ac9681256b24b4"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008_effective.md",
+      "sha256": "8907d46d51fc5f653894ef6a76602205e3359b40ba64b73c6b624a3e1d90382d"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008_incomplete_attempt.json",
+      "sha256": "3af4483a5f77226b58dcd5c74f3a4e7d2c5427aed66107f88aa35a568c76d7e9"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008_ledger_json_repair.md",
+      "sha256": "797f53538e25d11ef173569242431724f8a379f581c84c08bd2752890ebc0ad8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008_ledger_json_repair.run.json",
+      "sha256": "59eb3937dd71ac1835d48a07cfdb57c74238d0cb274fdbfbab31b664b9e1ef25"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_008_local_open_only_fallback.md",
+      "sha256": "fa8b970402cc7c2e25f97d183cfd60655f7327e229e7f9043d4a8bf68fc02af4"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_009.md",
+      "sha256": "ca035be012a74f69a356bf4f01b0a72f4e6cb1bd1032da7b000bcc2a395fc9a2"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\section_9a19b3b4_009.run.json",
+      "sha256": "de7d330270340aad1703b194b3f93f2eafb152427cb0a7c89e6e6d56fcd0eed1"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage1.md",
+      "sha256": "536e7b480430185e3b0985c541feee4ff518225f7028ad46a22a1b01a04ab34c"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage1.run.json",
+      "sha256": "1c447fe8a11abc08264f4e6646b1a2b2f3f3fac894d90ea6296e5de570e8aaa5"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2_completion_failure.json",
+      "sha256": "9f5d2c45bd6d817050ea7363e51bd1717baaa8a2313d7dc12230225957506718"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2_incomplete_attempt.json",
+      "sha256": "48eca770c9c92185f0d1ce49c96340ff8519eba6678a40b3c649cff4413b45a8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2_publication.md",
+      "sha256": "a07b1d7648bebdfd71d9ce8efb6f696a42f50e25708c3185991a257cc11f1b13"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2_withheld_brief.md",
+      "sha256": "cb63ff1a1474e80e652f81a5370ee0faf66ecff7d8b57a017ff60a47242b63d5"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\outputs\\stage2_withheld_brief.run.json",
+      "sha256": "c65b043e343eb010f2e3fa327462b5ee533899992c708abf6e9b33d1466f3517"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_001.md",
+      "sha256": "fc713ca52458734a00ca2e7e1523b5a5452a37cf26eac22c9a7cd10a68b3f938"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_002.md",
+      "sha256": "af8aa234c0d5dcbc2c178648fc58067198bf470e2cf79edcd0fc35ad1dd59147"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_002_ledger_json_repair.md",
+      "sha256": "e02f3057569d41f481f97e36d8fe7e8e0b9418642b73cf76ab5ccec3d5588198"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_002_ledger_repair.md",
+      "sha256": "d30807fb8c68e250090eb931895d7910a2e2f5097453d5e9c47b310c08264178"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_003.md",
+      "sha256": "fbffc3310ce4c6ad02285cd187e1d840b318a7d6e606120b40c5647bcccf0e41"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_004.md",
+      "sha256": "96a587056f118941f1d071a530c68557903e4a7f976cd9cd0703d83dbd6970af"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_004_ledger_json_repair.md",
+      "sha256": "59f4975ea2e679607116fe7c620e9ab90f2b7e36256355d05ad62774677b45fe"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_005.md",
+      "sha256": "dd08384868e71ec287bdfde22ad5248a8f00e28f26c8e96575c7c9b44c621ca0"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_005_ledger_json_repair.md",
+      "sha256": "b6be2db5ba8626af963fae931c5c003d4a3c9c6db8539980365a3e96d8d6e2b7"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_006.md",
+      "sha256": "c3f1f6a4af08dbec53563594757b4325dae4673631c7dde39dd447d8178ceda9"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_006_ledger_json_repair.md",
+      "sha256": "7b87cf1f4615278e88f3900e0cc0351bf6213f56c0117abcaec3a6909b6c305d"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_007.md",
+      "sha256": "a2aa0209f1e501b2cdede6dda8da2c082e4cda6a65115320eb6da483ca78820a"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_008.md",
+      "sha256": "1b6574ae1fa67120b2a2d537069c662d658436437b144508f4f69c6a26a6b5ec"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_008.request.json",
+      "sha256": "e442aeb681a22aa45ab72e7682d874ebee03802428a81e6289eec17b18df8afd"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_008_completion_retry.request.json",
+      "sha256": "43f2a609dd882a03eba986b43b2b9892aea499d53c39eb3aa83ce78f4ba8b1db"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_008_ledger_json_repair.md",
+      "sha256": "600b27d0f451dc3065da79da330848b3cd5c0ef3fc82df76a423e78f91238a62"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_008_ledger_json_repair.request.json",
+      "sha256": "1c1430785d4c111e1916c49ec48317cd828ccc103a0ee5d2bf044a409e8c53a0"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_009.md",
+      "sha256": "fe8e8cd7f22e0a75ec21bfc4e59f1ef8c7af6d3d6a67f835f42a4cdf1b63e643"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\section_9a19b3b4_009.request.json",
+      "sha256": "4d2310275fa07fd135ee7ecd777db2d147a88b2a0c08f7f75098d9e98ce6e412"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage1.md",
+      "sha256": "08c669535f42e680615b7abf8a1f20e268606e12f708af42d5438ec57d7c947d"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage1.request.json",
+      "sha256": "93e75a91cdbb5399e15e787e12124144f4d07b343187672b8adf1bd82b7aca20"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage2.md",
+      "sha256": "a24715b63104d15f749d2e74086fba947350cdb8737d803b8d730ee3ce354a24"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage2.request.json",
+      "sha256": "6f7d8ec01480d2b4e060a51382b3e7f6ff09629600e05bb00004ea9bc88b2da1"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage2_withheld_brief.md",
+      "sha256": "e3ee95e49bab4392f908eb32374289794fc2f796319405a429c2a5cc3f6446e2"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T081850Z_codex_workload_comparison\\requests\\stage2_withheld_brief.request.json",
+      "sha256": "4eab5bcdde39c7d28cc83b39a6914c16ac324bda8eec6b20a130b2587f51f9d8"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T093647Z_codex_review\\audit.md",
+      "sha256": "6a20823ccdcd85b9716936c343a132573a9bbdfe08551b39afd0b95f48032846"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "planned_calls": 11,
+  "budgets": {
+    "section": 32768,
+    "stage1": 49152,
+    "stage2": 65536
+  },
+  "retry_policy": "One ledger-only repair per rejected section; stop after failed repair or any incomplete generation. No completion-budget escalation.",
+  "pilot_sections": 2,
+  "production_writes": false,
+  "section_prompt_revision": "compact_v2",
+  "revisions": [
+    {
+      "utc": "2026-10-28T10:17:18.570611+00:00",
+      "reason": "Pilot section2 exhausted32768 tokens entirely in reasoning, no final answer.",
+      "changes": "Run-only concise section contract, four relevant questions per capture, four applicable registry rules. Full ledger retained; full Stage1/2 registry unchanged.",
+      "unchanged": "Base model, default thinking, routing, evidence, approved registry, token ceilings and one-repair limit unchanged.",
+      "prior_failure_preserved": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "values": {
+    "principal_close": 3845,
+    "other_close": 644,
+    "portfolio_net_cash": 434,
+    "portfolio_income": 246,
+    "carrying_decline": 188,
+    "statutory_cash_movement": 182,
+    "residual": 6
+  },
+  "basis": "Re-executed source inputs previously verified against identical-hash primary PDF pp12–13; no new PDF image inspection. Forecast/DCF not verified."
+}

@@ -1,0 +1,79 @@
+{
+  "completed_utc": "2026-10-28T13:18:04.920033+00:00",
+  "scope": "Local logical PDF capture planning and offline integration; no paid reruns.",
+  "planner": "native_logical_pages_v1",
+  "defaults": {
+    "max_pages": 6,
+    "max_chars": 24000,
+    "target_pages": 3,
+    "target_chars": 12000
+  },
+  "source_previews": [
+    {
+      "source": "companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "physical_page_count": 38,
+      "legacy_budget_only_groups": 9,
+      "logical_groups": 30,
+      "all_pages_once": true,
+      "maximum_pages": 3,
+      "forced_continuation_cuts": 3
+    },
+    {
+      "source": "companies\\retail\\DCP\\sources\\completed\\FY26\\1780031707-FY2026AnnualFinancialStatements.pdf",
+      "sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb",
+      "physical_page_count": 87,
+      "legacy_budget_only_groups": 28,
+      "logical_groups": 70,
+      "all_pages_once": true,
+      "maximum_pages": 5,
+      "forced_continuation_cuts": 3
+    },
+    {
+      "source": "companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+      "physical_page_count": 54,
+      "legacy_budget_only_groups": 24,
+      "logical_groups": 26,
+      "all_pages_once": true,
+      "maximum_pages": 6,
+      "forced_continuation_cuts": 9
+    }
+  ],
+  "final_test_result": {
+    "exit_code": 0,
+    "counts": {
+      "": 428,
+      "passed": 214
+    },
+    "network": "All Python DNS/connect/sendto denied for the test session"
+  },
+  "final_test_command": ".venv/Scripts/python.exe -m pytest tests -q -p no:cacheprovider -p workflow.changes.20261028_valuation_withholding.offline_pytest_plugin --basetemp=tmp/logical-capture-verified-20261028",
+  "production_database_unchanged": true,
+  "source_pdfs_unchanged": true,
+  "paid_model_calls": 0,
+  "code_and_doc_hashes": {
+    "section_capture/capture_planner.py": "a7f6588b47172efc023dc0ffeacf32caa1d4bf6c82f065622dfa6be0c0071dbc",
+    "section_capture/section_matcher.py": "c3c13e7a1c168f0ea408bc76e64f25f4824e11a9ca32bcd8e0ce2699a7056cfa",
+    "section_capture/packages.py": "829badf453c06b02c89b87b6d6284d468aa0767a4e3e8a42af08b6e141c27291",
+    "section_capture/one_shot_view.py": "6cb9a3dc0b33a1a3ac20625607f4c369a9750786fbf1d4a0552b230cb96669d8",
+    "tests/test_capture_planner.py": "f195f9f9502a39600fc3b088880c9e56d6ed05bfd163cce85a76e0778cba5086",
+    "tests/test_one_shot_pipeline.py": "066ce54f571462f57d4efcd3b3116e9f0b8c289b5a43416d358850fab5f2906e",
+    "docs/LOGICAL_CAPTURE.md": "b8813e6b2525b6e1bb88c3f3a95d5f089dadd07d2f8b5abe2a376082572f98b4",
+    "docs/WORKLOAD_RELIABILITY.md": "1b829f9d9c43a96f12cd8d8b0c00dc04e6e84260d6460fa02944be62947842b9"
+  },
+  "visual_inspection": "Viewed unchanged NTU physical pages24 and25 in preserved PNGs; checked real shared trade-ECL/currency-note boundary.",
+  "iteration_record": [
+    "Initial focused tests29 passed,exit0.",
+    "Integration51 passed/2 failed,exit1: orchestration fixture mocked partial ranges and cached-completion fixture marked only the first package; corrected fixtures to reflect isolated orchestration/all completed packages.",
+    "Repaired capture/pipeline tests27 passed,exit0. Full213 passed,exit0.",
+    "Visual inspection added shared-page subnote continuation check. Full213 passed/1 failed,exit1: synthetic heading overlapped fake body rows geometrically; separated fixture coordinates.",
+    "Shared-page/capture tests19 passed,exit0; final full result above."
+  ],
+  "limitations": [
+    "Native layout heuristic, no OCR or guaranteed semantic table boundaries.",
+    "A shared physical page stays intact and can contain multiple topics; neighboring dependencies are explicit.",
+    "More focused captures mean more possible model calls; quality/cost improvement not yet established by a paid comparison.",
+    "Existing saved analysis is preserved; new planner applies to new captures."
+  ]
+}

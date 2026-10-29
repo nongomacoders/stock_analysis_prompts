@@ -1,0 +1,1105 @@
+{
+  "case": "ntu_assets",
+  "ticker": "NTU",
+  "sector": "consumer_lending",
+  "manifest": {
+    "ledger_contract": 1,
+    "capture_coverage": {
+      "planner": "reviewed_native_logical_v1",
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Purchased book debts",
+      "requested_pages": [
+        21,
+        23
+      ],
+      "actual_document_range": [
+        21,
+        23
+      ],
+      "chunk_pages": [
+        21,
+        23
+      ],
+      "chunks": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          13,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          17,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          21,
+          23
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          25,
+          25
+        ],
+        [
+          26,
+          26
+        ],
+        [
+          27,
+          29
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          32,
+          33
+        ],
+        [
+          34,
+          35
+        ],
+        [
+          36,
+          36
+        ],
+        [
+          37,
+          38
+        ]
+      ],
+      "chunk_index": 15,
+      "chunk_count": 24,
+      "previous_chunk_pages": [
+        20,
+        20
+      ],
+      "next_chunk_pages": [
+        24,
+        24
+      ],
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "source_characters": 11054,
+      "heading_observations": [
+        {
+          "physical_page": 21,
+          "heading": "Purchased book debts",
+          "topic_key": "6 1 credit risk purchased book debts",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Purchased book debts",
+              "top": 142.52,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 22,
+          "heading": "Financial assets subject to risk",
+          "topic_key": "6 1 credit risk financial assets subject to risk",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Financial assets subject to risk",
+              "top": 139.92,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 23,
+          "heading": "Concentration of principal book portfolios",
+          "topic_key": "6 1 credit risk concentration of principal book portfolios",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Concentration of principal book portfolios",
+              "top": 139.92,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ],
+      "review_reason": "Native logical boundary retained after review."
+    },
+    "schema_version": "section_reading_package_v1",
+    "package_id": "section-e5026348431546ae8d55c939334f6b8b",
+    "section_name": "15-D003.10-Purchased-book-debts-Purchased-book-debts-20261028-161045-334f6b8b",
+    "section_number": 15,
+    "section_ids": [
+      "D003.10"
+    ],
+    "sector": "consumer_lending",
+    "task": "analyst_reading_brief",
+    "response_format": "markdown",
+    "created_at": "2026-10-28T14:10:45.803781+00:00",
+    "heading": "Purchased book debts",
+    "subheading": "Purchased book debts",
+    "analyst_question": "Analyze the supplied logical unit and relevant ledger questions; respect adjacent-note dependencies.",
+    "stored_questions": "Current-capture questions: 12 of 18 open records. Unsent questions remain open in the app and in the complete Stage 1 ledger; omission never means resolution.\n{\"question_id\": \"Q-08aa5c3f257440ab\", \"status\": \"open\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003.4 Note 1 Purchased book debts (p.13); D003.1 statement of financial position (p.8)\", \"question\": \"Do the group's purchased book debts fall within POCI, amortised cost or FVTPL, and does the generic contractual-cash-flow ECL policy in Note 6.1 (discounted at original EIR, max contractual period) actually apply to PBD, or is a lifetime-ECL-since-initial-recognition / fair-value model used instead? Provide the PBD measurement basis and any POCI credit-risk classification disclosure.\", \"evidence_required\": \"Explicit measurement basis for PBD (POCI/amortised cost/FVTPL), whether lifetime ECL since initial recognition applies, and any POCI credit-risk classification; Rm carrying values at 31 Mar 2026 vs 30 Sep 2025 vs 31 Mar 2025\", \"closure_condition\": \"PBD measurement basis and applicable ECL model stated and reconciled to the carrying value, or confirmed not disclosed; benign explanations (PBD held at FVTPL with separate ECL on other assets) acceptable. Forecast consequence: credit-loss treatment, amortisation projection and earnings volatility.\"}\n{\"question_id\": \"Q-e4497d9112cd4e9d\", \"status\": \"partial\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 PBD note (pp.9-11)\", \"question\": \"What is the measurement basis of purchased book debts (amortised cost, FVTPL or POCI) and how does the R4,489m carrying value at 31 Mar 2026 reconcile to the PBD roll-forward (opening, acquisitions, collections, amortisation, closing)?\", \"evidence_required\": \"PBD measurement basis, roll-forward in Rm for H1 2026 and H1 2025, and reconciliation to the R4,489m / R4,353m / R4,677m carrying values\", \"closure_condition\": \"Basis and roll-forward disclosed and reconciling to the statement of financial position, or confirmed not disclosed; forecast consequence: amortisation projection and credit-loss treatment.\"}\n{\"question_id\": \"Q-8612694a3a674266\", \"status\": \"contradicted\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 funding/liquidity note (pp.9-11)\", \"question\": \"What drove bank overdrafts from R364m (audited 30 Sep 2025) to R2,273m (unaudited 31 Mar 2026), and is any portion a reclassification from interest-bearing debt? What are the facility limits, maturities and drawn/undrawn split at 31 Mar 2026?\", \"evidence_required\": \"Overdraft and short-term facility balances, limits, maturities, drawn/undrawn split, and any reclassification disclosure, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025\", \"closure_condition\": \"Driver of the R1.9bn overdraft increase and facility detail disclosed, or confirmed not disclosed; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.\"}\n{\"question_id\": \"Q-f8a0c48e3545479f\", \"status\": \"open\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003.4 PBD note (p.13); segmental note 7\", \"question\": \"Provide the principal (owned NPL portfolio) vs agency/fee-based revenue split within Nutun South Africa and the PBD/RTC amortisation basis and roll-forward, to reconcile Note 4 revenue (711) to segmental EBITDA and the PBD carrying value.\", \"evidence_required\": \"Principal vs agent revenue split (Rm); PBD/RTC opening, acquisitions, collections, amortisation, closing (Rm) H1 FY26 vs H1 FY25; measurement basis (amortised cost/FVTPL/POCI)\", \"closure_condition\": \"Split and roll-forward disclosed and reconciling to Note 4 revenue and PBD carrying value, or confirmed not disclosed; forecast consequence: amortisation projection and revenue quality.\"}\n{\"question_id\": \"Q-f8db08b395c448a9\", \"status\": \"partial\", \"priority\": \"medium\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 segmental/risk notes\", \"question\": \"Why did Nutun SA client count fall from 23 to 20 while revenue rose 15% — concentration or loss of clients, and any client-concentration disclosure?\", \"evidence_required\": \"Client concentration percentages, top-client revenue, retention commentary\", \"closure_condition\": \"Explanation or concentration metric provided, or confirmed absent.\"}\n{\"question_id\": \"Q-86ab4a63039b4d7e\", \"status\": \"partial\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 segmental note 7 and PBD/RTC note\", \"question\": \"What is the revenue and EBITDA split between principal (owned NPL portfolio) collections and agency/fee-based collections within Nutun South Africa, and the PBD/RTC amortisation basis?\", \"evidence_required\": \"Principal vs agent revenue split; PBD/RTC opening balance, acquisitions, amortisation, collections, closing balance; measurement basis (amortised cost vs FVTPL/POCI)\", \"closure_condition\": \"Split and PBD/RTC roll-forward disclosed, or confirmed not disclosed.\"}\n{\"question_id\": \"Q-c3d790bf20794c50\", \"status\": \"partial\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 segmental note 7 / PBD-RTC note\", \"question\": \"What portion of the R597m portfolio amortisation increase is volume/ageing-driven versus forward-looking macro-assumption-driven (elevated interest-rate forecast), and what is the PBD/RTC amortisation basis and remaining carrying value?\", \"evidence_required\": \"PBD/RTC roll-forward (opening, acquisitions, collections, amortisation, closing) in Rm for H1 2026 and H1 2025; split of amortisation between volume and assumption changes; measurement basis (amortised cost/FVTPL/POCI)\", \"closure_condition\": \"Roll-forward and amortisation driver split disclosed, or confirmed not disclosed; forecast consequence: ability to project amortisation and embedded discount rate.\"}\n{\"question_id\": \"Q-b6d6eda13d854fdf\", \"status\": \"partial\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 funding/liquidity note (pp.9-11) and D003.1 statement of financial position (p.8)\", \"question\": \"Reconcile the H1 FY26 net interest-bearing debt drawdown (+R303m) and net overdraft movement (-R91m) to the reported overdraft balance increase to R2,273m at 31 Mar 2026: is the balance-sheet overdraft rise funded by gross draw-downs not yet settled, a reclassification from interest-bearing debt, or seasonal PBD funding? Provide closing overdraft and interest-bearing debt balances, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025.\", \"evidence_required\": \"Closing overdraft and interest-bearing debt balances (Rm) at 31 Mar 2026, 30 Sep 2025, 31 Mar 2025; gross vs net overdraft flows; any reclassification disclosure; facility limits/maturities\", \"closure_condition\": \"A signed bridge from cash-flow financing movements to the balance-sheet overdraft/debt change is shown, or the driver is explicitly identified; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.\"}\n{\"question_id\": \"Q-b67a0f132cee4d6d\", \"status\": \"open\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003.1 statement of financial position (p.8) / D003.3 cash-flow (p.12) / any covenant or facility note\", \"question\": \"What are the gross facility limits, covenant metrics/thresholds and headroom, and the drawn/undrawn split and maturities for term debt (senior, subordinated, revolving) at 31 Mar 2026? Note 2 gives only total undrawn overdraft facilities (R475m) and maturity buckets (R1,396m within 12 months; R2,620m thereafter).\", \"evidence_required\": \"Gross facility limits, covenant ratios and thresholds with headroom, drawn/undrawn split and maturity dates for each term-debt class, Rm, at 31 Mar 2026 vs 30 Sep 2025\", \"closure_condition\": \"Covenant headroom and term-debt facility detail disclosed, or confirmed not disclosed; benign explanations (e.g. covenant detail in a separate debt note) acceptable. Forecast consequence: refinancing and liquidity risk, net debt trajectory.\"}\n{\"question_id\": \"Q-9f66f520e55d4b48\", \"status\": \"open\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003.7 Note 4 (p.17); segmental note 7; D002 highlights\", \"question\": \"Reconcile the direction of Nutun South Africa revenue: Note 4 shows 159 (H1 FY26) vs 188 (H1 FY25), a 15.4% decline, whereas earlier stored commentary referenced a ~15% rise. Which is correct, and what drove the SA decline (client loss, volume, pricing)? Provide client-concentration metrics (top-client revenue, % of total) if disclosed.\", \"evidence_required\": \"SA revenue H1 FY26 vs H1 FY25 (Rm) reconciled to segmental note; client count and concentration percentages; management commentary on SA revenue driver\", \"closure_condition\": \"Direction of SA revenue movement confirmed and driver/concentration disclosed, or confirmed not disclosed; benign explanations (client mix, pricing) acceptable. Forecast consequence: SA revenue trajectory and concentration risk.\"}\n{\"question_id\": \"Q-73ba5052e544431c\", \"status\": \"open\", \"priority\": \"medium\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003.6 (p.16); D003.2 equity movements (pp.9-11); any CSP/remuneration note\", \"question\": \"Confirm the treasury-share purchase terms: 3,662,209 shares for R3.7m implies ~R1.00/share, which appears inconsistent with a group carrying R5,414m share capital. Verify the average price, total consideration, counterparty (open-market vs off-market/employee trust/CSP trustee) and whether any related-party element exists; reconcile the R3.7m narrative to the R4m (rounded) deduction in the 3.1 reconciliation.\", \"evidence_required\": \"Number of shares acquired, total and average consideration (Rm and R/share), counterparty identity, date(s) of purchase, and reconciliation of R3.7m to the R4m share-capital movement; Rm and share counts at 31 Mar 2026 vs 30 Sep 2025\", \"closure_condition\": \"Purchase price, consideration and counterparty confirmed and reconciled to the equity movement, or confirmed not disclosed; benign explanations (rounding, off-market CSP trustee transfer at nominal value) acceptable. Forecast consequence: EPS/NAV per share, CSP dilution and buy-back capacity.\"}\n{\"question_id\": \"Q-e0ca727b62be46df\", \"status\": \"partial\", \"priority\": \"high\", \"target_document\": \"nutunlimitedcondensedconsolidatedafs31march2026.pdf\", \"target_section\": \"D003 note 7 segmental reconciliation / income statement\", \"question\": \"Reconcile reported EBITDA (790) less PBD/RTC amortisation (597) less net interest cost (216) = -23 to the reported continuing core loss of -63 (residual -40). What items (D&A, impairments, other) bridge the gap?\", \"evidence_required\": \"Line-item bridge from EBITDA to continuing core loss for H1 2026 and H1 2025, Rm, with IFRS reconciliation\", \"closure_condition\": \"A signed reconciliation summing to -63 (and -71) is shown, or the residual is explicitly identified.\"}",
+    "source": {
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "doc_code": "AFS",
+      "byte_size": 1719316,
+      "physical_page_count": 38
+    },
+    "document_map": {
+      "schema_version": "coarse_report_map_v1",
+      "map_id": "map-66a4fc5be77045fba3ce8db12488cbb4",
+      "created_at": "2026-10-28T14:10:43.235162+00:00",
+      "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "source_filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "physical_page_count": 38,
+      "status": "automatic_draft",
+      "method": "native_large_titles_and_running_headings_v1",
+      "scanned_physical_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "sections": [
+        {
+          "section_id": "D001",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 1,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 2,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": [],
+          "parent_heading": "Unclassified report pages",
+          "subsections": [
+            {
+              "subsection_id": "D001.1",
+              "parent_id": "D001",
+              "title": "Unclassified report pages",
+              "start": {
+                "physical_page": 1,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 2,
+                "location": "full",
+                "printed_label": null
+              }
+            }
+          ]
+        },
+        {
+          "section_id": "D002",
+          "kind": "highlights",
+          "title": "Highlights",
+          "start": {
+            "physical_page": 3,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 7,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 3,
+              "location": "full",
+              "printed_label": null,
+              "heading": "KEY HIGHLIGHTS"
+            }
+          ],
+          "inferred_continuation_pages": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "parent_heading": "Changes to the board of directors",
+          "subsections": [
+            {
+              "subsection_id": "D002.1",
+              "parent_id": "D002",
+              "title": "Key highlights",
+              "start": {
+                "physical_page": 3,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 3,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D002.2",
+              "parent_id": "D002",
+              "title": "• Nutun South Africa",
+              "start": {
+                "physical_page": 4,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 5,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D002.3",
+              "parent_id": "D002",
+              "title": "Group continuing core results",
+              "start": {
+                "physical_page": 6,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 6,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D002.4",
+              "parent_id": "D002",
+              "title": "Changes to the board of directors",
+              "start": {
+                "physical_page": 7,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 7,
+                "location": "full",
+                "printed_label": null
+              }
+            }
+          ]
+        },
+        {
+          "section_id": "D003",
+          "kind": "financial_statements",
+          "title": "Primary financial statements",
+          "start": {
+            "physical_page": 8,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 37,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 8,
+              "location": "full",
+              "printed_label": null,
+              "heading": "CONSOLIDATED STATEMENT OF FINANCIAL POSITION"
+            }
+          ],
+          "inferred_continuation_pages": [
+            9,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "parent_heading": "Purchased book debts",
+          "subsections": [
+            {
+              "subsection_id": "D003.1",
+              "parent_id": "D003",
+              "title": "Condensed consolidated statement of financial position",
+              "start": {
+                "physical_page": 8,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 8,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.2",
+              "parent_id": "D003",
+              "title": "Income, comprehensive income and equity movements",
+              "start": {
+                "physical_page": 9,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 11,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.3",
+              "parent_id": "D003",
+              "title": "Condensed consolidated statement of cash flows",
+              "start": {
+                "physical_page": 12,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 12,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.4",
+              "parent_id": "D003",
+              "title": "1 Purchased book debts",
+              "start": {
+                "physical_page": 13,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 13,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.5",
+              "parent_id": "D003",
+              "title": "2 Interest-bearing liabilities and bank overdrafts",
+              "start": {
+                "physical_page": 14,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 15,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.6",
+              "parent_id": "D003",
+              "title": "3 Ordinary share capital",
+              "start": {
+                "physical_page": 16,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 16,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.7",
+              "parent_id": "D003",
+              "title": "4 Revenue",
+              "start": {
+                "physical_page": 17,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 17,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.8",
+              "parent_id": "D003",
+              "title": "Loss per share — total, continuing and discontinued",
+              "start": {
+                "physical_page": 18,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 19,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.9",
+              "parent_id": "D003",
+              "title": "Credit risk management and measurement",
+              "start": {
+                "physical_page": 20,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 20,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D003.10",
+              "parent_id": "D003",
+              "title": "Purchased book debts",
+              "start": {
+                "physical_page": 21,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 23,
+                "location": "full",
+                "printed_label": null
+              }
+            }
+          ]
+        },
+        {
+          "section_id": "D004",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 38,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 38,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": []
+        }
+      ],
+      "primary_statement_sightings": [
+        {
+          "kind": "financial_position",
+          "physical_page": 8,
+          "location": "right"
+        },
+        {
+          "kind": "cash_flows",
+          "physical_page": 12,
+          "location": "right"
+        }
+      ],
+      "unclassified_physical_pages": [
+        1,
+        2,
+        38
+      ],
+      "issues": [],
+      "limitations": [
+        "Navigation only; section contents have not been analysed or supplied to the model by this scan.",
+        "Ranges between heading observations are inferred and need checking; native-text scans may miss headings.",
+        "Relative left/right locations do not establish printed-page labels. No OCR or full financial verification."
+      ]
+    },
+    "coordinate_system": {
+      "origin": "top-left of displayed original page",
+      "unit": "PDF point (1/72 inch)",
+      "bbox_order": [
+        "x0",
+        "top",
+        "x1",
+        "bottom"
+      ]
+    },
+    "prompt": {
+      "stage": "12-analyst-reading-brief",
+      "version": "1.1.0",
+      "sector": "consumer_lending",
+      "template_sha256": "9bdffe86980efded6cddb94bf2dadd3ec8e7ded1cdeeeccd0c36820de2c11a1d",
+      "submitted_candidate_sha256": "bc9e1678c265674d4ab60a5d7d38dd6836eb0d349afaa88dd990961014b8385e",
+      "report_map_sha256": "46e1d9560ea7adb78de60171598b88e7afd0ce5f4e66404be148e399dc5eb519",
+      "report_overview_sha256": "f5459dec3eed54c35df3054432f685d8e722709a7de67a5fdd9ef97f163c7e37",
+      "stored_questions_sha256": "3b978641ce425c05325434f0a8f3b8e4b9a490c7aa2949b5d1ef16e36a05401a",
+      "common_template_sha256": "ae92e9e99253cca4dbed43385967f590f21181d356ddaecd68c366ee0877ee55"
+    },
+    "review": {
+      "model_brief": "recorded",
+      "source_verification": "not_reviewed",
+      "ledger_validation": "valid",
+      "ledger_errors": [],
+      "response_time_seconds": 12.77,
+      "cost_usd": 0.00491,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "tokens": {
+        "prompt_tokens": 8998,
+        "completion_tokens": 3868,
+        "total_tokens": 12866,
+        "cost": 0.0049098504,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 1112,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0049098504,
+          "upstream_inference_prompt_cost": 0.0016607304,
+          "upstream_inference_completions_cost": 0.00324912
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    "selections": [
+      {
+        "section_id": "D003.10",
+        "doc_code": "AFS",
+        "doc_type": "afs",
+        "source_filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "subheading": "Purchased book debts",
+        "physical_page": 21,
+        "selection_mode": "area",
+        "content_type": "financial_note",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          0.0,
+          0.0,
+          595.276,
+          841.89
+        ],
+        "page_size_points": [
+          595.276,
+          841.89
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "                                                                                  \n                                                                                  \n                   Condensed consolidated financial statements for the half year ended 31 March 2026 19\n                                                                                  \n                                                                                  \n      Notes to the condensed consolidated financial statements continued          \n      for the half year ended 31 March 2026                                       \n                                                                                  \n      6    Financial risk management                                              \n                                       continued                                  \n      6.1  Credit risk continued                                                  \n           Purchased book debts                                                   \n           Investment process                                                     \n           Prior to the acquisition of purchased book debts (PBDs), there is a defined investment process that is followed in\n           accordance with guidelines determined by a constituted investment committee. PBDs are acquired from various\n           credit providers in multiple sectors. Valuations are determined by projecting the present value of anticipated monthly\n           collections, net of directly attributable collection costs, using past performance characteristics applicable to similar\n           PBDs. Said valuations are ultimately presented to the investment committee to decide upon pricing and bidding\n           strategy.                                                              \n           Collections process                                                    \n           The Insights, Data & Enterprise Analytics (IDEA) team continually develops and recalibrates insights and analytics\n           used by operations to optimise the collection processes, and infrastructure, associated with non-performing debt\n           collected.                                                             \n           Method of provisioning and fair valuing                                \n           PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition based on the\n           presumption that events that have a detrimental impact on the estimated future cash flows of these financial assets\n           have occurred before acquisition and initial recognition. The classification of PBDs does not change subsequent\n           to initial recognition, even in the unlikely event of the expected cash flows associated thereto returning to full\n           contractual terms.                                                     \n           Any changes in lifetime expected credit losses (ECLs) are recognised in profit or loss. The group recognises\n           favourable changes in lifetime ECLs as an impairment gain, even if lifetime ECLs are less than the amount of ECLs\n           that were included in the estimated cash flows on initial recognition. \n           Nutun utilises statistical techniques and models to value PBDs on a monthly basis. Each PBD is modelled based on\n           the collection activity applied to it. A combination of inflows applicable to each PBD and the direct, activity-based,\n           cost projections applicable thereto are used to determine a net cash flow over a rolling 12-month period, which is\n           subsequently discounted to present value using a credit-adjusted effective interest rate to determine its amortised\n           cost value. The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%;\n           30 September 2025: 18.4%).                                             \n           Other financial assets, recognised within the purchase book debts, include a receivables balance measured at fair\n           value. The valuation technique applicable thereto calculates the present value of all future cash flows associated\n           thereto net of all associated costs.                                   \n           Carrying value of purchased book debts                                 \n           The Nutun South Africa business model continues to gain relevance as slow economic growth drive up indebtedness\n           and impair consumers’ ability to service their debt, leaving consumer facing entities with significantly larger\n           non-performing loans (NPL) portfolios to manage. These impairment model parameters have been applied in\n           determining expected cash shortfalls arising from non-payment in the best estimate provision on the loan book as\n           at 31 March 2026. These books are not subsequently managed based on the credit risk rating but rather on a cash\n           collection basis.                                                      \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+        "text_sha256": "5c4a899b6cacc18aad782557c90a7d778c7b4a79c74f1bc002a65d373f57b672",
+        "warnings": []
+      },
+      {
+        "section_id": "D003.10",
+        "doc_code": "AFS",
+        "doc_type": "afs",
+        "source_filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "subheading": "Purchased book debts",
+        "physical_page": 22,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          0.0,
+          0.0,
+          595.276,
+          841.89
+        ],
+        "page_size_points": [
+          595.276,
+          841.89
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "Condensed consolidated financial statements for the half year ended 31 March 2026 20\nNotes to the condensed consolidated financial statements continued\nfor the half year ended 31 March 2026\n6 Financial risk management continued\n6.1 Credit risk continued\nFinancial assets subject to risk\n\n|  | Other loans receivable Rm | Trade and other receivables* Rm | Principal book portfolio Rm | Other financial assets Rm | Total Rm |\n| --- | --- | --- | --- | --- | --- |\n| 31 March 2026 – Unaudited |  |  |  |  |  |\n| Gross carrying value | 5 | 395 | 3 414 | 644 | 4 458 |\n| Impairment (loss)/gain | – | (5) | 431 | – | 426 |\n| Non-performing trade and other receivables | – | (5) | – | – | (5) |\n| Purchased credit-impaired financial assets | – | – | 431 | – | 431 |\n| Carrying value of financial assets | 5 | 390 | 3 845 | 644 | 4 884 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.\n\n|  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- |\n|  | Other | Trade | Principal | Other |  |\n|  | loans | and other | book | financial |  |\n|  | receivable | receivables* | portfolio** | assets*** | Total |\n|  | Rm | Rm | Rm | Rm | Rm |\n| 31 March 2025 – Unaudited |  |  |  |  |  |\n| Gross carrying value | 2 | 510 | 3 066 | 663 | 4 241 |\n| Impairment (loss)/gain | – | (6) | 624 | – | 618 |\n| Non-performing trade and other receivables | – | (6) | – | – | (6) |\n| Purchased credit-impaired financial assets | – | – | 624 | – | 624 |\n| Carrying value of financial assets | 2 | 504 | 3 690 | 663 | 4 859 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.\n\n\n** The comparative disclosure has been represented to show the split between the gross carrying value and impairment for the principal book portfolio.\n\n\n*** The other financial assets have been represented to be shown separately from the principal book portfolio.\n\n|  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- |\n|  | Other | Trade | Principal | Other |  |\n|  | loans | and other | book | financial |  |\n|  | receivable | receivables* | portfolio | assets | Total |\n|  | Rm | Rm | Rm | Rm | Rm |\n| 30 September 2025 – Audited |  |  |  |  |  |\n| Gross carrying value | 4 | 388 | 3 377 | 702 | 4 471 |\n| Impairment (loss)/gain | – | (10) | 598 | – | 588 |\n| Non-performing trade and other receivables | – | (10) | – | – | (10) |\n| Purchased credit-impaired financial assets | – | – | 598 | – | 598 |\n| Carrying value of financial assets | 4 | 378 | 3 975 | 702 | 5 059 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.",
+        "text_sha256": "78c282b3c609c5b9402d8edff4eccc390e432c21bba8f31302c9f9b83fe96bed",
+        "warnings": []
+      },
+      {
+        "section_id": "D003.10",
+        "doc_code": "AFS",
+        "doc_type": "afs",
+        "source_filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "subheading": "Purchased book debts",
+        "physical_page": 23,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          0.0,
+          0.0,
+          595.276,
+          841.89
+        ],
+        "page_size_points": [
+          595.276,
+          841.89
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "Condensed consolidated financial statements for the half year ended 31 March 2026 21\nNotes to the condensed consolidated financial statements continued\nfor the half year ended 31 March 2026\n6 Financial risk management continued\n6.1 Credit risk continued\nConcentration of principal book portfolios\n31 March 2026 – Unaudited\n\n|  | Gross carrying amount Rm | Expected credit loss allowance Rm | Net carrying amount Rm |\n| --- | --- | --- | --- |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 371 | 227 | 2 598 |\n| Debt review | 951 | 141 | 1 092 |\n| Retail | 46 | 51 | 97 |\n| Banking – secured | 46 | 12 | 58 |\n| Total carrying amount | 3 414 | 431 | 3 845 |\n\n31 March 2025 – Unaudited*\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n|  | Gross | Expected |  |\n|  | carrying | credit loss | Net carrying |\n|  | amount | allowance | amount |\n|  | Rm | Rm | Rm |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 366 | 460 | 2 826 |\n| Debt review | 605 | 65 | 670 |\n| Retail | 32 | 54 | 86 |\n| Banking – secured | 63 | 45 | 108 |\n| Total carrying amount | 3 066 | 624 | 3 690 |\n\n* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall\n\n\npresentation of the financial statements. Comparative disclosure for 31 March 2025 has been presented for the first time.\n\n\n30 September 2025 – Audited\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n|  | Gross | Expected |  |\n|  | carrying | credit loss | Net carrying |\n|  | amount | allowance | amount |\n|  | Rm | Rm | Rm |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 482 | 468 | 2 950 |\n| Debt review | 793 | 72 | 865 |\n| Retail | 48 | 47 | 95 |\n| Banking – secured | 54 | 11 | 65 |\n| Total carrying amount | 3 377 | 598 | 3 975 |",
+        "text_sha256": "3821f8011ac4d42c959843732076d05e4ad6f8c8d8ef4e5e5daeb5519f60f89e",
+        "warnings": []
+      }
+    ],
+    "analysis_role": "financial_analysis"
+  },
+  "questions": [
+    {
+      "question": "Reconcile reported EBITDA (790) less PBD/RTC amortisation (597) less net interest cost (216) = -23 to the reported continuing core loss of -63 (residual -40). What items (D&A, impairments, other) bridge the gap?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 note 7 segmental reconciliation / income statement",
+      "evidence_required": "Line-item bridge from EBITDA to continuing core loss for H1 2026 and H1 2025, Rm, with IFRS reconciliation",
+      "closure_condition": "A signed reconciliation summing to -63 (and -71) is shown, or the residual is explicitly identified.",
+      "question_id": "Q-e0ca727b62be46df",
+      "status": "partial",
+      "answer": "Nutun SA EBITDA 710 less portfolio amortisation 597 less net interest 203 = -90, versus group continuing core loss of -63; residual ~27 unexplained in this capture. Report directs readers to group continuing core results on page 4 for the reconciliation, which is not in this capture.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 4,
+          "quote": "EBITDA improved by 36% to R710 million"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 4,
+          "quote": "Portfolio amortisation costs increased by 41% to R597 million"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 4,
+          "quote": "Net interest costs decreased by 7% to R203 million"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 4,
+          "quote": "Refer to the group continuing core results on page 4 for a reconciliation of continuing core earnings to continuing headline earnings to continuing basic earnings."
+        }
+      ]
+    },
+    {
+      "question": "What is the revenue and EBITDA split between principal (owned NPL portfolio) collections and agency/fee-based collections within Nutun South Africa, and the PBD/RTC amortisation basis?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 segmental note 7 and PBD/RTC note",
+      "evidence_required": "Principal vs agent revenue split; PBD/RTC opening balance, acquisitions, amortisation, collections, closing balance; measurement basis (amortised cost vs FVTPL/POCI)",
+      "closure_condition": "Split and PBD/RTC roll-forward disclosed, or confirmed not disclosed.",
+      "question_id": "Q-86ab4a63039b4d7e",
+      "status": "partial",
+      "answer": "Note 4 (p.17) shows SA revenue entirely point-in-time commissions/fees (159 H1 FY26 vs 188 H1 FY25) and International entirely over-time service fees (552 vs 557); total 711 vs 745. No principal-vs-agent split or PBD/RTC amortisation basis is given in this note.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 17,
+          "quote": "Commissions and fees: At a point in time | 159 |  | – | 159"
+        }
+      ]
+    },
+    {
+      "question": "Why did Nutun SA client count fall from 23 to 20 while revenue rose 15% — concentration or loss of clients, and any client-concentration disclosure?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 segmental/risk notes",
+      "evidence_required": "Client concentration percentages, top-client revenue, retention commentary",
+      "closure_condition": "Explanation or concentration metric provided, or confirmed absent.",
+      "question_id": "Q-f8db08b395c448a9",
+      "status": "partial",
+      "answer": "Note 4 shows SA revenue fell from 188 to 159 (−15.4%) H1-on-H1, opposite in direction to the stored '15% rise' premise. No client-concentration disclosure in this note.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 17,
+          "quote": "Total revenue | 188 |  | 557 | 745"
+        }
+      ]
+    },
+    {
+      "question": "What portion of the R597m portfolio amortisation increase is volume/ageing-driven versus forward-looking macro-assumption-driven (elevated interest-rate forecast), and what is the PBD/RTC amortisation basis and remaining carrying value?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 segmental note 7 / PBD-RTC note",
+      "evidence_required": "PBD/RTC roll-forward (opening, acquisitions, collections, amortisation, closing) in Rm for H1 2026 and H1 2025; split of amortisation between volume and assumption changes; measurement basis (amortised cost/FVTPL/POCI)",
+      "closure_condition": "Roll-forward and amortisation driver split disclosed, or confirmed not disclosed; forecast consequence: ability to project amortisation and embedded discount rate.",
+      "question_id": "Q-c3d790bf20794c50",
+      "status": "partial",
+      "answer": "Only PBD collections inflow (R182m H1 FY26) visible; no amortisation driver split or measurement basis on this page.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 12,
+          "quote": "Decrease in operating assets | 182 |  | 390 | 681"
+        }
+      ]
+    },
+    {
+      "question": "What is the signed bridge from Nutun International revenue FX drag of R27m to the R46m EBITDA FX impact, and what hedge loss is included?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 segmental note / FX note",
+      "evidence_required": "FX translation and hedge loss components, Rm, H1 2026 vs H1 2025; average vs closing rate basis",
+      "closure_condition": "Bridge reconciling 27 to 46 shown, or components identified; forecast consequence: FX sensitivity of International EBITDA.",
+      "question_id": "Q-23af9329edce40eb",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What are the specific funding covenant metrics and headroom at 31 March 2026, and the composition/maturity of the ~R0.8bn unutilised facilities?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 liquidity/funding note",
+      "evidence_required": "Covenant ratios, thresholds and headroom; facility amounts, maturities and drawn/undrawn split",
+      "closure_condition": "Covenant headroom and facility detail disclosed, or confirmed not disclosed; forecast consequence: refinancing and liquidity risk.",
+      "question_id": "Q-7ccb4721205d4f99",
+      "status": "partial",
+      "answer": "Total undrawn overdraft facilities R475m at 31 Mar 2026 (Sep-25 R136m; Mar-25 R43m). Covenant ratios, thresholds, headroom and term-debt facility limits/maturities are not disclosed in Note 2; remain open pending covenant/facility disclosures.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 14,
+          "quote": "Total undrawn overdraft facilities | 475 |  | 43 | 136"
+        }
+      ]
+    },
+    {
+      "question": "What is the basic-to-headline earnings bridge for H1 2026 and H1 2025 (continuing and discontinued), and were any H1 2026 once-off/option/associate items excluded from the nil-adjustment core reconciliation?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 income statement / headline earnings per share note",
+      "evidence_required": "Signed basic loss to headline loss reconciliation (Rm) for H1 2026 and H1 2025, continuing and discontinued, listing each exclusion (asset disposals, impairments, associate items); confirmation whether any H1 2026 adjustments met the core-earnings policy criteria",
+      "closure_condition": "Basic-to-headline bridge shown and summing, and H1 2026 core adjustments (or their absence) explained; benign explanation (e.g. no qualifying items) acceptable; forecast consequence: reliability of core earnings as a run-rate base",
+      "question_id": "Q-b18d8ce6d4804a50",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What drove bank overdrafts from R364m (audited 30 Sep 2025) to R2,273m (unaudited 31 Mar 2026), and is any portion a reclassification from interest-bearing debt? What are the facility limits, maturities and drawn/undrawn split at 31 Mar 2026?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 funding/liquidity note (pp.9-11)",
+      "evidence_required": "Overdraft and short-term facility balances, limits, maturities, drawn/undrawn split, and any reclassification disclosure, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025",
+      "closure_condition": "Driver of the R1.9bn overdraft increase and facility detail disclosed, or confirmed not disclosed; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.",
+      "question_id": "Q-8612694a3a674266",
+      "status": "contradicted",
+      "answer": "Note 2 shows bank overdrafts of R273m at 31 Mar 2026, not R2,273m; overdrafts fell R91m from R364m at 30 Sep 2025 (273-364=-91). No R1.9bn increase exists in this note. Total undrawn overdraft facilities rose to R475m (Sep-25 R136m; Mar-25 R43m). Overdraft facility limits/maturities and drawn/undrawn split for term debt are not itemised here.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 14,
+          "quote": "Bank overdrafts | 273 |  | 457 | 364"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 14,
+          "quote": "Total undrawn overdraft facilities | 475 |  | 43 | 136"
+        }
+      ]
+    },
+    {
+      "question": "What is the composition and measurement basis of 'other investments' (R41m Sep-25, R237m Mar-25, R81m Mar-26) and the new R9m derivative liability at 31 Mar 2026?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 investments/derivatives note (pp.9-11)",
+      "evidence_required": "Line-item composition of other investments and derivative liabilities, measurement basis (amortised cost/FVTPL/hedge), fair-value movements in P&L/OCI, Rm, across the three dates",
+      "closure_condition": "Composition and measurement disclosed, or confirmed not disclosed; forecast consequence: earnings volatility and hedge effectiveness.",
+      "question_id": "Q-31753fb252ee4ed2",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What is the measurement basis of purchased book debts (amortised cost, FVTPL or POCI) and how does the R4,489m carrying value at 31 Mar 2026 reconcile to the PBD roll-forward (opening, acquisitions, collections, amortisation, closing)?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 PBD note (pp.9-11)",
+      "evidence_required": "PBD measurement basis, roll-forward in Rm for H1 2026 and H1 2025, and reconciliation to the R4,489m / R4,353m / R4,677m carrying values",
+      "closure_condition": "Basis and roll-forward disclosed and reconciling to the statement of financial position, or confirmed not disclosed; forecast consequence: amortisation projection and credit-loss treatment.",
+      "question_id": "Q-e4497d9112cd4e9d",
+      "status": "partial",
+      "answer": "Cash-flow confirms purchased book debts are a principal operating asset: decrease in operating assets of R182m (H1 FY26), R384m (H1 FY25), R678m (FY25) is entirely PBD. No measurement basis or roll-forward to the R4,489m carrying value is given on this page.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 12,
+          "quote": "Purchased book debts | 182 |  | 384 | 678"
+        }
+      ]
+    },
+    {
+      "question": "Reconcile the H1 FY26 net interest-bearing debt drawdown (+R303m) and net overdraft movement (-R91m) to the reported overdraft balance increase to R2,273m at 31 Mar 2026: is the balance-sheet overdraft rise funded by gross draw-downs not yet settled, a reclassification from interest-bearing debt, or seasonal PBD funding? Provide closing overdraft and interest-bearing debt balances, Rm, at 31 Mar 2026 vs 30 Sep 2025 and 31 Mar 2025.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003 funding/liquidity note (pp.9-11) and D003.1 statement of financial position (p.8)",
+      "evidence_required": "Closing overdraft and interest-bearing debt balances (Rm) at 31 Mar 2026, 30 Sep 2025, 31 Mar 2025; gross vs net overdraft flows; any reclassification disclosure; facility limits/maturities",
+      "closure_condition": "A signed bridge from cash-flow financing movements to the balance-sheet overdraft/debt change is shown, or the driver is explicitly identified; benign explanations (seasonal PBD funding, reclass) acceptable. Forecast consequence: liquidity and refinancing risk, net debt trajectory.",
+      "question_id": "Q-b6d6eda13d854fdf",
+      "status": "partial",
+      "answer": "The -R91m net overdraft movement matches Note 2 (273 vs 364 at 30 Sep 2025); no reclassification is indicated. Total interest-bearing liabilities rose R209m (4,016-3,807) vs Sep-25, driven by senior debt +254 (3,547-3,293) partly offset by revolving facility -74. A full signed cash-flow-to-balance bridge still requires the cash-flow statement (p.12) and Mar-25 closing debt.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 14,
+          "quote": "Total interest-bearing liabilities | 4 016 |  | 3 864 | 3 807"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 14,
+          "quote": "Senior debt | 3 547 |  | 3 182 | 3 293"
+        }
+      ]
+    },
+    {
+      "question": "Confirm the financing subtotal of R178m on the cash-flow statement is correctly labelled (the printed line reads 'Net cash generated/(utilised) by investing activities' but arithmetic sums to the financing section), and confirm no financing line is misclassified between investing and financing.",
+      "priority": "low",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.3 cash-flow statement (p.12)",
+      "evidence_required": "Corrected/confirmed subtotal label and confirmation that proceeds/settlements of interest-bearing liabilities and overdrafts are financing, not investing",
+      "closure_condition": "Label confirmed as a typographical error with correct subtotal, or a restated statement provided; benign explanation (label typo) acceptable. Forecast consequence: none material if typo only.",
+      "question_id": "Q-5973eb62939a4c48",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What are the gross facility limits, covenant metrics/thresholds and headroom, and the drawn/undrawn split and maturities for term debt (senior, subordinated, revolving) at 31 Mar 2026? Note 2 gives only total undrawn overdraft facilities (R475m) and maturity buckets (R1,396m within 12 months; R2,620m thereafter).",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.1 statement of financial position (p.8) / D003.3 cash-flow (p.12) / any covenant or facility note",
+      "evidence_required": "Gross facility limits, covenant ratios and thresholds with headroom, drawn/undrawn split and maturity dates for each term-debt class, Rm, at 31 Mar 2026 vs 30 Sep 2025",
+      "closure_condition": "Covenant headroom and term-debt facility detail disclosed, or confirmed not disclosed; benign explanations (e.g. covenant detail in a separate debt note) acceptable. Forecast consequence: refinancing and liquidity risk, net debt trajectory.",
+      "question_id": "Q-b67a0f132cee4d6d",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm the bank overdraft balance at 31 Mar 2026: Note 2 (p.14) shows R273m, but stored questions reference R2,273m. Is R2,273m a misread (e.g. total liabilities or a transposition), and what is the correct closing overdraft on the statement of financial position (p.8)?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.1 statement of financial position (p.8)",
+      "evidence_required": "Bank overdraft line on the statement of financial position at 31 Mar 2026, 30 Sep 2025 and 31 Mar 2025, Rm, reconciled to Note 2",
+      "closure_condition": "Overdraft balance confirmed as R273m (or corrected) and reconciled to the statement of financial position; benign explanation (misread/transposition) acceptable. Forecast consequence: prevents a false liquidity alarm in net debt modelling.",
+      "question_id": "Q-75b10eb1d7a24740",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm the treasury-share purchase terms: 3,662,209 shares for R3.7m implies ~R1.00/share, which appears inconsistent with a group carrying R5,414m share capital. Verify the average price, total consideration, counterparty (open-market vs off-market/employee trust/CSP trustee) and whether any related-party element exists; reconcile the R3.7m narrative to the R4m (rounded) deduction in the 3.1 reconciliation.",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.6 (p.16); D003.2 equity movements (pp.9-11); any CSP/remuneration note",
+      "evidence_required": "Number of shares acquired, total and average consideration (Rm and R/share), counterparty identity, date(s) of purchase, and reconciliation of R3.7m to the R4m share-capital movement; Rm and share counts at 31 Mar 2026 vs 30 Sep 2025",
+      "closure_condition": "Purchase price, consideration and counterparty confirmed and reconciled to the equity movement, or confirmed not disclosed; benign explanations (rounding, off-market CSP trustee transfer at nominal value) acceptable. Forecast consequence: EPS/NAV per share, CSP dilution and buy-back capacity.",
+      "question_id": "Q-73ba5052e544431c",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Reconcile the direction of Nutun South Africa revenue: Note 4 shows 159 (H1 FY26) vs 188 (H1 FY25), a 15.4% decline, whereas earlier stored commentary referenced a ~15% rise. Which is correct, and what drove the SA decline (client loss, volume, pricing)? Provide client-concentration metrics (top-client revenue, % of total) if disclosed.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.7 Note 4 (p.17); segmental note 7; D002 highlights",
+      "evidence_required": "SA revenue H1 FY26 vs H1 FY25 (Rm) reconciled to segmental note; client count and concentration percentages; management commentary on SA revenue driver",
+      "closure_condition": "Direction of SA revenue movement confirmed and driver/concentration disclosed, or confirmed not disclosed; benign explanations (client mix, pricing) acceptable. Forecast consequence: SA revenue trajectory and concentration risk.",
+      "question_id": "Q-9f66f520e55d4b48",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Provide the principal (owned NPL portfolio) vs agency/fee-based revenue split within Nutun South Africa and the PBD/RTC amortisation basis and roll-forward, to reconcile Note 4 revenue (711) to segmental EBITDA and the PBD carrying value.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.4 PBD note (p.13); segmental note 7",
+      "evidence_required": "Principal vs agent revenue split (Rm); PBD/RTC opening, acquisitions, collections, amortisation, closing (Rm) H1 FY26 vs H1 FY25; measurement basis (amortised cost/FVTPL/POCI)",
+      "closure_condition": "Split and roll-forward disclosed and reconciling to Note 4 revenue and PBD carrying value, or confirmed not disclosed; forecast consequence: amortisation projection and revenue quality.",
+      "question_id": "Q-f8a0c48e3545479f",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Do the group's purchased book debts fall within POCI, amortised cost or FVTPL, and does the generic contractual-cash-flow ECL policy in Note 6.1 (discounted at original EIR, max contractual period) actually apply to PBD, or is a lifetime-ECL-since-initial-recognition / fair-value model used instead? Provide the PBD measurement basis and any POCI credit-risk classification disclosure.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.4 Note 1 Purchased book debts (p.13); D003.1 statement of financial position (p.8)",
+      "evidence_required": "Explicit measurement basis for PBD (POCI/amortised cost/FVTPL), whether lifetime ECL since initial recognition applies, and any POCI credit-risk classification; Rm carrying values at 31 Mar 2026 vs 30 Sep 2025 vs 31 Mar 2025",
+      "closure_condition": "PBD measurement basis and applicable ECL model stated and reconciled to the carrying value, or confirmed not disclosed; benign explanations (PBD held at FVTPL with separate ECL on other assets) acceptable. Forecast consequence: credit-loss treatment, amortisation projection and earnings volatility.",
+      "question_id": "Q-08aa5c3f257440ab",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ],
+  "baseline": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections\\outputs\\section_15.md",
+  "texts": [
+    "                                                                                  \n                                                                                  \n                   Condensed consolidated financial statements for the half year ended 31 March 2026 19\n                                                                                  \n                                                                                  \n      Notes to the condensed consolidated financial statements continued          \n      for the half year ended 31 March 2026                                       \n                                                                                  \n      6    Financial risk management                                              \n                                       continued                                  \n      6.1  Credit risk continued                                                  \n           Purchased book debts                                                   \n           Investment process                                                     \n           Prior to the acquisition of purchased book debts (PBDs), there is a defined investment process that is followed in\n           accordance with guidelines determined by a constituted investment committee. PBDs are acquired from various\n           credit providers in multiple sectors. Valuations are determined by projecting the present value of anticipated monthly\n           collections, net of directly attributable collection costs, using past performance characteristics applicable to similar\n           PBDs. Said valuations are ultimately presented to the investment committee to decide upon pricing and bidding\n           strategy.                                                              \n           Collections process                                                    \n           The Insights, Data & Enterprise Analytics (IDEA) team continually develops and recalibrates insights and analytics\n           used by operations to optimise the collection processes, and infrastructure, associated with non-performing debt\n           collected.                                                             \n           Method of provisioning and fair valuing                                \n           PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition based on the\n           presumption that events that have a detrimental impact on the estimated future cash flows of these financial assets\n           have occurred before acquisition and initial recognition. The classification of PBDs does not change subsequent\n           to initial recognition, even in the unlikely event of the expected cash flows associated thereto returning to full\n           contractual terms.                                                     \n           Any changes in lifetime expected credit losses (ECLs) are recognised in profit or loss. The group recognises\n           favourable changes in lifetime ECLs as an impairment gain, even if lifetime ECLs are less than the amount of ECLs\n           that were included in the estimated cash flows on initial recognition. \n           Nutun utilises statistical techniques and models to value PBDs on a monthly basis. Each PBD is modelled based on\n           the collection activity applied to it. A combination of inflows applicable to each PBD and the direct, activity-based,\n           cost projections applicable thereto are used to determine a net cash flow over a rolling 12-month period, which is\n           subsequently discounted to present value using a credit-adjusted effective interest rate to determine its amortised\n           cost value. The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%;\n           30 September 2025: 18.4%).                                             \n           Other financial assets, recognised within the purchase book debts, include a receivables balance measured at fair\n           value. The valuation technique applicable thereto calculates the present value of all future cash flows associated\n           thereto net of all associated costs.                                   \n           Carrying value of purchased book debts                                 \n           The Nutun South Africa business model continues to gain relevance as slow economic growth drive up indebtedness\n           and impair consumers’ ability to service their debt, leaving consumer facing entities with significantly larger\n           non-performing loans (NPL) portfolios to manage. These impairment model parameters have been applied in\n           determining expected cash shortfalls arising from non-payment in the best estimate provision on the loan book as\n           at 31 March 2026. These books are not subsequently managed based on the credit risk rating but rather on a cash\n           collection basis.                                                      \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+    "Condensed consolidated financial statements for the half year ended 31 March 2026 20\nNotes to the condensed consolidated financial statements continued\nfor the half year ended 31 March 2026\n6 Financial risk management continued\n6.1 Credit risk continued\nFinancial assets subject to risk\n\n|  | Other loans receivable Rm | Trade and other receivables* Rm | Principal book portfolio Rm | Other financial assets Rm | Total Rm |\n| --- | --- | --- | --- | --- | --- |\n| 31 March 2026 – Unaudited |  |  |  |  |  |\n| Gross carrying value | 5 | 395 | 3 414 | 644 | 4 458 |\n| Impairment (loss)/gain | – | (5) | 431 | – | 426 |\n| Non-performing trade and other receivables | – | (5) | – | – | (5) |\n| Purchased credit-impaired financial assets | – | – | 431 | – | 431 |\n| Carrying value of financial assets | 5 | 390 | 3 845 | 644 | 4 884 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.\n\n|  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- |\n|  | Other | Trade | Principal | Other |  |\n|  | loans | and other | book | financial |  |\n|  | receivable | receivables* | portfolio** | assets*** | Total |\n|  | Rm | Rm | Rm | Rm | Rm |\n| 31 March 2025 – Unaudited |  |  |  |  |  |\n| Gross carrying value | 2 | 510 | 3 066 | 663 | 4 241 |\n| Impairment (loss)/gain | – | (6) | 624 | – | 618 |\n| Non-performing trade and other receivables | – | (6) | – | – | (6) |\n| Purchased credit-impaired financial assets | – | – | 624 | – | 624 |\n| Carrying value of financial assets | 2 | 504 | 3 690 | 663 | 4 859 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.\n\n\n** The comparative disclosure has been represented to show the split between the gross carrying value and impairment for the principal book portfolio.\n\n\n*** The other financial assets have been represented to be shown separately from the principal book portfolio.\n\n|  |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- |\n|  | Other | Trade | Principal | Other |  |\n|  | loans | and other | book | financial |  |\n|  | receivable | receivables* | portfolio | assets | Total |\n|  | Rm | Rm | Rm | Rm | Rm |\n| 30 September 2025 – Audited |  |  |  |  |  |\n| Gross carrying value | 4 | 388 | 3 377 | 702 | 4 471 |\n| Impairment (loss)/gain | – | (10) | 598 | – | 588 |\n| Non-performing trade and other receivables | – | (10) | – | – | (10) |\n| Purchased credit-impaired financial assets | – | – | 598 | – | 598 |\n| Carrying value of financial assets | 4 | 378 | 3 975 | 702 | 5 059 |\n\n* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.",
+    "Condensed consolidated financial statements for the half year ended 31 March 2026 21\nNotes to the condensed consolidated financial statements continued\nfor the half year ended 31 March 2026\n6 Financial risk management continued\n6.1 Credit risk continued\nConcentration of principal book portfolios\n31 March 2026 – Unaudited\n\n|  | Gross carrying amount Rm | Expected credit loss allowance Rm | Net carrying amount Rm |\n| --- | --- | --- | --- |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 371 | 227 | 2 598 |\n| Debt review | 951 | 141 | 1 092 |\n| Retail | 46 | 51 | 97 |\n| Banking – secured | 46 | 12 | 58 |\n| Total carrying amount | 3 414 | 431 | 3 845 |\n\n31 March 2025 – Unaudited*\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n|  | Gross | Expected |  |\n|  | carrying | credit loss | Net carrying |\n|  | amount | allowance | amount |\n|  | Rm | Rm | Rm |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 366 | 460 | 2 826 |\n| Debt review | 605 | 65 | 670 |\n| Retail | 32 | 54 | 86 |\n| Banking – secured | 63 | 45 | 108 |\n| Total carrying amount | 3 066 | 624 | 3 690 |\n\n* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall\n\n\npresentation of the financial statements. Comparative disclosure for 31 March 2025 has been presented for the first time.\n\n\n30 September 2025 – Audited\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n|  | Gross | Expected |  |\n|  | carrying | credit loss | Net carrying |\n|  | amount | allowance | amount |\n|  | Rm | Rm | Rm |\n| Carrying amount of principal book portfolios |  |  |  |\n| Banking and specialised lending – unsecured | 2 482 | 468 | 2 950 |\n| Debt review | 793 | 72 | 865 |\n| Retail | 48 | 47 | 95 |\n| Banking – secured | 54 | 11 | 65 |\n| Total carrying amount | 3 377 | 598 | 3 975 |"
+  ],
+  "source": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf"
+}

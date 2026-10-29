@@ -1,0 +1,9 @@
+{
+  "status": "completed_awaiting_independent_review",
+  "stage": "stage2_complete",
+  "calls": 3,
+  "last_dispatch_utc": "2026-10-28T11:47:15.362002+00:00",
+  "first_dispatch_utc": "2026-10-28T11:45:23.666364+00:00",
+  "completed_utc": "2026-10-28T11:48:12.529727+00:00",
+  "incomplete_sections": 0
+}

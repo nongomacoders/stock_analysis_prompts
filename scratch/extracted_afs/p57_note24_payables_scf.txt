@@ -1,0 +1,34 @@
+NOTES TO THE GROUP AND COMPANY
+ANNUAL FINANCIAL STATEMENTS
+for the year ended 28 February 2026
+24. Trade and other payables
+Trade and other payables are obligations to pay for goods or services that have been acquired in the ordinary course of
+business from suppliers. They are accounted for as financial liabilities in accordance with the accounting policy disclosed in
+note 29.
+Expenses and assets are recognised net of VAT, except:
+• when the VAT incurred on a purchase of assets or services is not recoverable from SARS, in which case, the VAT is
+recognised as part of the cost of acquisition of the asset or as part of the expense item, as applicable; and
+• receivables and payables which are stated inclusive of VAT. The net amount of sales tax recoverable from, or payable to,
+SARS is included as part of receivables or payables in the statement of financial position.
+Group Company
+2026 2025 2026 2025
+R’000 R’000 R’000 R’000
+Trade payables 6 983 214 6 493 968 936 436 967 156
+Other payables 593 733 457 585 202 007 294 174
+VAT 230 717 230 633 45 027 88 012
+Related parties (note 28) 92 148 47 568 1 887 592 1 193 883
+Right of return liability 10 786 16 474 8 838 13 455
+7 910 598 7 246 228 3 079 900 2 556 680
+Trade and other payables are non-interest-bearing and are generally on terms of 7 to 90 days.
+Other payables consist of payables relating to payroll as well as general accruals.
+Trade payables includes R965 million (2025: R784 million) (Company R100 million and R155 million in 2025) due to suppliers
+that have signed up to a supply chain financing programme, under which the suppliers can elect on an invoice-by-invoice
+basis to receive a discounted early payment from the partner bank rather than being paid in line with the agreed payment
+terms. If the option is taken the Group's liability is assigned to be due to the partner bank rather than the supplier. The value
+and terms of the liability payable by the Group remains unchanged. The Group assesses the arrangement against indicators
+to assess if debts which vendors have sold to the funder under the supplier financing scheme continues to meet the
+definition of trade payables or should be classified as borrowings. At 28 February, the payables met the criteria of trade
+payables as the value and terms of the liability payable has not changed and the Group has not given any security or incurred
+any additional costs.
+Refer to note 29 on liquidity risk management.
+56 Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026

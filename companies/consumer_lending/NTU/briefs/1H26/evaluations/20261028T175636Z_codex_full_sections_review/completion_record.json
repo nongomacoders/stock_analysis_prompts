@@ -1,0 +1,22 @@
+{
+  "completed_utc": "2026-10-28T18:00:37.501181+00:00",
+  "verdict": "CORRECTIONS REQUIRED;MINIMAL NATIVE EXTRACTION FIX PROPOSED",
+  "paid_calls": 0,
+  "app_changes": 0,
+  "guardrail_changes": 0,
+  "calculation_exit_code": 0,
+  "original_pages_viewed": [
+    12,
+    13,
+    22,
+    24,
+    25,
+    31
+  ],
+  "preservation": {
+    "original_and_copied_files_unchanged": true,
+    "gemini_manifest_verified": true,
+    "production_all_tables_unchanged": true,
+    "source_pdf_unchanged": true
+  }
+}

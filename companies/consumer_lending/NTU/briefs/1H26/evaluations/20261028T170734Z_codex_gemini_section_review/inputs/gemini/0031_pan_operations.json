@@ -1,0 +1,795 @@
+{
+  "case": "pan_operations",
+  "ticker": "PAN",
+  "sector": "mining",
+  "manifest": {
+    "schema_version": "section_reading_package_v1",
+    "package_id": "section-30f5cc63683b4a5294d3f18a6a9042aa",
+    "section_name": "19-D009-Group-production-summary-20261018-141201-6a9042aa",
+    "section_number": 19,
+    "section_ids": [
+      "D009"
+    ],
+    "task": "analyst_reading_brief",
+    "response_format": "markdown",
+    "created_at": "2026-10-18T12:12:01.969038+00:00",
+    "heading": "Group production summary",
+    "subheading": null,
+    "analyst_question": null,
+    "stored_questions": "",
+    "source": {
+      "filename": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "original_path": "C:\\Users\\Dion\\Desktop\\Projects\\stock_analysis_prompts\\companies\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+      "byte_size": 1986020,
+      "physical_page_count": 54
+    },
+    "document_map": {
+      "schema_version": "coarse_report_map_v1",
+      "map_id": "map-f92f73857b7b4c0e8d0c89f8cb2a4359",
+      "created_at": "2026-10-17T17:08:48.263194+00:00",
+      "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+      "source_filename": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "physical_page_count": 54,
+      "status": "automatic_draft",
+      "method": "native_large_titles_and_running_headings_v1",
+      "scanned_physical_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "sections": [
+        {
+          "section_id": "D001",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 1,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 1,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D002",
+          "kind": "highlights",
+          "title": "Highlights",
+          "start": {
+            "physical_page": 2,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 4,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 2,
+              "location": "full",
+              "printed_label": null,
+              "heading": "KEY F26 FEATURES"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D003",
+          "kind": "ceo_commentary",
+          "title": "CEO's statement",
+          "start": {
+            "physical_page": 5,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 15,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 5,
+              "location": "full",
+              "printed_label": null,
+              "heading": "CHIEF EXECUTIVE OFFICER S STATEMENT"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D004",
+          "kind": "statements_overview",
+          "title": "Financial statements overview / contents",
+          "start": {
+            "physical_page": 16,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 16,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 16,
+              "location": "full",
+              "printed_label": null,
+              "heading": "ANNUAL FINANCIAL STATEMENTS"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D005",
+          "kind": "financial_statements",
+          "title": "Primary financial statements",
+          "start": {
+            "physical_page": 17,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 19,
+            "location": "left",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 17,
+              "location": "full",
+              "printed_label": null,
+              "heading": "CONSOLIDATED STATEMENT OF FINANCIAL POSITION"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "subsections": [
+            {
+              "subsection_id": "D005.1",
+              "parent_id": "D005",
+              "title": "SUMMARISED CONSOLIDATED STATEMENT \nOF CHANGES IN EQUITY\nfor the year ended 30 June 2026",
+              "start": {
+                "physical_page": 17,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 19,
+                "location": "left",
+                "printed_label": null
+              }
+            }
+          ],
+          "parent_heading": "Primary financial statements"
+        },
+        {
+          "section_id": "D006",
+          "kind": "financial_notes",
+          "title": "Financial notes",
+          "start": {
+            "physical_page": 19,
+            "location": "right",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 36,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 19,
+              "location": "right",
+              "printed_label": null,
+              "heading": "NOTES TO THE SUMMARISED CONSOLIDATED ANNUAL FINANCIAL STATEMENTS"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "subsections": [
+            {
+              "subsection_id": "D006.1",
+              "parent_id": "D006",
+              "title": "Notes1,2",
+              "start": {
+                "physical_page": 19,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 20,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.2",
+              "parent_id": "D006",
+              "title": "Note 3 SEGMENT ANALYSIS",
+              "start": {
+                "physical_page": 20,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 24,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.3",
+              "parent_id": "D006",
+              "title": "Note 5. NET FINANCE COSTS",
+              "start": {
+                "physical_page": 25,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 25,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.4",
+              "parent_id": "D006",
+              "title": "Note 6. INCOME TAX",
+              "start": {
+                "physical_page": 25,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 26,
+                "location": "right",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.5",
+              "parent_id": "D006",
+              "title": "Note 7. PROPERTY, PLANT AND EQUIPMENT",
+              "start": {
+                "physical_page": 27,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 28,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.6",
+              "parent_id": "D006",
+              "title": "Notes 8,9,10,11",
+              "start": {
+                "physical_page": 29,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 29,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.7",
+              "parent_id": "D006",
+              "title": "Notes 12,13,14",
+              "start": {
+                "physical_page": 30,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 30,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.8",
+              "parent_id": "D006",
+              "title": "Notes 15,16",
+              "start": {
+                "physical_page": 31,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 33,
+                "location": "left",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.9",
+              "parent_id": "D006",
+              "title": "Note 17,18",
+              "start": {
+                "physical_page": 33,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 34,
+                "location": "right",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.10",
+              "parent_id": "D006",
+              "title": "Notes 19,20,21",
+              "start": {
+                "physical_page": 35,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 36,
+                "location": "left",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D006.11",
+              "parent_id": "D006",
+              "title": "Notes 22,23,24",
+              "start": {
+                "physical_page": 36,
+                "location": "right",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 36,
+                "location": "right",
+                "printed_label": null
+              }
+            }
+          ],
+          "parent_heading": "Financial notes"
+        },
+        {
+          "section_id": "D007",
+          "kind": "other_items_overview",
+          "title": "Other items overview / contents",
+          "start": {
+            "physical_page": 37,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 37,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 37,
+              "location": "full",
+              "printed_label": null,
+              "heading": "OTHER ITEMS"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D008",
+          "kind": "apms",
+          "title": "Alternative performance measures",
+          "start": {
+            "physical_page": 38,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 47,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 38,
+              "location": "full",
+              "printed_label": null,
+              "heading": "ALTERNATIVE PERFORMANCE MEASURES"
+            }
+          ],
+          "inferred_continuation_pages": [],
+          "parent_heading": "Alternative performance measures",
+          "subsections": [
+            {
+              "subsection_id": "D008.1",
+              "parent_id": "D008",
+              "title": "FINANCIAL APMs",
+              "start": {
+                "physical_page": 38,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 39,
+                "location": "right",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D008.2",
+              "parent_id": "D008",
+              "title": "ALL-IN COSTS",
+              "start": {
+                "physical_page": 40,
+                "location": "left",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 43,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D008.3",
+              "parent_id": "D008",
+              "title": "SUSTAINING CAPITAL,EXPANSION CAPITAL,NET (CASH)/DEBT",
+              "start": {
+                "physical_page": 44,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 44,
+                "location": "full",
+                "printed_label": null
+              }
+            },
+            {
+              "subsection_id": "D008.4",
+              "parent_id": "D008",
+              "title": "ADJUSTED EBITDA",
+              "start": {
+                "physical_page": 45,
+                "location": "full",
+                "printed_label": null
+              },
+              "end": {
+                "physical_page": 47,
+                "location": "right",
+                "printed_label": null
+              }
+            }
+          ]
+        },
+        {
+          "section_id": "D009",
+          "kind": "production_summary",
+          "title": "Group production summary",
+          "start": {
+            "physical_page": 48,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 50,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 48,
+              "location": "full",
+              "printed_label": null,
+              "heading": "GROUP PRODUCTION SUMMARY"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D010",
+          "kind": "glossary",
+          "title": "Glossary",
+          "start": {
+            "physical_page": 51,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 52,
+            "location": "left",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 51,
+              "location": "full",
+              "printed_label": null,
+              "heading": "GLOSSARY"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D011",
+          "kind": "corporate_information",
+          "title": "Corporate information",
+          "start": {
+            "physical_page": 52,
+            "location": "right",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 52,
+            "location": "right",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 52,
+              "location": "right",
+              "printed_label": null,
+              "heading": "CORPORATE INFORMATION"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D012",
+          "kind": "reporting_suite",
+          "title": "Reporting suite",
+          "start": {
+            "physical_page": 53,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 53,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [
+            {
+              "physical_page": 53,
+              "location": "full",
+              "printed_label": null,
+              "heading": "OUR REPORTING SUITE"
+            }
+          ],
+          "inferred_continuation_pages": []
+        },
+        {
+          "section_id": "D013",
+          "kind": "unclassified",
+          "title": "Unclassified / cover or other material",
+          "start": {
+            "physical_page": 54,
+            "location": "full",
+            "printed_label": null
+          },
+          "end": {
+            "physical_page": 54,
+            "location": "full",
+            "printed_label": null
+          },
+          "heading_evidence": [],
+          "inferred_continuation_pages": []
+        }
+      ],
+      "primary_statement_sightings": [
+        {
+          "kind": "financial_position",
+          "physical_page": 17,
+          "location": "left"
+        },
+        {
+          "kind": "profit_or_loss",
+          "physical_page": 18,
+          "location": "left"
+        },
+        {
+          "kind": "other_comprehensive_income",
+          "physical_page": 18,
+          "location": "left"
+        },
+        {
+          "kind": "cash_flows",
+          "physical_page": 18,
+          "location": "right"
+        },
+        {
+          "kind": "changes_in_equity",
+          "physical_page": 19,
+          "location": "left"
+        }
+      ],
+      "unclassified_physical_pages": [
+        1,
+        54
+      ],
+      "issues": [],
+      "limitations": [
+        "Navigation only; section contents have not been analysed or supplied to the model by this scan.",
+        "Ranges between heading observations are inferred and need checking; native-text scans may miss headings.",
+        "Relative left/right locations do not establish printed-page labels. No OCR or full financial verification."
+      ]
+    },
+    "coordinate_system": {
+      "origin": "top-left of displayed original page",
+      "unit": "PDF point (1/72 inch)",
+      "bbox_order": [
+        "x0",
+        "top",
+        "x1",
+        "bottom"
+      ]
+    },
+    "prompt": {
+      "stage": "12-analyst-reading-brief",
+      "version": "1.1.0",
+      "template_sha256": "35d4c13bc81b955e8dedf42112c42ead9ff9bf03256d20f21e0a37dbb160ffe8",
+      "submitted_candidate_sha256": "8ac693809139e1cd4edf94b995dd4555a3babf4885027d222d526971cc5bd186",
+      "report_map_sha256": "b38e732bcf5b8ead72c334a84fba0f7653ce80a946fcaa3ac5b9f1c7fd33f6ca",
+      "report_overview_sha256": "9a199e715e632dd50dded321ea819ff30768ebff4946b71936c9c0513fa0205f",
+      "stored_questions_sha256": "70b434b653754752bf38d5473337939abc555bdd5773b7add1615971c6b3294b"
+    },
+    "review": {
+      "model_brief": "recorded",
+      "response_time_seconds": 317.39,
+      "cost_usd": 0.006794,
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "tokens": {
+        "prompt_tokens": 18922,
+        "completion_tokens": 14805,
+        "total_tokens": 33727
+      }
+    },
+    "selections": [
+      {
+        "section_id": "D009",
+        "physical_page": 48,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          18.09026828665722,
+          40.84899290535501,
+          824.5660996466662,
+          549.1271760562723
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "GROUP PRODUCTION\nSUMMARY\n\n|  |  |  | Mining operations Barberton | Evander |  |  | Surface operations |  | Surface operations MTR | Tennant |  |  | Barberton Mines | Evander Mines | Total operations MTR operation | Tennant Mines | Group |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  | Total | BTRP | Elikhulu | operation | Mines |  | Total | total | total | total | total | total |\n| Tonnes milled – underground | FY26 |  | 280,412 | 114,742 |  | 395,154 | – | – | – |  | – | – | 280,412 | 114,742 | – | – | 395,154 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 266,676 | 122,208 |  | 388,884 | – | – | – |  | – | – | 266,676 | 122,208 | – | – | 388,884 |\n| Tonnes milled – surface | FY26 |  | 62,276 | – |  | 62,276 | – | – | – |  | – | – | 62,276 | – | – | – | 62,276 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 65,288 | – |  | 65,288 | – | – | – |  | – | – | 65,288 | – | – | – | 65,288 |\n| Tonnes milled – total underground and surface | FY26 |  | 342,688 | 114,742 |  | 457,430 | – | – | – |  | – | – | 342,688 | 114,742 | – | – | 457,430 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 331,964 | 122,208 |  | 454,172 | – | – | – |  | – | – | 331,964 | 122,208 | – | – | 454,172 |\n| Tonnes processed – tailings | FY26 |  | – | – |  | – | 775,385 | 13,807,025  11,566,768 |  |  | – 26,149,178 |  | 775,385  13,807,025  11,566,768 |  |  | – 26,149,178 |  |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 667,410 | 14,747,232  7,509,525 |  |  | – 22,924,167 |  | 667,410  14,747,232  7,509,525 |  |  | – 22,924,167 |  |\n| Tonnes processed – surface feedstock | FY26 |  | – | – |  | – | – | – | – | 751,914 |  | 751,914 | – | – | – | 751,914 | 751,914 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 85,316 |  | 85,316 | – | – | – | 85,316 | 85,316 |\n| Tonnes processed – third-party buy-in feedstock | FY26 |  | 2,134 | 202,555 |  | 204,689 | 71,238 | – | 611,719 |  | – | 682,957 | 73,372 | 202,555 | 611,719 | – | 887,646 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | 34,411 |  | 34,411 | 58,125 | – | – |  | – | 58,125 | 58,125 | 34,411 | – | – | 92,536 |\n| Tonnes processed – total tailings and surface | FY26 |  | – | – |  | – | 775,385 | 13,807,025  11,566,768 |  | 751,914  26,901,092 |  |  | 775,385  13,807,025  11,566,768 |  |  | 751,914  26,901,092 |  |\n| feedstock | FY25 | t | – | – |  | – | 725,535 | 14,747,232  7,509,525 |  | 85,316  23,067,608 |  |  | 725,535  14,747,232  7,509,525 |  |  | 85,316  23,067,608 |  |\n| Tonnes milled and processed – total | FY26 |  | 344,822 | 317,297 |  | 662,119 | 846,623 | 13,807,025  12,178,487 |  | 751,914  27,584,049  1,191,445  14,124,322  12,178,487 |  |  |  |  |  | 751,914  28,246,168 |  |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 331,964 | 156,619 |  | 488,583 | 725,535 | 14,747,232  7,509,525 |  | 85,316  23,067,608  1,057,499  14,903,851  7,509,525 |  |  |  |  |  | 85,316  23,556,191 |  |\n| Head grade – total | FY26 |  | 7.0 | 4.8 |  | 6.0 | 1.4 | 0.3 | 0.3 | 1.4 |  | 0.3 | 3.1 | 0.4 | 0.3 | 1.4 | 0.5 |\n|  |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 7.3 | 5.7 |  | 6.8 | 1.5 | 0.3 | 0.3 | 1.3 |  | 0.3 | 3.4 | 0.4 | 0.3 | 1.3 | 0.5 |\n| Head grade – excluding third-party buy-in | FY26 |  | 6.7 | 11.2 |  | 7.8 | 1.4 | 0.3 | 0.3 | 1.4 |  | 0.4 | 3.0 | 0.4 | 0.3 | 1.4 | 0.5 |\n| feedstock |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 7.3 | 7.0 |  | 7.2 | 1.6 | 0.3 | 0.3 | 1.3 |  | 0.3 | 3.5 | 0.4 | 0.3 | 1.3 | 0.5 |\n| Overall recovered grade | FY26 |  | 6.5 | 4.6 |  | 5.6 | 0.5 | 0.1 | 0.1 | 1.3 |  | 0.2 | 2.2 | 0.2 | 0.1 | 1.3 | 0.3 |\n|  |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 6.4 | 5.5 |  | 6.1 | 0.7 | 0.1 | 0.1 | 0.6 |  | 0.1 | 2.5 | 0.2 | 0.1 | 0.6 | 0.3 |\n| Overall recovery – underground | FY26 |  | 92 | 96 |  | 94 | – | – | – |  | – | – | 92 | 96 | – | – | 94 |\n|  |  | % |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 88 | 97 |  | 91 | – | – | – |  | – | – | 88 | 97 | – | – | 91 |\n| Overall recovery – tailings | FY26 |  | – | – |  | – | 33 | 39 | 47 | 94 |  | 47 | 33 | 39 | 47 | 94 | 47 |\n|  |  | % |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 42 | 35 | 51 | 43 |  | 40 | 42 | 35 | 51 | 43 | 40 |\n| Gold produced – underground | FY26 |  | 65,233 | 40,246 |  | 105,479 | – | – | – |  | – | – | 65,233 | 40,246 | – | – | 105,478 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 65,895 | 26,748 |  | 92,643 | – | – | – |  | – | – | 65,895 | 27,829 | – | – | 93,724 |\n| Gold production – surface operations | FY26 |  | 2,428 | – |  | 2,428 | – | – | – |  | – | – | 2,428 | – | – | – | 2,428 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,654 | – |  | 2,654 | – | – | – |  | – | – | 2,654 | – | – | – | 2,654 |\n| Gold produced – tailings | FY26 |  | – | – |  | – | 10,974 | 56,475 | 46,164 |  | – | 113,613 | 10,974 | 56,475 | 46,164 | – | 113,613 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 15,224 | 52,606 | 25,043 |  | – | 98,636 | 15,224 | 52,606 | 30,806 | – | 98,636 |\n| Gold produced – third-party buy-in feedstock | FY26 |  | 4,337 | 6,609 |  | 10,946 | 1,958 | – | 5,763 |  | – | 7,721 | 6,295 | 6, 609 | 5,763 | – | 18,667 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | 1,081 |  | 1,081 | – | – | – |  | – | – | – | 1,081 | – | – | 1,081 |",
+        "text_sha256": "4d20345a7030b516b099e0fbc22b07738f192f52b32595500433b5a5bc8b5fa2",
+        "warnings": []
+      },
+      {
+        "section_id": "D009",
+        "physical_page": 49,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          5.252013373545644,
+          74.69530131264916,
+          823.9825426051611,
+          530.4533507281101
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "|  |  |  | Mining operations Barberton | Evander |  |  |  |  |  | Surface operations |  | Surface operations MTR |  | Tennant |  |  |  | Barberton Mines | Evander Mines |  | Total operations MTR operation | Tennant Mines Group |  |  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  |  |  |  | Total | BTRP | Elikhulu | operation |  | Mines | Total |  |  | total | total |  | total | total total |  |  |\n| Gold produced – surface feedstock | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 32,124 | 32,124 |  |  | – | – |  | – | 32,124 32,124 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 1,513 | 1,513 |  |  | – | – |  | – | 1,513 1,513 |  |  |\n| Gold produced – total | FY26 |  | 71,997 | 46,855 |  |  |  |  | 118,853 | 12,932 | 56,475 | 51,927 |  | 32,124 | 153,458 |  |  | 94,929 | 103,330 |  | 51,927 | 32,124 272,310 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 68,549 | 27,829 |  |  |  |  | 96,378 | 15,224 | 52,606 | 30,806 |  | 1,513 | 100,149 |  |  | 83,773 | 80,435 |  | 30,806 | 1,513 196,527 |  |  |\n| Gold sold – total | FY26 |  | 70,086 | 47,112 |  |  |  |  | 117,198 | 12,826 | 57,092 | 53,133 |  | 32,124 | 155,175 |  |  | 82,912 | 104,204 |  | 53,133 | 32,124 272,373 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 70,053 | 26,903 |  |  |  |  | 96,956 | 15,632 | 53,092 | 29,140 |  | 1,179 | 99,970 |  |  | 85,685 | 80,922 |  | 29,140 | 1,179 196,926 |  |  |\n| Average ZAR gold price received – South African FY26 |  |  | 2,317,580  2,318,555  2,317,977  2,272,301 |  |  |  |  |  |  |  | 2,283,608  2,322,326 |  |  |  | – 1,823,179  2,310,574  2,299,411  2,322,322 |  |  |  |  |  |  | – 2,308,329 |  |  |\n| operations |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,653,460  1,497,649  1,610,231  1,635,501 |  |  |  |  |  |  |  | 1,504,471  1,743,343 |  |  |  | – 1,580,594  1,650,189  1,484,976  1,743,364 |  |  |  |  |  |  | – 1,595,761 |  |  |\n| Average A$ gold price received – Australian | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 195,501 | 195,501 |  |  | – | – |  | – | 195,501 195,501 |  |  |\n| operations |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 162,171 | 162,171 |  |  | – | – |  | – | 162,171 162,171 |  |  |\n| Average US$ gold price received – Group | FY26 |  | 4,265 | 4,267 |  |  |  |  | 4,266 | 4,182 | 4,203 | 4,274 |  | 4,135 | 4,211 |  |  | 4,252 | 4,232 |  | 4,274 | 4,135 4,235 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,830 | 2,564 |  |  |  |  | 2,756 | 2,800 | 2,575 | 2,984 |  | 3,279 | 2,706 |  |  | 2,825 | 2,579 |  | 2,984 | 3,279 2,735 |  |  |\n| ZAR cash cost | FY26 |  | 1,133,459  1,014,508 |  |  |  | 1,085,642 |  |  | 829,149 | 587,279 | 665,969 |  |  | – 646,468 |  |  | 1,086,384 | 780,437 |  | 665,969 | – 860,706 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,009,725  1,161,872  1,051,942 |  |  |  |  |  |  | 555,319 | 588,268 | 689,795 |  |  | – 622,156 |  |  | 926,825 | 790,142 |  | 689,795 | – 835,034 |  |  |\n| ZAR all-in sustaining costs | FY26 |  | 1,406,730  1,039,963 |  |  |  | 1,259,294 |  |  | 849,645 | 668,939 | 754,751 |  |  | – 724,828 |  |  | 1,320,551 | 836,685 |  | 754,751 | – 985,551 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,206,373  1,221,190  1,210,485 |  |  |  |  |  |  | 567,273 | 629,441 | 749,128 |  |  | – 663,676  1,089,778 |  |  |  | 836,877 |  | 749,128 | – 934,517 |  |  |\n| ZAR all-in cost | FY26 |  | 1,602,738  1,614,569 |  |  |  | 1,607,494 |  |  | 942,152 | 853,597  1,060,530 |  |  |  | – 952,181 |  |  | 1,500,548  1,197,645 |  |  | 1,060,530 | – 1,271 855 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,356,643  2,109,720  1,565,605 |  |  |  |  |  |  | 659,935 | 68,843  1,790,344 |  |  |  | – 1,015,238  1,229,538  1,168,624  1,790,344 |  |  |  |  |  |  | – 1,287,842 |  |  |\n| A$ cash cost | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 81,099 | 81,099 |  |  | – | – |  | – | 81,099 81,099 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 43,116 | 43,116 |  |  | – | – |  | – | 43,116 43,116 |  |  |\n| A$ all-in sustaining costs | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 106,900 | 106,900 |  |  | – | – |  | – | 106,900 106,900 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 80,962 | 80,962 |  |  | – | – |  | – | 80,962 80,962 |  |  |\n| A$ all-in cost | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 205,143 | 205,143 |  |  | – | – |  | – | 205,143 205,143 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 1,584,835  1,584,835 |  |  |  | – | – |  | – | 1,584,835  1,584,835 |  |  |\n| US$ cash cost | FY26 |  | 2,086 | 1,867 |  |  |  |  | 1,998 | 1,526 | 1,081 | 1,226 |  | 1,715 | 1,190 |  |  | 1,999 | 1,436 |  | 1,226 | 1,715 1,600 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,728 | 1,989 |  |  |  |  | 1,801 | 951 | 1,007 | 1,181 |  | 872 | 1,065 |  |  | 1,587 | 1,353 |  | 1,181 | 872 1,426 |  |  |\n| US$ all-in sustaining cost | FY26 |  | 2,589 | 1,914 |  |  |  |  | 2,318 | 1,564 | 1,231 | 1,389 |  | 2,261 | 1,431 |  |  | 2,430 | 1,540 |  | 1,386 | 2,261 1,867 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,065 | 2,090 |  |  |  |  | 2,072 | 971 | 1,077 | 1,282 |  | 1,637 | 1,136 |  |  | 1,865 | 1,433 |  | 1,282 | 1,637 1,600 |  |  |\n| US$ all-in sustaining cost – excluding third-party | FY26 |  | 2,570 | 1,698 |  |  |  |  | 2,237 | 1,529 | 1,231 | 1,386 |  | 2,261 | 1,323 |  |  | 2,422 | 1,425 |  | 1,386 | 2,261 1,798 |  |  |\n| buy-in feedstock |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,880 | 1,418 |  |  |  |  | 2,688 | 972 | 1,077 | 1,282 |  | 1,637 | 1,130 |  |  | 1,880 | 1,418 |  | 1,282 | 1,637 1,599 |  |  |\n| US$ all-in cost | FY26 |  | 2,950 | 2,972 |  |  |  |  | 2,958 | 1,734 | 1,571 | 1,952 |  | 4,339 | 1,828 |  |  | 2,762 | 2,204 |  | 1,952 | 4,339 2,576 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,322 | 3,611 |  |  |  |  | 2,680 | 1,130 | 1,172 | 3,065 |  | 32,041 | 1,738 |  |  | 2,105 | 2,000 |  | 3,065 | 32,041 2,383 |  |  |",
+        "text_sha256": "69ce415c4b57496eaf83cbf55ed855d632160f8c1423313bc52730720f77a9be",
+        "warnings": []
+      },
+      {
+        "section_id": "D009",
+        "physical_page": 50,
+        "selection_mode": "area",
+        "content_type": "table",
+        "content_type_origin": "user_selected",
+        "bbox": [
+          8.169798581071003,
+          74.69530131264916,
+          826.9003278126864,
+          469.17986137007756
+        ],
+        "page_size_points": [
+          839.0549926757812,
+          595.2760009765625
+        ],
+        "text_polygons": [],
+        "text_indices": null,
+        "printed_page_label": null,
+        "printed_label_origin": "not_supplied",
+        "text": "|  |  |  | Mining operations Barberton | Evander |  |  | Surface operations |  | Surface operations MTR | Tennant |  |  | Barberton Mines | Evander Mines | Total operations MTR operation | Tennant Mines | Group |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  | Total | BTRP | Elikhulu | operation | Mines |  | Total | total | total | total | total | total |\n| ZAR cash cost per tonne | FY26 |  | 7,165 | 4,685 |  | 5,977 | 391 | 76 | 90 |  | – | 90 | 2,351 | 179 | 90 | – | 228 |\n|  |  | ZAR/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 6,628 | 6,207 |  | 6,493 | 372 | 66 | 83 |  | – | 83 | 2,336 | 133 | 83 | – | 216 |\n| Capital expenditure | FY26 |  | 37.5 | 49.8 |  | 87.3 | 2.6 | 21.1 | 32.6 | 71.3 |  | 127.6 | 40.1 | 70.9 | 32.6 | 71.3 | 214.9 |\n|  |  | US$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 24.9 | 40.9 |  | 65.8 | 2.8 | 7.0 | 52.2 | 35.8 |  | 97.8 | 27.6 | 47.9 | 52.2 | 35.8 | 163.6 |\n| Revenue | FY26 |  | 5,052.1 | 3,397.5 |  | 8,449.6 | 906.5 | 4,055.1 | 3,837.9 |  | – | 8,799.5 | 5,958.6 | 7,452.6 | 3,837.9 | – | 17,249.1 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 3,602.7 | 1,253.2 |  | 4,855.9 | 795.2 | 2,484.4 | 1,580.1 |  | – | 4,914.7 | 4,397.9 | 3,737.6 | 1,580.1 | – | 9,715.6 |\n| Revenue | FY26 |  | – | – |  | – | – | – | – | 195.3 |  | 195.3 | – | – | – | 195.3 | 195.3 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 5.9 |  | 5.9 | – | – | – | 5.9 | 5.9 |\n| Cost of production | FY26 |  | 2,470.8 | 1,486.6 |  | 3,957.4 | 330.8 | 1,042.9 | 1,100.6 |  | – | 2,474.3 | 2,801.6 | 2,529.5 | 1,100.6 | – | 6,431.7 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,200.1 | 972.2 |  | 3,172.3 | 270.0 | 971.4 | 625.2 |  | – | 1,911.7 | 2,470.1 | 1,988.7 | 625.2 | – | 5,084.0 |\n| Cost of production | FY26 |  | – | – |  | – | – | – | – | 81.0 |  | 81.0 | – | – | – | 81.0 | 81.0 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 1.6 |  | 1.6 | – | – | – | 1.6 | 1.6 |\n| All-in sustainable cost of production | FY26 |  | 2,855.2 | 1,162.2 |  | 4,017.4 | 280.7 | 1,187.9 | 1,109.8 |  | – | 2,578.4 | 3,135.9 | 2,350.1 | 1,109.8 | – | 6,595.8 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,628.5 | 1,021.9 |  | 3,650.4 | 275.8 | 1,039.4 | 679.0 |  | – | 2,039.3 | 2,904.3 | 2,106.4 | 679.0 | – | 5,689.7 |\n| All-in sustainable cost of production | FY26 |  | – | – |  | – | – | – | – | 106.8 |  | 106.8 | – | – | – | 106.8 | 106.8 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 3.0 |  | 3.0 | – | – | – | 3.0 | 3.0 |\n| All-in cost of production | FY26 |  | 3,282.5 | 2,004.2 |  | 5,286.7 | 317.6 | 1,515.8 | 1,615.1 |  | – | 3,448.5 | 3,600.1 | 3,520.0 | 1,615.1 | – | 8,735.2 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2 956.0 | 1,765.4 |  | 4,721.4 | 320.9 | 1,130.9 | 1,622.7 |  | – | 3,119.6 | 3,276.9 | 2,941.4 | 1,622.7 | – | 7,841.0 |\n| All-in cost of production | FY26 |  | – | – |  | – | – | – | – | 209.3 |  | 209.3 | – | – | – | 209.3 | 209.3 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 58.1 |  | 58.1 | – | – | – | 58.1 | 58.1 |\n| Adjusted EBITDA | FY26 |  | 142.4 | 120.9 |  | 263.4 | 29.4 | 171.4 | 155.9 | 43.0 |  | 399.7 | 171.9 | 292.3 | 155.9 | 43.0 | 663.1 |\n|  |  | US$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 71.0 | 16.3 |  | 87.3 | 22.8 | 81.5 | 51.8 | 2.4 |  | 158.5 | 93.8 | 97.8 | 51.8 | 2.4 | 245.8 |\n| Average exchange rate | FY26 |  | 16.90 | 16.90 |  | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 |  | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 |\n|  |  | US$/ZAR |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 18.17 | 18.17 |  | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 |  | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 |\n| Average exchange rate | FY26 |  | 1.47 | 1.47 |  | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 |  | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 |\n|  |  | US$/A$ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1.54 | 1.54 |  | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 |  | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 |",
+        "text_sha256": "40f0e9eee88e7e59bd68fce4fc543845944a39125d4748efeecaa626640884ab",
+        "warnings": []
+      }
+    ],
+    "sector": "mining",
+    "ledger_contract": 1
+  },
+  "texts": [
+    "GROUP PRODUCTION\nSUMMARY\n\n|  |  |  | Mining operations Barberton | Evander |  |  | Surface operations |  | Surface operations MTR | Tennant |  |  | Barberton Mines | Evander Mines | Total operations MTR operation | Tennant Mines | Group |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  | Total | BTRP | Elikhulu | operation | Mines |  | Total | total | total | total | total | total |\n| Tonnes milled – underground | FY26 |  | 280,412 | 114,742 |  | 395,154 | – | – | – |  | – | – | 280,412 | 114,742 | – | – | 395,154 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 266,676 | 122,208 |  | 388,884 | – | – | – |  | – | – | 266,676 | 122,208 | – | – | 388,884 |\n| Tonnes milled – surface | FY26 |  | 62,276 | – |  | 62,276 | – | – | – |  | – | – | 62,276 | – | – | – | 62,276 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 65,288 | – |  | 65,288 | – | – | – |  | – | – | 65,288 | – | – | – | 65,288 |\n| Tonnes milled – total underground and surface | FY26 |  | 342,688 | 114,742 |  | 457,430 | – | – | – |  | – | – | 342,688 | 114,742 | – | – | 457,430 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 331,964 | 122,208 |  | 454,172 | – | – | – |  | – | – | 331,964 | 122,208 | – | – | 454,172 |\n| Tonnes processed – tailings | FY26 |  | – | – |  | – | 775,385 | 13,807,025  11,566,768 |  |  | – 26,149,178 |  | 775,385  13,807,025  11,566,768 |  |  | – 26,149,178 |  |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 667,410 | 14,747,232  7,509,525 |  |  | – 22,924,167 |  | 667,410  14,747,232  7,509,525 |  |  | – 22,924,167 |  |\n| Tonnes processed – surface feedstock | FY26 |  | – | – |  | – | – | – | – | 751,914 |  | 751,914 | – | – | – | 751,914 | 751,914 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 85,316 |  | 85,316 | – | – | – | 85,316 | 85,316 |\n| Tonnes processed – third-party buy-in feedstock | FY26 |  | 2,134 | 202,555 |  | 204,689 | 71,238 | – | 611,719 |  | – | 682,957 | 73,372 | 202,555 | 611,719 | – | 887,646 |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | 34,411 |  | 34,411 | 58,125 | – | – |  | – | 58,125 | 58,125 | 34,411 | – | – | 92,536 |\n| Tonnes processed – total tailings and surface | FY26 |  | – | – |  | – | 775,385 | 13,807,025  11,566,768 |  | 751,914  26,901,092 |  |  | 775,385  13,807,025  11,566,768 |  |  | 751,914  26,901,092 |  |\n| feedstock | FY25 | t | – | – |  | – | 725,535 | 14,747,232  7,509,525 |  | 85,316  23,067,608 |  |  | 725,535  14,747,232  7,509,525 |  |  | 85,316  23,067,608 |  |\n| Tonnes milled and processed – total | FY26 |  | 344,822 | 317,297 |  | 662,119 | 846,623 | 13,807,025  12,178,487 |  | 751,914  27,584,049  1,191,445  14,124,322  12,178,487 |  |  |  |  |  | 751,914  28,246,168 |  |\n|  |  | t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 331,964 | 156,619 |  | 488,583 | 725,535 | 14,747,232  7,509,525 |  | 85,316  23,067,608  1,057,499  14,903,851  7,509,525 |  |  |  |  |  | 85,316  23,556,191 |  |\n| Head grade – total | FY26 |  | 7.0 | 4.8 |  | 6.0 | 1.4 | 0.3 | 0.3 | 1.4 |  | 0.3 | 3.1 | 0.4 | 0.3 | 1.4 | 0.5 |\n|  |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 7.3 | 5.7 |  | 6.8 | 1.5 | 0.3 | 0.3 | 1.3 |  | 0.3 | 3.4 | 0.4 | 0.3 | 1.3 | 0.5 |\n| Head grade – excluding third-party buy-in | FY26 |  | 6.7 | 11.2 |  | 7.8 | 1.4 | 0.3 | 0.3 | 1.4 |  | 0.4 | 3.0 | 0.4 | 0.3 | 1.4 | 0.5 |\n| feedstock |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 7.3 | 7.0 |  | 7.2 | 1.6 | 0.3 | 0.3 | 1.3 |  | 0.3 | 3.5 | 0.4 | 0.3 | 1.3 | 0.5 |\n| Overall recovered grade | FY26 |  | 6.5 | 4.6 |  | 5.6 | 0.5 | 0.1 | 0.1 | 1.3 |  | 0.2 | 2.2 | 0.2 | 0.1 | 1.3 | 0.3 |\n|  |  | g/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 6.4 | 5.5 |  | 6.1 | 0.7 | 0.1 | 0.1 | 0.6 |  | 0.1 | 2.5 | 0.2 | 0.1 | 0.6 | 0.3 |\n| Overall recovery – underground | FY26 |  | 92 | 96 |  | 94 | – | – | – |  | – | – | 92 | 96 | – | – | 94 |\n|  |  | % |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 88 | 97 |  | 91 | – | – | – |  | – | – | 88 | 97 | – | – | 91 |\n| Overall recovery – tailings | FY26 |  | – | – |  | – | 33 | 39 | 47 | 94 |  | 47 | 33 | 39 | 47 | 94 | 47 |\n|  |  | % |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 42 | 35 | 51 | 43 |  | 40 | 42 | 35 | 51 | 43 | 40 |\n| Gold produced – underground | FY26 |  | 65,233 | 40,246 |  | 105,479 | – | – | – |  | – | – | 65,233 | 40,246 | – | – | 105,478 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 65,895 | 26,748 |  | 92,643 | – | – | – |  | – | – | 65,895 | 27,829 | – | – | 93,724 |\n| Gold production – surface operations | FY26 |  | 2,428 | – |  | 2,428 | – | – | – |  | – | – | 2,428 | – | – | – | 2,428 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,654 | – |  | 2,654 | – | – | – |  | – | – | 2,654 | – | – | – | 2,654 |\n| Gold produced – tailings | FY26 |  | – | – |  | – | 10,974 | 56,475 | 46,164 |  | – | 113,613 | 10,974 | 56,475 | 46,164 | – | 113,613 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | 15,224 | 52,606 | 25,043 |  | – | 98,636 | 15,224 | 52,606 | 30,806 | – | 98,636 |\n| Gold produced – third-party buy-in feedstock | FY26 |  | 4,337 | 6,609 |  | 10,946 | 1,958 | – | 5,763 |  | – | 7,721 | 6,295 | 6, 609 | 5,763 | – | 18,667 |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | 1,081 |  | 1,081 | – | – | – |  | – | – | – | 1,081 | – | – | 1,081 |",
+    "|  |  |  | Mining operations Barberton | Evander |  |  |  |  |  | Surface operations |  | Surface operations MTR |  | Tennant |  |  |  | Barberton Mines | Evander Mines |  | Total operations MTR operation | Tennant Mines Group |  |  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  |  |  |  | Total | BTRP | Elikhulu | operation |  | Mines | Total |  |  | total | total |  | total | total total |  |  |\n| Gold produced – surface feedstock | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 32,124 | 32,124 |  |  | – | – |  | – | 32,124 32,124 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 1,513 | 1,513 |  |  | – | – |  | – | 1,513 1,513 |  |  |\n| Gold produced – total | FY26 |  | 71,997 | 46,855 |  |  |  |  | 118,853 | 12,932 | 56,475 | 51,927 |  | 32,124 | 153,458 |  |  | 94,929 | 103,330 |  | 51,927 | 32,124 272,310 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 68,549 | 27,829 |  |  |  |  | 96,378 | 15,224 | 52,606 | 30,806 |  | 1,513 | 100,149 |  |  | 83,773 | 80,435 |  | 30,806 | 1,513 196,527 |  |  |\n| Gold sold – total | FY26 |  | 70,086 | 47,112 |  |  |  |  | 117,198 | 12,826 | 57,092 | 53,133 |  | 32,124 | 155,175 |  |  | 82,912 | 104,204 |  | 53,133 | 32,124 272,373 |  |  |\n|  |  | oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 70,053 | 26,903 |  |  |  |  | 96,956 | 15,632 | 53,092 | 29,140 |  | 1,179 | 99,970 |  |  | 85,685 | 80,922 |  | 29,140 | 1,179 196,926 |  |  |\n| Average ZAR gold price received – South African FY26 |  |  | 2,317,580  2,318,555  2,317,977  2,272,301 |  |  |  |  |  |  |  | 2,283,608  2,322,326 |  |  |  | – 1,823,179  2,310,574  2,299,411  2,322,322 |  |  |  |  |  |  | – 2,308,329 |  |  |\n| operations |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,653,460  1,497,649  1,610,231  1,635,501 |  |  |  |  |  |  |  | 1,504,471  1,743,343 |  |  |  | – 1,580,594  1,650,189  1,484,976  1,743,364 |  |  |  |  |  |  | – 1,595,761 |  |  |\n| Average A$ gold price received – Australian | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 195,501 | 195,501 |  |  | – | – |  | – | 195,501 195,501 |  |  |\n| operations |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 162,171 | 162,171 |  |  | – | – |  | – | 162,171 162,171 |  |  |\n| Average US$ gold price received – Group | FY26 |  | 4,265 | 4,267 |  |  |  |  | 4,266 | 4,182 | 4,203 | 4,274 |  | 4,135 | 4,211 |  |  | 4,252 | 4,232 |  | 4,274 | 4,135 4,235 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,830 | 2,564 |  |  |  |  | 2,756 | 2,800 | 2,575 | 2,984 |  | 3,279 | 2,706 |  |  | 2,825 | 2,579 |  | 2,984 | 3,279 2,735 |  |  |\n| ZAR cash cost | FY26 |  | 1,133,459  1,014,508 |  |  |  | 1,085,642 |  |  | 829,149 | 587,279 | 665,969 |  |  | – 646,468 |  |  | 1,086,384 | 780,437 |  | 665,969 | – 860,706 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,009,725  1,161,872  1,051,942 |  |  |  |  |  |  | 555,319 | 588,268 | 689,795 |  |  | – 622,156 |  |  | 926,825 | 790,142 |  | 689,795 | – 835,034 |  |  |\n| ZAR all-in sustaining costs | FY26 |  | 1,406,730  1,039,963 |  |  |  | 1,259,294 |  |  | 849,645 | 668,939 | 754,751 |  |  | – 724,828 |  |  | 1,320,551 | 836,685 |  | 754,751 | – 985,551 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,206,373  1,221,190  1,210,485 |  |  |  |  |  |  | 567,273 | 629,441 | 749,128 |  |  | – 663,676  1,089,778 |  |  |  | 836,877 |  | 749,128 | – 934,517 |  |  |\n| ZAR all-in cost | FY26 |  | 1,602,738  1,614,569 |  |  |  | 1,607,494 |  |  | 942,152 | 853,597  1,060,530 |  |  |  | – 952,181 |  |  | 1,500,548  1,197,645 |  |  | 1,060,530 | – 1,271 855 |  |  |\n|  |  | ZAR/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,356,643  2,109,720  1,565,605 |  |  |  |  |  |  | 659,935 | 68,843  1,790,344 |  |  |  | – 1,015,238  1,229,538  1,168,624  1,790,344 |  |  |  |  |  |  | – 1,287,842 |  |  |\n| A$ cash cost | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 81,099 | 81,099 |  |  | – | – |  | – | 81,099 81,099 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 43,116 | 43,116 |  |  | – | – |  | – | 43,116 43,116 |  |  |\n| A$ all-in sustaining costs | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 106,900 | 106,900 |  |  | – | – |  | – | 106,900 106,900 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 80,962 | 80,962 |  |  | – | – |  | – | 80,962 80,962 |  |  |\n| A$ all-in cost | FY26 |  | – | – |  |  |  |  | – | – | – | – |  | 205,143 | 205,143 |  |  | – | – |  | – | 205,143 205,143 |  |  |\n|  |  | A$/kg |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  |  |  |  | – | – | – | – |  | 1,584,835  1,584,835 |  |  |  | – | – |  | – | 1,584,835  1,584,835 |  |  |\n| US$ cash cost | FY26 |  | 2,086 | 1,867 |  |  |  |  | 1,998 | 1,526 | 1,081 | 1,226 |  | 1,715 | 1,190 |  |  | 1,999 | 1,436 |  | 1,226 | 1,715 1,600 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,728 | 1,989 |  |  |  |  | 1,801 | 951 | 1,007 | 1,181 |  | 872 | 1,065 |  |  | 1,587 | 1,353 |  | 1,181 | 872 1,426 |  |  |\n| US$ all-in sustaining cost | FY26 |  | 2,589 | 1,914 |  |  |  |  | 2,318 | 1,564 | 1,231 | 1,389 |  | 2,261 | 1,431 |  |  | 2,430 | 1,540 |  | 1,386 | 2,261 1,867 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,065 | 2,090 |  |  |  |  | 2,072 | 971 | 1,077 | 1,282 |  | 1,637 | 1,136 |  |  | 1,865 | 1,433 |  | 1,282 | 1,637 1,600 |  |  |\n| US$ all-in sustaining cost – excluding third-party | FY26 |  | 2,570 | 1,698 |  |  |  |  | 2,237 | 1,529 | 1,231 | 1,386 |  | 2,261 | 1,323 |  |  | 2,422 | 1,425 |  | 1,386 | 2,261 1,798 |  |  |\n| buy-in feedstock |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1,880 | 1,418 |  |  |  |  | 2,688 | 972 | 1,077 | 1,282 |  | 1,637 | 1,130 |  |  | 1,880 | 1,418 |  | 1,282 | 1,637 1,599 |  |  |\n| US$ all-in cost | FY26 |  | 2,950 | 2,972 |  |  |  |  | 2,958 | 1,734 | 1,571 | 1,952 |  | 4,339 | 1,828 |  |  | 2,762 | 2,204 |  | 1,952 | 4,339 2,576 |  |  |\n|  |  | US$/oz |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,322 | 3,611 |  |  |  |  | 2,680 | 1,130 | 1,172 | 3,065 |  | 32,041 | 1,738 |  |  | 2,105 | 2,000 |  | 3,065 | 32,041 2,383 |  |  |",
+    "|  |  |  | Mining operations Barberton | Evander |  |  | Surface operations |  | Surface operations MTR | Tennant |  |  | Barberton Mines | Evander Mines | Total operations MTR operation | Tennant Mines | Group |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  | Unit | Mines | Mines |  | Total | BTRP | Elikhulu | operation | Mines |  | Total | total | total | total | total | total |\n| ZAR cash cost per tonne | FY26 |  | 7,165 | 4,685 |  | 5,977 | 391 | 76 | 90 |  | – | 90 | 2,351 | 179 | 90 | – | 228 |\n|  |  | ZAR/t |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 6,628 | 6,207 |  | 6,493 | 372 | 66 | 83 |  | – | 83 | 2,336 | 133 | 83 | – | 216 |\n| Capital expenditure | FY26 |  | 37.5 | 49.8 |  | 87.3 | 2.6 | 21.1 | 32.6 | 71.3 |  | 127.6 | 40.1 | 70.9 | 32.6 | 71.3 | 214.9 |\n|  |  | US$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 24.9 | 40.9 |  | 65.8 | 2.8 | 7.0 | 52.2 | 35.8 |  | 97.8 | 27.6 | 47.9 | 52.2 | 35.8 | 163.6 |\n| Revenue | FY26 |  | 5,052.1 | 3,397.5 |  | 8,449.6 | 906.5 | 4,055.1 | 3,837.9 |  | – | 8,799.5 | 5,958.6 | 7,452.6 | 3,837.9 | – | 17,249.1 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 3,602.7 | 1,253.2 |  | 4,855.9 | 795.2 | 2,484.4 | 1,580.1 |  | – | 4,914.7 | 4,397.9 | 3,737.6 | 1,580.1 | – | 9,715.6 |\n| Revenue | FY26 |  | – | – |  | – | – | – | – | 195.3 |  | 195.3 | – | – | – | 195.3 | 195.3 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 5.9 |  | 5.9 | – | – | – | 5.9 | 5.9 |\n| Cost of production | FY26 |  | 2,470.8 | 1,486.6 |  | 3,957.4 | 330.8 | 1,042.9 | 1,100.6 |  | – | 2,474.3 | 2,801.6 | 2,529.5 | 1,100.6 | – | 6,431.7 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,200.1 | 972.2 |  | 3,172.3 | 270.0 | 971.4 | 625.2 |  | – | 1,911.7 | 2,470.1 | 1,988.7 | 625.2 | – | 5,084.0 |\n| Cost of production | FY26 |  | – | – |  | – | – | – | – | 81.0 |  | 81.0 | – | – | – | 81.0 | 81.0 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 1.6 |  | 1.6 | – | – | – | 1.6 | 1.6 |\n| All-in sustainable cost of production | FY26 |  | 2,855.2 | 1,162.2 |  | 4,017.4 | 280.7 | 1,187.9 | 1,109.8 |  | – | 2,578.4 | 3,135.9 | 2,350.1 | 1,109.8 | – | 6,595.8 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2,628.5 | 1,021.9 |  | 3,650.4 | 275.8 | 1,039.4 | 679.0 |  | – | 2,039.3 | 2,904.3 | 2,106.4 | 679.0 | – | 5,689.7 |\n| All-in sustainable cost of production | FY26 |  | – | – |  | – | – | – | – | 106.8 |  | 106.8 | – | – | – | 106.8 | 106.8 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 3.0 |  | 3.0 | – | – | – | 3.0 | 3.0 |\n| All-in cost of production | FY26 |  | 3,282.5 | 2,004.2 |  | 5,286.7 | 317.6 | 1,515.8 | 1,615.1 |  | – | 3,448.5 | 3,600.1 | 3,520.0 | 1,615.1 | – | 8,735.2 |\n|  |  | ZAR million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 2 956.0 | 1,765.4 |  | 4,721.4 | 320.9 | 1,130.9 | 1,622.7 |  | – | 3,119.6 | 3,276.9 | 2,941.4 | 1,622.7 | – | 7,841.0 |\n| All-in cost of production | FY26 |  | – | – |  | – | – | – | – | 209.3 |  | 209.3 | – | – | – | 209.3 | 209.3 |\n|  |  | A$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | – | – |  | – | – | – | – | 58.1 |  | 58.1 | – | – | – | 58.1 | 58.1 |\n| Adjusted EBITDA | FY26 |  | 142.4 | 120.9 |  | 263.4 | 29.4 | 171.4 | 155.9 | 43.0 |  | 399.7 | 171.9 | 292.3 | 155.9 | 43.0 | 663.1 |\n|  |  | US$ million |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 71.0 | 16.3 |  | 87.3 | 22.8 | 81.5 | 51.8 | 2.4 |  | 158.5 | 93.8 | 97.8 | 51.8 | 2.4 | 245.8 |\n| Average exchange rate | FY26 |  | 16.90 | 16.90 |  | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 |  | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 | 16.90 |\n|  |  | US$/ZAR |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 18.17 | 18.17 |  | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 |  | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 | 18.17 |\n| Average exchange rate | FY26 |  | 1.47 | 1.47 |  | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 |  | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 | 1.47 |\n|  |  | US$/A$ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n|  | FY25 |  | 1.54 | 1.54 |  | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 |  | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 | 1.54 |"
+  ],
+  "questions": [],
+  "source_original_path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+  "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+  "existing_output": "### 1. Answers to Stored Questions for This Section\n\n**Q1: Confirm total group ounces, Sheba+Consort ounces and AISC; reconcile to ~US$3,500/oz tail. [D002, p.2–3]**\n- **Status**: `Partially resolved (remainder stays open for D002/D003)`\n- **Answer & evidence**: D009 confirms FY26 group gold produced = **272,310oz** and gold sold = **272,373oz** [D009, p.49]. Group US$ AISC = **US$1,867/oz** [D009, p.49]. The ~US$3,500/oz \"tail\" figure is **not** visible in D009 — no Sheba/Consort line appears in this production summary. Remainder (Sheba+Consort ounces and the US$3,500/oz tail) must be checked in D002/D003.\n\n**Q5 (remainder): Confirm Tennant FY27 capex $; White Devil first blast date and grade ramp. [D002, p.3; D003, p.6]**\n- **Status**: `Partially resolved (remainder stays open for D002/D003)`\n- **Answer & evidence**: D009 gives FY26 Tennant capex = **US$71.3m** (A$? — table shows 71.3 in the US$ million capex row) [D009, p.50]. No FY27 capex guidance, White Devil blast date, or grade ramp is in D009. Remainder stays open.\n\n**Q6 (remainder): Confirm Elikhulu/MTR full-year volumes — APM shows 57,092oz / 53,133oz sold vs stored 56,475oz / 51,927oz; reconcile production vs sold. [D008.2, p.42]**\n- **Status**: `Resolved`\n- **Answer & evidence**: D009 reconciles this exactly. **Elikhulu**: produced **56,475oz**, sold **57,092oz** [D009, p.49]. **MTR**: produced **51,927oz**, sold **53,133oz** [D009, p.49]. The APM figures (57,092 / 53,133) are **gold sold**; the stored 56,475 / 51,927 are **gold produced**. Difference is inventory drawdown (sold > produced at both operations in FY26).\n\n**Q7 (remainder): Confirm Evander underground grade >11g/t FY26 sustainability into FY27. [D002, p.3]**\n- **Status**: `Partially resolved (remainder stays open for D002/D003)`\n- **Answer & evidence**: D009 confirms Evander **head grade excluding third-party buy-in feedstock = 11.2g/t** FY26 (vs 7.0g/t FY25) [D009, p.48]. However, **total head grade = 4.8g/t** and **overall recovered grade = 4.6g/t** because 202,555t of third-party buy-in feedstock at low grade dilutes the milled grade [D009, p.48]. Sustainability into FY27 not stated here — stays open.\n\n**Q9: Reconcile White Devil ~3Mt @ 3.8g/t (~350Koz) to 50→100Koz/yr ramp over 5 years. [D002, p.3]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: D009 shows Tennant FY26 surface feedstock processed = **751,914t** at **1.4g/t** head grade, producing **32,124oz** [D009, p.48–49]. No White Devil-specific tonnage/grade or ramp schedule is disclosed in D009. Carry forward.\n\n**Q10 (remainder): Confirm Royal Sheba first production timing; not double-counted with BTRP. [D002, p.3; D003, p.6]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: No Royal Sheba line in D009. Carry forward.\n\n**Q14: Check FY27 MTR production split; H1 FY27 below nameplate, Q2–Q4 step-up to ~60Koz annualised. [D003, p.6]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 MTR **produced 51,927oz / sold 53,133oz**, processed **12,178,487t** (11,566,768t tailings + 611,719t third-party buy-in) at **0.3g/t** head grade, **47% recovery** [D009, p.48–49]. FY27 split/step-up not in D009 — stays open.\n\n**Q15: Check FY27 BTRP guidance; flotation benefit FY27 or FY28. [D003, p.6]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 BTRP **produced 12,932oz / sold 12,826oz**, processed **846,623t** (775,385t tailings + 71,238t third-party buy-in) at **1.4g/t** head grade, **33% recovery** [D009, p.48–49]. FY27 guidance/flotation timing not in D009 — stays open.\n\n**Q17: Check Elikhulu FY27 guidance vs FY26 57,092oz sold; Winkelhaak feed contribution. [D003, p.6; D008.2, p.42]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms Elikhulu FY26 **produced 56,475oz / sold 57,092oz**, processed **13,807,025t** tailings at **0.3g/t**, **39% recovery** [D009, p.48–49]. FY27 guidance and Winkelhaak feed not in D009 — stays open.\n\n**Q18: Check FY27 Tennant grade assumption and White Devil strip ratio/grade. [D003, p.6]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms Tennant FY26 **surface feedstock 751,914t @ 1.4g/t head grade, 94% recovery, produced 32,124oz** [D009, p.48–49]. FY27 grade assumption and White Devil strip ratio not in D009 — stays open.\n\n**Q21: Confirm Fairview 47,678oz vs table 47,677oz rounding. [D003, p.6–7]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: D009 aggregates Barberton Mines total (71,997oz produced / 70,086oz sold) without a Fairview sub-line [D009, p.49]. Carry forward.\n\n**Q37: Confirm Tennant FY27 capex guidance; crusher/mill/filter complete or continuing. [D006.2, p.22; D006.6, p.29]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 Tennant capex = **US$71.3m** [D009, p.50]. FY27 guidance and crusher/mill/filter completion status not in D009 — stays open.\n\n**Q45: Confirm FY26 Tennant full-year production/grade to anchor FY27 run-rate. [D006.2, p.23]**\n- **Status**: `Resolved`\n- **Answer & evidence**: D009 confirms Tennant FY26 **produced 32,124oz / sold 32,124oz**, surface feedstock **751,914t @ 1.4g/t**, **94% recovery** [D009, p.48–49]. FY25 comparator: 1,513oz produced (first year) [D009, p.49].\n\n**Q46: Confirm July 2026 deliveries against contract liability 8,030 included in FY27 ounces/revenue, not double-counted. [D006.3, p.25; D006.10, p.35]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: D009 shows FY26 Tennant sold = produced = 32,124oz (no deferred delivery visible) [D009, p.49]. Contract liability treatment not in D009 — carry forward.\n\n**Q48: Reconcile Australia revenue 132,804 to Tennant segment revenue in D006.2. [D006.3, p.25, fn 1]**\n- **Status**: `Partially resolved`\n- **Answer & evidence**: D009 shows Tennant FY26 revenue = **A$195.3m** [D009, p.50]. At the stated average US$/A$ rate of **1.47** [D009, p.50], A$195.3m ÷ 1.47 = **~US$132.9m**, consistent with the US$132,804k Australia revenue figure. Confirms the FX translation. Remainder (tie to D006.2 segment revenue) stays open.\n\n**Q66 (remainder): Confirm FY27 tailings/stockpile feed assumption; FY26 tailings = 123,051oz of 272,373oz (45%). [D008.2, pp.42–43]**\n- **Status**: `Partially resolved`\n- **Answer & evidence**: D009 confirms FY26 tailings gold produced = **113,613oz** (BTRP 10,974 + Elikhulu 56,475 + MTR 46,164) [D009, p.48]. Note this differs from the stored 123,051oz — the 123,051 figure likely includes surface feedstock or is a sold-basis figure. Tailings **sold** = 12,826 + 57,092 + 53,133 = **123,051oz** [D009, p.49] — this reconciles exactly to the stored 123,051oz. So 123,051oz is **tailings gold sold**, 113,613oz is **tailings gold produced**. FY27 feed assumption not in D009 — stays open.\n\n**Q70 (remainder): Confirm FY27 Tennant capex guidance; FY26 expansion capex 68.4. [D008.2, p.40; D008.3, p.44]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 Tennant total capex = **US$71.3m** [D009, p.50]. This is total capex (sustaining + expansion), vs the 68.4 expansion figure stored. FY27 guidance not in D009 — stays open.\n\n**Q71 (remainder): Confirm FY27 MTR and Elikhulu capex guidance; FY26 expansion capex 29.9 / 19.4. [D008.2, p.40; D008.3, p.44]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 total capex: **MTR US$32.6m**, **Elikhulu US$21.1m** [D009, p.50]. These are total capex vs the 29.9/19.4 expansion figures stored. FY27 guidance not in D009 — stays open.\n\n**Q97: Check D009 for any Emmerson/Tennant Creek ounces, exploration spend or royalty contribution in FY27 guidance; confirm not double-counted with Tennant. [D006.9, p.34]**\n- **Status**: `Resolved (no Emmerson ounces in D009)`\n- **Answer & evidence**: D009 contains **no Emmerson/Tennant Creek line** — Tennant Mines column captures only the Tennant operation (32,124oz FY26) [D009, p.49]. No exploration spend or royalty line in D009. Confirms no double-count within the production summary. FY27 guidance still to be checked in D002/D003.\n\n**Q125 (remainder): Explain group AISC rise US$1,600→US$1,867/oz; confirm what US$2,598→US$3,487/oz refers to; FY27 outlook. [D008.2, pp.42–43]**\n- **Status**: `Partially resolved`\n- **Answer & evidence**: D009 confirms group US$ AISC FY26 = **US$1,867/oz** vs FY25 = **US$1,600/oz** [D009, p.49]. The US$2,598→US$3,487/oz metric is **not** in D009 (likely a different APM — possibly AIC or a specific operation). FY27 outlook not in D009 — stays open.\n\n**Q133: Confirm whether AISC is built on cash-cost or total-cost basis; locate US$60,288k production D&A and where it sits. [D008.2, p.40]**\n- **Status**: `Partially resolved`\n- **Answer & evidence**: D009 shows AISC is built from **cash cost** plus sustaining items — the \"All-in sustainable cost of production\" line (ZAR 6,595.8m group) sits between cash cost (ZAR 6,431.7m cost of production) and AIC (ZAR 8,735.2m) [D009, p.50]. This confirms AISC = cash cost + sustaining capex + reclamation etc., **not** total cost including D&A. The US$60,288k production D&A location not in D009 — stays open.\n\n**Q134: Reconcile gold sold vs produced by mine (Elikhulu 57,092 vs 56,475; MTR 53,133 vs 51,927). [D008.2, p.42]**\n- **Status**: `Resolved`\n- **Answer & evidence**: D009 confirms: Elikhulu produced **56,475oz**, sold **57,092oz** (drawdown of 617oz inventory); MTR produced **51,927oz**, sold **53,133oz** (drawdown of 1,206oz) [D009, p.49]. Group produced 272,310oz, sold 272,373oz (net drawdown 63oz).\n\n**Q135: Confirm correct FY25→FY26 group AISC series; identify 2,598/3,487 metric. [D008.2, pp.42–43]**\n- **Status**: `Partially resolved`\n- **Answer & evidence**: D009 confirms group US$ AISC FY25 = **US$1,600/oz**, FY26 = **US$1,867/oz** [D009, p.49]. The 2,598/3,487 metric is not in D009 — stays open.\n\n**Q136: Extract FY27 capex guidance by mine; confirm Tennant build completion and step-down from FY26 195.0/202.2. [D008.2, p.40; D008.3, p.44]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 total capex by mine: Barberton 37.5, Evander 49.8, BTRP 2.6, Elikhulu 21.1, MTR 32.6, Tennant 71.3, **Group 214.9** [D009, p.50]. Note this 214.9 differs from the stored 224.0 total — likely a scope difference (D009 may exclude some corporate/exploration capex). FY27 guidance not in D009 — stays open.\n\n**Q137: Confirm FY27 budget FX rates; quantify FX sensitivity on US$ AISC. [D008.2, pp.42–43]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 average rates: **US$/ZAR 16.90**, **US$/A$ 1.47**; FY25: **18.17** and **1.54** [D009, p.50]. FY27 budget rates not in D009 — stays open.\n\n**Q138: Confirm FY26 Tennant AIC US$4,339/oz is first meaningful full-year figure; extract FY27 guidance. [D008.2, p.43]**\n- **Status**: `Resolved (FY26 confirmed)`\n- **Answer & evidence**: D009 confirms Tennant FY26 **US$ AIC = US$4,339/oz** [D009, p.49]. FY25 was US$32,041/oz (meaningless ramp-up year). FY27 guidance not in D009 — stays open.\n\n**Q139: Confirm FY27 tailings vs underground mix guidance. [D008.2, pp.42–43]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 mix: underground milled **395,154t** (Barberton 280,412 + Evander 114,742); tailings processed **26,149,178t** (BTRP 775,385 + Elikhulu 13,807,025 + MTR 11,566,768); surface feedstock **751,914t** (Tennant) [D009, p.48]. FY27 guidance not in D009 — stays open.\n\n**Q144: Confirm FY27 by-product credit assumption (FY26 4.1). [D008.2, pp.40–41]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: No by-product credit line in D009. Carry forward.\n\n**Q154: Extract FY27 group and by-mine capex guidance; confirm Tennant step-down from 68.4 and MTR from 29.9 (FY26 total 224.0; sustaining 21.8, expansion 202.2). [D008.3, p.44]**\n- **Status**: `Partially resolved (baseline only)`\n- **Answer & evidence**: D009 confirms FY26 total capex by mine (see Q136) summing to **US$214.9m** [D009, p.50]. FY27 guidance not in D009 — stays open.\n\n**Q127 (remainder): Confirm FY27 by-product credit assumption (FY26 4.1). [D008.2, pp.40–41]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: No by-product credit line in D009. Carry forward.\n\n**Q148: Confirm AIC expansion add-back = 202.2 − 7.2 = 195.0 exactly; confirm no other non-gold capex inside 195.0. [D008.2, p.40; D008.3, p.44]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: D009 shows AIC of production (ZAR 8,735.2m group) but does not break out the expansion add-back [D009, p.50]. Carry forward.\n\n**Q126 (remainder): Confirm non-gold capital excluded from AISC; AIC adds expansion capex 195.0; check if any non-gold capex sits inside. [D008.2, p.40; D008.3, p.44]**\n- **Status**: `Unresolved — not addressed in D009`\n- **Answer & evidence**: D009 does not disclose non-gold capex split. Carry forward.\n\n---\n\n### 2. Footnote & Qualification Deep-Dive\n\n**No footnote markers (`[^1]`, `*`, note references) are present in the supplied D009 evidence** (pp. 48–50). The tables are presented without footnote definitions or small-print qualifications in this capture.\n\nHowever, several **embedded table qualifications and structural anomalies** function as de facto caveats and must be flagged:\n\n1. **\"Head grade – excluding third-party buy-in feedstock\" row** [D009, p.48]: This is a critical qualification. Evander's headline total head grade is **4.8g/t**, but excluding third-party buy-in feedstock it is **11.2g/t**. The 202,555t of third-party buy-in at Evander (vs 34,411t FY25) massively dilutes the reported grade and drives the 4.6g/t overall recovered grade. **Implication**: Evander's underground grade quality (>11g/t) is masked by toll-milling/buy-in activity. For forecasting, the underground grade is the sustainable metric; the buy-in feedstock is a margin/volume variable. Must verify in D003/D006.2 whether buy-in feedstock is expected to continue at FY26 levels in FY27.\n\n2. **\"US$ all-in sustaining cost – excluding third-party buy-in feedstock\" row** [D009, p.49]: Group AISC excluding buy-in = **US$1,798/oz** vs headline **US$1,867/oz**. This confirms buy-in feedstock **raises** group AISC by ~US$69/oz (i.e., buy-in is margin-dilutive at current prices). Evander AISC excluding buy-in = **US$1,698/oz** vs headline **US$1,914/oz** — a US$216/oz difference. **Implication**: If buy-in feedstock volumes fall in FY27, group AISC should improve materially. Must verify FY27 buy-in assumptions in D003/D006.2.\n\n3. **Tennant FY25 AIC of US$32,041/oz** [D009, p.49]: This is a nonsensical-looking figure driven by the 1,513oz ramp-up year against fixed costs. It confirms FY26 (US$4,339/oz) is the first meaningful full-year AIC. **Implication**: FY25 comparatives for Tennant are not forecast-relevant; use FY26 as the base.\n\n4. **Tennant \"surface feedstock\" vs \"tailings\" classification** [D009, p.48–49]: Tennant's 751,914t is classified as **surface feedstock** (not tailings), processed at 94% recovery — a different processing route from the SA tailings operations (33–47% recovery). **Implication**: Tennant's cost/grade/recovery profile is structurally different; do not blend with SA tailings metrics.\n\n5. **Capex total discrepancy**: D009 group capex = **US$214.9m** [D009, p.50] vs stored FY26 total of **224.0** [D008.3, p.44]. A ~US$9.1m gap exists — likely corporate/exploration capex not allocated to operations in D009. Must reconcile in D006.5/D008.3.\n\n6. **Revenue table anomaly**: D009 shows Barberton Mines total revenue ZAR 5,958.6m but the \"Mining operations Barberton\" column shows 5,052.1 and Evander 3,397.5 — the \"Barberton Mines total\" (5,958.6) appears to include BTRP (906.5) but the arithmetic 5,052.1 + 906.5 = 5,958.6 confirms this. Similarly Evander Mines total 7,452.6 = 3,397.5 + 4,055.1 (Elikhulu). **Implication**: The \"Mines total\" columns are additive roll-ups including surface operations; do not double-count.\n\n7. **Gold produced total rounding**: Underground produced 105,479oz but group total shows 105,478oz [D009, p.48] — 1oz rounding difference. Immaterial but noted.\n\n---\n\n### 3. New Questions to Check in Future Sections\n\n| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |\n| --- | --- | --- | --- | --- | --- |\n| Q167 | HIGH | D003 (CEO's statement) | Evander buy-in feedstock jumped to 202,555t FY26 from 34,411t FY25; head grade ex-buy-in 11.2g/t vs total 4.8g/t [D009, p.48] | Confirm FY27 planned buy-in feedstock tonnage at Evander and whether it continues at FY26 levels; check impact on grade and AISC | Buy-in feedstock is margin-dilutive (Evander AISC ex-buy-in US$1,698 vs headline US$1,914); FY27 volume assumption materially changes group AISC |\n| Q168 | HIGH | D003 (CEO's statement) | Group AISC ex-buy-in US$1,798/oz vs headline US$1,867/oz [D009, p.49] | Confirm FY27 group AISC guidance and whether buy-in feedstock is assumed to continue; quantify AISC sensitivity to buy-in volume | Drives FY27 AISC forecast and margin |\n| Q169 | HIGH | D006.2 (Note 3 Segment Analysis) | D009 group capex US$214.9m [D009, p.50] vs stored FY26 total 224.0 [D008.3, p.44] — US$9.1m gap | Reconcile D009 by-mine capex sum (214.9) to D008.3 total (224.0); identify unallocated corporate/exploration capex | Ensures FY27 capex build is complete and not understated |\n| Q170 | HIGH | D003 (CEO's statement) | Tennant FY26 surface feedstock 751,914t @ 1.4g/t, 94% recovery, 32,124oz [D009, p.48–49] | Confirm FY27 Tennant throughput, grade and recovery guidance; check White Devil contribution timing | Anchors Tennant FY27 production forecast |\n| Q171 | MEDIUM | D003 (CEO's statement) | MTR FY26 processed 12,178,487t (11,566,768t tailings + 611,719t buy-in) @ 0.3g/t, 47% recovery, 51,927oz produced [D009, p.48–49] | Confirm FY27 MTR throughput and grade guidance; check whether buy-in feedstock continues | MTR is a major volume contributor; FY27 mix drives group ounces |\n| Q172 | MEDIUM | D003 (CEO's statement) | Elikhulu FY26 processed 13,807,025t @ 0.3g/t, 39% recovery, 56,475oz produced [D009, p.48–49] | Confirm FY27 Elikhulu throughput and grade guidance; check Winkelhaak feed contribution | Elikhulu is the largest single SA producer; FY27 volume drives group ounces |\n| Q173 | MEDIUM | D003 (CEO's statement) | BTRP FY26 processed 846,623t (775,385t tailings + 71,238t buy-in) @ 1.4g/t, 33% recovery, 12,932oz [D009, p.48–49] | Confirm FY27 BTRP throughput and whether flotation benefit is FY27 or FY28 | BTRP recovery improvement timing affects FY27 ounces |\n| Q174 | MEDIUM | D006.2 (Note 3 Segment Analysis) | D009 revenue: Barberton Mines total ZAR 5,958.6m, Evander Mines total ZAR 7,452.6m, MTR ZAR 3,837.9m, Tennant A$195.3m [D009, p.50] | Reconcile D009 revenue by mine to D006.2 segment revenue; confirm intra-group eliminations | Validates revenue forecast build |\n| Q175 | MEDIUM | D008.2 (All-in costs) | D009 AIC of production group ZAR 8,735.2m [D009, p.50] vs stored AIC expansion add-back 195.0 [D008.2, p.40] | Reconcile D009 AIC (ZAR 8,735.2m ÷ 16.90 = ~US$516.9m) to D008.2 AIC build; confirm expansion add-back | Validates AIC forecast |\n| Q176 | LOW | D003 (CEO's statement) | Evander FY26 underground milled 114,742t vs FY25 122,208t (down 6%); total milled incl. buy-in 317,297t vs 156,619t [D009, p.48] | Confirm FY27 Evander underground tonnage guidance; check whether buy-in continues | Evander underground volume trend affects grade and cost |\n| Q177 | LOW | D003 (CEO's statement) | Barberton FY26 underground milled 280,412t vs FY25 266,676t (+5%); surface 62,276t vs 65,288t [D009, p.48] | Confirm FY27 Barberton tonnage guidance | Barberton is a stable volume contributor |\n| Q178 | LOW | D006.2 (Note 3 Segment Analysis) | D009 Adjusted EBITDA by mine: Barberton 142.4, Evander 120.9, BTRP 29.4, Elikhulu 171.4, MTR 155.9, Tennant 43.0, Group 663.1 [D009, p.50] | Reconcile D009 by-mine Adjusted EBITDA to D008.4 by-operation 663.1 [D008.4, p.45] | Confirms segment EBITDA build for forecast |\n\n---\n\n### 4. Updated Open Questions Ledger (Copy to App)\n\n```markdown\n# OPEN QUESTIONS LEDGER — after D009 (Group production summary, pp. 48–50)\n\n## Pending: D002 / D003 (Highlights / CEO statement) — HIGH PRIORITY\n- Q1 (remainder): Confirm Sheba+Consort ounces and the ~US$3,500/oz tail figure; D009 confirms group 272,310oz produced / 272,373oz sold and AISC US$1,867/oz but no Sheba/Consort line. [D002, p.2–3; D009, p.49]\n- Q5 (remainder): Confirm Tennant FY27 capex $; White Devil first blast date and grade ramp. D009 confirms FY26 Tennant capex US$71.3m only. [D002, p.3; D003, p.6; D009, p.50]\n- Q7 (remainder): Confirm Evander underground grade >11g/t sustainability into FY27. D009 confirms 11.2g/t ex-buy-in FY26 but total grade 4.8g/t. [D002, p.3; D009, p.48]\n- Q9: Reconcile White Devil ~3Mt @ 3.8g/t (~350Koz) to 50→100Koz/yr ramp over 5 years. D009 shows Tennant surface feedstock 751,914t @ 1.4g/t only. [D002, p.3; D009, p.48–49]\n- Q10 (remainder): Confirm Royal Sheba first production timing; not double-counted with BTRP. No Royal Sheba line in D009. [D002, p.3; D003, p.6]\n- Q14: Check FY27 MTR production split; H1 FY27 below nameplate, Q2–Q4 step-up to ~60Koz annualised. D009 confirms FY26 MTR 51,927oz produced / 53,133oz sold. [D003, p.6; D009, p.49]\n- Q15: Check FY27 BTRP guidance; flotation benefit FY27 or FY28. D009 confirms FY26 BTRP 12,932oz produced / 12,826oz sold. [D003, p.6; D009, p.49]\n- Q17: Check Elikhulu FY27 guidance vs FY26 57,092oz sold; Winkelhaak feed contribution. D009 confirms FY26 Elikhulu 56,475oz produced / 57,092oz sold. [D003, p.6; D008.2, p.42; D009, p.49]\n- Q18: Check FY27 Tennant grade assumption and White Devil strip ratio/grade. D009 confirms FY26 Tennant 751,914t @ 1.4g/t, 94% recovery. [D003, p.6; D009, p.48–49]\n- Q21: Confirm Fairview 47,678oz vs table 47,677oz rounding. D009 aggregates Barberton Mines 71,997oz produced / 70,086oz sold. [D003, p.6–7; D009, p.49]\n- Q3: Reconcile dividend implied share counts: 2,436m / 2,333m / 2,420m; issued/weighted count, Emmerson shares, treasury. [D002, p.2; D006.7, p.30; D006.9, p.34]\n- Q4: Confirm FX rate/date for dividend US$ conversion (implied ~16.40–16.46 vs stated avg 16.90; note 16.46 close rate per D008.4 fn 1). D009 confirms FY26 avg US$/ZAR 16.90. [D002, p.2; D008.2, p.42; D008.4, p.46; D009, p.50]\n- Q8: Confirm Soweto Cluster DFS gold price assumption; FID timing Dec 2026; financing plan; capex post-FY27. [D002, p.3]\n- Q11: Confirm renewable energy US$5.1m in FY26 base; water savings US$1.4m/yr incremental FY27+. [D002, p.2–3]\n- Q16: Locate Tennant FY27 capex $ for fixed crusher, secondary mill, belt filter; capitalised vs expensed. D009 confirms FY26 Tennant capex US$71.3m. [D003, p.6; D009, p.50]\n- Q19: Extract total FY27 group capex guidance and Tennant-specific split (FY26 actual 224.0 total / 202.2 expansion captured; APM expansion capex 195.0; D009 shows 214.9 total). [D003, p.6; D006.6, p.29; D008.2, p.40; D008.3, p.44; D009, p.50]\n- Q115: Confirm 8,847 reciprocal dividend is intra-group (eliminated), not external cash outflow; treasury-share mechanics. [D006.11, p.36]\n- Q116: Confirm no provision/impairment for Barberton CGU or Evander litigation; contingent liability quantum. [D006.11, p.36]\n- Q165: Confirm FY27 dividend policy and whether 77.00 DPS (incl. maiden interim 12.00) is annualised run-rate; payout ratio vs LFCF 201.8. [D008.4, p.47, fn 1]\n\n## Pending: D003 (CEO's statement) — NEW from D009\n- Q167: Confirm FY27 planned buy-in feedstock tonnage at Evander (FY26 202,555t vs FY25 34,411t); impact on grade and AISC. [D009, p.48]\n- Q168: Confirm FY27 group AISC guidance and whether buy-in feedstock continues; AISC ex-buy-in US$1,798 vs headline US$1,867. [D009, p.49]\n- Q170: Confirm FY27 Tennant throughput, grade and recovery guidance; White Devil contribution timing. [D009, p.48–49]\n- Q171: Confirm FY27 MTR throughput and grade guidance; whether buy-in feedstock continues. [D009, p.48–49]\n- Q172: Confirm FY27 Elikhulu throughput and grade guidance; Winkelhaak feed contribution. [D009, p.48–49]\n- Q173: Confirm FY27 BTRP throughput and flotation benefit timing. [D009, p.48–49]\n- Q176: Confirm FY27 Evander underground tonnage guidance; whether buy-in continues. [D009, p.48]\n- Q177: Confirm FY27 Barberton tonnage guidance. [D009, p.48]\n\n## Pending: D006.2 (Note 3 Segment Analysis) — HIGH PRIORITY\n- Q157: Reconcile by-operation Adjusted EBITDA 663.1 [D008.4, p.45; D009, p.50] to LFCF starting Adjusted EBITDA 609.4 [D008.4, p.46]; identify 53.7 gap.\n- Q158: Reconcile FY25 Adjusted EBITDA appearing as 245.8 [p.45; D009, p.50], 226.6 [p.46], and 252,678 [Q36/Q119]; confirm audited restated figure.\n- Q159: Confirm whether any FY26 impairment exists and where it sits (P&L vs excluded from Adjusted EBITDA); quantify.\n- Q162: Confirm Tennant FY25 underlying operating result (Adjusted EBITDA 2.4 after bargain gain 28.0 add-back) and FY26 43.0 build; isolate one-offs. D009 confirms Tennant FY26 Adj EBITDA 43.0, FY25 2.4. [D009, p.50]\n- Q164: Extract revenue and gross profit to compute FY26/FY25 Adjusted EBITDA margin and gross profit margin [D008.4, p.47 definitions].\n- Q166: Reconcile ROCE numerator 545.8 [p.47] to by-operation 602.2 [p.45]; confirm average equity 791.3 and average borrowings 120.8.\n- Q36 (remainder): Confirm FY25 restated Adjusted EBITDA 252,678 in reconciliation table. [D006.2, p.22,24; D008.1, p.38]\n- Q42: Confirm segment AISC/APMs before or after intra-group management fee allocation. [D006.2, p.21]\n- Q44: Reconcile segment net assets 1,017,559 + goodwill 18,438 = 1,035,997 to group total equity. [D006.2, p.22]\n- Q65: Extract segment-level D&A from Note 3 to split Tennant/Emmerson vs SA. [D006.5, p.28]\n- Q155: Confirm by-mine \"Mining operations\" sub-rows (Barberton 12.2/8.3; Evander –/–) are non-additive to mine totals; avoid double-count. [D008.3, p.44; D006.2, p.22]\n- Q169: Reconcile D009 by-mine capex sum (214.9) to D008.3 total (224.0); identify unallocated corporate/exploration capex. [D009, p.50; D008.3, p.44]\n- Q174: Reconcile D009 revenue by mine (Barberton Mines 5,958.6; Evander Mines 7,452.6; MTR 3,837.9; Tennant A$195.3m) to D006.2 segment revenue; confirm intra-group eliminations. [D009, p.50]\n- Q178: Reconcile D009 by-mine Adjusted EBITDA (Barberton 142.4, Evander 120.9, BTRP 29.4, Elikhulu 171.4, MTR 155.9, Tennant 43.0, Group 663.1) to D008.4 by-operation 663.1. [D009, p.50; D008.4, p.45]\n\n## Pending: D006.10 / D006.9 (Notes 19,20,21 / 17,18) — HIGH PRIORITY\n- Q160: Confirm STI FV gain (137,867) and gold trading (58,931) sit inside \"Net income before finance costs\" and whether added back in Net Adjusted EBITDA; quantify FY26 FV gain/loss.\n- Q161: Confirm rehab fund FV gain/loss FY26 amount and whether it sits in \"Net income before finance costs\" (NOT added back).\n- Q108 (remainder): Confirm STI 137,867 treatment in net debt; FY27 FV assumption. [D006.10, p.35–36; D008.1, p.38–39; D008.3, p.44]\n- Q112 (remainder): Confirm rehab fund FV assumption and Adjusted EBITDA treatment; AISC shows reclamation accretion −0.6 (FY26). [D006.10, p.35–36; D008.2, p.40]\n- Q143: Confirm rehab fund FV gain/loss treatment in Adjusted EBITDA; accretion stays negative in FY27. [D008.2, pp.40–41]\n- Q81 (remainder): Confirm STI FV gain US$1,142k excluded from Adjusted EBITDA/AISC; confirm STI treatment in net debt. [D006.7, p.30; D006.10, p.35; D008.1, p.38–39]\n- Q128: Confirm STI (137,867) and gold trading (58,931) classified as \"normal course\" derivatives for Adjusted EBITDA add-back. [D008.1, p.38]\n- Q131: Confirm rehab fund FV gain treatment in Adjusted EBITDA. [D008.1, p.38]\n- Q132: Identify IAS 7 non-cash items adjusted in FCF; confirm SBP treatment in FCF. [D008.1, p.39]\n- Q121: Locate FCF reconciliation; identify \"permitted indebtedness\"-funded capex and IAS 7 non-cash adjustments; reconcile to cash flow statement. [D008.1, p.39]\n- Q123: Locate headline earnings reconciliation (Note 13); confirm disposal/impairment/tax adjustments and EPS denominator. [D008.1, p.39]\n- Q103: Identify missing ~43,831 FY26 adjustment line in Note 19 \"Adjusted for\" subtotal 143,482. [D006.10, p.35]\n- Q109: Confirm FY27 payables unwind assumption; reconcile Note 19 trade and other payables increase 50,354 to D006.7 29,480. [D006.10, p.35; D006.7, p.30]\n- Q105 (remainder): Identify projects for 309,076 board-approved commitments and 94,580 open orders; tie to FY27 capex. [D006.10, p.36; D008.2, p.40; D008.3, p.44]\n- Q107: Quantify PPA with NOA Group (3 July 2025, 10+5 years) cost commitment and start date; FY27 electricity step-up. [D006.10, p.36; D008.1, p.39]\n- Q114: Confirm AISC/electricity reflects external PPA only; quantify external electricity post solar disposal. [D006.11, p.36; D008.1, p.39]\n- Q50 (remainder): Confirm restricted cash 2,612 nature; finance income 60 FY26 vs nil FY25; confirm inside cash 108.3. [D006.10, p.35; D008.1, p.39; D008.3, p.44]\n- Q94 (remainder): Confirm exploration asset carrying value US$142,244k; FY27 depletion/impairment; AISC exclusion confirmed. [D006.9, p.34; D008.2, p.40]\n- Q95 (remainder): Confirm Emmerson transaction costs US$11,879k capitalised (not in P&L/Adjusted EBITDA); no APM add-back. [D006.9, p.34; D008.2, p.40]\n- Q96 (remainder): Reconcile Note 18.2 \"no disposals\" against solar disposal expectation; confirm timing/gain and FY27 electricity step-up. [D006.9, p.34; D008.1, p.39; D008.3, p.44]\n- Q100 (remainder): Confirm cash-settled SBP current portion US$43,969k in net debt/liquidity; FY27 cash settlement. [D006.9, p.33; D006.10, p.35; D008.1, p.39; D008.3, p.44]\n- Q102: Confirm PAR Gold G-share vesting/settlement (11,541,455, vest 30 June 2026) in FY27 cash flow; I-share FY27 expense. [D006.9, p.34; D008.1, p.38]\n- Q152: Confirm SBP 43,969 sits in current liabilities (not debt); confirm FY27 cash settlement timing. [D008.3, p.44; D006.9, p.33; D006.10, p.35]\n- Q153: Confirm restricted cash 2,612 is inside cash 108.3 and not \"available\" for senior debt netting. [D008.3, p.44; D006.10, p.35]\n\n## Pending: D006.8 (Note 15/16 borrowings) — HIGH PRIORITY\n- Q163: Confirm RCF maturity 30 June 2027, refinancing plan, and FY27 debt service obligations feeding debt service cover ratio.\n- Q86 (remainder): Confirm RCF renewal/refinancing plans before 30 June 2027 maturity; FY27 liquidity headroom (net cash 185.7 improves headroom). [D006.8, p.31; D008.1, p.39; D008.3, p.44]\n- Q122: Confirm RCF repayment (30 June 2027 maturity) modelled; tie LFCF 201.8 to net debt movement. [D008.1, p.39]\n- Q87: Quantify JIBAR→ZARONIA interest rate impact; confirm ZARONIA vs JIBAR. [D006.8, pp.31–32; D008.1, p.39]\n- Q146: Identify whether gold loan (25,557) and/or gold trading (58,931) sit inside \"Borrowings 51.5\", are netted in cash, or are excluded; reconcile to Note 15/16 borrowings. [D008.3, p.44; D006.8, p.31–33]\n- Q147: Reconcile borrowings movement 138.5 to cash flow financing repayments 149.3; explain FX translation / IFRS 9 / new drawdowns. [D008.3, p.44; D006.8, pp.31–32; D006.10, p.35]\n- Q150: Identify the 1.2 financial liability (SBP? other?); confirm lease 7.8 = IFRS 16 and FY27 lease payments. [D008.3, p.44]\n- Q151: Confirm senior debt excludes leases and the 1.2 liability; confirm STI netted in both net debt and net senior debt. [D008.3, p.44]\n- Q89 (remainder): Confirm gold loan 25,557 and gold trading 58,931 included/excluded from net debt. [D006.8, p.33; D008.1, p.39; D008.3, p.44]\n- Q120 (remainder): Confirm treatment of gold loan 25,557, gold trading 58,931, STI 137,867, cash-settled SBP 43,969, restricted cash 2,612, IFRS 16 leases in net debt. [D008.1, p.39; D008.3, p.44]\n- Q129 (remainder): Confirm which financial liabilities added to net debt (SBP? gold loan? trading?). [D008.1, p.39; D008.3, p.44]\n- Q130 (remainder): Confirm \"cash and related hedges\" meaning; whether STI netted in net debt. [D008.1, p.39; D008.3, p.44]\n- Q84 (remainder): Check cash flow statement financing activities for total debt repayments US$149,311k; reconcile to net debt movement. [D006.8, pp.31–32; D006.10, p.35; D008.3, p.44]\n- Q47 (remainder): Check FY27 capex interest-capitalisation; FY27 finance cost run-rate; DMTN coupon rates. [D006.4, p.25; D006.8, pp.31–32]\n\n## Pending: D006.5 / D006.6 / D006.7 (PPE, inventory, SBP) — MEDIUM\n- Q63 (remainder): Confirm AISC uses production D&A US$60,288k (not total PPE depreciation US$61,733k); identify US$2,179k \"other D&A\"; AISC reconciliation shows NO D&A line — resolve. [D006.5, p.28; D006.10, p.35; D008.2, p.40]\n- Q64 (remainder): Confirm no further FY27 impairment; CGU headroom (Barberton land claim — Note 23). [D006.5, p.28; D006.11, p.36; D008.1, p.38]\n- Q140: Locate production D&A in Note 3/Note 7; confirm whether inside cost of production 435.7 or excluded from AISC. [D008.2, p.40]\n- Q67: Reconcile \"Inventory recognised in cost of production\" 57,468 vs 27,358 (+US$30,110k) to cost of sales in P&L and production volumes. [D006.6, p.29; D006.10, p.35]\n- Q68: Check cyanide cost per tonne and prepayments 15,914 unwind in FY27; working capital movement. [D006.6, p.29]\n- Q69: Check cash flow statement for VAT/GST receivable 18,107 timing and expected FY27 unwind. [D006.6, p.29; D006.10, p.35]\n- Q72: Confirm solar projects status at FY26 year-end, disposal timing/gain, FY27 electricity step-up. [D006.6, p.29; D006.10, p.36; D006.11, p.36]\n- Q75: Confirm nature/collectability of other receivables 7,828 (Evander/Barberton); loss allowance adequacy. [D006.6, p.29]\n- Q25 (remainder): Extract FY26 SBP P&L charge and FY27 expected charge; explain \"Other expenses\" 85,958 vs 36,484. [D005.1, p.17–18; D006.2, p.21,23]\n- Q12: Quantify SBP expense FY26 vs FY25 and FY27 assumption. [D002, p.3; D006.9, p.33]\n- Q142: Confirm no FY27 voluntary severance / restructuring cost expected; check \"Other expenses\". [D008.2, pp.40–41]\n- Q145: Confirm driver of corporate G&A step-up 18.7→34.9 and FY27 run-rate. [D008.2, pp.40–41]\n- Q141: Map 309,076/94,580 commitments to specific projects (Tennant crusher/mill/filter, MTR expansion, White Devil) and FY27 timing. [D008.2, p.40]\n\n## Pending: D006.4 (Income tax) — MEDIUM\n- Q26 (remainder): FY27 expected effective tax rate — check D008/D009. [D006.1, p.19–20]\n- Q32 (remainder): FY27 ETR from deferred tax note. [D006.1, p.19–20]\n- Q39 (remainder): FY27 ETR, mining tax vs corporate tax split. [D006.2, p.21,23]\n- Q52: Extract pre-tax profit from P&L; compute FY26/FY25 ETR; confirm 33.2%/28.5%. [D006.4, p.25]\n- Q53: Confirm no remaining tax losses; model FY27 current tax at full statutory rates. [D006.4, p.26]\n- Q57 (remainder): Confirm ZAR/AUD FX rate FY26 close vs FY25; FY27 FX sensitivity on DTL; averages 16.90/0.68 captured. D009 confirms FY26 avg US$/ZAR 16.90, US$/A$ 1.47. [D006.4, p.26; D008.2, pp.42–43; D009, p.50]\n- Q58: Confirm Barberton deferred tax rate step 24.00%→28.29%; FY27 stability. [D006.4, p.26]\n\n## Pending: D005.1 / D005 (Primary statements) — MEDIUM\n- Q24 (remainder): Confirm reciprocal dividend (8,847) cash round-trip on 13.1% treasury; net vs gross; FY27 dividend policy. [D005.1, p.18–19; D006.7, p.30; D006.11, p.36]\n- Q31 (remainder): Reconcile cash+STI US$246.2m (confirmed 108.3+137.9) and debt facilities US$78.9m (vs gross debt 60.5 here) to cash flow statement and Emmerson/equity issuance. [D006.1, p.19; D006.8, p.31,33; D006.10, p.35; D008.3, p.44]\n- Q34 (remainder): Confirm APM reconciliation ties to IFRS — AISC starts from IFRS cost of production 435.7; tie to P&L cost of sales. [D008.2, p.40]\n- Q77: Confirm FY27 weighted average share count including 102,641,421 Emmerson shares issued 1 July 2026; check EPS and DPS calculations. [D006.7, p.30; D006.9, p.34; D006.11, p.36]\n- Q78: Confirm share buy-back cash cost (~US$1,322k) in cash flow statement financing activities; further buy-backs FY27. [D006.7, p.30]\n- Q79: Confirm working capital movement for other payables +US$29,480k in cash flow statement; reconcile to Note 19 trade and other payables increase 50,354. [D006.7, p.30; D006.10, p.35]\n- Q80: Confirm VAT payable US$5,836k payment timing in cash flow statement; jurisdiction. [D006.7, p.30]\n- Q83 (remainder): Confirm treasury share treatment in EPS and dividend calculations; cancellation/reissue. [D006.7, p.30; D006.8, p.31]\n- Q85: Check P&L net finance costs line; reconcile Note 19 finance costs 17,318 and income (4,706) = net 12,612 vs D006.8 gross 12,666 (4,652 gap). [D006.8, pp.31–32; D006.10, p.35]\n- Q90: Check SOCIE for US$10,877k share premium cancellation reclassification to retained earnings; distributable reserves. [D006.8, p.31]\n- Q92: Confirm 24,917,607 Tennant lender shares (issued FY25) in FY26 weighted average share count; EPS denominator. [D006.8, p.31, fn 1]\n- Q93: Confirm 102,641,421 Emmerson shares excluded from 30 June 2026 issued count and included in FY27 weighted average from 1 July 2026; EPS/DPS denominators. [D006.9, p.34; D006.11, p.36]\n- Q98: Confirm reserve for shares to be issued US$148,218k presented in equity (Note 14) and reconciles to SOCIE; no cash outflow. [D006.9, p.34]\n- Q117: Confirm FY27 weighted average share count and EPS/DPS denominators include 102,641,421 Emmerson shares from 1 July 2026. [D006.11, p.36]\n- Q149: Tie 51.5 borrowings and 108.3 cash to statement of financial position; quantify IFRS 9 adjustment and hedge asset netted in net debt definition. [D008.3, p.44; D005, p.17]\n\n## Pending: D008.2 / D008.3 (APMs) — MEDIUM\n- Q125 (remainder): Explain group AISC rise US$1,600→US$1,867/oz (confirmed D009); confirm what US$2,598→US$3,487/oz refers to; FY27 outlook. [D008.2, pp.42–43; D009, p.49]\n- Q127 (remainder): Confirm FY27 by-product credit assumption (FY26 4.1). [D008.2, pp.40–41]\n- Q135 (remainder): Confirm correct FY25→FY26 group AISC series (confirmed 1,600→1,867); identify 2,598/3,487 metric. [D008.2, pp.42–43; D009, p.49]\n- Q136 (remainder): Extract FY27 capex guidance by mine; confirm Tennant build completion and step-down from FY26 195.0/202.2. D009 confirms FY26 by-mine capex total 214.9. [D008.2, p.40; D008.3, p.44; D009, p.50]\n- Q137 (remainder): Confirm FY27 budget FX rates; quantify FX sensitivity on US$ AISC. D009 confirms FY26 avg 16.90/1.47. [D008.2, pp.42–43; D009, p.50]\n- Q138 (remainder): Confirm FY26 Tennant AIC US$4,339/oz is first meaningful full-year figure (confirmed D009); extract FY27 guidance. [D008.2, p.43; D009, p.49]\n- Q139 (remainder): Confirm FY27 tailings vs underground mix guidance. D009 confirms FY26 mix. [D008.2, pp.42–43; D009, p.48]\n- Q144: Confirm FY27 by-product credit assumption (FY26 4.1). [D008.2, pp.40–41]\n- Q148: Confirm AIC expansion add-back = 202.2 − 7.2 = 195.0 exactly; confirm no other non-gold capex inside 195.0. [D008.2, p.40; D008.3, p.44]\n- Q154 (remainder): Extract FY27 group and by-mine capex guidance; confirm Tennant step-down from 68.4 and MTR from 29.9 (FY26 total 224.0; sustaining 21.8, expansion 202.2). D009 confirms FY26 by-mine capex total 214.9. [D008.3, p.44; D009, p.50]\n- Q126 (remainder): Confirm non-gold capital excluded from AISC; AIC adds expansion capex 195.0; check if any non-gold capex sits inside. [D008.2, p.40; D008.3, p.44]\n- Q133 (remainder): Confirm whether AISC is built on cash-cost or total-cost basis (D009 confirms cash-cost + sustaining); locate US$60,288k production D&A and where it sits. [D008.2, p.40; D009, p.50]\n```\n\n---\n\n### 5. Baseline Forecast Inputs Captured Here\n\n**Group production (FY26 vs FY25)** [D009, p.48–49]:\n\n| Metric | FY26 | FY25 |\n|---|---|---|\n| Underground tonnes milled | 395,154t | 388,884t |\n| Surface tonnes milled (Barberton) | 62,276t | 65,288t |\n| Tailings tonnes processed | 26,149,178t | 22,924,167t |\n| Surface feedstock processed (Tennant) | 751,914t | 85,316t |\n| Third-party buy-in feedstock | 887,646t | 92,536t |\n| Total tonnes milled & processed | 28,246,168t | 23,556,191t |\n| Head grade – total | 0.5g/t | 0.5g/t |\n| Overall recovered grade | 0.3g/t | 0.3g/t |\n| Gold produced – underground | 105,478oz | 93,724oz |\n| Gold produced – surface (Barberton) | 2,428oz | 2,654oz |\n| Gold produced – tailings | 113,613oz | 98,636oz |\n| Gold produced – third-party buy-in | 18,667oz | 1,081oz |\n| Gold produced – surface feedstock (Tennant) | 32,124oz | 1,513oz |\n| **Gold produced – total** | **272,310oz** | **196,527oz** |\n| **Gold sold – total** | **272,373oz** | **196,926oz** |\n\n**By-mine gold produced / sold (FY26)** [D009, p.49]:\n- Barberton Mines: 71,997oz produced / 70,086oz sold\n- Evander Mines: 46,855oz produced / 47,112oz sold\n- BTRP: 12,932oz produced / 12,826oz sold\n- Elikhulu: 56,475oz produced / 57,092oz sold\n- MTR: 51,927oz produced / 53,133oz sold\n- Tennant: 32,124oz produced / 32,124oz sold\n\n**Realized prices (FY26)** [D009, p.49]:\n- Average US$ gold price received – Group: **US$4,235/oz** (FY25: US$2,735/oz)\n- Average ZAR gold price received – SA: **ZAR 2,308,329/kg** (FY25: ZAR 1,595,761/kg)\n- Average A$ gold price received – Australia: **A$195,501/kg** (FY25: A$162,171/kg)\n\n**Unit costs (FY26)** [D009, p.49]:\n- Group US$ cash cost: **US$1,600/oz** (FY25: US$1,426/oz)\n- Group US$ AISC: **US$1,867/oz** (FY25: US$1,600/oz)\n- Group US$ AISC ex-buy-in: **US$1,798/oz** (FY25: US$1,599/oz)\n- Group US$ AIC: **US$2,576/oz** (FY25: US$2,383/oz)\n- Tennant US$ AIC: **US$4,339/oz** (FY25: US$32,041/oz)\n- Tennant US$ AISC: **US$2,261/oz** (FY25: US$1,637/oz)\n- Evander US$ AISC: **US$1,914/oz** (ex-buy-in US$1,698/oz)\n- Barberton US$ AISC: **US$2,589/oz**\n- MTR US$ AISC: **US$1,389/oz**\n- Elikhulu US$ AISC: **US$1,231/oz**\n- BTRP US$ AISC: **US$1,564/oz**\n\n**Capex (FY26, US$m)** [D009, p.50]:\n- Barberton 37.5; Evander 49.8; BTRP 2.6; Elikhulu 21.1; MTR 32.6; Tennant 71.3; **Group 214.9** (FY25: 163.6)\n\n**Revenue (FY26)** [D009, p.50]:\n- ZAR: Barberton Mines total 5,958.6m; Evander Mines total 7,452.6m; MTR 3,837.9m; Group ZAR 17,249.1m\n- A$: Tennant 195.3m\n- Group Adjusted EBITDA: **US$663.1m** (FY25: US$245.8m)\n\n**FX rates** [D009, p.50]:\n- US$/ZAR average: **16.90** (FY25: 18.17)\n- US$/A$ average: **1.47** (FY25: 1.54)\n\n**Cost of production (FY26)** [D009, p.50]:\n- ZAR group cost of production: 6,431.7m\n- ZAR group all-in sustainable cost: 6,595.8m\n- ZAR group all-in cost: 8,735.2m\n- A$ Tennant cost of production: 81.0m; AISC 106.8m; AIC 209.3m\n\n---\n\n### 6. Next Section to Capture\n\n**`D003` (CEO's statement, pp. 5–15)** — this is the single most useful next section. It will resolve the highest-priority open items: Q167/Q168 (FY27 buy-in feedstock and AISC guidance), Q170–Q173 (FY27 by-mine throughput/grade guidance), Q5/Q9/Q10 (White Devil, Royal Sheba), Q14/Q15/Q17/Q18 (FY27 operational guidance), Q19/Q136/Q154 (FY27 capex guidance), and Q125/Q135 (AISC series and the 2,598/3,487 metric). If D003 does not carry the FY27 guidance tables, then **`D006.2` (Note 3 Segment Analysis, pp. 20–24)** is the fallback to resolve Q157/Q169/Q174/Q178 (segment reconciliation) and Q45/Q48 (Tennant revenue tie)."
+}

@@ -1,0 +1,9 @@
+{
+  "before_ledger_valid": 3,
+  "after_ledger_valid": 2,
+  "before_cost_usd": 0.0134742468,
+  "after_cost_usd": 0.013075624800000001,
+  "same_text_and_incoming_questions": true,
+  "only_prompt_messages_changed": true,
+  "limitations": "One saved baseline and one fresh generation per case; no randomized replication; costs/cache conditions not controlled."
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "Preliminary Codex checks of new Stage1 while the already-submitted Stage2 call runs; not a full valuation audit",
+  "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+  "findings": [
+    {
+      "finding_id": "F001",
+      "severity": "high",
+      "origin": "New Stage1 section2.1 statutory cash-flow comparison",
+      "verdict": "FAIL",
+      "claim": "Apparent R370m difference between statutory PBD movement182 and carrying-value decrease188",
+      "source_physical_pages": [12,13],
+      "independent_checks": {
+        "carrying_decline": "4677-4489=188",
+        "net_cash_after_purchases": "728+116-382-28=434",
+        "portfolio_accounting_income_before_funding": "383-167+30=246",
+        "cash_less_income": "434-246=188",
+        "remaining_statutory_difference": "188-182=6"
+      },
+      "correction": "Use the same positive-decrease convention and proper portfolio/cash/accounting scope. R370m is not a supported residual. Keep the remaining6 unexplained without assuming FX,rounding or an issuer accounting error.",
+      "downstream_check": "Determine whether Stage2 corrects or propagates this error. Source input/request already preserved; this finding is not injected into the in-flight model call."
+    },
+    {
+      "finding_id": "F002",
+      "severity": "medium",
+      "origin": "Stage1 verification matrix raw initial claim column",
+      "verdict": "NOT VERIFIED",
+      "claim": "Some tested pitfalls are phrased as raw current questions/claims,e.g.contributed capital is NAV or statutory OCF is FCFE",
+      "correction": "Distinguish an analytical risk being tested or prior-run error from an error actually asserted by this run's source sections. Do not invent an attribution to a question that asks for the correct calculation."
+    }
+  ],
+  "supported_within_coverage": [
+    "POCI3414+431=3845 and separate principal/FVTPL rollforwards",
+    "FY25 historical losses77+182=259;current191 remains half-year",
+    "Net receivables390 plus nonfinancial107 equals497",
+    "Conditional simplified-ECL interpretation and static liquidity versus forecast distinction",
+    "Full page25 brief now includes secondary currency-risk content and continuation"
+  ],
+  "limits": "Source tables independently inspected previously against identical hash. No new full-PDF image audit,current quote or financial target validation. Stage2 result pending."
+}

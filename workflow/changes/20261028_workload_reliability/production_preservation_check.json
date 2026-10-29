@@ -1,0 +1,104 @@
+{
+  "changed_tables": [
+    "sqlite_sequence"
+  ],
+  "baseline_sequences": [
+    [
+      "sections",
+      553
+    ],
+    [
+      "sector_guardrails",
+      31994
+    ]
+  ],
+  "current_sequences": [
+    [
+      "sections",
+      553
+    ],
+    [
+      "sector_guardrails",
+      32168
+    ]
+  ],
+  "reports_unchanged": true,
+  "sections_unchanged": true,
+  "guardrails_unchanged": true,
+  "baseline_tables": {
+    "app_state": {
+      "count": 1,
+      "sha256": "0438a1f104c9f222d4e9b9169bf937445ffe69f6da3b9812fd0514f1b57acc80"
+    },
+    "ledger_events": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ledger_questions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "market_quotes": {
+      "count": 14,
+      "sha256": "1a990d612351736718eb50f5435b43cda465277c845d4d7687497508a8d0fe96"
+    },
+    "reports": {
+      "count": 21,
+      "sha256": "56cbc22e217bebb9de972225ea0be1b3c07ba9beaa8127f39c18067a1df3ea84"
+    },
+    "section_response_attempts": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sections": {
+      "count": 338,
+      "sha256": "6d18a67c53af9f76b0412ff142189a8671ca983bd70fb48db2be75d34bac90fb"
+    },
+    "sector_guardrails": {
+      "count": 37,
+      "sha256": "1166de4180df47d811878b7bc835319a295e464baa72d9e4d16a6835406c40a8"
+    },
+    "sqlite_sequence": {
+      "count": 2,
+      "sha256": "8950c672fc3dc5de078f4bbef76c27c2aabf88d7c3d0e383a2c7d29c30f972e7"
+    }
+  },
+  "current_tables": {
+    "app_state": {
+      "count": 1,
+      "sha256": "0438a1f104c9f222d4e9b9169bf937445ffe69f6da3b9812fd0514f1b57acc80"
+    },
+    "ledger_events": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ledger_questions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "market_quotes": {
+      "count": 14,
+      "sha256": "1a990d612351736718eb50f5435b43cda465277c845d4d7687497508a8d0fe96"
+    },
+    "reports": {
+      "count": 21,
+      "sha256": "56cbc22e217bebb9de972225ea0be1b3c07ba9beaa8127f39c18067a1df3ea84"
+    },
+    "section_response_attempts": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sections": {
+      "count": 338,
+      "sha256": "6d18a67c53af9f76b0412ff142189a8671ca983bd70fb48db2be75d34bac90fb"
+    },
+    "sector_guardrails": {
+      "count": 37,
+      "sha256": "1166de4180df47d811878b7bc835319a295e464baa72d9e4d16a6835406c40a8"
+    },
+    "sqlite_sequence": {
+      "count": 2,
+      "sha256": "22cf3626aa351ebb25d69e00ba9e81f4782b0c410d2c702546dbb0683bf9b4cd"
+    }
+  }
+}

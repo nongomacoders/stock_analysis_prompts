@@ -1,0 +1,101 @@
+[
+  {
+    "id": "C001",
+    "origin": "Gemini findings.json F001",
+    "claim": "Numeric column separation using native vertical edges and numeric row anchoring cleanly separates '5' (Other loans) and '390' (Trade receivables). The financial assets carrying value evaluates to 5 + 390 + 3,845 + 644 = 4,884 Rm, matching reported carrying value exactly. Prior false 9,879 Rm (+4,995 Rm inflation) allegation is completely eliminated.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "NTU22 source5/390/3845/644 and new answer agree; prior9879 allegation absent. Improvement demonstrated in this sample, not guaranteed elimination.",
+    "verdict": "PASS",
+    "assessment": "supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C002",
+    "origin": "Gemini findings.json F002",
+    "claim": "Elimination of wide-heading column swallowing separates the 6 foreign exchange rate columns cleanly. Closing exchange rates for 31 Mar 2026 (USD 17.2 / GBP 22.7), 31 Mar 2025 (USD 18.4 / GBP 23.9), and 30 Sep 2025 (USD 17.3 / GBP 23.2) are mapped accurately. Baseline comparative date inversion is resolved.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "NTU25 closing USD17.2/18.4/17.3 and GBP22.7/23.9/23.2 dates match new answer. Attribution solely to a specific extraction heuristic is not isolated.",
+    "verdict": "PASS",
+    "assessment": "supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C003",
+    "origin": "Gemini findings.json F003",
+    "claim": "Preserving running prose paragraphs outside of markdown tables, combined with prompt guidance requesting short literal anchors (8-50 chars) from single cells/sentences, resulted in 5/5 valid ledger deltas. Baseline section 13 previously failed delta validation due to table pipe corruption. Both portfolio roll-forwards (Principal book 3,845; Other financial assets 644) are arithmetically exact.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Five valid deltas and NTU13 correct prose/rolls confirmed. Both prompt and extraction changed; cannot prove short-anchor adherence or elimination of all quote brittleness. Several actual quotes exceed50chars and include pipes, yet match.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C004",
+    "origin": "Gemini findings.json F004",
+    "claim": "DeepSeek repeatedly describes the R167m impairment loss as an 'impairment release' and questions the 'sustainability of that release'. Because PBD assets have a cumulative impairment gain (+R431m), a reduction from R598m to R431m represents an impairment LOSS (P&L charge of -R167m), not an earnings release. This inverts the economic and accounting reality.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "NTU24 -167 impairment loss reduces cumulative gain598to431; DeepSeek calls it release. The +24 acquired gain is distinct from -191 historical loss.",
+    "verdict": "PASS",
+    "assessment": "supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C005",
+    "origin": "Gemini findings.json F005",
+    "claim": "DeepSeek marked Q-08aa5c3f257440ab 'resolved' while explicitly stating in its answer that the total R4,489m PBD carrying value was not visible in this capture and that scope reconciliation was being deferred to a new question. The explicit closure condition required reconciliation to the carrying value. Valid evidence anchors alone cannot substitute for satisfying closure conditions.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Actual resolved update explicitly defers4489 scope. Classification is answered but original carrying-value closure not fulfilled.",
+    "verdict": "PASS",
+    "assessment": "supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C006",
+    "origin": "Gemini findings.json F006",
+    "claim": "DeepSeek double-counted 1,081 oz of third-party buy-in feedstock in FY25 Group gold production, calculating 197,608 oz vs printed 196,527 oz (+1,081 oz error). The model selected the 'Group total' underground column (93,724 oz, which already rolled in the 1,081 oz buy-in) and then added the buy-in line (1,081 oz) a second time. The disjoint sum 92,643 + 2,654 + 98,636 + 1,081 + 1,513 = 196,527 oz reconciles exactly to the single ounce.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Model adds1081 twice using93724; disjoint reported subtotals foot196527. This exact footing does not validate every printed tailings component.",
+    "verdict": "PASS",
+    "assessment": "supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C007",
+    "origin": "Gemini findings.json F007",
+    "claim": "DeepSeek speculated that Tennant FY25 A$ all-in cost (A$1,584,835/kg) is a 'likely printing/scale error' and that the ZAR/kg to US$/oz conversion difference is an unexplained residual. Tennant surface feedstock was in initial commissioning producing only 1,513 oz (47 kg), making initial capital costs per kg naturally extreme. Group AISC converts at asset-weighted rates, not an annual average FX rate.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Speculative issuer-error explanation correctly criticized. Gemini substitutes unsupported transaction-date/weighted FX assertions and a47kg production explanation. Sold1179oz (36.671kg), not produced1513oz (47.060kg), fits reported A$58.1m and1584835/kg.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C008",
+    "origin": "Gemini findings.json F008",
+    "claim": "The PAN production table exhibits genuine 1-ounce subtotal variances due to integer rounding in the source document (105,479 vs 105,478 oz; 118,852 vs 118,853 oz; 272,311 vs 272,310 oz). Furthermore, MTR FY25 tailings exhibits an internal source inconsistency: Column 6 (Surface operations) prints 25,043 oz while Column 14 (Total operations MTR total) prints 30,806 oz (difference 5,763 oz, which equals the FY26 MTR buy-in volume). The printed Surface operations total of 98,636 oz foots using the 30,806 oz figure, proving an internal source layout anomaly.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Source MTR25043vs30806 difference5763 confirmed; printed tailings98636 uses30806. Cause, correct replacement and link to FY26 buy-in not established. One-ounce differences confirmed, but rounding is plausible rather than proved. Column numbering inaccurate: among13data columns MTR is6th/11th, with label/year/unit offsets9th/14th.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  },
+  {
+    "id": "C009",
+    "origin": "Gemini findings.json F009",
+    "claim": "Multi-tier grouped column headers (e.g. 3-tier hierarchies across 16 columns) cannot be cleanly represented in standard GitHub Flavored Markdown tables without colspan. Attempting complex programmatic table reconstruction across arbitrary company formats introduces fragile edge cases. Source layout limitations should be carried as documented analytical uncertainty, supported by targeted prompt instructions on multi-tier column selection.",
+    "classification": "Evaluator inference from historical source evidence",
+    "primary_evidence": "NTU physical13,21–25; PAN48–50 as specified in assessment",
+    "independent_check": "Keep generic extractor and avoid complex company-specific parser, aligned with user preference. GFM lacks colspan, but fully qualified flat column labels can represent hierarchy; current placement is imperfect, not mathematically impossible to improve.",
+    "verdict": "NOT VERIFIED",
+    "assessment": "partly supported",
+    "consequence": "See findings.json; no financial valuation validated"
+  }
+]

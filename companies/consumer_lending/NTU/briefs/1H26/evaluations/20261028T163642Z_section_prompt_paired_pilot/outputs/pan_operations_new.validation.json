@@ -1,0 +1,56 @@
+{
+  "case": "pan_operations",
+  "version": "new",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question": "FY25 total gold produced is stated as 196,527 oz (p.49) but the sum of disclosed components (underground 93,724 + surface 2,654 + tailings 98,636 + third-party buy-in 1,081 + surface feedstock 1,513 = 197,608 oz) exceeds it by 1,081 oz. Is the FY25 third-party buy-in line (1,081 oz) double-counted, mis-attributed, or is the total a rounding/restatement difference?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 Group production summary p.49; cross-check D006 Note 3 Segment analysis pp.20-24",
+      "evidence_required": "Component-level FY25 gold produced by segment/operation with a reconciliation to the 196,527 oz Group total; confirm whether third-party buy-in oz are included in any segment total.",
+      "closure_condition": "A reconciliation showing the FY25 components sum to the stated Group total, or an explicit statement of the reconciling item and its nature.",
+      "question_id": "Q-99e93be7ca7c4594",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What are the definitions and calculation bases for ZAR/US$ cash cost, all-in sustaining cost (AISC), all-in cost (AIC) and adjusted EBITDA used in the Group production summary, and how do they reconcile to IFRS figures?",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures pp.38-47 (Financial APMs, All-in costs, Adjusted EBITDA); D010 Glossary pp.51-52",
+      "evidence_required": "APM definitions, reconciliation tables from IFRS cost/revenue to cash cost, AISC, AIC and adjusted EBITDA, and statement of whether third-party buy-in feedstock is included or excluded in each metric.",
+      "closure_condition": "Definitions and reconciliations for each metric are provided, with the buy-in feedstock treatment stated.",
+      "question_id": "Q-39c436c215ca4559",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Third-party buy-in feedstock rose from 92,536 t / 1,081 oz (FY25) to 887,646 t / 18,667 oz (FY26). What is the margin/economics of buy-in processing, and is it included in Group AISC guidance and the 'excluding third-party buy-in feedstock' AISC (1,798 vs 1,867 US$/oz)?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 All-in costs pp.40-43; D006 Note 3 Segment analysis pp.20-24; D003 CEO statement pp.5-15",
+      "evidence_required": "Buy-in feedstock volumes, grades, recoveries, purchase cost and contribution to revenue/EBITDA; explicit statement of AISC inclusion/exclusion and guidance basis.",
+      "closure_condition": "Economics of buy-in feedstock and its treatment in AISC/guidance are disclosed.",
+      "question_id": "Q-8561fc42a96848c5",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Tennant (Australia) ramped up sharply in FY26 (surface feedstock 85,316 → 751,914 t; 1,513 → 32,124 oz; A$ revenue 5.9m → 195.3m). What are the ramp-up assumptions, sustainable throughput/grade, and FY27 production and cost guidance for Tennant?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D003 CEO statement pp.5-15; D002 Highlights pp.2-4; D008 All-in costs pp.40-43",
+      "evidence_required": "Tennant ramp-up schedule, design capacity, FY27 guidance (production, AISC/AIC), and basis for FY25 anomalous A$ AISC/AIC figures (80,962 and 1,584,835 A$/kg).",
+      "closure_condition": "Ramp-up assumptions and forward guidance for Tennant are disclosed with period and units.",
+      "question_id": "Q-3bc1732b65c74c8c",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

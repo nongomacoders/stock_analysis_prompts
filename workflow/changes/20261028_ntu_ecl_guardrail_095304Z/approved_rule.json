@@ -1,0 +1,15 @@
+{
+  "authorization": "User replied yes to codifying the corrected conditional trade-receivables ECL rule into SQLite.",
+  "source_audit": "companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T093647Z_codex_review\\audit.md",
+  "source_audit_sha256": "6a20823ccdcd85b9716936c343a132573a9bbdfe08551b39afd0b95f48032846",
+  "rule": {
+    "rule_code": "CONSUMER-LENDING-TRADE-RECEIVABLES-SIMPLIFIED-ECL",
+    "sector": "consumer_lending",
+    "stage": "all",
+    "title": "Establish the ECL model before alleging a staging defect",
+    "rule_text": "Classify the instrument and establish whether simplified lifetime ECL is mandatory or elected. For IFRS15 trade receivables without a significant financing component, use the required lifetime approach; for eligible receivables with a significant financing component, verify the entity's policy choice. Where simplified lifetime ECL applies, do not demand general-model Stage1/2 migrations or a 30-DPD SICR backstop. Evaluate provision-matrix losses using historical/current/forward-looking evidence. Zero ELRs alone prove neither adequacy nor manipulation. If policy applicability is uncertain, record the precise uncertainty rather than invent a staging breach. Required evidence: Instrument/transaction type, terms/financing component, policy where choice exists, aging/matrix and loss experience/forward adjustments; physical-page citations. Exceptions: General-model instruments, POCI and other eligible policy choices must be assessed under their own requirements; do not relabel purchased portfolios as trade-service receivables. Avoid double counting: Do not add an arbitrary credit haircut on top of an already modeled expected cash loss or add loss allowances twice. Fail example: “0% at31 days proves failure to transfer to Stage2” where simplified lifetime ECL is established. Pass example: “Lifetime ECL policy established; no SICR-stage test; zero matrix rates require portfolio-specific support, not automatic acceptance.”",
+    "origin_ticker": "NTU",
+    "enabled": 1
+  },
+  "scope": "Only this registry rule. No other prompt/ledger proposals or paid reruns authorized by this confirmation."
+}

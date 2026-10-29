@@ -1,0 +1,34 @@
+{
+  "completed_utc": "2026-10-29T07:03:45.827089+00:00",
+  "changes": {
+    "prompts/common/12-analyst-reading-brief/v1.1.0/prompt.md": {
+      "before": "ae92e9e99253cca4dbed43385967f590f21181d356ddaecd68c366ee0877ee55",
+      "after": "9c44e89f8cbdf77145760385213435fe5b334c7b99b2471f970364b14f64dc98"
+    },
+    "prompts/consumer_lending/12-analyst-reading-brief/v1.1.0/prompt.md": {
+      "before": "9bdffe86980efded6cddb94bf2dadd3ec8e7ded1cdeeeccd0c36820de2c11a1d",
+      "after": "ae31dfd9e783c8ede58a706639f2427b369061dcd881a0b11b582b4917dc0109"
+    },
+    "section_capture/question_ledger.py": {
+      "before": "21d3e1503374a4b4aad7e5fcdee544f6044b48b3249e6964effb5f9b51cc256f",
+      "after": "50ccd0496abd6e219ccedc28d105e13e751f56f5a922c8bfb6bb6bdd1515f568"
+    }
+  },
+  "preservation": {
+    "production_tables_unchanged": true,
+    "evidence_unchanged": true,
+    "validator_unchanged": true
+  },
+  "tests": {
+    "exit_code": 0,
+    "counts": {
+      "": 54,
+      "passed": 27
+    },
+    "network": "All Python DNS/connect/sendto denied for the test session"
+  },
+  "paid_calls": 0,
+  "scope": "Three concise prompt clarifications; no validation logic, extraction or provider setting changes.",
+  "source_review": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T191648Z_codex_native_extraction_review/audit.md",
+  "demonstrated_model_improvement": "NOT TESTED: no fresh model generations"
+}

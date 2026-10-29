@@ -1,0 +1,10 @@
+{
+  "preserved_results": "workflow/changes/20261028_table_extraction/*_test_result.json",
+  "directories": [
+    "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\tmp\\table_extraction_initial_20261028",
+    "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\tmp\\table_extraction_target_20261028",
+    "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\tmp\\table_extraction_target2_20261028",
+    "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\tmp\\table_extraction_full_20261028"
+  ],
+  "status": "complete"
+}

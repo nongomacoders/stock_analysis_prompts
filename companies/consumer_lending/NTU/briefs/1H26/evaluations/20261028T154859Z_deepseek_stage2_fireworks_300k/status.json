@@ -1,0 +1,9 @@
+{
+  "status": "generation_complete_pending_review",
+  "calls": 1,
+  "stage": "stage2",
+  "last_dispatch_utc": "2026-10-28T15:49:08.928720+00:00",
+  "first_dispatch_utc": "2026-10-28T15:49:08.926804+00:00",
+  "completed_utc": "2026-10-28T15:50:06.447253+00:00",
+  "error_type": null
+}

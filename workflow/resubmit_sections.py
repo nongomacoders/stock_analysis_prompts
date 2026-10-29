@@ -143,7 +143,8 @@ def resubmit_sections(
         return []
 
     if missing_only:
-        sections = [s for s in all_sections if not s.llm_response or not s.llm_response.strip()]
+        sections = [s for s in all_sections if not s.llm_response or not s.llm_response.strip()
+                    or s.manifest.get('review', {}).get('ledger_validation') == 'rejected']
         print(f"\n[RESUME] Found {len(sections)} pending section(s) without LLM responses (out of {len(all_sections)} total in {filename}).")
     else:
         sections = all_sections
@@ -186,7 +187,9 @@ def resubmit_sections(
             manifest["source"]["sha256"] = report_sha
         if "selections" not in manifest:
             manifest["selections"] = sec.selections or []
-        manifest["stored_questions"] = current_ledger.strip() or None
+        from section_capture.db import prepare_question_ledger
+        manifest['ledger_contract'] = 1
+        manifest["stored_questions"] = prepare_question_ledger(report_sha, resolved_db, for_prompt=True, context=manifest).strip() or None
         manifest["sector"] = sector
         texts = extract_selection_texts(manifest, selected_text=sec.selected_text, prompt=sec.prompt)
         refreshed_prompt = build_prompt(manifest, texts, sector=sector)
@@ -247,6 +250,10 @@ def resubmit_sections(
             model=active_model,
             db_path=resolved_db,
         )
+
+        if saved_sec and saved_sec.manifest.get('review', {}).get('ledger_validation') == 'rejected':
+            raise RuntimeError('Response preserved but ledger update rejected: '
+                               + '; '.join(saved_sec.manifest['review']['ledger_errors']))
 
         # Save markdown brief to disk
         doc_prefix = ""

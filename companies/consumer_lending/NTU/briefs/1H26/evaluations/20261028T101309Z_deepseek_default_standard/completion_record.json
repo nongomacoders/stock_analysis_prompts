@@ -1,0 +1,34 @@
+{
+  "recorded_utc": "2026-10-28T11:40:29.192039+00:00",
+  "execution_status": {
+    "status": "stopped",
+    "stage": "stage2",
+    "calls": 15,
+    "last_dispatch_utc": "2026-10-28T10:29:24.045893+00:00",
+    "first_dispatch_utc": "2026-10-28T10:13:20.504898+00:00",
+    "error_type": "Incomplete",
+    "error": "Incomplete response: finish_reason=length",
+    "stopped_utc": "2026-10-28T10:33:15.864595+00:00"
+  },
+  "actual_cost_usd": 0.1893089364,
+  "cost_missing_calls": 0,
+  "independent_financial_review": "Preliminary Codex checks recorded separately; manual Gemini review of available outputs pending",
+  "execution_outcome": {
+    "process_status": "INCOMPLETE_STAGE2",
+    "valuation_status": "NOT_PUBLISHED_PROCESS_INCOMPLETE",
+    "reason": "Full Stage2 exhausted65536 tokens (all reported as reasoning), no final answer. Not an analyst decision to withhold a completed valuation.",
+    "target_price_zar": null,
+    "recommendation": null,
+    "upside_pct": null,
+    "dividend_yield_pct": null,
+    "tsr_pct": null
+  },
+  "calls": 15,
+  "paid_gemini_calls": 0,
+  "preservation": {
+    "checked_utc": "2026-10-28T11:40:29.158236+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  }
+}

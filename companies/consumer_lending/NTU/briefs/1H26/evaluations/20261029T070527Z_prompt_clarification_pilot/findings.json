@@ -1,0 +1,46 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "section answer,NTU24",
+    "finding": "Headers case now correctly calls cumulative gain decrease167 an impairment loss, splits acquired+24/historical-191 and rejects reserve-release interpretation.",
+    "limit": "Assets case still contradicts this sign; not a robust global correction."
+  },
+  {
+    "id": "F002",
+    "verdict": "FAIL",
+    "origin": "section answer and ledger,NTU21-23",
+    "finding": "Assets case still proposes resolved for Q-08aa5c3f257440ab while4489scope remains pending; prose wrongly calls cumulative gain decline167 a net impairment gain.",
+    "correction": "Retain partial and carry signed balance change correctly. Raw proposal was not persisted."
+  },
+  {
+    "id": "F003",
+    "verdict": "FAIL",
+    "origin": "ledger evidence anchor",
+    "finding": "Assets delta rejected: quote3 414 is only5characters, below8 minimum; it is literal in source text. Validator reports not literal for both length and matching failures.",
+    "impact": "Entire delta unapplied, before/after unchanged; no valid closure persisted.",
+    "correction": "No validator softening; diagnose minimum-length versus match separately. No repair implemented."
+  },
+  {
+    "id": "F004",
+    "verdict": "PARTLY SUPPORTED",
+    "origin": "PAN48-50 aggregation",
+    "finding": "New answer avoids prior explicit197608 allegation and leaves FY25 group/operation1081scope unresolved; it does not demonstrate the disjoint196527 reconciliation. It notices MTR25043vs30806 source inconsistency.",
+    "limit": "Avoidance of erroneous sum is not correct complete reconciliation; grouped headers still imperfect."
+  },
+  {
+    "id": "F005",
+    "verdict": "FAIL",
+    "origin": "PAN model inference",
+    "finding": "New PAN answer speculates column/scope error or missing digit in costs without source proof, and misstates FY26 MTR tailings total as51927: actual tailings row repeats46164;51927 is gold-produced-total including5763buy-in.",
+    "correction": "Keep row/column scope separate; verify alleged source contradictions against original table, not adjacent row.",
+    "impact": "New unsupported source-defect claims; no quantified valuation effect."
+  },
+  {
+    "id": "F006",
+    "verdict": "NOT VERIFIED",
+    "origin": "cross-case/overall robustness",
+    "finding": "One fresh answer per case insufficient to claim repaired prompt robustness; two valid ledgers vs three baseline. Do not advance to full run on these metrics alone.",
+    "correction": "Independent Gemini review in Antigravity; no further paid calls without user instruction."
+  }
+]

@@ -1,0 +1,698 @@
+[
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/RUN_SUMMARY.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/RUN_SUMMARY.md",
+    "sha256": "11007a73008add32eb1ca9a0e0d6486618c2a323e019ab6efb949cf9e6d87634",
+    "bytes": 3887
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/audit.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/audit.md",
+    "sha256": "dd94174662a51c4726bca353d04edffcdeb1b4cbe5cd4ac9dad8e915a420ec90",
+    "bytes": 7099
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/calls.csv",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/calls.csv",
+    "sha256": "6b38df0bd0136ae20852a4b67cb7f88ffe5e959f77a453fcfe905b6c3ea1e348",
+    "bytes": 3569
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/claims.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/claims.json",
+    "sha256": "4289b5a1035ec3ce1d0df811e3dedfb2570030f071f58ddfc655e0e2e1112c66",
+    "bytes": 5994
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/completion_record.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/completion_record.json",
+    "sha256": "d586702dea4acb719c556d187e5730879e200e42ee2d4fd8eaaeaabf1b07e5fe",
+    "bytes": 689
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/coverage.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/coverage.json",
+    "sha256": "fce4516026218f4609984a29b052138fdd2dcce618f8b10fe45ae78d2d306e98",
+    "bytes": 6086
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/findings.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/findings.json",
+    "sha256": "61120fdf31e125a329f36e4520ccde39cc0619e995f6434495da1e848912c4c8",
+    "bytes": 3802
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/metrics.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/metrics.json",
+    "sha256": "22d0f404b0f711953d0dcf3c17ede979aadd8066bd20286e5b46ec5f5c454c8d",
+    "bytes": 14609
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/plan.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/plan.json",
+    "sha256": "6971b118b353dfd582e393d8b4bb7de026e749e1b1634bf6193a92ae48bd1ee8",
+    "bytes": 49628
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/preservation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/preservation.json",
+    "sha256": "f5c9e44a5859fc2b3856243a929d8641e3197cefb62b56e3d8573e8bb8f86db4",
+    "bytes": 164
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/status.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/status.json",
+    "sha256": "d57262c153bd92061c85b9a4bbec07a2727208706a8590eb25c7a0f5a9c050df",
+    "bytes": 360
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/verification.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/verification.json",
+    "sha256": "db12ace3b52e970f59da71a08fae835fd8ac5c6b7d72f1993b3080c9f2a43f27",
+    "bytes": 1195
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/gemini/PROMPT.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/PROMPT.md",
+    "sha256": "028b95aa7c909ce4049fa33bed0f6dde4db23f2c62b86df03411d37adc33d949",
+    "bytes": 3096
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/final_ledger.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/final_ledger.json",
+    "sha256": "799567a3841ce03aa74a230377a466f860e22f70df60899a90bfeca79721b106",
+    "bytes": 44425
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/final_ledger.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/final_ledger.md",
+    "sha256": "3de61d0c09a65a0aa1e05fe4828a4e499ce3d5cff983c0cb380020a5f173515b",
+    "bytes": 33235
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/independent_calculations.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/independent_calculations.json",
+    "sha256": "cc5278d1dc8ceb15a305e57b9ad520b2630f93c94134a7775c90960616e696f2",
+    "bytes": 604
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/rejected_ledger_deltas.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/rejected_ledger_deltas.json",
+    "sha256": "dec3123468636801b6dbee78bcbf1969317ad11160dadb5d8ea7925899bc2f98",
+    "bytes": 22716
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_02.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_02.md",
+    "sha256": "8ccf858ce1d1ae9b6c3bdf170473202547d7eaad157fdc36aa22c8e37e5fedc8",
+    "bytes": 5227
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_02.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_02.prose.md",
+    "sha256": "5831c34c8cab58ca97caf2235401d57a285a0e76bedc04e24d8e4ca85334ec96",
+    "bytes": 3361
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_02.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_02.validation.json",
+    "sha256": "9c1c18de064d7879a5324f81ad672a441ec5dbf6ab5b9562d662b12bb300100d",
+    "bytes": 172
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_02_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_02_ledger_after.json",
+    "sha256": "fc7a5f79546b280730f42d1eaccd69eb52ccdfbf25d63ca87c9a0c6ab14cc9ec",
+    "bytes": 2193
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_03.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_03.md",
+    "sha256": "fdb92457176e8aae37d6beec0a7105f88b9ca5dd522b76ceb86a218057ec51b9",
+    "bytes": 9346
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_03.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_03.prose.md",
+    "sha256": "7cf380d0d87fb15efd301808b52ceef7af24c29ea588414ce5895f6bd8ffd777",
+    "bytes": 4462
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_03.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_03.validation.json",
+    "sha256": "ff9ecb76d73d46a60abdc3093c6c37659aab20a1b8254eeb7e8bf3a4926e6e74",
+    "bytes": 187
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_03_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_03_ledger_after.json",
+    "sha256": "36bbe3137c523ccf660830f6f4f8717a29b6b2f0af76a266bd6a29d6e0316e09",
+    "bytes": 7381
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_04.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_04.md",
+    "sha256": "dd4dfa7f345947a7920d5254dee30984758b3b32ef4403ad706e13eb79d4197e",
+    "bytes": 4882
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_04.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_04.prose.md",
+    "sha256": "a40d9ac442c02cf1c4c4c7d93ca1b40f7d34d177ac5ce17dd00f831a7a35a41f",
+    "bytes": 3844
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_04.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_04.validation.json",
+    "sha256": "0e300a91c99bf6ccc0ab6d135e10aef35b7e59a81b92a96cc009966b711c9a25",
+    "bytes": 187
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_04_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_04_ledger_after.json",
+    "sha256": "321597471f46d2dabc06eec5168d5974033729dd54f7d36d80f5e78b8566f188",
+    "bytes": 8454
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_05.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_05.md",
+    "sha256": "0b8fac16bb98019d98147e86a3fd987571adc2cc95b88d5828cada5919591951",
+    "bytes": 2699
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_05.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_05.prose.md",
+    "sha256": "93c356c1f1c0070e893da025ffa227da542720261c2599b72f2abf79d83746f2",
+    "bytes": 2630
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_05.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_05.validation.json",
+    "sha256": "180e109825e586d842496fc98524651f5b59db5d29d4595929299926e3ce6a21",
+    "bytes": 191
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_05_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_05_ledger_after.json",
+    "sha256": "321597471f46d2dabc06eec5168d5974033729dd54f7d36d80f5e78b8566f188",
+    "bytes": 8454
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_06.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_06.md",
+    "sha256": "1cbd5038a62fef1f9e4c2e9bf659f80c559e9d6aed59d76fc823708f96585763",
+    "bytes": 8377
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_06.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_06.prose.md",
+    "sha256": "d8f4aac08f4fbd0126952376805aa010a2d055e110530658b4d0491bcccbf328",
+    "bytes": 5962
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_06.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_06.validation.json",
+    "sha256": "35bd5cdaa6ad37585d035d08d3bb3af906c8d693e7f5a9c88c141d55ed0ed79c",
+    "bytes": 213
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_06_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_06_ledger_after.json",
+    "sha256": "8fa756ed3bbb1e04d855f64f577335a5adb0a3436d8da7fd814e5d5f0f0753b7",
+    "bytes": 11187
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_07.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_07.md",
+    "sha256": "f14eff37aca3c31a2a59a443d99ca263d57a20e51fd1c6bb145f96bcd70a8abe",
+    "bytes": 11726
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_07.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_07.prose.md",
+    "sha256": "54a67fae7d4486c97c0f0157925becb59e486ab83bd2644f37990c16de14619c",
+    "bytes": 6153
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_07.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_07.validation.json",
+    "sha256": "1034dd199a84b809dc58da4bad7882ca4c99c7864cb7718f72f74872f074ecfd",
+    "bytes": 495
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_07_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_07_ledger_after.json",
+    "sha256": "8fa756ed3bbb1e04d855f64f577335a5adb0a3436d8da7fd814e5d5f0f0753b7",
+    "bytes": 11187
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_08.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_08.md",
+    "sha256": "cee7b465c4642b658971baa458f736bee1f5665fd0997089e5a251f01984759c",
+    "bytes": 9424
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_08.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_08.prose.md",
+    "sha256": "236b2cc5154a178ffdbab6d8781a579457f2f12b69121671b14c30f23c4e2ec2",
+    "bytes": 5038
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_08.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_08.validation.json",
+    "sha256": "9d4ef357dd5da8442ee813c36d9494cb5f3d85f53a8e16f58a2a003152282af5",
+    "bytes": 207
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_08_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_08_ledger_after.json",
+    "sha256": "25b60d1ec7fcffc8fc22c652c4c87964383d7985ca0f2761bb0383dba1da282b",
+    "bytes": 14590
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_09.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_09.md",
+    "sha256": "1534415bfd07757058276fd9ecda98a423daed51473319ca8dfe3988f60a124d",
+    "bytes": 9115
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_09.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_09.prose.md",
+    "sha256": "5d62b469313564c1b08b34598650198547747bc279befc97749ad3bbcd23378a",
+    "bytes": 4743
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_09.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_09.validation.json",
+    "sha256": "c8e9d71999da4a2f6198f2cc689f0e32b6f61821f18bd27a07e3207ac82cf859",
+    "bytes": 448
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_09_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_09_ledger_after.json",
+    "sha256": "25b60d1ec7fcffc8fc22c652c4c87964383d7985ca0f2761bb0383dba1da282b",
+    "bytes": 14590
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_10.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_10.md",
+    "sha256": "83d06155395347c1bc8b2a9fdb84f9fffbf990e3a53bcfb440780c7575e99902",
+    "bytes": 9025
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_10.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_10.prose.md",
+    "sha256": "851c1ad8baca73d9107f486bb500eca21958655f12014909256173bac103da11",
+    "bytes": 4961
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_10.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_10.validation.json",
+    "sha256": "bc15cf1b5dab0d7938ce4a27c9f292fe8431d70d3819daf471ab97ae72dc2f35",
+    "bytes": 219
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_10_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_10_ledger_after.json",
+    "sha256": "1ca69566db19dd41596925aac3d470c7544cb7e37a2a38e762ec24c5a6d71d4a",
+    "bytes": 17806
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_11.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_11.md",
+    "sha256": "7a9d2431932f28227babd40a5805e31d214cb98b7eb50943e218225eb569e285",
+    "bytes": 4548
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_11.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_11.prose.md",
+    "sha256": "67044a1462a84879e14f78024547c2ed9936b3abaa85247ae5ce5f6abf999f77",
+    "bytes": 3282
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_11.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_11.validation.json",
+    "sha256": "64210a45ab01ed9af047e5f8908e4fea4ebdaed3779240141be4d515ea923579",
+    "bytes": 185
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_11_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_11_ledger_after.json",
+    "sha256": "1176b538a4e51863ec7ad2868d74e4cc67a68d942d03358b290c266671b58974",
+    "bytes": 19136
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_12.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_12.md",
+    "sha256": "00a3c921da55c7fd4cbb4b2f7fa7fd2dd47f4c8f782e234319b2b58d7a0800fe",
+    "bytes": 6696
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_12.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_12.prose.md",
+    "sha256": "3a30d1508e997544b8554ed09f4810fece1563180629f4c91a7a8255a9bef57d",
+    "bytes": 3908
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_12.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_12.validation.json",
+    "sha256": "e2d60465c7cb784982cada24e1b3bdc7ad1747fbafed76822720b4e64ebf33ef",
+    "bytes": 170
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_12_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_12_ledger_after.json",
+    "sha256": "7024b0b5dd430aa879631cfdbd314ae3ca8d82b63c9d11101da5dc3f7dbcdd76",
+    "bytes": 21094
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_13.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_13.md",
+    "sha256": "c2eb089e14cbabb901b8c1922066eb5b29195baec08a22c2dd354214cfb67f79",
+    "bytes": 6524
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_13.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_13.prose.md",
+    "sha256": "f866c949c15b2ca92f05abc71d1703b63f8e0230513909c4c8c71c4fa2728ee9",
+    "bytes": 3902
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_13.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_13.validation.json",
+    "sha256": "30e4ac8c5d95924ae0361b8d90ee3f9f36313ffed34e7d8bd8eb80666be2258b",
+    "bytes": 481
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_13_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_13_ledger_after.json",
+    "sha256": "7024b0b5dd430aa879631cfdbd314ae3ca8d82b63c9d11101da5dc3f7dbcdd76",
+    "bytes": 21094
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_14.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_14.md",
+    "sha256": "46c4b80495cefea96120e9bb58a782985b50a78a2ee4f6ea815aa4455b31c385",
+    "bytes": 4770
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_14.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_14.prose.md",
+    "sha256": "f9fd2026f251e9cf624d898d156292b2e70cbcea24ea3b28227ba43ddc6875b9",
+    "bytes": 3523
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_14.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_14.validation.json",
+    "sha256": "45e8f0bca17f0d374552c0852273979060e0edde7341d73561c257eb380b6db6",
+    "bytes": 199
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_14_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_14_ledger_after.json",
+    "sha256": "b379ae53533a284638c653843d09b772d6e5890e662873f2ff6029fc69f707ad",
+    "bytes": 22405
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_15.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_15.md",
+    "sha256": "d0215a0fef5eeab7ee1453fe3d989d213f4ed3c7beac46e46274a05b2ca66b4d",
+    "bytes": 12444
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_15.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_15.prose.md",
+    "sha256": "08011610673df5262d91871f558c14ab443c4b219f3cc2159ede8db68bb8d8e7",
+    "bytes": 6095
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_15.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_15.validation.json",
+    "sha256": "ea125069b091bb7b4cdda954aa1a8a5f1c63081a93a8808a8a6f4d426ce22069",
+    "bytes": 197
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_15_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_15_ledger_after.json",
+    "sha256": "cfc332586f027f0f9ca1019278e0a1b751d81f0ca4393aa50e717c3845d2cca4",
+    "bytes": 26211
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_16.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_16.md",
+    "sha256": "8669b377ad7ad6257385fe2b3d5fff8bf62b414d0ad0727156b3544511be0f71",
+    "bytes": 8479
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_16.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_16.prose.md",
+    "sha256": "2a33cfb8edee3881ab76256919fddedb57cad292fbf5d3c00e990fa6d007f978",
+    "bytes": 4604
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_16.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_16.validation.json",
+    "sha256": "a561c0efd9397bbabbaf1c3b6bbd6d76acbbbe10f557eadccd63f7f6571f12dc",
+    "bytes": 239
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_16_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_16_ledger_after.json",
+    "sha256": "d234cf7288cc8fd3dbf958fa319d33d8a629762e680796f33c31e6e6c7d91ea8",
+    "bytes": 29603
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_17.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_17.md",
+    "sha256": "5339c471ecb523e7a9a3acf7015afeb92f567fe0712b43ecb0df9619d264d738",
+    "bytes": 6475
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_17.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_17.prose.md",
+    "sha256": "53362fa3787f8c1e4622641dc25e6fa0ce338ee0aea4ffac3ce7bf2ec46782cc",
+    "bytes": 4273
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_17.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_17.validation.json",
+    "sha256": "2ec84c4b15bd5ff325ed95230caf63d0800875aa7c0d1e6e40fcd8a652128b57",
+    "bytes": 213
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_17_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_17_ledger_after.json",
+    "sha256": "3f9cff064722372a66b7795801951b4a1659139de9ae71c1329899e7883304d6",
+    "bytes": 31994
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_18.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_18.md",
+    "sha256": "f332e3bb5a288552598dbf555d0339280c0bf56b83fcf6b004d20973d8497eb9",
+    "bytes": 6371
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_18.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_18.prose.md",
+    "sha256": "b374e4b32e1b6b9d1d72207c63da677703a7b29fbdf16e8297029de65f435cd6",
+    "bytes": 3398
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_18.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_18.validation.json",
+    "sha256": "ef89bf21abc824e64a3d1e570aecfe4af07f4271fd044fd08883df1e52575217",
+    "bytes": 188
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_18_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_18_ledger_after.json",
+    "sha256": "3ca418ad8f13bd1252e6d9c6e12e82400ced880f75b81961dd4810af09c8b6d1",
+    "bytes": 33611
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_19.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_19.md",
+    "sha256": "19a0f7dd0e0aeaccec7202e0ed67f2d7e6118fc890c97b5e34b557f0e56076a4",
+    "bytes": 12120
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_19.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_19.prose.md",
+    "sha256": "721b9ce2c699674e3f7ce79da0354bbc8aa0622546ff89f1423b8f2271ac6892",
+    "bytes": 4852
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_19.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_19.validation.json",
+    "sha256": "62f489141867fdcae0b0be90f882f27c3151bd4c6a952d8363b1415a37e0d9aa",
+    "bytes": 231
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_19_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_19_ledger_after.json",
+    "sha256": "57a6ecfb929588d6f0885a9010ad30294c85e524a27dfa299925e57c3d167535",
+    "bytes": 37066
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_20.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_20.md",
+    "sha256": "c22019aa3a53a1c9e46bfc70f12fd4fd90840c916e6a4f39064c49ee914eb561",
+    "bytes": 9816
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_20.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_20.prose.md",
+    "sha256": "e285d128769a38afb9f3a5d5565921a7613d17c4ae5f1b6a5ab811742831c427",
+    "bytes": 4756
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_20.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_20.validation.json",
+    "sha256": "ea90bf63389d42519cbe75fe1841623ec69c69562825deef90cf8a9e71bd735e",
+    "bytes": 491
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_20_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_20_ledger_after.json",
+    "sha256": "57a6ecfb929588d6f0885a9010ad30294c85e524a27dfa299925e57c3d167535",
+    "bytes": 37066
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_21.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_21.md",
+    "sha256": "886f9471ee9f0b748e45e46520bac8ca0f90c63c1bcbc36148882fcc636fdc15",
+    "bytes": 9391
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_21.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_21.prose.md",
+    "sha256": "9a440bebb08aa557eaaa91d2f5b7340d354ea863a28c36581f45748f75c3a8fe",
+    "bytes": 4411
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_21.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_21.validation.json",
+    "sha256": "aeec0cf696afdaca321526e48e94e296c76b3f6e371c579a56fa45a95a5bb372",
+    "bytes": 220
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_21_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_21_ledger_after.json",
+    "sha256": "cd642e3baf24fb5abd7291deea0cc70633294fbbdfc109e2d91b845fa31100e0",
+    "bytes": 40636
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_22.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_22.md",
+    "sha256": "bb9a3bd866055d2fea2b8906e70339d5747cab138b416867b87eeb2ccefada0d",
+    "bytes": 7921
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_22.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_22.prose.md",
+    "sha256": "ebca667777bcdce537e4d1edb15a5879e97fe931d9cb5593ec978a07138972c4",
+    "bytes": 4369
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_22.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_22.validation.json",
+    "sha256": "1467d3a7d2a51d496743a2f3563dc96a03d1081586f10c072d4ea6d6e99862d3",
+    "bytes": 219
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_22_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_22_ledger_after.json",
+    "sha256": "7ac7d191b5229583b78ba0ed5b7650dd700912c7f382c2e4b3cc6173c52b6da8",
+    "bytes": 42681
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_23.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_23.md",
+    "sha256": "a2d9feaa29337954b0509ab7659396a0d416c0180102f96eaefaa3d3dacdb9a5",
+    "bytes": 5174
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_23.prose.md",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_23.prose.md",
+    "sha256": "91ba30b3c38edbd431ab7592a9e56b7fae65e153222be971e707c62517fca7c8",
+    "bytes": 3179
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_23.validation.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_23.validation.json",
+    "sha256": "f78210ecf59c32761c2bd8191f9871a44150be25efb18a098486cce2077e9230",
+    "bytes": 185
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/section_23_ledger_after.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/section_23_ledger_after.json",
+    "sha256": "799567a3841ce03aa74a230377a466f860e22f70df60899a90bfeca79721b106",
+    "bytes": 44425
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/outputs/source_spotcheck_calculations.json",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/outputs/source_spotcheck_calculations.json",
+    "sha256": "f2069c7d26b82a135e5d9dfa480cd615f2bab9bd385e54cf989abafc0209b217",
+    "bytes": 748
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_13.png",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_13.png",
+    "sha256": "dbb6aeba568b29c4b116fd8c4040832b2a8e3e9ca5367558abb9d04816393546",
+    "bytes": 390455
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_13.txt",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_13.txt",
+    "sha256": "5805eb33b67c3120b645e64bc8c40dd4e1dc63907048d7a4eee91b7e1462567e",
+    "bytes": 3959
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_22.png",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_22.png",
+    "sha256": "56c6f83e6ee5aecf39a0f5dd7e927eb21ff16e53c2b7f790b3ece02294ab6119",
+    "bytes": 249369
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_22.txt",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_22.txt",
+    "sha256": "0e9b865ef65d2323e55b39dd3d7a37c5bd57d3484789fa9e10e5b196c2afc3a2",
+    "bytes": 2312
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_24.png",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_24.png",
+    "sha256": "8dc4a3fca3342fe2045210a622a778598dd83bbf26e0d571207cb7ecf319b7cf",
+    "bytes": 251873
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_24.txt",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_24.txt",
+    "sha256": "c66ad86163eab9a763ef29614d9fd3f7b5bc1383c36b09b1568de273408e7e4f",
+    "bytes": 2216
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_25.png",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_25.png",
+    "sha256": "d0bda34565b5a553f1c50dc3e6f4e810993fa80a1dfded3da437d0213b8d58ae",
+    "bytes": 314127
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_25.txt",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_25.txt",
+    "sha256": "e857122ea02f287abc594802daec6e776eac858f694a3c3f9ce2aff85f44a5ef",
+    "bytes": 3293
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_31.png",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_31.png",
+    "sha256": "3d0fa5ac20a8b946841d8eb5a8541c867f418f2cf1800abcabcf0d70bd31ef6c",
+    "bytes": 156054
+  },
+  {
+    "original_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections/source_pages/NTU_31.txt",
+    "preserved_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/inputs/source_pages/NTU_31.txt",
+    "sha256": "8c1071225990010a28df9db2595c9f3f7b3114e79484ee747b826a77d7574a51",
+    "bytes": 1349
+  }
+]

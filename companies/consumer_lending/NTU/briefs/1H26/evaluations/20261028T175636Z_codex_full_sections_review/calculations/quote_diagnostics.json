@@ -1,0 +1,335 @@
+[
+  {
+    "label": "section_07",
+    "pages": [
+      9,
+      10,
+      11
+    ],
+    "quotes": [
+      {
+        "question_id": "Q-e0ca727b62be46df",
+        "page": 9,
+        "quote": "Operating loss | (79) |  |  | (168) | (186)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Operating loss | (79) | | | (168) | (186) | |"
+      },
+      {
+        "question_id": "Q-e0ca727b62be46df",
+        "page": 9,
+        "quote": "Loss for the period from continuing operations | (63) |  |  | (122) | (113)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Loss for the period from continuing operations | (63) | | | (122) | (113) | |"
+      },
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 9,
+        "quote": "Imputed interest revenue, calculated using the credit-adjusted effective interest rate | 383 |  |  | 333 | 683",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **Imputed interest revenue, calculated using the credit-adjusted** | | | | | | |"
+      },
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 9,
+        "quote": "Impairment loss on principal book portfolios | (167) |  |  | (173) | (199)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Impairment loss on principal book portfolios | (167) | | | (173) | (199) | |"
+      },
+      {
+        "question_id": "Q-86ab4a63039b4d7e",
+        "page": 9,
+        "quote": "Net income from purchased book debts | 69 |  |  | 53 | 244",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Net income from purchased book debts | 69 | | | 53 | 244 | |"
+      },
+      {
+        "question_id": "Q-c3d790bf20794c50",
+        "page": 9,
+        "quote": "Impairment loss on principal book portfolios | (167) |  |  | (173) | (199)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Impairment loss on principal book portfolios | (167) | | | (173) | (199) | |"
+      },
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 9,
+        "quote": "Basic loss per share | 5 (8.1) |  |  | (15.6) | (14.4)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Basic loss per share | 5 (8.1) | | | (15.6) | (14.4) | |"
+      },
+      {
+        "question_id": "Q-31753fb252ee4ed2",
+        "page": 9,
+        "quote": "Fair value movements on other financial assets | 30 |  |  | 74 | 114",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Fair value movements on other financial assets | 30 | | | 74 | 114 | |"
+      }
+    ],
+    "proposed_resolutions": []
+  },
+  {
+    "label": "section_09",
+    "pages": [
+      13
+    ],
+    "quotes": [
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 13,
+        "quote": "Principal book portfolios are reflected at amortised cost on a portfolio basis.",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| **receivable amounts. Principal book portfolios are reflected at amortised cost on a portfolio basis. Cost includes** | | | | | |"
+      },
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 13,
+        "quote": "Total purchased book debts | 4 489 |  | 4 353 | 4 677 |",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Total purchased book debts | 4 489 | | 4 353 | 4 677 | |"
+      },
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 13,
+        "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Balance at the end of the period | 3 845 | | 3 690 | 3 975 | |"
+      },
+      {
+        "question_id": "Q-86ab4a63039b4d7e",
+        "page": 13,
+        "quote": "Accordingly, these purchased book debts are measured on a fair value basis. Refer to note 6.3.",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **consistent with a basic lending arrangement. Accordingly, these purchased book debts are measured on a fair value** | | | | | |"
+      },
+      {
+        "question_id": "Q-c3d790bf20794c50",
+        "page": 13,
+        "quote": "Interest calculated using the credit-adjusted effective interest rate (CAEIR) | 383 |  | 333 | 683 |",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **Interest calculated using the credit-adjusted effective** | | | | | |"
+      }
+    ],
+    "proposed_resolutions": [
+      {
+        "original": {
+          "question": "What is the measurement basis of purchased book debts (amortised cost, FVTPL or POCI) and how does the R4,489m carrying value at 31 Mar 2026 reconcile to the PBD roll-forward (opening, acquisitions, collections, amortisation, closing)?",
+          "priority": "high",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 PBD note (pp.9-11)",
+          "evidence_required": "PBD measurement basis, roll-forward in Rm for H1 2026 and H1 2025, and reconciliation to the R4,489m / R4,353m / R4,677m carrying values",
+          "closure_condition": "Basis and roll-forward disclosed and reconciling to the statement of financial position, or confirmed not disclosed; forecast consequence: amortisation projection and credit-loss treatment.",
+          "question_id": "Q-e4497d9112cd4e9d",
+          "status": "partial",
+          "answer": "Cash-flow confirms purchased book debts are a principal operating asset: decrease in operating assets of R182m (H1 FY26), R384m (H1 FY25), R678m (FY25) is entirely PBD. No measurement basis or roll-forward to the R4,489m carrying value is given on this page.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 12,
+              "quote": "Purchased book debts | 182 |  | 384 | 678"
+            }
+          ]
+        },
+        "proposed": {
+          "question_id": "Q-e4497d9112cd4e9d",
+          "status": "resolved",
+          "answer": "Principal book portfolios are POCI assets measured at amortised cost on a portfolio basis with cumulative lifetime-ECL-since-acquisition allowance and CAEIR interest accretion; other financial assets (no title, non-SPPI) are at fair value. Roll-forward Mar-26: 3,975 + 382 additions - 728 net collections + 383 CAEIR - 167 impairment = 3,845; other financial assets 702 + 28 - 116 + 30 FV = 644; total 4,489, tying to the note total (SoFP p.8 tie-out pending).",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Principal book portfolios are reflected at amortised cost on a portfolio basis."
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Total purchased book debts | 4 489 |  | 4 353 | 4 677 |"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "label": "section_13",
+    "pages": [
+      18,
+      19
+    ],
+    "quotes": [
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 18,
+        "quote": "Loss for the purposes of basic and diluted loss per share | Rm (63) |  |  | (64) | (238)",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **Loss for the purposes of basic and diluted** | | | | | | |"
+      },
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 18,
+        "quote": "Profit on disposal of business | Rm - |  |  | (100) | (100)",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Profit on disposal of business | Rm - | | | (100) | (100) | |"
+      },
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 18,
+        "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (135) | (309)",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| headline loss per share | Rm (63) | | | (135) | (309) | |"
+      },
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 19,
+        "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (122) | (113) | – | (13) | (196)",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **Loss for the purposes of headline and diluted headline** | | | | | | | | | |"
+      },
+      {
+        "question_id": "Q-73ba5052e544431c",
+        "page": 18,
+        "quote": "Effect of treasury shares bought | million (2.2) |  |  | – | –",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Effect of treasury shares bought | million (2.2) | | | – | – | |"
+      },
+      {
+        "question_id": "Q-73ba5052e544431c",
+        "page": 18,
+        "quote": "Weighted average number of ordinary shares for the purposes of basic and headline loss per share | million 782.1 |  |  | 784.3 | 784.3",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| the purposes of basic and headline loss per share | million 782.1 | | | 784.3 | 784.3 | |"
+      }
+    ],
+    "proposed_resolutions": [
+      {
+        "original": {
+          "question": "What is the basic-to-headline earnings bridge for H1 2026 and H1 2025 (continuing and discontinued), and were any H1 2026 once-off/option/associate items excluded from the nil-adjustment core reconciliation?",
+          "priority": "medium",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 income statement / headline earnings per share note",
+          "evidence_required": "Signed basic loss to headline loss reconciliation (Rm) for H1 2026 and H1 2025, continuing and discontinued, listing each exclusion (asset disposals, impairments, associate items); confirmation whether any H1 2026 adjustments met the core-earnings policy criteria",
+          "closure_condition": "Basic-to-headline bridge shown and summing, and H1 2026 core adjustments (or their absence) explained; benign explanation (e.g. no qualifying items) acceptable; forecast consequence: reliability of core earnings as a run-rate base",
+          "question_id": "Q-b18d8ce6d4804a50",
+          "status": "open",
+          "answer": "",
+          "evidence": []
+        },
+        "proposed": {
+          "question_id": "Q-b18d8ce6d4804a50",
+          "status": "resolved",
+          "answer": "Basic-to-headline bridge shown and sums for H1 FY26, H1 FY25 and FY25. Total: H1 FY26 loss (63) with nil headline adjustments = headline loss (63); H1 FY25 loss (64) less profit on disposal of business (100) plus tax 29 = headline loss (135); FY25 (238) less (100) plus 29 = (309). Continuing operations carry no headline adjustments in any period (H1 FY26 (63), H1 FY25 (122), FY25 (113)). Discontinued: H1 FY26 nil; H1 FY25 earnings 58 less (71) = headline loss (13); FY25 (125) less (71) = (196). H1 FY26 has no qualifying once-off/option/associate exclusions, consistent with nil core adjustments rather than a policy change.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Loss for the purposes of basic and diluted loss per share | Rm (63) |  |  | (64) | (238)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Profit on disposal of business | Rm - |  |  | (100) | (100)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (135) | (309)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 19,
+              "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (122) | (113) | – | (13) | (196)"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "label": "section_20",
+    "pages": [
+      30,
+      31
+    ],
+    "quotes": [
+      {
+        "question_id": "Q-e0ca727b62be46df",
+        "page": 31,
+        "quote": "Core EBITDA per segment** | 710 |  | 80 | 790",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Core EBITDA per segment** | 710 | | 80 | 790 | |"
+      },
+      {
+        "question_id": "Q-e0ca727b62be46df",
+        "page": 31,
+        "quote": "Depreciation and amortisation | 32 |  | 36 | 68",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Depreciation and amortisation | 32 | | 36 | 68 | |"
+      },
+      {
+        "question_id": "Q-e4497d9112cd4e9d",
+        "page": 30,
+        "quote": "In terms of IFRS reporting, collections are taken into account in the movement of the amortised cost on the statement of financial position, and the income statement therefore reflects interest revenue and impairment gains/(losses).",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **terms of IFRS reporting, collections are taken into account in the movement of the amortised cost on the statement** | | | | | | | | |"
+      },
+      {
+        "question_id": "Q-d22e0c2b395a427e",
+        "page": 31,
+        "quote": "Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R383 million, impairment loss of R167 million and net cash collections of R728 million per note 1.1 and fair value movements of R30 million and cash collections of R116 million per note 1.2.",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "* Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R383 million, impairment loss of R167 million and net cash"
+      },
+      {
+        "question_id": "Q-b18d8ce6d4804a50",
+        "page": 31,
+        "quote": "Exceptional items (core and headline adjustments) | - |  | - | -",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Exceptional items (core and headline adjustments) | - | | - | - | |"
+      },
+      {
+        "question_id": "Q-f8a0c48e3545479f",
+        "page": 30,
+        "quote": "Revenue* | 159 – 159 |  |  |  |  | 552 | 711",
+        "literal_after_existing_whitespace_normalization": true,
+        "match_after_diagnostic_pipe_removal": true,
+        "nearest_line": "| Revenue* | 159 – 159 | | | | | 552 | 711 | |"
+      },
+      {
+        "question_id": "Q-86ab4a63039b4d7e",
+        "page": 30,
+        "quote": "Revenue from purchased book debts | 888 (888) -",
+        "literal_after_existing_whitespace_normalization": false,
+        "match_after_diagnostic_pipe_removal": false,
+        "nearest_line": "| **Revenue from purchased** | | | | | | | | |"
+      }
+    ],
+    "proposed_resolutions": []
+  }
+]

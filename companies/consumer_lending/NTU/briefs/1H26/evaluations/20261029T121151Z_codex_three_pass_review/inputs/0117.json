@@ -1,0 +1,122 @@
+[
+  {
+    "id": "F001",
+    "linked_claims": ["C001"],
+    "category": "CONFIRMED BENEFIT",
+    "origin": "NTU movement pass / final why",
+    "finding": "The intermediate calculation worksheet generates accurate signed absolute and percentage movements (-130 Rm / -3.27% net carrying, -167 Rm / -27.93% cumulative gain, -352 Rm / -11.93% unsecured, +227 Rm / +26.24% debt review), correctly distinguishing meaningful percentage bases from unit-rate or percentage-point changes.",
+    "severity": "LOW",
+    "quantified_impact": "Presentation and analytical precision benefit; prevents downstream misinterpretation of base changes.",
+    "earliest_stage": "Stage 1 (Movement calculation pass)",
+    "demonstrated_vs_suspected": "Demonstrated origin in ntu_assets_movement.md.",
+    "required_correction": "None required for calculation; output is mathematically correct."
+  },
+  {
+    "id": "F002",
+    "linked_claims": ["C002"],
+    "category": "CONFIRMED ERROR",
+    "origin": "NTU ledger updates in single and three-pass final",
+    "finding": "Both single-pass and three-pass final outputs proposed status 'resolved' for question Q-08aa5c3f257440ab despite failing its explicit closure condition requiring reconciliation to carrying value. The three-pass output passed syntax validation and accepted the premature closure into memory, whereas single-pass was rejected due to a short quote.",
+    "severity": "HIGH",
+    "quantified_impact": "Premature closure obscures R644m (14.3% of R4,489m total PBD portfolio) fair-value component and leaves total balance sheet reconciliation unresolved.",
+    "earliest_stage": "Ledger question evaluation (Meaning pass asserted 'partially resolved', movement pass escalated to 'resolved', final why inherited 'resolved').",
+    "demonstrated_vs_suspected": "Demonstrated origin in ntu_assets_movement.md and ntu_assets_why.md.",
+    "required_correction": "Enforce strict semantic closure verification: retain status 'partial' or 'open' until total portfolio carrying value reconciles exactly to primary financial statements."
+  },
+  {
+    "id": "F003",
+    "linked_claims": ["C003"],
+    "category": "CONFIRMED ERROR",
+    "origin": "NTU meaning dictionary pass",
+    "finding": "The dictionary pass restricted PBD to 'principal book only' (R3,845m), treating 'Other financial assets' (R644m) as external to PBD despite Note 6.1 explicitly stating other financial assets are recognized within purchased book debts. This narrow framing propagated uncorrected across movement and final passes.",
+    "severity": "MEDIUM",
+    "quantified_impact": "Distorts total PBD asset base; misses reconciliation to R4,489m statutory total.",
+    "earliest_stage": "Stage 1 (Meaning dictionary pass)",
+    "demonstrated_vs_suspected": "Demonstrated origin in ntu_assets_meaning.md.",
+    "required_correction": "Explicitly distinguish principal book portfolio (amortised cost, CAEIR) from other financial assets (fair value) within total PBD scope."
+  },
+  {
+    "id": "F004",
+    "linked_claims": ["C004"],
+    "category": "ENGINEERING ARTIFACT",
+    "origin": "NTU single-pass validation",
+    "finding": "Ledger validator rejected single-pass delta due to literal quote length ('3 414' < 8 characters) rather than factual hallucination. Syntax validation success in three-pass gave a false impression of analytical superiority while admitting an invalid semantic closure.",
+    "severity": "MEDIUM",
+    "quantified_impact": "Creates misleading evaluation signals; valid analyses get rejected on string length while erroneous closures get accepted.",
+    "earliest_stage": "App validation logic (section_capture/ledger_validator.py)",
+    "demonstrated_vs_suspected": "Demonstrated origin in ntu_assets_single.validation.json.",
+    "required_correction": "Distinguish between literal mismatches and short quotes; evaluate semantic compliance independently of syntax checks."
+  },
+  {
+    "id": "F005",
+    "linked_claims": ["C005"],
+    "category": "CONFIRMED ERROR",
+    "origin": "PAN meaning dictionary pass",
+    "finding": "The dictionary pass generated technically incorrect accounting definitions, asserting that capex directly reduces profit/assets and treating revenue/EBITDA as cash inflows. It also provided provisional AISC definitions without source grounding.",
+    "severity": "MEDIUM",
+    "quantified_impact": "Theoretical error that risks distorting cash flow and valuation bridges if relied upon downstream.",
+    "earliest_stage": "Stage 1 (Meaning dictionary pass)",
+    "demonstrated_vs_suspected": "Demonstrated origin in pan_dense_meaning.md.",
+    "required_correction": "Ground definitions in explicit source accounting policies (IAS 16 / IFRS 15); do not synthesize generic financial definitions."
+  },
+  {
+    "id": "F006",
+    "linked_claims": ["C006", "C007"],
+    "category": "CONFIRMED ERROR",
+    "origin": "PAN movement pass",
+    "finding": "The movement pass perpetuated ambiguity around the FY25 Group production sum (197,608 vs 196,527 oz) instead of demonstrating that disjoint rows sum exactly to 196,527 oz. It also asserted 71,997 = 65,233 + 2,428 + 4,337 without noting the 1 oz primary rounding discrepancy (71,998).",
+    "severity": "LOW",
+    "quantified_impact": "Leaves double-counting doubt open; ignores 1 oz primary disclosure rounding residual.",
+    "earliest_stage": "Stage 1 (Movement calculation pass)",
+    "demonstrated_vs_suspected": "Demonstrated origin in pan_dense_movement.md.",
+    "required_correction": "Apply disjoint component summation rules; explicitly record minor rounding differences."
+  },
+  {
+    "id": "F007",
+    "linked_claims": [],
+    "category": "OPERATIONAL OBSERVATION",
+    "origin": "Transport layer",
+    "finding": "PAN three-pass why request failed with HTTP 429 Too Many Requests on first experiment run, requiring a preserved continuation. Continuation completed on first attempt without backoff wait.",
+    "severity": "LOW",
+    "quantified_impact": "Demonstrates operational fragility of chained multi-call pipelines (multiplies rate-limit exposure by 3x).",
+    "earliest_stage": "Transport dispatch",
+    "demonstrated_vs_suspected": "Demonstrated in 20261029T112944Z_three_pass_experiment/receipts/pan_dense_why.json.",
+    "required_correction": "Preserve partial states and implement robust exponential backoff on retryable transport errors."
+  },
+  {
+    "id": "F008",
+    "linked_claims": ["C008"],
+    "category": "SOURCE DEFECT",
+    "origin": "Independent primary evidence audit",
+    "finding": "PAN FY26 report physical p.49 contains a 10,000 oz primary typographical error: Barberton total printed as 94,929 oz (components 71,997 + 12,932 = 84,929 oz), causing the sum of total-operation columns to equal 282,310 oz vs Group total 272,310 oz. Neither model arm detected this inconsistency.",
+    "severity": "HIGH",
+    "quantified_impact": "10,000 oz production overstatement in Barberton total-operation column ($42.35m revenue equivalent at realized gold price).",
+    "earliest_stage": "Company primary disclosure (SENS announcement)",
+    "demonstrated_vs_suspected": "Demonstrated in PAN_49.png and calculations.py.",
+    "required_correction": "Preserve primary source text verbatim; flag column subtotal mismatch as an unverified disclosure error rather than forcing reconciliation."
+  },
+  {
+    "id": "F009",
+    "linked_claims": ["C009"],
+    "category": "VERIFIED QUESTION QUALITY",
+    "origin": "Both PAN arms",
+    "finding": "Both single-pass and three-pass models correctly detected the 5,763 oz mismatch in FY25 MTR tailings production (25,043 vs 30,806 oz) and framed high-quality verification questions connecting it to third-party buy-in feedstock.",
+    "severity": "LOW",
+    "quantified_impact": "Demonstrates parity between single-pass and three-pass in identifying table inconsistencies.",
+    "earliest_stage": "Question generation (Section 4)",
+    "demonstrated_vs_suspected": "Demonstrated in pan_dense_single.md and pan_dense_why.md.",
+    "required_correction": "None; verified as appropriate model behavior."
+  },
+  {
+    "id": "F010",
+    "linked_claims": ["C010"],
+    "category": "EVALUATOR CONCLUSION",
+    "origin": "Comparative workflow analysis",
+    "finding": "Three-pass workflow incurs 2.24x to 2.39x higher cost and 1.62x to 1.80x longer latency without improving analytical robustness. It introduces error propagation across passes and provides no protection against premature question closure or source typographical errors.",
+    "severity": "HIGH",
+    "quantified_impact": "Substantial cost and latency penalty with zero demonstrated financial robustness gain.",
+    "earliest_stage": "Architecture / Prompt workflow design",
+    "demonstrated_vs_suspected": "Demonstrated across NTU and PAN comparative runs.",
+    "required_correction": "Do not adopt three-pass workflow. Maintain single-pass pipeline; improve robustness via targeted prompt guardrails and strict closure verification."
+  }
+]

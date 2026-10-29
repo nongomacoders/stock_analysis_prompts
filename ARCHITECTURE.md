@@ -6,7 +6,19 @@
 
 ## 1. Executive Summary & Core Objective
 
+> **Current operating workflow (2026-10-27):** DeepSeek performs sequential section analysis, Stage 1, and Stage 2/final valuation. Gemini independently evaluates DeepSeek; Codex independently evaluates Gemini. Historical Gemini/Argon stage assignments and "unshakeable ground truth" language below describe earlier designs, not current evidence policy. Follow `workflow/WORKFLOW.md` and section 1A of `docs/STOCK_EVALUATION_FORMAT.md` for mandatory versioned evidence audit records. Reopen upstream findings when primary evidence contradicts them.
+
+> **Publication gate (2026-10-28):** New Stage 2/SENS results require explicit readiness evidence. Unresolved material dependencies withhold the target and recommendation. Raw candidates and prior notes are preserved, and stale metrics cannot become fallback ratings. See `docs/VALUATION_WITHHOLDING.md`; readiness is not independent financial validation.
+
+> **Improvement objective (2026-10-28):** The final goal is to make DeepSeek as robust as possible. Gemini reviews DeepSeek output and Codex reviews Gemini against original evidence; verified lessons feed back into stronger prompts, reusable guardrails and better questions in the evolving questions ledger. Trace failures to the earliest affected section or stage so later analyses ask for the right evidence and catch recurring errors earlier. Preserve original outputs and distinguish proposed improvements from implemented changes and demonstrated improvements.
+
 ### 1.1 The Problem
+
+Section-prompt update (2026-10-28):new briefs assemble one common four-part task
+with short conditional sector notes;existing JSON/manual ledger compatibility
+remains. Native heading context exposes secondary topics on shared pages. This
+does not change PDF extraction boundaries or make model answers financially
+validated. See `docs/SECTION_READING_PROMPT.md` and the preserved paired pilot.
 Traditional LLM analysis of financial disclosures typically fails in two ways:
 1. **Whole-PDF Hallucination & Loss of Precision:** Uploading a 50–100 page PDF into a generic prompt leads to dropped footnotes, missed unit-cost distortions, confused share counts, and superficial parroting of management narratives.
 2. **Fragile Custom Modeling Scripts:** Writing bespoke, one-off financial projection scripts for every company report is labor-intensive, error-prone, and unsustainable for multi-company daily equity research.

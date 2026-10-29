@@ -1,0 +1,4693 @@
+[
+  {
+    "id": "deepseek/deepseek-v4.1-flash-1017",
+    "canonical_slug": "deepseek/deepseek-v4.1-flash-20261017",
+    "hugging_face_id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+    "created": 1792225624,
+    "description": "DeepSeek V4.1 Flash 1017 is the October 17, 2026 snapshot of DeepSeek V4.1 Flash, served by DeepSeek under the `deepseek-flash` API model name. V4.1 Flash is a sparse mixture-of-experts model...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image->text",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "DeepSeek",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012",
+      "input_cache_read": "0.000000006",
+      "overrides": [
+        {
+          "utc_days": [
+            "saturday",
+            "sunday"
+          ],
+          "prompt": "0.00000015",
+          "completion": "0.0000006",
+          "input_cache_read": "0.000000003"
+        },
+        {
+          "utc_days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ],
+          "utc_start": 0,
+          "utc_end": 100,
+          "prompt": "0.00000015",
+          "completion": "0.0000006",
+          "input_cache_read": "0.000000003"
+        },
+        {
+          "utc_days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ],
+          "utc_start": 100,
+          "utc_end": 400,
+          "prompt": "0.0000003",
+          "completion": "0.0000012",
+          "input_cache_read": "0.000000006"
+        },
+        {
+          "utc_days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ],
+          "utc_start": 400,
+          "utc_end": 600,
+          "prompt": "0.00000015",
+          "completion": "0.0000006",
+          "input_cache_read": "0.000000003"
+        },
+        {
+          "utc_days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ],
+          "utc_start": 600,
+          "utc_end": 1000,
+          "prompt": "0.0000003",
+          "completion": "0.0000012",
+          "input_cache_read": "0.000000006"
+        },
+        {
+          "utc_days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ],
+          "utc_start": 1000,
+          "utc_end": 0,
+          "prompt": "0.00000015",
+          "completion": "0.0000006",
+          "input_cache_read": "0.000000003"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 393216,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "frequency_penalty",
+      "include_reasoning",
+      "logit_bias",
+      "logprobs",
+      "max_completion_tokens",
+      "max_tokens",
+      "min_p",
+      "parallel_tool_calls",
+      "presence_penalty",
+      "reasoning",
+      "reasoning_effort",
+      "repetition_penalty",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_k",
+      "top_logprobs",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/deepseek/deepseek-v4.1-flash-20261017/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1280,
+          "win_rate": 51.2,
+          "rank": 6
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1362,
+          "win_rate": 46.7,
+          "rank": 10
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1220,
+          "win_rate": 50.8,
+          "rank": 20
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1289,
+          "win_rate": 47.9,
+          "rank": 20
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1274,
+          "win_rate": 51.2,
+          "rank": 26
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1263,
+          "win_rate": 43.3,
+          "rank": 32
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1244,
+          "win_rate": 51.7,
+          "rank": 17
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1300,
+          "win_rate": 53.4,
+          "rank": 18
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1300,
+          "win_rate": 53,
+          "rank": 15
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 39.5,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "max",
+        "high",
+        "low",
+        "none"
+      ],
+      "default_effort": "high"
+    }
+  },
+  {
+    "id": "google/gemini-4-argon",
+    "canonical_slug": "google/gemini-4-argon-20261013",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 4 Argon",
+    "created": 1791907477,
+    "description": "Gemini 4 Argon is Google's flagship reasoning model, built for complex software engineering, deep mathematical and scientific problem solving, and autonomous multi-step agents. Google trained it to keep context across...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "audio",
+        "file",
+        "image",
+        "text",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000002",
+      "completion": "0.00001",
+      "image": "0.000002",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00001",
+      "input_cache_read": "0.0000001",
+      "input_cache_write": "0.0000001875"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 943718,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-4-argon-20261013/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1438,
+          "win_rate": 77.5,
+          "rank": 1
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1191,
+          "win_rate": 32.8,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1384,
+          "win_rate": 55.7,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1330,
+          "win_rate": 56.1,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1330,
+          "win_rate": 61.3,
+          "rank": 10
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1369,
+          "win_rate": 58,
+          "rank": 7
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1329,
+          "win_rate": 60.9,
+          "rank": 1
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1332,
+          "win_rate": 57.7,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1316,
+          "win_rate": 56.2,
+          "rank": 7
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 52.6,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-4-argon:batch",
+    "canonical_slug": "google/gemini-4-argon-20261013",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 4 Argon (batch)",
+    "created": 1791907477,
+    "description": "Gemini 4 Argon is Google's flagship reasoning model, built for complex software engineering, deep mathematical and scientific problem solving, and autonomous multi-step agents. Google trained it to keep context across...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "audio",
+        "file",
+        "image",
+        "text",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000001",
+      "completion": "0.000005",
+      "image": "0.000001",
+      "audio": "0.000001",
+      "input_audio_cache": "0.00000005",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000005",
+      "input_cache_read": "0.00000005",
+      "input_cache_write": "0.0000001875"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 943718,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-4-argon-20261013/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1438,
+          "win_rate": 77.5,
+          "rank": 1
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1191,
+          "win_rate": 32.8,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1384,
+          "win_rate": 55.7,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1330,
+          "win_rate": 56.1,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1330,
+          "win_rate": 61.3,
+          "rank": 10
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1369,
+          "win_rate": 58,
+          "rank": 7
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1329,
+          "win_rate": 60.9,
+          "rank": 1
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1332,
+          "win_rate": 57.7,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1316,
+          "win_rate": 56.2,
+          "rank": 7
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 52.6,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-nano-banana-2.1",
+    "canonical_slug": "google/gemini-nano-banana-2.1-20261006",
+    "hugging_face_id": null,
+    "name": "Google: Nano Banana 2.1",
+    "created": 1791300825,
+    "description": "Nano Banana 2.1 (Gemini Nano Banana 2.1) is Google's image generation and editing model on the Flash tier, succeeding Nano Banana 2 and Nano Banana Pro. It improves product recontextualization,...",
+    "context_length": 65536,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000015",
+      "completion": "0.0000075",
+      "image_output": "0.00003",
+      "web_search": "0.014"
+    },
+    "top_provider": {
+      "context_length": 65536,
+      "max_completion_tokens": 58982,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-nano-banana-2.1-20261006/endpoints"
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "deepseek/deepseek-v4.1-flash",
+    "canonical_slug": "deepseek/deepseek-v4.1-flash-20260910",
+    "hugging_face_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "name": "DeepSeek: DeepSeek V4.1 Flash",
+    "created": 1789021285,
+    "description": "DeepSeek V4.1 Flash is a sparse mixture-of-experts model from DeepSeek, and the first built on the company's Causal Encoder-Decoder (CED) architecture. It activates 8B parameters on input and 16B on...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image->text",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "DeepSeek",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000014",
+      "completion": "0.00000042",
+      "input_cache_read": "0.0000000042"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 131072,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "frequency_penalty",
+      "include_reasoning",
+      "logit_bias",
+      "logprobs",
+      "max_tokens",
+      "min_p",
+      "parallel_tool_calls",
+      "presence_penalty",
+      "reasoning",
+      "reasoning_effort",
+      "repetition_penalty",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_a",
+      "top_k",
+      "top_logprobs",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/deepseek/deepseek-v4.1-flash-20260910/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [],
+      "artificial_analysis": {
+        "intelligence_index": 24.7,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "max",
+        "high",
+        "low",
+        "none"
+      ],
+      "default_effort": "high"
+    }
+  },
+  {
+    "id": "deepseek/deepseek-v4.1-flash:batch",
+    "canonical_slug": "deepseek/deepseek-v4.1-flash-20260910",
+    "hugging_face_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "name": "DeepSeek: DeepSeek V4.1 Flash (batch)",
+    "created": 1789021285,
+    "description": "DeepSeek V4.1 Flash is a sparse mixture-of-experts model from DeepSeek, and the first built on the company's Causal Encoder-Decoder (CED) architecture. It activates 8B parameters on input and 16B on...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image->text",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "DeepSeek",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000005",
+      "completion": "0.00000015",
+      "input_cache_read": "0.000000004"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 384000,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "frequency_penalty",
+      "include_reasoning",
+      "logit_bias",
+      "logprobs",
+      "max_tokens",
+      "min_p",
+      "presence_penalty",
+      "reasoning",
+      "reasoning_effort",
+      "repetition_penalty",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_k",
+      "top_logprobs",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/deepseek/deepseek-v4.1-flash-20260910/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [],
+      "artificial_analysis": {
+        "intelligence_index": 24.7,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "max",
+        "high",
+        "low",
+        "none"
+      ],
+      "default_effort": "high"
+    }
+  },
+  {
+    "id": "google/gemini-3.8-flash",
+    "canonical_slug": "google/gemini-3.8-flash-20260902",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.8 Flash",
+    "created": 1788362056,
+    "description": "Gemini 3.8 Flash is Google's most intelligent Flash model with significant gains from 3.7 Flash across software engineering, agentic tasks, and multi-step reasoning.",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000000825",
+      "completion": "0.000004125",
+      "image": "0.000000825",
+      "audio": "0.000000825",
+      "input_audio_cache": "0.0000000825",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000004125",
+      "input_cache_read": "0.0000000825",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.8-flash-20260902/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1084,
+          "win_rate": 33.4,
+          "rank": 30
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1232,
+          "win_rate": 54.3,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1244,
+          "win_rate": 48.1,
+          "rank": 11
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1273,
+          "win_rate": 53,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1236,
+          "win_rate": 54.6,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1138,
+          "win_rate": 40.3,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1057,
+          "win_rate": 41.1,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1239,
+          "win_rate": 46.9,
+          "rank": 14
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1292,
+          "win_rate": 49.9,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1269,
+          "win_rate": 52.3,
+          "rank": 12
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1302,
+          "win_rate": 50.4,
+          "rank": 15
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1273,
+          "win_rate": 51.6,
+          "rank": 27
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1303,
+          "win_rate": 51,
+          "rank": 18
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1292,
+          "win_rate": 54.9,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1313,
+          "win_rate": 53.9,
+          "rank": 15
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1299,
+          "win_rate": 50.1,
+          "rank": 17
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 40.9,
+        "coding_index": 76.3,
+        "agentic_index": 40.2
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.8-flash:batch",
+    "canonical_slug": "google/gemini-3.8-flash-20260902",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.8 Flash (batch)",
+    "created": 1788362056,
+    "description": "Gemini 3.8 Flash is Google's most intelligent Flash model with significant gains from 3.7 Flash across software engineering, agentic tasks, and multi-step reasoning.",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875",
+      "image": "0.000000375",
+      "audio": "0.000000375",
+      "input_audio_cache": "0.0000000375",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000001875",
+      "input_cache_read": "0.0000000375",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "tool_choice",
+      "tools"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.8-flash-20260902/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1084,
+          "win_rate": 33.4,
+          "rank": 30
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1232,
+          "win_rate": 54.3,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1244,
+          "win_rate": 48.1,
+          "rank": 11
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1273,
+          "win_rate": 53,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1236,
+          "win_rate": 54.6,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1138,
+          "win_rate": 40.3,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1057,
+          "win_rate": 41.1,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1239,
+          "win_rate": 46.9,
+          "rank": 14
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1292,
+          "win_rate": 49.9,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1269,
+          "win_rate": 52.3,
+          "rank": 12
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1302,
+          "win_rate": 50.4,
+          "rank": 15
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1273,
+          "win_rate": 51.6,
+          "rank": 27
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1303,
+          "win_rate": 51,
+          "rank": 18
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1292,
+          "win_rate": 54.9,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1313,
+          "win_rate": 53.9,
+          "rank": 15
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1299,
+          "win_rate": 50.1,
+          "rank": 17
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 40.9,
+        "coding_index": 76.3,
+        "agentic_index": 40.2
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.7-flash",
+    "canonical_slug": "google/gemini-3.7-flash-20260813",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.7 Flash",
+    "created": 1786640581,
+    "description": "Gemini 3.7 Flash is a multimodal model from Google for fast agentic workflows, coding, and complex multi-step reasoning. It is designed for tasks that require responsive performance and reliable multi-step...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375",
+      "image": "0.00000075",
+      "audio": "0.00000075",
+      "input_audio_cache": "0.000000075",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00000375",
+      "input_cache_read": "0.000000075",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.7-flash-20260813/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1198,
+          "win_rate": 52,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1241,
+          "win_rate": 53.2,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1169,
+          "win_rate": 50,
+          "rank": 13
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1208,
+          "win_rate": 43.5,
+          "rank": 16
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1264,
+          "win_rate": 50.8,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1231,
+          "win_rate": 52.6,
+          "rank": 9
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1105,
+          "win_rate": 46,
+          "rank": 15
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1222,
+          "win_rate": 47.1,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1306,
+          "win_rate": 53.9,
+          "rank": 19
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1279,
+          "win_rate": 55.6,
+          "rank": 6
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1306,
+          "win_rate": 53.9,
+          "rank": 14
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1316,
+          "win_rate": 55.4,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1317,
+          "win_rate": 53.5,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1280,
+          "win_rate": 53.9,
+          "rank": 12
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1292,
+          "win_rate": 51.9,
+          "rank": 22
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1302,
+          "win_rate": 54,
+          "rank": 14
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 39.6,
+        "coding_index": 71.5,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.7-flash:batch",
+    "canonical_slug": "google/gemini-3.7-flash-20260813",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.7 Flash (batch)",
+    "created": 1786640581,
+    "description": "Gemini 3.7 Flash is a multimodal model from Google for fast agentic workflows, coding, and complex multi-step reasoning. It is designed for tasks that require responsive performance and reliable multi-step...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875",
+      "image": "0.000000375",
+      "audio": "0.000000375",
+      "input_audio_cache": "0.0000000375",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000001875",
+      "input_cache_read": "0.0000000375",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "tool_choice",
+      "tools"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.7-flash-20260813/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1198,
+          "win_rate": 52,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1241,
+          "win_rate": 53.2,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1169,
+          "win_rate": 50,
+          "rank": 13
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1208,
+          "win_rate": 43.5,
+          "rank": 16
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1264,
+          "win_rate": 50.8,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1231,
+          "win_rate": 52.6,
+          "rank": 9
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1105,
+          "win_rate": 46,
+          "rank": 15
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1222,
+          "win_rate": 47.1,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1306,
+          "win_rate": 53.9,
+          "rank": 19
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1279,
+          "win_rate": 55.6,
+          "rank": 6
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1306,
+          "win_rate": 53.9,
+          "rank": 14
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1316,
+          "win_rate": 55.4,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1317,
+          "win_rate": 53.5,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1280,
+          "win_rate": 53.9,
+          "rank": 12
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1292,
+          "win_rate": 51.9,
+          "rank": 22
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1302,
+          "win_rate": 54,
+          "rank": 14
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 39.6,
+        "coding_index": 71.5,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.6-flash",
+    "canonical_slug": "google/gemini-3.6-flash-20260721",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.6 Flash",
+    "created": 1784646733,
+    "description": "Gemini 3.6 Flash is a high-efficiency model from Google for coding, agentic workflows, and web and app development. It is designed to produce polished outputs with fewer unnecessary edits and...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375",
+      "image": "0.00000075",
+      "audio": "0.00000075",
+      "input_audio_cache": "0.000000075",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00000375",
+      "input_cache_read": "0.000000075",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.6-flash-20260721/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1142,
+          "win_rate": 47.4,
+          "rank": 14
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1201,
+          "win_rate": 53.4,
+          "rank": 11
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1176,
+          "win_rate": 53.4,
+          "rank": 12
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1181,
+          "win_rate": 44.3,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1045,
+          "win_rate": 41.9,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1196,
+          "win_rate": 49.9,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1097,
+          "win_rate": 39,
+          "rank": 25
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1082,
+          "win_rate": 45.6,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1197,
+          "win_rate": 45.6,
+          "rank": 25
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1269,
+          "win_rate": 52.8,
+          "rank": 26
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1277,
+          "win_rate": 57.1,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1288,
+          "win_rate": 53.4,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1290,
+          "win_rate": 52.4,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1262,
+          "win_rate": 50.9,
+          "rank": 34
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1292,
+          "win_rate": 53.8,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1299,
+          "win_rate": 55.3,
+          "rank": 16
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 34,
+        "coding_index": 69.2,
+        "agentic_index": 29
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.6-flash:batch",
+    "canonical_slug": "google/gemini-3.6-flash-20260721",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.6 Flash (batch)",
+    "created": 1784646733,
+    "description": "Gemini 3.6 Flash is a high-efficiency model from Google for coding, agentic workflows, and web and app development. It is designed to produce polished outputs with fewer unnecessary edits and...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875",
+      "image": "0.000000375",
+      "audio": "0.000000375",
+      "input_audio_cache": "0.0000000375",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000001875",
+      "input_cache_read": "0.0000000375",
+      "input_cache_write": "0.0000000416666666666667"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "tool_choice",
+      "tools"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.6-flash-20260721/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1142,
+          "win_rate": 47.4,
+          "rank": 14
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1201,
+          "win_rate": 53.4,
+          "rank": 11
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1176,
+          "win_rate": 53.4,
+          "rank": 12
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1181,
+          "win_rate": 44.3,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1045,
+          "win_rate": 41.9,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1196,
+          "win_rate": 49.9,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1097,
+          "win_rate": 39,
+          "rank": 25
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1082,
+          "win_rate": 45.6,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1197,
+          "win_rate": 45.6,
+          "rank": 25
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1269,
+          "win_rate": 52.8,
+          "rank": 26
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1277,
+          "win_rate": 57.1,
+          "rank": 9
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1288,
+          "win_rate": 53.4,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1290,
+          "win_rate": 52.4,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1262,
+          "win_rate": 50.9,
+          "rank": 34
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1292,
+          "win_rate": 53.8,
+          "rank": 21
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1299,
+          "win_rate": 55.3,
+          "rank": 16
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 34,
+        "coding_index": 69.2,
+        "agentic_index": 29
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.5-flash-lite",
+    "canonical_slug": "google/gemini-3.5-flash-lite-20260721",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.5 Flash Lite",
+    "created": 1784646726,
+    "description": "Gemini 3.5 Flash Lite is a high-efficiency model from Google with upgraded agentic capabilities. It is suited for subagents that execute focused tasks within complex, multi-agent workflows.",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025",
+      "image": "0.0000003",
+      "audio": "0.0000003",
+      "input_audio_cache": "0.00000003",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000025",
+      "input_cache_read": "0.00000003",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.5-flash-lite-20260721/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [],
+      "artificial_analysis": {
+        "intelligence_index": 22.2,
+        "coding_index": 49.3,
+        "agentic_index": 14.3
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.5-flash-lite:batch",
+    "canonical_slug": "google/gemini-3.5-flash-lite-20260721",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.5 Flash Lite (batch)",
+    "created": 1784646726,
+    "description": "Gemini 3.5 Flash Lite is a high-efficiency model from Google with upgraded agentic capabilities. It is suited for subagents that execute focused tasks within complex, multi-agent workflows.",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000015",
+      "completion": "0.00000125",
+      "image": "0.00000015",
+      "audio": "0.00000015",
+      "input_audio_cache": "0.000000015",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00000125",
+      "input_cache_read": "0.000000015"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "tool_choice",
+      "tools"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.5-flash-lite-20260721/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [],
+      "artificial_analysis": {
+        "intelligence_index": 22.2,
+        "coding_index": 49.3,
+        "agentic_index": 14.3
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-lite-image",
+    "canonical_slug": "google/gemini-3.1-flash-lite-image-20260630",
+    "hugging_face_id": null,
+    "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+    "created": 1782837225,
+    "description": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image) is Google's fastest, most cost-efficient Gemini image model, built for high-velocity developer pipelines and rapid-fire visual exploration. It delivers text-to-image generation...",
+    "context_length": 65536,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015",
+      "image_output": "0.00003",
+      "web_search": "0.014"
+    },
+    "top_provider": {
+      "context_length": 65536,
+      "max_completion_tokens": 58982,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "temperature",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-01",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-lite-image-20260630/endpoints"
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-image",
+    "canonical_slug": "google/gemini-3.1-flash-image-20260528",
+    "hugging_face_id": null,
+    "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
+    "created": 1781754065,
+    "description": "Gemini 3.1 Flash Image, a.k.a. \"Nano Banana 2,\" is Google\u2019s latest state of the art image generation and editing model, delivering Pro-level visual quality at Flash speed. It combines advanced...",
+    "context_length": 131072,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000005",
+      "completion": "0.000003",
+      "image_output": "0.00006",
+      "web_search": "0.014"
+    },
+    "top_provider": {
+      "context_length": 131072,
+      "max_completion_tokens": 32768,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-image-20260528/endpoints"
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3-pro-image",
+    "canonical_slug": "google/gemini-3-pro-image-20260528",
+    "hugging_face_id": null,
+    "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
+    "created": 1781754054,
+    "description": "Nano Banana Pro is Google\u2019s most advanced image-generation and editing model, built on Gemini 3 Pro. It extends the original Nano Banana with significantly improved multimodal reasoning, real-world grounding, and...",
+    "context_length": 131072,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000002",
+      "completion": "0.000012",
+      "image": "0.000002",
+      "image_output": "0.00012",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000002",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000012",
+      "input_cache_read": "0.0000002",
+      "input_cache_write": "0.000000375"
+    },
+    "top_provider": {
+      "context_length": 65536,
+      "max_completion_tokens": 32768,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3-pro-image-20260528/endpoints"
+    },
+    "reasoning": {
+      "mandatory": true
+    }
+  },
+  {
+    "id": "google/gemini-3.5-flash",
+    "canonical_slug": "google/gemini-3.5-flash-20260519",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.5 Flash",
+    "created": 1779193800,
+    "description": "Gemini 3.5 Flash is Google's high-efficiency multimodal model, bringing near-Pro level coding and reasoning at Flash-tier cost and speed. It is highly optimized for coding proficiency and parallel agentic execution...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000015",
+      "completion": "0.000009",
+      "image": "0.0000015",
+      "audio": "0.000003",
+      "input_audio_cache": "0.0000003",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000009",
+      "input_cache_read": "0.00000015",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-01",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.5-flash-20260519/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1144,
+          "win_rate": 55.4,
+          "rank": 12
+        },
+        {
+          "arena": "agents",
+          "category": "agentichtmlslides",
+          "elo": 1162,
+          "win_rate": 45.8,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1244,
+          "win_rate": 57.5,
+          "rank": 3
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(html)",
+          "elo": 1162,
+          "win_rate": 45.7,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1242,
+          "win_rate": 57.8,
+          "rank": 2
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1183,
+          "win_rate": 57.5,
+          "rank": 15
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 990,
+          "win_rate": 30.3,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1197,
+          "win_rate": 56.2,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1098,
+          "win_rate": 43,
+          "rank": 30
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1039,
+          "win_rate": 46.5,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1175,
+          "win_rate": 50.6,
+          "rank": 23
+        },
+        {
+          "arena": "agents",
+          "category": "pptxslides",
+          "elo": 1244,
+          "win_rate": 57.7,
+          "rank": 2
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1247,
+          "win_rate": 57.4,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1080,
+          "win_rate": 43.5,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1202,
+          "win_rate": 52.2,
+          "rank": 23
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1240,
+          "win_rate": 55.8,
+          "rank": 37
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1251,
+          "win_rate": 58.9,
+          "rank": 18
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1265,
+          "win_rate": 54,
+          "rank": 36
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1239,
+          "win_rate": 53.1,
+          "rank": 41
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1262,
+          "win_rate": 52.5,
+          "rank": 33
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1252,
+          "win_rate": 58.2,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1267,
+          "win_rate": 54.2,
+          "rank": 33
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1267,
+          "win_rate": 53.7,
+          "rank": 32
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 33.6,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.5-flash:batch",
+    "canonical_slug": "google/gemini-3.5-flash-20260519",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.5 Flash (batch)",
+    "created": 1779193800,
+    "description": "Gemini 3.5 Flash is Google's high-efficiency multimodal model, bringing near-Pro level coding and reasoning at Flash-tier cost and speed. It is highly optimized for coding proficiency and parallel agentic execution...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000075",
+      "completion": "0.0000045",
+      "image": "0.00000075",
+      "audio": "0.0000015",
+      "input_audio_cache": "0.00000015",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000045",
+      "input_cache_read": "0.000000075"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-01",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.5-flash-20260519/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1144,
+          "win_rate": 55.4,
+          "rank": 12
+        },
+        {
+          "arena": "agents",
+          "category": "agentichtmlslides",
+          "elo": 1162,
+          "win_rate": 45.8,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1244,
+          "win_rate": 57.5,
+          "rank": 3
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(html)",
+          "elo": 1162,
+          "win_rate": 45.7,
+          "rank": 6
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1242,
+          "win_rate": 57.8,
+          "rank": 2
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1183,
+          "win_rate": 57.5,
+          "rank": 15
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 990,
+          "win_rate": 30.3,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1197,
+          "win_rate": 56.2,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1098,
+          "win_rate": 43,
+          "rank": 30
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1039,
+          "win_rate": 46.5,
+          "rank": 21
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1175,
+          "win_rate": 50.6,
+          "rank": 23
+        },
+        {
+          "arena": "agents",
+          "category": "pptxslides",
+          "elo": 1244,
+          "win_rate": 57.7,
+          "rank": 2
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1247,
+          "win_rate": 57.4,
+          "rank": 5
+        },
+        {
+          "arena": "agents",
+          "category": "spreadsheet",
+          "elo": 1080,
+          "win_rate": 43.5,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1202,
+          "win_rate": 52.2,
+          "rank": 23
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1240,
+          "win_rate": 55.8,
+          "rank": 37
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1251,
+          "win_rate": 58.9,
+          "rank": 18
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1265,
+          "win_rate": 54,
+          "rank": 36
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1239,
+          "win_rate": 53.1,
+          "rank": 41
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1262,
+          "win_rate": 52.5,
+          "rank": 33
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1252,
+          "win_rate": 58.2,
+          "rank": 16
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1267,
+          "win_rate": 54.2,
+          "rank": 33
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1267,
+          "win_rate": 53.7,
+          "rank": 32
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 33.6,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-lite",
+    "canonical_slug": "google/gemini-3.1-flash-lite-20260507",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.1 Flash Lite",
+    "created": 1778168828,
+    "description": "Gemini 3.1 Flash Lite is Google\u2019s GA high-efficiency multimodal model optimized for low-latency, high-volume workloads. It supports text, image, video, audio, and PDF inputs, and is designed for lightweight agentic...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015",
+      "image": "0.00000025",
+      "audio": "0.0000005",
+      "input_audio_cache": "0.00000005",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000015",
+      "input_cache_read": "0.000000025",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-lite-20260507/endpoints"
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-lite:batch",
+    "canonical_slug": "google/gemini-3.1-flash-lite-20260507",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.1 Flash Lite (batch)",
+    "created": 1778168828,
+    "description": "Gemini 3.1 Flash Lite is Google\u2019s GA high-efficiency multimodal model optimized for low-latency, high-volume workloads. It supports text, image, video, audio, and PDF inputs, and is designed for lightweight agentic...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000000125",
+      "completion": "0.00000075",
+      "image": "0.000000125",
+      "audio": "0.00000025",
+      "input_audio_cache": "0.000000025",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00000075",
+      "input_cache_read": "0.0000000125"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-lite-20260507/endpoints"
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-lite-preview",
+    "canonical_slug": "google/gemini-3.1-flash-lite-preview-20260303",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 3.1 Flash Lite Preview",
+    "created": 1772512673,
+    "description": "Gemini 3.1 Flash Lite Preview is Google's high-efficiency model optimized for high-volume use cases. It outperforms Gemini 2.5 Flash Lite on overall quality and approaches Gemini 2.5 Flash performance across...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "video",
+        "file",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015",
+      "image": "0.00000025",
+      "audio": "0.0000005",
+      "input_audio_cache": "0.00000005",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000015",
+      "input_cache_read": "0.000000025",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-lite-preview-20260303/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1045,
+          "win_rate": 38.8,
+          "rank": 107
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1164,
+          "win_rate": 50.8,
+          "rank": 33
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1070,
+          "win_rate": 36.5,
+          "rank": 113
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1045,
+          "win_rate": 33.3,
+          "rank": 111
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1029,
+          "win_rate": 33.7,
+          "rank": 120
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1049,
+          "win_rate": 42.5,
+          "rank": 78
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1066,
+          "win_rate": 37.7,
+          "rank": 106
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1081,
+          "win_rate": 36.6,
+          "rank": 115
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 15.6,
+        "coding_index": 34.7,
+        "agentic_index": 1.6
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-flash-image-preview",
+    "canonical_slug": "google/gemini-3.1-flash-image-preview-20260226",
+    "hugging_face_id": "",
+    "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
+    "created": 1772119558,
+    "description": "Gemini 3.1 Flash Image Preview, a.k.a. \"Nano Banana 2,\" is Google\u2019s latest state of the art image generation and editing model, delivering Pro-level visual quality at Flash speed. It combines...",
+    "context_length": 65536,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000005",
+      "completion": "0.000003",
+      "image_output": "0.00006",
+      "web_search": "0.014"
+    },
+    "top_provider": {
+      "context_length": 65536,
+      "max_completion_tokens": 58982,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-flash-image-preview-20260226/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "graphicdesign",
+          "elo": 1261,
+          "win_rate": 66.3,
+          "rank": 4
+        },
+        {
+          "arena": "models",
+          "category": "image",
+          "elo": 1274,
+          "win_rate": 65.1,
+          "rank": 4
+        },
+        {
+          "arena": "models",
+          "category": "logo",
+          "elo": 1263,
+          "win_rate": 62.9,
+          "rank": 4
+        }
+      ]
+    },
+    "reasoning": {
+      "mandatory": false,
+      "default_enabled": true,
+      "supported_efforts": [
+        "high",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "minimal"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-pro-preview-customtools",
+    "canonical_slug": "google/gemini-3.1-pro-preview-customtools-20260219",
+    "hugging_face_id": null,
+    "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
+    "created": 1772045923,
+    "description": "Gemini 3.1 Pro Preview Custom Tools is a variant of Gemini 3.1 Pro that improves tool selection behavior by preventing overuse of a general bash tool when more efficient third-party...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "audio",
+        "image",
+        "video",
+        "file"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000002",
+      "completion": "0.000012",
+      "image": "0.000002",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000002",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000012",
+      "input_cache_read": "0.0000002",
+      "input_cache_write": "0.000000375",
+      "overrides": [
+        {
+          "min_prompt_tokens": 200000,
+          "prompt": "0.000004",
+          "completion": "0.000018",
+          "audio": "0.000004",
+          "input_audio_cache": "0.0000004",
+          "input_cache_read": "0.0000004"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "frequency_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-pro-preview-customtools-20260219/endpoints"
+    },
+    "reasoning": {
+      "mandatory": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-pro-preview",
+    "canonical_slug": "google/gemini-3.1-pro-preview-20260219",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 3.1 Pro Preview",
+    "created": 1771509627,
+    "description": "Gemini 3.1 Pro Preview is Google\u2019s frontier reasoning model, delivering enhanced software engineering performance, improved agentic reliability, and more efficient token usage across complex workflows. Building on the multimodal foundation...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "audio",
+        "file",
+        "image",
+        "text",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000002",
+      "completion": "0.000012",
+      "image": "0.000002",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000002",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000012",
+      "input_cache_read": "0.0000002",
+      "input_cache_write": "0.000000375",
+      "overrides": [
+        {
+          "min_prompt_tokens": 200000,
+          "prompt": "0.000004",
+          "completion": "0.000018",
+          "audio": "0.000004",
+          "input_audio_cache": "0.0000004",
+          "input_cache_read": "0.0000004"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-pro-preview-20260219/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1077,
+          "win_rate": 44,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "agentichtmlslides",
+          "elo": 1226,
+          "win_rate": 55.8,
+          "rank": 4
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1112,
+          "win_rate": 33.8,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(html)",
+          "elo": 1219,
+          "win_rate": 54.4,
+          "rank": 4
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1107,
+          "win_rate": 33.9,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1047,
+          "win_rate": 41.3,
+          "rank": 35
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1093,
+          "win_rate": 39.1,
+          "rank": 17
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1068,
+          "win_rate": 40.8,
+          "rank": 32
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1236,
+          "win_rate": 60,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1049,
+          "win_rate": 48.6,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1092,
+          "win_rate": 42.9,
+          "rank": 40
+        },
+        {
+          "arena": "agents",
+          "category": "pptxslides",
+          "elo": 1110,
+          "win_rate": 34.1,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1109,
+          "win_rate": 31.9,
+          "rank": 23
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1125,
+          "win_rate": 44.3,
+          "rank": 34
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1231,
+          "win_rate": 58.4,
+          "rank": 41
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1267,
+          "win_rate": 63.5,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1242,
+          "win_rate": 64.4,
+          "rank": 45
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1239,
+          "win_rate": 61.8,
+          "rank": 40
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1202,
+          "win_rate": 52.2,
+          "rank": 57
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1283,
+          "win_rate": 67.8,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1275,
+          "win_rate": 69.4,
+          "rank": 28
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1251,
+          "win_rate": 64.4,
+          "rank": 44
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 29.7,
+        "coding_index": 68.8,
+        "agentic_index": 8.2
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3.1-pro-preview:batch",
+    "canonical_slug": "google/gemini-3.1-pro-preview-20260219",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 3.1 Pro Preview (batch)",
+    "created": 1771509627,
+    "description": "Gemini 3.1 Pro Preview is Google\u2019s frontier reasoning model, delivering enhanced software engineering performance, improved agentic reliability, and more efficient token usage across complex workflows. Building on the multimodal foundation...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "audio",
+        "file",
+        "image",
+        "text",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000001",
+      "completion": "0.000006",
+      "image": "0.000001",
+      "audio": "0.000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000006",
+      "overrides": [
+        {
+          "min_prompt_tokens": 200000,
+          "prompt": "0.000002",
+          "completion": "0.000009",
+          "audio": "0.000002"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3.1-pro-preview-20260219/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticgamedev",
+          "elo": 1077,
+          "win_rate": 44,
+          "rank": 22
+        },
+        {
+          "arena": "agents",
+          "category": "agentichtmlslides",
+          "elo": 1226,
+          "win_rate": 55.8,
+          "rank": 4
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1112,
+          "win_rate": 33.8,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(html)",
+          "elo": 1219,
+          "win_rate": 54.4,
+          "rank": 4
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1107,
+          "win_rate": 33.9,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1047,
+          "win_rate": 41.3,
+          "rank": 35
+        },
+        {
+          "arena": "agents",
+          "category": "blender3d",
+          "elo": 1093,
+          "win_rate": 39.1,
+          "rank": 17
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1068,
+          "win_rate": 40.8,
+          "rank": 32
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1236,
+          "win_rate": 60,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "htmlslides",
+          "elo": 1049,
+          "win_rate": 48.6,
+          "rank": 18
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1092,
+          "win_rate": 42.9,
+          "rank": 40
+        },
+        {
+          "arena": "agents",
+          "category": "pptxslides",
+          "elo": 1110,
+          "win_rate": 34.1,
+          "rank": 7
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1109,
+          "win_rate": 31.9,
+          "rank": 23
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1125,
+          "win_rate": 44.3,
+          "rank": 34
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1231,
+          "win_rate": 58.4,
+          "rank": 41
+        },
+        {
+          "arena": "models",
+          "category": "asciiart",
+          "elo": 1267,
+          "win_rate": 63.5,
+          "rank": 13
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1242,
+          "win_rate": 64.4,
+          "rank": 45
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1239,
+          "win_rate": 61.8,
+          "rank": 40
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1202,
+          "win_rate": 52.2,
+          "rank": 57
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1283,
+          "win_rate": 67.8,
+          "rank": 11
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1275,
+          "win_rate": 69.4,
+          "rank": 28
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1251,
+          "win_rate": 64.4,
+          "rank": 44
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 29.7,
+        "coding_index": 68.8,
+        "agentic_index": 8.2
+      }
+    },
+    "reasoning": {
+      "mandatory": true,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3-flash-preview",
+    "canonical_slug": "google/gemini-3-flash-preview-20251217",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 3 Flash Preview",
+    "created": 1765987078,
+    "description": "Gemini 3 Flash Preview is a high speed, high value thinking model designed for agentic workflows, multi turn chat, and coding assistance. It delivers near Pro level reasoning and tool...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "file",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000005",
+      "completion": "0.000003",
+      "image": "0.0000005",
+      "audio": "0.000001",
+      "input_audio_cache": "0.0000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000003",
+      "input_cache_read": "0.00000005",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3-flash-preview-20251217/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1073,
+          "win_rate": 39.3,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1075,
+          "win_rate": 39.3,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1049,
+          "win_rate": 48.1,
+          "rank": 34
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1063,
+          "win_rate": 47.4,
+          "rank": 33
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1161,
+          "win_rate": 50.6,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1090,
+          "win_rate": 46.6,
+          "rank": 41
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1036,
+          "win_rate": 38.3,
+          "rank": 28
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1110,
+          "win_rate": 48.5,
+          "rank": 37
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1181,
+          "win_rate": 62.7,
+          "rank": 57
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1187,
+          "win_rate": 57.6,
+          "rank": 65
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1166,
+          "win_rate": 58.3,
+          "rank": 71
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1194,
+          "win_rate": 57,
+          "rank": 66
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 26.3,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3-flash-preview:batch",
+    "canonical_slug": "google/gemini-3-flash-preview-20251217",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 3 Flash Preview (batch)",
+    "created": 1765987078,
+    "description": "Gemini 3 Flash Preview is a high speed, high value thinking model designed for agentic workflows, multi turn chat, and coding assistance. It delivers near Pro level reasoning and tool...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "file",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015",
+      "image": "0.00000025",
+      "audio": "0.0000005",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000015"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3-flash-preview-20251217/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "agents",
+          "category": "agenticslides",
+          "elo": 1073,
+          "win_rate": 39.3,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "agenticslides(python-pptx)",
+          "elo": 1075,
+          "win_rate": 39.3,
+          "rank": 8
+        },
+        {
+          "arena": "agents",
+          "category": "androidnative",
+          "elo": 1049,
+          "win_rate": 48.1,
+          "rank": 34
+        },
+        {
+          "arena": "agents",
+          "category": "fullstack",
+          "elo": 1063,
+          "win_rate": 47.4,
+          "rank": 33
+        },
+        {
+          "arena": "agents",
+          "category": "godotgamedev",
+          "elo": 1161,
+          "win_rate": 50.6,
+          "rank": 19
+        },
+        {
+          "arena": "agents",
+          "category": "mobileapps",
+          "elo": 1090,
+          "win_rate": 46.6,
+          "rank": 41
+        },
+        {
+          "arena": "agents",
+          "category": "python-pptxslides",
+          "elo": 1036,
+          "win_rate": 38.3,
+          "rank": 28
+        },
+        {
+          "arena": "agents",
+          "category": "webapps",
+          "elo": 1110,
+          "win_rate": 48.5,
+          "rank": 37
+        },
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1181,
+          "win_rate": 62.7,
+          "rank": 57
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1187,
+          "win_rate": 57.6,
+          "rank": 65
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1166,
+          "win_rate": 58.3,
+          "rank": 71
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1194,
+          "win_rate": 57,
+          "rank": 66
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 26.3,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "minimal",
+        "none"
+      ],
+      "default_effort": "medium"
+    }
+  },
+  {
+    "id": "google/gemini-3-pro-image-preview",
+    "canonical_slug": "google/gemini-3-pro-image-preview-20251120",
+    "hugging_face_id": "",
+    "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
+    "created": 1763653797,
+    "description": "Nano Banana Pro is Google\u2019s most advanced image-generation and editing model, built on Gemini 3 Pro. It extends the original Nano Banana with significantly improved multimodal reasoning, real-world grounding, and...",
+    "context_length": 65536,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.000002",
+      "completion": "0.000012",
+      "image": "0.000002",
+      "image_output": "0.00012",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000002",
+      "web_search": "0.014",
+      "internal_reasoning": "0.000012",
+      "input_cache_read": "0.0000002",
+      "input_cache_write": "0.000000375"
+    },
+    "top_provider": {
+      "context_length": 65536,
+      "max_completion_tokens": 32768,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "frequency_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": null,
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-3-pro-image-preview-20251120/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "graphicdesign",
+          "elo": 1251,
+          "win_rate": 65.8,
+          "rank": 5
+        },
+        {
+          "arena": "models",
+          "category": "image",
+          "elo": 1241,
+          "win_rate": 62.1,
+          "rank": 5
+        },
+        {
+          "arena": "models",
+          "category": "logo",
+          "elo": 1241,
+          "win_rate": 61,
+          "rank": 6
+        },
+        {
+          "arena": "models",
+          "category": "imageediting",
+          "elo": 1248,
+          "win_rate": 66,
+          "rank": 3
+        }
+      ]
+    },
+    "reasoning": {
+      "mandatory": true
+    }
+  },
+  {
+    "id": "google/gemini-2.5-flash-image",
+    "canonical_slug": "google/gemini-2.5-flash-image",
+    "hugging_face_id": "",
+    "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
+    "created": 1759870431,
+    "description": "Gemini 2.5 Flash Image, a.k.a. \"Nano Banana,\" is now generally available. It is a state of the art image generation model with contextual understanding. It is capable of image generation,...",
+    "context_length": 32768,
+    "architecture": {
+      "modality": "text+image->text+image",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "image",
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025",
+      "image": "0.0000003",
+      "image_output": "0.00003",
+      "audio": "0.000001",
+      "input_audio_cache": "0.0000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000025",
+      "input_cache_read": "0.00000003",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 32768,
+      "max_completion_tokens": 8192,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "max_tokens",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "frequency_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-31",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-2.5-flash-image/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "graphicdesign",
+          "elo": 1167,
+          "win_rate": 56.9,
+          "rank": 10
+        },
+        {
+          "arena": "models",
+          "category": "image",
+          "elo": 1183,
+          "win_rate": 55.6,
+          "rank": 10
+        },
+        {
+          "arena": "models",
+          "category": "logo",
+          "elo": 1169,
+          "win_rate": 51.4,
+          "rank": 11
+        }
+      ]
+    }
+  },
+  {
+    "id": "google/gemini-2.5-flash-lite",
+    "canonical_slug": "google/gemini-2.5-flash-lite",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 2.5 Flash Lite",
+    "created": 1753200276,
+    "description": "Gemini 2.5 Flash-Lite is a lightweight reasoning model in the Gemini 2.5 family, optimized for ultra-low latency and cost efficiency. It offers improved throughput, faster token generation, and better performance...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "file",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000001",
+      "completion": "0.0000004",
+      "image": "0.0000001",
+      "audio": "0.0000003",
+      "input_audio_cache": "0.00000003",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000004",
+      "input_cache_read": "0.00000001",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65535,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "frequency_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-31",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-2.5-flash-lite/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [],
+      "artificial_analysis": {
+        "intelligence_index": 10.4,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false
+    }
+  },
+  {
+    "id": "google/gemini-2.5-flash",
+    "canonical_slug": "google/gemini-2.5-flash",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 2.5 Flash",
+    "created": 1750172488,
+    "description": "Gemini 2.5 Flash is Google's state-of-the-art workhorse model, specifically designed for advanced reasoning, coding, mathematics, and scientific tasks. It includes built-in \"thinking\" capabilities, enabling it to provide responses with greater...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "file",
+        "image",
+        "text",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025",
+      "image": "0.0000003",
+      "audio": "0.000001",
+      "input_audio_cache": "0.0000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.0000025",
+      "input_cache_read": "0.00000003",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65535,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "top_k": null,
+      "frequency_penalty": null,
+      "presence_penalty": null,
+      "repetition_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-31",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-2.5-flash/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1068,
+          "win_rate": 47.4,
+          "rank": 103
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1102,
+          "win_rate": 46.9,
+          "rank": 107
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1134,
+          "win_rate": 49.1,
+          "rank": 90
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1064,
+          "win_rate": 44.3,
+          "rank": 111
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1087,
+          "win_rate": 48.9,
+          "rank": 102
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1113,
+          "win_rate": 47.1,
+          "rank": 107
+        },
+        {
+          "arena": "models",
+          "category": "svg",
+          "elo": 1016,
+          "win_rate": 43.1,
+          "rank": 87
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 15.5,
+        "coding_index": null,
+        "agentic_index": null
+      }
+    },
+    "reasoning": {
+      "mandatory": false
+    }
+  },
+  {
+    "id": "google/gemini-2.5-pro",
+    "canonical_slug": "google/gemini-2.5-pro",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 2.5 Pro",
+    "created": 1750169544,
+    "description": "Gemini 2.5 Pro is Google\u2019s state-of-the-art AI model designed for advanced reasoning, coding, mathematics, and scientific tasks. It employs \u201cthinking\u201d capabilities, enabling it to reason through responses with enhanced accuracy...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio+video->text",
+      "input_modalities": [
+        "text",
+        "image",
+        "file",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000125",
+      "completion": "0.00001",
+      "image": "0.00000125",
+      "audio": "0.00000125",
+      "input_audio_cache": "0.000000125",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00001",
+      "input_cache_read": "0.000000125",
+      "input_cache_write": "0.000000375",
+      "overrides": [
+        {
+          "min_prompt_tokens": 200000,
+          "prompt": "0.0000025",
+          "completion": "0.000015",
+          "audio": "0.0000025",
+          "input_audio_cache": "0.00000025",
+          "input_cache_read": "0.00000025"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {
+      "temperature": null,
+      "top_p": null,
+      "frequency_penalty": null
+    },
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-31",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-2.5-pro/endpoints"
+    },
+    "benchmarks": {
+      "design_arena": [
+        {
+          "arena": "models",
+          "category": "3d",
+          "elo": 1076,
+          "win_rate": 50.6,
+          "rank": 98
+        },
+        {
+          "arena": "models",
+          "category": "codecategories",
+          "elo": 1150,
+          "win_rate": 57.5,
+          "rank": 87
+        },
+        {
+          "arena": "models",
+          "category": "dataviz",
+          "elo": 1222,
+          "win_rate": 68.2,
+          "rank": 51
+        },
+        {
+          "arena": "models",
+          "category": "gamedev",
+          "elo": 1111,
+          "win_rate": 54.2,
+          "rank": 94
+        },
+        {
+          "arena": "models",
+          "category": "uicomponent",
+          "elo": 1134,
+          "win_rate": 57.5,
+          "rank": 84
+        },
+        {
+          "arena": "models",
+          "category": "website",
+          "elo": 1165,
+          "win_rate": 58.4,
+          "rank": 84
+        }
+      ],
+      "artificial_analysis": {
+        "intelligence_index": 16.1,
+        "coding_index": 33.3,
+        "agentic_index": 1.6
+      }
+    },
+    "reasoning": {
+      "mandatory": true
+    }
+  },
+  {
+    "id": "google/gemini-2.5-pro-preview",
+    "canonical_slug": "google/gemini-2.5-pro-preview-06-05",
+    "hugging_face_id": "",
+    "name": "Google: Gemini 2.5 Pro Preview 06-05",
+    "created": 1749137257,
+    "description": "Gemini 2.5 Pro is Google\u2019s state-of-the-art AI model designed for advanced reasoning, coding, mathematics, and scientific tasks. It employs \u201cthinking\u201d capabilities, enabling it to reason through responses with enhanced accuracy...",
+    "context_length": 1048576,
+    "architecture": {
+      "modality": "text+image+file+audio->text",
+      "input_modalities": [
+        "file",
+        "image",
+        "text",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "tokenizer": "Gemini",
+      "instruct_type": null
+    },
+    "pricing": {
+      "prompt": "0.00000125",
+      "completion": "0.00001",
+      "image": "0.00000125",
+      "audio": "0.00000125",
+      "input_audio_cache": "0.000000125",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00001",
+      "input_cache_read": "0.000000125",
+      "input_cache_write": "0.000000375",
+      "overrides": [
+        {
+          "min_prompt_tokens": 200000,
+          "prompt": "0.0000025",
+          "completion": "0.000015",
+          "audio": "0.0000025",
+          "input_audio_cache": "0.00000025",
+          "input_cache_read": "0.00000025"
+        }
+      ]
+    },
+    "top_provider": {
+      "context_length": 1048576,
+      "max_completion_tokens": 65536,
+      "is_moderated": false
+    },
+    "per_request_limits": null,
+    "supported_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "response_format",
+      "seed",
+      "stop",
+      "structured_outputs",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_p"
+    ],
+    "default_parameters": {},
+    "supported_voices": null,
+    "knowledge_cutoff": "2025-01-31",
+    "expiration_date": null,
+    "links": {
+      "details": "/api/v1/models/google/gemini-2.5-pro-preview-06-05/endpoints"
+    },
+    "reasoning": {
+      "mandatory": true
+    }
+  }
+]

@@ -1,0 +1,37 @@
+11. Earnings per share
+Earnings per share
+Earnings per share is calculated using the weighted average number of ordinary shares in issue during the period and is
+based on the profit after tax attributable to equity holders of the parent.
+Headline earnings per share
+Headline earnings per share (HEPS) is determined as per the JSE Listings Requirements as set out in the HEPS circular
+1/2023.
+The calculation of headline earnings per share is based on the weighted average number of ordinary shares.
+The calculation is reconciled as follows:
+Group
+2026 2025
+R’000 R’000
+Profit attributable to equity holders of the parent 978 894 1 179 809
+Net (profit)/loss on disposal of property, plant and equipment and intangible assets (294) 3 110
+Impairment on intangible asset in joint venture 18 324
+Compensation from third parties for items of property, plant and equipment and
+intangible assets (5 283) (4 735)
+Taxation 1 486 537
+Headline earnings 974 821 1 179 045
+Earnings per share (cents)
+– Basic 114.2 137.6
+– Diluted 114.1 137.5
+Headline earnings per share (cents)
+– Basic 113.7 137.5
+– Diluted 113.6 137.4
+Group
+2026 2025
+Reconciliation of shares in issue to weighted average number of shares in issue
+Total number of shares in issue at beginning of the period 860 084 483 860 084 483
+Total number of treasury shares in issue at the beginning of the period (3 115 446) (2 734 980)
+Total number of shares outstanding at the beginning of the period 856 969 037 857 349 503
+Treasury shares exercised and issued under the share scheme 606 869 2 397 586
+Treasury shares acquired (569 379) (2 390 752)
+Total weighted number of shares in issue at the end of the period 857 006 527 857 356 337
+Share options 811 223 699 577
+Total diluted weighted number of shares in issue at the end of the period 857 817 750 858 055 914
+Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026 35

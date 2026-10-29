@@ -1,0 +1,15 @@
+{
+  "gate": "REVISE_BEFORE_FULL",
+  "reviewer": "Codex",
+  "source_basis": "Identical source PDF hash; source physical pp.21-25 and preserved current outputs",
+  "supported_checks": [
+    "Principal gross3414 + cumulative gain431 = net3845; gain not a conventional loss allowance",
+    "FY25 historical loss77+182=259; current191 is a six-month movement",
+    "Trade gross374 less allowance5 =369; simplified-ECL policy kept conditional; no automatic SICR allegation"
+  ],
+  "ledger": "All3 responses valid after one retained literal-quote repair",
+  "required_revision": "Page25 response called the source trade table only and omitted currency risk starting lower on the page despite supplied source and continuation metadata",
+  "other_observation": "A new question duplicated the already resolved POCI issue; include a compact resolved-ID index",
+  "scope_limit": "POCI classification/arithmetic support does not establish every other-asset FVTPL detail; semantic closure remains reviewable",
+  "next_check": "One page25 recheck with explicit secondary-topic list, shorter literal quote locators and resolved-question index; preserve all previous outputs"
+}

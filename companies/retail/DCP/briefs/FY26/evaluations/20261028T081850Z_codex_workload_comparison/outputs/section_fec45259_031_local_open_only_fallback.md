@@ -1,0 +1,64 @@
+> APPLICATION QUALIFICATION: DeepSeek ledger updates failed evidence validation. No existing question was resolved by this response. All prior questions remain open; any resolution claim in the narrative is unverified. Only valid new questions were retained.
+
+### 1. Answers to Stored Questions for This Section
+
+- **Q-c0abddef102f479a** (FY-end date; Saltzman transition disclosures):
+  - **Status**: `Partially resolved (remainder stays open for D002/D003/D006)`
+  - **Answer & evidence**: FY-end date is **28 February 2026** — evidenced by the share-award schedule column "Expected value at **28-Feb-26**" and "Unvested share units at **28-Feb-26**" [D001, physical PDF p. 94]. The Ivan Saltzman (IL Saltzman) executive-to-NED transition is **not** disclosed as a remuneration/related-party event in this capture; however, the p.94 schedule shows IL Saltzman's 30-Aug-23 FSU award (113,587 units) vesting **30-Jun-26** — i.e., vesting straddles the transition date and remains unvested at 28-Feb-26. Whether any acceleration/remuneration/related-party disclosure arises from the transition remains open for D002/D003/D006.
+
+- **Q-c08de916ece24aa2** (director remuneration, SBP, related-party; transition amounts):
+  - **Status**: `Partially resolved (remainder stays open for D003/D006)`
+  - **Answer & evidence**: FY2026 vs FY2025 **total awarded remuneration** for Executive Directors = **R76,071k vs R61,029k**; **total earned (single figure)** = **R69,499k vs R54,493k** [D001, p. 92]. Prescribed Officers: awarded **R28,418k vs R27,060k**; earned **R28,705k vs R24,135k** [D001, p. 93]. LTI **awarded** (Exec Dirs) **R13,494k vs R7,340k**; LTI **vesting** (earned) **R6,922k vs R804k** [D001, p. 92]. SE Saltzman's 30-Aug-23, 30-Aug-24 and 31-Aug-25 FSU awards are marked **"Forfeited (resigned)"** [D001, p. 94]. No explicit transition-related remuneration/related-party amount is disclosed in this capture; IFRS 2 expense and related-party note remain open for D003/D006.
+
+- **Q-1d7a9c1fba464042** (SBP expense/accrual; performance shares under revised FY26–FY29 LTI):
+  - **Status**: `Partially resolved (remainder stays open for D003/D006)`
+  - **Answer & evidence**: This capture gives **award-level** data, not the IFRS 2 expense. FY2026 LTI awards (31-Aug-25, award price R34.05) by executive: IL Saltzman 95,448 units (face value R3,250,004); SE Saltzman 43,365 (R1,476,578, forfeited); SRN Goetsch 40,236 (R1,370,036); R Morais 153,371 (R5,222,283); JD Pope 71,665 (R2,440,193) [D001, p. 94]. Footnote 2 states the FY2026 awards are **"Based on previous LTI structure with new LTI structure applicable to awards from FY27"** [D001, p. 91] — so the revised FY26–FY29 plan is **not** reflected in FY2026 awards. IFRS 2 expense and total outstanding performance shares remain open for D003/D006.
+
+- **Q-a9bb4b924fdd4bfc** (SBP expense; LTP shares awarded/vested/forfeited; transition acceleration):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: Share movements visible: FY2026 awards 31-Aug-25 (IL Saltzman 95,448; SE Saltzman 43,365 forfeited; SRN Goetsch 40,236; R Morais 153,371; JD Pope 71,665); vested during FY26 = 30-Aug-22 awards (IL Saltzman 123,041; SE Saltzman 37,171; SRN Goetsch 38,565; JD Pope 14,667) [D001, p. 94]. No accelerated vesting tied to the IL Saltzman transition is disclosed here; the 30-Aug-23 tranche vests 30-Jun-26 (post-transition) and is still unvested at 28-Feb-26. IFRS 2 expense in Rm remains open for D006.
+
+*(Stored questions Q-a51cb599eb934775, Q-30355183667642da, Q-0386067925cb46f1, Q-9dcda868ba3541df, Q-2791af76c6484354, Q-65a1c0ff751b4c5e, Q-4f8a0909b1b2417e, Q-d8a9561a4c414bd7 relate to pages/sections not in this capture — carried forward.)*
+
+### 2. Footnote & Qualification Deep-Dive
+
+- **Footnote 1 [D001, p. 91]**: *"1 9 568 x 40% x 74.3% = 2 842. The approved market alignment adjustment was implemented in phased instalments… the remuneration disclosed reflects the cumulative impact of these phased adjustments, rather than a single salary increase applied in one instalment."* — This explains the CFO's STI of R2,842k as 40% of a R9,568k base at 74.3% achievement, and flags that the **pay-mix chart is distorted** by a phased market-alignment uplift (salary R7,535k vs R6,087k, +23.8% YoY). Forecast implication: FY2027 fixed cost base should normalise to the full-year aligned salary, not the FY2026 blended figure.
+- **Footnote 2 [D001, p. 91]**: *"Based on previous LTI structure with new LTI structure applicable to awards from FY27."* — Critical: FY2026 LTI awards (R13,494k Exec / R4,651k Prescribed Officers) are under the **old** plan; the revised FY26–FY29 LTI will only hit FY2027+ IFRS 2 and share counts. Must verify new-plan terms and expected annual award value in D003/D006.
+- **"Forfeited (resigned)" on SE Saltzman awards [D001, p. 94]**: Three tranches (30-Aug-23, 30-Aug-24, 31-Aug-25) forfeited — confirms SE Saltzman resigned during FY2026; any unvested IFRS 2 reversal should appear in D006.
+- **"Market alignment adjustment" qualification [D001, p. 91]**: Explicitly warns the pay mix "may not be fully reflective of standard pay structure" — a one-off comp distortion to strip out of run-rate cost forecasts.
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D00X, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D006 Notes (share-based payment note) | Footnote 2: new LTI structure applies from FY27 awards `[D001, p. 91]` | Extract new FY26–FY29 LTI plan terms: expected annual award value (Rm), vesting conditions, and FY2027 IFRS 2 expense guidance | Drives FY2027+ IFRS 2 expense and diluted share count |
+| N2 | High | D006 Notes (share-based payment note) | SE Saltzman awards "Forfeited (resigned)" `[D001, p. 94]` | Confirm IFRS 2 reversal amount on forfeiture and any remaining unvested SE Saltzman balance at 28-Feb-26 | Affects FY2026 SBP expense and one-off reversal |
+| N3 | Medium | D003 / D006 (remuneration & related-party notes) | IL Saltzman 30-Aug-23 FSU tranche vests 30-Jun-26, straddling executive-to-NED transition `[D001, p. 94]` | Confirm whether transition triggers acceleration, pro-rating, or continued vesting; any related-party disclosure | FY2027 remuneration and SBP cost; governance signal |
+| N4 | Medium | D002 Financial review | CFO salary +23.8% YoY (R7,535k vs R6,087k) from phased market alignment `[D001, p. 91]` | Confirm full-year normalised CFO fixed cost and whether other executives received similar phased uplifts | Run-rate fixed cost base for FY2027 opex forecast |
+| N5 | Low | D006 Notes | Total awarded remuneration Exec Dirs R76,071k vs R61,029k (+24.7%) `[D001, p. 92]` | Reconcile to IFRS 2 expense + cash remuneration in the notes; confirm no double-count with LTI vesting figures | Validates SBP expense vs cash comp split in model |
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [], "new_questions": [{"question": "Extract the revised FY26–FY29 LTI plan terms (expected annual award value in Rm, vesting conditions, performance measures) and the FY2027 IFRS 2 expense guidance, given footnote 2 states the new structure applies from FY27 awards.", "priority": "high", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D006 Notes (share-based payment note)", "evidence_required": "New LTI plan description, expected annual award value (Rm), vesting conditions, and FY2027 IFRS 2 expense estimate, with page citations.", "closure_condition": "New plan terms and expected FY2027 IFRS 2 expense quantified or confirmed absent, with citation."}, {"question": "Confirm the IFRS 2 reversal amount on forfeiture of SE Saltzman's three FSU tranches (30-Aug-23, 30-Aug-24, 31-Aug-25) and any remaining unvested SE Saltzman balance at 28-Feb-26.", "priority": "high", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D006 Notes (share-based payment note)", "evidence_required": "IFRS 2 reversal amount (Rm) on SE Saltzman forfeiture and remaining unvested balance at 28-Feb-26, with page citation.", "closure_condition": "Reversal amount and remaining balance quantified or confirmed nil, with citation."}, {"question": "Confirm whether IL Saltzman's executive-to-NED transition (effective 30 June 2026) triggers acceleration, pro-rating, or continued vesting of the 30-Aug-23 FSU tranche (113,587 units, vesting 30-Jun-26), and whether any related-party disclosure arises.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D003 / D006 (remuneration & related-party notes)", "evidence_required": "Statement of treatment (acceleration/pro-rating/continued vesting) for the 30-Aug-23 tranche, any related-party disclosure, with page citations.", "closure_condition": "Treatment confirmed with citation; any related-party amount quantified or confirmed nil."}, {"question": "Confirm the full-year normalised CFO fixed cost following the phased market-alignment uplift (salary R7,535k FY2026 vs R6,087k FY2025, +23.8%) and whether other executives received similar phased uplifts.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 Financial review", "evidence_required": "Normalised full-year CFO fixed cost (R'000) and confirmation of any similar phased uplifts for other executives, with page citations.", "closure_condition": "Normalised CFO fixed cost and any other phased uplifts quantified or confirmed absent, with citation."}, {"question": "Reconcile total awarded Executive Director remuneration (R76,071k FY2026 vs R61,029k FY2025) to the IFRS 2 expense plus cash remuneration in the notes, confirming no double-count with LTI vesting figures.", "priority": "low", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D006 Notes", "evidence_required": "Reconciliation of awarded remuneration to IFRS 2 expense and cash comp, with page citations.", "closure_condition": "Reconciliation completed with no unexplained residual, or discrepancy quantified."}]}
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Metric | FY2026 | FY2025 | Source |
+| --- | --- | --- | --- |
+| FY-end date | 28-Feb-26 | 28-Feb-25 | D001 p.94 |
+| Exec Dirs total awarded remuneration (R'000) | 76,071 | 61,029 | D001 p.92 |
+| Exec Dirs total earned single figure (R'000) | 69,499 | 54,493 | D001 p.92 |
+| Prescribed Officers awarded (R'000) | 28,418 | 27,060 | D001 p.93 |
+| Prescribed Officers earned (R'000) | 28,705 | 24,135 | D001 p.93 |
+| Exec Dirs LTI awarded (R'000) | 13,494 | 7,340 | D001 p.92 |
+| Exec Dirs LTI vesting (R'000) | 6,922 | 804 | D001 p.92 |
+| CFO salary (R'000) | 7,535 | 6,087 | D001 p.91 |
+| CFO STI (R'000) | 2,842 | 2,356 | D001 p.91 |
+| CFO LTI awarded (R'000) | 2,356 | 1,144 | D001 p.91 |
+| FY2026 LTI award price | R34.05 | — | D001 p.94 |
+| FY2026 LTI units awarded (IL Saltzman / Goetsch / Morais / Pope) | 95,448 / 40,236 / 153,371 / 71,665 | — | D001 p.94 |
+
+### 6. Next Section to Capture
+
+**D002 Financial review (pp. 103–107)** — will resolve N4 (normalised CFO fixed cost / phased uplifts) and provide the revenue, margin, debtor-cost and store metrics needed to anchor the forecast; also the natural home for any transition-related remuneration commentary.

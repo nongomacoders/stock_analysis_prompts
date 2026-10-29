@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "label": "section_15_uncapped_v4",
+      "physical_pages": [
+        21,
+        23
+      ],
+      "ledger_valid": true,
+      "completed": true
+    },
+    {
+      "label": "section_16_uncapped_v4",
+      "physical_pages": [
+        24,
+        24
+      ],
+      "ledger_valid": true,
+      "completed": true
+    },
+    {
+      "label": "section_17_uncapped_v4",
+      "physical_pages": [
+        25,
+        25
+      ],
+      "ledger_valid": true,
+      "completed": true
+    }
+  ],
+  "repairs": 1,
+  "semantic_review_pending": true
+}

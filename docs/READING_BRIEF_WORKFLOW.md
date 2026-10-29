@@ -1,5 +1,11 @@
 # Progressive Section Question-Ledger & Footnote Workflow
 
+Current prompt (2026-10-28):new briefs use one concise shared task plus conditional
+sector notes,allowing short factual summaries. Outputs are key facts;qualifications
+and reconciliations;questions/next evidence;and ledger changes. Automatic captures
+return JSON changes only;the app retains omitted questions. The copy-full-ledger
+steps below describe legacy/manual use. See [SECTION_READING_PROMPT.md](SECTION_READING_PROMPT.md).
+
 Instead of feeding an entire company PDF to an LLM at once—or letting the LLM write generic narrative commentary on each section—this workflow uses the LLM as a **sequential verification and question engine**:
 
 1. **Capture Section 1**:

@@ -1,0 +1,11 @@
+# Codex review of GLM5.3/OpenCode comparison
+
+Decision: retain current app workflow; three-pass benefit not demonstrated reliably. GLM correctly identifies an error in my earlier review, but its own arithmetic and validation explanations require correction.
+
+User identifies reviewer as GLM5.3/OpenCode; report uses Gemini-role terminology, not proof of Gemini execution. Preserved raw report and versioned audit/register/calculation files, verified input-manifest hashes without executing its scripts. Existing source PDF hashes are included in those checks. This is a focused consistency review against supplied raw experiment outputs and previously independently reviewed originalNTU13,21–23/PAN48–50; no new renders/fullvaluation audit this turn. Other sources/valuation dependencies NOT VERIFIED.
+
+Correction to my previous record: final staged PAN does NOT identify theMTR25043vs30806gap in prose. It merely mentions30806as a comparative production figure. Thus the issue was not just dropped from its ledger; it was absent from final narrative too. Prior20261029T121151Zpoint5/assessmentF009 is superseded here; original preserved. Single identifiesgap and hasmedium-priorityMTRquestion.
+
+GLM's tailings equation is false:15224+52606+25043=92873,not98636; discrepancy5763 remains. Its cost denominator5309.2kgfor53092oz is wrong;1651.35kg gives684835ZAR/kg from rounded1130.9m. Minimum8charquote rejection is not a spaces/literal-match error:3 414is literal but5chars. Explicit0.1EBITDAresidual across rounded components is not inherently a false pass; justified smallrounding is tolerable. Its blanketgrepstatement about30806also overstates: driver comparison includes30806. ProposedMTR25043+5763closure combinesFY25withFY26and does not establish cause/correctreplacement. No semantic-engine implementation or paid follow-up authorized by review.
+
+The comparison still supports clearer staged worksheets and highercost,with unresolvedscope/closureerrors. No basis for universal verdict about three-pass workflows, nor a claim all interim mistakes propagate unchanged to final. Detailedfindings,independentcalcs,inputhashchecks saved. No rawoutput/source/production edits or paidcalls. No regression rerun for read-onlyreview; fullsuite is running separately for user's commit/push request. Proposed changes remain proposals.

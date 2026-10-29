@@ -1,0 +1,4 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+ntu_assets,gen-1793257556-di8hiZCxQ7n0jHzN1OOH,True,0.0046195968,response_usage,8675,3638,0,1254,3638,16.642,1.736,Fireworks,16101,1418,stop,retrieved
+ntu_headers,gen-1793257536-ntt6RKyzZdoSwA7BccGs,True,0.00374388,response_usage,7208,2655,0,0,2655,15.395,3.863,Fireworks,13854,2547,stop,retrieved
+pan_dense,gen-1793257577-cCkaSI9Cs2WicP0AAJln,True,0.004712148,response_usage,11107,2953,0,490,2953,15.331,2.69,Fireworks,14945,2395,stop,retrieved

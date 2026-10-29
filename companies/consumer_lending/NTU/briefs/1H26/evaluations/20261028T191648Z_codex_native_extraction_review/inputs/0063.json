@@ -1,0 +1,96 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "Native PDF table extraction (pdf_source.py)",
+    "evidence": "NTU physical p. 22; outputs/ntu_assets.md Section 1",
+    "finding": "Numeric column separation using native vertical edges and numeric row anchoring cleanly separates '5' (Other loans) and '390' (Trade receivables). The financial assets carrying value evaluates to 5 + 390 + 3,845 + 644 = 4,884 Rm, matching reported carrying value exactly. Prior false 9,879 Rm (+4,995 Rm inflation) allegation is completely eliminated.",
+    "severity": "HIGH (RESOLVED DEFECT)",
+    "impact": "Eliminated catastrophic false balance-sheet inflation finding against issuer.",
+    "earliest_stage": "section_capture/pdf_source.py"
+  },
+  {
+    "id": "F002",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "Native PDF table extraction (pdf_source.py)",
+    "evidence": "NTU physical p. 25; outputs/ntu_fx.md Section 1",
+    "finding": "Elimination of wide-heading column swallowing separates the 6 foreign exchange rate columns cleanly. Closing exchange rates for 31 Mar 2026 (USD 17.2 / GBP 22.7), 31 Mar 2025 (USD 18.4 / GBP 23.9), and 30 Sep 2025 (USD 17.3 / GBP 23.2) are mapped accurately. Baseline comparative date inversion is resolved.",
+    "severity": "MEDIUM (RESOLVED DEFECT)",
+    "impact": "Prevents inverted FX trend assumptions in downstream valuation models.",
+    "earliest_stage": "section_capture/pdf_source.py"
+  },
+  {
+    "id": "F003",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "origin": "Native PDF extraction & ledger anchor prompt (question_ledger.py)",
+    "evidence": "NTU physical p. 13; outputs/ntu_prose.md; outputs/ntu_prose.validation.json",
+    "finding": "Preserving running prose paragraphs outside of markdown tables, combined with prompt guidance requesting short literal anchors (8-50 chars) from single cells/sentences, resulted in 5/5 valid ledger deltas. Baseline section 13 previously failed delta validation due to table pipe corruption. Both portfolio roll-forwards (Principal book 3,845; Other financial assets 644) are arithmetically exact.",
+    "severity": "HIGH (RESOLVED DEFECT)",
+    "impact": "Restores automated ledger progression without requiring fragile delimiter stripping or validator softening.",
+    "earliest_stage": "section_capture/pdf_source.py & question_ledger.py"
+  },
+  {
+    "id": "F004",
+    "verdict": "CORRECTIONS REQUIRED",
+    "origin": "DeepSeek section model output (outputs/ntu_headers.md)",
+    "evidence": "NTU physical p. 24; outputs/ntu_headers.md Sections 1, 2, 3, 4",
+    "finding": "DeepSeek repeatedly describes the R167m impairment loss as an 'impairment release' and questions the 'sustainability of that release'. Because PBD assets have a cumulative impairment gain (+R431m), a reduction from R598m to R431m represents an impairment LOSS (P&L charge of -R167m), not an earnings release. This inverts the economic and accounting reality.",
+    "severity": "HIGH (PERSISTENT MODEL ERROR)",
+    "impact": "P&L credit charge mischaracterized as positive income; risks faulty earnings forecasting.",
+    "earliest_stage": "DeepSeek model interpretation (prompts/packages.py / sector guidance)",
+    "required_correction": "Reinforce in consumer_lending guidance that for POCI assets with cumulative gain allowances, downward movements are impairment LOSSES, not allowance releases."
+  },
+  {
+    "id": "F005",
+    "verdict": "CORRECTIONS REQUIRED",
+    "origin": "DeepSeek ledger semantic closure (outputs/ntu_assets.md)",
+    "evidence": "inputs/ntu_assets.json Q-08aa5c3f257440ab; outputs/ntu_assets.md Section 4",
+    "finding": "DeepSeek marked Q-08aa5c3f257440ab 'resolved' while explicitly stating in its answer that the total R4,489m PBD carrying value was not visible in this capture and that scope reconciliation was being deferred to a new question. The explicit closure condition required reconciliation to the carrying value. Valid evidence anchors alone cannot substitute for satisfying closure conditions.",
+    "severity": "MEDIUM (MODEL COMPLIANCE DEFECT)",
+    "impact": "Premature closure leaves balance-sheet scope reconciliation unverified in the persistent ledger.",
+    "earliest_stage": "DeepSeek ledger delta generation",
+    "required_correction": "Instruct models that if an essential element of a closure condition remains open or is deferred to a new question, the question status MUST remain 'partial'."
+  },
+  {
+    "id": "F006",
+    "verdict": "CORRECTIONS REQUIRED",
+    "origin": "DeepSeek model column selection & grouped header layout (outputs/pan_dense.md)",
+    "evidence": "PAN physical pp. 48-49; outputs/pan_dense.md Section 2 and Section 4",
+    "finding": "DeepSeek double-counted 1,081 oz of third-party buy-in feedstock in FY25 Group gold production, calculating 197,608 oz vs printed 196,527 oz (+1,081 oz error). The model selected the 'Group total' underground column (93,724 oz, which already rolled in the 1,081 oz buy-in) and then added the buy-in line (1,081 oz) a second time. The disjoint sum 92,643 + 2,654 + 98,636 + 1,081 + 1,513 = 196,527 oz reconciles exactly to the single ounce.",
+    "severity": "HIGH (MODEL CALCULATION DEFECT)",
+    "impact": "False allegation of +1,081 oz production discrepancy against issuer.",
+    "earliest_stage": "DeepSeek column selection / PDF layout flattening",
+    "required_correction": "Guidance to verify whether a reported total or subtotal already incorporates secondary feedstock rows before aggregating."
+  },
+  {
+    "id": "F007",
+    "verdict": "NOT VERIFIED / CORRECTIONS REQUIRED",
+    "origin": "DeepSeek model speculation (outputs/pan_dense.md)",
+    "evidence": "PAN physical pp. 48-50; outputs/pan_dense.md Section 2 and Section 4",
+    "finding": "DeepSeek speculated that Tennant FY25 A$ all-in cost (A$1,584,835/kg) is a 'likely printing/scale error' and that the ZAR/kg to US$/oz conversion difference is an unexplained residual. Tennant surface feedstock was in initial commissioning producing only 1,513 oz (47 kg), making initial capital costs per kg naturally extreme. Group AISC converts at asset-weighted rates, not an annual average FX rate.",
+    "severity": "MEDIUM (MODEL SPECULATION)",
+    "impact": "Unsubstantiated issuer reporting error allegations distract from fundamental operational ramp-up dynamics.",
+    "earliest_stage": "DeepSeek narrative interpretation",
+    "required_correction": "Enforce strict prohibition against alleging printing/scale errors without checking production denominator scale and commissioning phase disclosures."
+  },
+  {
+    "id": "F008",
+    "verdict": "SUPPORTED (GEMINI INDEPENDENT FINDING)",
+    "origin": "Primary source PDF audit (PAN pp. 48-49)",
+    "evidence": "PAN physical pp. 48-49, Group Production Summary table",
+    "finding": "The PAN production table exhibits genuine 1-ounce subtotal variances due to integer rounding in the source document (105,479 vs 105,478 oz; 118,852 vs 118,853 oz; 272,311 vs 272,310 oz). Furthermore, MTR FY25 tailings exhibits an internal source inconsistency: Column 6 (Surface operations) prints 25,043 oz while Column 14 (Total operations MTR total) prints 30,806 oz (difference 5,763 oz, which equals the FY26 MTR buy-in volume). The printed Surface operations total of 98,636 oz foots using the 30,806 oz figure, proving an internal source layout anomaly.",
+    "severity": "MEDIUM (PRIMARY EVIDENCE FACT)",
+    "impact": "Clarifies issuer source table characteristics; neither DeepSeek nor Codex had forensically isolated the 5,763 oz MTR column variance.",
+    "earliest_stage": "Primary source disclosure"
+  },
+  {
+    "id": "F009",
+    "verdict": "ARCHITECTURAL RECOMMENDATION",
+    "origin": "System architecture / Table extraction evaluation",
+    "evidence": "section_capture/pdf_source.py; workflow/changes/20261028_table_extraction",
+    "finding": "Multi-tier grouped column headers (e.g. 3-tier hierarchies across 16 columns) cannot be cleanly represented in standard GitHub Flavored Markdown tables without colspan. Attempting complex programmatic table reconstruction across arbitrary company formats introduces fragile edge cases. Source layout limitations should be carried as documented analytical uncertainty, supported by targeted prompt instructions on multi-tier column selection.",
+    "severity": "ARCHITECTURAL PRINCIPLE",
+    "impact": "Avoids over-engineering table parsers; preserves generic, robust extraction.",
+    "earliest_stage": "section_capture/pdf_source.py"
+  }
+]

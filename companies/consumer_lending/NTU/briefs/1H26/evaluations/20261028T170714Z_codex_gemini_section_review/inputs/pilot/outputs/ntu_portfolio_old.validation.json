@@ -1,0 +1,91 @@
+{
+  "case": "ntu_portfolio",
+  "version": "old",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question_id": "Q-PILOT-ntu_portfolio",
+      "question": "Reconcile the principal and other purchased-debt portfolios separately; identify what further evidence is needed to compare their carrying change with statutory cash flow.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Current captured note",
+      "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+      "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+      "status": "partial",
+      "answer": "Principal book: 3,975 + 382 - 728 + 383 - 167 = 3,845 (Rm). Other financial assets: 702 + 28 - 116 + 30 = 644 (Rm). Total 4,489 = 3,178 (>12m) + 1,311 (<12m). Cash-flow bridge to statutory statement and pledge tie-out to note 2 remain open.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the end of the period | 644 |  | 663 | 702 |"
+        }
+      ]
+    },
+    {
+      "question": "Reconcile the R728m net cash collections (gross R773m less R45m collection costs) and R116m other-asset collections to the statutory cash flow statement, and confirm CAEIR interest R383m and impairment R167m are non-cash.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.3",
+      "evidence_required": "Cash flow statement lines for the half year ended 31 March 2026, Rm, with operating/investing classification.",
+      "closure_condition": "Each of the four amounts traced to a named cash flow line or confirmed non-cash; discrepancies quantified.",
+      "question_id": "Q-71c2ddf2a8c94395",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Tie the R3,845m pledged principal book to secured interest-bearing liabilities and bank overdrafts and obtain covenant/trigger terms and headroom.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.1 / note 2",
+      "evidence_required": "Borrowings note showing secured debt quantum, pledge terms, covenant ratios and headroom, Rm, at 31 March 2026.",
+      "closure_condition": "Pledged assets matched to secured debt; covenant thresholds and headroom stated.",
+      "question_id": "Q-073b6fe32d704d26",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Locate the impairment loss R167m and CAEIR interest R383m in the income statement; confirm no impairment gain reversals and no double counting of R45m collection costs in opex.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.2",
+      "evidence_required": "Income statement lines for impairment and interest income, Rm, half year to 31 March 2026, plus opex treatment of collection costs.",
+      "closure_condition": "Amounts traced to income statement lines; gain reversals and cost double count confirmed present or absent.",
+      "question_id": "Q-e9280e040bdb4e1b",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Obtain fair value hierarchy, key assumptions and sensitivity for the R644m other financial assets, and explain the fall in fair value gains from R74m to R30m.",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "note 6.3",
+      "evidence_required": "Fair value note with level classification, valuation inputs and sensitivity, Rm, at 31 March 2026.",
+      "closure_condition": "Valuation basis and driver of gain deceleration explained with figures.",
+      "question_id": "Q-e37779cef1eb40c2",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm purchase additions R382m (principal) and R28m (other) in the cash flow and assess deceleration versus FY25 R857m.",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.3",
+      "evidence_required": "Cash flow purchase-of-portfolio line, Rm, half year to 31 March 2026.",
+      "closure_condition": "Additions traced to cash flow; growth trend quantified.",
+      "question_id": "Q-845012d0fce8490a",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

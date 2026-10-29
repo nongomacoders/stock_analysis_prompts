@@ -1,0 +1,56 @@
+[
+  {
+    "id": "C001",
+    "claim": "Headers case now correctly calls cumulative gain decrease167 an impairment loss, splits acquired+24/historical-191 and rejects reserve-release interpretation.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "Assets case still contradicts this sign; not a robust global correction.",
+    "verdict": "PASS",
+    "finding_id": "F001"
+  },
+  {
+    "id": "C002",
+    "claim": "Assets case still proposes resolved for Q-08aa5c3f257440ab while4489scope remains pending; prose wrongly calls cumulative gain decline167 a net impairment gain.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "Retain partial and carry signed balance change correctly. Raw proposal was not persisted.",
+    "verdict": "FAIL",
+    "finding_id": "F002"
+  },
+  {
+    "id": "C003",
+    "claim": "Assets delta rejected: quote3 414 is only5characters, below8 minimum; it is literal in source text. Validator reports not literal for both length and matching failures.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "No validator softening; diagnose minimum-length versus match separately. No repair implemented.",
+    "verdict": "FAIL",
+    "finding_id": "F003"
+  },
+  {
+    "id": "C004",
+    "claim": "New answer avoids prior explicit197608 allegation and leaves FY25 group/operation1081scope unresolved; it does not demonstrate the disjoint196527 reconciliation. It notices MTR25043vs30806 source inconsistency.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "Avoidance of erroneous sum is not correct complete reconciliation; grouped headers still imperfect.",
+    "verdict": "NOT VERIFIED",
+    "finding_id": "F004"
+  },
+  {
+    "id": "C005",
+    "claim": "New PAN answer speculates column/scope error or missing digit in costs without source proof, and misstates FY26 MTR tailings total as51927: actual tailings row repeats46164;51927 is gold-produced-total including5763buy-in.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "Keep row/column scope separate; verify alleged source contradictions against original table, not adjacent row.",
+    "verdict": "FAIL",
+    "finding_id": "F005"
+  },
+  {
+    "id": "C006",
+    "claim": "One fresh answer per case insufficient to claim repaired prompt robustness; two valid ledgers vs three baseline. Do not advance to full run on these metrics alone.",
+    "classification": "Model output assessment against historical source",
+    "primary_evidence": "NTU24,NTU21–23,PAN48–50 as specified",
+    "independent_check": "Independent Gemini review in Antigravity; no further paid calls without user instruction.",
+    "verdict": "NOT VERIFIED",
+    "finding_id": "F006"
+  }
+]

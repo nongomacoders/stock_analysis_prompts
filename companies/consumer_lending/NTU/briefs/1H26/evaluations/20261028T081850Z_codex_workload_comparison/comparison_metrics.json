@@ -1,0 +1,20 @@
+{
+  "ticker": "NTU",
+  "period": "1H26",
+  "source_pages": 38,
+  "captures": 9,
+  "successful_generation_receipts": 17,
+  "reported_prompt_tokens": 383041,
+  "reported_completion_tokens": 116181,
+  "reported_reasoning_tokens": 20729,
+  "token_scope": "Successful saved API receipts only; incomplete calls can add unrecorded billed usage. Not a full billing total.",
+  "question_records": 69,
+  "open_question_records": 68,
+  "validation_attempt_counts_including_local_replays": {
+    "rejected": 15,
+    "valid": 9
+  },
+  "local_open_only_fallbacks": 5,
+  "stage2_result_kind": "WITHHELD_RECOVERY_BRIEF_FULL_VALUATION_INCOMPLETE",
+  "gemini_api_calls": 0
+}

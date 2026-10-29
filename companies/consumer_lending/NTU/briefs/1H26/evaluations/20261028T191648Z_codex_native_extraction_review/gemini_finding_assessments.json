@@ -1,0 +1,47 @@
+[
+  {
+    "gemini_id": "F001",
+    "classification": "supported",
+    "evidence": "NTU22 source5/390/3845/644 and new answer agree; prior9879 allegation absent. Improvement demonstrated in this sample, not guaranteed elimination."
+  },
+  {
+    "gemini_id": "F002",
+    "classification": "supported",
+    "evidence": "NTU25 closing USD17.2/18.4/17.3 and GBP22.7/23.9/23.2 dates match new answer. Attribution solely to a specific extraction heuristic is not isolated."
+  },
+  {
+    "gemini_id": "F003",
+    "classification": "partly supported",
+    "evidence": "Five valid deltas and NTU13 correct prose/rolls confirmed. Both prompt and extraction changed; cannot prove short-anchor adherence or elimination of all quote brittleness. Several actual quotes exceed50chars and include pipes, yet match."
+  },
+  {
+    "gemini_id": "F004",
+    "classification": "supported",
+    "evidence": "NTU24 -167 impairment loss reduces cumulative gain598to431; DeepSeek calls it release. The +24 acquired gain is distinct from -191 historical loss."
+  },
+  {
+    "gemini_id": "F005",
+    "classification": "supported",
+    "evidence": "Actual resolved update explicitly defers4489 scope. Classification is answered but original carrying-value closure not fulfilled."
+  },
+  {
+    "gemini_id": "F006",
+    "classification": "supported",
+    "evidence": "Model adds1081 twice using93724; disjoint reported subtotals foot196527. This exact footing does not validate every printed tailings component."
+  },
+  {
+    "gemini_id": "F007",
+    "classification": "partly supported",
+    "evidence": "Speculative issuer-error explanation correctly criticized. Gemini substitutes unsupported transaction-date/weighted FX assertions and a47kg production explanation. Sold1179oz (36.671kg), not produced1513oz (47.060kg), fits reported A$58.1m and1584835/kg."
+  },
+  {
+    "gemini_id": "F008",
+    "classification": "partly supported",
+    "evidence": "Source MTR25043vs30806 difference5763 confirmed; printed tailings98636 uses30806. Cause, correct replacement and link to FY26 buy-in not established. One-ounce differences confirmed, but rounding is plausible rather than proved. Column numbering inaccurate: among13data columns MTR is6th/11th, with label/year/unit offsets9th/14th."
+  },
+  {
+    "gemini_id": "F009",
+    "classification": "partly supported",
+    "evidence": "Keep generic extractor and avoid complex company-specific parser, aligned with user preference. GFM lacks colspan, but fully qualified flat column labels can represent hierarchy; current placement is imperfect, not mathematically impossible to improve."
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "recorded_utc": "2026-10-28T06:35:58.711547+00:00",
+  "authorized_change": "Withhold target and recommendation when material problems remain; prompts and production validation.",
+  "targeted": {
+    "passed": 91,
+    "exit_code": 0,
+    "seconds": 30.11
+  },
+  "full_suite": {
+    "passed": 178,
+    "exit_code": 0,
+    "seconds": 96.99
+  },
+  "test_transport": "Telemetry opt-outs plus pytest plugin denying all Python DNS/connect/sendto events before collection.",
+  "limitations": "Checks declared evidence, numerical reconciliations and existing CLI SOTP/guardrail checks; cannot independently prove source truth or detect every omitted defect. Legacy notes retain read compatibility; new saves require readiness evidence.",
+  "live_models_called": false,
+  "source_PDF_changed": false,
+  "existing_NTU_valuation_fields_changed": false,
+  "guardrail_code": "ALL-MATERIAL-ISSUES-VALUATION-WITHHOLD",
+  "registry_count": 37,
+  "files": [
+    {
+      "path": "section_capture/valuation_policy.py",
+      "sha256": "df6caf5d014013b6874bc1147bef057927b1e160ae4689c21973ac5ffca83350"
+    },
+    {
+      "path": "section_capture/db.py",
+      "sha256": "d417a88da7fa849f874d814aa0fa95cd431cc46e695962cbab1ce7a5d8755ebc"
+    },
+    {
+      "path": "section_capture/one_shot_view.py",
+      "sha256": "b86a7c4a2f62b72e579746b1a19dc6305848891d9ce7165a608b265f2c7f3278"
+    },
+    {
+      "path": "section_capture/portfolio_view.py",
+      "sha256": "86d4c6b3bb06030136f5370f56adfefcadc9702d6b32e34102f7c9bafe7dd76f"
+    },
+    {
+      "path": "evaluate_stock.py",
+      "sha256": "7081ea9dc4484c327733953d60541f3153f75bab311d7ed602fb92d10c1a33b5"
+    },
+    {
+      "path": "workflow/export_stage1.py",
+      "sha256": "cb6e6cf6a4bf730c29420cf443cad268117899f58d2de8fc6b23e4863be61119"
+    },
+    {
+      "path": "workflow/generate_stage2.py",
+      "sha256": "a9c0d913d0e164e7fc453d737e651392e6df5aade7c0e4722d38ee74fd036b22"
+    },
+    {
+      "path": "workflow/generate_sens_update.py",
+      "sha256": "75bb55681048da84bc41f9a761cfdb494a28ce12e0a084d95d34d05688e62bfe"
+    },
+    {
+      "path": "tests/test_valuation_withholding.py",
+      "sha256": "3e77ab5dfb923ffffed273500d828cb31ca29c575c4402ccd326cf6cdadc2f14"
+    },
+    {
+      "path": "tests/valuation_examples.py",
+      "sha256": "598f04a2f1906928933e63a3ce4d195f3e17dae6d6fc681b63292e09ec6e6385"
+    },
+    {
+      "path": "docs/VALUATION_WITHHOLDING.md",
+      "sha256": "f1a1b01126a7f07711f235e33b48ffe2665f3204c63fc7329e4da12ac7b12d76"
+    }
+  ],
+  "cleanup": {
+    "status": "BLOCKED_BEFORE_EXECUTION",
+    "reason": "approval required by policy, but granular sandbox_approval is false",
+    "remaining_test_directories": [
+      "tmp/valuation-gate-new-20261027",
+      "tmp/valuation-gate-new-fix-20261027",
+      "tmp/valuation-gate-offline-full-20261028",
+      "tmp/valuation-gate-offline-targeted-20261028",
+      "tmp/valuation-gate-resume-targeted-20261028",
+      "tmp/valuation-gate-targeted-fix-20261027"
+    ],
+    "alternative_deletion_attempted": false
+  }
+}

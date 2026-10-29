@@ -1,0 +1,127 @@
+> APPLICATION QUALIFICATION: DeepSeek ledger updates failed evidence validation. No existing question was resolved by this response. All prior questions remain open; any resolution claim in the narrative is unverified. Only valid new questions were retained.
+
+### 1. Answers to Stored Questions for This Section
+
+- **Q-0a1a9ee4168445f1 / Q-5890edf83d0d4546 (subsequent events, Note 31)**:
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: Note 31 is not present in this capture (pages 27.4–27.4 and 28 only). No subsequent-event disclosure is visible here. The final dividend of R0.137bn and any post-year-end events remain unverified; carry forward to D006.
+
+- **Q-58da8bb8774e41c / Q-772d2ef2b49f441b / Q-5a32b7767cc9407b (Note 27.4 incremental interests)**:
+  - **Status**: `Resolved`
+  - **Answer & evidence**: Note 27.4 shows FY2026 cash paid for NCI: Healthforce (R9,800k) and Botswana (Gallo, The Fields, Airport Junction) (R12,211k), total R22,011k outflow. FY2025 comparative: Howick (R1,600k), Maponya (R2,654k) paid; Serveco R15,000k received; net R10,746k inflow. No Company-level amounts. [D005, physical PDF p. 61]
+
+- **Q-740992ca8c3945a3 / Q-54e62e806d0e4e79 (Note 27.5 cash and cash equivalents)**:
+  - **Status**: `Resolved (reconciliation); facility terms remain open`
+  - **Answer & evidence**: Group cash R499,756k (2025: R585,354k) less bank overdrafts R1,666,720k (2025: R1,317,637k) = net R(1,166,964)k (2025: R(732,283)k). Company: R99,866k less R1,666,720k = R(1,566,854)k (2025: R(921,540)k). Overdraft facility terms/covenants not disclosed on this page — carry forward. [D005, physical PDF p. 61]
+
+- **Q-fec22f4d634847c2 / Q-c64452c0691c411b (Note 27.6 financing reconciliation)**:
+  - **Status**: `Resolved`
+  - **Answer & evidence**: Group bank loans: opening R2,204,547k, cash flows R(220,142)k, closing R1,984,405k. Lease liability: opening R2,663,849k, cash flows R(691,992)k, new leases R992,172k, modifications R(20,796)k, closing R2,943,233k. FY2025: bank loans R1,716,154k + R488,393k = R2,204,547k; leases R3,068,125k − R641,172k + R824,373k − R592,429k + R4,952k = R2,663,849k. Company bank loans R802,090k − R80,000k = R722,090k; leases R2,033,694k − R496,493k + R817,865k − R5,364k = R2,349,702k. [D005, physical PDF p. 62]
+
+- **Q-8113f4ff41654e36 / Q-8d2a0366cefd43cd (finance cost split)**:
+  - **Status**: `Partially resolved`
+  - **Answer & evidence**: Footnote (1) on p. 62 states lease interest repaid is R252m (2025: R253m) at Group level, reflected in finance costs under operating activities; Company R201m (2025: R161m). This gives the lease-interest component of finance costs paid; loan interest is the residual of R559,644k less R252m ≈ R307.6m (Group) — needs confirmation against Note 23. [D005, physical PDF p. 62]
+
+- **Q-4dddc2038ee84eed (related-party loans receivable)**:
+  - **Status**: `Partially resolved`
+  - **Answer & evidence**: Group related-party loans receivable total R111,510k (2025: R95,478k); Company R949,376k (2025: not fully captured). Company includes Dis-Chem Distribution R518,760k (2025: R503,558k) — consistent with elimination on consolidation. No impairment/ECL disclosed on these loans in this capture. [D005, physical PDF pp. 63, 65, 66]
+
+- **Q-0644fc1c056a4be4 (CJ Pharmaceutical relationship)**:
+  - **Status**: `Partially resolved`
+  - **Answer & evidence**: CJ Pharmaceutical Enterprises appears as a Company related party with purchases R1,960,716k (2025: R1,804,750k), services received R66,693k, interest expense R(2,526)k, and accounts receivable R48,199k (2025: R195,375k). It is not listed as a Group associate/JV in the Group table, implying it is a Company-level related party (director-linked), not a consolidated subsidiary. Relationship and pledge terms still to confirm. [D005, physical PDF pp. 65, 67]
+
+- **Q-7617a68a41f246be (Saltzman restructuring)**:
+  - **Status**: `Not addressed in this capture` — carry forward.
+
+- **Q-34972c8726714c9f / Q-7ff806d39c484f14 / Q-d82acc3dad584640 (share count / DPS reconciliation)**:
+  - **Status**: `Not addressed in this capture` — carry forward.
+
+- **Q-98728268ed3b4aa5 (Morais director status)**, **Q-b931ab53214d47fa (audit fees)**, **Q-9348bd1461904198 / Q-4bfd19ac8ef14ea8 (rebates)**, **Q-1cb1020992f64812 (revenue disaggregation)**, **Q-53c05b9e2b9140d9 (debtor costs in Note 8)**, **Q-3dd14b2a88a344b9 (COGS composition)**, **Q-b8bbff1173f34f0d (deferred revenue)**, **Q-3990b3abd8b34753 (ROU/lease terms)**, **Q-8780c0625a534ae6 (receivables)**, **Q-aace714505c14dd0 (loans payable)**, **Q-6409698674ae47df (investments)**, **Q-9c499ce17c37452f (dividend policy)**, **Q-de84ef9acbd5455c (working capital)**, **Q-02ff5b4e1af840d6 (subsidiary ownership change)**, **Q-efd31336131c4997 (JV/business combination)**, **Q-29ad8342e58b4dbb (tax paid)**, **Q-8fe4b911f6944795 (Oncology)**, **Q-fd3755ff98be4f01 / Q-07fb7970dde84c5d / Q-64791be57c9f40a7 (DTA/assessed losses)**, **Q-9f29d949765e436c (goodwill)**, **Q-f7d4ecccf9d845a2 (acquisition costs)**, **Q-829dd2e73360413f (climate credit)**, **Q-d58da8bb87734e1c / Q-3575bc9afe154574 (Dis-Chem Life pref shares)**, **Q-9578a5bba18b476f (new subsidiaries)**, **Q-54710a5b2dc2448f (NCI balance)**, **Q-de875925a53e48c1 (dividend classification)**, **Q-50e057da26564cd9 (deregistrations)**, **Q-aaa95b891be14a74 (associate breakdown)**, **Q-64791be57c9f40a7 (DTA)**, **Q-e3e7e9d7c3c84bfc (JV impairment)**, **Q-38236abcc7424579 (associates tax line)**, **Q-b0f460e7fe6e473e (DPS)**, **Q-908d113af57e40e2 (PPE depreciation)**, **Q-814cfa67e2c046b8 (uncertain tax)**, **Q-2aca374647d14f72 (treasury shares)**, **Q-6284b89a9fdb45c5 / Q-f618e5c2caaf4656 / Q-f8e9cc8023354d3e / Q-96ae743b9da546f9 / Q-5834ccc62e7f4814 / Q-ac9f8791ce8f44a9 / Q-eb7a0da286e34567 / Q-d127e63b17d84ea9 / Q-f2731d5b23ec4c69 / Q-8c2d02e3c84e44cc / Q-7bfff733fb8a4054 / Q-7a7389b78b3e4dfb / Q-6eea1d251c174087 / Q-c6e88f0c37234f82 / Q-98c28ccad886448c / Q-34800110593a41d6 / Q-145f53a8de844f79 / Q-772d2ef2b49f441b / Q-70887acd86714bac / Q-0a8c84fb7d5f4124 / Q-8a2a733213224290 / Q-2d4dadf3e15740ce / Q-117e92dcaf274064 / Q-817fc50047cd4734 / Q-dd56616efdfd4cb7 / Q-888054f3a9be4926 / Q-75725cbbdfce460d / Q-43162f718fae4085 / Q-4d2cf108e4844aeb / Q-e4d5587b4e3243ef / Q-3e72d5f6f2454d26 / Q-ae621d5e27cb43c4 / Q-dc149453df8d43a1 / Q-67db9a8b791642e3 / Q-6a037c6d0e0e4b9b / Q-c57cecfbcbd84dfe / Q-ebd6ba3297c8402d / Q-a5ae5b85bd4243d7 / Q-7af406705a3e4651 / Q-0a684c7fac304d80 / Q-a3270ab222b54cea / Q-5f5d6b13a967452f / Q-4673c74164aa4af8 / Q-d897b4ee3f554cc5 / Q-40e7c8b9d1e1440a / Q-b6e3cd4411864794 / Q-b29de779e9f74366 / Q-9a73ef0a65a746df / Q-a4ccbe5daf034e3e / Q-cc6982c386634c32 / Q-48c3f963f0b543b7 / Q-1f3b1d8a7a184a17 / Q-1b713f3a8c26411d / Q-59006d86e51c45c7 / Q-d28094417ee641e1 / Q-8f31c9dde0434bc2 / Q-a681115dc72e461f / Q-492b8e048b7b440a / Q-ac62c4dd63bf4c68 / Q-a0e1efc9e2fb465b / Q-bcc84bc8d00943ca / Q-ffc94ad22da44416 / Q-cb1c85d41650471e / Q-2b9849eb1ac24ea5 / Q-4497778bcc6a42f2 / Q-ae9472fd9c8a4a47**:
+  - **Status**: `Not addressed in this capture` — carry forward.
+
+### 2. Footnote & Qualification Deep-Dive
+
+- **Note 27.6 footnote (1), Group** [D005, physical PDF p. 62]: "The interest repaid on the lease liability is R252 million (2025: R253 million) and is reflected in finance costs under operating activities." This is the only explicit split of finance costs paid between lease and loan interest. It implies Group loan interest paid ≈ R559,644k − R252m ≈ R307.6m, but the exact loan-interest figure is not printed — verify against Note 23 and the finance-costs add-back of R554,066k. The FY2025 lease interest of R253m vs FY2026 R252m is essentially flat despite lease liability rising from R2,663,849k to R2,943,233k — worth checking whether the average rate fell or the timing of new leases skewed the charge.
+
+- **Note 27.6 footnote (1), Company** [D005, physical PDF p. 62]: "The interest repaid on the lease liability is R201 million (2025: R161 million)." Company lease interest rose 25% while Group was flat — implies the Company absorbed a larger share of lease interest in FY2026, consistent with the Company lease liability rising from R2,033,694k to R2,349,702k. Verify whether intercompany lease arrangements explain the divergence.
+
+- **Note 27.6 non-cash "Release/fair value changes" column**: Group lease liability shows R(20,796)k in FY2026 vs R(592,429)k in FY2025 — a 96% fall in lease releases. This is a material swing: FY2025 had large lease terminations/re-measurements that did not recur. Verify whether FY2025 included store closures or lease renegotiations that flattered the FY2026 comparative lease cost base.
+
+- **Note 27.6 "New leases/transactions" column**: Group new leases R992,172k (2025: R824,373k), +20.4% — implies continued store rollout/renewals. Company new leases R817,865k (2025: R594,453k), +37.6%. This is a forward-looking signal of store expansion capex/lease commitments; verify against store count and trading-space disclosures.
+
+- **Note 28 footnote (4) and Columbia Falls narrative** [D005, physical PDF p. 64]: "On 1 December 2024, the Group acquired 100% of the share capital of Columbia Falls for the purchase price of R519 million. This is a related party transaction due to the seller being an associate of certain directors and prescribed officers of Dis-Chem, who collectively are also material shareholders of Dis-Chem. This transaction was accounted for as an asset acquisition." This is a significant related-party asset acquisition (R519m) that is NOT in the FY2026 cash flow (it was FY2025) but explains the R40,188k interest expense in the FY2025 comparative and the R48,240k loan receivable from Columbia Falls at Company level in FY2026. Verify: (a) what assets were acquired (property/warehouse?), (b) whether the R519m is fair value, (c) whether the asset acquisition bypassed goodwill/impairment testing, and (d) the SENS announcement referenced.
+
+- **Note 28 footnote on Dis-Chem Life** [D005, physical PDF p. 64]: "On 1 August 2024, the Group acquired a 50% interest in the ordinary share capital of Dis-Chem Life Proprietary Limited for a consideration of R155.9 million. Four Dis-Chem directors are indirect shareholders of the holding company of Dis-Chem Life Proprietary Limited and therefore the holding company is considered a related party to Dis-Chem." This confirms the R155.9m (not R189m as in some stored questions) JV consideration and the related-party nature. The R189m figure in stored questions may relate to a separate preference share investment — verify the distinction.
+
+- **Note 28 footnote (1)** [D005, physical PDF pp. 63, 66]: "Relates to retail and warehouse space that is owned/partially owned by certain directors." Group lease liability to various property companies R106,805k (2025: R136,765k), interest expense R(10,100)k (2025: R(12,287)k). This is a director-linked lease commitment — verify whether lease terms are at market and whether these are included in the IFRS 16 lease liability of R2,943,233k.
+
+- **Note 28 footnote (2)** [D005, physical PDF pp. 63, 64]: "Relates to associates and joint ventures of the Group as disclosed in note 4." Confirms which related parties are associates/JVs — useful for reconciling the associate/JV profit of R48,179k.
+
+- **Note 28 footnote (3)** [D005, physical PDF pp. 63, 64]: "Relates to a company that is owned by certain directors." Bene purchases R42,909k (2025: R37,301k) — director-owned supplier.
+
+- **Note 28 closing qualification** [D005, physical PDF p. 64]: "Related party receivable and payables are generally settled within 60 days." This is a soft qualification — verify whether any related-party balances are overdue beyond 60 days, especially the R949,376k Company loans receivable (which are clearly not trade and not 60-day).
+
+- **Note 28 Group totals** [D005, physical PDF p. 63]: FY2026 loans receivable R111,510k, loans payable R37,517k, lease liability R106,805k, accounts receivable R10,699k, accounts payable R92,148k, interest income/(expense) R9,499k, purchases R502,034k, services received R405,357k. FY2025 comparatives: R95,478k / R39,307k / R136,765k / R8,553k / R47,568k / R(45,791)k / R420,410k / R317,158k. Note the interest line swung from R(45,791)k expense to R9,499k income — driven by Columbia Falls interest expense (R40,188k) not recurring and BEESECDCP/Sable/Tony Ferguson interest income continuing. Verify the swing is non-recurring.
+
+- **Note 28 Company totals** [D005, physical PDF p. 66]: FY2026 loans receivable R949,376k, loans payable R991,529k, lease liability R106,805k, accounts receivable R245,172k, accounts payable R1,887,592k, interest R(37,848)k, sales R71,828k, purchases R20,753,320k, services received R1,043,921k. The R20.75bn Company purchases from related parties (mostly Dis-Chem Distribution R18.73bn and CJ Pharmaceutical R1.96bn) is the intercompany supply chain — verify elimination on consolidation.
+
+- **Note 28 Company FY2025 comparative** [D005, physical PDF p. 67]: Dis-Chem Distribution purchases R16,197,272k vs FY2026 R18,728,461k (+15.6%) — faster than Group revenue growth of 9.3%. Verify whether this reflects a shift in intercompany pricing or mix.
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D005, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D006 (Note 23 loans payable / Note 22 leases) | Group lease interest R252m (2025: R253m) flat despite lease liability +10.5%; Company lease interest R201m (2025: R161m) +25% [D005, p. 62] | Extract Note 22 lease finance charge and Note 23 loan interest; reconcile to R559,644k finance costs paid and R554,066k add-back; explain Group vs Company divergence | Finance cost forecast for FY2027; IFRS 16 vs loan interest split |
+| N2 | High | D006 (Note 27.6 / store portfolio) | Group new leases R992,172k (+20.4%) and Company R817,865k (+37.6%) [D005, p. 62] | Confirm store count, net openings, trading space m², and lease renewal profile; reconcile new-lease additions to store rollout | Store expansion capex and rent forecast |
+| N3 | High | D006 (Note 27.6 / Note 22) | Group lease "Release/fair value changes" fell from R(592,429)k to R(20,796)k [D005, p. 62] | Identify FY2025 lease terminations/re-measurements; confirm non-recurrence and FY2027 lease cost base | Lease cost run-rate and one-off effects |
+| N4 | High | D006 (Note 28 / Note 5 / Note 15) | Columbia Falls R519m related-party asset acquisition (1 Dec 2024) [D005, p. 64] | Identify assets acquired, fair-value support, SENS reference, and whether included in PPE/investment property; confirm no goodwill | Capital allocation and related-party governance |
+| N5 | High | D006 (Note 28 / Note 4) | Dis-Chem Life 50% acquired for R155.9m (1 Aug 2024), four directors indirect shareholders [D005, p. 64] | Reconcile R155.9m to Note 4 JV carrying value; distinguish from any R189m preference share investment | Associate income R48,179k and related-party risk |
+| N6 | Medium | D006 (Note 28 / Note 22) | Director-linked property lease liability R106,805k (2025: R136,765k), interest R(10,100)k [D005, pp. 63, 66] | Confirm these leases are within IFRS 16 lease liability R2,943,233k and at market terms | Lease cost and governance |
+| N7 | Medium | D006 (Note 28 / Note 29) | Company loans receivable R949,376k incl. Dis-Chem Distribution R518,760k; "generally settled within 60 days" [D005, pp. 64, 66] | Confirm elimination on consolidation and no ECL required; check ageing of related-party loans | Consolidation and impairment risk |
+| N8 | Medium | D006 (Note 28 / Note 23) | Group related-party interest swung from R(45,791)k expense to R9,499k income [D005, pp. 63, 64] | Confirm Columbia Falls R40,188k interest expense was FY2025-only and non-recurring | FY2027 finance cost base |
+| N9 | Medium | D006 (Note 28 / Note 7) | Company purchases from Dis-Chem Distribution R18,728,461k (+15.6% vs FY2025 R16,197,272k) [D005, pp. 65, 67] | Confirm intercompany pricing and elimination; check against Group COGS growth of 10.0% | Gross margin and transfer pricing |
+| N10 | Low | D006 (Note 28 / Note 29) | CJ Pharmaceutical Enterprises purchases R1,960,716k, receivable R48,199k [D005, pp. 65, 67] | Confirm relationship (director-linked, not subsidiary) and pledge terms for R400m facility | Related-party concentration and liquidity |
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [], "new_questions": [{"question": "What is the exact split of Group finance costs paid R559,644k between loan interest and IFRS 16 lease finance charges, and does it reconcile to the R554,066k finance-costs add-back and to Note 22/Note 23?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 22/23)", "evidence_required": "Note 22 lease finance charge and Note 23 loan interest FY2026 vs FY2025 in R'000; reconciliation to R559,644k finance costs paid and R554,066k add-back.", "closure_condition": "Lease vs loan interest split quantified for both years and reconciled to cash finance costs paid and the add-back; benign timing explanations allowed."}, {"question": "What store count, net openings, trading space m² and lease renewal profile reconcile to Group new leases of R992,172k (+20.4%) and Company R817,865k (+37.6%) in FY2026?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (store portfolio / Note 22)", "evidence_required": "Store count, net openings, trading space m², lease renewal profile FY2026 vs FY2025; reconciliation of new-lease additions to store rollout.", "closure_condition": "New-lease additions reconciled to store rollout and trading space; FY2027 rent and capex forecast consequence stated."}, {"question": "What caused the collapse in Group lease 'Release/fair value changes' from R(592,429)k in FY2025 to R(20,796)k in FY2026, and is the FY2025 release non-recurring?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 22/27.6)", "evidence_required": "Identification of FY2025 lease terminations/re-measurements; confirmation of non-recurrence; FY2027 lease cost base.", "closure_condition": "FY2025 release explained and non-recurrence confirmed; FY2027 lease cost run-rate stated."}, {"question": "What assets were acquired in the Columbia Falls R519m related-party asset acquisition (1 Dec 2024), what was the fair-value support, and is the SENS announcement referenced in Note 28 available?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 5/15/28)", "evidence_required": "Assets acquired, fair-value support, SENS reference, and whether included in PPE/investment property; confirmation of no goodwill.", "closure_condition": "Assets and fair value confirmed; capital allocation and governance impact stated."}, {"question": "Does the R155.9m Dis-Chem Life 50% JV consideration reconcile to Note 4 carrying value, and is it distinct from any R189m preference share investment?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 4/28)", "evidence_required": "Reconciliation of R155.9m to Note 4 JV carrying value; distinction from any R189m preference share investment; associate income R48,179k contribution.", "closure_condition": "Consideration reconciled and distinction confirmed; associate income contribution stated."}, {"question": "Are the director-linked property leases (Group lease liability R106,805k, interest R(10,100)k) included within the IFRS 16 lease liability of R2,943,233k, and are terms at market?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 22/28)", "evidence_required": "Confirmation of inclusion in IFRS 16 lease liability; market-terms assessment; lease terms and escalation.", "closure_condition": "Inclusion confirmed and market-terms assessment stated; governance impact noted."}, {"question": "Are the Company related-party loans receivable R949,376k (incl. Dis-Chem Distribution R518,760k) eliminated on consolidation, and is any ECL required given the 'generally settled within 60 days' qualification?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 28/29)", "evidence_required": "Confirmation of elimination on consolidation; ageing of related-party loans; ECL assessment.", "closure_condition": "Elimination confirmed and ECL assessment stated or explicit absence confirmed."}, {"question": "Is the Group related-party interest swing from R(45,791)k expense to R9,499k income driven solely by the non-recurring Columbia Falls R40,188k interest expense in FY2025?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 28/23)", "evidence_required": "Confirmation that Columbia Falls R40,188k interest expense was FY2025-only; FY2027 related-party interest run-rate.", "closure_condition": "Swing explained and non-recurrence confirmed; FY2027 finance cost base stated."}, {"question": "Does the 15.6% growth in Company purchases from Dis-Chem Distribution (R16,197,272k to R18,728,461k) reflect intercompany pricing changes or mix, and does it reconcile to Group COGS growth of 10.0%?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 7/16/28)", "evidence_required": "Intercompany pricing and elimination confirmation; reconciliation to Group COGS growth.", "closure_condition": "Growth driver explained and reconciled to Group COGS; gross margin impact stated."}, {"question": "What is the relationship of CJ Pharmaceutical Enterprises to the Group (director-linked, not subsidiary), and what revolving overdraft does the R400m receivables pledge secure?", "priority": "low", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 28/29)", "evidence_required": "Relationship confirmation; facility size and terms; covenant and cross-default terms.", "closure_condition": "Relationship and facility terms stated; liquidity/covenant impact assessed."}]}
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Metric | FY2026 | FY2025 |
+| --- | --- | --- |
+| Group cash on hand and bank balances (R'000) | 499,756 | 585,354 |
+| Group bank overdrafts (R'000) | (1,666,720) | (1,317,637) |
+| Group net cash/(overdraft) (R'000) | (1,166,964) | (732,283) |
+| Company cash (R'000) | 99,866 | 396,129 |
+| Company net cash/(overdraft) (R'000) | (1,566,854) | (921,540) |
+| Group bank loans opening (R'000) | 2,204,547 | 1,716,154 |
+| Group bank loans cash flows (R'000) | (220,142) | 488,393 |
+| Group bank loans closing (R'000) | 1,984,405 | 2,204,547 |
+| Group lease liability opening (R'000) | 2,663,849 | 3,068,125 |
+| Group lease cash flows (R'000) | (691,992) | (641,172) |
+| Group new leases (R'000) | 992,172 | 824,373 |
+| Group lease release/fair value (R'000) | (20,796) | (592,429) |
+| Group lease modifications (R'000) | – | 4,952 |
+| Group lease liability closing (R'000) | 2,943,233 | 2,663,849 |
+| Group lease interest repaid (R'm) | 252 | 253 |
+| Company lease interest repaid (R'm) | 201 | 161 |
+| Company bank loans closing (R'000) | 722,090 | 802,090 |
+| Company lease liability closing (R'000) | 2,349,702 | 2,033,694 |
+| NCI cash paid FY2026 (R'000) | 22,011 | 10,746 (net inflow) |
+| Group related-party loans receivable (R'000) | 111,510 | 95,478 |
+| Group related-party loans payable (R'000) | 37,517 | 39,307 |
+| Group related-party lease liability (R'000) | 106,805 | 136,765 |
+| Group related-party interest income/(expense) (R'000) | 9,499 | (45,791) |
+| Group related-party purchases (R'000) | 502,034 | 420,410 |
+| Group related-party services received (R'000) | 405,357 | 317,158 |
+| Company related-party loans receivable (R'000) | 949,376 | n/a |
+| Company related-party loans payable (R'000) | 991,529 | n/a |
+| Company related-party purchases (R'000) | 20,753,320 | n/a |
+| Columbia Falls acquisition (1 Dec 2024) (R'm) | – | 519 |
+| Dis-Chem Life 50% JV consideration (1 Aug 2024) (R'm) | – | 155.9 |
+
+### 6. Next Section to Capture
+
+**D006 (physical pp. 86–87)** — the unclassified/cover material, which may contain the subsequent-events note (Note 31) and any remaining notes not captured in D005. This will resolve **Q-0a1a9ee4168445f1**, **Q-5890edf83d0d4546**, **Q-d897b4ee3f554cc5**, **Q-59006d86e51c45c7**, and the still-open Note 22/23/29 questions (N1–N10 above). If D006 does not contain Note 31, the subsequent-events note must be located in the D005 range (physical pp. 68–85) and re-captured.

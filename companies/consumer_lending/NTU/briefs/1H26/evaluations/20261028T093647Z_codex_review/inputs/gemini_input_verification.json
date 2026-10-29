@@ -1,0 +1,56 @@
+[
+  {
+    "path": "outputs/stage1.md",
+    "declared_hash": "536e7b480430185e3b0985c541feee4ff518225f7028ad46a22a1b01a04ab34c",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/stage2_withheld_brief.md",
+    "declared_hash": "cb63ff1a1474e80e652f81a5370ee0faf66ecff7d8b57a017ff60a47242b63d5",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/stage2_publication.md",
+    "declared_hash": "a07b1d7648bebdfd71d9ce8efb6f696a42f50e25708c3185991a257cc11f1b13",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/publication_assessment.json",
+    "declared_hash": "2b8cb1741ee7b5622c24da17cc57420e91add4180c9c0af3bacf11fb8b7dfa27",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/stage2_completion_failure.json",
+    "declared_hash": "9f5d2c45bd6d817050ea7363e51bd1717baaa8a2313d7dc12230225957506718",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/stage2_incomplete_attempt.json",
+    "declared_hash": "48eca770c9c92185f0d1ce49c96340ff8519eba6678a40b3c649cff4413b45a8",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "outputs/execution_status_before_handoff.json",
+    "declared_hash": "22aef23d4d0acf94982d8f5ded0ce94df91c0624df1c510211e0641051058141",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "comparison_metrics.json",
+    "declared_hash": "87f7a699facdfaed7a3f8d3ff840a1eb6a4b6e8c472acb4accdb3d8555432265",
+    "original_match": true,
+    "gemini_copy_match": true
+  },
+  {
+    "path": "status.json",
+    "declared_hash": "c5fbdb491e264d45e3b023560a6276b907b347c56c6d0b2d4648ae7943c46358",
+    "original_match": true,
+    "gemini_copy_match": true
+  }
+]

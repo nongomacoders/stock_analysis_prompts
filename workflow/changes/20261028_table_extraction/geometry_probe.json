@@ -1,0 +1,412 @@
+[
+  {
+    "ticker": "NTU",
+    "page": 13,
+    "tables": [
+      {
+        "bbox": [
+          79.36189999999993,
+          409.145,
+          542.8427000000001,
+          775.11416
+        ],
+        "rows": 28,
+        "cols": 9,
+        "sample": [
+          [
+            null,
+            null,
+            null,
+            null,
+            "31 March",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "2026",
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "Unaudited",
+            null,
+            null,
+            null,
+            null
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "NTU",
+    "page": 22,
+    "tables": [
+      {
+        "bbox": [
+          79.37,
+          51.1893,
+          544.2550000000001,
+          670.0155
+        ],
+        "rows": 20,
+        "cols": 10,
+        "sample": [
+          [
+            "the condensed c\nlf year ended 31 Mar\nFinancial\nCredit risk c\nFinancial asse",
+            "onsolidated fina\nch 2026\nrisk man\nontinued\nts subject to",
+            "ncial stat\nagem\nrisk",
+            "ements con\nent\nconti",
+            "tinued\nnued",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "Other\nloans\nreceivable",
+            "and\nrecei",
+            "Trade\nother\nvables*",
+            "Principal\nbook\nportfolio",
+            "",
+            "Other\nfinancial\nassets",
+            "Total"
+          ],
+          [
+            null,
+            null,
+            null,
+            "Rm",
+            "",
+            "Rm",
+            "Rm",
+            "",
+            "Rm",
+            "Rm"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "NTU",
+    "page": 24,
+    "tables": [
+      {
+        "bbox": [
+          79.3641,
+          51.1893,
+          545.9968,
+          520.4097818181818
+        ],
+        "rows": 11,
+        "cols": 8,
+        "sample": [
+          [
+            "the condensed con\nlf year ended 31 March 2\nFinancial ri\nCredit risk cont\nReconciliation o",
+            "solidat\n026\nsk m\ninued\nf exp",
+            "ed financial stat\nanagem\nected credit l",
+            "ements continued\nent\ncontinued\noss allowance o\nBanking &\nspecialised\nlending –\nUnsecured\nRm",
+            "n principal\nDebt\nreview\nRm",
+            "book\nRetail\nRm",
+            "portfolios*\nBanking –\nSecured\nRm",
+            "Total\nRm"
+          ],
+          [
+            "Balance at 30 Sept\nAudited\nImpairment (loss)/ga\nbook portfolios\nImpairment loss on\nportfolios acquired\nImpairment (loss)/\nprincipal book por",
+            "ember\nin on p\nprinci\ndurin\ngain on\ntfolios",
+            "2024 –\nrincipal\npal book\ng the period\nhistorical",
+            "575\n(115)",
+            "148\n(83)",
+            "30\n24",
+            "44\n1",
+            "797\n(173)"
+          ],
+          [
+            null,
+            null,
+            null,
+            "(51)\n(64)",
+            "(45)\n(38)",
+            "-\n24",
+            "-\n1",
+            "(96)\n(77)"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "NTU",
+    "page": 25,
+    "tables": [
+      {
+        "bbox": [
+          79.32049999999964,
+          155.58799999999997,
+          544.2820999999998,
+          720.815611111111
+        ],
+        "rows": 19,
+        "cols": 8,
+        "sample": [
+          [
+            null,
+            null,
+            null,
+            "Current",
+            "Amounts\n30 days 61\noverdue",
+            "Amounts i\nto 90 days\noverdue",
+            "Amounts\nn excess of\n90 days\noverdue",
+            "Total"
+          ],
+          [
+            null,
+            null,
+            null,
+            "Rm",
+            "Rm",
+            "Rm",
+            "Rm",
+            "Rm"
+          ],
+          [
+            "31 March 2026 – Un\nExpected loss rate\nGross carrying amou\nLoss allowance",
+            "au\nnt",
+            "dited",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "NTU",
+    "page": 31,
+    "tables": [
+      {
+        "bbox": [
+          79.37009999999981,
+          51.1893,
+          544.2534000000002,
+          336.9368285714285
+        ],
+        "rows": 15,
+        "cols": 8,
+        "sample": [
+          [
+            "the condensed consoli\nlf year ended 31 March 2026\nSegment rep\nGroup core resul",
+            "dated financ\nort\ncontin\nts continue",
+            "ial statements con\nued\nd",
+            "tinue",
+            "d\nSouth",
+            "",
+            "",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Nutun\nAfrica",
+            "Nutun\nInternational",
+            "Group"
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Rm",
+            "Rm",
+            "Rm"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "NTU",
+    "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc"
+  },
+  {
+    "ticker": "PAN",
+    "page": 48,
+    "tables": [
+      {
+        "bbox": [
+          27.878900000004364,
+          79.49549999999999,
+          805.1476999999998,
+          578.5554999999999
+        ],
+        "rows": 37,
+        "cols": 16,
+        "sample": [
+          [
+            null,
+            null,
+            null,
+            "Minin",
+            "g operations",
+            "S\nop",
+            "urface\nerations",
+            "",
+            "Surface oper",
+            "ations",
+            "",
+            "",
+            "To",
+            "tal operations",
+            "",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            "Barberton\nMines",
+            "Evander\nMines",
+            "Total",
+            "BTRP",
+            "Elikhulu",
+            "MTR\noperation",
+            "Tennant\nMines",
+            "Total",
+            "Barberton\nMines\ntotal",
+            "Evander\nMines\ntotal",
+            "MTR\noperation\ntotal",
+            "Tennant\nMines\ntotal",
+            "Group\ntotal"
+          ],
+          [
+            "Tonnes milled – underground",
+            "FY26\nFY25",
+            "t",
+            "280,412",
+            "114,742",
+            "395,154",
+            "–",
+            "–",
+            "–",
+            "–",
+            "–",
+            "280,412",
+            "114,742",
+            "–",
+            "–",
+            "395,154"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PAN",
+    "page": 49,
+    "tables": [
+      {
+        "bbox": [
+          27.91670000000329,
+          79.49549999999999,
+          805.1514000000001,
+          578.5554999999999
+        ],
+        "rows": 35,
+        "cols": 19,
+        "sample": [
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Mini",
+            "ng operations",
+            "",
+            "Surface\noperations",
+            "",
+            "Surface op",
+            "erations",
+            "",
+            "",
+            "Tot",
+            "al operations",
+            "",
+            ""
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Barberton\nMines",
+            "Evander\nMines",
+            "Total",
+            "BTRP",
+            "Elikhulu",
+            "MTR\noperation",
+            "Tennant\nMines",
+            "Total",
+            "Barberton\nMines\ntotal",
+            "Evander\nMines\ntotal",
+            "MTR\noperation\ntotal",
+            "Tennant\nMines\ntotal",
+            "Group\ntotal"
+          ],
+          [
+            "Gold produced –",
+            "sur",
+            "face feed",
+            "stock",
+            "FY26\nFY25",
+            "oz",
+            "–",
+            "–",
+            "–",
+            "–",
+            "–",
+            "–",
+            "32,124",
+            "32,124",
+            "–",
+            "–",
+            "–",
+            "32,124",
+            "32,124"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "ticker": "PAN",
+    "source_sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
+  }
+]

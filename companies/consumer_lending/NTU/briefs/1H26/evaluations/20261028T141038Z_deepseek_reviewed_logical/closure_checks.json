@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-10-28T14:54:58.895077+00:00",
+  "all_review_manifest_hashes_match": true,
+  "production_source_and_originals_unchanged": true,
+  "active_generation": false,
+  "pilot_status": "completed_after_semantic_review",
+  "full_status": "stopped_incomplete_stage2",
+  "paid_calls_in_finalization": 0
+}

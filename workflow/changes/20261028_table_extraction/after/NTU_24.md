@@ -1,0 +1,35 @@
+Condensed consolidated financial statements for the half year ended 31 March 2026 22
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+6 Financial risk management continued
+6.1 Credit risk continued
+Reconciliation of expected credit loss allowance on principal book portfolios*
+
+|  | Banking & specialised lending – Unsecured | Debt review | Retail | Banking – Secured | Total |
+| --- | --- | --- | --- | --- | --- |
+|  | Rm | Rm | Rm | Rm | Rm |
+| Balance at 30 September 2024 – |  |  |  |  |  |
+| Audited | 575 | 148 | 30 | 44 | 797 |
+| Impairment (loss)/gain on principal book portfolios | (115) | (83) | 24 | 1 | (173) |
+| Impairment loss on principal book portfolios acquired during the period | (51) | (45) | - | - | (96) |
+| Impairment (loss)/gain on historical principal book portfolios | (64) | (38) | 24 | 1 | (77) |
+| Balance at 31 March 2025 - |  |  |  |  |  |
+| Unaudited** | 460 | 65 | 54 | 45 | 624 |
+| Impairment gain/(loss) on principal book portfolios | 8 | 7 | (7) | (34) | (26) |
+| Impairment gain on principal book portfolios acquired during the period | 66 | 89 | 1 | – | 156 |
+| Impairment loss on historical principal book portfolios | (58) | (82) | (8) | (34) | (182) |
+| Balance at 30 September 2025 – |  |  |  |  |  |
+| Audited | 468 | 72 | 47 | 11 | 598 |
+| Impairment (loss)/gain on principal book portfolios | (241) | 69 | 4 | 1 | (167) |
+| Impairment gain on principal book portfolios acquired during the period | 1 | 23 | - | - | 24 |
+| Impairment (loss)/gain on historical principal book portfolios | (242) | 46 | 4 | 1 | (191) |
+| Balance at 31 March 2026 – Unaudited | 227 | 141 | 51 | 12 | 431 |
+
+* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall
+presentation of the financial statements.
+** The comparative disclosure for 31 March 2025 has been presented for the first time to show the reconciliation of the expected credit loss allowance
+on the principal book portfolios.
+The cumulative impairment gain of R431 million relates to elevated performance, above the investment base-case,
+predominantly within the Banking & Specialised Lending segment. The reduction in the cumulative impairment gain
+in the current year relates to payer drop-offs and reduced settlement activity on historical book portfolios within
+the applicable portfolio segments.

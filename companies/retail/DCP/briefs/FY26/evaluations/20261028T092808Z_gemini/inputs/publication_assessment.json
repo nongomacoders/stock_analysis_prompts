@@ -1,0 +1,117 @@
+{
+  "valuation_status": "WITHHELD",
+  "blocking_issues": [
+    "The analysis withholds valuation pending resolution of material issues.",
+    "U1: Merchandise vs customer financial services revenue split not disclosed; Note 7 p.31 and Note 8 p.32 leave R150.703m FY2026 / R146.209m FY2025 other income unlisted.",
+    "N2: Gross margin bridge incomplete; no rand split of rebates between COGS and inventory, no shrinkage rate, no Better Rewards discount cost, no R330m/R115m line items; Note 8 other expenses leaves ~R592.7m unlisted.",
+    "N3: Debtor ECL adequacy not supported; gross trade receivables +18.4%, coverage flat at 1.18%, 60-90 day bucket +160% with ECL rate falling to 1.7%, other receivables/accrued income ~R1.72bn unaged.",
+    "N4: Store portfolio/trading space/capex split/pipeline not reconciled; 358 stores verified, but trading space and trading density not disclosed; FY2027 pipeline inconsistent (34 stores p.23, 35 stores p.28, 34 stores/31,198m2 p.19).",
+    "N5: IFRS 16 lease structure incomplete; escalation rates, average remaining term, optional renewals and ROU depreciation split not disclosed.",
+    "N6: Covenant headroom/liquidity runway not quantified; Group gearing 2.8x per Note 29 p.79, not 2.6x as in Stage 1; no thresholds or headroom in Rm/x; Standard Bank bullet matures 31 May 2027.",
+    "N7: Post-year-end SENS/trading/S189/final dividend not verified; Note 31 does not quantify S189 cost/saving; presentation p.19 says 545 affected, not 505; final dividend not in Note 31.",
+    "N8: Cash conversion/FCF/dividend sustainability not verified; OCF R1,792.711m is after finance costs, tax and dividends; working capital inflow R125.820m driven by payables +R663.918m; SCF payables R965m in trade payables.",
+    "N9: Interim DPS/share-count bridge fails; R254.268m interim at 29.41734c implies ~864.3m shares vs 860.084m issued; final R137m reconciles to ~860.6m.",
+    "N10: Tax/DTA/unrecognised losses not entity-analysed; DTA on tax losses R69.290m; unrecognised assessed losses R202m vs R88m; no FY2027 ETR.",
+    "N11: Goodwill CGU headroom not disclosed; goodwill R948.385m; Baby R343.957m + Pure Pharmacy R255.890m = 63.2%; no headroom sensitivity.",
+    "N12: Dis-Chem Life preference shares/impairment not disclosed; R189m preference shares; Company carrying R344.940m; Group equity-accounted R265.323m; share of loss R50.186m.",
+    "N13: SCF payables/covenant treatment not disclosed; R965m SCF payables in trade payables; no covenant inclusion/exclusion or reclassification sensitivity.",
+    "N14: JIBAR/ZARONIA/refinancing not quantified; no JIBAR-linked debt quantum, margin calibration or facility-by-facility fallback status.",
+    "N15: Inventory adequacy/shrinkage not disclosed; inventory R7,908.461m; obsolete provision R3m; write-offs R15m vs R49m; no shrinkage rate.",
+    "N16: Wholesale p.21 table requires correction; Stage 1 misread customer counts as revenue. Primary p.21 shows customer counts 316/280/1,325 and revenue R27,811m/R2,892m/R3,341m; FY2026 sums to R34,044m and reconciles to AFS, but FY2025 revenue sums to R29,585m vs AFS R30,099m, a R514m gap.",
+    "N17: TLC store/clinic counts inconsistent; 280 pharmacies; clinics 218 vs 193; no reconciliation.",
+    "N18: Non-audit fee discrepancy; audit committee p.7 says R230,000; Note 8 p.32 says R315k; R85k difference unresolved.",
+    "N19: Gearing definition undisclosed; Group gearing 2.8x per Note 29 p.79 (2025: 2.3x); Company 2.3x (2025: 2.5x); cannot reconcile to net debt/equity or net debt/EBITDA.",
+    "N20: Better Rewards cost/liability not quantified; Stage 1 R1,126.9m is not supported; presentation p.16 shows cumulative discount value since launch of R761.2m; annual cost and liability still not disclosed.",
+    "N21: X/bigly labs and S189 not separately quantified; R330m X/bigly labs and R115m non-recurring disclosed narratively; S189 545 affected per presentation p.19, not 505; no AFS line items or provision.",
+    "N22: Final dividend not in Note 31; 15.91872c approved 28 May 2026; ~R137m; not disclosed as subsequent event in Note 31.",
+    "historical_cash_flow: NOT VERIFIED; AFS Note 27 pp.60-62: OCF R1,792.711m is after finance costs, tax and dividends; cash from trading operations R3,124.134m; working capital inflow R125.820m driven by trade payables +R663.918m; capex R1,103.588m; lease principal R691.992m; net overdraft R1,166.964m. No management FCF definition or normalised working capital reconciliation.",
+    "forecast_cash_and_debt: NOT VERIFIED; No FY2027/FY2028 cash and debt roll-forward can be completed because covenant headroom, facility drawn/undrawn status, SCF covenant treatment, R500m bullet drawdown terms, JIBAR/ZARONIA quantum and S189 cost/saving are not disclosed.",
+    "portfolio_rollforward: NOT VERIFIED; Store count 358 verified (316 pharmacy + 42 Baby City) from IAR p.3 and CFO report p.104; trading space m2, trading density, capex split by new store/refit/IT/maintenance and signed vs pipeline status are not disclosed. Presentation p.25 total 355 is a typo; p.23 says 34 stores planned for FY2027, p.28 says 35, p.19 table shows 34 stores/31,198m2.",
+    "valuation_bridge: NOT VERIFIED; No valuation bridge is published. IFRS 16 basis not selected; net debt definition unresolved; SCF payables treatment unresolved; no normalised FCF; no target multiple or WACC/terminal growth support.",
+    "sensitivity: NOT VERIFIED; No sensitivity cells are published because no base valuation exists. Historical HEPS sensitivity can be computed, but fair value per share sensitivity cannot be reproduced without a valuation bridge.",
+    "financing_and_terminal: NOT VERIFIED; Borrowing, leases, refinancing, equity dilution and terminal debt policy cannot be reconciled. Group gearing 2.8x per Note 29 p.79; no covenant thresholds/headroom; Standard Bank bullet matures 31 May 2027; R500m post-year-end bullet at 3M JIBAR+1.3%; JIBAR/ZARONIA quantum not disclosed; lease optional renewals not quantified."
+  ],
+  "valuation_checks": [
+    {
+      "check_id": "historical_cash_flow",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "AFS Note 27 pp.60-62: OCF R1,792.711m is after finance costs, tax and dividends; cash from trading operations R3,124.134m; working capital inflow R125.820m driven by trade payables +R663.918m; capex R1,103.588m; lease principal R691.992m; net overdraft R1,166.964m. No management FCF definition or normalised working capital reconciliation.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "forecast_cash_and_debt",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No FY2027/FY2028 cash and debt roll-forward can be completed because covenant headroom, facility drawn/undrawn status, SCF covenant treatment, R500m bullet drawdown terms, JIBAR/ZARONIA quantum and S189 cost/saving are not disclosed.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "portfolio_rollforward",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Store count 358 verified (316 pharmacy + 42 Baby City) from IAR p.3 and CFO report p.104; trading space m2, trading density, capex split by new store/refit/IT/maintenance and signed vs pipeline status are not disclosed. Presentation p.25 total 355 is a typo; p.23 says 34 stores planned for FY2027, p.28 says 35, p.19 table shows 34 stores/31,198m2.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "valuation_bridge",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No valuation bridge is published. IFRS 16 basis not selected; net debt definition unresolved; SCF payables treatment unresolved; no normalised FCF; no target multiple or WACC/terminal growth support.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "sensitivity",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No sensitivity cells are published because no base valuation exists. Historical HEPS sensitivity can be computed, but fair value per share sensitivity cannot be reproduced without a valuation bridge.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "earnings_and_shares",
+      "material": true,
+      "verdict": "PASS",
+      "evidence": "AFS Note 11 p.36: weighted-average basic shares 857,006,527; diluted 857,817,750; basic HEPS 113.7c; diluted HEPS 113.6c; headline earnings R974.821m. Basic EPS 114.2c. Continuing HEPS equals 113.7c because no discontinued operations.",
+      "reconciliations": [
+        {
+          "label": "FY26 basic HEPS cents",
+          "expected": 113.7,
+          "actual": 113.7,
+          "tolerance": 0.1
+        },
+        {
+          "label": "FY26 diluted HEPS cents",
+          "expected": 113.6,
+          "actual": 113.6,
+          "tolerance": 0.1
+        },
+        {
+          "label": "FY26 weighted-average basic shares m",
+          "expected": 857.006527,
+          "actual": 857.006527,
+          "tolerance": 1e-06
+        },
+        {
+          "label": "FY26 diluted weighted-average shares m",
+          "expected": 857.81775,
+          "actual": 857.81775,
+          "tolerance": 1e-06
+        },
+        {
+          "label": "FY26 headline earnings Rm",
+          "expected": 974.821,
+          "actual": 974.821,
+          "tolerance": 0.001
+        }
+      ]
+    },
+    {
+      "check_id": "financing_and_terminal",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Borrowing, leases, refinancing, equity dilution and terminal debt policy cannot be reconciled. Group gearing 2.8x per Note 29 p.79; no covenant thresholds/headroom; Standard Bank bullet matures 31 May 2027; R500m post-year-end bullet at 3M JIBAR+1.3%; JIBAR/ZARONIA quantum not disclosed; lease optional renewals not quantified.",
+      "reconciliations": []
+    }
+  ],
+  "reference_price": 28.08
+}

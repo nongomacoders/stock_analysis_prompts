@@ -1,0 +1,57 @@
+{
+  "case": "pan_dense",
+  "arm": "single",
+  "ledger_valid": true,
+  "errors": [],
+  "questions_before": [],
+  "questions_after": [
+    {
+      "question": "How are cash cost, AISC, all-in cost and 'AISC excluding third-party buy-in' defined and reconciled to IFRS cost of production for FY26/FY25, and do the Group per-oz figures (1,600/1,867/2,576 US$/oz) tie to the ZAR million cost tables on p.50 at the 16.90 US$/ZAR rate?",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures (ALL-IN COSTS, p.40-43); D010 Glossary",
+      "evidence_required": "Definition and build-up of each cost metric, treatment of third-party buy-in feedstock and by-product credits, and reconciliation of per-unit costs to ZAR/A$ million cost-of-production totals for FY26 and FY25.",
+      "closure_condition": "Definitions and a reconciliation tying Group per-oz costs to the p.50 cost-of-production totals (same period, currency, gross/net basis) are shown, or the difference is explained.",
+      "question_id": "Q-a0b503d7ac044eee",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Are the p.49 outliers genuine or typographical: Elikhulu ZAR all-in cost FY25 68,843 ZAR/kg (vs FY26 853,597); Tennant A$ all-in cost FY25 1,584,835 A$/kg (vs FY26 205,143); Tennant US$ all-in cost FY25 32,041 US$/oz (vs FY26 4,339)?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 ALL-IN COSTS (p.40-43); D009 p.49",
+      "evidence_required": "Corrected or corroborating figures for these cells with the underlying cost and production inputs, and confirmation of units (ZAR/kg, A$/kg, US$/oz).",
+      "closure_condition": "Each outlier is either confirmed as printed (with explanation of the one-off) or corrected with a stated figure and source.",
+      "question_id": "Q-33a09eb5edee4d71",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Why does FY25 'Total operations MTR' gold produced (30,806 oz) exceed the MTR operation component (25,043 oz) by 5,763 oz, when the FY26 buy-in row shows 5,763 oz for MTR but FY25 buy-in shows nil?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 p.48-49; D006.2 Segment analysis",
+      "evidence_required": "Breakdown of FY25 MTR total production by source (own tailings vs buy-in vs other) and confirmation whether the 5,763 oz is a misclassification or a genuine additional source.",
+      "closure_condition": "The 5,763 oz difference is explained and the component-to-total reconciliation for MTR FY25 is shown.",
+      "question_id": "Q-3e8730dbd1994205",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Is Tennant's revenue (A$195.3m FY26; A$5.9m FY25) excluded from the Group ZAR revenue total of 17,249.1 ZARm, and how is the Australian operation consolidated into Group revenue and Adjusted EBITDA (US$663.1m)?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Segment analysis (p.20-24); D005 Primary financial statements (p.17-19)",
+      "evidence_required": "Group revenue by currency/segment and the consolidation/FX translation treatment of Tennant, reconciling A$ revenue to Group ZAR revenue and to Adjusted EBITDA.",
+      "closure_condition": "Tennant's contribution to Group revenue and EBITDA is reconciled with currency translation shown, or exclusion is confirmed.",
+      "question_id": "Q-c5e1b41b1cfe4dfb",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

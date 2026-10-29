@@ -1,0 +1,13 @@
+{
+  "label": "section_15",
+  "pages": [
+    21,
+    22,
+    23
+  ],
+  "heading": "Purchased book debts",
+  "ledger_valid": true,
+  "errors": [],
+  "questions_before": 18,
+  "questions_after": 20
+}

@@ -1,0 +1,31 @@
+{
+  "checked_utc": "2026-10-28T11:51:10.835327+00:00",
+  "accounted_calls": 3,
+  "all_calls_complete": true,
+  "all_costs_corrobated": true,
+  "caller_token_caps_omitted": true,
+  "default_thinking_normal_routing_retained": true,
+  "price_fields_null": true,
+  "all_active_captures_have_accepted_analysis": true,
+  "historical_arithmetic": {
+    "principal_net": 3845,
+    "principal_close": 3845,
+    "other_close": 644,
+    "combined_net_cash": 434,
+    "portfolio_income_before_funding": 246,
+    "decline": 188,
+    "remaining_statutory_residual": 6,
+    "receivables_nonfinancial": 107,
+    "signed_etr": 31.521739130434785,
+    "fy25_historical_loss": 259,
+    "amortisation": 598,
+    "nav": 1.702425211547757,
+    "cash_close": 113
+  },
+  "evidence": "Source-transcribed figures from physical pp.8,9,12,13,16,22,24,31, previously visually reviewed against the identical PDF hash. No fresh full-PDF image audit claimed.",
+  "limitations": [
+    "Actual forecasts/DCF/sensitivity were not built; no demonstrated repair of valuation modelling.",
+    "Several blockers are source uncertainties or small residuals without demonstrated valuation materiality; Gemini should review proportionality.",
+    "The successful new completions fit below prior caps; different prompt/context/provider/generation behavior prevents assigning causation solely to cap omission."
+  ]
+}

@@ -1,0 +1,1496 @@
+{
+  "source": "companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+  "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+  "physical_page_count": 38,
+  "legacy_budget_only_groups": 9,
+  "logical_groups": 30,
+  "legacy_page_spans": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      15
+    ],
+    [
+      16,
+      21
+    ],
+    [
+      22,
+      27
+    ],
+    [
+      28,
+      33
+    ],
+    [
+      34,
+      37
+    ],
+    [
+      38,
+      38
+    ]
+  ],
+  "all_pages_once": true,
+  "maximum_pages": 3,
+  "forced_continuation_cuts": 3,
+  "groups": [
+    {
+      "parent_heading": "Unclassified report pages",
+      "logical_heading": "Unclassified report pages",
+      "physical_pages": [
+        1,
+        2
+      ],
+      "source_characters": 5842,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 1,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated",
+              "top": 481.12,
+              "size": 20.12
+            },
+            {
+              "text": "Financial statements",
+              "top": 496.56,
+              "size": 88.53
+            },
+            {
+              "text": "Nutun Limited",
+              "top": 753.28,
+              "size": 24.08
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 2,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Contents",
+              "top": 299.12,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Highlights",
+      "logical_heading": "Key highlights",
+      "physical_pages": [
+        3,
+        3
+      ],
+      "source_characters": 3177,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 3,
+          "heading": "Key highlights",
+          "topic_key": "key highlights",
+          "heading_evidence": [
+            {
+              "text": "Key highlights",
+              "top": 109.2,
+              "size": 17.0
+            },
+            {
+              "text": "Performance – core continuing operations",
+              "top": 307.1,
+              "size": 15.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Highlights",
+      "logical_heading": "• Nutun South Africa",
+      "physical_pages": [
+        4,
+        5
+      ],
+      "source_characters": 12889,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 4,
+          "heading": "• Nutun South Africa",
+          "topic_key": "nutun south africa",
+          "heading_evidence": [
+            {
+              "text": "Performance – core continuing operations",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "continued",
+              "top": 112.27,
+              "size": 10.0
+            },
+            {
+              "text": "• Nutun South Africa",
+              "top": 143.56,
+              "size": 11.5
+            },
+            {
+              "text": "• Nutun International",
+              "top": 341.57,
+              "size": 11.5
+            },
+            {
+              "text": "Performance – group including discontinued operations",
+              "top": 475.29,
+              "size": 15.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 5,
+          "heading": "• Nutun South Africa",
+          "topic_key": "nutun south africa",
+          "heading_evidence": [
+            {
+              "text": "Operational update and outlook",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "• Balance Sheet and Liquidity",
+              "top": 191.23,
+              "size": 11.5
+            },
+            {
+              "text": "• Nutun South Africa",
+              "top": 232.32,
+              "size": 11.5
+            },
+            {
+              "text": "• Nutun International",
+              "top": 384.07,
+              "size": 11.5
+            },
+            {
+              "text": "• Technology and AI",
+              "top": 620.67,
+              "size": 11.5
+            },
+            {
+              "text": "Dividend",
+              "top": 661.89,
+              "size": 15.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Highlights",
+      "logical_heading": "Group continuing core results",
+      "physical_pages": [
+        6,
+        6
+      ],
+      "source_characters": 6381,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 6,
+          "heading": "Group continuing core results",
+          "topic_key": "group continuing core results",
+          "heading_evidence": [
+            {
+              "text": "Basis of preparation",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Group continuing core results",
+              "top": 248.7,
+              "size": 15.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Highlights",
+      "logical_heading": "Changes to the board of directors",
+      "physical_pages": [
+        7,
+        7
+      ],
+      "source_characters": 5671,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 7,
+          "heading": "Changes to the board of directors",
+          "topic_key": "changes to the board of directors",
+          "heading_evidence": [
+            {
+              "text": "Other information",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Changes to the board of directors",
+              "top": 154.2,
+              "size": 15.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Condensed consolidated statement of financial position",
+      "physical_pages": [
+        8,
+        8
+      ],
+      "source_characters": 2105,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 8,
+          "heading": "Condensed consolidated statement of financial position",
+          "topic_key": "condensed consolidated statement of financial position",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated statement of financial position",
+              "top": 109.2,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Condensed consolidated income statement",
+      "physical_pages": [
+        9,
+        9
+      ],
+      "source_characters": 2681,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 9,
+          "heading": "Condensed consolidated income statement",
+          "topic_key": "condensed consolidated income statement",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated income statement",
+              "top": 109.2,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Condensed consolidated statement of comprehensive income",
+      "physical_pages": [
+        10,
+        10
+      ],
+      "source_characters": 985,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 10,
+          "heading": "Condensed consolidated statement of comprehensive income",
+          "topic_key": "condensed consolidated statement of comprehensive income",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated statement of comprehensive income",
+              "top": 109.2,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Condensed consolidated statement of changes in equity",
+      "physical_pages": [
+        11,
+        11
+      ],
+      "source_characters": 2434,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 11,
+          "heading": "Condensed consolidated statement of changes in equity",
+          "topic_key": "condensed consolidated statement of changes in equity",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated statement of changes in equity",
+              "top": 83.68,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Condensed consolidated statement of cash flows",
+      "physical_pages": [
+        12,
+        12
+      ],
+      "source_characters": 3090,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 12,
+          "heading": "Condensed consolidated statement of cash flows",
+          "topic_key": "condensed consolidated statement of cash flows",
+          "heading_evidence": [
+            {
+              "text": "Condensed consolidated statement of cash flows",
+              "top": 109.2,
+              "size": 17.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "1 Purchased book debts",
+      "physical_pages": [
+        13,
+        13
+      ],
+      "source_characters": 4824,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 13,
+          "heading": "1 Purchased book debts",
+          "topic_key": "1 purchased book debts 1 purchased book debts",
+          "heading_evidence": [
+            {
+              "text": "financial statements",
+              "top": 128.21,
+              "size": 17.0
+            },
+            {
+              "text": "1 Purchased book debts",
+              "top": 185.23,
+              "size": 15.0
+            },
+            {
+              "text": "1.1 Principal book portfolio*",
+              "top": 584.92,
+              "size": 11.5
+            },
+            {
+              "text": "1.2 Other financial assets",
+              "top": 693.33,
+              "size": 11.5
+            }
+          ],
+          "note_id": "1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "2 Interest-bearing liabilities and bank overdrafts",
+      "physical_pages": [
+        14,
+        15
+      ],
+      "source_characters": 6867,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 14,
+          "heading": "2 Interest-bearing liabilities and bank overdrafts",
+          "topic_key": "2 interest bearing liabilities and bank overdrafts 2 interest bearing liabilities and bank overdrafts",
+          "heading_evidence": [
+            {
+              "text": "2 Interest-bearing liabilities and bank overdrafts",
+              "top": 108.69,
+              "size": 15.0
+            }
+          ],
+          "note_id": "2",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 15,
+          "heading": "2 Interest-bearing liabilities and bank overdrafts",
+          "topic_key": "2 interest bearing liabilities and bank overdrafts 2 interest bearing liabilities and bank overdrafts",
+          "heading_evidence": [
+            {
+              "text": "2 Interest-bearing liabilities and bank overdrafts",
+              "top": 108.69,
+              "size": 15.0
+            }
+          ],
+          "note_id": "2",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "3 Ordinary share capital",
+      "physical_pages": [
+        16,
+        16
+      ],
+      "source_characters": 3751,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 16,
+          "heading": "3 Ordinary share capital",
+          "topic_key": "3 ordinary share capital 3 ordinary share capital",
+          "heading_evidence": [
+            {
+              "text": "3 Ordinary share capital",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "3.1 Reconciliation of ordinary share capital",
+              "top": 293.05,
+              "size": 11.5
+            },
+            {
+              "text": "Share movements during the period",
+              "top": 464.31,
+              "size": 10.0
+            }
+          ],
+          "note_id": "3",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "4 Revenue",
+      "physical_pages": [
+        17,
+        17
+      ],
+      "source_characters": 2364,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 17,
+          "heading": "4 Revenue",
+          "topic_key": "4 revenue 4 revenue",
+          "heading_evidence": [
+            {
+              "text": "4 Revenue",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "4.1 Revenue disaggregation",
+              "top": 357.93,
+              "size": 11.5
+            }
+          ],
+          "note_id": "4",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "5.1 From total operations",
+      "physical_pages": [
+        18,
+        18
+      ],
+      "source_characters": 2193,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 18,
+          "heading": "5.1 From total operations",
+          "topic_key": "5 1 from total operations 5 1 from total operations",
+          "heading_evidence": [
+            {
+              "text": "5 Loss per share",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "5.1 From total operations",
+              "top": 127.03,
+              "size": 11.5
+            }
+          ],
+          "note_id": "5.1",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "5.2 From continuing and discontinued operations",
+      "physical_pages": [
+        19,
+        19
+      ],
+      "source_characters": 2086,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 19,
+          "heading": "5.2 From continuing and discontinued operations",
+          "topic_key": "5 2 from continuing and discontinued operations 5 2 from continuing and discontinued operations",
+          "heading_evidence": [
+            {
+              "text": "5 Loss per share",
+              "top": 115.2,
+              "size": 15.0
+            },
+            {
+              "text": "5.2 From continuing and discontinued operations",
+              "top": 133.54,
+              "size": 11.5
+            }
+          ],
+          "note_id": "5.2",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Credit risk management and measurement",
+      "physical_pages": [
+        20,
+        20
+      ],
+      "source_characters": 6355,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 20,
+          "heading": "Credit risk management and measurement",
+          "topic_key": "6 1 credit risk credit risk management and measurement",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 107.98,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk",
+              "top": 126.32,
+              "size": 11.5
+            },
+            {
+              "text": "Credit risk management and measurement",
+              "top": 258.15,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Purchased book debts",
+      "physical_pages": [
+        21,
+        23
+      ],
+      "source_characters": 11918,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 21,
+          "heading": "Purchased book debts",
+          "topic_key": "6 1 credit risk purchased book debts",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Purchased book debts",
+              "top": 142.52,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 22,
+          "heading": "Financial assets subject to risk",
+          "topic_key": "6 1 credit risk financial assets subject to risk",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Financial assets subject to risk",
+              "top": 139.92,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 23,
+          "heading": "Concentration of principal book portfolios",
+          "topic_key": "6 1 credit risk concentration of principal book portfolios",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Concentration of principal book portfolios",
+              "top": 139.92,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Reconciliation of expected credit loss allowance on principal book portfolios*",
+      "physical_pages": [
+        24,
+        24
+      ],
+      "source_characters": 2995,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 24,
+          "heading": "Reconciliation of expected credit loss allowance on principal book portfolios*",
+          "topic_key": "6 1 credit risk reconciliation of expected credit loss allowance on principal book portfolios",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Reconciliation of expected credit loss allowance on principal book portfolios*",
+              "top": 139.92,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "principal_portfolios",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Expected credit loss allowance on trade receivables*",
+      "physical_pages": [
+        25,
+        25
+      ],
+      "source_characters": 4534,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "note_starts_on_shared_page",
+      "heading_evidence": [
+        {
+          "physical_page": 25,
+          "heading": "Expected credit loss allowance on trade receivables*",
+          "topic_key": "6 1 credit risk expected credit loss allowance on trade receivables",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.1 Credit risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "Expected credit loss allowance on trade receivables*",
+              "top": 139.92,
+              "size": 10.0
+            },
+            {
+              "text": "6.2 Currency risk",
+              "top": 470.73,
+              "size": 11.5
+            }
+          ],
+          "note_id": "6.1",
+          "period": "",
+          "instrument": "trade_receivables",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "6.2 Currency risk continued",
+      "physical_pages": [
+        26,
+        26
+      ],
+      "source_characters": 6699,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "note_starts_on_shared_page",
+      "heading_evidence": [
+        {
+          "physical_page": 26,
+          "heading": "6.2 Currency risk continued",
+          "topic_key": "6 2 currency risk 6 2 currency risk",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.2 Currency risk continued",
+              "top": 124.43,
+              "size": 11.5
+            },
+            {
+              "text": "6.3 Fair value disclosure",
+              "top": 350.39,
+              "size": 11.5
+            },
+            {
+              "text": "Fair values of financial instruments carried at amortised cost",
+              "top": 365.89,
+              "size": 10.0
+            }
+          ],
+          "note_id": "6.2",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "6.3 Fair value disclosure continued",
+      "physical_pages": [
+        27,
+        27
+      ],
+      "source_characters": 2580,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 27,
+          "heading": "6.3 Fair value disclosure continued",
+          "topic_key": "6 3 fair value disclosure 6 3 fair value disclosure",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.3 Fair value disclosure continued",
+              "top": 127.03,
+              "size": 11.5
+            }
+          ],
+          "note_id": "6.3",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Valuation methods and assumptions:",
+      "physical_pages": [
+        28,
+        28
+      ],
+      "source_characters": 6040,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 28,
+          "heading": "Valuation methods and assumptions:",
+          "topic_key": "6 3 fair value disclosure valuation methods and assumptions",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "6.3 Fair value disclosure continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Fair values of financial instruments measured at fair value through profit and loss",
+              "top": 142.52,
+              "size": 10.0
+            },
+            {
+              "text": "Valuation methods and assumptions:",
+              "top": 252.28,
+              "size": 10.0
+            },
+            {
+              "text": "6.4 Level disclosure",
+              "top": 392.46,
+              "size": 11.5
+            }
+          ],
+          "note_id": "6.3",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Reconciliation of level 3 fair value measurements of financial assets and liabilities",
+      "physical_pages": [
+        29,
+        29
+      ],
+      "source_characters": 6255,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "note_starts_on_shared_page",
+      "heading_evidence": [
+        {
+          "physical_page": 29,
+          "heading": "Reconciliation of level 3 fair value measurements of financial assets and liabilities",
+          "topic_key": "6 4 level disclosure reconciliation of level 3 fair value measurements of financial assets and liabilities",
+          "heading_evidence": [
+            {
+              "text": "6 Financial risk management",
+              "top": 108.19,
+              "size": 15.0
+            },
+            {
+              "text": "6.4 Level disclosure continued",
+              "top": 126.53,
+              "size": 11.5
+            },
+            {
+              "text": "Reconciliation of level 3 fair value measurements of financial assets and liabilities",
+              "top": 142.02,
+              "size": 10.0
+            },
+            {
+              "text": "7 Segment report",
+              "top": 315.36,
+              "size": 15.0
+            },
+            {
+              "text": "Nutun South Africa",
+              "top": 367.17,
+              "size": 11.5
+            },
+            {
+              "text": "Nutun International",
+              "top": 426.67,
+              "size": 11.5
+            },
+            {
+              "text": "Group core results",
+              "top": 488.98,
+              "size": 11.5
+            }
+          ],
+          "note_id": "6.4",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Group core results continued",
+      "physical_pages": [
+        30,
+        31
+      ],
+      "source_characters": 4876,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 30,
+          "heading": "Group core results continued",
+          "topic_key": "7 segment report group core results",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.86,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 127.2,
+              "size": 11.5
+            },
+            {
+              "text": "Summarised income statement",
+              "top": 291.54,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "31 march 2026",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 31,
+          "heading": "Reconciliation to core continuing earnings and core EBITDA",
+          "topic_key": "7 segment report reconciliation to core continuing earnings and core ebitda",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.12,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 126.46,
+              "size": 11.5
+            },
+            {
+              "text": "Reconciliation to core continuing earnings and core EBITDA",
+              "top": 185.97,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "31 march 2026",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Summarised income statement",
+      "physical_pages": [
+        32,
+        33
+      ],
+      "source_characters": 5854,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 32,
+          "heading": "Summarised income statement",
+          "topic_key": "7 segment report summarised income statement",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Summarised income statement",
+              "top": 220.25,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "31 march 2025",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 33,
+          "heading": "Reconciliation to core continuing earnings and core EBITDA",
+          "topic_key": "7 segment report reconciliation to core continuing earnings and core ebitda",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Reconciliation to core continuing earnings and core EBITDA",
+              "top": 186.54,
+              "size": 11.0
+            },
+            {
+              "text": "Reconciliation to core discontinued loss",
+              "top": 516.83,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "31 march 2025",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Summarised income statement",
+      "physical_pages": [
+        34,
+        35
+      ],
+      "source_characters": 6435,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 34,
+          "heading": "Summarised income statement",
+          "topic_key": "7 segment report summarised income statement",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Summarised income statement",
+              "top": 220.25,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "30 september 2025",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 35,
+          "heading": "Reconciliation to core continuing (loss)/earnings and core EBITDA",
+          "topic_key": "7 segment report reconciliation to core continuing loss earnings and core ebitda",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Group core results continued",
+              "top": 127.03,
+              "size": 11.5
+            },
+            {
+              "text": "Reconciliation to core continuing (loss)/earnings and core EBITDA",
+              "top": 186.54,
+              "size": 11.0
+            },
+            {
+              "text": "Reconciliation to core discontinued loss",
+              "top": 509.27,
+              "size": 11.0
+            }
+          ],
+          "note_id": "7",
+          "period": "30 september 2025",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Geographical information",
+      "physical_pages": [
+        36,
+        36
+      ],
+      "source_characters": 1856,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 36,
+          "heading": "Geographical information",
+          "topic_key": "7 segment report geographical information",
+          "heading_evidence": [
+            {
+              "text": "7 Segment report",
+              "top": 108.69,
+              "size": 15.0
+            },
+            {
+              "text": "Geographical information",
+              "top": 129.87,
+              "size": 11.5
+            },
+            {
+              "text": "8 Going concern",
+              "top": 361.52,
+              "size": 15.0
+            },
+            {
+              "text": "9 Subsequent events",
+              "top": 436.53,
+              "size": 15.0
+            }
+          ],
+          "note_id": "7",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "Company information Legal advisers",
+      "physical_pages": [
+        37,
+        37
+      ],
+      "source_characters": 5332,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 37,
+          "heading": "Company information Legal advisers",
+          "topic_key": "company information legal advisers",
+          "heading_evidence": [
+            {
+              "text": "Administration",
+              "top": 109.2,
+              "size": 17.0
+            },
+            {
+              "text": "Company information Legal advisers",
+              "top": 165.38,
+              "size": 15.0
+            },
+            {
+              "text": "Directors Transfer secretaries",
+              "top": 288.9,
+              "size": 15.0
+            },
+            {
+              "text": "Executive Computershare Investor Services",
+              "top": 307.24,
+              "size": 11.5
+            },
+            {
+              "text": "Non-executive",
+              "top": 377.83,
+              "size": 11.5
+            },
+            {
+              "text": "Independent auditors",
+              "top": 410.0,
+              "size": 15.0
+            },
+            {
+              "text": "Independent non-executive PricewaterhouseCoopers Inc",
+              "top": 421.75,
+              "size": 11.5
+            },
+            {
+              "text": "Company secretary and registered office",
+              "top": 498.51,
+              "size": 15.0
+            },
+            {
+              "text": "Jerain Naidoo",
+              "top": 532.85,
+              "size": 11.5
+            },
+            {
+              "text": "JSE sponsor",
+              "top": 596.27,
+              "size": 15.0
+            },
+            {
+              "text": "Investec Bank Limited",
+              "top": 614.61,
+              "size": 11.5
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Unclassified report pages",
+      "logical_heading": "Unclassified report pages",
+      "physical_pages": [
+        38,
+        38
+      ],
+      "source_characters": 5311,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 38,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "nutun.com",
+              "top": 663.87,
+              "size": 11.5
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    }
+  ]
+}

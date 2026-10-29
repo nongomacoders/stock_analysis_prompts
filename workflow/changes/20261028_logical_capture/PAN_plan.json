@@ -1,0 +1,1496 @@
+{
+  "source": "companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+  "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+  "physical_page_count": 54,
+  "legacy_budget_only_groups": 24,
+  "logical_groups": 26,
+  "legacy_page_spans": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      14,
+      14
+    ],
+    [
+      15,
+      15
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      17,
+      19
+    ],
+    [
+      20,
+      23
+    ],
+    [
+      24,
+      28
+    ],
+    [
+      29,
+      33
+    ],
+    [
+      34,
+      36
+    ],
+    [
+      37,
+      37
+    ],
+    [
+      38,
+      41
+    ],
+    [
+      42,
+      47
+    ],
+    [
+      48,
+      50
+    ],
+    [
+      51,
+      51
+    ],
+    [
+      52,
+      52
+    ],
+    [
+      53,
+      53
+    ],
+    [
+      54,
+      54
+    ]
+  ],
+  "all_pages_once": true,
+  "maximum_pages": 6,
+  "forced_continuation_cuts": 9,
+  "groups": [
+    {
+      "parent_heading": "Unclassified report pages",
+      "logical_heading": "Unclassified report pages",
+      "physical_pages": [
+        1,
+        1
+      ],
+      "source_characters": 2654,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 1,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "growing",
+              "top": 264.32,
+              "size": 65.87
+            },
+            {
+              "text": "continuously",
+              "top": 311.14,
+              "size": 51.71
+            },
+            {
+              "text": "MINING FOR A FUTURE",
+              "top": 371.01,
+              "size": 13.46
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "key F26  features",
+      "logical_heading": "to to",
+      "physical_pages": [
+        2,
+        2
+      ],
+      "source_characters": 8724,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 2,
+          "heading": "to to",
+          "topic_key": "to to",
+          "heading_evidence": [
+            {
+              "text": "SUMMARISED AUDITED RESULTS",
+              "top": 41.48,
+              "size": 16.0
+            },
+            {
+              "text": "FEATURES",
+              "top": 108.57,
+              "size": 16.0
+            },
+            {
+              "text": "A record year in operational and financial performance secondary listing in the form of",
+              "top": 157.87,
+              "size": 11.5
+            },
+            {
+              "text": "Group gold production Revenue Net cash generated from",
+              "top": 187.73,
+              "size": 12.0
+            },
+            {
+              "text": "operating activities 114.2%",
+              "top": 200.93,
+              "size": 21.0
+            },
+            {
+              "text": "to to",
+              "top": 211.29,
+              "size": 10.0
+            },
+            {
+              "text": "increased substantially (FY25: 196,926oz) the end of FY25",
+              "top": 327.94,
+              "size": 12.0
+            },
+            {
+              "text": "Headline earnings Earnings per share (EPS) per share (HEPS)",
+              "top": 372.29,
+              "size": 12.0
+            },
+            {
+              "text": "US 17.64 cents per share",
+              "top": 425.54,
+              "size": 21.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Highlights",
+      "logical_heading": "KEY FEATURES continued",
+      "physical_pages": [
+        3,
+        4
+      ],
+      "source_characters": 20655,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 3,
+          "heading": "KEY FEATURES continued",
+          "topic_key": "key features",
+          "heading_evidence": [
+            {
+              "text": "KEY FEATURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 4,
+          "heading": "KEY FEATURES continued",
+          "topic_key": "key features",
+          "heading_evidence": [
+            {
+              "text": "KEY FEATURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Chief",
+      "logical_heading": "Chief",
+      "physical_pages": [
+        5,
+        5
+      ],
+      "source_characters": 7092,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 5,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Chief",
+              "top": 305.3,
+              "size": 50.2
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        6,
+        7
+      ],
+      "source_characters": 22642,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 6,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 7,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        8,
+        9
+      ],
+      "source_characters": 22621,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 8,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 9,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        10,
+        11
+      ],
+      "source_characters": 21759,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 10,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 11,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        12,
+        13
+      ],
+      "source_characters": 21858,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 12,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 13,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        14,
+        14
+      ],
+      "source_characters": 11742,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 14,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "CEO's statement",
+      "logical_heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+      "physical_pages": [
+        15,
+        15
+      ],
+      "source_characters": 38052,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 15,
+          "heading": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+          "topic_key": "chief executive officer s statement",
+          "heading_evidence": [
+            {
+              "text": "CHIEF EXECUTIVE OFFICER’S STATEMENT continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Annual financial  statements",
+      "logical_heading": "Annual financial  statements",
+      "physical_pages": [
+        16,
+        16
+      ],
+      "source_characters": 1602,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 16,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Annual",
+              "top": 368.76,
+              "size": 50.29
+            },
+            {
+              "text": "Pan African is a sustainable, safe, high-margin and long-life precious",
+              "top": 376.88,
+              "size": 14.87
+            },
+            {
+              "text": "metals producer, with a portfolio",
+              "top": 410.88,
+              "size": 14.87
+            },
+            {
+              "text": "financial",
+              "top": 416.94,
+              "size": 50.29
+            },
+            {
+              "text": "of underground mining, surface retreatment, development and",
+              "top": 427.88,
+              "size": 14.87
+            },
+            {
+              "text": "statements",
+              "top": 465.12,
+              "size": 50.29
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "SUMMARISED CONSOLIDATED STATEMENT OF FINANCIAL POSITION",
+      "physical_pages": [
+        17,
+        17
+      ],
+      "source_characters": 2973,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 17,
+          "heading": "SUMMARISED CONSOLIDATED STATEMENT OF FINANCIAL POSITION",
+          "topic_key": "summarised consolidated statement of financial position",
+          "heading_evidence": [
+            {
+              "text": "SUMMARISED CONSOLIDATED STATEMENT OF FINANCIAL POSITION",
+              "top": 41.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "COMPREHENSIVE INCOME OF CASH FLOWS",
+      "physical_pages": [
+        18,
+        18
+      ],
+      "source_characters": 4738,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 18,
+          "heading": "COMPREHENSIVE INCOME OF CASH FLOWS",
+          "topic_key": "comprehensive income of cash flows",
+          "heading_evidence": [
+            {
+              "text": "SUMMARISED CONSOLIDATED STATEMENT OF PROFIT OR LOSS AND OTHER SUMMARISED CONSOLIDATED STATEMENT",
+              "top": 41.48,
+              "size": 16.0
+            },
+            {
+              "text": "COMPREHENSIVE INCOME OF CASH FLOWS",
+              "top": 73.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "SUMMARISED CONSOLIDATED STATEMENT NOTES TO THE SUMMARISED CONSOLIDATED OF CHANGES IN EQUITY ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        19,
+        19
+      ],
+      "source_characters": 11352,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 19,
+          "heading": "SUMMARISED CONSOLIDATED STATEMENT NOTES TO THE SUMMARISED CONSOLIDATED OF CHANGES IN EQUITY ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "summarised consolidated statement notes to the summarised consolidated of changes in equity annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "SUMMARISED CONSOLIDATED STATEMENT NOTES TO THE SUMMARISED CONSOLIDATED OF CHANGES IN EQUITY ANNUAL FINANCIAL STATEMENTS",
+              "top": 41.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial notes",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS continued",
+      "physical_pages": [
+        20,
+        23
+      ],
+      "source_characters": 23667,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 20,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 21,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 22,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 23,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial notes",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS continued",
+      "physical_pages": [
+        24,
+        28
+      ],
+      "source_characters": 20623,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 24,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 25,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 26,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 27,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 28,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial notes",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS continued",
+      "physical_pages": [
+        29,
+        33
+      ],
+      "source_characters": 22274,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 29,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 30,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 31,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 32,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 33,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial notes",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS continued",
+      "physical_pages": [
+        34,
+        36
+      ],
+      "source_characters": 21114,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 34,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 35,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 36,
+          "heading": "ANNUAL FINANCIAL STATEMENTS continued",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS continued",
+              "top": 52.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Other items",
+      "logical_heading": "Other items",
+      "physical_pages": [
+        37,
+        37
+      ],
+      "source_characters": 182,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 37,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Other items",
+              "top": 353.38,
+              "size": 50.2
+            },
+            {
+              "text": "Pan African experienced",
+              "top": 445.16,
+              "size": 14.85
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Alternative performance measures",
+      "logical_heading": "ALTERNATIVE PERFORMANCE MEASURES",
+      "physical_pages": [
+        38,
+        41
+      ],
+      "source_characters": 22590,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 38,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES",
+              "top": 41.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 39,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 40,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 41,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Alternative performance measures",
+      "logical_heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+      "physical_pages": [
+        42,
+        47
+      ],
+      "source_characters": 19757,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 42,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 43,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 44,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 45,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 46,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 47,
+          "heading": "ALTERNATIVE PERFORMANCE MEASURES continued",
+          "topic_key": "alternative performance measures",
+          "heading_evidence": [
+            {
+              "text": "ALTERNATIVE PERFORMANCE MEASURES continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Group production summary",
+      "logical_heading": "GROUP PRODUCTION SUMMARY",
+      "physical_pages": [
+        48,
+        50
+      ],
+      "source_characters": 17696,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 48,
+          "heading": "GROUP PRODUCTION SUMMARY",
+          "topic_key": "group production summary",
+          "heading_evidence": [
+            {
+              "text": "GROUP PRODUCTION SUMMARY",
+              "top": 41.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 49,
+          "heading": "GROUP PRODUCTION SUMMARY continued",
+          "topic_key": "group production summary",
+          "heading_evidence": [
+            {
+              "text": "GROUP PRODUCTION SUMMARY continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 50,
+          "heading": "GROUP PRODUCTION SUMMARY continued",
+          "topic_key": "group production summary",
+          "heading_evidence": [
+            {
+              "text": "GROUP PRODUCTION SUMMARY continued",
+              "top": 41.87,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Glossary",
+      "logical_heading": "GLOSSARY",
+      "physical_pages": [
+        51,
+        51
+      ],
+      "source_characters": 10891,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 51,
+          "heading": "GLOSSARY",
+          "topic_key": "glossary",
+          "heading_evidence": [
+            {
+              "text": "GLOSSARY",
+              "top": 41.48,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Corporate information",
+      "logical_heading": "GLOSSARY CORPORATE INFORMATION continued",
+      "physical_pages": [
+        52,
+        52
+      ],
+      "source_characters": 9786,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 52,
+          "heading": "GLOSSARY CORPORATE INFORMATION continued",
+          "topic_key": "glossary corporate information",
+          "heading_evidence": [
+            {
+              "text": "GLOSSARY CORPORATE INFORMATION continued",
+              "top": 41.87,
+              "size": 16.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Reporting suite",
+      "logical_heading": "value our future",
+      "physical_pages": [
+        53,
+        53
+      ],
+      "source_characters": 5350,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 53,
+          "heading": "value our future",
+          "topic_key": "value our future",
+          "heading_evidence": [
+            {
+              "text": "OUR REPORTING SUITE",
+              "top": 45.16,
+              "size": 16.0
+            },
+            {
+              "text": "growing growing",
+              "top": 173.24,
+              "size": 12.45
+            },
+            {
+              "text": "value our future",
+              "top": 182.21,
+              "size": 10.8
+            },
+            {
+              "text": "growing growing",
+              "top": 313.27,
+              "size": 12.45
+            },
+            {
+              "text": "sustainably resilience",
+              "top": 322.23,
+              "size": 10.8
+            },
+            {
+              "text": "growing",
+              "top": 447.63,
+              "size": 12.45
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Unclassified report pages",
+      "logical_heading": "Unclassified report pages",
+      "physical_pages": [
+        54,
+        54
+      ],
+      "source_characters": 2654,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 54,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    }
+  ]
+}

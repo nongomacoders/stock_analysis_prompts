@@ -1,0 +1,20 @@
+{
+  "scope": "Isolated existing pure functions via AST; no production imports, network, Qt or database writes",
+  "probes": {
+    "missing_section4": null,
+    "empty_section4": null,
+    "unstructured_replacement": "Everything looks fine.",
+    "single_question_replacement": "- Q2 Pending: D003 - Inspect financing."
+  },
+  "probe_assertions": 4,
+  "recorded_analyzed_sections": 304,
+  "sections_with_prompt_token_metadata": 304,
+  "saved_section_prompt_tokens_max": 151637,
+  "sections_above_50000_recorded_prompt_tokens": 3,
+  "section_response_chars": 8203536,
+  "after_current_stage1_compaction_chars": 4384698,
+  "chars_removed_by_existing_compaction": 3818838,
+  "removed_percent": 46.55,
+  "max_to_min_analyzed_prompt_chars_ratio": 35.8,
+  "database_still_matches": true
+}

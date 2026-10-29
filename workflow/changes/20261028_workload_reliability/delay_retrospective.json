@@ -1,0 +1,105 @@
+{
+  "scope": "Completed trial receipts. The exact user stuck-question timestamp is not available here.",
+  "companies": [
+    {
+      "ticker": "NTU",
+      "primary_captures": 9,
+      "successful_receipts": 17,
+      "successful_ledger_repair_receipts": 6,
+      "summed_recorded_call_seconds": 373.44,
+      "first_request_utc": "2026-10-28T08:19:26.670281+00:00",
+      "last_receipt_utc": "2026-10-28T08:52:42.736124+00:00",
+      "observed_request_to_last_receipt_seconds": 1996.07,
+      "slowest_receipts": [
+        {
+          "label": "stage1",
+          "elapsed_seconds": 124.28,
+          "completion_tokens": 29155,
+          "reasoning_tokens": 20729,
+          "completed_utc": "2026-10-28T08:37:41.636624+00:00"
+        },
+        {
+          "label": "section_9a19b3b4_008",
+          "elapsed_seconds": 78.64,
+          "completion_tokens": 7600,
+          "reasoning_tokens": 0,
+          "completed_utc": "2026-10-28T08:31:43.792866+00:00"
+        },
+        {
+          "label": "section_9a19b3b4_006",
+          "elapsed_seconds": 27.45,
+          "completion_tokens": 13994,
+          "reasoning_tokens": 0,
+          "completed_utc": "2026-10-28T08:26:42.302435+00:00"
+        },
+        {
+          "label": "section_9a19b3b4_005",
+          "elapsed_seconds": 24.52,
+          "completion_tokens": 11163,
+          "reasoning_tokens": 0,
+          "completed_utc": "2026-10-28T08:26:08.855265+00:00"
+        }
+      ]
+    },
+    {
+      "ticker": "DCP",
+      "primary_captures": 84,
+      "successful_receipts": 124,
+      "successful_ledger_repair_receipts": 38,
+      "summed_recorded_call_seconds": 1961.15,
+      "first_request_utc": "2026-10-28T08:20:10.108607+00:00",
+      "last_receipt_utc": "2026-10-28T09:14:14.665873+00:00",
+      "observed_request_to_last_receipt_seconds": 3244.56,
+      "slowest_receipts": [
+        {
+          "label": "stage1",
+          "elapsed_seconds": 182.54,
+          "completion_tokens": 50646,
+          "reasoning_tokens": 34807,
+          "completed_utc": "2026-10-28T09:12:17.635725+00:00"
+        },
+        {
+          "label": "stage2",
+          "elapsed_seconds": 116.95,
+          "completion_tokens": 46592,
+          "reasoning_tokens": 35238,
+          "completed_utc": "2026-10-28T09:14:14.665873+00:00"
+        },
+        {
+          "label": "section_f346d200_023",
+          "elapsed_seconds": 111.19,
+          "completion_tokens": 12528,
+          "reasoning_tokens": 0,
+          "completed_utc": "2026-10-28T08:39:00.720208+00:00"
+        },
+        {
+          "label": "section_f346d200_020",
+          "elapsed_seconds": 53.39,
+          "completion_tokens": 9365,
+          "reasoning_tokens": 0,
+          "completed_utc": "2026-10-28T08:35:25.484398+00:00"
+        }
+      ]
+    }
+  ],
+  "telemetry_flags": {
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "POWERSHELL_TELEMETRY_OPTOUT": "1"
+  },
+  "telemetry_causation": "No telemetry-related rejection appeared in the visible tools for this implementation/rerun sequence. Earlier project entries describe separate prior incidents. No host packet trace was collected.",
+  "successful_receipts_total": 141,
+  "successful_ledger_repairs_total": 44,
+  "test_process_seconds_from_observed_tool_results": [
+    53.58,
+    69.94,
+    64.24,
+    9.19,
+    72.64,
+    67.86,
+    75.53,
+    69.67,
+    68.49
+  ],
+  "summed_test_process_seconds": 551.14,
+  "timing_limits": "Companies ran concurrently and tests overlapped calls. Do not add process times to obtain wall time. Failed calls without receipts add unknown time/usage; saved call timings can include retries."
+}

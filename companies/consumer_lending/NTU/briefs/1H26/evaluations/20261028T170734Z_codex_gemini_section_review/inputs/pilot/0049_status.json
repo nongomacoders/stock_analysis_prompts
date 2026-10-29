@@ -1,0 +1,10 @@
+{
+  "status": "complete_with_limited_review",
+  "calls": 8,
+  "stage": "pan_operations_new",
+  "last_dispatch_utc": "2026-10-28T16:40:02.667084+00:00",
+  "first_dispatch_utc": "2026-10-28T16:37:42.559222+00:00",
+  "completed_utc": "2026-10-28T16:40:20.200526+00:00",
+  "error_type": null,
+  "review_completed_utc": "2026-10-28T16:42:14.169204+00:00"
+}

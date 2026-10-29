@@ -1,0 +1,55 @@
+================================================================================
+INDEPENDENT RECONCILIATIONS & FORENSIC AUDIT CALCULATIONS — NTU 1H26
+Evaluator: Gemini (Gemini 3.8 Flash High) | Date: 2026-10-27 | Target: Nutun Ltd
+================================================================================
+
+1. SOTP ARITHMETIC, DOUBLE DISCOUNTING & CIRCULAR PLUG ANALYSIS
+----------------------------------------------------------------
+Component TEVs: SA PBD=2114.75, SA Other=450.80, SA Agency=750.00, Intl BPO=720.00
+Sum of Components (TEV): 4035.55 (Model reports 4,036)
+FY27E Net Debt: IBD(3850.0) + OD(310.0) + Leases(335.0) - Cash(95.0) = 4400.00
+Pre-discount Equity Value from operations: TEV(4035.55) - Net Debt(4400.00) = -364.45 (Model reports -364)
+DeepSeek Plug Row: 1479.00 -> Adjusted Equity: 1114.55 (Model reports 1,115)
+Note: On DeepSeek's FY27E Balance Sheet: Other Assets = 1,315, Other Liab = 765 -> Net = 550, NOT 1,479!
+The 1,479 is a circular plug to force Adjusted Equity to equal FY27E Book Value of Equity (1,115).
+
+Step 1: Adjusted Equity / Shares = 1114.55 / 780.7 = R1.4276 per share
+Step 2: Aggregate 25% discount: 1114.55 - 278.64 = 835.91
+        Per share after 25% discount: 835.91 / 780.7 = R1.0707
+        (Model reports SOTP Fair Value per Share: R1.07)
+Step 3: DeepSeek's double-discounting error: 1.07 * (1 - 0.25) = R0.8030
+        (Model claims pre-discount R1.43 less 25% = R0.80, which is mathematically false! R1.428 * 0.75 = R1.071)
+Step 4: Further haircut from R0.8034 to R0.55: 31.51% unmodeled reduction
+        Total cumulative discount from pre-discount R1.43 to target R0.55: 61.47%
+
+2. PBD AMORTISATION FOOTNOTE ARITHMETIC RECONCILIATION
+-----------------------------------------------------
+DeepSeek naive un-signed sum: 383 + 167 + 728 + 30 + 116 = 1424.0 (DeepSeek reported 1,424 and alleged error)
+True Note 1.1 principal run-off: 728 - 383 + 167 = 512.0
+True Note 1.2 principal run-off: 116 - 30 = 86.0
+Total Portfolio Amortisation: 512.0 + 86.0 = 598.0 (matches reported R597m within 1m rounding)
+Verdict: Footnote is mathematically correct under net portfolio run-off signs; DeepSeek's claim of non-reconciliation is a FALSE ALLEGATION.
+
+3. POCI CUMULATIVE IMPAIRMENT GAIN VS CONVENTIONAL ECL
+-----------------------------------------------------
+Gross carrying amount (p.23): 3414.0
+Cumulative impairment gain (p.23, p.24): +431.0
+Net carrying value (p.23, p.8): 3845.0
+Ratio 431 / 3414 = 12.62%
+DeepSeek treated 431m as an ECL loss reserve that collapsed from 20.4% to 12.6%.
+Primary note states: 'The cumulative impairment gain of R431 million relates to elevated performance, above the investment base-case.'
+The unwinding of this gain (-167m P&L impairment) reflects deteriorating collections vs base case, but it is NOT an ECL loss coverage reserve.
+
+4. BOOK VALUE PER SHARE VS SHARE CAPITAL ATTRIBUTION
+----------------------------------------------------
+Gross Share Capital: R5410.0m / 780.65m shares = R6.93
+Statutory Total Equity: R1329.0m / 780.65m shares = R1.70
+DeepSeek's claim that treasury shares were bought at R1 vs 'R6.90 book value' was an error: R6.90 is contributed capital, not book value (R1.70).
+
+5. MARKET PRICING, TARGET PRICE & DYNAMIC BANDS
+-----------------------------------------------
+Target: R0.55 | Reference: R0.89 -> Upside: -38.20%
+Live Price: R0.90 -> Live Upside: -38.89%
+Rating Bands: SB <= 0.42 | B <= 0.48 | H <= 0.58 | S <= 0.65 | Strong Sell > 0.65
+At Reference R0.89: R0.89 > 0.65 -> Band is STRONG SELL (Model static note had SELL)
+At Live Price R0.90: R0.90 > 0.65 -> Band is STRONG SELL

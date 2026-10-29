@@ -1,0 +1,37 @@
+{
+  "captured_units": 24,
+  "analysis_generations": 22,
+  "navigation_units": 2,
+  "captured_physical_pages": 38,
+  "all_physical_pages_once": true,
+  "empty_initial_ledger": true,
+  "chronology_verified": true,
+  "valid_ledgers": 18,
+  "rejected_ledgers": 4,
+  "proposed_new_questions_including_rejected": 39,
+  "persistent_questions": 32,
+  "question_statuses": {
+    "partial": 15,
+    "open": 15,
+    "contradicted": 1,
+    "resolved": 1
+  },
+  "cost_and_tokens": {
+    "cost_usd": 0.0702026388,
+    "prompt_tokens": 151251,
+    "completion_tokens": 51535,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 23564,
+    "elapsed_seconds": 208.174
+  },
+  "first_dispatch_to_last_accounting_seconds": 340.451335,
+  "all_costs_metadata_corroborated": true,
+  "production_preservation": {
+    "checked_utc": "2026-10-28T17:25:37.557303+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "no_paid_repairs": true,
+  "note": "Rejected deltas were not applied;their new questions/answers remain in raw briefs and rejected_ledger_deltas.json,not in persistent downstream ledger. Coverage is not semantic correctness."
+}

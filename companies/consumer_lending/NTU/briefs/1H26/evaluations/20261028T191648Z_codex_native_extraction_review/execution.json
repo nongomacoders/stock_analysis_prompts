@@ -1,0 +1,8 @@
+{
+  "command": ".venv/Scripts/python.exe workflow/changes/20261028_native_extraction_review/review.py",
+  "exit_code": 0,
+  "paid_calls": 0,
+  "application_changes": false,
+  "review_calculations_executed": true,
+  "gemini_scripts_executed": false
+}

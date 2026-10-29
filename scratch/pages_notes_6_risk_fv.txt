@@ -1,0 +1,556 @@
+
+--- PHYSICAL PAGE 20 ---
+6 Financial risk management
+6.1 Credit risk
+Credit risk is the risk of loss arising from the failure of a client or counterparty to discharge an obligation to the 
+group. The primary credit risks that the group are exposed to as at 31 March 2026 relate to the risks associated with 
+the purchased book debts, if the books fail to perform in accordance with estimate net future cash flows. Trade 
+receivables include receivables from clients that have standard 30-day terms. The clients are diversified across 
+numerous industries and geographies and do not result in significant concentration risk. It is not the group’s strategy 
+to avoid credit risk, but rather to manage credit risk within the group’s risk appetite and to earn an appropriate 
+risk-adjusted return.
+The group limits its counterparty exposure arising from money market instruments by dealing only with well 
+established financial institutions of high credit standing. Deposits are limited to the big five banks within South 
+Africa.
+Credit risk management and measurement
+Each subsidiary is responsible for the identification, measurement, management, control and reporting of credit 
+risk within their business units. Exposure to credit losses is managed by collectability of purchased book debts. 
+Impairments are monitored and provided for using statistical techniques including experiential and behavioural 
+models. These models are based on customers’ financial performance information while on book and assume that 
+recent performance is a strong indicator of future performance. In the case of key asset classes, independent models 
+are developed to monitor the robustness of the primary models relative to actual performance and to optimise their 
+effectiveness. Models are either developed internally or by expert external advisors.
+The group assumes that the credit risk on a financial instrument has not increased significantly if the financial 
+instrument is determined to have a low credit risk at the reporting date.
+Measurement of expected credit losses (ECL)
+The group measures ECL of a financial instrument in a way that reflects:
+• An unbiased and probability-weighted amount that is determined by evaluating a range of possible outcomes;
+• The time value of money; and
+• Reasonable and supportable information that is available without undue cost or effort at the reporting date about 
+past events, current conditions and forecasts of future economic conditions.
+The maximum period considered when measuring ECL is the maximum contractual period (including extension 
+options) over which the group is exposed to credit risk, and not a longer period, even if that period is consistent 
+with business practice.
+The measurement of ECL is a function of the probability of default (PD), loss given default (LGD) and exposure 
+at default (EAD). The assessment of the probability of default and loss given write-offs is based on historical data 
+adjusted by forward‑looking information as described above.
+As for the EAD for financial assets, this is represented by the assets’ gross carrying amount at the reporting date 
+and other relevant forward‑looking information.
+For financial assets, the ECL is estimated as the difference between all contractual cash flows that are due to the 
+group in accordance with the contract and all the cash flows that the group expects to receive, discounted at 
+the original effective interest rate.
+Condensed consolidated financial statements for the half year ended 31 March 2026 18
+Notes to the consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 21 ---
+6 Financial risk management continued
+6.1 Credit risk continued
+Purchased book debts
+Investment process
+Prior to the acquisition of purchased book debts (PBDs), there is a defined investment process that is followed in 
+accordance with guidelines determined by a constituted investment committee. PBDs are acquired from various 
+credit providers in multiple sectors. Valuations are determined by projecting the present value of anticipated monthly 
+collections, net of directly attributable collection costs, using past performance characteristics applicable to similar 
+PBDs. Said valuations are ultimately presented to the investment committee to decide upon pricing and bidding 
+strategy.
+Collections process
+The Insights, Data & Enterprise Analytics (IDEA) team continually develops and recalibrates insights and analytics 
+used by operations to optimise the collection processes, and infrastructure, associated with non-performing debt 
+collected.
+Method of provisioning and fair valuing
+PBDs are classified as purchased credit-impaired (POCI) financial assets (stage 3) on initial recognition based on the 
+presumption that events that have a detrimental impact on the estimated future cash flows of these financial assets 
+have occurred before acquisition and initial recognition. The classification of PBDs does not change subsequent 
+to initial recognition, even in the unlikely event of the expected cash flows associated thereto returning to full 
+contractual terms.
+Any changes in lifetime expected credit losses (ECLs) are recognised in profit or loss. The group recognises 
+favourable changes in lifetime ECLs as an impairment gain, even if lifetime ECLs are less than the amount of ECLs 
+that were included in the estimated cash flows on initial recognition.
+Nutun utilises statistical techniques and models to value PBDs on a monthly basis. Each PBD is modelled based on 
+the collection activity applied to it. A combination of inflows applicable to each PBD and the direct, activity-based, 
+cost projections applicable thereto are used to determine a net cash flow over a rolling 12-month period, which is 
+subsequently discounted to present value using a credit-adjusted effective interest rate to determine its amortised 
+cost value. The weighted average credit-adjusted effective interest rate at period end is 19.2% (31 March 2025: 17.9%; 
+30 September 2025: 18.4%).
+Other financial assets, recognised within the purchase book debts, include a receivables balance measured at fair 
+value. The valuation technique applicable thereto calculates the present value of all future cash flows associated 
+thereto net of all associated costs. 
+Carrying value of purchased book debts
+The Nutun South Africa business model continues to gain relevance as slow economic growth drive up indebtedness 
+and impair consumers’ ability to service their debt, leaving consumer facing entities with significantly larger 
+non-performing loans (NPL) portfolios to manage. These impairment model parameters have been applied in 
+determining expected cash shortfalls arising from non-payment in the best estimate provision on the loan book as 
+at 31 March 2026. These books are not subsequently managed based on the credit risk rating but rather on a cash 
+collection basis.
+Condensed consolidated financial statements for the half year ended 31 March 2026 19
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 22 ---
+6 Financial risk management continued
+6.1 Credit risk continued
+Financial assets subject to risk
+Other
+loans
+receivable
+Trade
+and other
+receivables*
+Principal
+book
+portfolio
+Other
+financial
+assets Total
+Rm Rm Rm Rm Rm
+31 March 2026 – Unaudited 
+Gross carrying value 5 395 3 414 644 4 458 
+Impairment (loss)/gain – (5) 431 – 426
+Non-performing trade and 
+other receivables – (5) – – (5) 
+Purchased credit-impaired 
+financial assets – – 431 – 431 
+Carrying value of financial assets 5 390 3 845 644 4 884 
+* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.
+Other
+loans
+receivable
+Trade
+and other
+receivables*
+Principal
+book
+portfolio**
+Other
+financial
+assets*** Total
+Rm Rm Rm Rm Rm
+31 March 2025 – Unaudited
+Gross carrying value 2 510 3 066 663 4 241 
+Impairment (loss)/gain – (6) 624 – 618
+Non-performing trade and 
+other receivables – (6) – – (6)
+Purchased credit-impaired 
+financial assets – – 624 – 624 
+Carrying value of financial assets 2 504 3 690 663 4 859 
+* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.
+** The comparative disclosure has been represented to show the split between the gross carrying value and impairment for the principal book portfolio.
+*** The other financial assets have been represented to be shown separately from the principal book portfolio. 
+Other
+loans
+receivable
+Trade
+and other
+receivables*
+Principal
+book
+portfolio
+Other
+financial
+assets Total
+Rm Rm Rm Rm Rm
+30 September 2025 – Audited
+Gross carrying value 4 388 3 377 702 4 471 
+Impairment (loss)/gain – (10) 598 – 588 
+Non-performing trade and 
+other receivables – (10) – – (10)
+Purchased credit-impaired 
+financial assets – – 598 – 598 
+Carrying value of financial assets 4 378 3 975 702 5 059 
+* Prepayments, VAT receivables and deposits are not financial assets and therefore have been excluded from trade and other receivables.
+Condensed consolidated financial statements for the half year ended 31 March 2026 20
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 23 ---
+6 Financial risk management continued
+6.1 Credit risk continued
+Concentration of principal book portfolios
+31 March 2026 – Unaudited
+Gross 
+carrying 
+amount
+Expected 
+credit loss
+ allowance
+Net carrying
+ amount
+Rm Rm Rm
+Carrying amount of principal book portfolios
+Banking and specialised lending – unsecured 2 371 227 2 598
+Debt review 951 141 1 092
+Retail 46 51 97
+Banking – secured 46 12 58
+Total carrying amount 3 414 431 3 845
+31 March 2025 – Unaudited*
+Gross 
+carrying 
+amount
+Expected 
+credit loss
+ allowance
+Net carrying
+ amount
+Rm Rm Rm
+Carrying amount of principal book portfolios
+Banking and specialised lending – unsecured 2 366 460 2 826
+Debt review 605 65 670
+Retail 32 54 86
+Banking – secured 63 45 108
+Total carrying amount 3 066 624 3 690
+* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall 
+presentation of the financial statements. Comparative disclosure for 31 March 2025 has been presented for the first time.
+30 September 2025 – Audited
+Gross 
+carrying 
+amount
+Expected 
+credit loss
+ allowance
+Net carrying
+ amount
+Rm Rm Rm
+Carrying amount of principal book portfolios
+Banking and specialised lending – unsecured 2 482 468 2 950 
+Debt review 793 72 865 
+Retail 48 47 95 
+Banking – secured 54 11 65 
+Total carrying amount 3 377 598 3 975 
+Condensed consolidated financial statements for the half year ended 31 March 2026 21
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 24 ---
+6 Financial risk management continued
+6.1 Credit risk continued
+Reconciliation of expected credit loss allowance on principal book portfolios* 
+Banking &
+specialised
+lending –
+Unsecured
+Debt
+review Retail
+Banking –
+Secured Total
+Rm Rm Rm Rm Rm
+Balance at 30 September 2024 – 
+Audited 575 148 30 44 797 
+Impairment (loss)/gain on principal 
+book portfolios (115) (83) 24 1 (173)
+Impairment loss on principal book 
+portfolios acquired during the period (51) (45) - - (96) 
+Impairment (loss)/gain on historical 
+principal book portfolios (64) (38) 24 1 (77)
+Balance at 31 March 2025 - 
+Unaudited** 460 65 54 45 624
+Impairment gain/(loss) on principal 
+book portfolios 8 7 (7) (34) (26)
+Impairment gain on principal book 
+portfolios acquired during the period 66 89 1 – 156
+Impairment loss on historical principal 
+book portfolios (58) (82) (8) (34) (182)
+Balance at 30 September 2025 – 
+Audited 468 72 47 11 598 
+Impairment (loss)/gain on principal 
+book portfolios (241) 69 4 1 (167)
+Impairment gain on principal book 
+portfolios acquired during the period 1 23 - - 24
+Impairment (loss)/gain on historical 
+principal book portfolios (242) 46 4 1 (191)
+Balance at 31 March 2026 – Unaudited 227 141 51 12 431
+* This disclosure was presented for the first time in the annual financial statements for the year ended 30 September 2025 in order to enhance the overall 
+presentation of the financial statements. 
+** The comparative disclosure for 31 March 2025 has been presented for the first time to show the reconciliation of the expected credit loss allowance 
+on the principal book portfolios.
+The cumulative impairment gain of R431 million relates to elevated performance, above the investment base-case, 
+predominantly within the Banking & Specialised Lending segment. The reduction in the cumulative impairment gain 
+in the current year relates to payer drop-offs and reduced settlement activity on historical book portfolios within 
+the applicable portfolio segments.
+Condensed consolidated financial statements for the half year ended 31 March 2026 22
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 25 ---
+6 Financial risk management continued
+6.1 Credit risk continued
+Expected credit loss allowance on trade receivables*
+Current
+Amounts 
+30 days 
+overdue
+Amounts 
+61 to 90 days 
+overdue
+Amounts 
+in excess of 
+90 days 
+overdue Total
+Rm Rm Rm Rm Rm
+31 March 2026 – Unaudited
+Expected loss rate 0.00% 0.00% 0.00% 100.00% 1.34%
+Gross carrying amount 339 25 5 5 374
+Loss allowance – – – (5) (5)
+Net carrying amount 339 25 5 - 369
+31 March 2025 – Unaudited**
+Expected loss rate 0.00% 0.00% 0.00% 85.71% 1.43%
+Gross carrying amount 345 61 6 7 419
+Loss allowance – – – (6) (6)
+Net carrying amount 345 61 6 1 413
+30 September 2025 – Audited
+Expected loss rate 0.06% 0.19% 6.67% 81.82% 2.75%
+Gross carrying amount 286 52 15 11 364
+Loss allowance <1 <1 (1) (9) (10)
+Net carrying amount 286 52 14 2 354 
+* The expected credit loss (ECL) on trade receivables is shown per the maturity of trade receivables. No separate classes of trade receivables have been 
+identified. Receivables originate from contracts with customers across various industries and geographies however credit risk is managed by reference 
+to past default experience of the debtor and analysis of the debtor's financial position, adjusted for factors that are specific to the debtors, and an 
+assessment of both the current as well as the forecast direction of conditions at the reporting date. This disclosure was presented for the first time in 
+the annual financial statements for the year ended 30 September 2025 in order to enhance the overall presentation of the financial statements.
+** The comparative disclosure for 31 March 2025 has been presented for the first time to enhance overall disclosure.
+6.2 Currency risk
+Currency risk is the possibility of incurring a financial loss as a consequence of the depreciation in the measurement 
+currency relative to a foreign currency prior to payment of a commitment in that foreign currency or the 
+strengthening of the measurement currency prior to receiving payment in a foreign currency.
+The foreign currencies to which the group has material exposure are US Dollar and British Pound. The exposure largely 
+relates to foreign currency denominated receivables which are realised in 60 days, in line with the credit terms and 
+are therefore subject to currency fluctuations. Expenses incurred are largely denominated in the functional currency 
+of the entities to which they relate.
+During the current period, Nutun entered into foreign exchange contracts for the purposes of hedging the exposure 
+to the USD and GBP receipts for the Nutun International segment. 
+The following significant exchange rates were applied during the period:
+Average rate Reporting date closing rate
+31 March 
+2026
+31 March 
+2025
+30 Sept 
+2025
+31 March 
+2026
+31 March
+2025
+30 Sept 
+2025
+Unaudited Unaudited Audited Unaudited Unaudited Audited
+Rm Rm Rm Rm Rm Rm
+US Dollar 16.8 18.2 18.1 17.2 18.4 17.3 
+Euro 19.6 19.3 20.0 19.7 20.0 20.3 
+British Pound 22.4 23.1 23.6 22.7 23.9 23.2 
+Australian Dollar 11.3 11.6 11.6 11.8 11.6 11.4 
+Condensed consolidated financial statements for the half year ended 31 March 2026 23
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 26 ---
+6 Financial risk management continued
+6.2 Currency risk continued
+The carrying amounts of the group’s foreign currency denominated monetary assets and monetary liabilities at the 
+end of the reporting period are as follows:
+Liabilities Assets*
+31 March 
+2026
+31 March
+ 2025
+30 Sept 
+2025
+31 March 
+2026
+31 March 
+2025
+30 Sept 
+2025
+Unaudited Unaudited Audited Unaudited Unaudited Audited
+Rm Rm Rm Rm Rm Rm
+Foreign amounts 
+included in the financial 
+statements at the end of 
+the period:
+US Dollar 10 5 1 120 98 135 
+Euro – – – 3 2 3 
+British Pound 2 16 1 111 84 78 
+Australian Dollar – – – – 6 1 
+* Assets held in foreign currency relate to receivables of R207 million (31 March 2025: R171 million; 30 September 2025: R190 million) and bank balances 
+of R27 million (31 March 2025: R19 million; 30 September 2025: R27 million).
+6.3 Fair value disclosure
+Fair values of financial instruments carried at amortised cost
+The fair value of a financial instrument is the price that would be received to sell an asset or paid to transfer a liability 
+between market participants at the measurement date.
+The best evidence of the fair value of a financial instrument at initial recognition is the transaction price (i.e. the fair 
+value of the consideration given or received) unless the fair value of that instrument is evidenced by comparison with 
+other observable current market transactions in the same instrument (i.e. without modification or repackaging) or 
+based on a valuation technique whose variables include only data from observable markets.
+The method of determining the fair value of financial instruments is analysed into the following categories:
+Level 1 Unadjusted quoted prices in active markets where the quoted price is readily available and the price 
+represents actual and regularly occurring market transactions on an arm’s length basis.
+Level 2 Valuation techniques using market observable inputs, including:
+• Using recent arm’s length market transactions;
+• Reference to the current fair value of similar instruments; and
+• Discounted cash flow analysis, pricing models or other techniques commonly used by market 
+participants
+Level 3 Valuation techniques, as described for level 2 above, for which not all inputs are market observable prices 
+or rates. Such a financial instrument is initially recognised at the transaction price, which is the best 
+indicator of fair value, although the value obtained from the relevant valuation model may differ. The 
+difference between the transaction price and the model value, commonly referred to as “day one profit 
+or loss’, is either amortised over the life of the transaction, deferred until the instrument’s fair value can 
+be determined using market observable inputs, or realised through settlement.
+The valuation techniques in level 2 and level 3 use inputs such as interest rate yield curves, equity prices and currency 
+prices/yields, volatilities, and the correlation between inputs. The models used in these valuation techniques are 
+calibrated against industry standards, economic models and against transaction process, where applicable.
+Valuation methods and assumptions:
+Principal book portfolios are held at amortised cost. The balance at the end of the period is calculated based on 
+the expected future cash flows which are adjusted for risk as it takes historical cash flows into account to predict 
+forecasted cash flows. The fair value of principal book portfolios is determined by adjusting the discount rate from 
+the credit-adjusted effective interest rate to a current market related discount rate of 18.50% (31 March 2025: 15.81%; 
+30 September 2025: 15.93%) and adjusting the expected cash flows for risk. The fair values determined on this basis 
+approximates the carrying value.
+The fair value of interest-bearing liabilities is calculated based on future cash flows, discounted using a forward rate 
+curve plus a valuation margin. The valuation margin is a consensus margin at which deals with similar remaining cash 
+profiles could be secured in the market at the valuation date.
+The carrying value of trade and other receivables, other investments, cash and cash equivalents, trade and other 
+payables and bank overdrafts approximates fair value as they are short-term in nature and not subject to material 
+changes in credit risk and fair value.
+Condensed consolidated financial statements for the half year ended 31 March 2026 24
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 27 ---
+6 Financial risk management continued
+6.3 Fair value disclosure continued
+The following represents the fair values of financial instruments not carried at fair value on the statement of financial 
+position, but for which fair value is required to be disclosed. For all other financial instruments, the carrying value is 
+equal to or a reasonable approximation of the fair value.
+Carrying
+value
+Total
+fair value Level 1 Level 2 Level 3
+Rm Rm Rm Rm Rm
+31 March 2026 – Unaudited
+Assets
+Principal book portfolio 3 845 3 845 – – 3 845
+Financial assets at amortised cost 3 845 3 845 – – 3 845
+Liabilities
+Interest-bearing liabilities 3 743 3 769 – – 3 769
+Fixed rate liabilities – – – – –
+Floating rate liabilities 3 743 3 769 – – 3 769
+Financial liabilities at amortised cost 3 743 3 769 – – 3 769
+31 March 2025 - Unaudited
+Assets
+Principal book portfolio 3 690 3 690 – – 3 690 
+Financial assets at amortised cost 3 690 3 690 – – 3 690 
+Liabilities
+Interest-bearing liabilities 3 407 3 428 – – 3 428 
+Fixed rate liabilities – – – – – 
+Floating rate liabilities 3 407 3 428 – – 3 428 
+Financial liabilities at amortised cost 3 407 3 428 – – 3 428 
+30 September 2025 – Audited
+Assets
+Principal book portfolio 3 975 3 975 – – 3 975 
+Financial assets at amortised cost 3 975 3 975 – – 3 975 
+Liabilities
+Interest-bearing liabilities 3 807 3 468 – – 3 468 
+Fixed rate liabilities – – – – –
+Floating rate liabilities 3 807 3 468 – – 3 468 
+Financial liabilities at amortised cost 3 807 3 468 – – 3 468 
+Condensed consolidated financial statements for the half year ended 31 March 2026 25
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 28 ---
+6 Financial risk management continued
+6.3 Fair value disclosure continued
+Fair values of financial instruments measured at fair value through profit and loss
+Financial assets that do not meet the criteria for being measured at amortised cost or fair value through other 
+comprehensive income are measured at fair value through profit and loss. Certain purchased book debts (other 
+financial assets) are managed on a fair value basis.
+The value of the purchased book debts managed on a fair value basis may change over time through the collection 
+of underlying amounts that did not form part of the initial ring-fenced purchased book debt. The quantum of the 
+return is also impacted by the quality of the collection services performed, rather than services associated with 
+normal lending arrangements. On this basis, therefore, the cash flows collected on these books do not present solely 
+payments of principal and interest on the principal amount outstanding.
+Valuation methods and assumptions:
+Other financial assets: The valuation of other financial assets is based on the estimated future cash flows, discounted 
+to their present value using a pre-tax discount rate that reflects current market assessments of the time value of 
+money and the risks specific to the asset. These represent the significant unobservable parameters applied in the fair 
+value model. The group estimates the expected cash flows by considering all the contractual terms of the financial 
+instrument. The discount rate of 16% (31 March 2025: 12.93%; 30 September 2025: 16%) applied to the expected future 
+cash flows reflects specific risk premiums relating to the asset and is based on the purchase-price average credit￾adjusted effective interest rate (CAEIR) for unsecured loan books purchased in the last two years.
+Other investments: The value of money market investments is determined by fund managers on a net asset value 
+basis, which is the total value of all the assets in the portfolio including any income accrual and less permissible 
+deductions from the portfolio divided by the number of participatory interests in issue. Unit prices are calculated 
+by fund managers and published daily.
+6.4 Level disclosure
+Level 1 Level 2 Level 3 Total
+Rm Rm Rm Rm
+31 March 2026 – Unaudited
+Financial assets at fair value through 
+profit and loss
+Other financial assets – – 644 644
+Other investments* – 81 – 81
+Total financial assets – 81 644 725
+31 March 2025 – Unaudited
+Financial assets at fair value through 
+profit and loss
+Other financial assets – – 663 663
+Other investments* – 237 – 237
+Total financial assets – 237 663 900
+30 September 2025 – Audited
+Financial assets at fair value through 
+profit and loss
+Other financial assets – – 702 702 
+Other investments* – 41 – 41 
+Total financial assets – 41 702 743 
+* Other investments which have been categorised in level 2 comprise of money market fund investments.
+Condensed consolidated financial statements for the half year ended 31 March 2026 26
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 29 ---
+6 Financial risk management continued
+6.4 Level disclosure continued
+Reconciliation of level 3 fair value measurements of financial assets and liabilities
+31 March 
+2026 
+Unaudited
+31 March 
+2025 
+Unaudited
+30 September 
+2025 
+Audited
+Rm Rm Rm
+Financial assets at fair value through profit or loss
+Opening balance 702 672 672
+Total gains or losses
+In profit or loss 30 74 114
+Other movements* (88) (83) (84)
+Closing balance 644 663 702
+* Other movements include additions of R28 million (31 March 2025: R7 million; 30 September 2025: R84 million) and cash collections of R116 million 
+(31 March 2025: R90 million; 30 September 2025: R168 million).
+7 Segment report
+The Nutun group, has defined its operating and reportable segments to reflect its operating structure and internal 
+reporting framework. Segmental reporting to the executive committee (who is considered the Chief Operating 
+Decision Maker (CODM) in terms of IFRS 8) is organised based on the nature of the business units, which are split into:
+Nutun South Africa
+• Focuses exclusively on collections and recovery services for clients in South Africa, both as a principal through the 
+acquisition of unsecured non-performing loan (NPL) portfolios and as an agent on behalf of clients in the financial 
+services, specialist lending and retail sectors.
+• Revenue is mainly derived from debt collection and recovery services.
+Nutun International
+• Specialises in business process outsourcing (BPO) customer engagement services, including customer 
+acquisition and retention customer experience, and collections and recovery services for clients located in the 
+United Kingdom, the United States and Australia.
+• Revenue is derived from fee-for-services and collection services.
+Group core results
+Nutun assesses its performance using core earnings, an alternative non-IFRS profit measure, alongside IFRS profit.
+Non-IFRS measures are not uniformly defined nor used by all entities and may not be comparable with similarly 
+labelled measures and disclosures provided by other entities. Management considers that core earnings is an 
+appropriate alternative performance measure to enhance the comparability and understanding of the financial 
+performance of the group. The Group has set out its policy to calculate core earnings below.
+Core earnings is calculated by adjusting basic earnings for headline adjustments and the following:
+• Once-off transaction costs which are directly attributable to corporate activity (primarily legal and consulting 
+fees).
+• Adjustments on put and call options over non-controlling interests, namely imputed interest on the put option 
+liability, re-measurements of the put option liability and fair value adjustments on the call option derivative.
+• Once-off or accelerated items, where these are reasonably expected not to re-occur in the ordinary course 
+of business in future reporting periods.
+• Adding back specified headline earnings exclusions, if the gain/loss is considered part of Nutun’s normal 
+operations.
+These adjustments are considered annually based on the transforming nature of the group. Management is 
+responsible for the calculation of core earnings and determining the inclusions and exclusions in accordance 
+with the policy. The Nutun audit and risk committee reviews the core earnings for transparency and consistency. 
+The reconciliation of basic (loss)/earnings, and core (loss)/earnings is included in this segment report.
+Condensed consolidated financial statements for the half year ended 31 March 2026 27
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026

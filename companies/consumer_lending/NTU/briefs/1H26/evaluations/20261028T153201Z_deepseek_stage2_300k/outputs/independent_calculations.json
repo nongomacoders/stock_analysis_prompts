@@ -1,0 +1,12 @@
+{
+  "values": {
+    "principal_close": 3845,
+    "other_close": 644,
+    "net_portfolio_cash": 434,
+    "portfolio_income": 246,
+    "carrying_decline": 188,
+    "statutory_movement": 182,
+    "unexplained_residual": 6
+  },
+  "basis": "Inputs independently checked against identical-hash PDF pp12–13 in prior versioned Codex audit; reused here. No new PDF inspection. Forecast/valuation not verified."
+}

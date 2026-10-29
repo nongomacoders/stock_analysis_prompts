@@ -1,0 +1,13 @@
+Section reading brief — Nutun 1H26, physical p.26 (Note 6.2 continued; Note 6.3 starts)
+
+Material facts (historical, p.26): Foreign-currency monetary liabilities at 31 Mar 2026: USD R10m, GBP R2m, Euro/AUD nil; total R12m. Monetary assets: USD R120m, Euro R3m, GBP R111m, AUD nil; total R234m. Signed net FX monetary asset position = 234 − 12 = R222m. Comparatives: 31 Mar 2025 liabilities 5+16=21; assets 98+2+84+6=190; net 169. 30 Sep 2025 liabilities 1+1=2; assets 135+3+78+1=217; net 215. Footnote reconciles assets: receivables R207m + bank balances R27m = R234m at 31 Mar 2026 (31 Mar 2025: 171+19=190; 30 Sep 2025: 190+27=217). No FX sensitivity, hedge or concentration analysis is in this capture.
+
+Management explanation/accounting policy (p.26): principal book portfolios are at amortised cost; fair value adjusts the credit-adjusted EIR to a current market-related discount rate of 18.50% (31 Mar 2025 15.81%; 30 Sep 2025 15.93%) and risk-adjusts expected cash flows; fair values approximate carrying value. Interest-bearing liabilities fair value uses future cash flows discounted at a forward curve plus valuation margin. Carrying values of trade/other receivables, other investments, cash/cash equivalents, trade/other payables and bank overdrafts approximate fair value due short-term nature and no material credit-risk change. No guidance/outlook is given in this capture.
+
+Question answers: Q-4f remains unanswered: p.26 only says bank overdrafts’ carrying value approximates fair value; it gives no cash/overdraft or interest-bearing debt reconciliation to the cash flow statement/debt note. Q-NTU-DEFAULT-01 remains unanswered: no business-model classification, historical results or outlook on p.26. Remaining material uncertainty: fair value hierarchy/Level 3 and discount-rate sensitivity; cash/debt reconciliation; business-model metrics.
+
+Pending: Note 6.3 Fair value disclosure continuation, physical pp.27–29; cash flow/debt note later pages for Q-4f; business model/results pp.3–7 for Q-NTU-DEFAULT-01.
+
+```json
+{"ledger_version":1,"updates":[],"new_questions":[{"question":"Obtain the fair value hierarchy and carrying/fair value amounts for principal book portfolios and interest-bearing liabilities, including sensitivity to the 18.50% discount rate.","priority":"medium","target_document":"nutunlimitedcondensedconsolidatedafs31march2026.pdf","target_section":"Note 6.3 Fair value disclosure, physical pp.27–29","evidence_required":"Level 1/2/3 carrying and fair values; reconciliation of principal book fair value to carrying value; sensitivity to the 18.50% discount rate.","closure_condition":"Fair value hierarchy and carrying/fair value amounts reconcile, with sensitivity disclosed or explicitly not material."}]}
+```

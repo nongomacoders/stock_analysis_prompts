@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-10-28T15:51:16.627713+00:00",
+  "request_only_provider_changed": true,
+  "one_generation": true,
+  "offline_review_exit_code": 0,
+  "dispatch_tool_exit_code": 0,
+  "preservation": {
+    "checked_utc": "2026-10-28T15:51:16.612266+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "financial_validation": "NOT VERIFIED",
+  "retry_submitted": false
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "38 pages once",
+    "24 units/22 analytical/2 navigation",
+    "max3 pages",
+    "fresh10-question ledger",
+    "pilot and full databases initially identical",
+    "token/reasoning/routing overrides absent",
+    "production and original hashes unchanged"
+  ],
+  "paid_calls": 0
+}

@@ -1,0 +1,119 @@
+{
+  "ntu_p13": {
+    "principal_close_h1_fy26": 3845,
+    "other_close_h1_fy26_correct": 644,
+    "other_deepseek_string_eval": 584,
+    "other_string_diff_vs_stated": -60,
+    "total_purchased_book_debts_h1_fy26": 4489,
+    "non_current_total": 3178,
+    "current_total": 1311
+  },
+  "ntu_p25": {
+    "trade_receivables_1h26": {
+      "gross": 374,
+      "allowance": -5,
+      "net": 369,
+      "calculated_rate_pct": 1.3368983957219251,
+      "stated_rate_pct": 1.34
+    },
+    "trade_receivables_1h25": {
+      "gross": 419,
+      "allowance": -6,
+      "net": 413,
+      "calculated_rate_pct": 1.431980906921241,
+      "stated_rate_pct": 1.43
+    },
+    "trade_receivables_fy25": {
+      "gross": 364,
+      "allowance": -10,
+      "net": 354,
+      "calculated_rate_pct": 2.7472527472527473,
+      "stated_rate_pct": 2.75
+    }
+  },
+  "pan_p38_39": {
+    "fy26": {
+      "lower_cost_aisc_usd_m": 420.686,
+      "lower_cost_oz": 247219,
+      "lower_cost_per_oz_calc": 1701.67341506923,
+      "lower_cost_per_oz_stated": 1702,
+      "higher_cost_aisc_usd_m": 87.718,
+      "higher_cost_oz": 25154,
+      "higher_cost_per_oz_calc": 3487.2386101614056,
+      "higher_cost_per_oz_stated": 3487,
+      "group_aisc_usd_m_calc": 508.404,
+      "group_aisc_usd_m_stated": 508.405,
+      "group_aisc_rounding_residual_m": 0.001,
+      "group_gold_sold_oz": 272373,
+      "group_aisc_per_oz_calc": 1866.5763493444651,
+      "group_aisc_per_oz_stated": 1867
+    },
+    "yoy_trends": {
+      "aisc_per_oz_diff_usd": 267,
+      "aisc_per_oz_growth_pct": 16.6875,
+      "gold_sold_diff_oz": 75446,
+      "gold_sold_growth_pct": 38.311658634925635
+    }
+  },
+  "pan_p48_50": {
+    "fy26_components": {
+      "underground": 105478,
+      "barberton_surface": 2428,
+      "tailings": 113613,
+      "buy_in": 18667,
+      "tennant": 32124,
+      "total_calc": 272310,
+      "total_stated": 272310
+    },
+    "fy25_components": {
+      "underground_clean": 92643,
+      "barberton_surface": 2654,
+      "tailings": 98636,
+      "buy_in": 1081,
+      "tennant": 1513,
+      "total_calc": 196527,
+      "total_stated": 196527
+    },
+    "deepseek_discrepancy_forensic_proof": {
+      "underground_row_stated_total": 93724,
+      "underground_clean_plus_buyin": 93724,
+      "missed_barberton_surface_oz": 2654,
+      "double_counted_buyin_oz": 1081,
+      "apparent_gap_in_initial_text_oz": 1573,
+      "apparent_excess_in_ledger_q_oz": 1081,
+      "proof_equality": "2654 - 1081 == 1573 and 197608 - 196527 == 1081"
+    }
+  },
+  "pilot_metrics": {
+    "old": {
+      "proposed_questions": 26,
+      "prompt_chars": 109642,
+      "input_tokens": 31304,
+      "completion_tokens": 13655,
+      "elapsed_seconds": 55.522,
+      "cost_usd": 0.0171685668,
+      "valid_ledgers": 3
+    },
+    "new": {
+      "proposed_questions": 12,
+      "prompt_chars": 90892,
+      "input_tokens": 26620,
+      "completion_tokens": 9165,
+      "elapsed_seconds": 39.28,
+      "cost_usd": 0.0128405676,
+      "valid_ledgers": 4
+    },
+    "reductions": {
+      "prompt_chars_diff": 18750,
+      "prompt_chars_pct": 17.101110888163294,
+      "proposed_questions_diff": 14,
+      "proposed_questions_pct": 53.84615384615385,
+      "completion_tokens_diff": 4490,
+      "completion_tokens_pct": 32.88172830465031,
+      "elapsed_seconds_diff": 16.241999999999997,
+      "elapsed_seconds_pct": 29.25326897446057,
+      "cost_usd_diff": 0.0043279992,
+      "cost_usd_pct": 25.208855523106333
+    }
+  }
+}

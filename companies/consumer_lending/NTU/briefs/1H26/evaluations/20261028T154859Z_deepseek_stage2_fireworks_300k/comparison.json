@@ -1,0 +1,175 @@
+{
+  "only_request_change": "provider.only=fireworks;allow_fallbacks=false;require_parameters=true",
+  "reasoning": "omitted controls; provider defaults may differ",
+  "max_tokens": 300000,
+  "previous": {
+    "label": "stage2",
+    "generation_id": "gen-1793201532-XYrLv1o6agOsBZ8doOXx",
+    "success": false,
+    "cost_usd": 0,
+    "cost_source": "generation_metadata",
+    "prompt_tokens": 35325,
+    "completion_tokens": 183036,
+    "reasoning_tokens": 183036,
+    "cached_prompt_tokens": 0,
+    "estimated_nonreasoning_completion_tokens": 0,
+    "elapsed_seconds": 786.281,
+    "time_to_first_content_seconds": null,
+    "provider": "Relace",
+    "generation_time_ms": 784898,
+    "latency_ms": 1906,
+    "finish_reason": null,
+    "metadata_status": "retrieved"
+  },
+  "current": {
+    "provider": "Fireworks",
+    "model": "deepseek/deepseek-v4.1-flash-20261017",
+    "generation_id": "gen-1793202549-WH7Nojp6J6BhWcpfHL8P",
+    "success": true,
+    "finish_reason": "stop",
+    "native_finish_reason": "stop",
+    "elapsed_seconds": 50.43,
+    "time_to_first_content_seconds": 38.837,
+    "prompt_tokens": 35708,
+    "completion_tokens": 16655,
+    "reasoning_tokens": 11727,
+    "cost_usd": 0.02148888,
+    "original_receipt_cost_usd": 0.02148888,
+    "api_error": null,
+    "nonreasoning_tokens": 4928
+  },
+  "publication_assessment": {
+    "valuation_status": "WITHHELD",
+    "blocking_issues": [
+      "The analysis withholds valuation pending resolution of material issues.",
+      "Funding, liquidity and covenant headroom NOT VERIFIED: facility-by-facility limits/drawn/undrawn, maturity dates, covenant definitions and compliance calculations, restricted/pledged cash, conditions, security, renewal terms and a dated cash forecast are not disclosed. Evidence: p.5 ~R0.8bn unutilised facilities; p.14 undrawn overdrafts R475m, total interest-bearing liabilities R4,016m, within-12-month maturity R1,396m; p.35 historical renewal commitment. Consequence: no dated funding runway or covenant-headroom conclusion; valuation withheld.",
+      "PBD forecast and amortisation methodology NOT FULLY VERIFIED: explicit signed amortisation formula, portfolio-level ERC basis, collection curves/tail methodology, collection-cost assumptions and CAEIR/market-discount sensitivities are not disclosed. Evidence: p.13 principal and FVTPL rolls tie; p.21 CAEIR 19.2% and rolling 12-month net cash flow methodology; p.31 R597m component list; ERC R8,366m. Consequence: forecast PBD revenue, amortisation and cash conversion require explicit supported assumptions; valuation withheld.",
+      "forecast_cash_and_debt: NOT VERIFIED; No dated forecast cash flow, facility-by-facility schedule, covenant headroom, restricted-cash schedule or conditions are disclosed. Static maturity minus cash/facilities is not a dated funding shortfall. Forecast cash/debt schedule not performed.",
+      "valuation_bridge: NOT VERIFIED; Valuation bridge not performed because material liquidity/covenant and PBD forecast dependencies are unresolved. No target price, rating, upside, yield, TSR or rating bands are published.",
+      "sensitivity: NOT VERIFIED; Sensitivity matrix not performed because no base valuation is published and PBD collection/CAEIR and financing assumptions are not supported.",
+      "financing_and_terminal: NOT VERIFIED; Financing and terminal policy cannot be set without facility-by-facility limits, covenant definitions/headroom, restricted cash, conditions, renewal terms and a dated cash forecast. Historical debt roll has an immaterial R3m unexplained residual and lease roll an immaterial R11m non-cash/other residual; neither is plugged. No terminal debt policy is published."
+    ],
+    "valuation_checks": [
+      {
+        "check_id": "historical_cash_flow",
+        "material": true,
+        "verdict": "PASS",
+        "evidence": "H1 2026 statutory cash-flow arithmetic and cash/overdraft reconciliation verified from pp.8, 10 and 12. This is not FCFE: statutory operating cash flow includes interest and tax and is before capex, lease principal and financing. Cash definition includes R1m HFS cash.",
+        "reconciliations": [
+          {
+            "label": "H1 2026 closing cash Rm: opening 107 + net increase 6 + FX 0",
+            "expected": 113,
+            "actual": 113,
+            "tolerance": 0
+          },
+          {
+            "label": "H1 2026 balance-sheet cash plus HFS cash Rm: 112 + 1",
+            "expected": 113,
+            "actual": 113,
+            "tolerance": 0
+          },
+          {
+            "label": "H1 2026 closing overdraft Rm: opening 364 + drawdown 3178 - settlement 3269",
+            "expected": 273,
+            "actual": 273,
+            "tolerance": 0
+          }
+        ]
+      },
+      {
+        "check_id": "forecast_cash_and_debt",
+        "material": true,
+        "verdict": "NOT VERIFIED",
+        "evidence": "No dated forecast cash flow, facility-by-facility schedule, covenant headroom, restricted-cash schedule or conditions are disclosed. Static maturity minus cash/facilities is not a dated funding shortfall. Forecast cash/debt schedule not performed.",
+        "reconciliations": []
+      },
+      {
+        "check_id": "portfolio_rollforward",
+        "material": true,
+        "verdict": "PASS",
+        "evidence": "Principal POCI and other FVTPL portfolios reconcile separately from p.13 and p.22. Principal POCI is Stage 3/POCI from inception; R431m is a signed cumulative impairment gain, not conventional loss coverage. Other FVTPL is separate and not ECL. H1 2026 impairment R167m is a six-month movement.",
+        "reconciliations": [
+          {
+            "label": "Principal POCI H1 2026 Rm: 3975 + 382 - 728 + 383 - 167",
+            "expected": 3845,
+            "actual": 3845,
+            "tolerance": 0
+          },
+          {
+            "label": "Other FVTPL H1 2026 Rm: 702 + 28 - 116 + 30",
+            "expected": 644,
+            "actual": 644,
+            "tolerance": 0
+          },
+          {
+            "label": "Combined purchased book debts Rm: 3845 + 644",
+            "expected": 4489,
+            "actual": 4489,
+            "tolerance": 0
+          },
+          {
+            "label": "Principal POCI gross plus cumulative gain Rm: 3414 + 431",
+            "expected": 3845,
+            "actual": 3845,
+            "tolerance": 0
+          }
+        ]
+      },
+      {
+        "check_id": "valuation_bridge",
+        "material": true,
+        "verdict": "NOT VERIFIED",
+        "evidence": "Valuation bridge not performed because material liquidity/covenant and PBD forecast dependencies are unresolved. No target price, rating, upside, yield, TSR or rating bands are published.",
+        "reconciliations": []
+      },
+      {
+        "check_id": "sensitivity",
+        "material": true,
+        "verdict": "NOT VERIFIED",
+        "evidence": "Sensitivity matrix not performed because no base valuation is published and PBD collection/CAEIR and financing assumptions are not supported.",
+        "reconciliations": []
+      },
+      {
+        "check_id": "earnings_and_shares",
+        "material": true,
+        "verdict": "PASS",
+        "evidence": "EPS, NAV, tax sign and share count arithmetic verified from pp.9, 16 and 18. Tax is a credit of R29m on loss before tax R92m; core reconciliation labels tax expense R(29)m to remove the credit. NAV uses closing net shares, not weighted-average EPS denominator.",
+        "reconciliations": [
+          {
+            "label": "Net shares m: 784.313242 - 3.662209",
+            "expected": 780.651033,
+            "actual": 780.651033,
+            "tolerance": 0
+          },
+          {
+            "label": "NAV per share ZAR: 1329 / 780.651033",
+            "expected": 1.7,
+            "actual": 1.7,
+            "tolerance": 0.01
+          },
+          {
+            "label": "H1 2026 basic loss per share cents: -63 / 782.1 * 100",
+            "expected": -8.1,
+            "actual": -8.1,
+            "tolerance": 0.1
+          },
+          {
+            "label": "H1 2026 tax credit rate on pre-tax loss pct: 29 / 92 * 100",
+            "expected": 31.5,
+            "actual": 31.5,
+            "tolerance": 0.1
+          }
+        ]
+      },
+      {
+        "check_id": "financing_and_terminal",
+        "material": true,
+        "verdict": "NOT VERIFIED",
+        "evidence": "Financing and terminal policy cannot be set without facility-by-facility limits, covenant definitions/headroom, restricted cash, conditions, renewal terms and a dated cash forecast. Historical debt roll has an immaterial R3m unexplained residual and lease roll an immaterial R11m non-cash/other residual; neither is plugged. No terminal debt policy is published.",
+        "reconciliations": []
+      }
+    ],
+    "reference_price": 0.89
+  },
+  "independent_financial_verdict": "INSUFFICIENT EVIDENCE; forecasts/valuation not independently verified"
+}

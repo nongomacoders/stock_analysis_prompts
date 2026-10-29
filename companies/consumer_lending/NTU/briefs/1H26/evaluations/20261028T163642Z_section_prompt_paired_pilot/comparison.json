@@ -1,0 +1,148 @@
+{
+  "rows": [
+    {
+      "case": "ntu_portfolio",
+      "version": "old",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 5,
+      "updates": 1,
+      "prompt_chars": 23919,
+      "completion_tokens": 3014,
+      "input_tokens": 5836,
+      "cost_usd": 0.00375732,
+      "elapsed_seconds": 12.722,
+      "cached_tokens": 0
+    },
+    {
+      "case": "ntu_portfolio",
+      "version": "new",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 3,
+      "updates": 1,
+      "prompt_chars": 17406,
+      "completion_tokens": 2743,
+      "input_tokens": 4244,
+      "cost_usd": 0.00319536,
+      "elapsed_seconds": 11.271,
+      "cached_tokens": 0
+    },
+    {
+      "case": "ntu_shared_page",
+      "version": "old",
+      "ledger_valid": false,
+      "errors": [
+        "Evidence quote for Q-PILOT-ntu_shared_page, physical page 25 is not literal: 'credit risk is managed by reference to past default experience of the debtor and analysis of the deb'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+      ],
+      "proposed_questions": 6,
+      "updates": 1,
+      "prompt_chars": 25038,
+      "completion_tokens": 3947,
+      "input_tokens": 6366,
+      "cost_usd": 0.0041156136,
+      "elapsed_seconds": 16.366,
+      "cached_tokens": 2608
+    },
+    {
+      "case": "ntu_shared_page",
+      "version": "new",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 2,
+      "updates": 1,
+      "prompt_chars": 18549,
+      "completion_tokens": 1665,
+      "input_tokens": 4778,
+      "cost_usd": 0.0022093512,
+      "elapsed_seconds": 8.236,
+      "cached_tokens": 936
+    },
+    {
+      "case": "pan_apm",
+      "version": "old",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 6,
+      "updates": 0,
+      "prompt_chars": 27844,
+      "completion_tokens": 2615,
+      "input_tokens": 6079,
+      "cost_usd": 0.00347319,
+      "elapsed_seconds": 12.749,
+      "cached_tokens": 0
+    },
+    {
+      "case": "pan_apm",
+      "version": "new",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 3,
+      "updates": 0,
+      "prompt_chars": 24970,
+      "completion_tokens": 1882,
+      "input_tokens": 5327,
+      "cost_usd": 0.0026304012,
+      "elapsed_seconds": 8.037,
+      "cached_tokens": 336
+    },
+    {
+      "case": "pan_operations",
+      "version": "old",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 9,
+      "updates": 0,
+      "prompt_chars": 32841,
+      "completion_tokens": 4079,
+      "input_tokens": 13023,
+      "cost_usd": 0.0058224432,
+      "elapsed_seconds": 13.685,
+      "cached_tokens": 1646
+    },
+    {
+      "case": "pan_operations",
+      "version": "new",
+      "ledger_valid": true,
+      "errors": [],
+      "proposed_questions": 4,
+      "updates": 0,
+      "prompt_chars": 29967,
+      "completion_tokens": 2875,
+      "input_tokens": 12271,
+      "cost_usd": 0.0048054552,
+      "elapsed_seconds": 11.736,
+      "cached_tokens": 906
+    }
+  ],
+  "totals": {
+    "old": {
+      "proposed_questions": 26,
+      "prompt_chars": 109642,
+      "completion_tokens": 13655,
+      "input_tokens": 31304,
+      "elapsed_seconds": 55.522,
+      "cached_tokens": 4254,
+      "cost_usd": "0.0171685668",
+      "valid_ledgers": 3
+    },
+    "new": {
+      "proposed_questions": 12,
+      "prompt_chars": 90892,
+      "completion_tokens": 9165,
+      "input_tokens": 26620,
+      "elapsed_seconds": 39.28,
+      "cached_tokens": 2178,
+      "cost_usd": "0.0128405676",
+      "valid_ledgers": 4
+    }
+  },
+  "prompt_character_reduction_pct": 17.101110888163294,
+  "limitations": [
+    "Four paired captures,one generation per arm,not a full chronological/company evaluation.",
+    "Both arms use Fireworks and production section reasoning none; calls ordered old then new,not randomized;cache differences recorded.",
+    "Old/current context assembly changes alongside the template. No universal financial-quality or speed claim.",
+    "Source hashes verified;content review uses saved extracted evidence,not new PDF image inspection."
+  ],
+  "accounting_correction": "Original inherited receipts mislabeled reasoning controls absent; normalized receipts corrected from exact requests,originals preserved."
+}

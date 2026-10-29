@@ -1,0 +1,33 @@
+{
+  "user_approval": "User explicitly answered yes to sending NTU section captures, ledger and complete report text to OpenRouter for paid DeepSeek Stage 1/2 calls.",
+  "attempts": [
+    {
+      "run": "20261027T174426Z_codex_max_comparison",
+      "session": 76014,
+      "returned_final_exit_code": null,
+      "block": "This is an unapproved telemetry destination distinct from OpenRouter, and the request does not establish what data the runner sends to it; potentially sensitive run or prompt metadata could leave the workspace.",
+      "later_session_poll": "Unknown process id 76014"
+    },
+    {
+      "run": "20261027T174621Z_codex_max_comparison",
+      "session": 87128,
+      "returned_final_exit_code": 1,
+      "result": "Guarded launcher rejected DNS for required localhost HTTPS proxy, before receiving any answer."
+    },
+    {
+      "run": null,
+      "returned_final_exit_code": 1,
+      "result": "Proxy-port assertion stopped launcher before original runner; managed loopback proxy port changes per tool process."
+    },
+    {
+      "run": "20261027T174728Z_codex_max_comparison",
+      "session": 86932,
+      "returned_final_exit_code": null,
+      "block": "The guarded run still triggers an external Visual Studio telemetry connection, a separate destination not covered by the user\u2019s OpenRouter approval and with unknown payload.",
+      "final_observation": "No Python processes or final response files found; on-disk status is stale running/stage1."
+    }
+  ],
+  "endpoint_inspection": "Application client requests only openrouter.ai/api/v1/chat/completions and openrouter.ai/api/v1/generation. GitHub URL is HTTP-Referer header, not request destination. No Visual Studio endpoint found in inspected client. Host telemetry payload not independently visible.",
+  "transport_restrictions": "Final launcher permits urllib HTTPS requests only to openrouter.ai; DNS only OpenRouter and managed loopback proxy; socket connects only resolved OpenRouter IPs:443 or exact environment-configured localhost HTTPS proxy. Managed proxy is retained, not bypassed.",
+  "limitation": "Transcribed tool events, not a complete terminal transcript. Whether any initial Stage 1 payload reached OpenRouter and incurred cost is NOT VERIFIED."
+}

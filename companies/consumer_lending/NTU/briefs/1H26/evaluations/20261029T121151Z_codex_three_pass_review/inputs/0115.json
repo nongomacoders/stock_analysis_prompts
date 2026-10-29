@@ -1,0 +1,380 @@
+{
+  "ntu": {
+    "2026-03-31": {
+      "pb_gross_plus_gain": 3845,
+      "pb_net_printed": 3845,
+      "pb_net_plus_ofa": 4489,
+      "question_pbd_figure": 4489,
+      "reconciles_to_question_figure": true,
+      "carrying_total_check": true
+    },
+    "2025-03-31": {
+      "pb_gross_plus_gain": 3690,
+      "pb_net_printed": 3690,
+      "pb_net_plus_ofa": 4353,
+      "question_pbd_figure": 4353,
+      "reconciles_to_question_figure": true,
+      "carrying_total_check": true
+    },
+    "2025-09-30": {
+      "pb_gross_plus_gain": 3975,
+      "pb_net_printed": 3975,
+      "pb_net_plus_ofa": 4677,
+      "question_pbd_figure": 4677,
+      "reconciles_to_question_figure": true,
+      "carrying_total_check": true
+    },
+    "note1_p13_confirmation": {
+      "total_pbd_printed_p13": [
+        4489,
+        4353,
+        4677
+      ],
+      "pb_rollforward_h1_impairment": -167,
+      "rollforward": "3975+382-728+383-167",
+      "rollforward_result": 3845
+    },
+    "segment_h1": {
+      "unsecured": {
+        "gross_chg": -111,
+        "gain_chg": -241,
+        "net_chg": -352,
+        "net_pct": -11.93
+      },
+      "debt_review": {
+        "gross_chg": 158,
+        "gain_chg": 69,
+        "net_chg": 227,
+        "net_pct": 26.24
+      },
+      "retail": {
+        "gross_chg": -2,
+        "gain_chg": 4,
+        "net_chg": 2,
+        "net_pct": 2.11
+      },
+      "secured": {
+        "gross_chg": -8,
+        "gain_chg": 1,
+        "net_chg": -7,
+        "net_pct": -10.77
+      }
+    },
+    "h1_movements": {
+      "net": [
+        -130,
+        -3.27
+      ],
+      "gain": [
+        -167,
+        -27.93
+      ],
+      "gross": [
+        37,
+        1.1
+      ],
+      "yoy_net": [
+        155,
+        4.2
+      ],
+      "yoy_gain": [
+        -193,
+        -30.93
+      ],
+      "yoy_gross": [
+        348,
+        11.35
+      ]
+    }
+  },
+  "pan_production": {
+    "fy26_leaf_sum": 272311,
+    "fy26_group_printed": 272310,
+    "fy26_disjoint_rows": {
+      "expr": "105478+2428+113613+18667+32124",
+      "result": 272310
+    },
+    "fy26_barberton_mines_mining_col": {
+      "expr": "65233+2428+4337",
+      "result": 71998,
+      "printed": 71997
+    },
+    "fy26_barberton_total_col_from_p48": {
+      "expr": "65233+2428+10974+(4337+1958)",
+      "result": 84930
+    },
+    "fy26_barberton_total_from_p49_components": {
+      "expr": "71997+12932",
+      "result": 84929,
+      "printed_total": 94929,
+      "diff": 10000
+    },
+    "fy26_barberton_sold_check": {
+      "expr": "70086+12826",
+      "result": 82912,
+      "printed": 82912
+    },
+    "fy26_evander_total": {
+      "expr": "46855+56475",
+      "result": 103330,
+      "printed": 103330
+    },
+    "fy26_total_operation_columns": {
+      "expr": "94929+103330+51927+32124",
+      "result": 282310,
+      "group": 272310
+    },
+    "fy26_total_operation_columns_if_84929": 272310,
+    "fy26_mining_plus_surface": {
+      "expr": "118853+153458",
+      "result": 272311,
+      "group": 272310
+    },
+    "fy25_disjoint": {
+      "expr": "92643+2654+98636+1081+1513",
+      "result": 196527,
+      "printed": 196527
+    },
+    "fy25_overlap_totalcol_underground": {
+      "expr": "93724+2654+98636+1081+1513",
+      "result": 197608,
+      "printed": 196527
+    },
+    "fy25_evander_totalcol_underground": {
+      "expr": "26748+1081",
+      "result": 27829,
+      "printed": 27829
+    },
+    "fy25_tailings_row_subtotal": {
+      "with_30806": 98636,
+      "with_25043": 92873,
+      "printed": 98636
+    },
+    "fy25_mtr_gap": {
+      "expr": "30806-25043",
+      "result": 5763,
+      "coincides_with_fy26_mtr_buyin": true
+    },
+    "fy25_total_operation_columns": {
+      "expr": "83773+80435+30806+1513",
+      "result": 196527,
+      "group": 196527
+    },
+    "fy25_to_fy26_growth_by_source": {
+      "underground": {
+        "chg": 12835,
+        "share_of_total_chg_pct": 16.9
+      },
+      "surface": {
+        "chg": -226,
+        "share_of_total_chg_pct": -0.3
+      },
+      "tailings": {
+        "chg": 14977,
+        "share_of_total_chg_pct": 19.8
+      },
+      "buy_in": {
+        "chg": 17586,
+        "share_of_total_chg_pct": 23.2
+      },
+      "surface_feedstock": {
+        "chg": 30611,
+        "share_of_total_chg_pct": 40.4
+      }
+    },
+    "underground_oz_growth_pct": 13.85,
+    "group_produced_growth": [
+      75783,
+      38.56
+    ],
+    "mtr_tailings_fy26_vs_total": {
+      "tailings": 46164,
+      "buy_in": 5763,
+      "total": 51927,
+      "printed_total": 51927
+    }
+  },
+  "pan_cost_crosschecks": {
+    "tennant_fy25_allin_A$kg_from_A$58.1m_sold1179": {
+      "derived": 1584358,
+      "range": [
+        1582995,
+        1585722
+      ],
+      "printed": 1584835
+    },
+    "tennant_fy25_us$oz_from_A$kg": {
+      "derived": 32009,
+      "printed": 32041
+    },
+    "tennant_fy26_allin_A$kg_from_A$209.3m_sold32124": {
+      "derived": 209474,
+      "range": [
+        209424,
+        209524
+      ],
+      "printed": 205143
+    },
+    "tennant_fy26_aisc_A$kg_from_A$106.8m": {
+      "derived": 106889,
+      "printed": 106900
+    },
+    "tennant_fy26_cash_A$kg_from_A$81.0m": {
+      "derived": 81067,
+      "printed": 81099
+    },
+    "tennant_fy26_us$oz_from_205143": {
+      "derived": 4341,
+      "printed": 4339
+    },
+    "elikhulu_fy26_allin_from_1515.8m_sold57092": {
+      "derived": 853606,
+      "printed": 853597
+    },
+    "elikhulu_fy25_aisc_from_1039.4m_sold53092": {
+      "derived": 629426,
+      "printed": 629441
+    },
+    "elikhulu_fy25_allin_from_1130.9m_sold53092": {
+      "derived": 684835,
+      "range": [
+        684805,
+        684866
+      ],
+      "printed": 68843
+    },
+    "fy25_aisc_ex_buyin_mining_total_vs_components": {
+      "barberton": 1880,
+      "evander": 1418,
+      "mining_total_printed": 2688,
+      "total_exceeds_both_components": true
+    },
+    "fy25_barberton_aisc_vs_ex_buyin": {
+      "aisc": 2065,
+      "ex_buyin": 1880,
+      "fy25_barberton_buyin_oz": 0
+    }
+  },
+  "pan_aisc_decomposition": {
+    "us$_aisc_group": [
+      1600,
+      1867,
+      267
+    ],
+    "sa_only_us$_from_zar_kg": [
+      1599.7,
+      1813.8
+    ],
+    "fx_effect_us$": 120.2,
+    "zar_cost_effect_us$": 93.9,
+    "residual_tennant_mix_us$": 52.900000000000006,
+    "fx_share_of_increase_pct": 45.0,
+    "caveat": "Approximation: ZAR/kg rows exclude Tennant; per-unit denominators and rounding not disclosed in capture."
+  },
+  "pan_zar_revenue_decomposition": {
+    "zar_price_sa_pct": 44.65,
+    "sa_sold_oz": [
+      195747,
+      240249
+    ],
+    "sa_sold_pct": 22.73,
+    "price_x_volume": 77.54,
+    "zar_revenue_pct": 77.54,
+    "us$_price_pct": 54.84
+  },
+  "pan_other_sums": {
+    "capex_fy26_ops": 214.9,
+    "capex_fy25_ops": 163.5,
+    "ebitda_fy26_leaves": 663.0,
+    "ebitda_fy26_ops": 663.1,
+    "revenue_minus_cop": 10817.4,
+    "ebitda_zar_at_16.90": 11206.39,
+    "buyin_tonnes_pct": 859.24,
+    "single_group_check_118853_plus_153458": 272311
+  },
+  "accounting": {
+    "calls": {
+      "ntu_single": {
+        "cost": 0.00470211,
+        "prompt": 8675,
+        "completion": 3429,
+        "elapsed": 18.457
+      },
+      "ntu_meaning": {
+        "cost": 0.00231378,
+        "prompt": 8086,
+        "completion": 733,
+        "elapsed": 5.024
+      },
+      "ntu_movement": {
+        "cost": 0.002856,
+        "prompt": 8824,
+        "completion": 1194,
+        "elapsed": 7.995
+      },
+      "ntu_why": {
+        "cost": 0.00534765,
+        "prompt": 10765,
+        "completion": 3675,
+        "elapsed": 16.937
+      },
+      "pan_meaning": {
+        "cost": 0.0027101004,
+        "prompt": 10518,
+        "completion": 710,
+        "elapsed": 6.431
+      },
+      "pan_movement": {
+        "cost": 0.0036603084,
+        "prompt": 11233,
+        "completion": 1660,
+        "elapsed": 8.755
+      },
+      "pan_why": {
+        "cost": 0.0048133344,
+        "prompt": 13640,
+        "completion": 2475,
+        "elapsed": 15.235
+      },
+      "pan_single": {
+        "cost": 0.004670988,
+        "prompt": 11107,
+        "completion": 2904,
+        "elapsed": 16.914
+      }
+    },
+    "ntu": {
+      "single": {
+        "cost": 0.00470211,
+        "prompt": 8675,
+        "completion": 3429,
+        "elapsed": 18.457
+      },
+      "three": {
+        "cost": 0.01051743,
+        "prompt": 27675,
+        "completion": 5602,
+        "elapsed": 29.956
+      },
+      "cost_ratio": 2.237,
+      "time_ratio": 1.623
+    },
+    "pan": {
+      "single": {
+        "cost": 0.004670988,
+        "prompt": 11107,
+        "completion": 2904,
+        "elapsed": 16.914
+      },
+      "three": {
+        "cost": 0.0111837432,
+        "prompt": 35391,
+        "completion": 4845,
+        "elapsed": 30.421
+      },
+      "cost_ratio": 2.394,
+      "time_ratio": 1.799
+    },
+    "all_successful_cost": 0.0310742712
+  }
+}

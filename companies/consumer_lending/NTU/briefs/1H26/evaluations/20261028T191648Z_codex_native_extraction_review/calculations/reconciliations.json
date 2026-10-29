@@ -1,0 +1,119 @@
+{
+  "ntu_assets": {
+    "expression": "5+390+3845+644",
+    "calculated": 4884,
+    "reported": 4884,
+    "residual": 0,
+    "scope": "NTU Mar26 Rm, physical22"
+  },
+  "ntu_principal_roll": {
+    "expression": "3975+382-728+383-167",
+    "calculated": 3845,
+    "reported": 3845,
+    "residual": 0,
+    "scope": "NTU H1FY26 Rm, physical13"
+  },
+  "ntu_other_roll": {
+    "expression": "702+28-116+30",
+    "calculated": 644,
+    "reported": 644,
+    "residual": 0,
+    "scope": "NTU H1FY26 Rm, physical13"
+  },
+  "ntu_total_pbd": {
+    "expression": "3845+644",
+    "calculated": 4489,
+    "reported": 4489,
+    "residual": 0,
+    "scope": "Note1 total, not independently tied to unread SoFP8"
+  },
+  "ntu_movement": {
+    "expression": "-241+69+4+1",
+    "calculated": -167,
+    "reported": -167,
+    "residual": 0,
+    "scope": "NTU H1FY26 Rm, physical24"
+  },
+  "ntu_vintages": {
+    "expression": "24-191",
+    "calculated": -167,
+    "reported": -167,
+    "residual": 0,
+    "scope": "Acquired gain and historical loss, NTU24 Rm"
+  },
+  "ntu_balance": {
+    "expression": "598-167",
+    "calculated": 431,
+    "reported": 431,
+    "residual": 0,
+    "scope": "Cumulative gain Rm, Sep25-Mar26"
+  },
+  "pan_fy25_disjoint_reported_subtotals": {
+    "expression": "92643+2654+98636+1081+1513",
+    "calculated": 196527,
+    "reported": 196527,
+    "residual": 0,
+    "scope": "FY25 oz, uses reported tailings subtotal; does not validate its inconsistent component"
+  },
+  "pan_fy25_model_overlap": {
+    "expression": "93724+2654+98636+1081+1513",
+    "calculated": 197608,
+    "reported": 196527,
+    "residual": 1081,
+    "scope": "FY25 oz, includes buy-in twice"
+  },
+  "pan_fy26_underground": {
+    "expression": "65233+40246",
+    "calculated": 105479,
+    "reported": 105478,
+    "residual": 1,
+    "scope": "FY26 oz, source component/Group difference"
+  },
+  "pan_fy26_mining": {
+    "expression": "71997+46855",
+    "calculated": 118852,
+    "reported": 118853,
+    "residual": -1,
+    "scope": "FY26 oz, source mining components/subtotal"
+  },
+  "pan_fy26_group": {
+    "expression": "118853+153458",
+    "calculated": 272311,
+    "reported": 272310,
+    "residual": 1,
+    "scope": "FY26 oz, printed subtotals/Group"
+  },
+  "pan_mtr_fy25_difference": {
+    "expression": "30806-25043",
+    "calculated": 5763,
+    "reported": 0,
+    "residual": 5763,
+    "scope": "FY25 MTR tailings different source columns; same 5763 as FY26 buy-in is not causal proof"
+  },
+  "pan_fy25_printed_leaf_tailings": {
+    "expression": "15224+52606+25043",
+    "calculated": 92873,
+    "reported": 98636,
+    "residual": -5763,
+    "scope": "FY25 oz, source leaf components vs printed subtotal"
+  },
+  "tennant_denominator": {
+    "source": "PAN49 A$1584835/kg, FY25 produced1513oz/sold1179oz; PAN50 A$58.1m all-in cost",
+    "oz_per_kg": 32.15074656862798,
+    "implied_kg_from_rounded_cost": 36.65996775689583,
+    "produced_kg": 47.0595603984,
+    "sold_kg": 36.6709991472,
+    "rate_using_production": 1234605.6679691246,
+    "rate_using_sales": 1584358.249056222,
+    "cost_implied_by_reported_rate_and_sales_million": 58.11748293345271,
+    "sustaining_cost_plus_capex_at_report_average_A_million": 58.132,
+    "interpretation": "Sales denominator consistent with rounded reported cost. Exact methodology and commissioning causal attribution not independently proved; production denominator47kg does not reproduce1584835."
+  },
+  "fx_scope": {
+    "expression": "985551/16.90/(1000/31.1034768)",
+    "calculated": 1813.8498617583907,
+    "reported_USD_per_oz": 1867,
+    "evidence": "PAN49 ZAR operations exclude Tennant in their A$ lines; PAN50 separately lists ZAR and A$ costs. A same-scope/same-definition reconciliation is required.",
+    "interpretation": "Cannot establish transaction-date FX, asset weights, or sales-weighted methodology from these tables; no single proven cause of residual."
+  }
+}

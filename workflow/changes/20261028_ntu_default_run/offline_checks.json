@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "base model/default controls",
+    "stream usage/ID capture",
+    "raw reasoning omitted",
+    "incomplete call persisted before failure",
+    "failed-call cost counted",
+    "reasoning subset not double counted",
+    "logical snapshot stable across row factories"
+  ],
+  "network_calls": 0
+}

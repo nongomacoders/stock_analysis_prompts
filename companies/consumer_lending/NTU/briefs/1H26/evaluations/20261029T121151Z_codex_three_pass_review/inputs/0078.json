@@ -1,0 +1,72 @@
+{
+  "ntu_net_h1": {
+    "start": 3975,
+    "end": 3845,
+    "change": -130,
+    "percent": -3.270440251572327
+  },
+  "ntu_net_yoy": {
+    "start": 3690,
+    "end": 3845,
+    "change": 155,
+    "percent": 4.200542005420054
+  },
+  "ntu_gain_h1": {
+    "start": 598,
+    "end": 431,
+    "change": -167,
+    "percent": -27.926421404682273
+  },
+  "ntu_unsecured_net": {
+    "start": 2950,
+    "end": 2598,
+    "change": -352,
+    "percent": -11.932203389830509
+  },
+  "ntu_debt_review_net": {
+    "start": 865,
+    "end": 1092,
+    "change": 227,
+    "percent": 26.24277456647399
+  },
+  "pan_produced": {
+    "start": 196527,
+    "end": 272310,
+    "change": 75783,
+    "percent": 38.56111374009678
+  },
+  "pan_capex": {
+    "start": 163.6,
+    "end": 214.9,
+    "change": 51.30000000000001,
+    "percent": 31.356968215158933
+  },
+  "ntu_book": {
+    "expression": "3414+431",
+    "result": 3845
+  },
+  "ntu_movement": {
+    "expression": "37-167",
+    "result": -130
+  },
+  "pan_disjoint": {
+    "expression": "92643+2654+98636+1081+1513",
+    "result": 196527,
+    "reported": 196527
+  },
+  "pan_overlap": {
+    "expression": "93724+2654+98636+1081+1513",
+    "result": 197608,
+    "reported": 196527
+  },
+  "pan_barberton_component": {
+    "expression": "71997+12932",
+    "result": 84929,
+    "printed_total": 94929
+  },
+  "pan_total_operations": {
+    "expression": "94929+103330+51927+32124",
+    "result": 282310,
+    "reported": 272310
+  }
+}

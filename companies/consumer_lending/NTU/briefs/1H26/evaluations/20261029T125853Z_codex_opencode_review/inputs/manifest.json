@@ -1,0 +1,62 @@
+[
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\audit.md",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\000.md",
+    "sha256": "7548b8834a426ba0f6371ad8ca8e1418e748955a0a224e198a9eaad1dc3cadad"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\claims.json",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\001.json",
+    "sha256": "b2ec0bcc7aeb74859a2783917ce28798601b5da17aaa39ae06149070d991c1ac"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\findings.json",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\002.json",
+    "sha256": "f0ca5edf06a114f482f226e05a56a1f632313264ad260291fa082d6df7b777bc"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\input_manifest.json",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\003.json",
+    "sha256": "39e6642dca39417860531bede2e47607e2084fcc85dc721a409cf85e7ea3a503"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\calculations\\build_manifest.py",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\004.py",
+    "sha256": "227204b6554f70e383791a41cdcdb640d1473893ef269d260e0bf2cfae2853dd"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\calculations\\reconciliations.json",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\005.json",
+    "sha256": "c74113e2371ac06b62f377b62569c8ec460c9a98566076ad5434bf05d593d66e"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T123636Z_open_code_three_pass_review\\calculations\\reconciliations.py",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\006.py",
+    "sha256": "dc46028dedc89aa71f65e519460b72a864f3c061449b170749facdcbc39a9341"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261029_three_pass\\open_code_comparision.md",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\007.md",
+    "sha256": "16b10f33880ab6ed85333d8de5bacccba4b2e2a3109a82b3783ad21c9e24d952"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T121151Z_codex_three_pass_review\\audit.md",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\008.md",
+    "sha256": "88eb41182e16a6c1100b96394ca2bbfd482bdfb293abb75da210a18c3748828b"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_why.md",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\009.md",
+    "sha256": "596d6bb5d42bb3b5478b6feb462774c1fd7723b5f7463ee8afaa265d956f9eda"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T114212Z_three_pass_pan_resume\\outputs\\pan_dense_single.md",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\010.md",
+    "sha256": "c53fa17f3bf0b1a59785625466b440edc6333eb0fa48eb071ca67aa2a56f2aa7"
+  },
+  {
+    "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T112944Z_three_pass_experiment\\outputs\\ntu_assets_single.validation.json",
+    "copy": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261029T125853Z_codex_opencode_review\\inputs\\011.json",
+    "sha256": "11e094f1fdfadc2e340afe4b252cc48890af0b70692895d77d861475c7242e92"
+  }
+]

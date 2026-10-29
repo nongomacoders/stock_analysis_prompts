@@ -1,0 +1,45 @@
+{
+  "status": "proposed only; not implemented",
+  "duplicate_check": "Existing common prompt already requires signed scope arithmetic and closure; consumer notes already distinguish POCI gains. Refine wording, avoid duplicate checklists.",
+  "rules": [
+    {
+      "code": "SECTION_SIGN_CONTEXT",
+      "sector": "consumer_lending",
+      "title": "Interpret disclosed cumulative-gain movements",
+      "mandate": "When issuer presents POCI adjustment as cumulative gain added to book, a decrease is impairment loss; separate acquired gains and historical losses.",
+      "trigger": "Signed POCI balance movement",
+      "evidence": "Signed source row, opening/closing balances and basis",
+      "exceptions": "Ordinary loss reserves/FVTPL require their own basis",
+      "double_counting_risk": "Do not treat a balance movement and P&L line as independent charges",
+      "fail_example": "598to431 labelled167release",
+      "pass_example": "598-167=431; loss167=acquiredgain24-historicalloss191",
+      "implementation": "Refine existing consumer-lending note, not new SQLite rule"
+    },
+    {
+      "code": "SECTION_DISJOINT_SUM",
+      "sector": "common",
+      "title": "Disjoint column scopes",
+      "mandate": "Before adding rows/columns, check whether subtotal already includes another component. If hierarchy uncertain, show alternatives and leave scope unresolved.",
+      "trigger": "Multi-level table aggregation",
+      "evidence": "Headers, component/subtotal values, period and units",
+      "exceptions": "Clearly independent components may be summed",
+      "double_counting_risk": "Subsidiary/operation totals plus their feedstock twice",
+      "fail_example": "93724+2654+98636+1081+1513",
+      "pass_example": "92643+2654+98636+1081+1513=196527 using reported subtotal with component caveat",
+      "implementation": "One clause in existing common sign/scope instruction"
+    },
+    {
+      "code": "LEDGER_KEEP_PARTIAL",
+      "sector": "common",
+      "title": "Closure conditions stay attached",
+      "mandate": "If any essential closure evidence is pending or deferred to new question, retain partial and describe what remains.",
+      "trigger": "Proposed resolved status",
+      "evidence": "Incoming closure condition plus current evidence",
+      "exceptions": "Explicit confirmed-not-disclosed closure alternative may satisfy a condition if established within searched scope",
+      "double_counting_risk": "Avoid cloning unanswered scope as substitute for original question",
+      "fail_example": "Resolved basis while4489scope deferred",
+      "pass_example": "Partial: basis answered,totalcarryingscope pending",
+      "implementation": "Clarify existing ledger contract; no new semantic engine"
+    }
+  ]
+}

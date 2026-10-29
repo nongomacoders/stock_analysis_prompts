@@ -1,0 +1,372 @@
+{
+  "generated_utc": "2026-10-29T12:37:41Z",
+  "calculations": {
+    "ntu_p22_gross_mar26": {
+      "expr": "5+395+3414+644",
+      "result": 4458,
+      "printed": 4458
+    },
+    "ntu_p22_carry_mar26": {
+      "expr": "5+390+3845+644",
+      "result": 4884,
+      "printed": 4884
+    },
+    "ntu_p22_gross_mar25": {
+      "expr": "2+510+3066+663",
+      "result": 4241,
+      "printed": 4241
+    },
+    "ntu_p22_carry_mar25": {
+      "expr": "2+504+3690+663",
+      "result": 4859,
+      "printed": 4859
+    },
+    "ntu_p22_gross_sep25": {
+      "expr": "4+388+3377+702",
+      "result": 4471,
+      "printed": 4471
+    },
+    "ntu_p22_carry_sep25": {
+      "expr": "4+378+3975+702",
+      "result": 5059,
+      "printed": 5059
+    },
+    "ntu_book_mar26": {
+      "expr": "3414+431",
+      "result": 3845,
+      "printed": 3845
+    },
+    "ntu_conc_mar26_gross": {
+      "expr": "2371+951+46+46",
+      "result": 3414,
+      "printed": 3414
+    },
+    "ntu_conc_mar26_gain": {
+      "expr": "227+141+51+12",
+      "result": 431,
+      "printed": 431
+    },
+    "ntu_net_h1": {
+      "start": 3975,
+      "end": 3845,
+      "change": -130,
+      "percent": -3.270440251572327,
+      "model": -130,
+      "-130": null
+    },
+    "ntu_net_yoy": {
+      "start": 3690,
+      "end": 3845,
+      "change": 155,
+      "percent": 4.200542005420054,
+      "model": 155
+    },
+    "ntu_gain_h1": {
+      "start": 598,
+      "end": 431,
+      "change": -167,
+      "percent": -27.926421404682273,
+      "model": -167
+    },
+    "ntu_gain_yoy": {
+      "start": 624,
+      "end": 431,
+      "change": -193,
+      "model": -193
+    },
+    "ntu_unsecured": {
+      "start": 2950,
+      "end": 2598,
+      "change": -352,
+      "percent": -11.932203389830509,
+      "model": -352
+    },
+    "ntu_debt_review": {
+      "start": 865,
+      "end": 1092,
+      "change": 227,
+      "percent": 26.242774566473987,
+      "model": 227
+    },
+    "ntu_p13_principal_rollforward": {
+      "expr": "3975+382-728+383-167",
+      "result": 3845,
+      "printed": 3845
+    },
+    "ntu_p13_ofa_rollforward": {
+      "expr": "702+28-116+30",
+      "result": 644,
+      "printed": 644
+    },
+    "ntu_p13_pbd_total": {
+      "expr": "3845+644",
+      "result": 4489,
+      "printed": 4489
+    },
+    "ntu_p13_pbd_classification": {
+      "expr": "3178+1311",
+      "result": 4489,
+      "printed": 4489
+    },
+    "pan_staged_fx_only_sa": {
+      "expr": "(985551/32.150747)/16.90 vs (934517/32.150747)/18.17 -> implied SA USD/AISC change %",
+      "sa_usd_fy26": 1813.8498374216597,
+      "sa_usd_fy25": 1599.7098205125142,
+      "implied_pct": 13.386178803386954,
+      "printed_group_pct": 16.7,
+      "note": "SA-only FX+ZAR AISC roll-up explains ~+13.4pp of the +16.7pp Group US$ AISC rise; residual ~3pp from Tennant mix (11.8% weight at US$2,261). 'Largely FX' is plausible but unreconciled in the staged why."
+    },
+    "pan_disjoint_fy25": {
+      "expr": "92643+2654+98636+1081+1513",
+      "result": 196527,
+      "printed_group": 196527
+    },
+    "pan_overlap_fy25": {
+      "expr": "93724+2654+98636+1081+1513",
+      "result": 197608,
+      "printed_group": 196527,
+      "difference_vs_disjoint": 1081
+    },
+    "pan_evander_fy25": {
+      "expr": "26748+1081",
+      "result": 27829,
+      "printed_evander_total": 27829
+    },
+    "pan_group_ug_fy25": {
+      "expr": "92643+1081",
+      "result": 93724,
+      "printed_group_ug": 93724
+    },
+    "pan_fy26_ug_mining_total": {
+      "expr": "65233+40246",
+      "result": 105479,
+      "printed_mining_total": 105479,
+      "printed_group_ug": 105478
+    },
+    "pan_fy26_group_check_group_ug": {
+      "expr": "105478+2428+113613+18667+32124",
+      "result": 272310,
+      "printed_group": 272310,
+      "staged_why_marked": "correct (272,310 ok)"
+    },
+    "pan_fy26_group_check_mining_ug": {
+      "expr": "105479+2428+113613+18667+32124",
+      "result": 272311,
+      "printed_group": 272310,
+      "residual_oz": 1
+    },
+    "pan_barberton_mining_leaf_fy26": {
+      "expr": "65233+2428+4337",
+      "result": 71998,
+      "printed": 71997,
+      "residual_oz": 1,
+      "staged_claim": "71,997 = components (asserted identically in meaning, movement and final why)"
+    },
+    "pan_evander_total_fy26": {
+      "expr": "40246+6609",
+      "result": 46855,
+      "printed": 46855
+    },
+    "pan_barberton_total_fy26": {
+      "expr": "71997+12932",
+      "result": 84929,
+      "printed": 94929,
+      "difference_oz": 10000
+    },
+    "pan_fy26_opsum_printed_columns": {
+      "expr": "94929+103330+51927+32124",
+      "result": 282310,
+      "printed_group": 272310,
+      "difference_oz": 10000
+    },
+    "pan_fy26_opsum_with_84929": {
+      "expr": "84929+103330+51927+32124",
+      "result": 272310,
+      "printed_group": 272310,
+      "note": "exact conditional agreement; this does NOT establish 94,929 as the wrong value"
+    },
+    "pan_minning_series_fy26": {
+      "expr": "105479+2428+4337+6609",
+      "result": 118853,
+      "printed_mining_series_total": 118853
+    },
+    "pan_single_false_check": {
+      "expr": "118853+153458",
+      "result": 272311,
+      "printed_group": 272310,
+      "single_marked": "ok (false; actual 272,311)"
+    },
+    "pan_barberton_plus_evander_fy26": {
+      "expr": "71997+46855",
+      "result": 118852,
+      "printed_mining_total": 118853,
+      "residual_oz": 1
+    },
+    "pan_mtr_fy25_tailings_total_check": {
+      "expr": "15224+52606+25043",
+      "result": 92873,
+      "printed": 98636,
+      "difference_oz": 5763
+    },
+    "pan_mtr_fy25_summary_row": {
+      "expr": "25043+5763",
+      "result": 30806,
+      "printed_mtr_total_ops_fy25": 30806,
+      "note": "5,763 equals FY26 MTR buy-in; FY25 buy-in row prints nil for MTR"
+    },
+    "pan_mtr_fy26_summary_row": {
+      "expr": "46164+5763",
+      "result": 51927,
+      "printed_mtr_total_ops_fy26": 51927
+    },
+    "pan_fy25_group_from_opsum_printed": {
+      "expr": "83773+80435+30806+1513",
+      "result": 196527,
+      "printed_group": 196527,
+      "note": "FY25 opsum reconciles exactly with printed values while FY26 opsum does not; replacement direction is case-specific"
+    },
+    "pan_fy25_group_from_summary_rows": {
+      "expr": "96378+100149",
+      "result": 196527,
+      "printed_group": 196527
+    },
+    "pan_elikhulu_implied_allin": {
+      "expr": "1130.9e6 ZARm/(53092 oz sold x 31.1034768/1000 kg)",
+      "kg": 1651.3457902656,
+      "zar_per_kg": 684835.3668059479,
+      "printed": 68843,
+      "note": "implied ~684,8xx vs printed 68,843; consistent with a plausible omitted-digit order-of-magnitude error, cause not proved"
+    },
+    "pan_tennant_implied_allin_aud": {
+      "expr": "A$58.1m/(1179 oz sold x 31.1034768/1000 kg)",
+      "kg": 36.6709991472,
+      "aud_per_kg": 1584358.249056222,
+      "printed": 1584835,
+      "note": "broadly agrees; FY25 Tennant cells are internally consistent with the tiny produced/sold base, not obviously a typo"
+    },
+    "pan_tennant_usd_from_aud": {
+      "expr": "1584835/1.54/32.150747",
+      "result": 32009.01168372966,
+      "printed_us_allin_fy25_tennant": 32041,
+      "note": "US$ 32,041 and A$ 1,584,835 are mutually consistent"
+    },
+    "pan_p50_revenue": {
+      "expr": "8449.6+8799.5",
+      "result": 17249.1,
+      "printed": 17249.1
+    },
+    "pan_p50_cop": {
+      "expr": "3957.4+2474.3",
+      "result": 6431.700000000001,
+      "printed": 6431.7
+    },
+    "pan_p50_ebitda_leaves": {
+      "expr": "142.4+120.9+29.4+171.4+155.9+43.0",
+      "result": 663.0,
+      "printed": 663.1,
+      "residual": 0.10000000000002274,
+      "note": "single marked '(0.1 rounding) ok' on a 0.1 mismatch"
+    },
+    "pan_p50_barberton_ebitda_subtotal": {
+      "expr": "142.4+29.4",
+      "result": 171.8,
+      "printed": 171.9
+    },
+    "pan_p50_capex_leaves": {
+      "expr": "37.5+49.8+2.6+21.1+32.6+71.3",
+      "result": 214.89999999999998,
+      "printed": 214.9
+    },
+    "pan_pct_produced": {
+      "expr": "75783/196527",
+      "percent": 38.56111374009678,
+      "model": 38.6
+    },
+    "pan_pct_usd_price": {
+      "expr": "1500/2735",
+      "percent": 54.844606946983546,
+      "model": 54.8
+    },
+    "pan_pct_zar_aisc": {
+      "expr": "51034/934517",
+      "percent": 5.461002849600382,
+      "model": 5.5
+    },
+    "pan_pct_usd_aisc": {
+      "expr": "267/1600",
+      "percent": 16.6875,
+      "model": 16.7
+    },
+    "pan_pct_revenue": {
+      "expr": "7533.5/9715.6",
+      "percent": 77.54024455514839,
+      "model": 77.5
+    },
+    "pan_pct_buyin_t": {
+      "expr": "795110/92536",
+      "percent": 859.2439699144118,
+      "model": 859.3
+    },
+    "pan_pct_surf_feed_t": {
+      "expr": "666598/85316",
+      "percent": 781.3282385484551,
+      "model": 781.3
+    },
+    "ntu_staged_cost": {
+      "expr": "0.00231378+0.002856+0.00534765",
+      "result": 0.010517430000000001,
+      "recorded": 0.01051743
+    },
+    "ntu_ratio_cost": {
+      "expr": "0.01051743/0.00470211",
+      "result": 2.236746907239516,
+      "recorded": 2.236746907
+    },
+    "ntu_ratio_time": {
+      "expr": "29.956/18.457",
+      "result": 1.6230156580159287,
+      "recorded": 1.623015658
+    },
+    "pan_staged_cost": {
+      "expr": "0.0027101004+0.0036603084+0.0048133344",
+      "result": 0.011183743199999999,
+      "recorded": 0.0111837432
+    },
+    "pan_ratio_cost": {
+      "expr": "0.0111837432/0.004670988",
+      "result": 2.3942992788677686,
+      "recorded": "~2.3943"
+    },
+    "pan_ratio_time": {
+      "expr": "30.421/16.914",
+      "result": 1.7985692325883882,
+      "recorded": "~1.7986"
+    },
+    "combined_known_subtotal": {
+      "expr": "0.0215899488+0.0094843224",
+      "result": 0.031074271200000003,
+      "recorded": 0.0310742712
+    },
+    "resume_incremental_cost": {
+      "expr": "0.0048133344+0.004670988",
+      "result": 0.0094843224,
+      "recorded": 0.0094843224
+    },
+    "resume_incremental_tokens": {
+      "prompt": 24747,
+      "completion": 5379,
+      "cached": 1122,
+      "elapsed": 32.149
+    },
+    "ntu_staged_tokens": {
+      "prompt": 27675,
+      "completion": 5602,
+      "elapsed": 29.956000000000003
+    },
+    "pan_staged_tokens": {
+      "prompt": 35391,
+      "completion": 4845,
+      "elapsed": 30.421
+    }
+  }
+}

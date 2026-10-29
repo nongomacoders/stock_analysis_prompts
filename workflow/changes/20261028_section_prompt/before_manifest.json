@@ -1,0 +1,34 @@
+[
+  {
+    "path": "prompts\\construction\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "ceb02bdd7fae57197c4b4bb6de5e11ae88043dab4aa1bc0f72520ca0b629272f"
+  },
+  {
+    "path": "prompts\\consumer_lending\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "0e11876a619ba5d5f0ae10e68b84e155a4aa927c33b6eef4f85f6e16fe0b9efc"
+  },
+  {
+    "path": "prompts\\finance\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "abe83141505f828c8b008d1e8f01a06c68ae20c33ccdc4ab426428e43b539ab1"
+  },
+  {
+    "path": "prompts\\it\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "c4018d38c02a046f80506abb6aab797fb7688ce7560562546ebffbcae5145751"
+  },
+  {
+    "path": "prompts\\mining\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "502c50659729a034fcce5d86d891a4f58f17b674cb0c924596cd7a17378cefdd"
+  },
+  {
+    "path": "prompts\\reit\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "60813ab7e58a73c5a73051e7df12eaf8b95e84b9618f47cc95aa7b8a1fec9283"
+  },
+  {
+    "path": "prompts\\retail\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "27a67e99036c3124d6194636533706532f6ea9a658e383b2a3d0cea9699f9df7"
+  },
+  {
+    "path": "prompts\\telcos\\12-analyst-reading-brief\\v1.1.0\\prompt.md",
+    "sha256": "57d16b09dc6715db542e1a629d8200400defbc0280ead9cb126fd9ece8c709aa"
+  }
+]

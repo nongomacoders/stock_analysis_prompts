@@ -1,0 +1,32 @@
+{
+  "ntu_movement": {
+    "expression": "24-191",
+    "result": -167,
+    "reported": -167
+  },
+  "ntu_balance": {
+    "expression": "598-167",
+    "result": 431,
+    "reported": 431
+  },
+  "ntu_book": {
+    "expression": "3414+431",
+    "result": 3845,
+    "reported": 3845
+  },
+  "pan_reported_disjoint": {
+    "expression": "92643+2654+98636+1081+1513",
+    "result": 196527,
+    "reported": 196527
+  },
+  "pan_overlap": {
+    "expression": "93724+2654+98636+1081+1513",
+    "result": 197608,
+    "reported": 196527
+  },
+  "pan_mtr": {
+    "expression": "30806-25043",
+    "result": 5763,
+    "reported": null
+  }
+}

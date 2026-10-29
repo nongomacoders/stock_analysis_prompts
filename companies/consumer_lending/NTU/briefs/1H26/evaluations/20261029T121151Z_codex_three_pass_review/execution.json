@@ -1,0 +1,7 @@
+{
+  "command": ".venv/Scripts/python.exe workflow/changes/20261029_three_pass_review/review.py",
+  "exit_code": 0,
+  "paid_calls": 0,
+  "gemini_scripts_executed": false,
+  "application_changes": false
+}

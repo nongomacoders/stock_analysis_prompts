@@ -1,0 +1,489 @@
+{
+  "scope": "Independent arithmetic checks; economic assumptions are not validated by reproducing calculations.",
+  "SOTP": {
+    "EV_unrounded": 4995.65,
+    "pre_discount_unrounded": 839.6499999999996,
+    "post_discount_unrounded": 738.8919999999997,
+    "target_unrounded": 0.9465074261933369,
+    "target_from_displayed_738": 0.9453647901597025,
+    "without_WC_using_unrounded_inputs": 0.6353824936269568,
+    "without_WC_using_rounded_table": 0.6346497718654783,
+    "WC_increment_after_discount": 0.31112493256638013,
+    "assessment": "WC add-back lacks surplus/nonoperating allocation. Removal is a conditional scenario, not a validated target."
+  },
+  "historical_CF": {
+    "model_FCFE": 140.0,
+    "implied_model_OCF_before_capex": 170.0,
+    "statutory_OCF": -111,
+    "OCF_gap": 281,
+    "statutory_OCF_less_capex": -141,
+    "model_gap_before_lease": 281,
+    "statutory_OCF_less_capex_lease": -171,
+    "model_gap_after_lease": 311,
+    "actual_net_borrowing_cash": 212,
+    "model_net_borrowing_cash": -134.0,
+    "cash_financing_direction_difference": 346,
+    "actual_full_cash_change": 6,
+    "actual_cash_scope": "107+6=113; excludes 1 held-for-sale cash on BS:106+6=112",
+    "comparison_limitation": "Bridge definitions before equating these with distributable FCFE; lease/investing/financing treatment differs."
+  },
+  "FCFE_vertical": {
+    "1H26": {
+      "inputs": {
+        "Net profit/(loss)": -63.0,
+        "Add: Depreciation and amortisation": 68.0,
+        "Add: Impairment loss": 167.0,
+        "Less: CAEIR imputed interest": -383.0,
+        "Less: Fair value gains": -30.0,
+        "Add: Cash collections (principal + other)": 844.0,
+        "Less: PBD acquisitions": -410.0,
+        "Less: Capex": -30.0,
+        "Less: Working capital and other": -23.0
+      },
+      "sum": 140.0,
+      "stated": 140.0
+    },
+    "FY26": {
+      "inputs": {
+        "Net profit/(loss)": -100.0,
+        "Add: Depreciation and amortisation": 140.0,
+        "Add: Impairment loss": 337.0,
+        "Less: CAEIR imputed interest": -763.0,
+        "Less: Fair value gains": -55.0,
+        "Add: Cash collections (principal + other)": 1714.0,
+        "Less: PBD acquisitions": -782.0,
+        "Less: Capex": -50.0,
+        "Less: Working capital and other": -245.0
+      },
+      "sum": 196.0,
+      "stated": 196.0
+    },
+    "FY27": {
+      "inputs": {
+        "Net profit/(loss)": -15.0,
+        "Add: Depreciation and amortisation": 140.0,
+        "Add: Impairment loss": 280.0,
+        "Less: CAEIR imputed interest": -680.0,
+        "Less: Fair value gains": -30.0,
+        "Add: Cash collections (principal + other)": 1660.0,
+        "Less: PBD acquisitions": -950.0,
+        "Less: Capex": -50.0,
+        "Less: Working capital and other": -95.0
+      },
+      "sum": 260.0,
+      "stated": 260.0
+    },
+    "FY28": {
+      "inputs": {
+        "Net profit/(loss)": 75.0,
+        "Add: Depreciation and amortisation": 140.0,
+        "Add: Impairment loss": 250.0,
+        "Less: CAEIR imputed interest": -620.0,
+        "Less: Fair value gains": -30.0,
+        "Add: Cash collections (principal + other)": 1710.0,
+        "Less: PBD acquisitions": -1000.0,
+        "Less: Capex": -50.0,
+        "Less: Working capital and other": -145.0
+      },
+      "sum": 330.0,
+      "stated": 330.0
+    }
+  },
+  "cash_periods": [
+    {
+      "period": "1H26",
+      "printed_opening": 106.0,
+      "correct_fiscal_opening": 106,
+      "net_change": 6.0,
+      "closing": 112.0,
+      "printed_residual": 0.0,
+      "same_period_residual": 0.0
+    },
+    {
+      "period": "FY26",
+      "printed_opening": 112.0,
+      "correct_fiscal_opening": 106,
+      "net_change": 8.0,
+      "closing": 120.0,
+      "printed_residual": 0.0,
+      "same_period_residual": 6.0
+    },
+    {
+      "period": "FY27",
+      "printed_opening": 120.0,
+      "correct_fiscal_opening": 120,
+      "net_change": 10.0,
+      "closing": 130.0,
+      "printed_residual": 0.0,
+      "same_period_residual": 0.0
+    },
+    {
+      "period": "FY28",
+      "printed_opening": 130.0,
+      "correct_fiscal_opening": 130,
+      "net_change": 10.0,
+      "closing": 140.0,
+      "printed_residual": 0.0,
+      "same_period_residual": 0.0
+    }
+  ],
+  "BS_rows": [
+    {
+      "period": "FY25",
+      "asset_sum": 6604.0,
+      "stated_assets": 6604.0,
+      "liability_sum": 5208.0,
+      "stated_liabilities": 5208.0,
+      "equity": 1396.0,
+      "identity_residual": 0.0
+    },
+    {
+      "period": "1H26",
+      "asset_sum": 6444.0,
+      "stated_assets": 6444.0,
+      "liability_sum": 5115.0,
+      "stated_liabilities": 5115.0,
+      "equity": 1329.0,
+      "identity_residual": 0.0
+    },
+    {
+      "period": "FY26",
+      "asset_sum": 6169.0,
+      "stated_assets": 6169.0,
+      "liability_sum": 4940.0,
+      "stated_liabilities": 4940.0,
+      "equity": 1229.0,
+      "identity_residual": 0.0
+    },
+    {
+      "period": "FY27",
+      "asset_sum": 5924.0,
+      "stated_assets": 5924.0,
+      "liability_sum": 4710.0,
+      "stated_liabilities": 4710.0,
+      "equity": 1214.0,
+      "identity_residual": 0.0
+    },
+    {
+      "period": "FY28",
+      "asset_sum": 5699.0,
+      "stated_assets": 5699.0,
+      "liability_sum": 4410.0,
+      "stated_liabilities": 4410.0,
+      "equity": 1289.0,
+      "identity_residual": 0.0
+    }
+  ],
+  "PBD_rollforward": [
+    {
+      "year": "FY25",
+      "inputs": {
+        "Principal book opening": 3831.0,
+        "Additions": 857.0,
+        "Net cash collections": -1197.0,
+        "CAEIR imputed interest": 683.0,
+        "Impairment loss": -199.0
+      },
+      "implied": 3975.0,
+      "stated": 3975.0,
+      "residual": 0.0
+    },
+    {
+      "year": "1H26",
+      "inputs": {
+        "Principal book opening": 3975.0,
+        "Additions": 382.0,
+        "Net cash collections": -728.0,
+        "CAEIR imputed interest": 383.0,
+        "Impairment loss": -167.0
+      },
+      "implied": 3845.0,
+      "stated": 3845.0,
+      "residual": 0.0
+    },
+    {
+      "year": "FY26",
+      "inputs": {
+        "Principal book opening": 3975.0,
+        "Additions": 782.0,
+        "Net cash collections": -1478.0,
+        "CAEIR imputed interest": 763.0,
+        "Impairment loss": -337.0
+      },
+      "implied": 3705.0,
+      "stated": 3705.0,
+      "residual": 0.0
+    },
+    {
+      "year": "FY27",
+      "inputs": {
+        "Principal book opening": 3705.0,
+        "Additions": 950.0,
+        "Net cash collections": -1550.0,
+        "CAEIR imputed interest": 680.0,
+        "Impairment loss": -280.0
+      },
+      "implied": 3505.0,
+      "stated": 3465.0,
+      "residual": -40.0
+    },
+    {
+      "year": "FY28",
+      "inputs": {
+        "Principal book opening": 3465.0,
+        "Additions": 1000.0,
+        "Net cash collections": -1600.0,
+        "CAEIR imputed interest": 620.0,
+        "Impairment loss": -250.0
+      },
+      "implied": 3235.0,
+      "stated": 3185.0,
+      "residual": -50.0
+    }
+  ],
+  "total_book_rollforward": [
+    {
+      "year": "FY26",
+      "formula": "4677+782.0-1714.0+763.0-337.0+55.0",
+      "implied": 4226.0,
+      "stated": 4226.0,
+      "residual": 0.0
+    },
+    {
+      "year": "FY27",
+      "formula": "4226+950.0-1660.0+680.0-280.0+30.0",
+      "implied": 3946.0,
+      "stated": 3966.0,
+      "residual": 20.0
+    },
+    {
+      "year": "FY28",
+      "formula": "3966+1000.0-1710.0+620.0-250.0+30.0",
+      "implied": 3656.0,
+      "stated": 3666.0,
+      "residual": 10.0
+    }
+  ],
+  "debt_stock_cashflow": [
+    {
+      "year": "FY26",
+      "opening_borrowings_and_leases": 4361.0,
+      "closing": 4180.0,
+      "reduction": 181.0,
+      "cash_repayment": 188.0,
+      "unexplained_non_cash_or_other": 7.0,
+      "limitation": "New leases, FX, fees or scope may reconcile if explicitly supplied; not assumed error magnitude in economic value."
+    },
+    {
+      "year": "FY27",
+      "opening_borrowings_and_leases": 4180.0,
+      "closing": 3940.0,
+      "reduction": 240.0,
+      "cash_repayment": 250.0,
+      "unexplained_non_cash_or_other": 10.0,
+      "limitation": "New leases, FX, fees or scope may reconcile if explicitly supplied; not assumed error magnitude in economic value."
+    },
+    {
+      "year": "FY28",
+      "opening_borrowings_and_leases": 3940.0,
+      "closing": 3630.0,
+      "reduction": 310.0,
+      "cash_repayment": 320.0,
+      "unexplained_non_cash_or_other": 10.0,
+      "limitation": "New leases, FX, fees or scope may reconcile if explicitly supplied; not assumed error magnitude in economic value."
+    }
+  ],
+  "FY26_debt_period_check": {
+    "full_year_opening_including_leases": 4171,
+    "full_year_closing_including_leases": 4180,
+    "cash_repayment_full_year": 188,
+    "unexplained_with_full_year_opening": 197,
+    "limitation": "197m requires explicit noncash/FX/new-lease/scope bridge. Gemini 7m uses March opening against full-year cash repayment."
+  },
+  "net_debt_table": {
+    "FY26": {
+      "formula_basis": "borrowings+overdraft+leases-cash-investments",
+      "calculated": 3980.0,
+      "stated": 3980,
+      "residual": 0.0
+    },
+    "FY27": {
+      "formula_basis": "borrowings+overdraft+leases-cash-investments",
+      "calculated": 3730.0,
+      "stated": 3730,
+      "residual": 0.0
+    },
+    "FY28": {
+      "formula_basis": "borrowings+overdraft+leases-cash-investments",
+      "calculated": 3410.0,
+      "stated": 3410,
+      "residual": 0.0
+    }
+  },
+  "sensitivity": [
+    {
+      "haircut": 0.1,
+      "BPO_multiple": 3,
+      "calculated": 1.0078869645202921,
+      "round_two_decimals": 1.01,
+      "published": 1.01,
+      "absolute_difference": 0.00211303547970787,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.1,
+      "BPO_multiple": 4,
+      "calculated": 1.1995218867532074,
+      "round_two_decimals": 1.2,
+      "published": 1.2,
+      "absolute_difference": 0.0004781132467925886,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.1,
+      "BPO_multiple": 5,
+      "calculated": 1.3911568089861226,
+      "round_two_decimals": 1.39,
+      "published": 1.39,
+      "absolute_difference": 0.0011568089861226927,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.15,
+      "BPO_multiple": 3,
+      "calculated": 0.7548725039604216,
+      "round_two_decimals": 0.75,
+      "published": 0.76,
+      "absolute_difference": 0.005127496039578405,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.15,
+      "BPO_multiple": 4,
+      "calculated": 0.9465074261933369,
+      "round_two_decimals": 0.95,
+      "published": 0.95,
+      "absolute_difference": 0.003492573806663013,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.15,
+      "BPO_multiple": 5,
+      "calculated": 1.1381423484262523,
+      "round_two_decimals": 1.14,
+      "published": 1.14,
+      "absolute_difference": 0.0018576515737476207,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.2,
+      "BPO_multiple": 3,
+      "calculated": 0.5018580434005532,
+      "round_two_decimals": 0.5,
+      "published": 0.5,
+      "absolute_difference": 0.0018580434005531776,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.2,
+      "BPO_multiple": 4,
+      "calculated": 0.6934929656334685,
+      "round_two_decimals": 0.69,
+      "published": 0.69,
+      "absolute_difference": 0.00349296563346857,
+      "within_declared_001": true
+    },
+    {
+      "haircut": 0.2,
+      "BPO_multiple": 5,
+      "calculated": 0.8851278878663839,
+      "round_two_decimals": 0.89,
+      "published": 0.89,
+      "absolute_difference": 0.004872112133616158,
+      "within_declared_001": true
+    }
+  ],
+  "DCF": [
+    {
+      "Ke": 0.18,
+      "TV": 2103.75,
+      "PV1": 220.33898305084747,
+      "PV2": 237.00086182131574,
+      "PV_TV": 1510.8804941108879,
+      "equity": 1968.220338983051,
+      "per_share": 2.5212550240525347,
+      "terminal_fraction": 0.7676378829067159
+    },
+    {
+      "Ke": 0.25,
+      "TV": 1463.4782608695652,
+      "PV1": 208.0,
+      "PV2": 211.2,
+      "PV_TV": 936.6260869565217,
+      "equity": 1355.8260869565217,
+      "per_share": 1.73678894876518,
+      "terminal_fraction": 0.6908158029758851
+    },
+    {
+      "Ke": 0.3,
+      "TV": 1202.1428571428573,
+      "PV1": 200.0,
+      "PV2": 195.26627218934908,
+      "PV_TV": 711.3271344040576,
+      "equity": 1106.5934065934066,
+      "per_share": 1.4175263463635315,
+      "terminal_fraction": 0.6428080360553052
+    }
+  ],
+  "DCF_explicit_debt_cash_difference": {
+    "formula": "250/1.18+320/1.18**2",
+    "PV": 441.6834243033611,
+    "per_share": 0.5657885606145878,
+    "limitation": "Illustrates differing financing assumptions for two years only; not corrected DCF or perpetual debt policy."
+  },
+  "NAV": {
+    "statutory": 1.702425211547757,
+    "excluding_goodwill_only": 1.0478433581986948,
+    "excluding_goodwill_and_intangibles": 0.9620175574660388,
+    "fresh_note_description": "0.96 ex-goodwill; actually excludes intangibles too"
+  },
+  "rating": {
+    "reference": 0.89,
+    "frozen_reference_only": true,
+    "published_target": 0.95,
+    "upside_pct": 6.741573033707859,
+    "counterfactual_064_strong_sell_threshold": 0.7529411764705882,
+    "counterfactual_rating_if_existing_method_used": "STRONG SELL, not Gemini SELL; valuation still not validated"
+  },
+  "metadata": {
+    "1": {
+      "generation_ids_match": true,
+      "requested_model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+      "reported_model": "deepseek/deepseek-v4.1-flash-20261017",
+      "provider": "Together",
+      "finish_reason": "stop",
+      "reasoning_tokens": 22576,
+      "native_completion_tokens": 30050,
+      "native_total_tokens": 74727,
+      "cost_usd": 0.036329532,
+      "elapsed_seconds": 145.18
+    },
+    "2": {
+      "generation_ids_match": true,
+      "requested_model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+      "reported_model": "deepseek/deepseek-v4.1-flash-20261017",
+      "provider": "Together",
+      "finish_reason": "stop",
+      "reasoning_tokens": 37211,
+      "native_completion_tokens": 43537,
+      "native_total_tokens": 79511,
+      "cost_usd": 0.0630366,
+      "elapsed_seconds": 211.44
+    }
+  },
+  "metadata_totals": {
+    "reasoning_tokens": 59787,
+    "native_tokens": 154238,
+    "cost_usd": 0.099366132
+  }
+}

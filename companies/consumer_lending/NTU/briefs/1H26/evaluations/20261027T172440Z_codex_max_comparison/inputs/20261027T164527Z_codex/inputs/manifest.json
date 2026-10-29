@@ -1,0 +1,85 @@
+{
+  "ticker": "NTU",
+  "period": "1H26",
+  "evaluator": "Codex",
+  "model": "not exposed by runtime",
+  "timestamp_utc": "2026-10-27T16:45:28.547368+00:00",
+  "source_pdf": {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "database_rows": [
+      {
+        "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+        "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "physical_page_count": 38
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "snapshot": "inputs\\guardrails_snapshot.json",
+      "sha256": "c8956dd522f74b5f568e6eba785db331086654c3ff58b45c1cfea0b8e3cb66d8",
+      "bytes": 25137
+    },
+    {
+      "snapshot": "inputs\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e",
+      "bytes": 22119
+    },
+    {
+      "snapshot": "inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5",
+      "bytes": 173617
+    },
+    {
+      "snapshot": "inputs\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c",
+      "bytes": 19806
+    },
+    {
+      "snapshot": "inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff",
+      "bytes": 36610
+    },
+    {
+      "snapshot": "inputs\\gemini\\audit.md",
+      "sha256": "0ceaced33bcbcd7f83b88749e3446e5a3a062f2bc47acc4117c6d8b217a55725",
+      "bytes": 29864
+    },
+    {
+      "snapshot": "inputs\\gemini\\calculations\\reconciliations.py",
+      "sha256": "c9d7cb83d0c77bcf5a81ecb792c3ce9a21ee82f554bb64795f4e88325803a7a0",
+      "bytes": 8024
+    },
+    {
+      "snapshot": "inputs\\gemini\\calculations\\reconciliations_output.txt",
+      "sha256": "74b63038598f1424be0ce97e7618708bd575c6a2681776208819a93f43c53f9e",
+      "bytes": 3657
+    },
+    {
+      "snapshot": "inputs\\gemini\\inputs\\manifest.json",
+      "sha256": "de38b4e0d0ad5224a5331c1f8a830d854393835d67e08d22eb74e1ecbad184e1",
+      "bytes": 2207
+    },
+    {
+      "snapshot": "inputs\\gemini\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e",
+      "bytes": 22119
+    },
+    {
+      "snapshot": "inputs\\gemini\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5",
+      "bytes": 173617
+    },
+    {
+      "snapshot": "inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c",
+      "bytes": 19806
+    },
+    {
+      "snapshot": "inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff",
+      "bytes": 36610
+    }
+  ]
+}

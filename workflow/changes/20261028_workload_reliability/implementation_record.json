@@ -1,0 +1,85 @@
+{
+  "status": "IMPLEMENTED_TESTED_DEEPSEEK_TRIALS_FINISHED_AWAITING_ANTIGRAVITY",
+  "selected_companies": [
+    "NTU 1H26",
+    "DCP FY26"
+  ],
+  "implementation_scope": [
+    "Coverage-preserving capture splitting and interrupted-plan detection",
+    "Persistent validated question ledger and audit history",
+    "Bounded relevant question subsets with complete Stage 1 ledger",
+    "Compact delta prompts",
+    "Test database isolation"
+  ],
+  "final_offline_suite": {
+    "passed": 195,
+    "exit_code": 0,
+    "seconds": 68.49
+  },
+  "first_targeted": {
+    "passed": 58,
+    "failed": 1,
+    "exit_code": 1,
+    "reason": "Legacy fixture supplied old ledger format"
+  },
+  "first_full": {
+    "passed": 189,
+    "failed": 1,
+    "exit_code": 1,
+    "reason": "CLI resubmission fixture supplied old ledger format"
+  },
+  "comparison_status": "NTU: full Stage 2 exhausted 65536/98304 completion budgets; concise WITHHELD recovery brief completed. DCP: full Stage 1 and Stage 2 completed, valuation WITHHELD. Both final runner exits 0. Gemini reviews await user in Antigravity.",
+  "gemini_execution": "User runs in Antigravity; prepare local handoff only",
+  "gemini_api_calls": 0,
+  "production_preservation": "Logical reports/sections/guardrails verified unchanged against run snapshot; SQLite insert counter changed through an existing integration test, now isolated on a backup.",
+  "new_guardrails_added": false,
+  "script_comparison_limits": [
+    "Mixed prompt revisions while iteratively resolving contract failures",
+    "Rejected closures stay open; labeled local fallback is not successful model resolution",
+    "Reported costs/latency include repairs and completion retries; not an isolated reasoning experiment"
+  ],
+  "feature_files": [
+    {
+      "path": "section_capture/capture_coverage.py",
+      "sha256": "350233db72051f5236809d76eb77388742c811cc366f50c4d313a39b6f3c1d2c"
+    },
+    {
+      "path": "section_capture/question_ledger.py",
+      "sha256": "100d818f48428e7095aaf03ff2be066ba558ea22814617e4641b49135303905f"
+    },
+    {
+      "path": "section_capture/db.py",
+      "sha256": "65498856aa3a864beaa7749f79aa5a0ea06764eb46a7a599e3aff4895ee212d8"
+    },
+    {
+      "path": "section_capture/packages.py",
+      "sha256": "5e6b47401d61e2a3ef2f7a2e0f524535533c105bd8c8e46f5531ab86812cfe0b"
+    },
+    {
+      "path": "section_capture/section_matcher.py",
+      "sha256": "594598a440e97d655d3813da186e95019941e9f550ac51bde2f8b1a1d1a8941b"
+    },
+    {
+      "path": "section_capture/one_shot_view.py",
+      "sha256": "68496213c5466e477a761bb6c47a6205bdbd9876c8d828a73d465e54324bf42c"
+    },
+    {
+      "path": "section_capture/map_dialog.py",
+      "sha256": "1af6de6087c960dfbf6c3d45f0a75d475c45466947aa438b3d11e81538c785d9"
+    },
+    {
+      "path": "workflow/resubmit_sections.py",
+      "sha256": "b1aeb69c94bdf847ab00a2b5bb8d0b1c8d2459107fdc81f1f9a753bdda723f2d"
+    },
+    {
+      "path": "tests/test_workload_reliability.py",
+      "sha256": "85c5656e7f37fd82f354c76fcc4491056ee4bcb52e1bd235f677f34c8cad24d5"
+    }
+  ],
+  "cleanup": {
+    "completed_test_directories_removed": 9,
+    "exit_code": 0,
+    "result_records_preserved": true
+  },
+  "handoff": "ANTIGRAVITY_HANDOFF.md; each company gemini/START_HERE.md and handoff_manifest.json; original source hashes verified before export."
+}

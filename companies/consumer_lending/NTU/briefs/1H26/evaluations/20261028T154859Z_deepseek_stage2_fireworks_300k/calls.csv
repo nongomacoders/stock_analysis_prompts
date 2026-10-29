@@ -1,0 +1,2 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+stage2,gen-1793202549-WH7Nojp6J6BhWcpfHL8P,True,0.02148888,response_usage,35708,16655,11727,0,4928,50.43,38.837,Fireworks,,,stop,unavailable

@@ -17,6 +17,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from section_capture.valuation_policy import valuation_gate_prompt
+
 from companies import find_company_dir
 from companies.sectors import get_sector_config, get_jse_sector_code, get_jse_sector_name
 from section_capture.db import (
@@ -164,7 +166,7 @@ def build_sens_update_prompt_content(
 
     md_lines.append("")
     md_lines.append(
-        "2. **Evaluate the Valuation & Balance Sheet Impact (Anchored to Stage 1 Forensic Ground Truth):**\n"
+        "2. **Evaluate the Valuation & Balance Sheet Impact (Reopening Stage 1 Working Claims):**\n"
         "   - Cross-examine the new SENS evidence against BOTH the **Audited Stage 1 Forensic Determinations** (if provided below) and the established **Baseline Valuation Report**.\n"
         "   - Audit the prior Baseline Valuation Report for any mathematical or accounting inconsistencies (such as double-counting IFRS 16 lease liabilities against Pre-IFRS 16 cash flows, or double-subtracting impairments from statutory Operating Profit) and correct them in the updated valuation model.\n"
         "   - Determine whether the **12-Month Target Price (ZAR)**, **Current Reference Price**, or **Recommendation (BUY / HOLD / SELL)** "
@@ -195,19 +197,16 @@ def build_sens_update_prompt_content(
         f'       "sector": "{detected_sector}",\n'
         f'       "jse_sector_code": "{jse_code}",\n'
         f'       "jse_sector_name": "{jse_name}",\n'
-        '       "recommendation": "BUY | HOLD | SELL",\n'
+        '       "recommendation": null,\n'
         f'       "reference_price_zar": {reference_price_zar:.2f},\n' if (reference_price_zar and reference_price_zar > 0) else '       "reference_price_zar": 0.00,\n'
-        '       "target_price_zar": 0.00,\n'
-        '       "implied_upside_pct": 0.0,\n'
-        '       "forward_dividend_yield_pct": 0.0,\n'
-        '       "projected_12m_tsr_pct": 0.0,\n'
-        '       "rating_bands": {\n'
-        '         "strong_buy_max_zar": 0.00,\n'
-        '         "buy_max_zar": 0.00,\n'
-        '         "hold_max_zar": 0.00,\n'
-        '         "sell_max_zar": 0.00,\n'
-        '         "strong_sell_above_zar": 0.00\n'
-        '       }\n'
+        '       "target_price_zar": null,\n'
+        '       "implied_upside_pct": null,\n'
+        '       "forward_dividend_yield_pct": null,\n'
+        '       "projected_12m_tsr_pct": null,\n'
+        '       "valuation_status": "WITHHELD",\n'
+        '       "blocking_issues": [],\n'
+        '       "valuation_checks": [],\n'
+        '       "rating_bands": null\n'
         "     }\n"
         "     ```\n"
         "   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output a Markdown table (`### Source Documents & Disclosures Considered`) listing all baseline report documents and the newly incorporated SENS announcement(s) with their filename, document type, period/date, and key evidence considered.\n"
@@ -249,7 +248,7 @@ def build_sens_update_prompt_content(
     if stage1_audit_report and stage1_audit_report.strip():
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH FROM SQLITE)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS FROM SQLITE)")
         md_lines.append("")
         md_lines.append(stage1_audit_report.strip())
         md_lines.append("")
@@ -272,13 +271,14 @@ def build_sens_update_prompt_content(
     md_lines.append("## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)")
     md_lines.append("")
     md_lines.append("To ensure institutional publication quality and 100% deterministic parsing, you MUST follow these formatting rules:")
-    md_lines.append("1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native float numbers (e.g. `0.42`, `-30.0`), not text descriptions.")
+    md_lines.append("1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing numbers when READY and JSON null for derived valuation fields when WITHHELD.")
     md_lines.append("2. **Zero HTML Tags:** DO NOT use any HTML tags (`<br>`, `<br/>`, `<span>`, `<div>`, etc.). Use standard Markdown newlines.")
     md_lines.append("3. **Single-Line Table Rows:** Every Markdown table row MUST be on a single continuous line starting and ending with `|`. DO NOT insert blank lines (`\\n\\n`) within table rows or split cells across multiple lines.")
     md_lines.append("4. **Isolated Determination Cells:** In the Valuation Summary Card, keep determination columns strictly limited to the metric value (e.g. `R0.42` or `-30.0%`). Reserve all commentary and secondary notes strictly for the Commentary column.")
     md_lines.append("5. **No Special Symbols or Arbitrary Code Blocks:** DO NOT wrap ordinary numbers or percentages in backticks (`). Reserve backticks solely for the initial JSON block and formal code/file identifiers.")
     md_lines.append("")
 
+    md_lines.append(valuation_gate_prompt())
     return "\n".join(md_lines)
 
 

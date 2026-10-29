@@ -1,0 +1,15 @@
+{
+  "label": "section_07",
+  "pages": [
+    9,
+    10,
+    11
+  ],
+  "heading": "Income, comprehensive income and equity movements",
+  "ledger_valid": false,
+  "errors": [
+    "Evidence quote for Q-e4497d9112cd4e9d, physical page 9 is not literal: 'Imputed interest revenue, calculated using the credit-adjusted effective interest rate | 383 |  |  |'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+  ],
+  "questions_before": 10,
+  "questions_after": 10
+}

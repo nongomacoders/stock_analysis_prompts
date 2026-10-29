@@ -1,0 +1,79 @@
+[
+  {
+    "id": "F001",
+    "severity": "high",
+    "origin": "DeepSeek section model",
+    "linked_gemini": [
+      "F004"
+    ],
+    "finding": "NTU impairment loss still called release; signs in arithmetic alone insufficient.",
+    "correction": "Interpret -167 as loss for this disclosed cumulative-gain balance; do not generalize to every reserve reduction.",
+    "financial_impact": "167Rm direction mischaracterized; no forecast/valuation impact quantified."
+  },
+  {
+    "id": "F002",
+    "severity": "medium",
+    "origin": "DeepSeek ledger generation",
+    "linked_gemini": [
+      "F005"
+    ],
+    "finding": "Q-08aa5c3f257440ab closed despite carrying-value scope deferred.",
+    "correction": "Keep partial with answered basis and remaining scope; new question cannot substitute for original closure.",
+    "financial_impact": "Premature removal from future evidence requests."
+  },
+  {
+    "id": "F003",
+    "severity": "high",
+    "origin": "DeepSeek column selection",
+    "linked_gemini": [
+      "F006"
+    ],
+    "finding": "PAN model overlaps Group underground with buy-in, extra1081oz.",
+    "correction": "Use disjoint scope; qualify reported subtotal components where source inconsistent.",
+    "financial_impact": "False197608 vs196527oz model discrepancy."
+  },
+  {
+    "id": "F004",
+    "severity": "medium",
+    "origin": "Gemini evaluator",
+    "linked_gemini": [
+      "F007"
+    ],
+    "finding": "47kg production denominator does not reproduce reported Tennant all-in cost rate; transaction-date/weighted FX assertion not established.",
+    "correction": "Sold36.671kg and rounded58.1m imply1584358/kg, close to reported1584835; report consistency only, definitions/cause remain unverified.",
+    "financial_impact": "Avoid replacing one invented cause with another; no valuation effect measured."
+  },
+  {
+    "id": "F005",
+    "severity": "medium",
+    "origin": "PAN original disclosure; evaluator certainty",
+    "linked_gemini": [
+      "F008"
+    ],
+    "finding": "MTR FY25 tailings differs5763oz between asset/total columns; true source observation. Coincidence with FY26 buy-in does not identify cause or correct cell.",
+    "correction": "Record both readings and unresolved source consistency. Qualify exact Group sum using reported subtotal.",
+    "financial_impact": "5763oz component inconsistency, not proved Group-production error."
+  },
+  {
+    "id": "F006",
+    "severity": "low",
+    "origin": "Gemini evaluator",
+    "linked_gemini": [
+      "F003",
+      "F008",
+      "F009"
+    ],
+    "finding": "Overstates quote-brittleness elimination, proven rounding and Markdown hierarchy impossibility.",
+    "correction": "Restrict benefits to five cases, cause unverified; preserve optional qualified-label improvement without complex parser.",
+    "financial_impact": "Limits engineering-confidence claims."
+  },
+  {
+    "id": "F007",
+    "severity": "medium",
+    "origin": "DeepSeek section interpretation; not singled out by Gemini",
+    "linked_gemini": [],
+    "finding": "NTU24 says Debt review +69 gain is directionally consistent with payer-dropoff narrative. Aggregate deterioration does not establish that portfolio attribution.",
+    "correction": "Separate management aggregate historical-book explanation from portfolio data; Debt review increased72to141.",
+    "financial_impact": "Misleading portfolio-driver interpretation; no valuation effect quantified."
+  }
+]

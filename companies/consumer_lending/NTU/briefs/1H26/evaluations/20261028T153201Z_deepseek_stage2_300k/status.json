@@ -1,0 +1,9 @@
+{
+  "status": "incomplete",
+  "calls": 1,
+  "stage": "stage2",
+  "last_dispatch_utc": "2026-10-28T15:32:12.344723+00:00",
+  "first_dispatch_utc": "2026-10-28T15:32:12.342669+00:00",
+  "completed_utc": "2026-10-28T15:45:27.003991+00:00",
+  "error_type": "Incomplete"
+}

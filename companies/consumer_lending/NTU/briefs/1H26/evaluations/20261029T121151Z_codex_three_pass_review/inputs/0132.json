@@ -1,0 +1,69 @@
+{
+  "case": "pan_dense",
+  "arm": "three_pass",
+  "ledger_valid": true,
+  "errors": [],
+  "questions_before": [],
+  "questions_after": [
+    {
+      "question": "Reconcile FY25 Group gold produced: printed total 196,527 oz vs sum of components (93,724 underground + 2,654 surface + 98,636 tailings + 1,081 buy-in + 1,513 surface feedstock = 197,608 oz). Is the 1,081 oz buy-in already embedded in another column, or is the total misstated?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 p.48-49; D006.2 segment note",
+      "evidence_required": "FY25 component build of group gold produced with explicit treatment of buy-in feedstock; segment note reconciliation",
+      "closure_condition": "Components sum to printed total, or an explicit disclosure explains the 1,081 oz difference",
+      "question_id": "Q-1f48aa6d4b884f09",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Explain FY25 Evander underground gold produced: 26,748 oz in the underground column vs 27,829 oz in the Evander Mines total column (difference 1,081 oz = FY25 buy-in). Which figure is correct and why does the total exceed the underground component?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 p.48; D006.2 segment note",
+      "evidence_required": "Evander FY25 production build by source (underground, surface, buy-in) with reconciliation to total",
+      "closure_condition": "Difference explained by a disclosed component or corrected figure",
+      "question_id": "Q-e8c872e6edc94d18",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Explain FY25 Elikhulu all-in cost ZAR/kg printed as 68,843 vs FY26 853,597 — is this a typo, a units error, or a genuine one-off? What is the correct FY25 figure?",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 p.49; D008 ALL-IN COSTS",
+      "evidence_required": "Elikhulu FY25 all-in cost build (cash cost + sustaining + expansion capex) reconciling to ZAR/kg; confirmation of printed value",
+      "closure_condition": "Correct FY25 figure established and reconciled to cost components",
+      "question_id": "Q-f1a4ce3647724ed9",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Explain Tennant A$ all-in cost swing from 1,584,835 A$/kg (FY25) to 205,143 A$/kg (FY26) — is the FY25 figure anomalous (tiny base, ramp-up) or a genuine cost collapse? What drove the change?",
+      "priority": "low",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D009 p.49; D008 ALL-IN COSTS; D006.2 segment note",
+      "evidence_required": "Tennant FY25/FY26 all-in cost build in A$ and A$/kg, with production volumes and capex; note any ramp-up or one-off items",
+      "closure_condition": "Swing explained by disclosed cost/production drivers or confirmed as a base-effect artefact",
+      "question_id": "Q-ced8d2566db6459c",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Provide APM definitions used in D009: AISC, all-in cost, AISC excluding third-party buy-in feedstock, and Adjusted EBITDA — including which cost lines (royalties, sustaining capex, expansion capex, G&A, exploration) are included and how buy-in feedstock is treated.",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures (pp.38-47); D010 Glossary",
+      "evidence_required": "Written APM definitions and reconciliation tables for AISC, all-in cost, AISC excl. buy-in, Adjusted EBITDA",
+      "closure_condition": "Definitions and reconciliations located and consistent with D009 figures",
+      "question_id": "Q-c1e6100f7a674873",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

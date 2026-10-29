@@ -1,0 +1,23 @@
+{
+  "checked_utc": "2026-10-28T06:32:45.986157+00:00",
+  "approval": "User yes to implementing material-issue withholding in prompts and production validation; carried forward by continue.",
+  "guardrail": {
+    "id": 31473,
+    "rule_code": "ALL-MATERIAL-ISSUES-VALUATION-WITHHOLD",
+    "sector": "all",
+    "stage": "all",
+    "title": "Withhold Valuation Until Material Dependencies Are Resolved",
+    "rule_text": "If a material cash-flow, forecast, financing, share-count, portfolio or valuation dependency fails reconciliation or remains unsupported, return VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED. Preserve verified historical analysis and risks, identify each blocker and the evidence or correction needed, and carry unresolved Stage 1 findings forward. Do not publish a target, rating bands, upside, dividend yield, TSR or investment recommendation; use JSON null, never zero or HOLD. Illustrative scenarios must remain clearly conditional and separate from the headline valuation. READY requires explicit source evidence, consistent periods and scopes, cash/debt/portfolio roll-forwards, equity financing and terminal-policy consistency, valuation-bridge and sensitivity checks. Assumptions may be used when supported and disclosed; they cannot conceal material missing inputs. Application checks of declared evidence and numeric reconciliations do not replace independent review.",
+    "origin_ticker": "NTU",
+    "enabled": 1,
+    "created_at": "2026-10-27T18:48:12.063843+00:00",
+    "updated_at": "2026-10-27T18:48:12.063843+00:00"
+  },
+  "prior_registry_count": 36,
+  "current_registry_count": 37,
+  "other_rules_unchanged": true,
+  "NTU_production_old_columns_unchanged": true,
+  "new_candidate_column_present": true,
+  "PDF_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+  "baseline_snapshot": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\analysis_snapshot.sqlite"
+}

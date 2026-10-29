@@ -1,0 +1,56 @@
+{
+  "case": "pan_dense",
+  "ledger_valid": true,
+  "errors": [],
+  "questions_before": [],
+  "questions_after": [
+    {
+      "question": "What are the precise definitions of cash cost, all-in sustaining cost (AISC), all-in cost, and 'excluding third-party buy-in feedstock', and what FX/oz conversion convention is used to translate ZAR/kg cost metrics to US$/oz? Group FY26 AISC prints 985,551 ZAR/kg and 1,867 US$/oz; 985,551/16.90/32.1507 ≈ 1,814 US$/oz (residual ~53 US$/oz), and cash cost 860,706 ZAR/kg vs 1,600 US$/oz (residual ~16 US$/oz).",
+      "priority": "high",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008 Alternative performance measures (pp. 38-47); D010 Glossary (pp. 51-52)",
+      "evidence_required": "Definition of each cost metric, treatment of third-party buy-in feedstock, and the exact FX rate and oz/kg conversion (32.1507 vs other) used; period FY26 and FY25; units ZAR/kg and US$/oz.",
+      "closure_condition": "Definitions and conversion convention stated, and the ZAR/kg-to-US$/oz residuals for Group cash cost and AISC explained (or confirmed as rounding/convention).",
+      "question_id": "Q-5eb5607064ca4bff",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Is the Tennant A$ all-in cost FY25 figure of 1,584,835 A$/kg a printing/scale error? FY26 prints 205,143 A$/kg, a ~7.7x swing inconsistent with A$ cash cost (43,116 to 81,099) and AISC (80,962 to 106,900) moves.",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.2 All-in costs (pp. 40-43)",
+      "evidence_required": "Restated or corrected Tennant A$ all-in cost for FY25 and FY26, with units A$/kg and the underlying A$ all-in cost of production (A$m) and oz produced.",
+      "closure_condition": "Correct FY25 Tennant A$ all-in cost confirmed, or the printed figure confirmed with explanation of the swing.",
+      "question_id": "Q-9ada7d4d417e4d69",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Why does FY25 Group gold produced not reconcile? Sum of components (93,724 + 2,654 + 98,636 + 1,081 + 1,513) = 197,608 oz vs printed Group total 196,527 oz (residual +1,081 oz); Evander underground shows 26,748 oz in the mining-operations block but 27,829 oz in the Evander Mines total column (difference 1,081 oz = buy-in oz).",
+      "priority": "medium",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D006.2 Note 3 Segment analysis (pp. 20-24)",
+      "evidence_required": "Segment gold-produced reconciliation for FY25 by asset, clarifying whether buy-in feedstock oz are included in the Evander underground column or only in the total column.",
+      "closure_condition": "Column scope confirmed and FY25 Group total reconciled to components (or residual explained).",
+      "question_id": "Q-7e24ac0307974ecb",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "Confirm printed values affected by spacing/format typos: Group ZAR all-in cost FY26 '1,271 855' (read as 1,271,855 ZAR/kg); Evander buy-in feedstock FY26 '6, 609' oz (read as 6,609 oz); Barberton all-in cost of production FY25 '2 956.0' ZARm (read as 2,956.0 ZARm).",
+      "priority": "low",
+      "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "target_section": "D008.2 All-in costs (pp. 40-43); D010 Glossary (pp. 51-52)",
+      "evidence_required": "Clean printed values for these cells in the APM/glossary sections or a corrected production summary.",
+      "closure_condition": "Each flagged cell confirmed or corrected.",
+      "question_id": "Q-bfaab02bfc6c4450",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

@@ -15,6 +15,8 @@ Provides a streamlined interface where the user:
 
 from __future__ import annotations
 
+from section_capture.valuation_policy import preserve_candidate
+
 from datetime import datetime
 import hashlib
 import json
@@ -76,6 +78,7 @@ from section_capture.db import (
 )
 from section_capture.market_data import fetch_jse_quote, save_market_quotes
 from section_capture.openrouter import (
+    STAGE_ANALYSIS_OPTIONS,
     OpenRouterWorker,
     get_model_display_name,
     get_openrouter_api_key,
@@ -199,7 +202,9 @@ def discover_available_companies(db_path: Path | str | None = None) -> list[dict
 
         sens_count = s.get("sens_count", 0)
         sens_str = f" · {sens_count} SENS" if sens_count else ""
-        if s.get("target_price_zar") is not None:
+        if s.get('valuation_status') == 'WITHHELD':
+            status = f'Valuation withheld{sens_str}'
+        elif s.get("target_price_zar") is not None:
             rec = f" ({s['recommendation']})" if s.get("recommendation") else ""
             status = f"Valued · Target: R{s['target_price_zar']:,.2f}{rec}{sens_str}"
         elif s.get("has_stage1"):
@@ -571,6 +576,8 @@ class IngestionWorker(QThread):
 
                 existing_secs = list_sections(sha, db_path=self.db_path)
                 if existing_secs and not self.force_rerun:
+                    from .capture_coverage import assert_capture_plan_complete
+                    assert_capture_plan_complete(sha, existing_secs, self.db_path)
                     done_cnt = sum(1 for s in existing_secs if (s.llm_response or "").strip())
                     pend_cnt = len(existing_secs) - done_cnt
                     self.log_message.emit(
@@ -622,8 +629,10 @@ class IngestionWorker(QThread):
                         for sp in range(1, total_p + 1, chunk)
                     ]
 
+                from .capture_planner import partition_detected_ranges
+                detected_sections = partition_detected_ranges(detected_sections, source.page_count)
                 self.log_message.emit(
-                    f"📋 Discovered <b>{len(detected_sections)} coherent sections</b> in <code>{doc_name}</code>:"
+                    f"📋 Planned <b>{len(detected_sections)} source ranges</b> in <code>{doc_name}</code>; native note/statement headings refine capture boundaries:"
                 )
                 for s_idx, sec in enumerate(detected_sections, 1):
                     sp = sec.get("start_page", 1)
@@ -631,6 +640,8 @@ class IngestionWorker(QThread):
                     t_str = sec.get("title", f"Section {s_idx}")
                     self.log_message.emit(f"&nbsp;&nbsp;&nbsp;&nbsp;• <b>S{s_idx:02d}</b> [p.{sp}–p.{ep}]: {t_str}")
 
+                from .capture_coverage import save_capture_plan
+                save_capture_plan(sha, detected_sections, source.page_count, self.db_path)
                 # Auto-capture each section into SQLite
                 captured_cnt = 0
                 for s_idx, sec in enumerate(detected_sections, 1):
@@ -662,12 +673,12 @@ class IngestionWorker(QThread):
                         )
                         captured_cnt += 1
                     except Exception as cap_err:
-                        self.log_message.emit(
-                            f"⚠️ Warning capturing section '{t_str}' in <code>{doc_name}</code>: {cap_err}"
-                        )
+                        source.close()
+                        raise RuntimeError(f"Capture incomplete for '{t_str}' in {doc_name}: {cap_err}") from cap_err
 
+                captured_cnt = len(list_sections(sha, db_path=self.db_path))
                 self.log_message.emit(
-                    f"💾 Auto-captured <b>{captured_cnt}/{len(detected_sections)}</b> section packages for <code>{doc_name}</code> into SQLite."
+                    f"💾 Auto-captured <b>{captured_cnt}</b> section packages from {len(detected_sections)} detected sections for <code>{doc_name}</code> into SQLite."
                 )
                 self.doc_status_updated.emit(
                     doc_name,
@@ -1555,7 +1566,8 @@ class OneShotView(QWidget):
             dt = d.get("doc_type", "annual_report")
             path = d["path"]
             secs = list_sections(sha, db_path=self.db_path)
-            pend_secs = [s for s in secs if not (s.llm_response or "").strip()]
+            pend_secs = [s for s in secs if not (s.llm_response or "").strip()
+                         or s.manifest.get('review', {}).get('ledger_validation') == 'rejected']
             for s in pend_secs:
                 self._pending_section_queue.append({
                     "section": s,
@@ -1621,7 +1633,8 @@ class OneShotView(QWidget):
         prompt_to_send = sec.prompt
         try:
             import copy
-            latest_ledger = load_questions_ledger(sha, questions_root=self.db_path) or ""
+            from .db import prepare_question_ledger
+            latest_ledger = prepare_question_ledger(sha, db_path=self.db_path, for_prompt=True, context=sec.manifest)
             manifest = copy.deepcopy(sec.manifest) if getattr(sec, "manifest", None) else {}
             if "heading" not in manifest:
                 manifest["heading"] = sec.heading
@@ -1637,6 +1650,7 @@ class OneShotView(QWidget):
                 manifest["selections"] = getattr(sec, "selections", None) or []
 
             manifest["stored_questions"] = latest_ledger.strip() or None
+            manifest['ledger_contract'] = 1
             manifest["sector"] = sector
             texts = extract_selection_texts(manifest, selected_text=sec.selected_text, prompt=sec.prompt)
             prompt_to_send = build_prompt(manifest, texts, sector=sector)
@@ -1645,8 +1659,9 @@ class OneShotView(QWidget):
                     "UPDATE sections SET prompt = ?, manifest_json = ? WHERE package_id = ?",
                     (prompt_to_send, json.dumps(manifest, ensure_ascii=False), sec.package_id),
                 )
-        except Exception:
-            pass
+        except Exception as exc:
+            self._on_pipeline_error(f'Cannot build current ledger context for {fn}: {exc}')
+            return
 
         self._update_doc_table_row(
             fn,
@@ -1679,7 +1694,7 @@ class OneShotView(QWidget):
                 "completion_tokens": stats.get("completion_tokens"),
                 "total_tokens": stats.get("total_tokens"),
             }
-            _, extracted = save_section_llm_response(
+            saved_section, extracted = save_section_llm_response(
                 sec.package_id,
                 resp_text,
                 update_ledger=True,
@@ -1689,6 +1704,10 @@ class OneShotView(QWidget):
                 model=model,
                 db_path=self.db_path,
             )
+            if saved_section and saved_section.manifest.get('review', {}).get('ledger_validation') == 'rejected':
+                self._on_pipeline_error('Section response preserved, but ledger update rejected: '
+                                        + '; '.join(saved_section.manifest['review']['ledger_errors']))
+                return
             self._completed_sections_in_run += 1
 
             # Check updated Questions Ledger
@@ -1908,11 +1927,11 @@ class OneShotView(QWidget):
         self.append_log(
             f"🔍 <b>Phase 3 (Stage 1 Forensic Audit):</b> Compiled prompt "
             f"<code>{s1_prompt_file.name}</code> ({len(s1_prompt):,} chars, ~{tok_est:,} tokens). "
-            f"Submitting to <b>{model_name}</b>..."
+            f"Submitting to <b>{model_name}</b> (reasoning: max)..."
         )
 
         self._s1_worker = OpenRouterWorker(
-            s1_prompt, model=model, parent=self, timeout=300, max_tokens=16384
+            s1_prompt, model=model, parent=self, **STAGE_ANALYSIS_OPTIONS
         )
 
         def on_s1_done(resp_text: str, elapsed: float, stats: dict):
@@ -1920,6 +1939,7 @@ class OneShotView(QWidget):
                 return
             save_stage1_report(primary_sha, response=resp_text, db_path=self.db_path)
             s1_out_file.write_text(resp_text, encoding="utf-8")
+            s1_out_file.with_suffix(".run.json").write_text(json.dumps(stats, indent=2), encoding="utf-8")
             self.stage1_preview.setPlainText(resp_text)
             self.output_tabs.setCurrentIndex(1)
 
@@ -2151,27 +2171,31 @@ class OneShotView(QWidget):
         self.append_log(
             f"💎 <b>Phase 4 (Stage 2 Institutional Valuation):</b> Assembled full PDF + Stage 1 dossier "
             f"{sens_log} ({len(full_dossier):,} chars, ~{tok_est:,} tokens across {sources_summary}). "
-            f"Submitting to <b>{model_name}</b>..."
+            f"Submitting to <b>{model_name}</b> (reasoning: max)..."
         )
 
         self._s2_worker = OpenRouterWorker(
-            full_dossier, model=model, parent=self, timeout=360, max_tokens=16384
+            full_dossier, model=model, parent=self, **STAGE_ANALYSIS_OPTIONS
         )
 
         def on_s2_done(resp_text: str, elapsed: float, stats: dict):
             if not self._is_running:
                 return
+            candidate_response = resp_text
+            preserve_candidate(briefs_dir / f'{ticker}_{period}_stage2_valuation_note.md', candidate_response)
             resp_text = sanitize_stage2_valuation_markdown(resp_text, reference_price_hint=ref_price)
             resp_text = ensure_documents_considered_table(resp_text, source_documents_meta)
-            save_stage2_report(primary_sha, response=resp_text, db_path=self.db_path)
+            save_stage2_report(primary_sha, response=resp_text, candidate_response=candidate_response, db_path=self.db_path)
             s2_out_file = briefs_dir / f"{ticker}_{period}_stage2_valuation_note.md"
             s2_out_file.write_text(resp_text, encoding="utf-8")
+            s2_out_file.with_suffix(".run.json").write_text(json.dumps(stats, indent=2), encoding="utf-8")
 
             self.stage2_preview.setPlainText(resp_text)
             self.output_tabs.setCurrentIndex(2)
 
             tok = stats.get("total_tokens", 0)
-            self.set_phase_state(3, f"✓ Valued in {elapsed:.1f}s ({tok:,} tok)", "done")
+            disposition = 'Valuation withheld' if parse_valuation_summary(resp_text).get('valuation_status') == 'WITHHELD' else 'Valued'
+            self.set_phase_state(3, f'{disposition} in {elapsed:.1f}s ({tok:,} tok)', 'done')
             self.append_log(
                 f"✅ <b>Phase 4 Complete:</b> Stage 2 Valuation Note generated in {elapsed:.1f}s "
                 f"({len(resp_text):,} chars, {tok:,} tokens). Saved to <code>{s2_out_file.name}</code>."
@@ -2299,12 +2323,14 @@ class OneShotView(QWidget):
         )
 
         self._s2_worker = OpenRouterWorker(
-            sens_prompt, model=model, parent=self, timeout=300, max_tokens=16384
+            sens_prompt, model=model, parent=self, **STAGE_ANALYSIS_OPTIONS
         )
 
         def on_sens_done(resp_text: str, elapsed: float, stats: dict):
             if not self._is_running:
                 return
+            candidate_response = resp_text
+            preserve_candidate(briefs_dir / f'{ticker}_{period}_stage2_valuation_note.md', candidate_response)
             resp_text = sanitize_stage2_valuation_markdown(resp_text, reference_price_hint=ref_price)
             resp_text = ensure_documents_considered_table(resp_text, source_documents_meta)
             # Preserve baseline before overwriting
@@ -2313,6 +2339,7 @@ class OneShotView(QWidget):
             if s2_out_file.exists() and not baseline_file.exists():
                 shutil.copy2(s2_out_file, baseline_file)
             s2_out_file.write_text(resp_text, encoding="utf-8")
+            s2_out_file.with_suffix(".run.json").write_text(json.dumps(stats, indent=2), encoding="utf-8")
 
             primary_sha = self.current_company.get("sha256")
             if not primary_sha and self._ingested_docs:
@@ -2322,11 +2349,12 @@ class OneShotView(QWidget):
                 )
                 primary_sha = primary_doc.get("sha256")
             if primary_sha:
-                save_stage2_report(primary_sha, prompt=sens_prompt, response=resp_text, db_path=self.db_path)
+                save_stage2_report(primary_sha, prompt=sens_prompt, response=resp_text, candidate_response=candidate_response, db_path=self.db_path)
 
             self.stage2_preview.setPlainText(resp_text)
             self.output_tabs.setCurrentIndex(2)
-            self.set_phase_state(3, f"✓ SENS Updated in {elapsed:.1f}s", "done")
+            disposition = 'Valuation withheld' if parse_valuation_summary(resp_text).get('valuation_status') == 'WITHHELD' else 'SENS Updated'
+            self.set_phase_state(3, f'{disposition} in {elapsed:.1f}s', 'done')
             self.append_log(
                 f"✅ <b>Phase 4 Complete:</b> SENS Valuation Update finished in {elapsed:.1f}s "
                 f"({len(resp_text):,} chars)."
@@ -2386,6 +2414,14 @@ class OneShotView(QWidget):
 
         # Parse executive valuation metrics
         summary = parse_valuation_summary(final_valuation_text) or {}
+        if summary.get('valuation_status') == 'WITHHELD':
+            self.set_phase_state(4, 'Valuation withheld', 'done')
+            self.overall_progress.setValue(100)
+            self._set_running_ui(False)
+            self.live_banner_label.setText(f'{ticker} ({period}): Valuation withheld - material issues unresolved')
+            self.append_log('Analysis saved. Valuation withheld; resolve the listed issues before publishing a target or recommendation.')
+            self.refresh_companies(select_ticker=ticker)
+            return
         rec = summary.get("recommendation") or "RATED"
         target_p = summary.get("target_price") or summary.get("target_price_zar")
         curr_p = summary.get("reference_price") or summary.get("reference_price_zar")

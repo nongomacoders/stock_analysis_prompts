@@ -1,0 +1,374 @@
+[
+  {
+    "label": "section_07",
+    "pages": [
+      9,
+      10,
+      11
+    ],
+    "errors": [
+      "Evidence quote for Q-e4497d9112cd4e9d, physical page 9 is not literal: 'Imputed interest revenue, calculated using the credit-adjusted effective interest rate | 383 |  |  |'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+    ],
+    "unapplied_delta": {
+      "ledger_version": 1,
+      "updates": [
+        {
+          "question_id": "Q-e0ca727b62be46df",
+          "status": "partial",
+          "answer": "Income statement (p.9) confirms continuing core loss (63), operating loss (79), non-operating (13), tax +29. Visible line items sum to -10, leaving a -69 residual (likely D&A/other operating costs not itemised in this capture). Bridge not closed.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Operating loss | (79) |  |  | (168) | (186)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Loss for the period from continuing operations | (63) |  |  | (122) | (113)"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-e4497d9112cd4e9d",
+          "status": "partial",
+          "answer": "Credit-adjusted EIR imputed interest (383) and impairment on principal book portfolios (167) indicate amortised-cost/POCI-style measurement; no roll-forward to R4,489m in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Imputed interest revenue, calculated using the credit-adjusted effective interest rate | 383 |  |  | 333 | 683"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Impairment loss on principal book portfolios | (167) |  |  | (173) | (199)"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-86ab4a63039b4d7e",
+          "status": "partial",
+          "answer": "PBD income lines visible (net income 69; imputed interest 383; impairment 167) but no principal-vs-agency revenue split or PBD/RTC roll-forward in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Net income from purchased book debts | 69 |  |  | 53 | 244"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-c3d790bf20794c50",
+          "status": "partial",
+          "answer": "No amortisation driver split (volume vs macro assumption) in this capture; only aggregate impairment (167) and imputed interest (383) visible.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Impairment loss on principal book portfolios | (167) |  |  | (173) | (199)"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-b18d8ce6d4804a50",
+          "status": "partial",
+          "answer": "Basic LPS shown: continuing (8.1)c H1 2026 vs (15.6)c H1 2025 vs (14.4)c FY 2025; total (8.1)c vs (8.2)c vs (30.3)c. Headline EPS and core reconciliation not in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Basic loss per share | 5 (8.1) |  |  | (15.6) | (14.4)"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-31753fb252ee4ed2",
+          "status": "partial",
+          "answer": "FV movements on other financial assets +30 H1 2026 / +74 H1 2025 / +114 FY 2025 confirm FVTPL treatment of some assets; composition and R9m derivative liability not in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 9,
+              "quote": "Fair value movements on other financial assets | 30 |  |  | 74 | 114"
+            }
+          ]
+        }
+      ],
+      "new_questions": [
+        {
+          "question": "What items make up the -69 residual between the sum of visible income-statement lines (-10) and reported operating loss (79) for H1 2026 — specifically D&A, other operating costs, and any reclassifications? Provide a signed line-item bridge.",
+          "priority": "high",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 notes (pp.12-37) / D004",
+          "evidence_required": "Signed bridge from gross profit/revenue through to operating loss for H1 2026 and H1 2025, Rm, itemising D&A and other operating costs",
+          "closure_condition": "A signed reconciliation summing to (79) and (168) is shown, or the residual is explicitly identified; benign explanations (presentation/reclass) acceptable; forecast consequence: EBITDA and D&A run-rate."
+        },
+        {
+          "question": "What is the explicit measurement basis label for purchased book debts (amortised cost, FVTPL or POCI) and the full roll-forward (opening, acquisitions, collections, amortisation, impairment, closing) reconciling to the R4,489m carrying value at 31 Mar 2026?",
+          "priority": "high",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 PBD note / D005 credit risk",
+          "evidence_required": "PBD measurement basis label and roll-forward in Rm for H1 2026 and H1 2025, reconciling to statement of financial position carrying values",
+          "closure_condition": "Basis and roll-forward disclosed and reconciling, or confirmed not disclosed; forecast consequence: amortisation projection and credit-loss treatment."
+        },
+        {
+          "question": "What is the headline loss per share and the basic-to-headline earnings bridge for H1 2026 and H1 2025 (continuing and discontinued), and were any H1 2026 once-off items excluded from core earnings?",
+          "priority": "medium",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 note 5 EPS / D004",
+          "evidence_required": "Signed basic-to-headline reconciliation (Rm) for H1 2026 and H1 2025, continuing and discontinued, listing each exclusion; confirmation whether any H1 2026 adjustments met core-earnings policy criteria",
+          "closure_condition": "Basic-to-headline bridge shown and summing, and H1 2026 core adjustments (or absence) explained; benign explanation acceptable; forecast consequence: reliability of core earnings as run-rate base."
+        }
+      ]
+    }
+  },
+  {
+    "label": "section_09",
+    "pages": [
+      13
+    ],
+    "errors": [
+      "Evidence quote for Q-86ab4a63039b4d7e, physical page 13 is not literal: 'Accordingly, these purchased book debts are measured on a fair value basis. Refer to note 6.3.'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+    ],
+    "unapplied_delta": {
+      "ledger_version": 1,
+      "updates": [
+        {
+          "question_id": "Q-e4497d9112cd4e9d",
+          "status": "resolved",
+          "answer": "Principal book portfolios are POCI assets measured at amortised cost on a portfolio basis with cumulative lifetime-ECL-since-acquisition allowance and CAEIR interest accretion; other financial assets (no title, non-SPPI) are at fair value. Roll-forward Mar-26: 3,975 + 382 additions - 728 net collections + 383 CAEIR - 167 impairment = 3,845; other financial assets 702 + 28 - 116 + 30 FV = 644; total 4,489, tying to the note total (SoFP p.8 tie-out pending).",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Principal book portfolios are reflected at amortised cost on a portfolio basis."
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Total purchased book debts | 4 489 |  | 4 353 | 4 677 |"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-86ab4a63039b4d7e",
+          "status": "partial",
+          "answer": "PBD/RTC roll-forward and measurement basis now disclosed (principal book amortised cost POCI; other financial assets FV). Principal-vs-agency revenue split still not in this note.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Accordingly, these purchased book debts are measured on a fair value basis. Refer to note 6.3."
+            }
+          ]
+        },
+        {
+          "question_id": "Q-c3d790bf20794c50",
+          "status": "partial",
+          "answer": "Amortisation basis and remaining carrying value answered: CAEIR accretion 383 (H1-26) vs 333 (H1-25); closing principal book 3,845. Volume-vs-macro split of amortisation not disclosed in this note.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 13,
+              "quote": "Interest calculated using the credit-adjusted effective interest rate (CAEIR) | 383 |  | 333 | 683 |"
+            }
+          ]
+        }
+      ],
+      "new_questions": [
+        {
+          "question": "What is the gross vs net direction of the POCI impairment charge (R167m H1-26; R173m H1-25) — i.e. gross favourable re-estimates vs gross adverse changes in lifetime ECL since acquisition — and what recovery/collection-timing assumptions drive it? Provide the split and any sensitivity, Rm, H1-26 vs H1-25.",
+          "priority": "high",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003.4 note 1 / D003 credit-risk note",
+          "evidence_required": "Gross favourable and adverse lifetime-ECL movements, recovery-rate and collection-timing assumptions, sensitivity in Rm, H1-26 vs H1-25",
+          "closure_condition": "Gross direction and key assumptions disclosed, or confirmed not disclosed; benign explanation (net presentation) acceptable. Forecast consequence: POCI impairment projection and CAEIR sensitivity."
+        },
+        {
+          "question": "What drove the fall in other financial assets fair-value gain to R30m (H1-26) from R74m (H1-25) and R114m (FY25), and what is the note 6.3 fair-value basis (level, inputs, retraction risk)?",
+          "priority": "medium",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003 note 6.3 / D003.4 note 1.2",
+          "evidence_required": "FV movement composition, valuation level/inputs, retraction/recourse commentary, Rm, across the three dates",
+          "closure_condition": "Driver and valuation basis disclosed, or confirmed not disclosed; forecast consequence: FV earnings volatility."
+        },
+        {
+          "question": "Does the R4,489m total purchased book debts tie to the statement of financial position line at 31 Mar 2026, and how does the R3,845m pledged principal book interact with funding covenants (note 2)?",
+          "priority": "medium",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003.1 statement of financial position (p.8) / D003 note 2",
+          "evidence_required": "SoFP PBD line at 31 Mar 2026, 31 Mar 2025, 30 Sep 2025; pledge/covenant terms and headroom",
+          "closure_condition": "SoFP tie-out shown and pledge/covenant linkage disclosed, or confirmed not disclosed; forecast consequence: asset encumbrance and refinancing risk."
+        }
+      ]
+    }
+  },
+  {
+    "label": "section_13",
+    "pages": [
+      18,
+      19
+    ],
+    "errors": [
+      "Evidence quote for Q-b18d8ce6d4804a50, physical page 18 is not literal: 'Loss for the purposes of basic and diluted loss per share | Rm (63) |  |  | (64) | (238)'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+    ],
+    "unapplied_delta": {
+      "ledger_version": 1,
+      "updates": [
+        {
+          "question_id": "Q-b18d8ce6d4804a50",
+          "status": "resolved",
+          "answer": "Basic-to-headline bridge shown and sums for H1 FY26, H1 FY25 and FY25. Total: H1 FY26 loss (63) with nil headline adjustments = headline loss (63); H1 FY25 loss (64) less profit on disposal of business (100) plus tax 29 = headline loss (135); FY25 (238) less (100) plus 29 = (309). Continuing operations carry no headline adjustments in any period (H1 FY26 (63), H1 FY25 (122), FY25 (113)). Discontinued: H1 FY26 nil; H1 FY25 earnings 58 less (71) = headline loss (13); FY25 (125) less (71) = (196). H1 FY26 has no qualifying once-off/option/associate exclusions, consistent with nil core adjustments rather than a policy change.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Loss for the purposes of basic and diluted loss per share | Rm (63) |  |  | (64) | (238)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Profit on disposal of business | Rm - |  |  | (100) | (100)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (135) | (309)"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 19,
+              "quote": "Loss for the purposes of headline and diluted headline loss per share | Rm (63) |  |  | (122) | (113) | – | (13) | (196)"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-73ba5052e544431c",
+          "status": "partial",
+          "answer": "Note 5 confirms a 2.2m weighted-average treasury-share reduction (784.3m to 782.1m) and 782.1m basic/headline denominator for H1 FY26, with CSP shares non-dilutive. The 3,662,209 shares / R3.7m consideration / counterparty and the R3.7m-to-R4m reconciliation sit in D003.6 (p.16), not in this capture; the 2.2m weighted-average is a part-period figure and cannot be reconciled to the 3.66m transaction count from Note 5 alone. Remains open pending p.16.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Effect of treasury shares bought | million (2.2) |  |  | – | –"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 18,
+              "quote": "Weighted average number of ordinary shares for the purposes of basic and headline loss per share | million 782.1 |  |  | 784.3 | 784.3"
+            }
+          ]
+        }
+      ],
+      "new_questions": []
+    }
+  },
+  {
+    "label": "section_20",
+    "pages": [
+      30,
+      31
+    ],
+    "errors": [
+      "Evidence quote for Q-e4497d9112cd4e9d, physical page 30 is not literal: 'In terms of IFRS reporting, collections are taken into account in the movement of the amortised cost'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+    ],
+    "unapplied_delta": {
+      "ledger_version": 1,
+      "updates": [
+        {
+          "question_id": "Q-e0ca727b62be46df",
+          "status": "partial",
+          "answer": "Bridge items identified from p.31: core loss (63) + tax 29 + D&A 68 + PBD amortisation 597 + equity loss 1 + net finance 216 = 848, which does not equal the stated core EBITDA 790 (difference 58). The alternative path 790 - 597 - 216 = -23 vs reported -63 leaves residual -40, approximately D&A 68 less tax 29 less equity 1 (=38). The printed reconciliation does not foot; residual not explicitly identified.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 31,
+              "quote": "Core EBITDA per segment** | 710 |  | 80 | 790"
+            },
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 31,
+              "quote": "Depreciation and amortisation | 32 |  | 36 | 68"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-e4497d9112cd4e9d",
+          "status": "partial",
+          "answer": "SA principal PBD confirmed on amortised-cost basis: CODM view shows PBD collections 888 in revenue and amortisation 597 in cost of revenue, reversed to IFRS where 'collections are taken into account in the movement of the amortised cost on the statement of financial position, and the income statement therefore reflects interest revenue and impairment gains/(losses)'. Roll-forward to R4,489m not in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 30,
+              "quote": "In terms of IFRS reporting, collections are taken into account in the movement of the amortised cost on the statement of financial position, and the income statement therefore reflects interest revenue and impairment gains/(losses)."
+            }
+          ]
+        },
+        {
+          "question_id": "Q-d22e0c2b395a427e",
+          "status": "partial",
+          "answer": "PBD amortisation 597 disclosed as CAEIR imputed interest 383 + impairment loss 167 + net cash collections 728 + FV movements 30 + cash collections 116 (notes 1.1/1.2). Components sum to 1,424, not 597 — scope/presentation inconsistency unresolved; ECL release driver split not given.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 31,
+              "quote": "Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R383 million, impairment loss of R167 million and net cash collections of R728 million per note 1.1 and fair value movements of R30 million and cash collections of R116 million per note 1.2."
+            }
+          ]
+        },
+        {
+          "question_id": "Q-b18d8ce6d4804a50",
+          "status": "partial",
+          "answer": "H1 FY26 core reconciliation shows nil exceptional items (core and headline adjustments) for both segments and group; basic-to-headline bridge not shown in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 31,
+              "quote": "Exceptional items (core and headline adjustments) | - |  | - | -"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-f8a0c48e3545479f",
+          "status": "partial",
+          "answer": "SA IFRS revenue 159 (agency/fee) vs Intl 552; SA CODM PBD collections 888 and amortisation 597 reverse out. Principal vs agency split within SA not explicitly stated; PBD amortisation basis (amortised cost) confirmed.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 30,
+              "quote": "Revenue* | 159 – 159 |  |  |  |  | 552 | 711"
+            }
+          ]
+        },
+        {
+          "question_id": "Q-86ab4a63039b4d7e",
+          "status": "partial",
+          "answer": "SA IFRS revenue 159 vs Intl 552; PBD collections 888 (CODM) and amortisation 597 disclosed; measurement basis amortised cost confirmed. Principal/agency revenue split and full roll-forward not disclosed in this capture.",
+          "evidence": [
+            {
+              "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+              "physical_page": 30,
+              "quote": "Revenue from purchased book debts | 888 (888) -"
+            }
+          ]
+        }
+      ],
+      "new_questions": [
+        {
+          "question": "The p.31 core reconciliation does not foot: core loss (63) plus tax 29, D&A 68, PBD amortisation 597, equity loss 1 and net finance 216 sums to 848, not the stated core EBITDA 790 (difference 58). Separately, the PBD amortisation footnote components (383+167+728+30+116) sum to 1,424, not 597. Provide the corrected signed reconciliation and clarify whether the footnote mixes note 1.1 (amortised cost) and note 1.2 (FVTPL) populations.",
+          "priority": "high",
+          "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+          "target_section": "D003.15 note 7 pp.30-31; cross-check D003.4 note 1 p.13 and D003.14 pp.27-29",
+          "evidence_required": "Signed line-item reconciliation footing to core EBITDA 790 and to PBD amortisation 597, Rm, H1 FY26; identification of which components belong to note 1.1 vs 1.2",
+          "closure_condition": "A reconciliation summing to 790 and to 597 is shown, or the 58 and 827 differences are explicitly identified as scope/presentation items; benign explanations (rounding, mixed populations) acceptable; forecast consequence: reliability of core EBITDA and PBD amortisation as run-rate inputs."
+        }
+      ]
+    }
+  }
+]

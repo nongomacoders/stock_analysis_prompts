@@ -1,0 +1,323 @@
+
+--- PHYSICAL PAGE 30 ---
+7 Segment report continued
+Group core results continued
+The CODM view of the Nutun South Africa segment reflects the manner in which the CODM measures the segment 
+for the purpose of allocating resources and assessing its performance. Under the CODM view, purchased book debt 
+collections are included in the revenue number, and the amortisation of the purchased book debts are reflected in 
+cost of revenue. Adjustments are reflected in the table below to reconcile the CODM view to the IFRS reporting. In 
+terms of IFRS reporting, collections are taken into account in the movement of the amortised cost on the statement 
+of financial position, and the income statement therefore reflects interest revenue and impairment gains/(losses).
+Nutun South Africa
+Nutun
+International Group
+CODM
+ view
+PBD
+accounting
+adjustments
+IFRS 
+reporting
+Rm Rm Rm Rm Rm
+Summarised income 
+statement
+for the half year ended 
+31 March 2026 – Unaudited
+Revenue* 159 – 159 552 711 
+Revenue from purchased 
+book debts 888 (888) - – - 
+Net income from purchased 
+book debts – 69 69 – 69 
+Total operating expenses and 
+cost of revenue (968) 642 (326) (504) (830)
+Cost of revenue (241) 105 (136) (249) (385)
+Amortisation of purchased 
+book debts (597) 597 - – -
+Operating costs (130) (60) (190) (255) (445)
+Other income 4 – 4 7 11 
+Equity accounted loss (1) – (1) – (1)
+Non-operating loss (2) – (2) (11) (13)
+Net finance charge (203) 177 (26) (13) (39)
+Finance income 6 – 6 – 6 
+Finance charge (209) 177 (32) (13) (45)
+(Loss)/profit before tax (123) – (123) 31 (92)
+Income tax credit/(expense) 37 – 37 (8) 29 
+(Loss)/profit for the period 
+from continuing operations (86) – (86) 23 (63)
+Profit for the period from 
+discontinued operations – – – – – 
+(Loss)/profit for the period (86) – (86) 23 (63)
+* Refer to note 4.1 for the disaggregation of revenue.
+Condensed consolidated financial statements for the half year ended 31 March 2026 28
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 31 ---
+7 Segment report continued
+Group core results continued
+Nutun
+South Africa
+Nutun
+International Group
+Rm Rm Rm
+Reconciliation to core continuing earnings 
+and core EBITDA 
+for the half year ended 31 March 2026 - Unaudited
+(Loss)/profit for the period from continuing operations (86) 23 (63)
+Exceptional items (core and headline adjustments) - - - 
+Core continuing (loss)/earnings per segment (86) 23 (63)
+Tax expense (37) 8 (29)
+Depreciation and amortisation 32 36 68 
+Amortisation of purchased book debts* 597 - 597 
+Equity accounted loss 1 - 1 
+Net finance charge 203 13 216 
+Core EBITDA per segment** 710 80 790 
+*  Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R383 million, impairment loss of R167 million and net cash 
+collections of R728 million per note 1.1 and fair value movements of R30 million and cash collections of R116 million per note 1.2.
+** Core EBITDA is a non-IFRS measure calculated as core earnings per the policy above adjusted for Interest, Tax, Depreciation and Amortisation and 
+Equity accounted earnings. It represents management’s view of operating cash flows.
+Condensed consolidated financial statements for the half year ended 31 March 2026 29
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 32 ---
+7 Segment report continued
+Group core results continued
+Nutun South Africa
+Nutun
+International Group
+CODM
+ view
+PBD
+accounting
+adjustments
+IFRS 
+reporting
+Rm Rm Rm Rm Rm
+Summarised income 
+statement
+for the half year ended 
+31 March 2025 – Unaudited
+Revenue* 188 – 188 557 745 
+Revenue from purchased 
+book debts 694 (694) – – -
+Net income from purchased 
+book debts – 53 53 – 53 
+Total operating expenses 
+and cost of revenue (858) 460 (398) (514) (912)
+Cost of revenue (226) 107 (119) (233) (352)
+Amortisation of purchased 
+book debts (422) 422 - - -
+Operating costs (210) (69) (279) (281) (560)
+Other income 35 - 35 6 41 
+Equity accounted loss (43) - (43) - (43)
+Non-operating profit 1 - 1 6 7 
+Net finance charge (219) 181 (38) (14) (52)
+Finance income 22 - 22 - 22 
+Finance charge (241) 181 (60) (14) (74)
+Operating (loss)/profit (202) - (202) 41 (161)
+Income tax credit/(expense) 47 - 47 (8) 39 
+(Loss)/profit for the period 
+from continuing operations (155) - (155) 33 (122)
+Profit for the period from 
+discontinued operations 58 - 58 - 58 
+(Loss)/profit for the period (97) - (97) 33 (64)
+* Refer to note 4.1 for the disaggregation of revenue.
+Condensed consolidated financial statements for the half year ended 31 March 2026 30
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 33 ---
+7 Segment report continued
+Group core results continued
+Foot￾Nutun
+South Africa
+Nutun
+International Group
+notes Rm Rm Rm
+Reconciliation to core continuing 
+earnings and core EBITDA
+for the half year ended 31 March 2025 - Unaudited**
+(Loss)/profit for the period from continuing operations (155) 33 (122)
+Exceptional items (core and headline adjustments) 51 – 51 
+Transaction costs 1 5 – 5 
+Tax impact (1) – (1)
+Impairment of investment in associate 2 47 – 47 
+Tax impact – – – 
+Core continuing (loss)/earnings per segment (104) 33 (71)
+Tax expense 3 (46) 8 (38)
+Depreciation and amortisation 35 38 73 
+Amortisation of purchased book debts 4 422 – 422 
+Equity accounted loss 5 (4) – (4)
+Net finance charge 219 14 233 
+Core EBITDA per segment* 522 93 615 
+* Core EBITDA is a non-IFRS measure calculated as core earnings per the policy above adjusted for Interest, Tax, Depreciation and Amortisation and 
+Equity accounted earnings. It represents management’s view of operating cash flows.
+** Comparative disclosure for 31 March 2025 has been presented for the first time in order to enhance the overall presentation of the financial statements.
+1   Once-off costs incurred in relation to the restructuring of the group.
+2  Impairment of financial assets which were held by TC Global Finance.
+3   Tax expense per Income statement adjusted for tax on exceptional items.
+4  Amortisation of purchased book debts is calculated as CAEIR imputed interest revenue of R333 million, impairment loss of R173 million and net cash 
+collections of R566 million per note 1.1 and fair value movements of R74 million and cash collections of R90 million per note 1.2.
+5  Equity accounted loss adjusted for exceptional items.
+Foot￾notes
+Nutun
+South Africa 
+Rm
+Nutun 
+International 
+Rm
+Group
+ Rm
+Reconciliation to core discontinued loss
+for the half year ended 31 March 2025 - Unaudited*
+Profit/(loss) for the year from discontinued operations 58 – 58
+Exceptional items (core and headline adjustments) (58) – (58) 
+Profit on disposal 1 (100) – (100)
+Tax impact 29 – 29 
+Transaction costs 2 16 – 16 
+Tax impact (3) – (3)
+Core discontinued loss per segment – – –
+* Comparative disclosure for 31 March 2025 has been presented for the first time in order to enhance the overall presentation of the financial statements.
+1 Profit on disposal of Nutun Transact.
+2 Transaction costs incurred on disposal of Nutun Transact.
+Condensed consolidated financial statements for the half year ended 31 March 2026 31
+Notes to the consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 34 ---
+7 Segment report continued
+Group core results continued
+Nutun South Africa
+Nutun
+International Group
+CODM
+ view
+PBD
+accounting
+adjustments
+IFRS 
+reporting
+Rm Rm Rm Rm Rm
+Summarised income 
+statement
+for the year ended 
+30 September 2025 – 
+Audited
+Revenue* 341 – 341 1 094 1 435 
+Revenue from purchased 
+book debts 1 449 (1 449) – – – 
+Net income from purchased 
+book debts – 244 244 – 244 
+Total operating expenses and 
+cost of revenue (1 625) 851 (774) (1 021) (1 795)
+Cost of revenue (474) 210 (264) (468) (732)
+Amortisation of purchased 
+book debts (767) 767 – – – 
+Operating costs (384) (126) (510) (553) (1 063)
+Other income 56 – 56 13 69 
+Equity accounted loss (48) – (48) – (48)
+Non-operating profit (1) – (1) 39 38 
+Net finance charge (419) 354 (65) (26) (91)
+Finance income 36 – 36 – 36 
+Finance charge (455) 354 (101) (26) (127)
+(Loss)/profit before tax (247) – (247) 99 (148)
+Income tax credit/(expense) 58 – 58 (23) 35 
+(Loss)/profit for the year from 
+continuing operations (189) – (189) 76 (113)
+Loss for the year from 
+discontinued operations (125) – (125) – (125)
+(Loss)/profit for the year (314) – (314) 76 (238)
+* Refer to note 4.1 for the disaggregation of revenue.
+Condensed consolidated financial statements for the half year ended 31 March 2026 32
+Notes to the consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 35 ---
+7 Segment report continued
+Group core results continued
+Foot￾Nutun
+South Africa
+Nutun
+International Group
+notes Rm Rm Rm
+Reconciliation to core continuing 
+(loss)/earnings and core EBITDA
+for the year ended 30 September 2025 - Audited
+(Loss)/profit for the year from continuing operations (189) 76 (113)
+Exceptional items (core and headline adjustments) 68 – 68 
+Transaction costs 1 29 – 29 
+Tax impact (8) – (8)
+Impairment of investment in associate 2 47 – 47 
+Tax impact – – – 
+Core continuing (loss)/earnings per segment (121) 76 (45)
+Tax expense 3 (50) 23 (27)
+Depreciation and amortisation 90 73 163 
+Amortisation of purchased book debts 4 767 – 767 
+Equity accounted loss 5 1 – 1 
+Net finance charge 419 26 445 
+Core EBITDA per segment* 1 106 198 1 304 
+* Core EBITDA is a non-IFRS measure calculated as core earnings per the policy above adjusted for Interest, Tax, Depreciation and Amortisation and 
+Equity accounted earnings. It represents management’s view of operating cash flows.
+1   Once-off costs incurred in relation to the restructuring of the group.
+2  Impairment of financial assets which were held by TC Global Finance.
+3   Tax expense per Income statement adjusted for tax on exceptional items.
+4  PBD amortisation is calculated as CAEIR imputed interest revenue of R683 million, impairment loss of R199 million and net cash collections of 
+R1 197 million per note 1.1 and fair value movements of R114 million and cash collections of R168 million per note 1.2.
+5  Equity accounted loss adjusted for exceptional items.
+Foot￾Nutun
+South Africa Other Group
+notes Rm Rm Rm
+Reconciliation to core discontinued loss
+for the year ended 30 September 2025 - Audited
+Profit/(loss) for the year from discontinued operations 51 (176) (125)
+Exceptional items (core and headline adjustments) (58) 176 118 
+Settlement fee 1 - 176 176 
+Tax impact - - - 
+Profit on disposal 2 (100) - (100)
+Tax impact 29 - 29 
+Transaction costs 3 16 - 16 
+Tax impact (3) - (3)
+Core discontinued loss per segment (7) - (7)
+1 As part of the disposal of shares in Mobalyz Group Holdings Proprietary Limited, and in return for a 3 year commitment from its main bank funders to 
+renew and/or revolve all facilities that mature before 30 September 2027, Nutun agreed that 90% of any dividends that it receives from Nutun Holdings 
+Proprietary Limited, if and when declared, will be utilised to acquire SA Taxi Holdings Proprietary Limited (“SAT”) loan claims to a value of R200 million, 
+if settled by 26 November 2026, or R250 million, if settled post that date. Nutun satisfied its commitments under this agreement through a full and final 
+settlement of R176 million. As a result, Nutun is no longer required to acquire SAT loan claims. No further amounts are outstanding between the parties 
+in respect of this transaction.
+2 Profit on disposal of Nutun Transact.
+3 Transaction costs incurred on disposal of Nutun Transact.
+Condensed consolidated financial statements for the half year ended 31 March 2026 33
+Notes to the consolidated financial statements continued
+for the half year ended 31 March 2026
+--- PHYSICAL PAGE 36 ---
+7 Segment report continued
+Geographical information
+The group recognises revenue earned from the following geographic regions:
+Total revenue*
+31 March 
+2026
+Unaudited
+31 March 
+2025
+Unaudited
+30 September
+2025
+Audited
+Rm Rm Rm
+Nutun South Africa 1 047 882 1 790 
+South Africa 1 047 882 1 790 
+Nutun International 552 557 1 094 
+United Kingdom 303 259 525 
+United States 212 224 428 
+Australia 27 74 127 
+Other 10 – 14 
+Total 1 599 1 439 2 884 
+* Revenue comprises gross revenue as presented on the income statement, and revenue from purchased book debts as presented in the CODM view. 
+8 Going concern
+The condensed consolidated financial statements were prepared on a going concern basis. Based on their 
+assessment, the directors have no reason to believe that the group will not continue as a going concern for the 
+foreseeable future. This assessment included an assessment of the relevance of its business models, the nature 
+of the primary assets and the cash flows generated from these assets as well as the group’s balance sheet.
+9 Subsequent events
+The directors are not aware of any material events occurring between the end of the reporting period and the date 
+of approval of these financial statements that would require adjustment or disclosure in terms of IAS 10 – Events 
+after the reporting period.
+Condensed consolidated financial statements for the half year ended 31 March 2026 34
+Notes to the condensed consolidated financial statements continued
+for the half year ended 31 March 2026

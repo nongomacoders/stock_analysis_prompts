@@ -1,0 +1,21 @@
+{
+  "gate": "PASS",
+  "reviewer": "Codex",
+  "decision": "Proceed to a fresh chronological full run using the revised run-only scope/index instructions; financial valuation not validated",
+  "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+  "checks": [
+    {"claim_id":"C001","source_physical_pages":[21,22,23],"check":"3414+431=3845; cumulative gain distinct from conventional loss coverage","verdict":"PASS"},
+    {"claim_id":"C002","source_physical_pages":[24],"check":"FY25 historical77+182=259; H1FY26 historical191 remains half-year; vintage/FX cause not invented","verdict":"PASS"},
+    {"claim_id":"C003","source_physical_pages":[25],"check":"Trade374-5=369; zero rates do not establish adequacy/SICR failure; simplified policy conditional","verdict":"PASS"},
+    {"claim_id":"C004","source_physical_pages":[25,26],"check":"Revised brief covers currency-risk note start,USD/GBP exposure,60-day terms and hedging; continuation Pending p26","verdict":"PASS"},
+    {"claim_id":"C005","check":"Accepted pilot responses satisfy literal-evidence ledger validation after one preserved quote repair; focused scope recheck needed no repair","verdict":"PASS"}
+  ],
+  "revisions": "Original page25 coverage omission and duplicated POCI question retained in semantic_review_v1.json and original outputs. Added explicit secondary-heading list, resolved-question index and short literal quote locators in run-only prompt.",
+  "limits": [
+    "Pilot used a separate ledger/database; full run starts fresh in source order and intentionally reruns these captures",
+    "A valid quote is not proof every closure is complete; POCI-other-asset classification scope still reviewable",
+    "One duplicated question remains in the pilot history, but is not imported into the fresh full ledger",
+    "Five paid pilot generations include three original captures,one ledger repair and one focused scope recheck; none omitted from cost totals",
+    "No forecast,valuation,current quote or Gemini API evaluation performed by this pilot"
+  ]
+}

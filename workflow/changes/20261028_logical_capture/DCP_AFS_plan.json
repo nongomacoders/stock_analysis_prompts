@@ -1,0 +1,2936 @@
+{
+  "source": "companies\\retail\\DCP\\sources\\completed\\FY26\\1780031707-FY2026AnnualFinancialStatements.pdf",
+  "sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb",
+  "physical_page_count": 87,
+  "legacy_budget_only_groups": 28,
+  "logical_groups": 70,
+  "legacy_page_spans": [
+    [
+      1,
+      3
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      12,
+      14
+    ],
+    [
+      15,
+      17
+    ],
+    [
+      18,
+      20
+    ],
+    [
+      21,
+      23
+    ],
+    [
+      24,
+      28
+    ],
+    [
+      29,
+      33
+    ],
+    [
+      34,
+      36
+    ],
+    [
+      37,
+      37
+    ],
+    [
+      38,
+      38
+    ],
+    [
+      39,
+      39
+    ],
+    [
+      40,
+      40
+    ],
+    [
+      41,
+      41
+    ],
+    [
+      42,
+      48
+    ],
+    [
+      49,
+      52
+    ],
+    [
+      53,
+      56
+    ],
+    [
+      57,
+      59
+    ],
+    [
+      60,
+      60
+    ],
+    [
+      61,
+      65
+    ],
+    [
+      66,
+      71
+    ],
+    [
+      72,
+      74
+    ],
+    [
+      75,
+      78
+    ],
+    [
+      79,
+      82
+    ],
+    [
+      83,
+      85
+    ],
+    [
+      86,
+      87
+    ]
+  ],
+  "all_pages_once": true,
+  "maximum_pages": 5,
+  "forced_continuation_cuts": 3,
+  "groups": [
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Financial statements overview / contents",
+      "physical_pages": [
+        1,
+        1
+      ],
+      "source_characters": 5311,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 1,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "STATEMENT OF DIRECTORS’ RESPONSIBILITIES AND APPROVAL OF THE ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        2,
+        2
+      ],
+      "source_characters": 8445,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 2,
+          "heading": "STATEMENT OF DIRECTORS’ RESPONSIBILITIES AND APPROVAL OF THE ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "statement of directors responsibilities and approval of the annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "STATEMENT OF DIRECTORS’ RESPONSIBILITIES AND APPROVAL OF THE ANNUAL FINANCIAL STATEMENTS",
+              "top": 75.47,
+              "size": 20.04
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "COMPANY SECRETARY CERTIFICATION",
+      "physical_pages": [
+        3,
+        3
+      ],
+      "source_characters": 5548,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 3,
+          "heading": "COMPANY SECRETARY CERTIFICATION",
+          "topic_key": "company secretary certification",
+          "heading_evidence": [
+            {
+              "text": "COMPANY SECRETARY CERTIFICATION",
+              "top": 75.3,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Special resolutions",
+      "physical_pages": [
+        4,
+        4
+      ],
+      "source_characters": 7362,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 4,
+          "heading": "Special resolutions",
+          "topic_key": "special resolutions",
+          "heading_evidence": [
+            {
+              "text": "REPORT OF THE DIRECTORS",
+              "top": 73.91,
+              "size": 21.96
+            },
+            {
+              "text": "Review of activities Events after reporting period",
+              "top": 160.1,
+              "size": 12.96
+            },
+            {
+              "text": "Special resolutions",
+              "top": 232.7,
+              "size": 12.96
+            },
+            {
+              "text": "Going concern fees",
+              "top": 342.53,
+              "size": 12.96
+            },
+            {
+              "text": "Borrowing limitations",
+              "top": 383.45,
+              "size": 12.96
+            },
+            {
+              "text": "Non-executive directors",
+              "top": 489.04,
+              "size": 9.96
+            },
+            {
+              "text": "Dividends",
+              "top": 513.07,
+              "size": 12.96
+            },
+            {
+              "text": "External auditors",
+              "top": 690.22,
+              "size": 12.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Directors’ and prescribed officers' interest in shares and contracts",
+      "physical_pages": [
+        5,
+        5
+      ],
+      "source_characters": 6675,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 5,
+          "heading": "Directors’ and prescribed officers' interest in shares and contracts",
+          "topic_key": "directors and prescribed officers interest in shares and contracts",
+          "heading_evidence": [
+            {
+              "text": "REPORT REPORT OF OF THE THE DIRECTORS DIRECTORS",
+              "top": 72.42,
+              "size": 22.0
+            },
+            {
+              "text": "CONTINUED continued",
+              "top": 79.38,
+              "size": 16.0
+            },
+            {
+              "text": "Directors’ and prescribed officers' interest in shares and contracts",
+              "top": 164.19,
+              "size": 12.96
+            },
+            {
+              "text": "Secretary",
+              "top": 667.19,
+              "size": 12.96
+            },
+            {
+              "text": "Registered office",
+              "top": 701.39,
+              "size": 12.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Composition",
+      "physical_pages": [
+        6,
+        6
+      ],
+      "source_characters": 7236,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 6,
+          "heading": "Composition",
+          "topic_key": "composition",
+          "heading_evidence": [
+            {
+              "text": "AUDIT AND RISK COMMITTEE REPORT",
+              "top": 70.07,
+              "size": 21.96
+            },
+            {
+              "text": "Combined assurance",
+              "top": 244.43,
+              "size": 9.96
+            },
+            {
+              "text": "Composition",
+              "top": 253.49,
+              "size": 12.96
+            },
+            {
+              "text": "Role and responsibilities of the External audit",
+              "top": 481.87,
+              "size": 12.96
+            },
+            {
+              "text": "Integrated reporting •",
+              "top": 531.28,
+              "size": 9.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Internal financial controls",
+      "physical_pages": [
+        7,
+        8
+      ],
+      "source_characters": 17234,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 7,
+          "heading": "Internal financial controls",
+          "topic_key": "internal financial controls",
+          "heading_evidence": [
+            {
+              "text": "AUDIT AND RISK COMMITTEE REPORT",
+              "top": 72.42,
+              "size": 22.0
+            },
+            {
+              "text": "continued",
+              "top": 76.92,
+              "size": 16.0
+            },
+            {
+              "text": "Internal financial controls",
+              "top": 224.87,
+              "size": 9.96
+            },
+            {
+              "text": "Internal audit and combined assurance",
+              "top": 301.34,
+              "size": 9.96
+            },
+            {
+              "text": "Committee",
+              "top": 512.2,
+              "size": 9.96
+            },
+            {
+              "text": "Financial reporting and financial control",
+              "top": 710.83,
+              "size": 9.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 8,
+          "heading": "Internal financial controls",
+          "topic_key": "internal financial controls",
+          "heading_evidence": [
+            {
+              "text": "Policy on non-audit services",
+              "top": 158.75,
+              "size": 9.96
+            },
+            {
+              "text": "Internal financial controls",
+              "top": 224.87,
+              "size": 9.96
+            },
+            {
+              "text": "Internal audit and combined assurance",
+              "top": 301.34,
+              "size": 9.96
+            },
+            {
+              "text": "Execution of functions of the Audit and Risk Committee",
+              "top": 500.08,
+              "size": 9.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Opinion",
+      "physical_pages": [
+        9,
+        9
+      ],
+      "source_characters": 7718,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 9,
+          "heading": "Opinion",
+          "topic_key": "opinion",
+          "heading_evidence": [
+            {
+              "text": "INDEPENDENT AUDITOR’S REPORT",
+              "top": 72.42,
+              "size": 22.0
+            },
+            {
+              "text": "Report on the Audit of the Final Materiality",
+              "top": 155.9,
+              "size": 13.0
+            },
+            {
+              "text": "Financial Statements",
+              "top": 187.1,
+              "size": 13.0
+            },
+            {
+              "text": "Opinion",
+              "top": 208.02,
+              "size": 10.0
+            },
+            {
+              "text": "Basis for Opinion",
+              "top": 422.36,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Group Audit Scope",
+      "physical_pages": [
+        10,
+        11
+      ],
+      "source_characters": 13812,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 10,
+          "heading": "Group Audit Scope",
+          "topic_key": "group audit scope",
+          "heading_evidence": [
+            {
+              "text": "Group Audit Scope",
+              "top": 155.97,
+              "size": 10.0
+            },
+            {
+              "text": "Key Audit Matters",
+              "top": 395.82,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 11,
+          "heading": "continued",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "INDEPENDENT AUDITOR’S REPORT",
+              "top": 72.42,
+              "size": 22.0
+            },
+            {
+              "text": "continued",
+              "top": 76.92,
+              "size": 16.0
+            },
+            {
+              "text": "Other Information",
+              "top": 539.8,
+              "size": 10.0
+            },
+            {
+              "text": "Responsibilities of the Directors for the Consolidated and Separate Financial Statements",
+              "top": 668.39,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Consolidated and Separate Financial Statements",
+      "physical_pages": [
+        12,
+        12
+      ],
+      "source_characters": 8164,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 12,
+          "heading": "Consolidated and Separate Financial Statements",
+          "topic_key": "consolidated and separate financial statements",
+          "heading_evidence": [
+            {
+              "text": "Consolidated and Separate Financial Statements",
+              "top": 168.97,
+              "size": 10.0
+            },
+            {
+              "text": "Report on Other Legal and Regulatory",
+              "top": 360.71,
+              "size": 10.0
+            },
+            {
+              "text": "Audit Tenure",
+              "top": 388.54,
+              "size": 10.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME",
+      "physical_pages": [
+        13,
+        13
+      ],
+      "source_characters": 2305,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 13,
+          "heading": "GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME",
+          "topic_key": "group and company statements of comprehensive income",
+          "heading_evidence": [
+            {
+              "text": "GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME",
+              "top": 76.36,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "GROUP AND COMPANY STATEMENTS OF GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME FINANCIAL POSITION",
+      "physical_pages": [
+        14,
+        14
+      ],
+      "source_characters": 6108,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 14,
+          "heading": "GROUP AND COMPANY STATEMENTS OF GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME FINANCIAL POSITION",
+          "topic_key": "group and company statements of group and company statements of comprehensive income financial position",
+          "heading_evidence": [
+            {
+              "text": "GROUP AND COMPANY STATEMENTS OF GROUP AND COMPANY STATEMENTS OF COMPREHENSIVE INCOME FINANCIAL POSITION",
+              "top": 76.36,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "GROUP STATEMENT OF CHANGES IN EQUITY",
+      "physical_pages": [
+        15,
+        15
+      ],
+      "source_characters": 2206,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 15,
+          "heading": "GROUP STATEMENT OF CHANGES IN EQUITY",
+          "topic_key": "group statement of changes in equity",
+          "heading_evidence": [
+            {
+              "text": "GROUP STATEMENT OF CHANGES IN EQUITY",
+              "top": 75.46,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "GROUP STATEMENT OF COMPANY STATEMENT OF CHANGES IN EQUITY CHANGES IN EQUITY",
+      "physical_pages": [
+        16,
+        16
+      ],
+      "source_characters": 4468,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 16,
+          "heading": "GROUP STATEMENT OF COMPANY STATEMENT OF CHANGES IN EQUITY CHANGES IN EQUITY",
+          "topic_key": "group statement of company statement of changes in equity changes in equity",
+          "heading_evidence": [
+            {
+              "text": "GROUP STATEMENT OF COMPANY STATEMENT OF CHANGES IN EQUITY CHANGES IN EQUITY",
+              "top": 75.46,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "GROUP AND COMPANY STATEMENTS OF CASH FLOWS",
+      "physical_pages": [
+        17,
+        17
+      ],
+      "source_characters": 2800,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 17,
+          "heading": "GROUP AND COMPANY STATEMENTS OF CASH FLOWS",
+          "topic_key": "group and company statements of cash flows",
+          "heading_evidence": [
+            {
+              "text": "GROUP AND COMPANY STATEMENTS OF CASH FLOWS",
+              "top": 76.37,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "2. Basis of preparation",
+      "physical_pages": [
+        18,
+        18
+      ],
+      "source_characters": 6843,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 18,
+          "heading": "2. Basis of preparation",
+          "topic_key": "2 basis of preparation",
+          "heading_evidence": [
+            {
+              "text": "FINANCIAL STATEMENTS ANNUAL FINANCIAL STATEMENTS",
+              "top": 102.81,
+              "size": 22.0
+            },
+            {
+              "text": "1. Corporate information",
+              "top": 158.4,
+              "size": 11.76
+            },
+            {
+              "text": "2. Basis of preparation",
+              "top": 208.81,
+              "size": 11.76
+            },
+            {
+              "text": "3. Summary of material accounting policies",
+              "top": 305.44,
+              "size": 11.76
+            },
+            {
+              "text": "Basis of consolidation 3.1",
+              "top": 376.19,
+              "size": 9.84
+            },
+            {
+              "text": "3.2 Business combinations and goodwill",
+              "top": 615.16,
+              "size": 9.84
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "3.3 Impairment of non-financial assets",
+      "physical_pages": [
+        19,
+        19
+      ],
+      "source_characters": 7046,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 19,
+          "heading": "3.3 Impairment of non-financial assets",
+          "topic_key": "3 3 impairment of non financial assets 3 3 impairment of non financial assets",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "3.3 Impairment of non-financial assets",
+              "top": 248.89,
+              "size": 9.84
+            },
+            {
+              "text": "3.4 Common control reserve",
+              "top": 638.81,
+              "size": 9.84
+            },
+            {
+              "text": "3.5 Other reserves",
+              "top": 696.66,
+              "size": 9.84
+            }
+          ],
+          "note_id": "3.3",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "3.6 Significant accounting estimates, judgements and assumptions",
+      "physical_pages": [
+        20,
+        20
+      ],
+      "source_characters": 6870,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 20,
+          "heading": "3.6 Significant accounting estimates, judgements and assumptions",
+          "topic_key": "3 6 significant accounting estimates judgements and assumptions 3 6 significant accounting estimates judgements and assumptions",
+          "heading_evidence": [
+            {
+              "text": "3.6 Significant accounting estimates, judgements and assumptions",
+              "top": 159.95,
+              "size": 9.84
+            },
+            {
+              "text": "3.7 New and amended standards and interpretations effective for the period ended 28 February 2026",
+              "top": 513.23,
+              "size": 9.84
+            }
+          ],
+          "note_id": "3.6",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "3.8 New and amended standards and interpretations not yet effective",
+      "physical_pages": [
+        21,
+        22
+      ],
+      "source_characters": 12145,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 21,
+          "heading": "3.8 New and amended standards and interpretations not yet effective",
+          "topic_key": "3 8 new and amended standards and interpretations not yet effective 3 8 new and amended standards and interpretations not yet effective",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "3.8 New and amended standards and interpretations not yet effective",
+              "top": 159.92,
+              "size": 9.84
+            }
+          ],
+          "note_id": "3.8",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 22,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        23,
+        26
+      ],
+      "source_characters": 21391,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 23,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 24,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 25,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 26,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "5. Acquisitions",
+      "physical_pages": [
+        27,
+        27
+      ],
+      "source_characters": 2857,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 27,
+          "heading": "5. Acquisitions",
+          "topic_key": "5 acquisitions",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "5. Acquisitions",
+              "top": 156.1,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "5. Acquisitions 6. Segmental information",
+      "physical_pages": [
+        28,
+        28
+      ],
+      "source_characters": 5218,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 28,
+          "heading": "5. Acquisitions 6. Segmental information",
+          "topic_key": "5 acquisitions 6 segmental information",
+          "heading_evidence": [
+            {
+              "text": "5. Acquisitions 6. Segmental information",
+              "top": 156.1,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        29,
+        30
+      ],
+      "source_characters": 8517,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 29,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 30,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "7. Revenue from contracts with customers",
+      "physical_pages": [
+        31,
+        31
+      ],
+      "source_characters": 4180,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 31,
+          "heading": "7. Revenue from contracts with customers",
+          "topic_key": "7 revenue from contracts with customers",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "7. Revenue from contracts with customers",
+              "top": 149.7,
+              "size": 10.92
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "8. Profit before taxation",
+      "physical_pages": [
+        32,
+        32
+      ],
+      "source_characters": 3908,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 32,
+          "heading": "8. Profit before taxation",
+          "topic_key": "8 profit before taxation",
+          "heading_evidence": [
+            {
+              "text": "8. Profit before taxation",
+              "top": 156.49,
+              "size": 11.88
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "tax",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "9. Net financing costs",
+      "physical_pages": [
+        33,
+        33
+      ],
+      "source_characters": 1416,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 33,
+          "heading": "9. Net financing costs",
+          "topic_key": "9 net financing costs",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "9. Net financing costs",
+              "top": 158.48,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "10. Taxation",
+      "physical_pages": [
+        34,
+        34
+      ],
+      "source_characters": 6074,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 34,
+          "heading": "10. Taxation",
+          "topic_key": "10 taxation",
+          "heading_evidence": [
+            {
+              "text": "10. Taxation",
+              "top": 158.23,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "tax",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        35,
+        35
+      ],
+      "source_characters": 2199,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 35,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "11. Earnings per share",
+      "physical_pages": [
+        36,
+        36
+      ],
+      "source_characters": 2339,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 36,
+          "heading": "11. Earnings per share",
+          "topic_key": "11 earnings per share",
+          "heading_evidence": [
+            {
+              "text": "11. Earnings per share",
+              "top": 157.52,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+      "physical_pages": [
+        37,
+        37
+      ],
+      "source_characters": 34662,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 37,
+          "heading": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+          "topic_key": "12 property plant and equipment l 000",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+              "top": 157.68,
+              "size": 11.66
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+      "physical_pages": [
+        38,
+        38
+      ],
+      "source_characters": 32189,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 38,
+          "heading": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+          "topic_key": "12 property plant and equipment l 000",
+          "heading_evidence": [
+            {
+              "text": "12. Property, plant and equipment l 000 ) ) ) ) ) )",
+              "top": 157.68,
+              "size": 11.66
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        39,
+        39
+      ],
+      "source_characters": 71349,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 39,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Financial statements overview / contents",
+      "physical_pages": [
+        40,
+        40
+      ],
+      "source_characters": 28075,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 40,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        41,
+        41
+      ],
+      "source_characters": 62456,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 41,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "13. Intangible assets",
+      "physical_pages": [
+        42,
+        42
+      ],
+      "source_characters": 3752,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 42,
+          "heading": "13. Intangible assets",
+          "topic_key": "13 intangible assets",
+          "heading_evidence": [
+            {
+              "text": "13. Intangible assets",
+              "top": 158.6,
+              "size": 11.88
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        43,
+        44
+      ],
+      "source_characters": 5960,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 43,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 44,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "14. Deferred tax",
+      "physical_pages": [
+        45,
+        45
+      ],
+      "source_characters": 3115,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 45,
+          "heading": "14. Deferred tax",
+          "topic_key": "14 deferred tax",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "14. Deferred tax",
+              "top": 157.49,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "tax",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "15. Investments",
+      "physical_pages": [
+        46,
+        46
+      ],
+      "source_characters": 2461,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 46,
+          "heading": "15. Investments",
+          "topic_key": "15 investments",
+          "heading_evidence": [
+            {
+              "text": "15. Investments",
+              "top": 157.49,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "16. Inventories",
+      "physical_pages": [
+        47,
+        47
+      ],
+      "source_characters": 5964,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 47,
+          "heading": "16. Inventories",
+          "topic_key": "16 inventories",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "16. Inventories",
+              "top": 160.28,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "17. Trade and other receivables",
+      "physical_pages": [
+        48,
+        48
+      ],
+      "source_characters": 2662,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 48,
+          "heading": "17. Trade and other receivables",
+          "topic_key": "17 trade and other receivables",
+          "heading_evidence": [
+            {
+              "text": "17. Trade and other receivables",
+              "top": 156.24,
+              "size": 11.88
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        49,
+        49
+      ],
+      "source_characters": 2585,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 49,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "18. Loans receivable",
+      "physical_pages": [
+        50,
+        50
+      ],
+      "source_characters": 6377,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 50,
+          "heading": "18. Loans receivable",
+          "topic_key": "18 loans receivable",
+          "heading_evidence": [
+            {
+              "text": "18. Loans receivable",
+              "top": 160.76,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "19. Share capital 20. Other reserves",
+      "physical_pages": [
+        51,
+        51
+      ],
+      "source_characters": 8749,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 51,
+          "heading": "19. Share capital 20. Other reserves",
+          "topic_key": "19 share capital 20 other reserves",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "19. Share capital 20. Other reserves",
+              "top": 157.91,
+              "size": 12.12
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "20. Other reserves",
+      "physical_pages": [
+        52,
+        52
+      ],
+      "source_characters": 6083,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 52,
+          "heading": "20. Other reserves",
+          "topic_key": "20 other reserves",
+          "heading_evidence": [
+            {
+              "text": "20. Other reserves",
+              "top": 158.84,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        53,
+        53
+      ],
+      "source_characters": 2040,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 53,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "21. Dividends to shareholders",
+      "physical_pages": [
+        54,
+        54
+      ],
+      "source_characters": 1344,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 54,
+          "heading": "21. Dividends to shareholders",
+          "topic_key": "21 dividends to shareholders",
+          "heading_evidence": [
+            {
+              "text": "21. Dividends to shareholders",
+              "top": 159.0,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "22. Lease liability",
+      "physical_pages": [
+        55,
+        55
+      ],
+      "source_characters": 12148,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 55,
+          "heading": "22. Lease liability",
+          "topic_key": "22 lease liability",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "23. Loans payable",
+              "top": 114.29,
+              "size": 12.0
+            },
+            {
+              "text": "22. Lease liability",
+              "top": 158.72,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "leases",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "23. Loans payable",
+      "physical_pages": [
+        56,
+        56
+      ],
+      "source_characters": 6468,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 56,
+          "heading": "23. Loans payable",
+          "topic_key": "23 loans payable",
+          "heading_evidence": [
+            {
+              "text": "23. Loans payable",
+              "top": 114.29,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "24. Trade and other payables",
+      "physical_pages": [
+        57,
+        57
+      ],
+      "source_characters": 6044,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 57,
+          "heading": "24. Trade and other payables",
+          "topic_key": "24 trade and other payables",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "24. Trade and other payables",
+              "top": 157.63,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "25. Employee-related obligations",
+      "physical_pages": [
+        58,
+        58
+      ],
+      "source_characters": 5694,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 58,
+          "heading": "25. Employee-related obligations",
+          "topic_key": "25 employee related obligations",
+          "heading_evidence": [
+            {
+              "text": "25. Employee-related obligations",
+              "top": 158.63,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "26. Deferred revenue (contract liability)",
+      "physical_pages": [
+        59,
+        59
+      ],
+      "source_characters": 2830,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 59,
+          "heading": "26. Deferred revenue (contract liability)",
+          "topic_key": "26 deferred revenue contract liability",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "26. Deferred revenue (contract liability)",
+              "top": 158.01,
+              "size": 12.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Primary financial statements",
+      "logical_heading": "27.1 Cash generated by operations",
+      "physical_pages": [
+        60,
+        60
+      ],
+      "source_characters": 3297,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 60,
+          "heading": "27.1 Cash generated by operations",
+          "topic_key": "27 1 cash generated by operations 27 1 cash generated by operations",
+          "heading_evidence": [
+            {
+              "text": "27. Notes to the statement of cash flows",
+              "top": 158.49,
+              "size": 12.12
+            },
+            {
+              "text": "27.1 Cash generated by operations",
+              "top": 279.48,
+              "size": 10.06
+            },
+            {
+              "text": "27.2 Movement in working capital",
+              "top": 553.6,
+              "size": 10.06
+            },
+            {
+              "text": "27.3 Taxation paid",
+              "top": 661.48,
+              "size": 10.06
+            }
+          ],
+          "note_id": "27.1",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Change in ownership interest in subsidiary/ 27.4 Proceeds from non-controlling interest",
+      "physical_pages": [
+        61,
+        61
+      ],
+      "source_characters": 1447,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 61,
+          "heading": "Change in ownership interest in subsidiary/ 27.4 Proceeds from non-controlling interest",
+          "topic_key": "change in ownership interest in subsidiary 27 4 proceeds from non controlling interest",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "Change in ownership interest in subsidiary/ 27.4 Proceeds from non-controlling interest",
+              "top": 199.41,
+              "size": 9.96
+            },
+            {
+              "text": "27.5 Cash and cash equivalents",
+              "top": 397.28,
+              "size": 9.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Change in ownership interest in subsidiary/ 27.4 leases/ fair",
+      "physical_pages": [
+        62,
+        62
+      ],
+      "source_characters": 4625,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 62,
+          "heading": "Change in ownership interest in subsidiary/ 27.4 leases/ fair",
+          "topic_key": "27 6 changes in financing activities change in ownership interest in subsidiary 27 4 leases fair",
+          "heading_evidence": [
+            {
+              "text": "27.6 Changes in financing activities",
+              "top": 157.76,
+              "size": 9.96
+            },
+            {
+              "text": "Change in ownership interest in subsidiary/ 27.4 leases/ fair",
+              "top": 199.41,
+              "size": 9.96
+            },
+            {
+              "text": "27.5 Cash and cash equivalents",
+              "top": 397.28,
+              "size": 9.96
+            }
+          ],
+          "note_id": "27.6",
+          "period": "",
+          "instrument": "leases",
+          "mixed_topics_on_page": true,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "28. Related party transactions",
+      "physical_pages": [
+        63,
+        64
+      ],
+      "source_characters": 9791,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 63,
+          "heading": "28. Related party transactions",
+          "topic_key": "28 related party transactions",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "28. Related party transactions",
+              "top": 162.4,
+              "size": 11.88
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 64,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        65,
+        69
+      ],
+      "source_characters": 19139,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": true,
+      "continuation_reason": "size_limit",
+      "heading_evidence": [
+        {
+          "physical_page": 65,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 66,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 67,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 68,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 69,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Financial statements overview / contents",
+      "physical_pages": [
+        70,
+        70
+      ],
+      "source_characters": 5668,
+      "boundary_reason": "hard_size_limit",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 70,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        71,
+        72
+      ],
+      "source_characters": 7840,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 71,
+          "heading": "ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 72,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Initial recognition",
+      "physical_pages": [
+        73,
+        73
+      ],
+      "source_characters": 6648,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 73,
+          "heading": "Initial recognition",
+          "topic_key": "initial recognition",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "29. Financial risk management objectives and policies",
+              "top": 153.71,
+              "size": 11.52
+            },
+            {
+              "text": "Financial assets",
+              "top": 169.1,
+              "size": 9.6
+            },
+            {
+              "text": "Initial recognition",
+              "top": 218.66,
+              "size": 9.6
+            },
+            {
+              "text": "Subsequent measurement",
+              "top": 368.93,
+              "size": 9.6
+            },
+            {
+              "text": "Derecognition",
+              "top": 423.41,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Impairment",
+      "physical_pages": [
+        74,
+        74
+      ],
+      "source_characters": 6796,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 74,
+          "heading": "Impairment",
+          "topic_key": "impairment",
+          "heading_evidence": [
+            {
+              "text": "Impairment",
+              "top": 152.15,
+              "size": 9.6
+            },
+            {
+              "text": "Financial liabilities",
+              "top": 311.51,
+              "size": 9.6
+            },
+            {
+              "text": "Initial recognition",
+              "top": 358.18,
+              "size": 9.6
+            },
+            {
+              "text": "Subsequent measurement",
+              "top": 396.57,
+              "size": 9.6
+            },
+            {
+              "text": "Derecognition",
+              "top": 557.72,
+              "size": 9.6
+            },
+            {
+              "text": "Offsetting of financial instruments",
+              "top": 614.14,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Fair value measurement",
+      "physical_pages": [
+        75,
+        75
+      ],
+      "source_characters": 6309,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 75,
+          "heading": "Fair value measurement",
+          "topic_key": "fair value measurement",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "Fair value measurement",
+              "top": 152.15,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Group",
+      "physical_pages": [
+        76,
+        76
+      ],
+      "source_characters": 3564,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 76,
+          "heading": "Group",
+          "topic_key": "group",
+          "heading_evidence": [
+            {
+              "text": "Group",
+              "top": 176.43,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Trade and other receivables",
+      "physical_pages": [
+        77,
+        78
+      ],
+      "source_characters": 13533,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 77,
+          "heading": "Trade and other receivables",
+          "topic_key": "trade and other receivables",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "Credit risk",
+              "top": 152.99,
+              "size": 9.6
+            },
+            {
+              "text": "Trade and other receivables",
+              "top": 191.38,
+              "size": 9.6
+            },
+            {
+              "text": "Cash and cash equivalents",
+              "top": 499.53,
+              "size": 9.6
+            },
+            {
+              "text": "Loans receivable",
+              "top": 563.96,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 78,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "Currency risk",
+              "top": 424.76,
+              "size": 9.6
+            },
+            {
+              "text": "Interest rate risk",
+              "top": 537.56,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Liquidity risk",
+      "physical_pages": [
+        79,
+        79
+      ],
+      "source_characters": 3453,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 79,
+          "heading": "Liquidity risk",
+          "topic_key": "liquidity risk",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "Liquidity risk",
+              "top": 153.36,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Company",
+      "physical_pages": [
+        80,
+        80
+      ],
+      "source_characters": 3177,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 80,
+          "heading": "Company",
+          "topic_key": "company",
+          "heading_evidence": [
+            {
+              "text": "Company",
+              "top": 178.54,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Trade and other receivables",
+      "physical_pages": [
+        81,
+        81
+      ],
+      "source_characters": 6136,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 81,
+          "heading": "Trade and other receivables",
+          "topic_key": "trade and other receivables",
+          "heading_evidence": [
+            {
+              "text": "ANNUAL FINANCIAL STATEMENTS",
+              "top": 104.76,
+              "size": 22.0
+            },
+            {
+              "text": "Credit risk",
+              "top": 152.18,
+              "size": 9.6
+            },
+            {
+              "text": "Trade and other receivables",
+              "top": 190.58,
+              "size": 9.6
+            },
+            {
+              "text": "Cash and cash equivalents",
+              "top": 348.05,
+              "size": 9.6
+            },
+            {
+              "text": "Loans receivable",
+              "top": 410.93,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "Interest rate risk",
+      "physical_pages": [
+        82,
+        82
+      ],
+      "source_characters": 6244,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 82,
+          "heading": "Interest rate risk",
+          "topic_key": "interest rate risk",
+          "heading_evidence": [
+            {
+              "text": "Interest rate risk",
+              "top": 152.18,
+              "size": 9.6
+            },
+            {
+              "text": "Liquidity risk",
+              "top": 288.17,
+              "size": 9.6
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANALYSIS OF ORDINARY SHAREHOLDERS ANNUAL FINANCIAL STATEMENTS",
+      "physical_pages": [
+        83,
+        83
+      ],
+      "source_characters": 7340,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 83,
+          "heading": "ANALYSIS OF ORDINARY SHAREHOLDERS ANNUAL FINANCIAL STATEMENTS",
+          "topic_key": "analysis of ordinary shareholders annual financial statements",
+          "heading_evidence": [
+            {
+              "text": "ANALYSIS OF ORDINARY SHAREHOLDERS ANNUAL FINANCIAL STATEMENTS",
+              "top": 70.36,
+              "size": 21.96
+            },
+            {
+              "text": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+              "top": 711.99,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Financial statements overview / contents",
+      "logical_heading": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+      "physical_pages": [
+        84,
+        85
+      ],
+      "source_characters": 8841,
+      "boundary_reason": "observed_topic_change",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 84,
+          "heading": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+          "topic_key": "analysis of ordinary shareholders",
+          "heading_evidence": [
+            {
+              "text": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+              "top": 70.36,
+              "size": 21.96
+            },
+            {
+              "text": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+              "top": 711.99,
+              "size": 21.96
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 85,
+          "heading": "CONTINUED",
+          "topic_key": "",
+          "heading_evidence": [
+            {
+              "text": "ANALYSIS OF ORDINARY SHAREHOLDERS",
+              "top": 80.73,
+              "size": 21.96
+            },
+            {
+              "text": "CONTINUED",
+              "top": 104.31,
+              "size": 14.06
+            }
+          ],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    },
+    {
+      "parent_heading": "Unclassified report pages",
+      "logical_heading": "Unclassified report pages",
+      "physical_pages": [
+        86,
+        87
+      ],
+      "source_characters": 5311,
+      "boundary_reason": "requested_range_start",
+      "continuation_cut": false,
+      "continuation_reason": null,
+      "heading_evidence": [
+        {
+          "physical_page": 86,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        },
+        {
+          "physical_page": 87,
+          "heading": "",
+          "topic_key": "",
+          "heading_evidence": [],
+          "note_id": "",
+          "period": "",
+          "instrument": "",
+          "mixed_topics_on_page": false,
+          "inspection": "native_font_and_position"
+        }
+      ]
+    }
+  ]
+}

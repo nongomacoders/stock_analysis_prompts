@@ -1,0 +1,143 @@
+{
+  "source_pdf": {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+    "hash_verified": true,
+    "physical_pages": 38
+  },
+  "portfolio": {
+    "principal_book": {
+      "opening": 3975.0,
+      "additions": 382.0,
+      "net_collections": -728.0,
+      "caeir": 383.0,
+      "impairment": -167.0,
+      "closing_calculated": 3845.0,
+      "closing_stated": 3845.0,
+      "ties": true
+    },
+    "other_financial_assets": {
+      "opening": 702.0,
+      "additions": 28.0,
+      "collections": -116.0,
+      "fv_gain": 30.0,
+      "closing_calculated": 644.0,
+      "closing_stated": 644.0,
+      "ties": true
+    },
+    "total_pbd": {
+      "calculated": 4489.0,
+      "stated": 4489.0,
+      "ties": true
+    },
+    "poci_accounting": {
+      "gross_carrying": 3414.0,
+      "cumulative_gain": 431.0,
+      "net_carrying": 3845.0,
+      "ties": true,
+      "gain_to_gross_pct": 12.624,
+      "is_loss_reserve": false
+    },
+    "impairment_decomposition": {
+      "acquired": 24.0,
+      "historical": -191.0,
+      "net_calculated": -167.0,
+      "net_stated": -167.0,
+      "ties": true
+    },
+    "erc": {
+      "erc_stated": 8366.0,
+      "multiple_of_carrying": 1.8637,
+      "implied_runoff_years": 5.41
+    }
+  },
+  "income_statement": {
+    "gross_profit_calc": 326.0,
+    "net_pbd_income_calc": 69.0,
+    "net_pbd_income_stated": 69.0,
+    "net_pbd_ties": true,
+    "operating_loss_calc": -79.0,
+    "operating_loss_stated": -79.0,
+    "pbt_calc": -92.0,
+    "pbt_stated": -92.0,
+    "loss_continuing_calc": -63.0,
+    "loss_continuing_stated": -63.0,
+    "vertical_ties": true
+  },
+  "codm_amortisation": {
+    "formula": "728 - 383 + 167 + 116 - 30",
+    "calculated": 598.0,
+    "stated": 597.0,
+    "rounding_delta": 1.0
+  },
+  "cash_flow": {
+    "statutory_ocf_calc": -111.0,
+    "statutory_ocf_stated": -111.0,
+    "ocf_ties": true,
+    "total_capex": -30.0,
+    "cash_after_capex": -141.0,
+    "lease_repayment": -30.0,
+    "cash_after_capex_and_leases": -171.0,
+    "net_borrowings": 212.0,
+    "net_financing_stated_as_investing_label": 178.0,
+    "net_financing_calc": 178.0,
+    "net_change_cash_calc": 6.0,
+    "closing_cash_calc": 113.0,
+    "closing_cash_stated": 113.0,
+    "sofp_cash_match": true,
+    "pbd_cf_movement_stated": 182.0,
+    "note1_net_cash_pbd": 346.0,
+    "pbd_cash_flow_unexplained_gap": 164.0
+  },
+  "debt_and_liquidity": {
+    "total_debt_calc": 4016.0,
+    "total_debt_stated": 4016.0,
+    "ties": true,
+    "due_within_12m": 1396.0,
+    "due_after_12m": 2620.0,
+    "undrawn_overdraft": 475.0,
+    "cash_on_balance_sheet": 112.0,
+    "total_disclosed_liquidity": 587.0,
+    "refinancing_deficit_12m": 809.0,
+    "management_claim_unutilised": 800.0,
+    "unreconciled_management_facility_gap": 325.0,
+    "encumbrance_pct_principal_book": 100.0
+  },
+  "shares_and_nav": {
+    "shares_issued": 784313242,
+    "treasury_shares": 3662209,
+    "net_shares_in_issue": 780651033,
+    "total_equity_rm": 1329.0,
+    "nav_per_share_zar": 1.7024,
+    "nav_per_share_display": 1.7,
+    "stated_capital_rm": 5410.0,
+    "stated_capital_per_share_zar": 6.9301,
+    "weighted_avg_shares_m": 782.1438,
+    "heps_cents_calculated": -8.0548,
+    "heps_cents_stated": -8.1,
+    "heps_ties": true
+  },
+  "workload_trial_evaluation": {
+    "source_pages": 38,
+    "captures": 9,
+    "successful_receipts": 17,
+    "reported_prompt_tokens": 383041,
+    "reported_completion_tokens": 116181,
+    "reported_reasoning_tokens": 20729,
+    "question_records": 69,
+    "open_question_records": 68,
+    "validation_attempts": {
+      "rejected": 15,
+      "valid": 9
+    },
+    "local_open_only_fallbacks_count": 5,
+    "stage2_result_kind": "WITHHELD_RECOVERY_BRIEF_FULL_VALUATION_INCOMPLETE",
+    "stage2_completion_budget_retries": [
+      "stage2"
+    ],
+    "prior_interruption_error": {
+      "type": "IncompleteCompletionError",
+      "message": "Model reached completion limit (98,304 tokens); response is incomplete (finish_reason: length)."
+    }
+  }
+}

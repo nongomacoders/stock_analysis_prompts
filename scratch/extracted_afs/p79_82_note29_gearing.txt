@@ -1,0 +1,84 @@
+NOTES TO THE GROUP AND COMPANY
+ANNUAL FINANCIAL STATEMENTS
+for the year ended 28 February 2026
+Liquidity risk
+Dis-Chem has the following facilities in place:
+2026 2025
+R’000 R’000
+Working capital facilities with ABSA, Standard Bank and Nedbank 4 100 000 3 000 000
+Supply Chain Finance (SCF) facility 1 700 000 1 700 000
+Credit card and fleet card facilities 1 5 728 15 500
+Derivative trading facilities 1 73 410 173 500
+Forward exchange settlement limit 1 00 000 100 000
+Commercial asset finance credit line 2 25 000 225 000
+Dis-Chem also has loans of R2.0 billion (2025: R2.2 billion), NCI shareholders and related party loans of
+R43 million (2025: R49 million).
+The debt covenants for the ABSA and Standard Bank loans (which are tested at February and August) are based on interest
+cover ratio (EBITDA/finance charges) and net leverage (ratio of total net debt to EBITDA). Dis-Chem has sufficient head room
+in both these ratios and does not expect these ratios to be defaulted on in the next 12 months. There are no covenants in
+place for Investec or Supply Chain Finance. The board believes that the debt levels of the Group are acceptable with a
+gearing ratio (excluding finance leases) of 2.8�(2025:�2.3).
+As disclosed in note 23 and 24, the Group has entered in supply chain finance arrangements. There were no material
+business combinations or foreign exchange differences or other non-cash transfers relating to the carrying amount of
+liabilities subject to this supply chain finance arrangement.
+The table below summarises the maturity profile of the Group’s financial liabilities at year-end, based on contractual and
+undiscounted payments.
+Less than Greater than
+On demand 12 months 12 months Total
+R’000 R’000 R’000 R’000
+2026
+Trade and other payables – 7 669 095 – 7 669 095
+Loans payable excluding bank loans 43 173 – – 43 173
+Bank overdraft – 1 666 720 – 1 666 720
+Bank loans – 619 271 1 640 774 2 260 045
+Lease liability (note 22) – 910 197 2 672 189 3 582 386
+Undiscounted payments 43 173 10 865 283 4 312 963 15 221 419
+Less: Future finance charges – (361 494) (553 299) (914 793)
+43 173 10 503 789 3 759 664 14 306 626
+2025
+Trade and other payables – 6 999 121 – 6 999 121
+Loans payable excluding bank loans 49 312 – – 49 312
+Bank overdraft – 1 317 637 – 1 317 637
+Bank loans – 699 192 1 964 802 2 663 994
+Lease liability (note 22) – 813 222 2 431 613 3 244 835
+Undiscounted payments 49 312 9 829 172 4 396 415 14 274 899
+Less: Future finance charges – (375 640) (664 793) (1 040 433)
+49 312 9 453 532 3 731 622 13 234 466
+The debt due on demand and within 12 months will be financed out of operational cash flow and available working capital
+facilities.
+78 Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026
+--- PAGE 82 ---
+Interest rate risk
+The company’s exposure to the risk of changes in market interest rates relates primarily to the Absa loan with a floating
+interest rate linked to JIBAR as well as interest incurred on overdraft facilities (note 9).
+As part of the process of managing the company’s interest rate risk, interest rate characteristics of new borrowings and
+refinancing of existing borrowings are positioned according to anticipated movements in interest rates. Funds on call earn
+interest at prevailing market call rates. Interest payable on bank borrowings and the Investec loan fluctuate in accordance
+with prime bank lending rates while the Absa loans fluctuate with the JIBAR rate.
+If the interest rate, with all other variables held constant, increased or decreased by 200 average basis points at year-end
+(2025: 200), the impact of the company’s profit before tax would be approximately R46 million (2025: R33 million). The
+sensitivity analysis presented was based on the average balance of the funds during the period on the bank borrowings and
+Absa loan.
+Liquidity risk
+Dis-Chem Pharmacies has the following facilities in place:
+2026 2025
+R’000 R’000
+Working capital facilities with ABSA, Standard Bank and Nedbank 3 900 000 2 800 000
+Supply Chain Finance (SCF) facility 1 000 000 1 000 000
+Credit card and fleet card facilities 8 350 12 700
+Derivative trading facilities 1 00 910 100 000
+Forward exchange settlement limit 4 565 100 000
+Commercial asset finance credit line 1 00 000 100 000
+Dis-Chem Pharmacies also has bank loans of R722 million (2025: R802 million ) and related party loans of R992 million
+(2025: R786 million).
+Dis-Chem Pharmacies have given security/guarantees to ABSA, Standard Bank and Nedbank in regard to certain companies
+within the Dis-Chem Group and landlords. Securities/guarantees to ABSA for R2.2 billion in regard to Dis-Chem Distribution;
+to Bemax International (R75 million), Dis-Chem Distribution (R440 million) and CJ Pharmaceutical (R400 million); and to
+Nedbank for R2 million in regard to landlords. These facilities have not been used at year end. Included in guarantees is an
+unrestricted cession of loans receivable and cash management accounts to Standard Bank. This has not been called upon.
+The debt covenants for the ABSA loan (which is tested at February and August) is based on interest cover ratio
+(EBITDA/finance charges) and net leverage (ratio of total net debt to EBITDA). Dis-Chem has sufficient head room in both
+these ratios and does not expect these ratios to be met in the next 12 months. There are no covenants in place for Investec.
+The board believes that the debt levels of the company are acceptable with a gearing ratio (excluding finance leases) of 2.3
+(2025: 2.5).
+Dis-Chem Group and Company audited annual financial statements for the financial year ended 28 February 2026 81

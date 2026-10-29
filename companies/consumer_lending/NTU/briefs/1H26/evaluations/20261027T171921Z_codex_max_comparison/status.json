@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+  "run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T171921Z_codex_max_comparison",
+  "stage": "stage1",
+  "error_type": "RuntimeError",
+  "error": "OpenRouter connection error (deepseek/deepseek-v4.1-flash-1017): <urlopen error [Errno 11001] getaddrinfo failed>",
+  "baseline_files_unchanged": true,
+  "source_unchanged": true
+}

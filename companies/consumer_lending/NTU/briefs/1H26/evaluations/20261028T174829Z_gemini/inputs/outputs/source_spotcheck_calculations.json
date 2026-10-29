@@ -1,0 +1,20 @@
+{
+  "values": {
+    "correct_financial_assets": 4884,
+    "merged_cell_model_sum": 9879,
+    "false_assets_gap": 4995,
+    "correct_ebitda": 790,
+    "wrong_positive_tax": 848,
+    "false_ebitda_gap": 58,
+    "possible_signed_amortisation": 598,
+    "printed_amortisation": 597,
+    "amortisation_residual": 1,
+    "principal_net": 3845,
+    "gain_change": -167,
+    "historical_fy25_loss": 259,
+    "fx_usd_closing_march2026": 17.2,
+    "fx_usd_closing_march2025": 18.4,
+    "fx_usd_closing_sept2025": 17.3
+  },
+  "evidence": "Original identical-hash PDF physically viewed this turn:13,22,24,25,31. Equations are independent checks;the amortisation598 bridge is conditional signed reconstruction with1 residual,not an issuer-confirmed formula."
+}

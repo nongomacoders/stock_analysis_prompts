@@ -1,0 +1,166 @@
+> APPLICATION QUALIFICATION: DeepSeek ledger updates failed evidence validation. No existing question was resolved by this response. All prior questions remain open; any resolution claim in the narrative is unverified. Only valid new questions were retained.
+
+### 1. Answers to Stored Questions for This Section
+
+- **Q-98728268ed3b4aa5** (RM Morais director status):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: RM Morais is presented as an **executive director** in the FY2026 emoluments table, receiving salary R13,758k, bonus R5,041k, other benefits R490k, total R19,361k `[D005, physical PDF p. 69]`. He also holds 153,371 FSP shares awarded 31 Aug 2025 and 70,811 from 31 Aug 2024 `[D005, physical PDF p. 71]`. This contradicts the p.5 footnote stating he is "not currently a director." The inconsistency remains unresolved; the p.5 footnote appears stale or erroneous. Carry forward for D006 (Note 28 related-party disclosure).
+
+- **Q-7617a68a41f246be** (IL/LF Saltzman restructuring):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: IL Saltzman sold 123,041 FSP shares for R3,990,244 and LF Saltzman sold 100,840 shares for R3,270,261 on 30 June 2025 `[D005, physical PDF p. 71]`. These are **on-market sales of vested FSP shares**, not the 217,125,386-share restructuring described in the question. The 20 June 2025 Ivlyn Local Investment Holdings distribution of 217,125,386 shares for R6,802,538,343 is a separate transaction not evidenced in this capture. Nature (sale vs in-specie) and post-restructure beneficial ownership remain open for Note 28.
+
+- **Q-2aca374647d14f72** (post-year-end share activity / treasury balance):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: No post-year-end share issuance or buyback is disclosed in this capture. FSP shares exercised in FY2026: 365,704 (31 Aug 2022 offer) `[D005, physical PDF p. 71]`. SE Saltzman resigned and his remaining shares were forfeited (34,315 from 2023 offer; 26,341 from 2024 offer) `[D005, physical PDF p. 71]`. Treasury share balance at 28 Feb 2026 not stated in this capture; carry forward.
+
+- **Q-a5ae5b85bd4243d7** (FY2027 FSP expense run-rate):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: New FSP awards on 31 Aug 2025 total 540,686 shares (IL 95,448; LF 78,331; SE 43,365; SRN 40,236; RM 153,371; CJ 58,270; JD 71,665) `[D005, physical PDF p. 71]`. FY2026 share scheme vesting expense to directors/prescribed officers was R6,922k + R4,938k = R11,860k `[D005, physical PDF p. 69]`. Total FY2026 FSP expense (all employees) of R35,337k is not in this capture. FY2027 run-rate requires vesting schedule; carry forward.
+
+- **Q-0cc9dd62909d487d** (director-linked property leases):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: "Various property companies" footnote states: "Relates to retail space that is owned/partially owned by certain directors" `[D005, physical PDF p. 68]`. FY2025 Company lease liability to these entities: R128,676k; interest expense R(11,460)k. Whether these are included in the Group IFRS 16 lease liability of R2,943,233k and whether terms are at market is not stated; carry forward.
+
+- **Q-6d594e8c19a74df1** (related-party loans elimination / ECL):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: Footnote states "Related party receivable and payables are generally settled within 60 days" `[D005, physical PDF p. 68]`. FY2025 Company related-party loans receivable total R861,985k (incl. Healthforce R184,061k, Pure Pharmacy Retail R106,638k, Dis-Chem KG R81,202k, DC Media R83,975k, Sable R32,103k, Serveco R29,427k, Tony Ferguson R25,792k, BEESECDCP R21,347k) `[D005, physical PDF p. 68]`. Elimination on consolidation and ECL assessment not stated; carry forward.
+
+- **Q-41614adce9fc4a57** (related-party interest swing):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: FY2025 Company related-party interest income/(expense) net R(35,596)k, including Columbia Falls R14k income and various property companies R(11,460)k `[D005, physical PDF p. 68]`. The R40,188k Columbia Falls interest expense referenced in the question is not visible in this capture (Columbia Falls shows only R14k interest income). Carry forward.
+
+- **Q-78b0a03d17c64c74** (CJ Pharmaceutical relationship / R400m pledge):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-0644fc1c056a4be4** (CJ Pharmaceutical / R400m receivables pledge):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-4dddc2038ee84eed** (related-party loans impairment):
+  - **Status**: `Partially resolved (remainder stays open for D006)`
+  - **Answer & evidence**: FY2025 Company related-party loans receivable R861,985k `[D005, physical PDF p. 68]`. No impairment/ECL assessment disclosed in this capture. Carry forward.
+
+- **Q-d9cb4f986ae1472e** (Company purchases from Dis-Chem Distribution):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-0a1a9ee4168445f1 / Q-5890edf83d0d4546** (Note 31 subsequent events):
+  - **Status**: `Not addressed in this capture` — Note 31 not in this section. Carry forward to D006.
+
+- **Q-34972c8726714c9f / Q-7ff806d39c484f14 / Q-d82acc3dad584640** (share count / DPS reconciliation):
+  - **Status**: `Not addressed in this capture` — Note 19/21 not in this section. Carry forward to D006.
+
+- **Q-b931ab53214d47fa** (audit fees):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-9c499ce17c37452f / Q-1b713f3a8c26411d** (dividends paid classification):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-59006d86e51c45c7 / Q-d897b4ee3f554cc5** (final dividend subsequent event):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-6284b89a9fdb45c5 / Q-f618e5c2caaf4656 / Q-5834ccc62e7f4814 / Q-d127e63b17d84ea9 / Q-f2731d5b23ec4c69 / Q-7a7389b78b3e4dfb / Q-6eea1d251c174087** (footnote definitions on pp. 38-41):
+  - **Status**: `Not addressed in this capture` — those pages are not in this section. Carry forward.
+
+- **Q-ae9472fd9c8a4a47** (p. 39 note transcription):
+  - **Status**: `Not addressed in this capture` — carry forward.
+
+- **Q-96ae743b9da546f9 / Q-ac9f8791ce8f44a9 / Q-7bfff733fb8a4054 / Q-c6e88f0c37234f82 / Q-cc6982c386634c32** (page offset / contents index):
+  - **Status**: `Partially resolved` — page offset confirmed: physical p. 68 = printed p. 67; p. 69 = printed p. 68; p. 70 = printed p. 69; p. 71 = printed p. 70; p. 72 = printed p. 71; p. 73 = printed p. 72 `[D005, physical PDF pp. 68-73]`. Offset is physical = printed + 1. Contents index reconciliation for other ranges remains open.
+
+- **Q-492b8e048b7b440a / Q-ae9472fd9c8a4a47** (completeness of notes):
+  - **Status**: `Partially resolved` — this capture shows Note 28 (related-party, continued from prior page) and Note 29 (financial risk management) beginning on physical p. 73 `[D005, physical PDF p. 73]`. No gap between p. 68 and p. 73 is evident. Full contents index reconciliation remains open.
+
+- **Q-8f31c9dde0434bc2 / Q-a0e1efc9e2fb465b / Q-4497778bcc6a42f2** (going concern / OCF / covenant):
+  - **Status**: `Not addressed in this capture` — carry forward to D002/D006.
+
+- **Q-d28094417ee641e1 / Q-ac62c4dd63bf4c68 / Q-cb1c85d41650471e / Q-2b9849eb1ac24ea5** (auditor's report / KAMs):
+  - **Status**: `Not addressed in this capture` — carry forward to D001.
+
+- **Q-a681115dc72e461f** (internal control deficiencies):
+  - **Status**: `Not addressed in this capture` — carry forward to D001.
+
+- **Q-bcc84bc8d00943ca** (fifth Audit & Risk Committee member):
+  - **Status**: `Not addressed in this capture` — carry forward to D001.
+
+- **Q-ffc94ad22da44416** (segment revenue / debtor book health):
+  - **Status**: `Not addressed in this capture` — carry forward to D003/D006.
+
+- **Q-e99fffee8b874a0c / Q-8d2a0366cefd43cd** (finance costs split):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-e876ac3db1204169 / Q-d4359aaf5b3940a6** (store count / lease release):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-a8b1a2fdb56f4c56 / Q-b39f5b2b36cc4b8d** (Columbia Falls / Dis-Chem Life):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-0a1a9ee4168445f1 / Q-5890edf83d0d4546** (subsequent events):
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+- **Q-9348bd1461904198 / Q-a99837e8ec864376 / Q-1cb1020992f64812 / Q-53c05b9e2b9140d9 / Q-3dd14b2a88a344b9 / Q-b8bbff1173f34f0d / Q-3990b3abd8b34753 / Q-8780c0625a534ae6 / Q-aace714505c14dd0 / Q-6409698674ae47df / Q-740992ca8c3945a3 / Q-8113f4ff41654e36 / Q-de84ef9acbd5455c / Q-02ff5b4e1af840d6 / Q-efd31336131c4997 / Q-29ad8342e58b4dbb / Q-fec22f4d634847c2 / Q-4bfd19ac8ef14ea8 / Q-8fe4b911f6944795 / Q-fd3755ff98be4f01 / Q-9f29d949765e436c / Q-f7d4ecccf9d845a2 / Q-829dd2e73360413f / Q-d58da8bb87734e1c / Q-58dab274ace14d02 / Q-9578a5bba18b476f / Q-54710a5b2dc2448f / Q-de875925a53e48c1 / Q-50e057da26564cd9 / Q-aaa95b891be14a74 / Q-64791be57c9f40a7 / Q-e3e7e9d7c3c84bfc / Q-38236abcc7424579 / Q-b0f460e7fe6e473e / Q-908d113af57e40e2 / Q-814cfa67e2c046b8 / Q-f8e9cc8023354d3e / Q-eb7a0da286e34567 / Q-8c2d02e3c84e44cc / Q-98c28ccad886448c / Q-34800110593a41d6 / Q-145f53a8de844f79 / Q-772d2ef2b49f441b / Q-70887acd86714bac / Q-0a8c84fb7d5f4124 / Q-8a2a733213224290 / Q-07fb7970dde84c5d / Q-2d4dadf3e15740ce / Q-117e92dcaf274064 / Q-3575bc9afe154574 / Q-817fc50047cd4734 / Q-dd56616efdfd4cb7 / Q-888054f3a9be4926 / Q-75725cbbdfce460d / Q-43162f718fae4085 / Q-4d2cf108e4844aeb / Q-e4d5587b4e3243ef / Q-3e72d5f6f2454d26 / Q-ae621d5e27cb43c4 / Q-dc149453df8d43a1 / Q-67db9a8b791642e3 / Q-6a037c6d0e0e4b9b / Q-c57cecfbcbd84dfe / Q-ebd6ba3297c8402d / Q-7af406705a3e4651 / Q-0a684c7fac304d80 / Q-a3270ab222b54cea / Q-5f5d6b13a967452f / Q-4673c74164aa4af8 / Q-40e7c8b9d1e1440a / Q-b6e3cd4411864794 / Q-b29de779e9f74366 / Q-9a73ef0a65a746df / Q-a4ccbe5daf034e3e / Q-54e62e806d0e4e79 / Q-c64452c0691c411b / Q-5a32b7767cc9407b / Q-18b421f4f2d341ea / Q-48c3f963f0b543b7 / Q-1f3b1d8a7a184a17**:
+  - **Status**: `Not addressed in this capture` — carry forward to D006.
+
+### 2. Footnote & Qualification Deep-Dive
+
+- **"Various property companies" footnote** `[D005, physical PDF p. 68]`: "Relates to retail space that is owned/partially owned by certain directors." This qualifies the R128,676k lease liability and R(11,460)k interest expense to director-linked property entities. It confirms related-party property leases exist but does not state whether they are at market terms or whether they are included in the Group IFRS 16 lease liability of R2,943,233k. **Must verify in D006 (Note 22/28).**
+
+- **"Related party receivable and payables are generally settled within 60 days"** `[D005, physical PDF p. 68]`: This is a qualification on the R861,985k loans receivable and R785,799k loans payable. "Generally" is a soft qualifier — it does not confirm all balances are current, nor does it address impairment. **Must verify ageing and ECL in D006 (Note 29).**
+
+- **"Dividend received earned from subsidiaries, associates and joint ventures is disclosed in note 8"** `[D005, physical PDF p. 68]`: Cross-reference to Note 8; dividend income is not in this capture. **Must verify in D006 (Note 8).**
+
+- **"Bonuses relate to amounts physically paid in the period"** `[D005, physical PDF p. 70]`: This qualifies the FY2025 bonus column (R7,340k executive, R8,030k prescribed officers). It means the bonus expense in the income statement may differ from cash paid due to accrual timing. **Must verify in D006 (Note 8/employee costs).**
+
+- **"The employment contracts of executive directors differ from that of other employees in that they do not accrue leave and have a longer notice period"** `[D005, physical PDF p. 70]`: This qualifies the leave pay provision and termination liability. It means executive directors do not contribute to the leave pay accrual, reducing that liability relative to headcount. **Must verify in D006 (provisions note).**
+
+- **"SE Saltzman resigned in the current financial year and therefore his remaining shares were forfeited"** `[D005, physical PDF p. 71]`: This confirms SE Saltzman's resignation and forfeiture of 34,315 (2023 offer) + 26,341 (2024 offer) = 60,656 shares. This is a governance event and affects the FSP expense reversal. **Must verify in D006 (Note 20 share-based payments).**
+
+- **"In the current financial year, shares with offer date 31 August 2022 were exercised"** `[D005, physical PDF p. 71]`: Details on-market sales by directors/prescribed officers on 30 June 2025: JD Pope 14,667 for R475,654; SRN Goetsch 38,565 for R1,250,671; IL Saltzman 123,041 for R3,990,244; SE Saltzman 37,171 for R1,205,463; CJ Williams 51,420 for R1,667,561; LF Saltzman 100,840 for R3,270,261. Total 365,704 shares sold for ~R11,859,854. This is a **significant director share sale** and should be flagged for governance/confidence assessment. **Must verify in D006 (Note 19/20).**
+
+- **"KS Sterling retired in the prior year and received 26,087 shares for offer date 31 August 2022 and 12,565 shares for offer date 31 August 2023"** `[D005, physical PDF p. 72]`: Prior-year qualification; confirms retirement treatment. Not material to FY2026 forecast.
+
+- **"In the prior financial year JD Pope exercised 14,057 options at R478,581, TJ Ponter exercised 25,064 options at R853,930, Z Dindar exercised 25,064 options at R853,930 and R Govender exercised 3,884 options at R132,328"** `[D005, physical PDF p. 72]`: Prior-year SAR exercises; confirms SAR scheme is winding down (all 2019 options exercised or forfeited by FY2026). **Must verify in D006 (Note 20) whether any SAR liability remains.**
+
+- **Note 29 financial risk management** `[D005, physical PDF p. 73]`: This is the start of the financial risk management note. It states financial assets are classified at amortised cost and subject to impairment under the EIR method. It does **not** yet disclose the credit risk, liquidity risk, or market risk sections — those must be in subsequent pages (physical pp. 74-77). **Must verify in D006 (Note 29 continuation) for ECL staging, satisfactory-paid %, collection rate, covenant headroom, and the R400m receivables pledge.**
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D005, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D006 (Note 29 continuation, physical pp. 74-77) | Note 29 begins on p. 73 but credit risk, liquidity risk, and market risk sections are not in this capture `[D005, p. 73]` | Extract ECL staging (Stage 1/2/3), satisfactory-paid %, collection rate, covenant headroom, and the R400m receivables pledge terms from Note 29 continuation | Credit book health is the single largest forecast risk for a consumer credit retailer; ECL adequacy drives FY2027 debtor costs |
+| N2 | High | D006 (Note 22/28) | "Various property companies" footnote confirms director-linked retail space but does not state market terms or inclusion in IFRS 16 liability `[D005, p. 68]` | Confirm whether R128,676k lease liability to director-linked property companies is included in Group IFRS 16 lease liability R2,943,233k; state market-terms assessment | Governance risk and lease cost forecast; if above-market, FY2027 rent could be overstated |
+| N3 | High | D006 (Note 19/20) | Director/prescribed officer on-market share sales of 365,704 shares for ~R11.86m on 30 June 2025 `[D005, p. 71]` | Confirm total shares sold, proceeds, and whether any remaining FSP/SAR shares are held; check Note 19 treasury share balance | Director selling is a confidence signal; affects EPS/DPS denominator and share-based payment expense run-rate |
+| N4 | Medium | D006 (Note 8/employee costs) | "Bonuses relate to amounts physically paid in the period" `[D005, p. 70]` | Reconcile FY2026 bonus cash paid (R13,282k executive + R4,490k prescribed = R17,772k) to income statement employee cost accrual | Bonus accrual timing affects FY2027 employee cost base and operating margin |
+| N5 | Medium | D006 (Note 20 share-based payments) | SE Saltzman resigned; 60,656 FSP shares forfeited `[D005, p. 71]` | Confirm FY2026 FSP expense reversal for forfeited shares and FY2027 FSP run-rate for 540,686 new awards | Share-based payment expense affects HEPS and operating margin |
+| N6 | Medium | D006 (Note 29) | "Related party receivable and payables are generally settled within 60 days" `[D005, p. 68]` | Extract ageing of related-party loans receivable R861,985k and confirm ECL assessment or explicit absence | If related-party loans are impaired, FY2027 earnings and net asset value are affected |
+| N7 | Low | D006 (Note 28) | RM Morais presented as executive director in emoluments table `[D005, p. 69]` but p.5 footnote says "not currently a director" | Confirm current director status and date of any resignation/appointment; check Note 28 related-party disclosure for Morais/Melnique | Governance and related-party disclosure accuracy |
+| N8 | Low | D006 (Note 20) | All 2019 SAR options exercised or forfeited by FY2026 `[D005, p. 72]` | Confirm no remaining SAR liability on balance sheet | Removes a potential future expense/liability |
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [], "new_questions": [{"question": "What are the ECL staging (Stage 1/2/3), satisfactory-paid %, collection rate, covenant headroom, and R400m receivables pledge terms disclosed in Note 29 continuation (physical pp. 74-77)?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 29 continuation)", "evidence_required": "Note 29 credit risk, liquidity risk, and market risk sections: ECL staging by stage, satisfactory-paid %, collection rate, covenant headroom, R400m receivables pledge terms, FY2026 vs FY2025 in R'000.", "closure_condition": "ECL staging and credit metrics extracted for both years; covenant headroom quantified; pledge terms stated; forecast consequence for FY2027 debtor costs and liquidity stated."}, {"question": "Is the R128,676k lease liability to director-linked property companies included in the Group IFRS 16 lease liability of R2,943,233k, and are the lease terms at market?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 22/28)", "evidence_required": "Confirmation of inclusion in IFRS 16 lease liability; market-terms assessment; lease terms and escalation for director-linked properties.", "closure_condition": "Inclusion confirmed and market-terms assessment stated; governance impact noted; FY2027 rent forecast consequence stated."}, {"question": "What are the total shares sold by directors/prescribed officers on 30 June 2025, the proceeds, and the remaining FSP/SAR holdings and treasury share balance at 28 Feb 2026?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 19/20)", "evidence_required": "Total shares sold, proceeds, remaining FSP/SAR holdings, treasury share balance at 28 Feb 2026, FY2026 vs FY2025.", "closure_condition": "Share sales and remaining holdings quantified; treasury balance confirmed; FY2027 EPS/DPS denominator stated."}, {"question": "What is the FY2026 FSP expense reversal for SE Saltzman's forfeited 60,656 shares, and what is the FY2027 FSP run-rate for the 540,686 new awards?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 20 share-based payments)", "evidence_required": "FSP expense reversal for forfeited shares; vesting schedule and FY2027 expense estimate for new awards; total FY2026 FSP expense R35,337k reconciliation.", "closure_condition": "Reversal and FY2027 run-rate quantified and reconciled to grant schedule; forecast consequence for other expenses stated."}, {"question": "Does the FY2026 bonus cash paid (R13,282k executive + R4,490k prescribed = R17,772k) reconcile to the income statement employee cost accrual, given the footnote that bonuses relate to amounts physically paid?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 8/employee costs)", "evidence_required": "Reconciliation of bonus cash paid to income statement employee cost accrual; confirmation of accrual timing FY2026 vs FY2025.", "closure_condition": "Reconciliation completed and timing difference explained; FY2027 employee cost base stated."}, {"question": "What is the ageing of related-party loans receivable R861,985k and is any ECL required, given the 'generally settled within 60 days' qualification?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 29)", "evidence_required": "Ageing of related-party loans receivable; ECL assessment or explicit absence; confirmation of elimination on consolidation.", "closure_condition": "Ageing and ECL assessment stated or explicit absence confirmed; elimination confirmed; forecast consequence for FY2027 earnings stated."}, {"question": "Is RM Morais currently a director, given the emoluments table presents him as executive director while the earlier footnote states he is 'not currently a director'?", "priority": "low", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 28)", "evidence_required": "Current director list and any resignation/appointment dates; Note 28 related-party disclosure for Morais/Melnique.", "closure_condition": "Director status confirmed with date; inconsistency explained (stale footnote or undisclosed resignation)."}, {"question": "Is there any remaining SAR liability on the balance sheet at 28 Feb 2026, given all 2019 SAR options were exercised or forfeited by FY2026?", "priority": "low", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D006 (Note 20)", "evidence_required": "SAR liability balance at 28 Feb 2026 (or explicit nil); confirmation of no remaining SAR options.", "closure_condition": "SAR liability balance stated or explicit absence confirmed; forecast consequence for FY2027 employee costs stated."}]}
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Metric | FY2026 | FY2025 | Source |
+| --- | --- | --- | --- |
+| Key management short-term benefits | R101,199k | R123,484k | `[D005, p. 69]` |
+| Key management post-employment benefits | R504k | R1,507k | `[D005, p. 69]` |
+| Non-executive directors' fees | R8,215k | R7,883k | `[D005, p. 69]` |
+| Total key management compensation | R109,918k | R132,874k | `[D005, p. 69]` |
+| Executive directors' total emoluments | R72,177k | R57,354k | `[D005, pp. 69-70]` |
+| Prescribed officers' total emoluments | R29,526k | R67,637k | `[D005, pp. 69-70]` |
+| FSP shares awarded 31 Aug 2025 | 540,686 | — | `[D005, p. 71]` |
+| FSP shares exercised (31 Aug 2022 offer) | 365,704 | — | `[D005, p. 71]` |
+| Director share sales proceeds (30 Jun 2025) | ~R11,859,854 | — | `[D005, p. 71]` |
+| SE Saltzman forfeited shares | 60,656 | — | `[D005, p. 71]` |
+| Company related-party loans receivable | R861,985k (FY2025) | — | `[D005, p. 68]` |
+| Company related-party loans payable | R785,799k (FY2025) | — | `[D005, p. 68]` |
+| Company related-party lease liability (director-linked property) | R128,676k (FY2025) | — | `[D005, p. 68]` |
+| Company related-party interest expense (net) | R(35,596)k (FY2025) | — | `[D005, p. 68]` |
+| Company related-party sales | R345,751k (FY2025) | — | `[D005, p. 68]` |
+| Company related-party purchases | R1,023k (FY2025) | — | `[D005, p. 68]` |
+
+### 6. Next Section to Capture
+
+**D006 (physical pp. 74-85)** — Note 29 continuation (credit risk, liquidity risk, market risk, ECL staging, covenant headroom, R400m receivables pledge) and Note 30/31 (contingent liabilities, subsequent events, going concern). This will resolve N1, N2, N6, and the stored questions on Note 31 subsequent events (Q-0a1a9ee4168445f1, Q-5890edf83d0d4546, Q-59006d86e51c45c7, Q-d897b4ee3f554cc5), Note 29 credit metrics (Q-6a037c6d0e0e4b9b, Q-18b421f4f2d341ea, Q-3e72d5f6f2454d26, Q-dc149453df8d43a1), and Note 22/23 finance costs (Q-e99fffee8b874a0c, Q-8d2a0366cefd43cd).

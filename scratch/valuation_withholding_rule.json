@@ -1,0 +1,8 @@
+{
+  "rule_code": "ALL-MATERIAL-ISSUES-VALUATION-WITHHOLD",
+  "sector": "all",
+  "stage": "all",
+  "title": "Withhold Valuation Until Material Dependencies Are Resolved",
+  "rule_text": "If a material cash-flow, forecast, financing, share-count, portfolio or valuation dependency fails reconciliation or remains unsupported, return VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED. Preserve verified historical analysis and risks, identify each blocker and the evidence or correction needed, and carry unresolved Stage 1 findings forward. Do not publish a target, rating bands, upside, dividend yield, TSR or investment recommendation; use JSON null, never zero or HOLD. Illustrative scenarios must remain clearly conditional and separate from the headline valuation. READY requires explicit source evidence, consistent periods and scopes, cash/debt/portfolio roll-forwards, equity financing and terminal-policy consistency, valuation-bridge and sensitivity checks. Assumptions may be used when supported and disclosed; they cannot conceal material missing inputs. Application checks of declared evidence and numeric reconciliations do not replace independent review.",
+  "origin_ticker": "NTU"
+}

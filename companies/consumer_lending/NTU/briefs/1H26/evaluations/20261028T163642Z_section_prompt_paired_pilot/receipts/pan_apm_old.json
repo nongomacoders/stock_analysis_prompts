@@ -1,0 +1,90 @@
+{
+  "label": "pan_apm_old",
+  "started_utc": "2026-10-28T16:39:07.125564+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "cefda80d69e7273af59174a0f3a81acd07a2b905c69ab2a30184b2511c018f8f",
+  "max_tokens": 16384,
+  "reasoning_controls_sent": true,
+  "success": true,
+  "usage": {
+    "prompt_tokens": 6079,
+    "completion_tokens": 2615,
+    "total_tokens": 8694,
+    "cost": 0.00347319,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00347319,
+      "upstream_inference_prompt_cost": 0.00127659,
+      "upstream_inference_completions_cost": 0.0021966
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "stream_done": true,
+  "response_headers_seconds": 3.972,
+  "http_status": 200,
+  "id": "gen-1793205547-5QdhQ3cXgkDaoV8fQpkY",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "Fireworks",
+  "created": 1793205547,
+  "delta_field_types": {
+    "content:str": 2609,
+    "role:str": 2609
+  },
+  "finish_reason": "stop",
+  "native_finish_reason": "stop",
+  "completed_utc": "2026-10-28T16:39:19.874949+00:00",
+  "elapsed_seconds": 12.749,
+  "time_to_first_event_seconds": 3.972,
+  "time_to_first_content_seconds": 3.972,
+  "metadata_status": "retrieved",
+  "metadata_error_type": "HTTPError",
+  "metadata_http_status": 404,
+  "cost_usd": 0.00347319,
+  "cost_source": "response_usage",
+  "accounting_completed_utc": "2026-10-28T16:39:26.457112+00:00",
+  "generation_metadata": {
+    "id": "gen-1793205547-5QdhQ3cXgkDaoV8fQpkY",
+    "model": "deepseek/deepseek-v4.1-flash-20261017",
+    "provider_name": "Fireworks",
+    "created_at": "2026-10-28T16:39:07.731Z",
+    "finish_reason": "stop",
+    "native_finish_reason": "stop",
+    "generation_time": 11376,
+    "latency": 2696,
+    "moderation_latency": null,
+    "total_cost": 0.00347319,
+    "usage": 0.00347319,
+    "cache_discount": null,
+    "native_tokens_prompt": 6079,
+    "native_tokens_completion": 2615,
+    "native_tokens_reasoning": 0,
+    "native_tokens_cached": 0,
+    "tokens_prompt": 7128,
+    "tokens_completion": 2522,
+    "cancelled": false,
+    "streamed": true,
+    "service_tier": null,
+    "upstream_id": "chatcmpl-785c7e9f2199467e9c95ca919ecd0652",
+    "upstream_inference_cost": 0,
+    "is_byok": false
+  },
+  "reasoning_effort_requested": "none",
+  "provider_requested": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "bookkeeping_correction": "Inherited transport assumed omitted reasoning controls; exact saved requests prove none/exclude=true. Original receipt preserved in inputs/transport_receipts_original."
+}

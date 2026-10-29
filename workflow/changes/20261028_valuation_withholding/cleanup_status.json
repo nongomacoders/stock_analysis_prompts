@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETED",
+  "checked_utc": "2026-10-28T07:20:02.6379701Z",
+  "removed_test_directories": [
+    "tmp/valuation-gate-new-20261027",
+    "tmp/valuation-gate-new-fix-20261027",
+    "tmp/valuation-gate-offline-full-20261028",
+    "tmp/valuation-gate-offline-targeted-20261028",
+    "tmp/valuation-gate-resume-targeted-20261028",
+    "tmp/valuation-gate-targeted-fix-20261027"
+  ],
+  "remaining_test_directories": [],
+  "cleanup_exit_code": 0,
+  "method": "Native PowerShell Remove-Item after approved escalation; all targets verified within workspace tmp with no reparse points.",
+  "previous_status": {
+    "status": "BLOCKED_BEFORE_EXECUTION",
+    "reason": "approval required by policy, but granular sandbox_approval is false",
+    "remaining_test_directories": [
+      "tmp/valuation-gate-new-20261027",
+      "tmp/valuation-gate-new-fix-20261027",
+      "tmp/valuation-gate-offline-full-20261028",
+      "tmp/valuation-gate-offline-targeted-20261028",
+      "tmp/valuation-gate-resume-targeted-20261028",
+      "tmp/valuation-gate-targeted-fix-20261027"
+    ],
+    "alternative_deletion_attempted": false
+  },
+  "implementation_hashes_checked": 11,
+  "implementation_hashes_match": true,
+  "tests_rerun": false,
+  "last_full_suite": {
+    "passed": 178,
+    "exit_code": 0
+  },
+  "live_models_called": false,
+  "production_code_changed": false,
+  "original_implementation_record_preserved": true
+}

@@ -1,0 +1,548 @@
+[
+  {
+    "case": "ntu_portfolio",
+    "version": "old",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question_id": "Q-PILOT-ntu_portfolio",
+        "question": "Reconcile the principal and other purchased-debt portfolios separately; identify what further evidence is needed to compare their carrying change with statutory cash flow.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Current captured note",
+        "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+        "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+        "status": "partial",
+        "answer": "Principal book: 3,975 + 382 - 728 + 383 - 167 = 3,845 (Rm). Other financial assets: 702 + 28 - 116 + 30 = 644 (Rm). Total 4,489 = 3,178 (>12m) + 1,311 (<12m). Cash-flow bridge to statutory statement and pledge tie-out to note 2 remain open.",
+        "evidence": [
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the end of the period | 644 |  | 663 | 702 |"
+          }
+        ]
+      },
+      {
+        "question": "Reconcile the R728m net cash collections (gross R773m less R45m collection costs) and R116m other-asset collections to the statutory cash flow statement, and confirm CAEIR interest R383m and impairment R167m are non-cash.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "D003.3",
+        "evidence_required": "Cash flow statement lines for the half year ended 31 March 2026, Rm, with operating/investing classification.",
+        "closure_condition": "Each of the four amounts traced to a named cash flow line or confirmed non-cash; discrepancies quantified.",
+        "question_id": "Q-71c2ddf2a8c94395",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Tie the R3,845m pledged principal book to secured interest-bearing liabilities and bank overdrafts and obtain covenant/trigger terms and headroom.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "D003.1 / note 2",
+        "evidence_required": "Borrowings note showing secured debt quantum, pledge terms, covenant ratios and headroom, Rm, at 31 March 2026.",
+        "closure_condition": "Pledged assets matched to secured debt; covenant thresholds and headroom stated.",
+        "question_id": "Q-073b6fe32d704d26",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Locate the impairment loss R167m and CAEIR interest R383m in the income statement; confirm no impairment gain reversals and no double counting of R45m collection costs in opex.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "D003.2",
+        "evidence_required": "Income statement lines for impairment and interest income, Rm, half year to 31 March 2026, plus opex treatment of collection costs.",
+        "closure_condition": "Amounts traced to income statement lines; gain reversals and cost double count confirmed present or absent.",
+        "question_id": "Q-e9280e040bdb4e1b",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Obtain fair value hierarchy, key assumptions and sensitivity for the R644m other financial assets, and explain the fall in fair value gains from R74m to R30m.",
+        "priority": "medium",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "note 6.3",
+        "evidence_required": "Fair value note with level classification, valuation inputs and sensitivity, Rm, at 31 March 2026.",
+        "closure_condition": "Valuation basis and driver of gain deceleration explained with figures.",
+        "question_id": "Q-e37779cef1eb40c2",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Confirm purchase additions R382m (principal) and R28m (other) in the cash flow and assess deceleration versus FY25 R857m.",
+        "priority": "medium",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "D003.3",
+        "evidence_required": "Cash flow purchase-of-portfolio line, Rm, half year to 31 March 2026.",
+        "closure_condition": "Additions traced to cash flow; growth trend quantified.",
+        "question_id": "Q-845012d0fce8490a",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "ntu_portfolio",
+    "version": "new",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question_id": "Q-PILOT-ntu_portfolio",
+        "question": "Reconcile the principal and other purchased-debt portfolios separately; identify what further evidence is needed to compare their carrying change with statutory cash flow.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Current captured note",
+        "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+        "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+        "status": "partial",
+        "answer": "Principal book (amortised cost, POCI-style lifetime ECL) and other financial assets (FVTPL, no title, no recourse) are separately reconciled for H1 FY26, H1 FY25 and FY25. Principal book H1 FY26: 3,975 + 382 additions - 728 net collections + 383 CAEIR interest - 167 impairment = 3,845. Other FA H1 FY26: 702 + 28 - 116 - 30 FV gain = 644. Net collections = gross 773 less collection costs 45 = 728. Statutory cash-flow bridge (D003.3 p.12) and note 2 pledge/borrowings detail not in this capture, so full reconciliation to cash flow remains open.",
+        "evidence": [
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the beginning of the period | 3 975 |  | 3 831 | 3 831 |"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the beginning of the period | 702 |  | 672 | 672 |"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Balance at the end of the period | 644 |  | 663 | 702 |"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 13,
+            "quote": "Included in net collections are gross collections of R773 million (31 March 2025: R604 million; 30 September 2025: R1 280 million) and directly attributable and incremental collection costs of R45 million (31 March 2025: R38 million; 30 September 2025: R83 million)."
+          }
+        ]
+      },
+      {
+        "question": "What are the terms, covenants and maturity profile of the interest-bearing liabilities and bank overdrafts secured by the R3,845m pledged principal book portfolio (note 2), and what covenant headroom exists at 31 March 2026?",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Note 2 (interest-bearing liabilities) / pledge agreement disclosure",
+        "evidence_required": "Note 2 borrowings table with maturity, security, covenant terms and headroom at 31 March 2026 vs 30 September 2025; period, currency (Rm) and gross/net basis stated.",
+        "closure_condition": "Covenant terms and headroom quantified, or explicit statement that no financial covenants apply; benign explanations (e.g. unsecured facilities) accepted if evidenced.",
+        "question_id": "Q-ec6a09bd22fe4fe4",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What drove the fall in fair value movements on other financial assets from R74m (H1 FY25) to R30m (H1 FY26), and what is the fair value hierarchy/valuation technique (note 6.3)?",
+        "priority": "medium",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Note 6.3 fair value disclosure",
+        "evidence_required": "Note 6.3 fair value hierarchy level, valuation inputs, and any commentary on collection performance or retraction events affecting other financial assets in H1 FY26 vs H1 FY25.",
+        "closure_condition": "Driver of the FV movement change identified with note 6.3 evidence, or explicit statement that no explanation is given; forecast consequence for FVTPL income noted.",
+        "question_id": "Q-b20f6d9d0eda4265",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What ECL staging, coverage and vintage/collection-performance disclosure supports the R167m impairment loss on the principal book portfolio in H1 FY26, and how does it compare with the R173m H1 FY25 charge?",
+        "priority": "medium",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Credit risk / ECL note (principal book portfolios)",
+        "evidence_required": "ECL staging table, coverage ratios, collection-rate assumptions and any vintage default/collection curves for principal book portfolios at 31 March 2026 vs 30 September 2025; state period, units (Rm) and gross/net basis.",
+        "closure_condition": "ECL staging and coverage disclosed, or explicit statement that POCI-style portfolios are not staged; forecast consequence for impairment charge noted.",
+        "question_id": "Q-b332e6c7ddfc4e8d",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "ntu_shared_page",
+    "version": "old",
+    "ledger_valid": false,
+    "errors": [
+      "Evidence quote for Q-PILOT-ntu_shared_page, physical page 25 is not literal: 'credit risk is managed by reference to past default experience of the debtor and analysis of the deb'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+    ],
+    "questions": [
+      {
+        "question_id": "Q-PILOT-ntu_shared_page",
+        "question": "What does this capture establish about trade-receivable credit losses and the applicable measurement basis? Keep unsupported policy conclusions open.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Current captured note",
+        "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+        "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "ntu_shared_page",
+    "version": "new",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question_id": "Q-PILOT-ntu_shared_page",
+        "question": "What does this capture establish about trade-receivable credit losses and the applicable measurement basis? Keep unsupported policy conclusions open.",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "Current captured note",
+        "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+        "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+        "status": "partial",
+        "answer": "Capture shows trade-receivable ECL by aging bucket for 31 Mar 2026/2025 and 30 Sep 2025 (gross 374/419/364 Rm; allowance (5)/(6)/(10); net 369/413/354), with total loss rates 1.34%/1.43%/2.75% and >90-day 100%/85.71%/81.82%. Measurement described as past default experience plus forward-looking conditions, no separate receivable classes. Policy basis for 0.00% rates in current and <=90-day buckets, and any collections/cash-flow bridge, are not established.",
+        "evidence": [
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 25,
+            "quote": "Expected loss rate | 0.00% 0.00% 0.00%"
+          },
+          {
+            "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+            "physical_page": 25,
+            "quote": "No separate classes of trade receivables have been"
+          }
+        ]
+      },
+      {
+        "question": "Why are expected loss rates 0.00% for current and <=90-day overdue trade receivables at 31 Mar 2026 and 31 Mar 2025, versus non-zero (0.06%/0.19%/6.67%) at 30 Sep 2025? Is this a change in provisioning methodology, a data/timing effect, or a genuine credit-quality improvement?",
+        "priority": "high",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "D003.12 / D003.11 (p.24-25) and D003.10 (p.21-23)",
+        "evidence_required": "ECL methodology note, staging/aging definitions, and any reconciliation of loss-rate movement between 30 Sep 2025 and 31 Mar 2026, in Rm and % with period labels.",
+        "closure_condition": "A stated reason for the loss-rate change is provided with matching period/units, or the methodology note confirms the basis; otherwise remain open.",
+        "question_id": "Q-a9cd1c23310849f5",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What is the notional, maturity and hedge-effectiveness treatment of the USD/GBP foreign exchange contracts entered in the period for Nutun International receivables, and how much FX exposure remains unhedged?",
+        "priority": "medium",
+        "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+        "target_section": "6.2 Currency risk (p.25-26)",
+        "evidence_required": "Hedge notional amounts, maturity, effectiveness assessment and residual unhedged exposure in Rm, with period labels.",
+        "closure_condition": "Notional and effectiveness/residual exposure disclosed with matching period/units; otherwise remain open.",
+        "question_id": "Q-caace240eae14de5",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "pan_apm",
+    "version": "old",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question": "Reconcile the ~0.3% non-gold revenue (gold = 99.7% of Group revenue) and quantify by-product revenue deducted from operating costs in the AISC definition.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.2",
+        "evidence_required": "Segment revenue split (gold vs by-product/non-gold) for FY26 and FY25 in US$ and %, plus the by-product credit amount deducted in the AISC reconciliation.",
+        "closure_condition": "Segment revenue confirms gold share and the by-product credit quantum is identified and ties to the AISC build; benign explanation accepted if immaterial.",
+        "question_id": "Q-ed35d3028434455f",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Identify which operations comprise the lower-cost (247,219 oz @ US$1,702/oz) and higher-cost (25,154 oz @ US$3,487/oz) AISC buckets and confirm the allocation ties to segment and production data.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.2",
+        "evidence_required": "Mine-level AISC and oz sold for FY26/FY25 reconciling to the 247,219/25,154 oz and US$420.686m/US$87.718m totals; note any reclassification between buckets.",
+        "closure_condition": "Mine-level costs sum to the bucket totals and the bucket membership is stated; forecast consequence for blended AISC noted.",
+        "question_id": "Q-2cdcc04bf2f34e9d",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Quantify the items excluded from net (cash)/debt and net senior debt (IFRS 9 adjustments, restricted cash, financial liabilities) and reconcile to the statement of financial position.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.8",
+        "evidence_required": "Borrowings/lease note figures for each excluded item in US$, and a reconciliation of net debt and net senior debt to D005 statement of financial position balances.",
+        "closure_condition": "Each exclusion is quantified and the reconciliation to the primary statement balances; benign explanation accepted if immaterial.",
+        "question_id": "Q-126015923f084c93",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Identify the amount of capital expenditure funded through permitted indebtedness deducted in the free cash flow definition and the relevant facilities.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006",
+        "evidence_required": "Capex-funded-by-debt amount in US$ for FY26, the facility names, and the FCF reconciliation showing the deduction.",
+        "closure_condition": "Amount and facility identified and FCF reconciliation ties; forecast consequence for FCF vs conventional definition stated.",
+        "question_id": "Q-bd6c460540fe4bbd",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Trace the actual headline earnings reconciling items (disposal of PPE, impairments, bargain purchase, tax effect) per SAICA Circular 1/2023 and confirm the HEPS reconciliation.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.11",
+        "evidence_required": "Itemised headline earnings adjustments with tax effects in US$ and the HEPS/basic EPS reconciliation for FY26 and FY25.",
+        "closure_condition": "Each adjustment is quantified with tax effect and reconciles to HEPS; forecast consequence for normalised earnings noted.",
+        "question_id": "Q-363ea5f5b1234209",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Identify non-gold operations' sustaining and development capex excluded from AISC and confirm it is captured in total group capex.",
+        "priority": "low",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.5",
+        "evidence_required": "Non-gold capex amount in US$ excluded from AISC and its inclusion in the PPE/capex note totals.",
+        "closure_condition": "Non-gold capex quantified and reconciled into total capex; benign explanation accepted if immaterial.",
+        "question_id": "Q-72b56cb2fb5c4116",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "pan_apm",
+    "version": "new",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question": "What is the definition/basis of the 'lower-cost' vs 'higher-cost' operations grouping used in the AISC table, and does Group AISC reconcile to IFRS cost of production (including by-product revenue credit)?",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008 Alternative performance measures (pp. 40-47); D006.2 Note 3 Segment analysis",
+        "evidence_required": "AISC-to-cost-of-production reconciliation table, by-product revenue figure, and definition of lower/higher-cost operation grouping for FY26 and FY25, in US$ and oz.",
+        "closure_condition": "Reconciliation from IFRS cost of production to AISC is shown and the lower/higher-cost grouping basis is stated; or confirmed absent from the report.",
+        "question_id": "Q-27a7e2e6ebb74b4a",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What drove the +16.7% YoY increase in Group AISC per ounce (US$1,600 to US$1,867) despite gold sold rising 38.3% (196,927 to 272,373 oz)?",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008 APM reconciliations (pp. 40-47); D006.2 Segment analysis; D003 CEO statement",
+        "evidence_required": "Breakdown of AISC movement by cost component (operating costs, royalties, sustaining capex, by-product credits) and by operation, FY26 vs FY25, with units and currency.",
+        "closure_condition": "Cost-component or operation-level bridge explains the unit-cost increase, allowing for mix/ramp-up explanations; or confirmed not disclosed.",
+        "question_id": "Q-9b071fccf19d4465",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What are the quantified net (cash)/debt and net senior debt balances and the IFRS 9, restricted cash and financial liability adjustments excluded from them?",
+        "priority": "low",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008 APM reconciliations (pp. 40-47); D005 statement of financial position (p. 17)",
+        "evidence_required": "Net debt / net senior debt reconciliation to borrowings and cash, with each adjustment quantified, at 30 June 2026 and 30 June 2025.",
+        "closure_condition": "Reconciliation table with quantified adjustments is provided; or confirmed absent.",
+        "question_id": "Q-6e3afad2d4bb43a2",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "pan_operations",
+    "version": "old",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question": "Reconcile group US$ AISC FY26 of 1,867/oz (incl. third-party buy-in feedstock) vs 1,798/oz (excl. buy-in) to the AISC build-up; confirm which is the headline APM and the buy-in cost/oz excluded.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008.2 ALL-IN COSTS",
+        "evidence_required": "AISC reconciliation table (sustaining capex, royalties, G&A, by-product credits, buy-in adjustment) for FY26 and FY25, in US$/oz, with the 1,867 and 1,798 figures tied out.",
+        "closure_condition": "Both AISC figures reconciled to components; headline APM identified; buy-in exclusion quantified; forecast consequence stated.",
+        "question_id": "Q-637450276d8f43f1",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Split FY26 total capex of US$214.9m (vs US$163.6m FY25) into sustaining vs expansion, and confirm whether Tennant's US$71.3m (vs 35.8m) is expansion (MTR) or sustaining; obtain FY27 capex guidance.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008.3 SUSTAINING CAPITAL, EXPANSION CAPITAL, NET (CASH)/DEBT",
+        "evidence_required": "Sustaining vs expansion capex table by operation for FY26/FY25 in US$m, plus any FY27 guidance; Tennant MTR project capex disclosure.",
+        "closure_condition": "Capex split confirmed and FY27 guidance captured; forecast capex line set.",
+        "question_id": "Q-03047e1194b0437d",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Reconcile segment revenue ZAR17,249.1m and cost of production ZAR6,431.7m (FY26) to the consolidated income statement, and confirm whether A$195.3m Tennant revenue is included translated or excluded.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+        "evidence_required": "Segment-to-group revenue and cost reconciliation in ZAR, with FX translation of Tennant A$ revenue at 16.90/1.47; tie to income statement totals.",
+        "closure_condition": "Segment totals reconcile to group income statement; Tennant translation treatment confirmed.",
+        "question_id": "Q-08f6ef8d6efb4c5f",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Reconcile segment Adjusted EBITDA (Barberton 142.4 + Evander 120.9 + surface 399.7 = 663.1 US$m) to group and confirm add-backs/one-offs and the FX swing (16.90 vs 18.17) contribution.",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008.4 ADJUSTED EBITDA",
+        "evidence_required": "Adjusted EBITDA reconciliation from operating profit, listing add-backs, and FX impact quantification FY26 vs FY25.",
+        "closure_condition": "EBITDA reconciliation complete; one-offs and FX isolated; clean FY26 EBITDA baseline established.",
+        "question_id": "Q-0dcd51cabdca4614",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Confirm realized gold price definition (spot vs hedged) and reconcile group average US$4,235/oz FY26 to revenue divided by 272,373 oz sold.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008.1 FINANCIAL APMs",
+        "evidence_required": "Realized price methodology note and revenue/oz reconciliation; hedge or pricing-lag disclosure.",
+        "closure_condition": "Realized price definition confirmed and reconciled to revenue; hedge/lag effects quantified.",
+        "question_id": "Q-922a8dc6361b4082",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Confirm Evander FY26 production uplift to 46,855 oz (vs 27,829) split between underground, buy-in (6,609 oz) and tailings, and whether the buy-in component is sustainable into FY27.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+        "evidence_required": "Evander production split by source FY26/FY25 and any commentary on buy-in feedstock sustainability/contracts.",
+        "closure_condition": "Evander source split confirmed; sustainable vs one-off volume identified for FY27 forecast.",
+        "question_id": "Q-d7905d61f7774d8a",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Reconcile Barberton US$ AISC rise to 2,589/oz (vs 2,065) against capex (37.5 vs 24.9) and cost of production; confirm no one-off.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008.2 ALL-IN COSTS",
+        "evidence_required": "Barberton AISC build-up FY26/FY25 with capex and cost components; note any one-off items.",
+        "closure_condition": "Barberton AISC rise fully explained; recurring vs one-off isolated.",
+        "question_id": "Q-f0b73f8044524000",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Confirm Tennant FY25 low base (1,513 oz) and FY26 ramp (32,124 oz) and normalize unit costs (US$ all-in cost 4,339/oz FY26 vs 32,041 FY25) for a comparable run-rate.",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D006.2 Note 3 SEGMENT ANALYSIS",
+        "evidence_required": "Tennant production and cost history FY25/FY26 with ramp commentary and normalized unit cost.",
+        "closure_condition": "Tennant ramp understood; normalized cost/oz established for forecast.",
+        "question_id": "Q-5a4ea0c8913c40ed",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Confirm definition of 'Surface operations MTR operation' vs 'Tennant Mines' columns and which columns aggregate to Group totals, given inconsistent column mapping in the production summary.",
+        "priority": "low",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D010 Glossary",
+        "evidence_required": "Glossary/definition of MTR operation and Tennant Mines; confirmation of segment aggregation to Group.",
+        "closure_condition": "Column definitions confirmed; segment attribution verified against printed table.",
+        "question_id": "Q-3d3e356ad1c14c5d",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "case": "pan_operations",
+    "version": "new",
+    "ledger_valid": true,
+    "errors": [],
+    "questions": [
+      {
+        "question": "FY25 total gold produced is stated as 196,527 oz (p.49) but the sum of disclosed components (underground 93,724 + surface 2,654 + tailings 98,636 + third-party buy-in 1,081 + surface feedstock 1,513 = 197,608 oz) exceeds it by 1,081 oz. Is the FY25 third-party buy-in line (1,081 oz) double-counted, mis-attributed, or is the total a rounding/restatement difference?",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D009 Group production summary p.49; cross-check D006 Note 3 Segment analysis pp.20-24",
+        "evidence_required": "Component-level FY25 gold produced by segment/operation with a reconciliation to the 196,527 oz Group total; confirm whether third-party buy-in oz are included in any segment total.",
+        "closure_condition": "A reconciliation showing the FY25 components sum to the stated Group total, or an explicit statement of the reconciling item and its nature.",
+        "question_id": "Q-99e93be7ca7c4594",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "What are the definitions and calculation bases for ZAR/US$ cash cost, all-in sustaining cost (AISC), all-in cost (AIC) and adjusted EBITDA used in the Group production summary, and how do they reconcile to IFRS figures?",
+        "priority": "high",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008 Alternative performance measures pp.38-47 (Financial APMs, All-in costs, Adjusted EBITDA); D010 Glossary pp.51-52",
+        "evidence_required": "APM definitions, reconciliation tables from IFRS cost/revenue to cash cost, AISC, AIC and adjusted EBITDA, and statement of whether third-party buy-in feedstock is included or excluded in each metric.",
+        "closure_condition": "Definitions and reconciliations for each metric are provided, with the buy-in feedstock treatment stated.",
+        "question_id": "Q-39c436c215ca4559",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Third-party buy-in feedstock rose from 92,536 t / 1,081 oz (FY25) to 887,646 t / 18,667 oz (FY26). What is the margin/economics of buy-in processing, and is it included in Group AISC guidance and the 'excluding third-party buy-in feedstock' AISC (1,798 vs 1,867 US$/oz)?",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D008 All-in costs pp.40-43; D006 Note 3 Segment analysis pp.20-24; D003 CEO statement pp.5-15",
+        "evidence_required": "Buy-in feedstock volumes, grades, recoveries, purchase cost and contribution to revenue/EBITDA; explicit statement of AISC inclusion/exclusion and guidance basis.",
+        "closure_condition": "Economics of buy-in feedstock and its treatment in AISC/guidance are disclosed.",
+        "question_id": "Q-8561fc42a96848c5",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      },
+      {
+        "question": "Tennant (Australia) ramped up sharply in FY26 (surface feedstock 85,316 → 751,914 t; 1,513 → 32,124 oz; A$ revenue 5.9m → 195.3m). What are the ramp-up assumptions, sustainable throughput/grade, and FY27 production and cost guidance for Tennant?",
+        "priority": "medium",
+        "target_document": "Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+        "target_section": "D003 CEO statement pp.5-15; D002 Highlights pp.2-4; D008 All-in costs pp.40-43",
+        "evidence_required": "Tennant ramp-up schedule, design capacity, FY27 guidance (production, AISC/AIC), and basis for FY25 anomalous A$ AISC/AIC figures (80,962 and 1,584,835 A$/kg).",
+        "closure_condition": "Ramp-up assumptions and forward guidance for Tennant are disclosed with period and units.",
+        "question_id": "Q-3bc1732b65c74c8c",
+        "status": "open",
+        "answer": "",
+        "evidence": []
+      }
+    ]
+  }
+]

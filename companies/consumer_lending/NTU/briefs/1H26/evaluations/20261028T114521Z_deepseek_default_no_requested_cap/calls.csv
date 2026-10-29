@@ -1,0 +1,4 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+section_06_uncapped_v4,gen-1793187926-R76mLXAQwlptJYjHergI,True,0.0109179,response_usage,5078,11728,10686,0,1042,39.189,36.884,Fireworks,34935,1045,stop,retrieved
+stage1,gen-1793187972-O2cRrWskdDuN3ek3QQ56,True,0.01823112,response_usage,50204,12770,9150,0,3620,61.727,48.059,DigitalOcean,56962,3176,stop,retrieved
+stage2,gen-1793188035-cf2iYhOJZeJ5tYI7IPeV,True,0.01622934,response_usage,34163,14000,9999,0,4001,51.56,38.507,DigitalOcean,51227,1775,stop,retrieved

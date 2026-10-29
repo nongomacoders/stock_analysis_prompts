@@ -1,0 +1,89 @@
+{
+  "label": "section_15",
+  "started_utc": "2026-10-28T17:22:26.010694+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "56bd3c4dd4b47a41bce593c1715851d1b3f2c394c4ec7d941574858904c0f5ce",
+  "max_tokens": 16384,
+  "reasoning_controls_sent": true,
+  "success": true,
+  "usage": {
+    "prompt_tokens": 8998,
+    "completion_tokens": 3868,
+    "total_tokens": 12866,
+    "cost": 0.0049098504,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 1112,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0049098504,
+      "upstream_inference_prompt_cost": 0.0016607304,
+      "upstream_inference_completions_cost": 0.00324912
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "stream_done": true,
+  "response_headers_seconds": 1.495,
+  "http_status": 200,
+  "id": "gen-1793208146-Y4g7kycPgo5IKcu7Otue",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "Fireworks",
+  "created": 1793208146,
+  "delta_field_types": {
+    "content:str": 3864,
+    "role:str": 3864
+  },
+  "finish_reason": "stop",
+  "native_finish_reason": "stop",
+  "completed_utc": "2026-10-28T17:22:38.779949+00:00",
+  "elapsed_seconds": 12.768,
+  "time_to_first_event_seconds": 1.496,
+  "time_to_first_content_seconds": 1.496,
+  "metadata_status": "retrieved",
+  "metadata_error_type": "HTTPError",
+  "metadata_http_status": 404,
+  "generation_metadata": {
+    "id": "gen-1793208146-Y4g7kycPgo5IKcu7Otue",
+    "model": "deepseek/deepseek-v4.1-flash-20261017",
+    "provider_name": "Fireworks",
+    "created_at": "2026-10-28T17:22:26.111Z",
+    "finish_reason": "stop",
+    "native_finish_reason": "stop",
+    "generation_time": 11873,
+    "latency": 873,
+    "moderation_latency": null,
+    "total_cost": 0.00490985,
+    "usage": 0.00490985,
+    "cache_discount": 0.000228849,
+    "native_tokens_prompt": 8998,
+    "native_tokens_completion": 3868,
+    "native_tokens_reasoning": 0,
+    "native_tokens_cached": 1112,
+    "tokens_prompt": 9274,
+    "tokens_completion": 3132,
+    "cancelled": false,
+    "streamed": true,
+    "service_tier": null,
+    "upstream_id": "chatcmpl-a0de4bfe970748b7a7d4209713b91512",
+    "upstream_inference_cost": 0,
+    "is_byok": false
+  },
+  "cost_usd": 0.0049098504,
+  "cost_source": "response_usage",
+  "accounting_completed_utc": "2026-10-28T17:22:45.808104+00:00",
+  "reasoning_effort_requested": "none",
+  "provider_requested": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  }
+}

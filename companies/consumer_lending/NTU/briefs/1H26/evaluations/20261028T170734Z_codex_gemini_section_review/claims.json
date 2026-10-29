@@ -1,0 +1,122 @@
+[
+  {
+    "id": "C001",
+    "origin": "Gemini claim register C001",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Principal3845 from3975+382−728+383−167;matches p13.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C002",
+    "origin": "Gemini claim register C002",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Other644 from702+28−116+30;matches p13.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C003",
+    "origin": "Gemini claim register C003",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "FAIL",
+    "independent_check": "Wrong-ledger equation equals584,not644;F002 supported.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C004",
+    "origin": "Gemini claim register C004",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "FAIL",
+    "independent_check": "Conventional Stage1/2 migration demand lacks applicability to this POCI book;F003.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C005",
+    "origin": "Gemini claim register C005",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "March2026 gross374−5=369,5/374=1.3369%;specific cells match p25.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C006",
+    "origin": "Gemini claim register C006",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "FAIL",
+    "independent_check": "First-time comparative is stated;newly constructed/restated/unreliable reporting not established.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C007",
+    "origin": "Gemini claim register C007",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "FAIL",
+    "independent_check": "Material provisioning-method change not established. Gemini replacement zero-default/rounding explanation also NOT VERIFIED.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C008",
+    "origin": "Gemini claim register C008",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Currency start/USD/GBP/60days/hedging and next-page dependency observed;causal no-prompt-engineering claim contradicted.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C009",
+    "origin": "Gemini claim register C009",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "NOT VERIFIED",
+    "independent_check": "Normalized508.404 versus508.405 and0.001 difference reproducible;printed units ambiguous,F007.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C010",
+    "origin": "Gemini claim register C010",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "NOT VERIFIED",
+    "independent_check": "Normalized cost/oz rounds correctly,but cost scale conditional;per-ounce printed values separately visible.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C011",
+    "origin": "Gemini claim register C011",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Printed per-ounce1867/1600 gives16.6875%;APM ounces272373/196927 gives38.3117%,within that table.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C012",
+    "origin": "Gemini claim register C012",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Selected Group components total272310;not a guarantee every subtotal reconciles.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C013",
+    "origin": "Gemini claim register C013",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "Disjoint FY25 components92643+2654+98636+1081+1513=196527.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C014",
+    "origin": "Gemini claim register C014",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "FAIL",
+    "independent_check": "Actual197608 overlap excess1081 supported;194954/1573 attribution absent and unsupported.",
+    "calculation_file": "calculations/results.json"
+  },
+  {
+    "id": "C015",
+    "origin": "Gemini claim register C015",
+    "classification": "Review of historical/derived/model claim",
+    "verdict": "PASS",
+    "independent_check": "All8 completions/costs and recorded sample metrics verified;no universal efficiency or downstream-exhaustion claim.",
+    "calculation_file": "calculations/results.json"
+  }
+]

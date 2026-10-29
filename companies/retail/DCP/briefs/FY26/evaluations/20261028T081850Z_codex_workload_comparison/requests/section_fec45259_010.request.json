@@ -1,0 +1,9 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+  "options": {
+    "max_tokens": 16384,
+    "reasoning_effort": "none",
+    "timeout": 180
+  },
+  "prompt_sha256": "dcfa9a8fdf07a5907e3c93e04f8c5dd324aeb5b32237a43772b9fa8fc5905235"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "C001",
+    "origin": "Gemini C001",
+    "verdict": "PASS",
+    "check": "Operational counts/costs corroborated."
+  },
+  {
+    "id": "C002",
+    "origin": "Gemini C002",
+    "verdict": "NOT VERIFIED",
+    "check": "Blocked changes verified;minor-whitespace cause and two fully valid closures not established."
+  },
+  {
+    "id": "C003",
+    "origin": "Gemini C003",
+    "verdict": "PASS",
+    "check": "Selected p13 arithmetic/prose accurate;not a complete closure guarantee."
+  },
+  {
+    "id": "C004",
+    "origin": "Gemini C004",
+    "verdict": "FAIL",
+    "check": "Model merged separate columns;Gemini arithmetic confirms it but OCR label incorrect."
+  },
+  {
+    "id": "C005",
+    "origin": "Gemini C005",
+    "verdict": "FAIL",
+    "check": "Model p24 header attribution and economic sign wrong;Gemini identifies these correctly."
+  },
+  {
+    "id": "C006",
+    "origin": "Gemini C006",
+    "verdict": "FAIL",
+    "check": "Model FX comparative dates swapped;source p25 confirms."
+  },
+  {
+    "id": "C007",
+    "origin": "Gemini C007",
+    "verdict": "FAIL",
+    "check": "Model tax sign and all-positive footnote equation wrong;Gemini correction supported conditionally."
+  },
+  {
+    "id": "C008",
+    "origin": "Gemini C008",
+    "verdict": "NOT VERIFIED",
+    "check": "Status counts and overlap present;exact-duplicate/full-resolution claims require scope distinction."
+  },
+  {
+    "id": "C009",
+    "origin": "Gemini C009",
+    "verdict": "PASS",
+    "check": "6 residual arithmetic verified;p12 line description corrected."
+  }
+]

@@ -1,0 +1,261 @@
+{
+  "values": {
+    "ntu_principal": 3845,
+    "ntu_other_correct": 644,
+    "ntu_other_wrong_ledger": 584,
+    "ntu_wrong_minus_stated": -60,
+    "trade_2026_net": 369,
+    "trade_2025_net": 413,
+    "trade_sept_net": 354,
+    "trade_2025_net_current": 345,
+    "trade_2025_net_bucket_sum": 413,
+    "trade_2026_rate": 1.3368983957219251,
+    "trade_2025_rate": 1.431980906921241,
+    "sept_current_implied_allowance_m": 0.17159999999999997,
+    "sept_30days_implied_allowance_m": 0.0988,
+    "pan_2025_clean": 196527,
+    "pan_2025_overlapping": 197608,
+    "pan_2025_excess": 1081,
+    "pan_2025_correct_using_inclusive": 196527,
+    "pan_2025_subtotal_overlap": 1081,
+    "pan_2026_component_model_sum": 272310,
+    "pan_2026_mining_subtotal": 105479,
+    "pan_2026_group_underground_reported": 105478,
+    "pan_aisc_normalized_m": 508.404,
+    "pan_aisc_normalized_residual_m": 0.0009999999999763531,
+    "pan_aisc_group_per_oz_if_thousands": 1866.5763493444651,
+    "pan_aisc_group_per_oz_if_literal_millions": 1866576.3493444652,
+    "pan_aisc_low_per_oz": 1701.67341506923,
+    "pan_aisc_high_per_oz": 3487.2386101614056,
+    "pan_aisc_yoy_pct": 16.68750000000001,
+    "pan_oz_yoy_pct": 38.31165863492563
+  },
+  "pilot_totals": {
+    "old": {
+      "proposed_questions": 26,
+      "prompt_chars": 109642,
+      "completion_tokens": 13655,
+      "input_tokens": 31304,
+      "elapsed_seconds": 55.522,
+      "cached_tokens": 4254,
+      "cost_usd": "0.0171685668",
+      "valid_ledgers": 3
+    },
+    "new": {
+      "proposed_questions": 12,
+      "prompt_chars": 90892,
+      "completion_tokens": 9165,
+      "input_tokens": 26620,
+      "elapsed_seconds": 39.28,
+      "cached_tokens": 2178,
+      "cost_usd": "0.0128405676",
+      "valid_ledgers": 4
+    }
+  },
+  "cost_usd": "0.0300091344",
+  "gemini_preservation": [
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/RUN_SUMMARY.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/comparison.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/findings.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/audit.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/calls.csv",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/metrics.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/plan.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/closure_checks.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_portfolio.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_portfolio_new_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_portfolio_old_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_shared_page.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_shared_page_new_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/ntu_shared_page_old_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_apm.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_apm_new_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_apm_old_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_operations.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_operations_new_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/inputs/pan_operations_old_prompt.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_portfolio_new.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_portfolio_old.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_shared_page_new.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_shared_page_old.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_apm_new.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_apm_old.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_operations_new.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_operations_old.md",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_portfolio_new.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_portfolio_old.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_shared_page_new.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/ntu_shared_page_old.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_apm_new.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_apm_old.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_operations_new.validation.json",
+      "original_match": true,
+      "copy_match": true
+    },
+    {
+      "path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T163642Z_section_prompt_paired_pilot/outputs/pan_operations_old.validation.json",
+      "original_match": true,
+      "copy_match": true
+    }
+  ],
+  "old_shared_quotes": [
+    {
+      "quote": "Expected loss rate | 0.00% 0.00% 0.00% |  |  |  |  | 100.00% | 1.34%",
+      "length": 68,
+      "literal": true
+    },
+    {
+      "quote": "Gross carrying amount | 339 25 5 |  |  |  |  | 5 | 374",
+      "length": 54,
+      "literal": true
+    },
+    {
+      "quote": "Expected loss rate | 0.06% 0.19% 6.67% |  |  |  |  | 81.82% | 2.75%",
+      "length": 67,
+      "literal": true
+    },
+    {
+      "quote": "credit risk is managed by reference to past default experience of the debtor and analysis of the debtor's financial position, adjusted for factors that are specific to the debtors, and an assessment of both the current as well as the forecast direction of conditions at the reporting date",
+      "length": 288,
+      "literal": false
+    }
+  ],
+  "note": "Inputs transcribed from independently viewed NTU p13/25 and PAN p38/39/48/49/50. Expected losses do not establish actual defaults. PAN AISC normalization is conditional,not a verified source unit correction."
+}

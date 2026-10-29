@@ -1,6 +1,6 @@
 """Script to generate the Stage 2 Institutional Valuation Prompt for Institutional Valuation (LLM).
 
-Combines the source PDF report with the Stage 1 Forensic Audit Determinations as ground truth,
+Combines the source PDF report with reviewable Stage 1 working determinations,
 directing the LLM to produce the final 2-year forecast, DCF/multiples valuation, and JSE equity research valuation note (ZAR per share).
 """
 
@@ -15,6 +15,8 @@ import warnings
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+
+from section_capture.valuation_policy import enforce_valuation_publication, valuation_gate_prompt
 
 from companies import find_company_dir
 from companies.sectors import (
@@ -118,6 +120,7 @@ def sanitize_stage2_valuation_markdown(
     """Validates the opening JSON block in a Stage 2 / Stage 2-U valuation note and repairs degenerate rating_bands."""
     if not note_markdown:
         return note_markdown
+    note_markdown = enforce_valuation_publication(note_markdown)
     import json
     import re
 
@@ -133,6 +136,8 @@ def sanitize_stage2_valuation_markdown(
         if ref is None and reference_price_hint and reference_price_hint > 0:
             data["reference_price_zar"] = round(float(reference_price_hint), 2)
             ref = data["reference_price_zar"]
+        if data.get('valuation_status') == 'WITHHELD':
+            return note_markdown
         repaired = validate_and_repair_rating_bands(data.get("rating_bands"), tp, ref)
         if repaired and data.get("rating_bands") != repaired:
             data["rating_bands"] = repaired
@@ -167,7 +172,7 @@ def _format_section1_spec(
     )
 
     lines = [
-        "1. **Executive Investment Thesis & 12-Month JSE Price Target (ZAR/share):**",
+        "1. **Research Summary & Conditional Valuation (Target Only When READY):**",
         "   - **MANDATORY JSON SUMMARY BLOCK:** You MUST begin Section 1 with the following exact machine-readable JSON block before any prose or visual tables:",
         "     ```json",
         "     {",
@@ -176,25 +181,22 @@ def _format_section1_spec(
         f'       "sector": "{sec_code}",',
         f'       "jse_sector_code": "{jse_code}",',
         f'       "jse_sector_name": "{jse_name}",',
-        '       "recommendation": "BUY | HOLD | SELL",',
+        '       "recommendation": null,',
         f'       "reference_price_zar": {ref_str},',
-        '       "target_price_zar": 0.00,',
-        '       "implied_upside_pct": 0.0,',
-        '       "forward_dividend_yield_pct": 0.0,',
-        '       "projected_12m_tsr_pct": 0.0,',
-        '       "rating_bands": {',
-        '         "strong_buy_max_zar": 0.00,',
-        '         "buy_max_zar": 0.00,',
-        '         "hold_max_zar": 0.00,',
-        '         "sell_max_zar": 0.00,',
-        '         "strong_sell_above_zar": 0.00',
-        '       }',
+        '       "target_price_zar": null,',
+        '       "implied_upside_pct": null,',
+        '       "forward_dividend_yield_pct": null,',
+        '       "projected_12m_tsr_pct": null,',
+        '       "valuation_status": "WITHHELD",',
+        '       "blocking_issues": [],',
+        '       "valuation_checks": [],',
+        '       "rating_bands": null',
         "     }",
         "     ```",
     ]
     if reference_price_zar and reference_price_zar > 0:
         lines.append(
-            f"   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The verified market closing price for {ticker} on the JSE is **R{reference_price_zar:.2f}**. You MUST use `{ref_str}` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. You MUST calculate all implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R{reference_price_zar:.2f} baseline."
+            f"   - **Confirmed JSE Market Closing Price (MANDATORY ANCHOR — DO NOT GUESS):** The supplied reference price for {ticker} is **R{reference_price_zar:.2f}**. You MUST use `{ref_str}` as the exact `reference_price_zar` in the opening JSON summary block and Markdown summary table. DO NOT guess, hallucinate, or alter this reference price. Only when READY, calculate implied capital upside/downside percentages (`implied_upside_pct`), institutional recommendation (`BUY | HOLD | SELL`), and dynamic rating bands strictly relative to this R{reference_price_zar:.2f} baseline."
         )
     lines.append(
         "   - **Source Documents & Disclosures Considered Table (MANDATORY FIRST TABLE):** Immediately after the JSON block, output the following Markdown table clearly listing every source PDF and SENS notice considered in this valuation:"
@@ -203,7 +205,7 @@ def _format_section1_spec(
         lines.append(f"     {tbl_line}")
     lines.extend([
         "   - **Rating Bands Logic:** Set explicit ZAR price boundary levels anchored to your 12-month target price: Strong Buy (share price giving >30% upside / deep margin of safety), Buy (15% to 30% upside), Hold (-5% to +15% upside), Sell (-5% to -15% downside), and Strong Sell (share price above sell threshold, >15% downside).",
-        "   - **Executive Valuation Summary Card Table:** Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:",
+        "   - **Conditional Summary Card:** When WITHHELD, show status and blocking issues only. The price/return/band template below applies only when READY. Follow the Source Documents table immediately with your publication-grade Valuation Summary Card table:",
         "     | Metric | Determination | Basis & Key Commentary |",
         "     | :--- | :---: | :--- |",
         f"     | **Sector** | {table_sec} | [Sub-sector classification] |",
@@ -227,7 +229,7 @@ def _format_critical_formatting_constraints() -> list[str]:
         "## CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)",
         "",
         "To ensure institutional publication quality and 100% deterministic parsing, you MUST follow these formatting rules:",
-        "1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native float numbers (e.g. `0.42`, `-30.0`), not text descriptions.",
+        "1. **Mandatory JSON Block First:** Section 1 MUST open with the exact ```json ... ``` summary block containing native numeric values when READY and JSON null for derived valuation fields when WITHHELD.",
         "2. **Zero HTML Tags:** DO NOT use any HTML tags (`<br>`, `<br/>`, `<span>`, `<div>`, etc.). Use standard Markdown newlines.",
         "3. **Single-Line Table Rows:** Every Markdown table row MUST be on a single continuous line starting and ending with `|`. DO NOT insert blank lines (`\\n\\n`) within table rows or split cells across multiple lines.",
         "4. **Isolated Numeric Determination Cells:** In the Valuation Summary Card, keep the Determination column strictly limited to the metric value (e.g. `R0.42` or `-30.0%`). Reserve all commentary and secondary notes strictly for the Commentary column.",
@@ -246,7 +248,7 @@ def build_stage2_prompt_content(
     source_documents: list[dict] | None = None,
     db_path: str | Path | None = None,
 ) -> str:
-    """Constructs the Stage 2 Markdown prompt text incorporating Stage 1 determinations as 99% confidence prior."""
+    """Build a conditional valuation prompt from reviewable Stage 1 determinations."""
     md_lines: list[str] = []
     md_lines.append("# STAGE 2: INSTITUTIONAL 2-YEAR VALUATION & FORECAST PROMPT")
     md_lines.append(f"**Target Asset:** {company_title} ({ticker})  ")
@@ -272,8 +274,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. merchandise vs credit revenue split, gross margin bridges, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. merchandise vs credit revenue split, gross margin bridges, "
             "debtor costs & IFRS 9 ECL provisioning, store count expansion, and IFRS 16 lease liabilities). Do not revert to "
             "high-level PR narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes "
             "that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
@@ -294,7 +296,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -323,8 +325,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. SA REIT distributable income adjustments, like-for-like NPI growth, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. SA REIT distributable income adjustments, like-for-like NPI growth, "
             "GLA vacancies, WALE, nominal vs look-through LTV, cost of debt, interest rate hedging ratio, and cap rates). Do not revert to "
             "high-level PR narratives from the PDF. If you identify definitive evidence in the primary PDF financial notes "
             "that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
@@ -345,7 +347,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -374,8 +376,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. recurring revenue / ARR mix, gross margin by line of business, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. recurring revenue / ARR mix, gross margin by line of business, "
             "technical headcount & billable consultant utilization rates, contract asset / WIP recovery, deferred revenue recognition, "
             "and debt/restructuring covenants). Do not revert to high-level PR narratives from the PDF. If you identify definitive evidence "
             "in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
@@ -396,7 +398,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -425,8 +427,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. residential development pipeline units, serviced stands, memorial park plot margins, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. residential development pipeline units, serviced stands, memorial park plot margins, "
             "infrastructure contracting order book, percentage of completion (POC) revenue recognition, contract assets / WIP, "
             "and debt/liquidity covenants). Do not revert to high-level PR narratives from the PDF. If you identify definitive evidence "
             "in the primary PDF financial notes that contradicts or refines a Stage 1 determination, you may depart from it ONLY by explicitly declaring the disagreement, "
@@ -447,7 +449,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -476,8 +478,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
             "organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. "
             "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
             "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
@@ -501,7 +503,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -531,8 +533,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline. Do not revert to high-level headline narratives from the PDF. "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence. Do not revert to high-level headline narratives from the PDF. "
             "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
             "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
             "and providing your quantitative justification."
@@ -544,7 +546,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -572,8 +574,8 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("### CORE OPERATING RULES & EVIDENCE HIERARCHY:")
         md_lines.append(
-            "1. **High-Confidence Baseline Truth (99% Confidence Prior):** Treat the Stage 1 Forensic Determinations provided below "
-            "as your 99% confidence baseline (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
+            "1. **Reviewable Stage 1 Working Papers:** Treat the Stage 1 Forensic Determinations provided below "
+            "as reviewable working claims to verify against primary evidence (e.g. share count anchors, net cash reconciliation, EBITDA adjustments, "
             "organic unit costs, and Section 36 cash tax step-up curve). Do not revert to high-level headline narratives from the PDF. "
             "If you identify definitive evidence in the primary PDF financial notes that contradicts or refines a Stage 1 determination, "
             "you may depart from it ONLY by explicitly declaring the disagreement, citing the exact note/table and page from the PDF, "
@@ -597,7 +599,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append("---")
         md_lines.append("")
-        md_lines.append("## AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH)")
+        md_lines.append("## STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS)")
         md_lines.append("")
         md_lines.append(stage1_content)
         md_lines.append("")
@@ -624,6 +626,7 @@ def build_stage2_prompt_content(
         md_lines.append("")
         md_lines.append(guardrails_md)
     md_lines.extend(_format_critical_formatting_constraints())
+    md_lines.append(valuation_gate_prompt())
     return "\n".join(md_lines)
 
 

@@ -1,0 +1,6 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+ntu_assets,gen-1793211810-xYVHolHQY0xVg0pUZfog,True,0.0051517368,response_usage,8575,4272,0,1154,4272,18.005,3.032,Fireworks,14519,901,stop,retrieved
+ntu_fx,gen-1793211853-TwMqJfFsTYwK1BVjpCXN,True,0.0029431668,response_usage,7814,1833,0,1154,1833,8.993,1.845,Fireworks,8251,1313,stop,retrieved
+ntu_headers,gen-1793211836-s6W3iRPgB58Mw4ng9ufV,True,0.0033610668,response_usage,7108,2507,0,1154,2507,11.452,2.825,Fireworks,9376,917,stop,retrieved
+ntu_prose,gen-1793211791-H7fhyvLHY9Qzbu6cKrU0,True,0.00355782,response_usage,6538,2601,0,0,2601,17.613,4.911,Fireworks,8870,866,stop,retrieved
+pan_dense,gen-1793211868-xAOjI22V0GPq59MPVkA3,True,0.0049614432,response_usage,11043,3255,0,446,3255,13.889,1.552,Fireworks,13129,955,stop,retrieved

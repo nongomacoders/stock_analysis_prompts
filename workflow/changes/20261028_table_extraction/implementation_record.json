@@ -1,0 +1,19 @@
+{
+  "run": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T182010Z_native_extraction_pilot",
+  "changed_files": {
+    "section_capture\\pdf_source.py": "61978e59fd1d64f80c4a0f61f587a8cb13cebb71cabe61e1de06c49eb5ed4b37",
+    "section_capture\\question_ledger.py": "21d3e1503374a4b4aad7e5fcdee544f6044b48b3249e6964effb5f9b51cc256f",
+    "tests\\test_native_table_extraction.py": "dde6b38a1183de315e7f9824685c9ba48c54d68ccbe30b701b2d4a21f0b52232"
+  },
+  "test_exit_code": 0,
+  "full_tests": 232,
+  "paid_calls": 5,
+  "cost_usd": 0.0199752336,
+  "validator_unchanged": true,
+  "limitations": [
+    "F004",
+    "F005",
+    "F006",
+    "F007"
+  ]
+}

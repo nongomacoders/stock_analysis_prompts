@@ -1,0 +1,10 @@
+{
+  "status": "complete_mixed_results_gemini_pending",
+  "calls": 3,
+  "stage": "pan_dense",
+  "last_dispatch_utc": "2026-10-29T07:06:19.356506+00:00",
+  "first_dispatch_utc": "2026-10-29T07:05:37.109729+00:00",
+  "error_type": null,
+  "completed_utc": "2026-10-29T07:06:40.600490+00:00",
+  "reviewed_utc": "2026-10-29T07:08:36.665500+00:00"
+}

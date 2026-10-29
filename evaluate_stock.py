@@ -31,6 +31,8 @@ if hasattr(sys.stdout, "reconfigure"):
     except Exception:
         pass
 
+from section_capture.valuation_policy import assess_valuation_publication, preserve_candidate, withhold_for_material_issues
+
 from companies import find_company_dir
 from companies.sectors import (
     get_jse_sector_code,
@@ -46,6 +48,7 @@ from section_capture.db import (
 )
 from section_capture.market_data import fetch_jse_quote
 from section_capture.openrouter import (
+    STAGE_ANALYSIS_OPTIONS,
     get_openrouter_api_key,
     get_openrouter_model,
     query_openrouter,
@@ -147,12 +150,13 @@ class StockEvaluator:
 
         return {"ticker": self.ticker, "symbol": f"{self.ticker}.JO", "price_zar": None}
 
-    def audit(self) -> dict[str, Any]:
+    def audit(self, note_path: Path | None = None) -> dict[str, Any]:
         """Runs comprehensive forensic audit on the existing Stage 2 valuation note."""
-        quote = self.fetch_market_quote()
-        live_price = quote.get("price_zar")
+        note_file = note_path if note_path is not None else self.s2_note_file
+        quote = {}
+        live_price = None
 
-        if not self.s2_note_file.exists():
+        if not note_file.exists():
             return {
                 "status": "MISSING_NOTE",
                 "ticker": self.ticker,
@@ -163,9 +167,23 @@ class StockEvaluator:
                 "checks": {},
             }
 
-        note_content = self.s2_note_file.read_text(encoding="utf-8")
+        note_content = note_file.read_text(encoding="utf-8")
         parsed_summary = parse_valuation_summary(note_content) or {}
 
+        gate = assess_valuation_publication(note_content, require_contract=False)
+        if gate['valuation_status'] == 'WITHHELD':
+            return {
+                'status': 'VALUATION_WITHHELD', 'valuation_status': 'WITHHELD',
+                'ticker': self.ticker, 'period': self.period, 'sector': self.sector,
+                'blocking_issues': gate['blocking_issues'],
+                'target_price_zar': None, 'reference_price_zar': parsed_summary.get('reference_price'),
+                'live_price_zar': live_price, 'static_recommendation': None,
+                'dynamic_recommendation': None, 'implied_upside_pct': None,
+                'dividend_yield_pct': None, 'projected_12m_tsr_pct': None, 'rating_bands': None,
+                'checks': {'CHK-VALUATION-READINESS': {'passed': False, 'details': gate['blocking_issues']}},
+            }
+        quote = self.fetch_market_quote()
+        live_price = quote.get("price_zar")
         # 1. Parse JSON root block directly
         json_meta = {}
         m_json = re.search(r"```json\s*(\{.*?\})\s*```", note_content, re.DOTALL)
@@ -189,6 +207,10 @@ class StockEvaluator:
         if target_price and live_price:
             live_upside_pct = round(((target_price - live_price) / live_price) * 100, 1)
             live_tsr_pct = round(live_upside_pct + (div_yield or 0.0), 1)
+            if quote.get("is_cached_fallback") and ref_price:
+                price_check["details"].append(
+                    f"Market data request failed for {self.ticker}.JO; evaluated using stored reference price R{ref_price:.2f}."
+                )
             if ref_price:
                 diff_pct = abs(live_price - ref_price) / ref_price * 100
                 if diff_pct > 5.0:
@@ -262,9 +284,70 @@ class StockEvaluator:
             except Exception:
                 pass
 
+        # Percentage blend check: e.g. 50% DCF (R35.00) + 50% P/E (R26.64) = R30.82
+        pct_blend_match = re.search(
+            r"(\d+(?:\.\d+)?)%\s*(?:DCF|SOTP|NAV|PE|P/E|[A-Za-z0-9/\-_]+)\s*\(?(?:ZAR\s*|R\s*)?([\d\.]+)\)?\s*\+\s*(\d+(?:\.\d+)?)%\s*(?:DCF|SOTP|NAV|PE|P/E|[A-Za-z0-9/\-_]+)\s*\(?(?:ZAR\s*|R\s*)?([\d\.]+)\)?(?:\s*=\s*(?:\*\*|ZAR\s*|R\s*)*([\d\.]+))?",
+            note_content,
+            re.IGNORECASE
+        )
+        if pct_blend_match:
+            try:
+                w1 = float(pct_blend_match.group(1)) / 100.0
+                v1 = float(pct_blend_match.group(2))
+                w2 = float(pct_blend_match.group(3)) / 100.0
+                v2 = float(pct_blend_match.group(4))
+                stated_blend_str = pct_blend_match.group(5)
+                expected_blend = round((w1 * v1) + (w2 * v2), 2)
+
+                if stated_blend_str:
+                    stated_blend = float(stated_blend_str.rstrip("."))
+                    if abs(expected_blend - stated_blend) > 0.25:
+                        sotp_check["passed"] = False
+                        sotp_check["details"].append(
+                            f"Stated blend arithmetic mismatch: {w1*100:.0f}% of R{v1:.2f} + {w2*100:.0f}% of R{v2:.2f} = R{expected_blend:.2f}, but note states R{stated_blend:.2f}."
+                        )
+
+                # Check if published target price exceeds both components without an explicit schedule
+                if target_price:
+                    min_c, max_c = min(v1, v2), max(v1, v2)
+                    if (target_price > max_c + 0.10 or target_price < min_c - 0.10) and abs(target_price - expected_blend) > 0.50:
+                        sotp_check["passed"] = False
+                        sotp_check["details"].append(
+                            f"Target price R{target_price:.2f} violates component bounds [R{min_c:.2f}, R{max_c:.2f}] without a quantified bridge (calculated blend: R{expected_blend:.2f})."
+                        )
+                    elif abs(target_price - expected_blend) > 0.50 and abs(target_price - (float(stated_blend_str) if stated_blend_str else expected_blend)) > 0.50:
+                        sotp_check["passed"] = False
+                        sotp_check["details"].append(
+                            f"Target price R{target_price:.2f} deviates from calculated weighted blend R{expected_blend:.2f}."
+                        )
+            except Exception:
+                pass
+
         # Check 4: CHK-GUARDRAILS
         guardrails = get_sector_guardrails(self.sector, db_path=self.db_path)
         guardrail_check = {"passed": True, "active_count": len(guardrails), "details": []}
+        # Check ALL-DCF-REPRODUCIBILITY
+        if "dcf" in note_content.lower():
+            has_wacc = "wacc" in note_content.lower() or "discount rate" in note_content.lower()
+            has_g = "terminal growth" in note_content.lower() or "terminal value" in note_content.lower() or "perpetuity" in note_content.lower()
+            if not (has_wacc and has_g):
+                guardrail_check["details"].append("DCF cited but lacks explicit WACC/discount rate or terminal growth rate parameters.")
+
+        # Check ALL-CASHFLOW-CLASSIFICATION-BRIDGE
+        fcfe_match = re.search(r"\|\s*(?:\*\*)?Free Cash Flow to Equity \(FCFE\)(?:\*\*)?\s*\|\s*([\d,\.\-]+)\s*\|\s*([\d,\.\-]+)\s*\|", note_content, re.IGNORECASE)
+        ocf_match = re.search(r"\|\s*(?:\*\*)?(?:Cash Generated from Operations|Operating Cash Flow|OCF)(?:\*\*)?\s*\|\s*([\d,\.\-]+)\s*\|\s*([\d,\.\-]+)\s*\|", note_content, re.IGNORECASE)
+        if fcfe_match and ocf_match:
+            try:
+                fcfe_val = fcfe_match.group(2).replace(",", "").strip()
+                ocf_val = ocf_match.group(2).replace(",", "").strip()
+                if fcfe_val == ocf_val and float(fcfe_val) > 0:
+                    guardrail_check["passed"] = False
+                    guardrail_check["details"].append(
+                        f"ALL-CASHFLOW-CLASSIFICATION-BRIDGE: Stated FCFE ({fcfe_val}) equals Operating Cash Flow ({ocf_val}) without capex/lease deductions."
+                    )
+            except Exception:
+                pass
+
         # Check specific sector assertions
         if self.sector == "mining":
             if "Section 36" not in note_content and "Sec 36" not in note_content:
@@ -298,8 +381,17 @@ class StockEvaluator:
             text_check["passed"],
         ])
 
+        material_issues = []
+        for check_name, check in [('CHK-SOTP-MATH', sotp_check), ('CHK-GUARDRAILS', guardrail_check)]:
+            if not check['passed']:
+                material_issues.extend(f'{check_name}: {detail}' for detail in check['details'])
+        if material_issues:
+            target_price = static_rec = dynamic_rec = live_upside_pct = live_tsr_pct = div_yield = None
+            rating_bands = None
         return {
-            "status": "PASSED" if overall_passed else "WARNINGS_FOUND",
+            'valuation_status': 'WITHHELD' if material_issues else gate['valuation_status'],
+            'blocking_issues': material_issues,
+            "status": "VALUATION_WITHHELD" if material_issues else ("PASSED" if overall_passed else "WARNINGS_FOUND"),
             "ticker": self.ticker,
             "period": self.period,
             "sector": self.sector,
@@ -308,9 +400,9 @@ class StockEvaluator:
             "target_price_zar": target_price,
             "static_recommendation": static_rec,
             "dynamic_recommendation": dynamic_rec,
-            "implied_upside_pct": live_upside_pct if live_upside_pct is not None else parsed_summary.get("upside_pct"),
+            "implied_upside_pct": None if material_issues else (live_upside_pct if live_upside_pct is not None else parsed_summary.get("upside_pct")),
             "dividend_yield_pct": div_yield,
-            "projected_12m_tsr_pct": live_tsr_pct if live_tsr_pct is not None else parsed_summary.get("tsr_pct"),
+            "projected_12m_tsr_pct": None if material_issues else (live_tsr_pct if live_tsr_pct is not None else parsed_summary.get("tsr_pct")),
             "rating_bands": rating_bands,
             "checks": {
                 "CHK-PRICE-SYNC": price_check,
@@ -423,11 +515,17 @@ class StockEvaluator:
 
         # 4. Query OpenRouter
         model = get_openrouter_model()
-        response = query_openrouter(full_dossier, model=model, timeout=300, max_tokens=16384)
+        response, stats = query_openrouter(full_dossier, model=model, return_details=True, **STAGE_ANALYSIS_OPTIONS)
 
         # 5. Sanitize and save
+        candidate_path = preserve_candidate(self.s2_note_file, response)
         sanitized_md = sanitize_stage2_valuation_markdown(response)
+        if assess_valuation_publication(sanitized_md)['valuation_status'] == 'READY':
+            preflight = self.audit(note_path=candidate_path)
+            if preflight.get('valuation_status') == 'WITHHELD':
+                sanitized_md = withhold_for_material_issues(response, preflight['blocking_issues'])
         self.s2_note_file.write_text(sanitized_md, encoding="utf-8")
+        self.s2_note_file.with_suffix(".run.json").write_text(json.dumps(stats, indent=2), encoding="utf-8")
 
         # 6. Save to SQLite
         primary_sha = None
@@ -455,7 +553,7 @@ class StockEvaluator:
             primary_sha = hashlib.sha256(all_pdfs[0].read_bytes()).hexdigest()
 
         if primary_sha:
-            save_stage2_report(primary_sha, prompt=base_s2_prompt, response=sanitized_md, db_path=self.db_path)
+            save_stage2_report(primary_sha, prompt=base_s2_prompt, response=sanitized_md, candidate_response=response, db_path=self.db_path)
 
         # 7. Archive active PDFs
         archive_dir = self.comp_dir / "sources" / "completed" / self.period
@@ -471,6 +569,11 @@ class StockEvaluator:
         return self.audit()
 
     def format_markdown(self, result: dict[str, Any]) -> str:
+        if result.get('valuation_status') == 'WITHHELD':
+            return (f"### {self.ticker} - Valuation withheld ({self.period})\n\n"
+                    "**VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED**\n\n"
+                    + '\n'.join('- ' + str(x) for x in result.get('blocking_issues', []))
+                    + '\n\nNo target price or investment recommendation is published.\n')
         """Formats the evaluation result into a publication-grade Markdown scorecard."""
         if result.get("status") == "MISSING_NOTE":
             return (

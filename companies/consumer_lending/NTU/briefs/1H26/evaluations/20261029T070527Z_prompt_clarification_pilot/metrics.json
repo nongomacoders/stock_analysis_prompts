@@ -1,0 +1,89 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "none/exclude=true",
+  "rows": [
+    {
+      "label": "ntu_assets",
+      "generation_id": "gen-1793257556-di8hiZCxQ7n0jHzN1OOH",
+      "success": true,
+      "cost_usd": 0.0046195968,
+      "cost_source": "response_usage",
+      "prompt_tokens": 8675,
+      "completion_tokens": 3638,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 1254,
+      "estimated_nonreasoning_completion_tokens": 3638,
+      "elapsed_seconds": 16.642,
+      "time_to_first_content_seconds": 1.736,
+      "provider": "Fireworks",
+      "generation_time_ms": 16101,
+      "latency_ms": 1418,
+      "finish_reason": "stop",
+      "metadata_status": "retrieved"
+    },
+    {
+      "label": "ntu_headers",
+      "generation_id": "gen-1793257536-ntt6RKyzZdoSwA7BccGs",
+      "success": true,
+      "cost_usd": 0.00374388,
+      "cost_source": "response_usage",
+      "prompt_tokens": 7208,
+      "completion_tokens": 2655,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 0,
+      "estimated_nonreasoning_completion_tokens": 2655,
+      "elapsed_seconds": 15.395,
+      "time_to_first_content_seconds": 3.863,
+      "provider": "Fireworks",
+      "generation_time_ms": 13854,
+      "latency_ms": 2547,
+      "finish_reason": "stop",
+      "metadata_status": "retrieved"
+    },
+    {
+      "label": "pan_dense",
+      "generation_id": "gen-1793257577-cCkaSI9Cs2WicP0AAJln",
+      "success": true,
+      "cost_usd": 0.004712148,
+      "cost_source": "response_usage",
+      "prompt_tokens": 11107,
+      "completion_tokens": 2953,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 490,
+      "estimated_nonreasoning_completion_tokens": 2953,
+      "elapsed_seconds": 15.331,
+      "time_to_first_content_seconds": 2.69,
+      "provider": "Fireworks",
+      "generation_time_ms": 14945,
+      "latency_ms": 2395,
+      "finish_reason": "stop",
+      "metadata_status": "retrieved"
+    }
+  ],
+  "totals": {
+    "cost_usd": 0.013075624800000001,
+    "prompt_tokens": 26990,
+    "completion_tokens": 9246,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 1744,
+    "elapsed_seconds": 47.367999999999995
+  },
+  "missing_fields_by_call": {
+    "cost_usd": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 0,
+    "elapsed_seconds": 0
+  },
+  "calls": 3,
+  "successful_generations": 3,
+  "observed_first_dispatch_to_last_accounting_seconds": 62.464921,
+  "notes": [
+    "Reasoning tokens are part of completion tokens, not additional tokens.",
+    "Known cost subtotal is not a complete bill when any cost is missing.",
+    "Client elapsed, provider generation time and provider latency are distinct; check provider metadata units.",
+    "Fireworks only; no fallback; none reasoning explicitly requested.",
+    "Three same-input independent cases; saved baselines, not randomized or replicated. No causal certainty or cost/speed guarantee."
+  ]
+}

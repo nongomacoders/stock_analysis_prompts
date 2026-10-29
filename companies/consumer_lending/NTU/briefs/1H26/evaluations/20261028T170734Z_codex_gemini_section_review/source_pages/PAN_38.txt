@@ -1,0 +1,112 @@
+INTRODUCTION
+When assessing and discussing Pan African’s reported financial performance, financial position and cash flows, 
+management makes reference to alternative performance measures (APMs) of historical or future financial performance, 
+financial position or cash flows that are not defined or specified under IFRS Accounting Standards.
+The APMs include financial APMs, non-financial APMs and ratios, as described below.
+• Financial APMs: These financial measures are usually derived from the annual financial statements which have been 
+prepared in accordance with IFRS Accounting Standards. Certain financial measures cannot be directly derived from 
+the annual financial statements as they contain additional information such as financial information from earlier periods 
+or profit estimates or projections. The accounting policies applied when calculating APMs are, where relevant and 
+unless otherwise stated, the same as those disclosed in the consolidated financial statements for the year ended 
+30 June 2026.
+• Non-financial APMs: These measures incorporate certain non-financial information that management believes is useful 
+when assessing the performance of the Group.
+• Ratios: Ratios may be calculated using any of the APMs referred to above, IFRS Accounting Standards measures or 
+a combination of APMs and IFRS Accounting Standards measures. APMs are not uniformly defined by all companies 
+and may not be comparable with APM disclosures made by other companies, and they exclude:
+– measures defined or specified by an applicable reporting framework such as revenue, profit or loss or earnings 
+per share
+– physical or non-financial measures such as number of employees, number of subscribers, revenue per unit 
+measure (when the revenue figures are extracted directly from the annual financial statements) or social and 
+environmental measures such as gas emissions, breakdown of workforce by contract or geographical location
+– information on major shareholdings, acquisition or disposal of own shares and total number of voting rights
+– information to explain the compliance with the terms of an agreement or legislative requirements such as lending 
+covenants or the basis of calculating director or executive remuneration.
+APMs should be considered in addition to, and not as a substitute for or as superior to, measures of financial 
+performance, financial position or cash flows reported in accordance with IFRS Accounting Standards.
+PURPOSE OF APMs
+The Group uses APMs to improve the comparability of information between reporting periods and reporting segments by 
+adjusting for uncontrollable or once-off factors which impact IFRS Accounting Standards measurements and disclosures 
+to aid the user of the integrated annual report in understanding the activity taking place across the Group’s portfolio. 
+The directors are responsible for preparing the APMs.
+Their use is driven by characteristics particularly visible in the mining sector.
+• Earnings volatility: The sector is characterised by significant volatility in earnings driven by movements in 
+macroeconomic factors, primarily commodity prices and foreign exchange rates. This volatility is outside the 
+control of management and can mask underlying changes in performance. As such, when comparing year-on-year 
+performance, management excludes certain non-recurring items to aid comparability and then quantifies and isolates 
+uncontrollable factors to improve understanding of the controllable portion of variances.
+• Nature of investment: Investments in the sector are typically capital-intensive and occur over several years requiring 
+significant funding before generating cash. These investments are often made through debt and equity providers, and 
+the nature of the Group’s ownership interest affects how the financial results of these operations are reflected in the 
+Group’s results, for example, whether full consolidation (subsidiaries), consolidation of the Group’s attributable assets 
+and liabilities (joint operations) or equity-accounted (associates and joint ventures).
+• Portfolio complexity: At year-end, the Group’s operating portfolio remains largely in commodities, mainly gold, which 
+accounts for 99.7% of the Group’s revenue. The cost, value of and return from each saleable unit (such as tonne or 
+ounce) therefore do not differ materially between each operating business. This makes understanding both the overall 
+portfolio performance and the relative performance of each mining operation on a like-for-like basis less challenging.
+Consequently, APMs are used by the board and management for planning and reporting. A subset is also used by 
+management in setting director and management remuneration. The measures are also used in discussions with the 
+investment analyst community and credit rating agencies.
+FINANCIAL APMs
+Group APM
+Related IFRS 
+Accounting 
+Standards 
+measure
+Adjustments to reconcile to primary 
+statements Rationale for adjustment
+Performance
+All-in sustaining 
+costs (AISC)
+Cost of production • Other related costs as defined by the 
+World Gold Council, including royalty 
+costs, community costs, sustaining 
+and development capital (excluding 
+non-gold operations)
+The objective of AISC and 
+all-in cost (AIC) metrics is 
+to provide key stakeholders 
+with comparable metrics that 
+reflect, as close as possible, 
+the full cost of producing 
+and selling an ounce of 
+gold, and which are fully and 
+transparently reconcilable 
+back to amounts reported 
+under IFRS Accounting 
+Standards
+All-in costs Cost of production • Once-off capital costs As per the above for AISC 
+with additional expansionary 
+capital and once-off 
+non-production-related 
+cost adjustments
+EBITDA Profit after tax • Income tax
+• Depreciation and amortisation
+• Net finance costs
+Excludes the impact of 
+non-recurring items or certain 
+accounting adjustments that 
+can mask underlying changes 
+in performance
+Adjusted
+EBITDA
+Profit after tax • Income tax
+• Depreciation and amortisation
+• Net finance costs
+• Impairment loss or impairment 
+reversals
+• Bargain purchase gain
+• Unrealised fair value gains or losses 
+on financial derivatives undertaken 
+in the normal course of business
+Excludes the impact of non￾recurring items or certain 
+accounting adjustments that 
+can mask underlying changes 
+in performance
+ALTERNATIVE PERFORMANCE 
+MEASURES
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+72 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+73

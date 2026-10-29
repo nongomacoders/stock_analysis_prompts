@@ -1,0 +1,15 @@
+{
+  "completed_utc": "2026-10-28T17:48:29Z",
+  "local_time": "2026-10-28T19:48:29+02:00",
+  "ticker": "NTU",
+  "period": "1H26",
+  "evaluator": "Gemini",
+  "model_settings": "Gemini 3.8 Flash (High) in Google Antigravity IDE",
+  "evaluated_run": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T171901Z_ntu_refined_sections",
+  "audit_path": "companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T174829Z_gemini/audit.md",
+  "decision": "CORRECTIONS REQUIRED (SECTION-ONLY TRIAL; VALUATION NOT REQUESTED / NOT APPLICABLE)",
+  "claims_count": 9,
+  "findings_count": 9,
+  "preserved_inputs_count": 116,
+  "verified_source_pdf_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc"
+}

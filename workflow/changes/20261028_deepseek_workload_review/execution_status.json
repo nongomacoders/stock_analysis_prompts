@@ -1,0 +1,15 @@
+{
+  "scope": "Offline workload review only",
+  "inspect_workload_exit_code": 0,
+  "probe_workload_exit_code": 0,
+  "pure_function_assertions": 4,
+  "production_database_unchanged": true,
+  "inspected_source_hashes_still_match": true,
+  "production_changes": false,
+  "model_calls": 0,
+  "pytest_rerun": false,
+  "prior_full_suite": {
+    "passed": 178,
+    "exit_code": 0
+  }
+}

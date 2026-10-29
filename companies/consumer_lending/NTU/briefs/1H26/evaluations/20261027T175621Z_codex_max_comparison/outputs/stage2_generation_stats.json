@@ -1,0 +1,12 @@
+{
+  "id": "gen-1793123928-27jC3ncJR0I18Q3WcNka",
+  "model": "deepseek/deepseek-v4.1-flash-20261017",
+  "provider_name": "Together",
+  "total_cost": 0.0630366,
+  "tokens_prompt": 34470,
+  "tokens_completion": 33872,
+  "native_tokens_reasoning": 37211,
+  "finish_reason": "stop",
+  "generation_time": 210313,
+  "latency": 1443
+}

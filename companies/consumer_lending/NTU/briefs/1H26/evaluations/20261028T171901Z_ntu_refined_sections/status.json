@@ -1,0 +1,10 @@
+{
+  "status": "section_trial_complete_with_review_findings",
+  "calls": 22,
+  "stage": "section_23",
+  "last_dispatch_utc": "2026-10-28T17:24:43.548908+00:00",
+  "first_dispatch_utc": "2026-10-28T17:19:15.604326+00:00",
+  "completed_utc": "2026-10-28T17:24:57.420974+00:00",
+  "error_type": null,
+  "review_completed_utc": "2026-10-28T17:31:45.607432+00:00"
+}

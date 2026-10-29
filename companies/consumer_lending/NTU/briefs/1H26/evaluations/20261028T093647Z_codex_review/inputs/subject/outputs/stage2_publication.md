@@ -1,0 +1,121 @@
+```json
+{
+  "ticker": "NTU",
+  "company_name": "Nutun Limited",
+  "sector": "Financial Services (collections, recovery and BPO; not a bank)",
+  "valuation_status": "WITHHELD",
+  "blocking_issues": [
+    "The analysis withholds valuation pending resolution of material issues.",
+    "Covenant headroom and liquidity runway NOT VERIFIED: R1,396m interest-bearing liabilities payable within 12 months vs cash R112m and disclosed undrawn overdraft facilities R475m; management's '~R0.8bn unutilised facilities' (physical p.5) is not reconciled to disclosed facilities (physical p.14). No covenant ratios, security cover, LTV or refinancing schedule disclosed. Evidence needed: facility-by-schedule maturity, covenant definitions/headroom, refinancing plan, going-concern support.",
+    "ERC methodology and actual-vs-expected collections NOT VERIFIED: ERC R8,366m (physical p.3) vs PBD carrying R4,489m; no collection-curve, discount-rate derivation, vintage/cohort or sensitivity disclosure. Evidence needed: ERC schedule, assumptions, actual vs expected reconciliation.",
+    "PBD impairment sustainability NOT VERIFIED: cumulative impairment gain R431m (physical p.22) is being consumed; H1 FY2026 historical-book loss R191m already exceeds FY2025 R182m (physical p.24). No gross ECL charge vs favourable re-estimate split, write-offs, recoveries or FX. Evidence needed: full ECL movement note.",
+    "PBD amortisation/cash-flow bridge NOT VERIFIED: CODM amortisation R597m footnote (physical p.31) is ambiguously presented; cash-flow 'purchased book debts' movement R182m (physical p.12) does not reconcile to note 1.1 net collections less additions (R728m - R382m = R346m). Evidence needed: sign convention and cash-flow bridge.",
+    "Trade receivables provisioning NOT VERIFIED: 0.00% ELR on 30+ and 61-90 day buckets at 31 Mar 2026 (physical p.25) vs positive ELR at 30 Sep 2025; no concentration disclosure; R395m financial vs R374m trade table vs R497m SoFP not reconciled. Evidence needed: provision matrix policy, historical loss experience, top-client concentration.",
+    "Other financial assets Level 3 valuation NOT VERIFIED: R644m FVTPL at 16% discount rate (physical p.28); no sensitivity analysis; retraction risk disclosed (physical p.13). Evidence needed: hierarchy inputs, cash-flow assumptions, sensitivity.",
+    "Revenue sustainability and DTI incentives NOT VERIFIED: Australia revenue R27m vs R74m (-64%) unexplained (physical p.17); DTI incentive uncertainty unquantified (physical p.5). Evidence needed: contract wins/losses, FX effects, DTI contribution.",
+    "Tax and DTA recoverability NOT VERIFIED: tax credit R29m on R92m loss (effective -31.5%); DTA R173m (physical pp.8-9); no tax note captured. Evidence needed: current/deferred split, DTA recognition basis.",
+    "Audit assurance and governance NOT VERIFIED: H1 FY2026 statements unaudited and unreviewed by auditors (physical pp.6-7); board 'transition' unexplained (physical p.7); no SENS announcements supplied. Evidence needed: review statement, SENS, strategic-review disclosure.",
+    "NCA fee/rate caps and vintage delinquency roll rates NOT VERIFIED: no disclosure in captured pages.",
+    "TC Global Finance residual exposure NOT VERIFIED: R47m FY2025 impairment; carrying value not separately disclosed (physical p.35).",
+    "Subsequent SENS and post-balance-sheet events NOT VERIFIED: Note 9 (physical p.36) is a bare IAS 10 statement; no SENS supplied.",
+    "Fair value of interest-bearing liabilities swing NOT VERIFIED: 30 Sep 2025 fair value R3,468m vs carrying R3,807m (R339m deficit); 31 Mar 2026 fair value R3,769m vs carrying R3,743m (R26m surplus) (physical p.27). Evidence needed: interest-rate risk note, fixed/floating split, hedge accounting.",
+    "historical_cash_flow: NOT VERIFIED; Cash roll-forward passes: opening R107m + net increase R6m + FX R0m = closing R113m; SoFP cash R112m + held-for-sale R1m = R113m (physical pp.8, 12). However, 'purchased book debts' operating-asset movement R182m (physical p.12) does not reconcile to note 1.1 net cash collections R728m less additions R382m = R346m (physical p.13). Cash-flow line 'Net cash generated/(utilised) by investing activities R178m' is mislabelled (should be financing). No gross write-offs, bad-debt recoveries or dividends paid separately disclosed.",
+    "forecast_cash_and_debt: NOT VERIFIED; No forecast cash or debt schedule is presented in the source. Management provides only qualitative outlook (physical p.5). No forecast financial information has been reviewed by auditors (physical p.6). Cannot reconcile forecast cash and debt without a director-prepared forecast.",
+    "portfolio_rollforward: NOT VERIFIED; Principal book roll-forward (physical p.13): opening R3,975m + additions R382m - net collections R728m + CAEIR R383m - impairment R167m = R3,845m (arithmetic passes). Other financial assets (physical p.13): opening R702m + additions R28m - collections R116m + FV R30m = R644m (passes). However, ERC R8,366m (physical p.3) is not reconciled to carrying value; no collection-curve, discount-rate derivation, vintage/cohort or actual-vs-expected collection reconciliation disclosed. Portfolio rollforward of ERC NOT VERIFIED.",
+    "valuation_bridge: NOT VERIFIED; No valuation bridge is presented. Fair value of principal book approximates carrying value at 18.50% market discount rate (physical p.26); fair value of interest-bearing liabilities R3,769m vs carrying R3,743m (physical p.27). No equity-value bridge, no net-debt-to-equity reconciliation, no target derivation. Valuation bridge NOT VERIFIED.",
+    "sensitivity: NOT VERIFIED; No sensitivity analysis is disclosed for the R644m Level 3 other financial assets (16% discount rate, physical p.28), the R3,845m principal book (18.50% market rate, physical p.26), the R431m cumulative impairment gain, or the R4,016m interest-bearing liabilities. No macro scenario weightings disclosed. Sensitivity NOT VERIFIED.",
+    "earnings_and_shares: NOT VERIFIED; Share count and EPS arithmetic verified: net shares 780,651,033 (physical p.16); weighted average 782.1m; headline loss R63m / 782.1m = -8.1c (physical pp.9, 18). NAV = R1,329m / 780.651m = R1.70 (physical pp.8, 16). However, earnings quality is NOT VERIFIED: core EBITDA R790m excludes PBD amortisation R597m and net finance costs (physical p.31); no full add-back itemisation; tax credit R29m on R92m loss unexplained; DTA R173m recoverability unverified. Earnings-and-shares check NOT VERIFIED overall.",
+    "financing_and_terminal: NOT VERIFIED; Interest-bearing liabilities R4,016m including overdrafts; R1,396m payable within 12 months; R2,620m thereafter (physical p.14). Undrawn overdraft facilities R475m (physical p.14). Management claims ~R0.8bn unutilised facilities (physical p.5) but only R475m is disclosed; remainder unreconciled. 100% of principal book R3,845m pledged, plus trade receivables and cash (physical pp.13, 15). No covenant ratios, LTV, DSCR, security cover or borrowing-base headroom disclosed. Going-concern statement bare (physical p.36). No terminal debt policy or refinancing plan disclosed. Financing and terminal NOT VERIFIED."
+  ],
+  "valuation_checks": [
+    {
+      "check_id": "historical_cash_flow",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Cash roll-forward passes: opening R107m + net increase R6m + FX R0m = closing R113m; SoFP cash R112m + held-for-sale R1m = R113m (physical pp.8, 12). However, 'purchased book debts' operating-asset movement R182m (physical p.12) does not reconcile to note 1.1 net cash collections R728m less additions R382m = R346m (physical p.13). Cash-flow line 'Net cash generated/(utilised) by investing activities R178m' is mislabelled (should be financing). No gross write-offs, bad-debt recoveries or dividends paid separately disclosed.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "forecast_cash_and_debt",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No forecast cash or debt schedule is presented in the source. Management provides only qualitative outlook (physical p.5). No forecast financial information has been reviewed by auditors (physical p.6). Cannot reconcile forecast cash and debt without a director-prepared forecast.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "portfolio_rollforward",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Principal book roll-forward (physical p.13): opening R3,975m + additions R382m - net collections R728m + CAEIR R383m - impairment R167m = R3,845m (arithmetic passes). Other financial assets (physical p.13): opening R702m + additions R28m - collections R116m + FV R30m = R644m (passes). However, ERC R8,366m (physical p.3) is not reconciled to carrying value; no collection-curve, discount-rate derivation, vintage/cohort or actual-vs-expected collection reconciliation disclosed. Portfolio rollforward of ERC NOT VERIFIED.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "valuation_bridge",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No valuation bridge is presented. Fair value of principal book approximates carrying value at 18.50% market discount rate (physical p.26); fair value of interest-bearing liabilities R3,769m vs carrying R3,743m (physical p.27). No equity-value bridge, no net-debt-to-equity reconciliation, no target derivation. Valuation bridge NOT VERIFIED.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "sensitivity",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "No sensitivity analysis is disclosed for the R644m Level 3 other financial assets (16% discount rate, physical p.28), the R3,845m principal book (18.50% market rate, physical p.26), the R431m cumulative impairment gain, or the R4,016m interest-bearing liabilities. No macro scenario weightings disclosed. Sensitivity NOT VERIFIED.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "earnings_and_shares",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Share count and EPS arithmetic verified: net shares 780,651,033 (physical p.16); weighted average 782.1m; headline loss R63m / 782.1m = -8.1c (physical pp.9, 18). NAV = R1,329m / 780.651m = R1.70 (physical pp.8, 16). However, earnings quality is NOT VERIFIED: core EBITDA R790m excludes PBD amortisation R597m and net finance costs (physical p.31); no full add-back itemisation; tax credit R29m on R92m loss unexplained; DTA R173m recoverability unverified. Earnings-and-shares check NOT VERIFIED overall.",
+      "reconciliations": []
+    },
+    {
+      "check_id": "financing_and_terminal",
+      "material": true,
+      "verdict": "NOT VERIFIED",
+      "evidence": "Interest-bearing liabilities R4,016m including overdrafts; R1,396m payable within 12 months; R2,620m thereafter (physical p.14). Undrawn overdraft facilities R475m (physical p.14). Management claims ~R0.8bn unutilised facilities (physical p.5) but only R475m is disclosed; remainder unreconciled. 100% of principal book R3,845m pledged, plus trade receivables and cash (physical pp.13, 15). No covenant ratios, LTV, DSCR, security cover or borrowing-base headroom disclosed. Going-concern statement bare (physical p.36). No terminal debt policy or refinancing plan disclosed. Financing and terminal NOT VERIFIED.",
+      "reconciliations": []
+    }
+  ],
+  "reference_price": null,
+  "target_price_zar": null,
+  "target_price": null,
+  "recommendation": null,
+  "rating_bands": null,
+  "implied_upside_pct": null,
+  "upside_pct": null,
+  "forward_dividend_yield_pct": null,
+  "dividend_yield_pct": null,
+  "projected_12m_tsr_pct": null,
+  "tsr_pct": null
+}
+```
+
+# VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED
+
+A target price and investment recommendation are withheld. Resolve the following issues before valuation:
+
+- The analysis withholds valuation pending resolution of material issues.
+- Covenant headroom and liquidity runway NOT VERIFIED: R1,396m interest-bearing liabilities payable within 12 months vs cash R112m and disclosed undrawn overdraft facilities R475m; management's '~R0.8bn unutilised facilities' (physical p.5) is not reconciled to disclosed facilities (physical p.14). No covenant ratios, security cover, LTV or refinancing schedule disclosed. Evidence needed: facility-by-schedule maturity, covenant definitions/headroom, refinancing plan, going-concern support.
+- ERC methodology and actual-vs-expected collections NOT VERIFIED: ERC R8,366m (physical p.3) vs PBD carrying R4,489m; no collection-curve, discount-rate derivation, vintage/cohort or sensitivity disclosure. Evidence needed: ERC schedule, assumptions, actual vs expected reconciliation.
+- PBD impairment sustainability NOT VERIFIED: cumulative impairment gain R431m (physical p.22) is being consumed; H1 FY2026 historical-book loss R191m already exceeds FY2025 R182m (physical p.24). No gross ECL charge vs favourable re-estimate split, write-offs, recoveries or FX. Evidence needed: full ECL movement note.
+- PBD amortisation/cash-flow bridge NOT VERIFIED: CODM amortisation R597m footnote (physical p.31) is ambiguously presented; cash-flow 'purchased book debts' movement R182m (physical p.12) does not reconcile to note 1.1 net collections less additions (R728m - R382m = R346m). Evidence needed: sign convention and cash-flow bridge.
+- Trade receivables provisioning NOT VERIFIED: 0.00% ELR on 30+ and 61-90 day buckets at 31 Mar 2026 (physical p.25) vs positive ELR at 30 Sep 2025; no concentration disclosure; R395m financial vs R374m trade table vs R497m SoFP not reconciled. Evidence needed: provision matrix policy, historical loss experience, top-client concentration.
+- Other financial assets Level 3 valuation NOT VERIFIED: R644m FVTPL at 16% discount rate (physical p.28); no sensitivity analysis; retraction risk disclosed (physical p.13). Evidence needed: hierarchy inputs, cash-flow assumptions, sensitivity.
+- Revenue sustainability and DTI incentives NOT VERIFIED: Australia revenue R27m vs R74m (-64%) unexplained (physical p.17); DTI incentive uncertainty unquantified (physical p.5). Evidence needed: contract wins/losses, FX effects, DTI contribution.
+- Tax and DTA recoverability NOT VERIFIED: tax credit R29m on R92m loss (effective -31.5%); DTA R173m (physical pp.8-9); no tax note captured. Evidence needed: current/deferred split, DTA recognition basis.
+- Audit assurance and governance NOT VERIFIED: H1 FY2026 statements unaudited and unreviewed by auditors (physical pp.6-7); board 'transition' unexplained (physical p.7); no SENS announcements supplied. Evidence needed: review statement, SENS, strategic-review disclosure.
+- NCA fee/rate caps and vintage delinquency roll rates NOT VERIFIED: no disclosure in captured pages.
+- TC Global Finance residual exposure NOT VERIFIED: R47m FY2025 impairment; carrying value not separately disclosed (physical p.35).
+- Subsequent SENS and post-balance-sheet events NOT VERIFIED: Note 9 (physical p.36) is a bare IAS 10 statement; no SENS supplied.
+- Fair value of interest-bearing liabilities swing NOT VERIFIED: 30 Sep 2025 fair value R3,468m vs carrying R3,807m (R339m deficit); 31 Mar 2026 fair value R3,769m vs carrying R3,743m (R26m surplus) (physical p.27). Evidence needed: interest-rate risk note, fixed/floating split, hedge accounting.
+- historical_cash_flow: NOT VERIFIED; Cash roll-forward passes: opening R107m + net increase R6m + FX R0m = closing R113m; SoFP cash R112m + held-for-sale R1m = R113m (physical pp.8, 12). However, 'purchased book debts' operating-asset movement R182m (physical p.12) does not reconcile to note 1.1 net cash collections R728m less additions R382m = R346m (physical p.13). Cash-flow line 'Net cash generated/(utilised) by investing activities R178m' is mislabelled (should be financing). No gross write-offs, bad-debt recoveries or dividends paid separately disclosed.
+- forecast_cash_and_debt: NOT VERIFIED; No forecast cash or debt schedule is presented in the source. Management provides only qualitative outlook (physical p.5). No forecast financial information has been reviewed by auditors (physical p.6). Cannot reconcile forecast cash and debt without a director-prepared forecast.
+- portfolio_rollforward: NOT VERIFIED; Principal book roll-forward (physical p.13): opening R3,975m + additions R382m - net collections R728m + CAEIR R383m - impairment R167m = R3,845m (arithmetic passes). Other financial assets (physical p.13): opening R702m + additions R28m - collections R116m + FV R30m = R644m (passes). However, ERC R8,366m (physical p.3) is not reconciled to carrying value; no collection-curve, discount-rate derivation, vintage/cohort or actual-vs-expected collection reconciliation disclosed. Portfolio rollforward of ERC NOT VERIFIED.
+- valuation_bridge: NOT VERIFIED; No valuation bridge is presented. Fair value of principal book approximates carrying value at 18.50% market discount rate (physical p.26); fair value of interest-bearing liabilities R3,769m vs carrying R3,743m (physical p.27). No equity-value bridge, no net-debt-to-equity reconciliation, no target derivation. Valuation bridge NOT VERIFIED.
+- sensitivity: NOT VERIFIED; No sensitivity analysis is disclosed for the R644m Level 3 other financial assets (16% discount rate, physical p.28), the R3,845m principal book (18.50% market rate, physical p.26), the R431m cumulative impairment gain, or the R4,016m interest-bearing liabilities. No macro scenario weightings disclosed. Sensitivity NOT VERIFIED.
+- earnings_and_shares: NOT VERIFIED; Share count and EPS arithmetic verified: net shares 780,651,033 (physical p.16); weighted average 782.1m; headline loss R63m / 782.1m = -8.1c (physical pp.9, 18). NAV = R1,329m / 780.651m = R1.70 (physical pp.8, 16). However, earnings quality is NOT VERIFIED: core EBITDA R790m excludes PBD amortisation R597m and net finance costs (physical p.31); no full add-back itemisation; tax credit R29m on R92m loss unexplained; DTA R173m recoverability unverified. Earnings-and-shares check NOT VERIFIED overall.
+- financing_and_terminal: NOT VERIFIED; Interest-bearing liabilities R4,016m including overdrafts; R1,396m payable within 12 months; R2,620m thereafter (physical p.14). Undrawn overdraft facilities R475m (physical p.14). Management claims ~R0.8bn unutilised facilities (physical p.5) but only R475m is disclosed; remainder unreconciled. 100% of principal book R3,845m pledged, plus trade receivables and cash (physical pp.13, 15). No covenant ratios, LTV, DSCR, security cover or borrowing-base headroom disclosed. Going-concern statement bare (physical p.36). No terminal debt policy or refinancing plan disclosed. Financing and terminal NOT VERIFIED.
+
+The original analysis is preserved separately for evidence review. Any numbers in that analysis are not a published valuation.

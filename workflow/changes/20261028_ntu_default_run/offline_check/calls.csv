@@ -1,0 +1,2 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+failure,gen-offline,False,0.001,response_usage,10,8,3,,5,0.0,0.0,,,,length,retrieved

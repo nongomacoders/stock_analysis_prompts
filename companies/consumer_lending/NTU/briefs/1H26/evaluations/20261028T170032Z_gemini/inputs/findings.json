@@ -1,0 +1,32 @@
+[
+  {
+    "id": "F001",
+    "verdict": "SUPPORTED WITHIN SAMPLE",
+    "finding": "All8 generations completed. Revised ledgers4/4 literal-validation passes versus3/4 old;old NTU shared-page quote nonliteral. This does not validate financial truth."
+  },
+  {
+    "id": "F002",
+    "verdict": "CONFIRMED ERROR",
+    "finding": "Revised NTU p13 prose correctly adds FV30,but its ledger answer writes702+28−116−30=644. Actual equation equals584,a60 difference. Correct sign gives644. Earliest observed in this section output;original retained,not repaired."
+  },
+  {
+    "id": "F003",
+    "verdict": "UNSUPPORTED APPLICABILITY",
+    "finding": "Revised NTU p13 warns against conventional staging then requests staging/coverage evidence for POCI. Conditional sector hints reduce rigid scope but do not reliably prevent irrelevant demands. Existing approved rules not changed."
+  },
+  {
+    "id": "F004",
+    "verdict": "PARTLY SUPPORTED",
+    "finding": "Both old and revised NTU p25 include currency-risk start and next-page dependency. Revised answer is shorter with fewer questions. No unique coverage improvement over this paired old answer can be claimed."
+  },
+  {
+    "id": "F005",
+    "verdict": "UNSUPPORTED ASSERTION",
+    "finding": "First-time comparative presentation does not itself prove a newly constructed/restated comparative or a provisioning-method change. Both NTU p25 answers overinterpret those points;methodology remains unverified."
+  },
+  {
+    "id": "F006",
+    "verdict": "NOT VERIFIED",
+    "finding": "Revised PAN operational answer flags shifted extraction columns and keeps mappings provisional. Cell/asset attribution and its prior-year component residual require original-table inspection. Prompt changes do not repair extraction layout."
+  }
+]

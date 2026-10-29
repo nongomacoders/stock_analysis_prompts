@@ -1,0 +1,121 @@
+[
+  {
+    "id": "F001",
+    "classification": "SUPPORTED WITHIN RUN",
+    "earliest_stage": "section_analysis",
+    "finding": "All 22 Fireworks generations completed covering 38 physical pages once across 24 units (including 2 navigation units). Chronology verified from empty ledger; 18 validated deltas and 4 rejected deltas. Zero provider fallbacks or repair calls. Total cost USD 0.0702, elapsed 208.2s (wall time 340.5s). Structural execution success is verified.",
+    "severity": "LOW",
+    "quantified_impact": "USD 0.0702 cost across 22 calls; 0 reasoning tokens; 51,535 completion tokens.",
+    "required_correction": "None for pipeline infrastructure; generation and accounting completed cleanly.",
+    "affected_downstream_outputs": [
+      "calls.csv",
+      "metrics.json",
+      "coverage.json"
+    ]
+  },
+  {
+    "id": "F002",
+    "classification": "CONFIRMED LEDGER RELIABILITY LIMIT",
+    "earliest_stage": "ledger_validation",
+    "finding": "Literal-quote brittleness caused rejection of 4 section deltas: section_07 (pp.9-11), section_09 (p.13), section_13 (pp.18-19), and section_20 (pp.30-31). Minor whitespace/pipe differences caused the entire deltas to be rejected, holding back 7 proposed new questions and 2 valid proposed question resolutions (Q-e4497d9112cd4e9d on PBD basis/roll-forward on p.13, and Q-b18d8ce6d4804a50 on basic-to-headline bridge on p.18).",
+    "severity": "HIGH",
+    "quantified_impact": "7 proposed questions blocked from persistent ledger; 2 valid resolutions reverted to partial/open; 4/22 (18.2%) deltas unapplied.",
+    "required_correction": "Refine regex or whitespace normalization for literal quote matching; decouple question additions from single quote failures where possible.",
+    "affected_downstream_outputs": [
+      "final_ledger.json",
+      "rejected_ledger_deltas.json",
+      "subsequent section prompts"
+    ]
+  },
+  {
+    "id": "F003",
+    "classification": "SUPPORTED WITH LIMITS",
+    "earliest_stage": "section_analysis",
+    "finding": "On p.13 (section_09), the model's prose correctly handled both portfolio rolls (principal book 3,975 + 382 - 728 + 383 - 167 = 3,845; other financial assets 702 + 28 - 116 + 30 = 644; total 4,489) and explicitly explained that POCI accounting excludes ordinary Stage 1/2 SICR migration. However, because the ledger delta was rejected due to a quote mismatch, this valid resolution was not accepted into the persistent ledger.",
+    "severity": "MEDIUM",
+    "quantified_impact": "No arithmetic error in prose; ledger persistence blocked by validation filter.",
+    "required_correction": "Ensure literal quote string matching handles multiline PDF breaks cleanly.",
+    "affected_downstream_outputs": [
+      "outputs/final_ledger.json",
+      "Q-e4497d9112cd4e9d"
+    ]
+  },
+  {
+    "id": "F004",
+    "classification": "CONFIRMED CAPTURE / OCR INTERPRETATION FAILURE",
+    "earliest_stage": "section_capture_and_section_analysis",
+    "finding": "On p.22 (section_15), the text extraction collapsed columns 1 and 2 ('Other loans receivable' = 5 and 'Trade and other receivables' = 390) into '5 390', which the model interpreted as a single number 5,390. The model summed 5,390 + 3,845 + 644 = 9,879 and flagged a false 4,995 discrepancy against the printed total of 4,884. In reality, the table foots exactly: 5 + 390 + 3,845 + 644 = 4,884. This is an OCR/column-parsing failure, not an issuer defect.",
+    "severity": "HIGH",
+    "quantified_impact": "False asset inflation of R4,995m (model 9,879 vs true 4,884); false audit flag raised against company reporting.",
+    "required_correction": "Preserve explicit table column delimiters and prevent adjacent cell concatenation in section capture.",
+    "affected_downstream_outputs": [
+      "section_15.prose.md",
+      "Q-29ba2f276efb4af2"
+    ]
+  },
+  {
+    "id": "F005",
+    "classification": "CONFIRMED ATTRIBUTION / SIGN ERRORS",
+    "earliest_stage": "section_analysis",
+    "finding": "On p.24 (section_16), the model misattributed table headers: it mapped column 1 to 'Debt review' and column 2 to 'Unsecured Retail', leaving column 3 'unlabelled'. True headers are: (1) Banking & specialised lending \u2013 Unsecured, (2) Debt review, (3) Retail, (4) Banking \u2013 Secured. It assigned the -241 movement to Debt review instead of Unsecured (+69). Furthermore, it claimed that reducing the cumulative impairment gain increases net carrying value, which inverts economic reality (net carrying value = gross + gain; a decline in gain reduces net carrying value). Full year 2025 historical book loss is verified at 77 + 182 = 259.",
+    "severity": "HIGH",
+    "quantified_impact": "Misattribution of R241m loss to wrong portfolio; sign inversion of carrying value impact; full year loss confirmed at R259m.",
+    "required_correction": "Model must maintain strict positional mapping of multi-line table headers and verify accounting direction of contra-asset gain movements.",
+    "affected_downstream_outputs": [
+      "section_16.prose.md",
+      "Q-2a8672f28c4140e8",
+      "Q-51278219e10b4cd4"
+    ]
+  },
+  {
+    "id": "F006",
+    "classification": "CONFIRMED PERIOD MAPPING ERROR",
+    "earliest_stage": "section_analysis",
+    "finding": "On p.25 (section_17), the model swapped the closing exchange rate comparative dates in Note 6.2: it assigned USD 18.4 / GBP 23.9 to 30 September 2025 and USD 17.3 / GBP 23.2 to 31 March 2025. Primary evidence in Note 6.2 shows the reverse: Column 5 is 31 March 2025 (USD 18.4 / GBP 23.9) and Column 6 is 30 September 2025 (USD 17.3 / GBP 23.2).",
+    "severity": "MEDIUM",
+    "quantified_impact": "Inverted comparative FX trend; swapped interim vs annual year-end exchange rates.",
+    "required_correction": "Model must align multi-column comparative dates strictly by column position.",
+    "affected_downstream_outputs": [
+      "section_17.prose.md",
+      "Q-dab8ef060f454ad6"
+    ]
+  },
+  {
+    "id": "F007",
+    "classification": "CONFIRMED FALSE RECONCILIATION FLAGS",
+    "earliest_stage": "section_analysis",
+    "finding": "On p.31 (section_20), the model treated tax expense (29) as +29 in the core continuing loss to core EBITDA bridge, calculating -63 + 29 + 68 + 597 + 1 + 216 = 848 and alleging a false 58 EBITDA discrepancy. The printed reconciliation foots exactly: -63 - 29 + 68 + 597 + 1 + 216 = 790. Additionally, the model mechanically summed footnote components as all-positive (383 + 167 + 728 + 30 + 116 = 1,424 vs 597) and alleged an 827 mismatch; the footnote is a narrative description, and a signed reconstruction yields 598 (1 residual).",
+    "severity": "HIGH",
+    "quantified_impact": "False R58m EBITDA discrepancy allegation; false R827m footnote non-reconciliation claim.",
+    "required_correction": "Model must respect parentheses as negative numbers in accounting bridges and not invent all-positive summation formulas for descriptive footnote text.",
+    "affected_downstream_outputs": [
+      "section_20.prose.md",
+      "rejected_ledger_deltas.json",
+      "Q-e0ca727b62be46df"
+    ]
+  },
+  {
+    "id": "F008",
+    "classification": "SUPPORTED QUESTION EVOLUTION & DUPLICATION",
+    "earliest_stage": "section_analysis_and_ledger",
+    "finding": "Question evolution demonstrated valuable inquiry: Q-8612694a3a674266 was correctly contradicted (overdraft was R273m, not R2,273m; fell R91m). However, duplicate questions emerged: Q-08aa5c3f257440ab was proposed and resolved on p.21-23 while pre-existing Q-e4497d9112cd4e9d on the same topic remained partial; Q-d22e0c2b395a427e and Q-f6689319fb3a49ff also duplicated PBD roll-forward and population questions; Q-86df863491ca4eae duplicated Q-4de5fe06ec4d4f67 on exceptional items subtotal layout.",
+    "severity": "MEDIUM",
+    "quantified_impact": "Ledger bloat (32 persistent questions with overlapping scopes); questions answered under new IDs while original IDs remained open/partial.",
+    "required_correction": "Enforce deduplication check before accepting new questions into the ledger; match incoming questions against semantic embedding/keywords of active questions.",
+    "affected_downstream_outputs": [
+      "final_ledger.json"
+    ]
+  },
+  {
+    "id": "F009",
+    "classification": "CONFIRMED PORTFOLIO CASH VS CARRYING VALUE RESIDUAL",
+    "earliest_stage": "section_analysis_and_financial_statements",
+    "finding": "Independent reconciliation confirms net portfolio cash generated of R434m (gross collections 773 + 116 - additions 382 - 28 - costs 45) less portfolio accounting income of R246m (CAEIR 383 - impairment 167 + FV 30) equals net carrying decline of R188m (4,677 opening - 4,489 closing). This leaves an unexplained R6m residual against the statutory statement of cash flows amortisation subtotal of R182m (188 - 182 = 6).",
+    "severity": "LOW",
+    "quantified_impact": "R6m unexplained statutory cash flow residual; no valuation impact in section-only trial.",
+    "required_correction": "Keep R6m residual logged as an unexplained statutory difference; do not manufacture rounding or FX plugs.",
+    "affected_downstream_outputs": [
+      "independent_calculations.json"
+    ]
+  }
+]

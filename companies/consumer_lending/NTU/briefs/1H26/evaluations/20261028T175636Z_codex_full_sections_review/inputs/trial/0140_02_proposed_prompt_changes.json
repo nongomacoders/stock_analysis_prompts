@@ -1,0 +1,41 @@
+[
+  {
+    "code": "PROMPT-SIGNED-EQUATION-AND-UNIT-CONSISTENCY",
+    "sector": "all",
+    "status": "PROPOSED NOT IMPLEMENTED",
+    "mandate": "Keep signs and units consistent in prose and ledger. Check equations against stated totals;flag source unit/number-format conflicts instead of silently rescaling.",
+    "trigger": "A repeated equation or per-unit calculation.",
+    "evidence": "Current capture figures,unit labels,period and scope.",
+    "exceptions": "Allow explicitly stated rounding/conditional scale with a labeled residual.",
+    "double_count_risk": "Do not add inclusive subtotals and their components.",
+    "fail": "702+28−116−30=644;or silently treating508405 labeled million as508.405m.",
+    "pass_example": "702+28−116+30=644;explicit conditional scale and source-unit flag.",
+    "point": "Common section prompt;no new parser or SQLite rule."
+  },
+  {
+    "code": "PROMPT-POCI-APPLICABILITY",
+    "sector": "consumer_lending",
+    "status": "PROPOSED NOT IMPLEMENTED",
+    "mandate": "Do not request ordinary Stage1/2 SICR migrations for POCI;still investigate applicable lifetime-loss changes,recovery assumptions and disclosed classifications.",
+    "trigger": "Source establishes POCI.",
+    "evidence": "Accounting policy/instrument basis.",
+    "exceptions": "Issuer-specific credit-impaired labels and legitimate POCI credit-risk disclosure remain relevant.",
+    "double_count_risk": "Separate signed cumulative changes from ordinary loss coverage.",
+    "fail": "Demand conventional Stage1/2 movement table for a POCI-only portfolio.",
+    "pass_example": "Reconcile lifetime-loss changes and assumptions on the POCI basis.",
+    "point": "Existing conditional sector note;check duplicate/conflicting approved rules before any SQLite proposal."
+  },
+  {
+    "code": "PROMPT-FIRST-TIME-COMPARATIVE",
+    "sector": "all",
+    "status": "PROPOSED NOT IMPLEMENTED",
+    "mandate": "First-time comparative presentation alone does not establish restatement,policy change or unreliable reporting. Distinguish explicit notice or independently evidenced error from unknown causes.",
+    "trigger": "First-time/changed disclosure presentation.",
+    "evidence": "Footnote,comparative figures and any error/methodology notice actually inspected.",
+    "exceptions": "An independently demonstrated source inconsistency can be flagged without management admission.",
+    "double_count_risk": "Do not duplicate one issue as separate policy/error/quality allegations.",
+    "fail": "First-time presentation means unreliable or restated.",
+    "pass_example": "First-time presentation noted;cause of zero rate remains open.",
+    "point": "Common section prompt;no automatic financial guardrail codification."
+  }
+]

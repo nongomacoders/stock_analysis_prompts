@@ -1,0 +1,82 @@
+{
+  "case": "ntu_portfolio",
+  "version": "new",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question_id": "Q-PILOT-ntu_portfolio",
+      "question": "Reconcile the principal and other purchased-debt portfolios separately; identify what further evidence is needed to compare their carrying change with statutory cash flow.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Current captured note",
+      "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+      "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+      "status": "partial",
+      "answer": "Principal book (amortised cost, POCI-style lifetime ECL) and other financial assets (FVTPL, no title, no recourse) are separately reconciled for H1 FY26, H1 FY25 and FY25. Principal book H1 FY26: 3,975 + 382 additions - 728 net collections + 383 CAEIR interest - 167 impairment = 3,845. Other FA H1 FY26: 702 + 28 - 116 - 30 FV gain = 644. Net collections = gross 773 less collection costs 45 = 728. Statutory cash-flow bridge (D003.3 p.12) and note 2 pledge/borrowings detail not in this capture, so full reconciliation to cash flow remains open.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the beginning of the period | 3 975 |  | 3 831 | 3 831 |"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the end of the period | 3 845 |  | 3 690 | 3 975 |"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the beginning of the period | 702 |  | 672 | 672 |"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Balance at the end of the period | 644 |  | 663 | 702 |"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 13,
+          "quote": "Included in net collections are gross collections of R773 million (31 March 2025: R604 million; 30 September 2025: R1 280 million) and directly attributable and incremental collection costs of R45 million (31 March 2025: R38 million; 30 September 2025: R83 million)."
+        }
+      ]
+    },
+    {
+      "question": "What are the terms, covenants and maturity profile of the interest-bearing liabilities and bank overdrafts secured by the R3,845m pledged principal book portfolio (note 2), and what covenant headroom exists at 31 March 2026?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Note 2 (interest-bearing liabilities) / pledge agreement disclosure",
+      "evidence_required": "Note 2 borrowings table with maturity, security, covenant terms and headroom at 31 March 2026 vs 30 September 2025; period, currency (Rm) and gross/net basis stated.",
+      "closure_condition": "Covenant terms and headroom quantified, or explicit statement that no financial covenants apply; benign explanations (e.g. unsecured facilities) accepted if evidenced.",
+      "question_id": "Q-ec6a09bd22fe4fe4",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What drove the fall in fair value movements on other financial assets from R74m (H1 FY25) to R30m (H1 FY26), and what is the fair value hierarchy/valuation technique (note 6.3)?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Note 6.3 fair value disclosure",
+      "evidence_required": "Note 6.3 fair value hierarchy level, valuation inputs, and any commentary on collection performance or retraction events affecting other financial assets in H1 FY26 vs H1 FY25.",
+      "closure_condition": "Driver of the FV movement change identified with note 6.3 evidence, or explicit statement that no explanation is given; forecast consequence for FVTPL income noted.",
+      "question_id": "Q-b20f6d9d0eda4265",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What ECL staging, coverage and vintage/collection-performance disclosure supports the R167m impairment loss on the principal book portfolio in H1 FY26, and how does it compare with the R173m H1 FY25 charge?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Credit risk / ECL note (principal book portfolios)",
+      "evidence_required": "ECL staging table, coverage ratios, collection-rate assumptions and any vintage default/collection curves for principal book portfolios at 31 March 2026 vs 30 September 2025; state period, units (Rm) and gross/net basis.",
+      "closure_condition": "ECL staging and coverage disclosed, or explicit statement that POCI-style portfolios are not staged; forecast consequence for impairment charge noted.",
+      "question_id": "Q-b332e6c7ddfc4e8d",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "created_utc": "2026-10-28T18:20:16.846169+00:00",
+  "authorization": "User approved minimal extraction fix,offline affected NTU/PAN tests,and a small Fireworks sample after passing checks.",
+  "cases": [
+    {
+      "case": "ntu_prose",
+      "ticker": "NTU",
+      "pages": [
+        13
+      ],
+      "prompt_chars": 27242
+    },
+    {
+      "case": "ntu_assets",
+      "ticker": "NTU",
+      "pages": [
+        21,
+        22,
+        23
+      ],
+      "prompt_chars": 37442
+    },
+    {
+      "case": "ntu_headers",
+      "ticker": "NTU",
+      "pages": [
+        24
+      ],
+      "prompt_chars": 28980
+    },
+    {
+      "case": "ntu_fx",
+      "ticker": "NTU",
+      "pages": [
+        25
+      ],
+      "prompt_chars": 31029
+    },
+    {
+      "case": "pan_dense",
+      "ticker": "PAN",
+      "pages": [
+        48,
+        49,
+        50
+      ],
+      "prompt_chars": 28751
+    }
+  ],
+  "planned_calls": 5,
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "reasoning": "none/exclude=true",
+  "max_tokens": 16384,
+  "documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+      "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
+    }
+  ],
+  "original_files": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections\\outputs\\section_09.md",
+      "sha256": "1534415bfd07757058276fd9ecda98a423daed51473319ca8dfe3988f60a124d"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections\\outputs\\section_15.md",
+      "sha256": "d0215a0fef5eeab7ee1453fe3d989d213f4ed3c7beac46e46274a05b2ca66b4d"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections\\outputs\\section_16.md",
+      "sha256": "8669b377ad7ad6257385fe2b3d5fff8bf62b414d0ad0727156b3544511be0f71"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T171901Z_ntu_refined_sections\\outputs\\section_17.md",
+      "sha256": "5339c471ecb523e7a9a3acf7015afeb92f567fe0712b43ecb0df9619d264d738"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T163642Z_section_prompt_paired_pilot\\outputs\\pan_operations_new.md",
+      "sha256": "10a5ad042d1915a744c24aa94156ef8a744d449d2aae509c41831d70155eb05f"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\section_capture\\pdf_source.py",
+      "sha256": "61978e59fd1d64f80c4a0f61f587a8cb13cebb71cabe61e1de06c49eb5ed4b37"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\section_capture\\question_ledger.py",
+      "sha256": "21d3e1503374a4b4aad7e5fcdee544f6044b48b3249e6964effb5f9b51cc256f"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_table_extraction\\pilot.py",
+      "sha256": "c68a0e5ff5ccf77041282f0c347c66b15165913ac026ee55d3e9859ae1ccbfea"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_table_extraction\\before_pdf_source.py",
+      "sha256": "8070f5bcb2331f836dc39b4883453539b06215717a070b83f541d0b4f1b5f489"
+    },
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\workflow\\changes\\20261028_table_extraction\\before_question_ledger.py",
+      "sha256": "6d3049342be8e268479ba7a40c3d3d65af65ef339e7aa169e833d579a884688f"
+    }
+  ],
+  "production_table_hashes": {
+    "app_state": "9bcd0a193181aac196979f31be6f23df1b2aafc452823904b84dc42264a83516",
+    "ledger_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "ledger_questions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_quotes": "17605ec17424da0bef37be745222267af1fa405f83f4cda681c6c9367b407418",
+    "reports": "5d8a9ee23c34dbd7bba03238968beac20366e91cd776c0b2e39c3f4d3d96d126",
+    "section_response_attempts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sections": "7660f65780687d24c6cde635819b097754b32edf9043c41779b001f0cf269188",
+    "sector_guardrails": "10f1a34eba623b531840905ced0006d3c2a80c8184817ea6c876df4274886484",
+    "sqlite_sequence": "4b136b46db36397f485f1b85f97a126a329505136686bb4c99ec03a0b99ef501"
+  },
+  "retry_policy": "One generation per independent case,no repairs/resubmissions/provider fallback;stop on incomplete API response. Ledger rejection retained for diagnosis.",
+  "comparison": "Same NTU capture bounds and incoming ledger states as section trial. Extraction and short-anchor instruction both changed. PAN baseline predates three small prompt refinements;not isolated causal comparison. Not a full chronological run.",
+  "production_writes": false
+}

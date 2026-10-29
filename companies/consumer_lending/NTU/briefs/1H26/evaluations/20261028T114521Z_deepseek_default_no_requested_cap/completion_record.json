@@ -1,0 +1,118 @@
+{
+  "recorded_utc": "2026-10-28T11:50:00.875338+00:00",
+  "status": {
+    "status": "completed_awaiting_independent_review",
+    "stage": "stage2_complete",
+    "calls": 3,
+    "last_dispatch_utc": "2026-10-28T11:47:15.362002+00:00",
+    "first_dispatch_utc": "2026-10-28T11:45:23.666364+00:00",
+    "completed_utc": "2026-10-28T11:48:12.529727+00:00",
+    "incomplete_sections": 0
+  },
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "no_caller_token_limit_fields": true,
+  "reasoning": "Model default; controls omitted",
+  "routing": "Base model; no Nitro/speed/provider-priority override",
+  "new_cost_usd": "0.04537836",
+  "new_cost_missing_calls": 0,
+  "prior_capped_cost_usd": "0.1893089364",
+  "combined_recorded_cost_usd": "0.2346872964",
+  "new_metrics": {
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "reasoning": "model default; controls omitted",
+    "rows": [
+      {
+        "label": "section_06_uncapped_v4",
+        "generation_id": "gen-1793187926-R76mLXAQwlptJYjHergI",
+        "success": true,
+        "cost_usd": 0.0109179,
+        "cost_source": "response_usage",
+        "prompt_tokens": 5078,
+        "completion_tokens": 11728,
+        "reasoning_tokens": 10686,
+        "cached_prompt_tokens": 0,
+        "estimated_nonreasoning_completion_tokens": 1042,
+        "elapsed_seconds": 39.189,
+        "time_to_first_content_seconds": 36.884,
+        "provider": "Fireworks",
+        "generation_time_ms": 34935,
+        "latency_ms": 1045,
+        "finish_reason": "stop",
+        "metadata_status": "retrieved"
+      },
+      {
+        "label": "stage1",
+        "generation_id": "gen-1793187972-O2cRrWskdDuN3ek3QQ56",
+        "success": true,
+        "cost_usd": 0.01823112,
+        "cost_source": "response_usage",
+        "prompt_tokens": 50204,
+        "completion_tokens": 12770,
+        "reasoning_tokens": 9150,
+        "cached_prompt_tokens": 0,
+        "estimated_nonreasoning_completion_tokens": 3620,
+        "elapsed_seconds": 61.727,
+        "time_to_first_content_seconds": 48.059,
+        "provider": "DigitalOcean",
+        "generation_time_ms": 56962,
+        "latency_ms": 3176,
+        "finish_reason": "stop",
+        "metadata_status": "retrieved"
+      },
+      {
+        "label": "stage2",
+        "generation_id": "gen-1793188035-cf2iYhOJZeJ5tYI7IPeV",
+        "success": true,
+        "cost_usd": 0.01622934,
+        "cost_source": "response_usage",
+        "prompt_tokens": 34163,
+        "completion_tokens": 14000,
+        "reasoning_tokens": 9999,
+        "cached_prompt_tokens": 0,
+        "estimated_nonreasoning_completion_tokens": 4001,
+        "elapsed_seconds": 51.56,
+        "time_to_first_content_seconds": 38.507,
+        "provider": "DigitalOcean",
+        "generation_time_ms": 51227,
+        "latency_ms": 1775,
+        "finish_reason": "stop",
+        "metadata_status": "retrieved"
+      }
+    ],
+    "totals": {
+      "cost_usd": 0.04537836,
+      "prompt_tokens": 89445,
+      "completion_tokens": 38498,
+      "reasoning_tokens": 29835,
+      "cached_prompt_tokens": 0,
+      "elapsed_seconds": 152.476
+    },
+    "missing_fields_by_call": {
+      "cost_usd": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "reasoning_tokens": 0,
+      "cached_prompt_tokens": 0,
+      "elapsed_seconds": 0
+    },
+    "calls": 3,
+    "successful_generations": 3,
+    "observed_first_dispatch_to_last_accounting_seconds": 168.801433,
+    "notes": [
+      "Reasoning tokens are part of completion tokens, not additional tokens.",
+      "Known cost subtotal is not a complete bill when any cost is missing.",
+      "Client elapsed, provider generation time and provider latency are distinct; check provider metadata units.",
+      "Provider/account routing defaults may affect routing; no speed or priority override was sent."
+    ]
+  },
+  "accepted_capture_count": 10,
+  "active_capture_count": 10,
+  "source_pages": 38,
+  "preservation": {
+    "checked_utc": "2026-10-28T11:50:00.643077+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "financial_validation": "Independent Gemini/Codex evidence review pending"
+}

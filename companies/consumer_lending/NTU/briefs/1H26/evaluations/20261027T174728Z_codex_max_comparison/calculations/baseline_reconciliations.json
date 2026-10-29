@@ -1,0 +1,148 @@
+{
+  "scope": "Preserved original outputs and primary-source numerical checks. No fresh model outputs available.",
+  "primary_source": {
+    "POCI_net_carrying": {
+      "formula": "3414+431",
+      "result": 3845,
+      "reported": 3845
+    },
+    "cumulative_gain_rollforward": {
+      "formula": "598+24-191",
+      "result": 431,
+      "reported": 431
+    },
+    "principal_book_rollforward": {
+      "formula": "3975+382-728+383-167",
+      "result": 3845,
+      "reported": 3845
+    },
+    "other_book_rollforward": {
+      "formula": "702+28-116+30",
+      "result": 644,
+      "reported": 644
+    },
+    "ordinary_NAV_zar": {
+      "formula": "1329/780.651033",
+      "result": 1.702425211547757
+    },
+    "contributed_capital_per_share_not_NAV": {
+      "formula": "5410/780.651033",
+      "result": 6.930113163636844
+    },
+    "amortisation_signed_reconstruction": {
+      "formula": "(728-383+167)+(116-30)",
+      "result": 598,
+      "reported": 597,
+      "unexplained_residual": 1
+    },
+    "OCF": {
+      "formula": "-50+3-225+2+182-23",
+      "result": -111,
+      "reported": -111
+    },
+    "historical_cash_after_capex_and_lease_before_borrowing": {
+      "formula": "-111-17-13-30",
+      "result": -171,
+      "limitation": "Not forecast FCFE; cash interest/tax already in OCF, excludes other financing/investing."
+    },
+    "full_cash_change": {
+      "formula": "-111-61+178",
+      "result": 6,
+      "reported": 6
+    },
+    "financing_subtotal": {
+      "formula": "1145-842+3178-3269-30-4",
+      "result": 178,
+      "reported": 178
+    },
+    "cash_scope": {
+      "formula": "107+6=112+1",
+      "result": 113,
+      "reported": 113
+    },
+    "net_debt_ex_leases": {
+      "formula": "3743+273-112",
+      "result": 3904
+    },
+    "net_debt_incl_leases": {
+      "formula": "3743+273+345-112",
+      "result": 4249
+    },
+    "liquidity_partial_static_comparison": {
+      "formula": "1396-112-475",
+      "result": 809,
+      "limitation": "Not a proven forward funding deficit; facilities/refinancing/future cash flows unresolved."
+    },
+    "UK_US_IFRS_services_share_pct": {
+      "formula": "(303+212)/711*100",
+      "result": 72.43319268635724
+    },
+    "UK_US_CODM_total_share_pct": {
+      "formula": "(303+212)/1599*100",
+      "result": 32.20762976860538
+    },
+    "IFRS_EPS_cents": {
+      "formula": "-63/782.1*100",
+      "result": -8.055235903337168,
+      "reported": -8.1
+    },
+    "Gemini_PBD_cash_bridge_residual": {
+      "formula": "844-410-246-182",
+      "result": 6,
+      "limitation": "6m unexplained, no full cash bridge established."
+    }
+  },
+  "original_SOTP": {
+    "formula": "(3845*.55+644*.70+250*3+180*4-(3850+310+335-95)+1479)*.75/780.7",
+    "enterprise": 4035.55,
+    "net_debt": 4400,
+    "before_disputed_addback": -364.4499999999998,
+    "disputed_addback": 1479,
+    "forecast_net_other_assets": 550,
+    "unexplained_excess_addback": 929,
+    "equity_after_addback": 1114.5500000000002,
+    "single_discount_conditional_zar": 1.0707217881388498,
+    "twice_discounted_zar": 0.8030413411041373,
+    "additional_haircut_to_055_pct": 31.510375388173596,
+    "total_discount_to_055_pct": 61.47458615584765,
+    "limitation": "Arithmetic does not validate inputs, economic value, R0.55 or R1.07."
+  },
+  "original_cash_forecast": [
+    {
+      "year": "FY26",
+      "formula": "106+(-538)",
+      "implied_closing": -432,
+      "published_closing": 100,
+      "unexplained_inflow": 532
+    },
+    {
+      "year": "FY27",
+      "formula": "100+(-815)",
+      "implied_closing": -715,
+      "published_closing": 95,
+      "unexplained_inflow": 810
+    },
+    {
+      "year": "FY28",
+      "formula": "95+(-845)",
+      "implied_closing": -750,
+      "published_closing": 90,
+      "unexplained_inflow": 840
+    }
+  ],
+  "original_sensitivity": {
+    "PBD_005_step_formula": "3845*.05*.75/780.7",
+    "PBD_005_step": 0.1846900217753298,
+    "Intl_05_step_formula": "180*.5*.75/780.7",
+    "Intl_05_step": 0.08646086845138977,
+    "published_steps_approx": [
+      0.07,
+      0.05
+    ]
+  },
+  "reference_only_return": {
+    "formula": ".55/.89-1",
+    "capital_pct": -38.20224719101123,
+    "current_quote_verified": false
+  }
+}

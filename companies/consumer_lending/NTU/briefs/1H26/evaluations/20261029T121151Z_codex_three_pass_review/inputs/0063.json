@@ -1,0 +1,14 @@
+[
+  {
+    "stage": "why",
+    "attempt": 1,
+    "outcome": "complete",
+    "label": "pan_dense_why_attempt1"
+  },
+  {
+    "stage": "single",
+    "attempt": 1,
+    "outcome": "complete",
+    "label": "pan_dense_single_attempt1"
+  }
+]

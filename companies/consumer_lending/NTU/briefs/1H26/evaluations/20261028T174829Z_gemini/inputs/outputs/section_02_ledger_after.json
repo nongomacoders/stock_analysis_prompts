@@ -1,0 +1,38 @@
+[
+  {
+    "question": "Reconcile reported EBITDA (790) less PBD/RTC amortisation (597) less net interest cost (216) = -23 to the reported continuing core loss of -63 (residual -40). What items (D&A, impairments, other) bridge the gap?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 note 7 segmental reconciliation / income statement",
+    "evidence_required": "Line-item bridge from EBITDA to continuing core loss for H1 2026 and H1 2025, Rm, with IFRS reconciliation",
+    "closure_condition": "A signed reconciliation summing to -63 (and -71) is shown, or the residual is explicitly identified.",
+    "question_id": "Q-e0ca727b62be46df",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "What is the revenue and EBITDA split between principal (owned NPL portfolio) collections and agency/fee-based collections within Nutun South Africa, and the PBD/RTC amortisation basis?",
+    "priority": "high",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental note 7 and PBD/RTC note",
+    "evidence_required": "Principal vs agent revenue split; PBD/RTC opening balance, acquisitions, amortisation, collections, closing balance; measurement basis (amortised cost vs FVTPL/POCI)",
+    "closure_condition": "Split and PBD/RTC roll-forward disclosed, or confirmed not disclosed.",
+    "question_id": "Q-86ab4a63039b4d7e",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  },
+  {
+    "question": "Why did Nutun SA client count fall from 23 to 20 while revenue rose 15% — concentration or loss of clients, and any client-concentration disclosure?",
+    "priority": "medium",
+    "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+    "target_section": "D003 segmental/risk notes",
+    "evidence_required": "Client concentration percentages, top-client revenue, retention commentary",
+    "closure_condition": "Explanation or concentration metric provided, or confirmed absent.",
+    "question_id": "Q-f8db08b395c448a9",
+    "status": "open",
+    "answer": "",
+    "evidence": []
+  }
+]

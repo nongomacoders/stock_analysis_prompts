@@ -1,0 +1,17 @@
+{
+  "values": {
+    "principal": 3845,
+    "other_correct": 644,
+    "other_wrong_sign_in_new_ledger": 584,
+    "net_collections": 728,
+    "gross_trade": 374,
+    "net_trade": 369,
+    "trade_loss_rate_pct": 1.3368983957219251,
+    "pan_aisc_cost_millions": 508.404,
+    "pan_aisc_cost_difference": 0.0009999999999763531,
+    "pan_aisc_oz": 272373,
+    "pan_aisc_per_oz": 1866.5763493444651,
+    "pan_output_production_components": 272310
+  },
+  "coverage": "Selected arithmetic only. NTU p13/25 and PAN p38–39/48–50 extracted text supplied;no new image inspection. PAN cell-to-column ownership remains unverified. No forecast/valuation audit."
+}

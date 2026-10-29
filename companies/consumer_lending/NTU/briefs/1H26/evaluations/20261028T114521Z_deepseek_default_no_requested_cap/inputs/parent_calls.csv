@@ -1,0 +1,16 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+section_01,gen-1793182400-6ivBwJWXlwb0s8VPzuiD,True,0.00198896,response_usage,9078,2707,2110,0,597,16.935,14.024,Relace,16189,2540,stop,retrieved
+section_02,gen-1793182424-k0PE4N1bcCyEEfvOEWvN,False,0.016893918,response_usage,12613,32768,32768,6016,0,108.042,,Relace,106986,1049,length,retrieved
+section_02_compact_v2,gen-1793182641-DqqP1rlQS8WxNIB6iBDR,True,0.00680904,response_usage,6144,6570,5287,0,1283,22.247,18.806,Fireworks,21628,1020,stop,retrieved
+section_02_compact_v2_repair,gen-1793182668-yflNbhYhPXRduAEn2vPb,True,0.0066211404,response_usage,7545,7469,6058,6012,1411,23.082,19.784,Fireworks,21866,1245,stop,retrieved
+section_03_compact_v2,gen-1793182708-HAu7pXvJovOCxBqrDpj6,True,0.0031357956,response_usage,2816,3107,2414,318,693,12.576,10.748,Fireworks,11993,925,stop,retrieved
+section_04_compact_v2,gen-1793182725-LQmR4yG7teoL02xes97H,True,0.0110626488,response_usage,9319,10917,9408,314,1509,35.657,32.693,Fireworks,35047,1323,stop,retrieved
+section_05_compact_v2,gen-1793182766-pRaNKzbFykTK7zMi60vZ,True,0.009547104,response_usage,8160,9404,7983,320,1421,29.271,26.489,Fireworks,28791,2763,stop,retrieved
+section_06_compact_v2,gen-1793182800-G1RJPfRTf8wzsjMl9xdy,False,0.029347794,response_usage,8993,32768,24710,320,8058,74.99,,Fireworks,73962,2979,length,retrieved
+section_06_split_v3,gen-1793182999-fDOAQiGYJfPixZvfoY7P,False,0.028523586,response_usage,5078,32768,28432,330,4336,74.678,,Fireworks,73605,1146,length,retrieved
+section_07_split_v3,gen-1793183138-Oymz0mhmI55yzkxP52A9,True,0.0073938228,response_usage,5744,7448,6444,334,1004,24.197,22.061,Fireworks,23100,1087,stop,retrieved
+section_08_split_v3,gen-1793183167-JrRZr7xs6QhcVAprl0d7,True,0.010845324,response_usage,7534,11106,9833,320,1273,35.037,32.128,Fireworks,34564,920,stop,retrieved
+section_09_split_v3,gen-1793183207-EWOSILwd9GFOngs1Erjz,True,0.007399644,response_usage,5494,7514,6559,320,955,26.374,24.014,Fireworks,25893,977,stop,retrieved
+section_10_split_v3,gen-1793183238-rz0eE6J8SKVAubIT9NNs,True,0.0024095988,response_usage,2170,2403,2099,314,304,10.156,9.391,Fireworks,9702,1205,stop,retrieved
+stage1,gen-1793183254-aQNz7NIDx0nfQz3yBKYA,True,0.01213937,response_usage,52291,16958,12884,0,4074,103.617,80.178,Relace,103077,2716,stop,retrieved
+stage2,gen-1793183363-VA7HnvYSlMg8dJBaPSiF,False,0.03519119,response_usage,34617,65536,65536,0,0,226.31,,Relace,225399,2375,length,retrieved

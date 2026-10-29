@@ -1,0 +1,15 @@
+{
+  "generation_id": "gen-1793176867-dllT0cQZmCaE8RC7p3Cs",
+  "model": "deepseek/deepseek-v4.1-flash-1017:nitro",
+  "prompt_tokens": 44339,
+  "completion_tokens": 1113,
+  "total_tokens": 45452,
+  "cost_usd": null,
+  "reasoning_effort_requested": "none",
+  "reasoning_tokens": 0,
+  "max_tokens_requested": 16384,
+  "finish_reason": "stop",
+  "provider": "Together",
+  "elapsed_seconds": 3.8,
+  "request_sha256": "24351a415b8215b28519a165d0fcf081c378793ad7543a66ec826eddbd5b2e79"
+}

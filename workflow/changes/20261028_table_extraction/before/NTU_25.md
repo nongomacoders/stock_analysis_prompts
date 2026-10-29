@@ -1,0 +1,53 @@
+| Condensed consolidated financial statements for the half year ended 31 March 2026 |  |  |  |  |  |  |  | 23 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Notes to the condensed consolidated financial statements continued** | | | | | | | | |
+| **for the half year ended 31 March 2026** | | | | | | | | |
+| **6  Financial risk management continued** | | | | | | | | |
+| 6.1 Credit risk continued |  |  |  |  |  |  |  |  |
+| **Expected credit loss allowance on trade receivables*** | | | | | | | | |
+|  | Amounts |  |  |  |  |  |  |  |
+|  | Amounts Amounts in excess of |  |  |  |  |  |  |  |
+|  | 30 days 61 to 90 days |  |  |  |  | 90 days |  |  |
+|  | Current overdue overdue |  |  |  |  | overdue | Total |  |
+|  | Rm Rm Rm |  |  |  |  | Rm | Rm |  |
+| **31 March 2026 – Unaudited** | | | | | | | | |
+| Expected loss rate | 0.00% 0.00% 0.00% |  |  |  |  | 100.00% | 1.34% |  |
+| Gross carrying amount | 339 25 5 |  |  |  |  | 5 | 374 |  |
+| Loss allowance | – – – |  |  |  |  | (5) | (5) |  |
+| Net carrying amount | 339 25 5 |  |  |  |  | - | 369 |  |
+| **31 March 2025 – Unaudited**** | | | | | | | | |
+| Expected loss rate | 0.00% 0.00% 0.00% |  |  |  |  | 85.71% | 1.43% |  |
+| Gross carrying amount | 345 61 6 |  |  |  |  | 7 | 419 |  |
+| Loss allowance | – – – |  |  |  |  | (6) | (6) |  |
+| Net carrying amount | 345 61 6 |  |  |  |  | 1 | 413 |  |
+| **30 September 2025 – Audited** | | | | | | | | |
+| Expected loss rate | 0.06% 0.19% 6.67% |  |  |  |  | 81.82% | 2.75% |  |
+| Gross carrying amount | 286 52 15 |  |  |  |  | 11 | 364 |  |
+| Loss allowance | <1 <1 (1) |  |  |  |  | (9) | (10) |  |
+| Net carrying amount | 286 52 14 |  |  |  |  | 2 | 354 |  |
+| *** The expected credit loss (ECL) on trade receivables is shown per the maturity of trade receivables. No separate classes of trade receivables have been** | | | | | | | | |
+| **identified. Receivables originate from contracts with customers across various industries and geographies however credit risk is managed by reference** | | | | | | | | |
+| **to past default experience of the debtor and analysis of the debtor's financial position, adjusted for factors that are specific to the debtors, and an** | | | | | | | | |
+| **assessment of both the current as well as the forecast direction of conditions at the reporting date. This disclosure was presented for the first time in** | | | | | | | | |
+| **the annual financial statements for the year ended 30 September 2025 in order to enhance the overall presentation of the financial statements.** | | | | | | | | |
+| **** The comparative disclosure for 31 March 2025 has been presented for the first time to enhance overall disclosure.** | | | | | | | | |
+| **6.2 Currency risk** | | | | | | | | |
+| **Currency risk is the possibility of incurring a financial loss as a consequence of the depreciation in the measurement** | | | | | | | | |
+| **currency relative to a foreign currency prior to payment of a commitment in that foreign currency or the** | | | | | | | | |
+| **strengthening of the measurement currency prior to receiving payment in a foreign currency.** | | | | | | | | |
+| **The foreign currencies to which the group has material exposure are US Dollar and British Pound. The exposure largely** | | | | | | | | |
+| **relates to foreign currency denominated receivables which are realised in 60 days, in line with the credit terms and** | | | | | | | | |
+| **are therefore subject to currency fluctuations. Expenses incurred are largely denominated in the functional currency** | | | | | | | | |
+| **of the entities to which they relate.** | | | | | | | | |
+| **During the current period, Nutun entered into foreign exchange contracts for the purposes of hedging the exposure** | | | | | | | | |
+| **to the USD and GBP receipts for the Nutun International segment.** | | | | | | | | |
+| **The following significant exchange rates were applied during the period:** | | | | | | | | |
+|  | Average rate Reporting date closing rate |  |  |  |  |  |  |  |
+| 31 March | 31 March 30 Sept 31 March 31 March |  |  |  |  |  | 30 Sept |  |
+|  | 2026 2025 2025 2026 |  |  |  |  | 2025 | 2025 |  |
+| Unaudited | Unaudited Audited Unaudited Unaudited |  |  |  |  |  | Audited |  |
+|  | Rm Rm Rm Rm |  |  |  |  | Rm | Rm |  |
+| US Dollar | 16.8 18.2 18.1 17.2 |  |  |  |  | 18.4 | 17.3 |  |
+| Euro | 19.6 19.3 20.0 19.7 |  |  |  |  | 20.0 | 20.3 |  |
+| British Pound | 22.4 23.1 23.6 22.7 |  |  |  |  | 23.9 | 23.2 |  |
+| Australian Dollar | 11.3 11.6 11.6 11.8 |  |  |  |  | 11.6 | 11.4 |  |

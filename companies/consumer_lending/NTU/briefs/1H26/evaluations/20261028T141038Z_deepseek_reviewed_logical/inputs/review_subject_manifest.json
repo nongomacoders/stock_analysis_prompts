@@ -1,0 +1,188 @@
+{
+  "created_utc": "2026-10-28T14:43:34.065315+00:00",
+  "files": [
+    {
+      "original": "outputs\\codex_stage1_findings.json",
+      "preserved": "inputs\\review_subject\\full_codex_stage1_findings.json",
+      "sha256": "e4bbd03c389a7455fbe28fd6684a2210e22a7f724380c8667f442eb5fde29876"
+    },
+    {
+      "original": "outputs\\incomplete_section_coverage.json",
+      "preserved": "inputs\\review_subject\\full_incomplete_section_coverage.json",
+      "sha256": "84e09a76a3cbef13f9aa3142285aeee7f1e8557ca26f9ba69fbe135feb30066a"
+    },
+    {
+      "original": "outputs\\independent_calculations.json",
+      "preserved": "inputs\\review_subject\\full_independent_calculations.json",
+      "sha256": "cc64d3cb7c9d10f20aeb8ff840307017cf95d54ebc26c5b850eec45dfd2c6821"
+    },
+    {
+      "original": "outputs\\preliminary_evaluator.json",
+      "preserved": "inputs\\review_subject\\full_preliminary_evaluator.json",
+      "sha256": "02d15a91f0838bc3d1a25019b899b61b690b0c0e81ce3ff5df71f940f42987d4"
+    },
+    {
+      "original": "outputs\\section_02_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_02_uncapped_v4.md",
+      "sha256": "afdbe6821fa499f5214d2c249e7efe147e237309b041a5159569c85dc5b242c5"
+    },
+    {
+      "original": "outputs\\section_03_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_03_uncapped_v4.md",
+      "sha256": "44d9b0859525afcd9f0c0bd27e09778733af5ba7865dd450c360d285a29a4db5"
+    },
+    {
+      "original": "outputs\\section_04_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_04_uncapped_v4.md",
+      "sha256": "b8a95735d99043ef635459852ab3645f92cb8054db2931acaeb1ea6b278e324b"
+    },
+    {
+      "original": "outputs\\section_05_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_05_uncapped_v4.md",
+      "sha256": "8bfb4317057c86d96a9c3bdd2f1509fa6e6bd2581f2772118e803f3ddc06ba29"
+    },
+    {
+      "original": "outputs\\section_06_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_06_uncapped_v4.md",
+      "sha256": "620a38416a7a5fc40da1bc0dd80f15989920b1b7c581209b56adef03f697ab64"
+    },
+    {
+      "original": "outputs\\section_07_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_07_uncapped_v4.md",
+      "sha256": "294d49489a9133d2d01009fc3fa5db21d39a830bbccef7fe7ac71a374709e84a"
+    },
+    {
+      "original": "outputs\\section_08_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_08_uncapped_v4.md",
+      "sha256": "6dad9d7786254513bab02aaf71f8a8c5bb74904c2e6001a8f420b1638a193712"
+    },
+    {
+      "original": "outputs\\section_09_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_09_uncapped_v4.md",
+      "sha256": "06cfe728318f7057007d77b2ffab5e332c4440c975a6bf4021641ff7935997ee"
+    },
+    {
+      "original": "outputs\\section_10_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_10_uncapped_v4.md",
+      "sha256": "6c6e0abbfcfecb7d3a1bba5a9b5e0f7f65bf3c92b61eab8a8640ba18e37afad9"
+    },
+    {
+      "original": "outputs\\section_11_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_11_uncapped_v4.md",
+      "sha256": "720e18ddb1477902e74168f44e6fe8adf1f7eb0feffbed94d33b89b964a56824"
+    },
+    {
+      "original": "outputs\\section_12_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_12_uncapped_v4.md",
+      "sha256": "c201bbd1665efcbf0a6d16df30ca9d4abddfaaee8eab71e825f952374592796d"
+    },
+    {
+      "original": "outputs\\section_13_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_13_uncapped_v4.md",
+      "sha256": "601c205d5ab6165942eb502e3323f958fb50c2d390ec663df648edf801f113e0"
+    },
+    {
+      "original": "outputs\\section_14_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_14_uncapped_v4.md",
+      "sha256": "7197007792c65dfc27b1e9a7a93e641a26d169804811204f9193be1d7d0f364f"
+    },
+    {
+      "original": "outputs\\section_15_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_15_uncapped_v4.md",
+      "sha256": "3b651ed11a99cf8651b0a8eb25b343d6a8ca5c39bbe847feacd56f8ef080463a"
+    },
+    {
+      "original": "outputs\\section_16_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_16_uncapped_v4.md",
+      "sha256": "9147c90003dfc346ac02b978944dea3e5f910e8dafe0d4bb9c44ea2990e6fd9c"
+    },
+    {
+      "original": "outputs\\section_17_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_17_uncapped_v4.md",
+      "sha256": "aff02430c341a58327e32c9485d09a39bf1e82b3a7664f8d9de3eb8c701d6d55"
+    },
+    {
+      "original": "outputs\\section_18_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_18_uncapped_v4.md",
+      "sha256": "2e117a02d77a866a732a2e6a44e1a5e466f0a8df35d59b4227eb4da50dfab600"
+    },
+    {
+      "original": "outputs\\section_19_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_19_uncapped_v4.md",
+      "sha256": "b46e40ca1eecec6c210aead2cbacc3638f416258d8bad1804d8f8de582666fb6"
+    },
+    {
+      "original": "outputs\\section_20_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_20_uncapped_v4.md",
+      "sha256": "75f8d2276454b030b72ce3fe66ea9abdfe354cb126bd230605b38d93f2dd0bdb"
+    },
+    {
+      "original": "outputs\\section_21_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_21_uncapped_v4.md",
+      "sha256": "c15558b62522bd221b69fe96c701f981c5e3fc3190ca0105a0c38f34f7086aa1"
+    },
+    {
+      "original": "outputs\\section_22_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_22_uncapped_v4.md",
+      "sha256": "26890167a82a727b46ac13514bccc0c409fffce2c5016922b68a8b62763b2eb7"
+    },
+    {
+      "original": "outputs\\section_23_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\full_section_23_uncapped_v4.md",
+      "sha256": "6098d8475f34a886d76440d0afea406daa80dcd83f90dd20565b4555ee090e0a"
+    },
+    {
+      "original": "outputs\\stage1.md",
+      "preserved": "inputs\\review_subject\\full_stage1.md",
+      "sha256": "2e27b355ce36f3bea290dd06d8f64ec32ee5423c45b88438ba44e6ebfa3c59cc"
+    },
+    {
+      "original": "pilot\\outputs\\page25_scope_recheck_v2.md",
+      "preserved": "inputs\\review_subject\\pilot_page25_scope_recheck_v2.md",
+      "sha256": "c8cf68cba8ed99ef211d978cc5d646ef6d8424df169b30b4374bbca0e208d5ac"
+    },
+    {
+      "original": "pilot\\outputs\\section_15_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\pilot_section_15_uncapped_v4.md",
+      "sha256": "ee98a4afc606a42ccc24e436e3e95ced65b0f5e5755e21e42cbf4662a665fc39"
+    },
+    {
+      "original": "pilot\\outputs\\section_16_uncapped_v4.effective.md",
+      "preserved": "inputs\\review_subject\\pilot_section_16_uncapped_v4.effective.md",
+      "sha256": "0f22bd9fdb3edbe528286d1af9ea92ea08799b3bb48c979d8f3cdda662a85f00"
+    },
+    {
+      "original": "pilot\\outputs\\section_16_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\pilot_section_16_uncapped_v4.md",
+      "sha256": "a4a2b65799d468d1c5c6a37e289ddf05e3f24fcbd3ef1c3ccf095e97df23aee1"
+    },
+    {
+      "original": "pilot\\outputs\\section_16_uncapped_v4.validation.json",
+      "preserved": "inputs\\review_subject\\pilot_section_16_uncapped_v4.validation.json",
+      "sha256": "ae6b691d126da0800ef82dbb0c80c08d28b478ebc827973b2f2c46ef1a1d46cf"
+    },
+    {
+      "original": "pilot\\outputs\\section_16_uncapped_v4_repair.md",
+      "preserved": "inputs\\review_subject\\pilot_section_16_uncapped_v4_repair.md",
+      "sha256": "1e371636d1203efe7add62b380d0cb255ffea511d7c254f2c9b9803e4b946d21"
+    },
+    {
+      "original": "pilot\\outputs\\section_17_uncapped_v4.md",
+      "preserved": "inputs\\review_subject\\pilot_section_17_uncapped_v4.md",
+      "sha256": "2611bc01f856e271aff4d876a37aec7a18c8c6a5da79992f712d084ebc196fb8"
+    }
+  ],
+  "source_documents": [
+    {
+      "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\sources\\completed\\1H26\\nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "filename": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+      "doc_type": "afs",
+      "period": "1H26",
+      "page_count": 38,
+      "captured_page_count": 38,
+      "captures": 9,
+      "detected_sections": 4
+    }
+  ]
+}

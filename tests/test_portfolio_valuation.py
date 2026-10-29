@@ -5,6 +5,9 @@ SQLite persistence, and Portfolio Coverage Dashboard GUI.
 
 from __future__ import annotations
 
+from valuation_examples import ready_note
+
+
 import json
 from pathlib import Path
 import sqlite3
@@ -192,12 +195,12 @@ def test_stage2_prompt_json_specification():
     )
     assert "MANDATORY JSON SUMMARY BLOCK" in prompt
     assert '"ticker": "LEW"' in prompt
-    assert '"target_price_zar": 0.00' in prompt
+    assert '"target_price_zar": null' in prompt
     assert '"jse_sector_code": "JS4041"' in prompt
     assert '"jse_sector_name": "Retailers"' in prompt
     assert "CRITICAL OUTPUT FORMATTING CONSTRAINTS (STRICTLY ENFORCED)" in prompt
     # Check that constraints are placed at the end of the prompt
-    assert prompt.strip().endswith("Reserve backticks solely for the initial JSON block and formal code/file identifiers.")
+    assert prompt.strip().endswith("Passing this application gate is not independent financial validation.")
 
 
 
@@ -267,7 +270,7 @@ def test_db_save_and_auto_extract(tmp_path):
 2. Track gross margin within 40-42%.
 """
 
-    ok = save_stage2_report(sha, prompt="# Prompt", response=sample_stage2, db_path=test_db)
+    ok = save_stage2_report(sha, prompt="# Prompt", response=ready_note(sample_stage2), db_path=test_db)
     assert ok is True
 
     rep = get_stage2_report(sha, db_path=test_db)
@@ -303,7 +306,7 @@ def test_portfolio_view_widget(qapp, tmp_path):
     save_stage2_report(
         "sha_lew",
         prompt="Stage 2 Prompt",
-        response="""
+        response=ready_note("""
 ## 1. Executive Investment Thesis & 12-Month JSE Price Target
 * **Current Reference Share Price:** R79.00
 * **12-Month JSE Target Price:** **R84.50**
@@ -314,7 +317,7 @@ def test_portfolio_view_widget(qapp, tmp_path):
 
 ## 6. Actionable Portfolio Monitoring Triggers
 1. Monitor H1 debtor costs.
-""",
+"""),
         db_path=test_db,
     )
 
@@ -465,6 +468,16 @@ def test_cgr_detection_and_stage1_compile(qapp, monkeypatch, tmp_path):
 
     real_db = Path("documents/analysis.sqlite")
     if real_db.exists():
+        # Portfolio reads run schema migrations; never run them on production in tests.
+        source_conn = sqlite3.connect(real_db.resolve().as_uri() + '?mode=ro', uri=True)
+        real_db = tmp_path / 'production_snapshot.sqlite'
+        target_conn = sqlite3.connect(real_db)
+        try:
+            source_conn.backup(target_conn)
+        finally:
+            target_conn.close()
+            source_conn.close()
+        monkeypatch.setattr('workflow.export_stage1.DB_PATH', real_db)
         # 2. get_analyzed_stocks
         stocks = get_analyzed_stocks(real_db)
         cgr_stock = next((s for s in stocks if s["ticker"] == "CGR"), None)
@@ -695,7 +708,7 @@ def test_get_analyzed_stocks_dynamic_ratings(tmp_path):
     sha = "test_sha_lew_dynamic"
     from section_capture.db import upsert_report
     upsert_report(sha256=sha, filename="LEW_FY26.pdf", original_path="companies/retail/LEW/sources/LEW_FY26.pdf", period="FY26", db_path=test_db)
-    save_stage2_report(sha, "# Stage 2 Prompt", note, db_path=test_db)
+    save_stage2_report(sha, "# Stage 2 Prompt", ready_note(note), db_path=test_db)
 
     # 1. No market quote yet -> static recommendation BUY
     stocks = get_analyzed_stocks(db_path=test_db)
@@ -771,7 +784,7 @@ def test_portfolio_view_dynamic_rating_badges_and_filter(qapp, tmp_path):
                VALUES (?, ?, ?, ?, ?, ?, datetime('now'))""",
             ("APF", 0.55, 0.58, "ZAC", 55.0, -5.1),
         )
-    save_stage2_report(sha, "# Stage 2 Prompt", note, db_path=test_db)
+    save_stage2_report(sha, "# Stage 2 Prompt", ready_note(note), db_path=test_db)
 
     pv = PortfolioView(db_path=test_db)
     try:

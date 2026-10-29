@@ -1,0 +1,89 @@
+{
+  "label": "section_21",
+  "started_utc": "2026-10-28T17:24:07.452326+00:00",
+  "requested_model": "deepseek/deepseek-v4.1-flash-1017",
+  "request_sha256": "e7b383caa46aed524bd31be222b64884d0711ba1d2588d5497dcb1da6bc7fad7",
+  "max_tokens": 16384,
+  "reasoning_controls_sent": true,
+  "success": true,
+  "usage": {
+    "prompt_tokens": 8479,
+    "completion_tokens": 2890,
+    "total_tokens": 11369,
+    "cost": 0.0039793404,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 1112,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0039793404,
+      "upstream_inference_prompt_cost": 0.0015517404,
+      "upstream_inference_completions_cost": 0.0024276
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "stream_done": true,
+  "response_headers_seconds": 3.494,
+  "http_status": 200,
+  "id": "gen-1793208247-HrwvPbANYYdg4TFJMecm",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "Fireworks",
+  "created": 1793208247,
+  "delta_field_types": {
+    "content:str": 2886,
+    "role:str": 2886
+  },
+  "finish_reason": "stop",
+  "native_finish_reason": "stop",
+  "completed_utc": "2026-10-28T17:24:19.864984+00:00",
+  "elapsed_seconds": 12.412,
+  "time_to_first_event_seconds": 3.494,
+  "time_to_first_content_seconds": 3.494,
+  "metadata_status": "retrieved",
+  "metadata_error_type": "HTTPError",
+  "metadata_http_status": 404,
+  "cost_usd": 0.0039793404,
+  "cost_source": "response_usage",
+  "accounting_completed_utc": "2026-10-28T17:24:26.372887+00:00",
+  "reasoning_effort_requested": "none",
+  "provider_requested": {
+    "only": [
+      "fireworks"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "generation_metadata": {
+    "id": "gen-1793208247-HrwvPbANYYdg4TFJMecm",
+    "model": "deepseek/deepseek-v4.1-flash-20261017",
+    "provider_name": "Fireworks",
+    "created_at": "2026-10-28T17:24:07.502Z",
+    "finish_reason": "stop",
+    "native_finish_reason": "stop",
+    "generation_time": 11691,
+    "latency": 2937,
+    "moderation_latency": null,
+    "total_cost": 0.00397934,
+    "usage": 0.00397934,
+    "cache_discount": 0.000228849,
+    "native_tokens_prompt": 8479,
+    "native_tokens_completion": 2890,
+    "native_tokens_reasoning": 0,
+    "native_tokens_cached": 1112,
+    "tokens_prompt": 8194,
+    "tokens_completion": 2374,
+    "cancelled": false,
+    "streamed": true,
+    "service_tier": null,
+    "upstream_id": "chatcmpl-5a1effd141e740238fb9112e241694ea",
+    "upstream_inference_cost": 0,
+    "is_byok": false
+  }
+}

@@ -1,0 +1,85 @@
+### 1. Answers to Stored Questions for This Section
+
+**Q-d28094417ee641e1 / Q-492b8e048b7b440a / Q-ffc94ad22da44416 — Auditor's opinion type and Key Audit Matters**
+- **Status**: `Partially resolved (remainder stays open for D001 continuation / D002)`
+- **Answer & evidence**: The captured pages are the *continuation* of the Forvis Mazars independent auditor's report (printed pp. 9–11 / physical pp. 10–12). The **opinion paragraph itself is not in this capture** (it precedes p.10), so opinion type cannot be stated verbatim — remains open. What is confirmed:
+  - **Auditor**: Forvis Mazars, Registered Auditors; Partner Danielle Keeve; signed 28 May 2026, Johannesburg; audit tenure five years `[D001, physical PDF p. 12]`.
+  - **KAM identified in this capture**: *Rebates and advertising agreements* (accounting policy note 3.6; disclosure notes 8 and 16). It addresses supplier rebates/advertising adjustments recognised as (i) a reduction in cost of inventories sold and held at year end (IAS 2) or (ii) other income (IFRS 15). Audit conclusion: "we did not raise any material exceptions" `[D001, physical PDF pp. 10–11]`.
+  - **No going-concern material uncertainty paragraph** appears in the captured text; the report only contains the standard "conclude on the appropriateness of the directors' use of the going concern basis" responsibility wording `[D001, physical PDF p. 12]`. This is consistent with (but not proof of) an unmodified opinion — the opinion paragraph must still be read.
+  - **Group audit scope**: 66 components; 40 full-scope audits by group engagement team; 7 components with procedures on one or more classes; 19 out of scope. Coverage: **99% of Revenue, 96% of PBT, 99% of Total Assets** `[D001, physical PDF p. 10]`.
+  - **Other information**: "We have nothing to report in this regard" `[D001, physical PDF p. 11]`.
+  - **Internal control deficiencies**: auditor communicates "significant deficiencies in internal control" to directors as standard wording only; no specific deficiency disclosed in this capture `[D001, physical PDF p. 12]`.
+
+**Q-f99a0409785943ee — PBT reconciliation to implied R1,394.65m (materiality R111,572,000 ÷ 8%)**
+- **Status**: `Partially resolved (remainder stays open for D002)`
+- **Answer & evidence**: This capture confirms the audit scope metric **96% of Profit Before Tax** was covered by full-scope/component procedures `[D001, physical PDF p. 10]`, but the **absolute PBT figure is not printed here**. The implied R1,394.65m cannot yet be tested against reported PBT — carry forward to D002.
+
+**Q-e559f062862e4a83 — Company PBT reconciliation to implied R684.34m**
+- **Status**: `Open (not addressed in this capture)`
+- **Answer & evidence**: No separate-company PBT figure appears on pp. 10–12. Carry forward to D002.
+
+**Q-8f31c9dde0434bc2 / Q-a0e1efc9e2fb465b / Q-a58a90436eef45cd — Going concern, OCF/FCF, covenant headroom**
+- **Status**: `Open (not addressed in this capture)`
+- **Answer & evidence**: Only standard going-concern *responsibility* language present `[D001, physical PDF p. 12]`; no cash flow, net debt, or covenant figures on these pages. Carry forward to D002/D005.
+
+**Q-5890edf83d0d4546 / Q-0a1a9ee4168445f1 — Subsequent events (note 31)**
+- **Status**: `Open (not addressed in this capture)`
+- **Answer & evidence**: Only the report date **28 May 2026** is confirmed `[D001, physical PDF p. 12]`, which bounds the subsequent-events window (28 Feb 2026 → 28 May 2026). No events disclosed here. Carry forward to D005.
+
+**Q-34972c8726714c9f / Q-7617a68a41f246be / Q-98728268ed3b4aa5 / Q-b931ab53214d47fa / Q-5890edf83d0d4546 (audit committee/control) / Q-492b8e048b7b440a (contents completeness)**
+- **Status**: `Open (not addressed in this capture)`
+- **Answer & evidence**: None of these are testable from pp. 10–12. Carry forward unchanged.
+
+---
+
+### 2. Footnote & Qualification Deep-Dive
+
+- **No footnote markers (`[^1]`, `*`) with definitions appear in this capture.** The only cross-references are to *accounting policy note 3.6* and *disclosure notes 8 and 16* (rebates/advertising). **The text of note 3.6, note 8 and note 16 is NOT in this capture** — must be verified in D005/D006. Do not assume their content.
+- **KAM "Rebates and advertising agreements" — forecast implications** `[D001, physical PDF pp. 10–11]`:
+  - The adjustment is split between **reduction of cost of inventories sold and held at year end (IAS 2)** and **other income (IFRS 15)**. This means reported **gross margin and "other income" are both partly supplier-funded**, not pure merchandise economics. For forecasting, the split between the two treatments must be extracted from notes 8 and 16 — otherwise gross margin % and other-income line will be mis-modelled.
+  - Auditor notes calculations are **"not automated and managed centrally"** except conditional contracts — a manual-estimate risk. Any change in supplier agreement terms or volume thresholds directly moves gross margin. Flag as a margin-bridge sensitivity.
+  - Auditor conclusion: **no material exceptions** — supports reliability of the rebate adjustment as a forecast base, but the *quantum* is still unverified here.
+- **Group audit scope qualification** `[D001, physical PDF p. 10]`: 19 of 66 components "out of scope" with "less than reasonable possibility of material misstatement." Coverage of 99% revenue / 96% PBT / 99% total assets implies **~4% of PBT sits outside tested components** — a residual estimation risk for the profit forecast, though small.
+- **"Other information" clean statement** `[D001, physical PDF p. 11]`: no inconsistency flagged between audited statements and the directors'/committee reports — mildly supportive that narrative guidance elsewhere is not contradicted by the audit.
+
+---
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D001, p. Y]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D001 continuation (physical p. 1–9) / D002 | Opinion paragraph not in capture; only responsibility wording seen `[D001, p. 12]` | Locate the **opinion paragraph verbatim** (unmodified/modified, going-concern emphasis-of-matter) on the earlier auditor pages | Determines reliability of entire forecast base; a modification would change assumptions |
+| N2 | High | D005 / D006 | KAM rebates split between IAS 2 (COGS) and IFRS 15 (other income) `[D001, pp. 10–11]` | Extract **note 3.6 policy, note 8 and note 16**: rand amount of rebates/advertising recognised as (a) reduction in inventory cost, (b) other income, FY2026 vs FY2025 | Needed to model gross margin % and other-income line separately; mis-split distorts margin bridge |
+| N3 | Medium | D005 / D006 | Rebate calculations "not automated, managed centrally" `[D001, p. 10]` | Check whether notes disclose **conditional vs unconditional rebate amounts** and any estimate sensitivity | Manual estimate = margin volatility risk in forecast |
+| N4 | Medium | D002 | 96% of PBT covered; 4% outside tested components `[D001, p. 10]` | Confirm reported **consolidated PBT** and reconcile to implied R1,394.65m (materiality ÷ 8%) | Validates profit base and materiality consistency |
+| N5 | Medium | D002 | Company PBT not in capture | Confirm **separate/company PBT** and reconcile to implied R684.34m | Validates company-level earnings and dividend capacity |
+| N6 | Low | D005 | Audit tenure five years, Forvis Mazars `[D001, p. 12]` | Check audit fee note for **total audit vs non-audit fees** and any rotation disclosure | Independence/quality context; ties to Q-b931ab53214d47fa |
+
+---
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [{"question_id": "Q-d28094417ee641e1", "status": "partial", "answer": "Capture is the continuation of the Forvis Mazars report (printed pp.9-11). Opinion paragraph itself not present, so opinion type unconfirmed. KAM identified: Rebates and advertising agreements (policy note 3.6; notes 8 and 16), addressing supplier rebates recognised as reduction in inventory cost (IAS 2) or other income (IFRS 15); auditor raised no material exceptions. No going-concern material uncertainty paragraph seen; only standard responsibility wording. Auditor Forvis Mazars, partner Danielle Keeve, signed 28 May 2026. Group scope: 66 components, 40 full-scope, 7 partial, 19 out of scope; 99% revenue, 96% PBT, 99% total assets covered.", "evidence": [{"source_sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb", "physical_page": 10, "quote": "Rebates and advertising agreements (accounting policy note 3.6 and disclosure notes 8 and 16)"}, {"source_sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb", "physical_page": 11, "quote": "we did not raise any material exceptions with respect to our audit of completeness, occurrence and accuracy of rebates and advertising agreements"}, {"source_sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb", "physical_page": 12, "quote": "Forvis Mazars has been the auditor of Dis-Chem Pharmacies Limited"}]}, {"question_id": "Q-ffc94ad22da44416", "status": "partial", "answer": "One KAM confirmed from capture: Rebates and advertising agreements (notes 3.6, 8, 16), addressing supplier rebate/advertising adjustments split between inventory cost reduction (IAS 2) and other income (IFRS 15); no material exceptions. Opinion paragraph and any further KAMs (debtors ECL, inventory valuation, revenue recognition) not in this capture; FY2026 vs FY2025 amounts not shown. Remainder open for D001 continuation/D002.", "evidence": [{"source_sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb", "physical_page": 10, "quote": "the group and company recognise a reduction in the cost of inventories sold and held at year end or include as other income amounts from suppliers with regards to rebate and advertising agreements"}]}, {"question_id": "Q-f99a0409785943ee", "status": "partial", "answer": "Audit scope confirms 96% of Profit Before Tax covered by full-scope/component procedures, but absolute consolidated PBT is not printed on pp.10-12. Implied R1,394.65m cannot yet be tested; carry forward to D002.", "evidence": [{"source_sha256": "f346d2001b093345157587cc62dbc998c9841def5ba93c0f55a3b677dc18c0cb", "physical_page": 10, "quote": "96% of Profit Before Tax"}]}], "new_questions": [{"question": "What is the verbatim opinion paragraph (unmodified/modified, any going-concern emphasis-of-matter) in the Forvis Mazars report preceding physical p.10?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D001 continuation (physical pp.1-9) / D002", "evidence_required": "Full opinion paragraph text with page citation; explicit statement of opinion type and presence/absence of going-concern material uncertainty paragraph.", "closure_condition": "Opinion type stated verbatim and going-concern paragraph presence/absence confirmed with page citation."}, {"question": "What rand amounts of supplier rebates/advertising are recognised as (a) reduction in inventory cost and (b) other income under IFRS 15, FY2026 vs FY2025?", "priority": "high", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D005 / D006 (notes 3.6, 8, 16)", "evidence_required": "Note 3.6 policy and notes 8 and 16: split of rebate/advertising adjustments between COGS/inventory and other income, FY2026 vs FY2025, in Rm.", "closure_condition": "Both components quantified for both years and reconciled to gross margin and other-income lines; benign explanations allowed for reclassification."}, {"question": "Are conditional vs unconditional rebate amounts and any estimate sensitivity disclosed, given manual central calculation?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D005 / D006", "evidence_required": "Disclosure of conditional contract rebates, estimate sensitivity or judgement note.", "closure_condition": "Conditional/unconditional split or sensitivity disclosed, or explicit statement that it is not disclosed."}, {"question": "What is reported consolidated PBT FY2026 vs FY2025 and does it reconcile to implied R1,394.65m (R111,572,000/0.08)?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D002", "evidence_required": "Consolidated statement of comprehensive income PBT FY2026 vs FY2025.", "closure_condition": "Reported PBT reconciled to implied benchmark; any difference explained (rounding/qualitative adjustment)."}, {"question": "What is reported separate/company PBT FY2026 vs FY2025 and does it reconcile to implied R684.34m (R54,747,000/0.08)?", "priority": "medium", "target_document": "1780031707-FY2026AnnualFinancialStatements.pdf", "target_section": "D002", "evidence_required": "Separate statement of comprehensive income company PBT FY2026 vs FY2025.", "closure_condition": "Company PBT reconciled to implied benchmark; difference explained."}]}
+
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+
+| Item | Value | Source |
+| --- | --- | --- |
+| Auditor | Forvis Mazars (partner D. Keeve) | `[D001, p. 12]` |
+| Report date | 28 May 2026 | `[D001, p. 12]` |
+| Audit tenure | 5 years | `[D001, p. 12]` |
+| Group components | 66 total: 40 full-scope, 7 partial, 19 out of scope | `[D001, p. 10]` |
+| Audit coverage | 99% revenue, 96% PBT, 99% total assets | `[D001, p. 10]` |
+| KAMs identified in capture | Rebates & advertising agreements (notes 3.6, 8, 16) | `[D001, pp. 10–11]` |
+| KAM conclusion | No material exceptions | `[D001, p. 11]` |
+| Other information | Nothing to report | `[D001, p. 11]` |
+| Opinion type | **Not captured** (precedes p.10) | — |
+| Going-concern material uncertainty | **Not stated in capture** | — |
+
+---
+
+### 6. Next Section to Capture
+
+**D001 continuation (physical pp. 1–9)** — to resolve **N1** (verbatim opinion paragraph and going-concern statement) and complete the KAM list. If the earlier auditor pages are unavailable, capture **D002 (physical pp. 15–17)** next to resolve **N4, N5** and the stored PBT/going-concern questions (Q-f99a0409785943ee, Q-e559f062862e4a83, Q-8f31c9dde0434bc2).

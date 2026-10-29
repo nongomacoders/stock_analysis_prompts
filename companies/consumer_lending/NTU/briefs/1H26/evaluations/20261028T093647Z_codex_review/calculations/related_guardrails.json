@@ -1,0 +1,22 @@
+[
+  {
+    "code": "ALL-CASH-ROLLFORWARD-CONSISTENCY",
+    "sector": "all",
+    "title": "Forecast Cash and Financing Must Reconcile"
+  },
+  {
+    "code": "ALL-MATERIAL-ISSUES-VALUATION-WITHHOLD",
+    "sector": "all",
+    "title": "Withhold Valuation Until Material Dependencies Are Resolved"
+  },
+  {
+    "code": "ALL-SOTP-ARITHMETIC-AND-NO-DOUBLE-COUNT",
+    "sector": "all",
+    "title": "Strict SOTP Vertical Arithmetic & Prohibition of DCF + Working Capital Double-Counting"
+  },
+  {
+    "code": "CONSUMER-LENDING-POCI-GAIN-VS-ECL-RESERVE",
+    "sector": "consumer_lending",
+    "title": "POCI Cumulative Gains, Loss Allowances and Portfolio Scope"
+  }
+]

@@ -1,0 +1,8 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+ntu_assets_meaning,gen-1793273419-xLIrSqMHiZrYOylweIL6,True,0.00231378,response_usage,8086,733,0,0,733,5.024,1.368,Fireworks,4576,982,stop,retrieved
+ntu_assets_movement,gen-1793273429-NHBqzHR9B97xqM6Keb5x,True,0.002856,response_usage,8824,1194,0,0,1194,7.995,2.776,Fireworks,7559,2434,stop,retrieved
+ntu_assets_single,gen-1793273395-B7Aouy1hq1DwD6lSgpzW,True,0.00470211,response_usage,8675,3429,0,0,3429,18.457,3.488,Fireworks,17221,2364,stop,retrieved
+ntu_assets_why,gen-1793273442-kNYjHmydXDL7if6zvaMb,True,0.00534765,response_usage,10765,3675,0,0,3675,16.937,2.312,Fireworks,16483,1950,stop,retrieved
+pan_dense_meaning,gen-1793273464-yofdEpAfCPaRwCioMnOL,True,0.0027101004,response_usage,10518,710,0,462,710,6.431,2.12,Fireworks,5854,1774,stop,retrieved
+pan_dense_movement,gen-1793273475-Oh8kj2rJSMPcrXJtNhz2,True,0.0036603084,response_usage,11233,1660,0,452,1660,8.755,1.954,Fireworks,8232,1614,stop,retrieved
+pan_dense_why,,False,,unavailable,,,,,,0.811,,,,,,

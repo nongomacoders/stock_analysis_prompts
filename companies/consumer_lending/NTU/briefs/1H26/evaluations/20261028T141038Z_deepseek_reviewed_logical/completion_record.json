@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-10-28T14:43:36.463113+00:00",
+  "execution_status": {
+    "status": "stopped",
+    "stage": "stage2",
+    "calls": 24,
+    "last_dispatch_utc": "2026-10-28T14:34:10.142797+00:00",
+    "first_dispatch_utc": "2026-10-28T14:19:50.588336+00:00",
+    "error_type": "Incomplete",
+    "error": "Incomplete response: finish_reason=length",
+    "stopped_utc": "2026-10-28T14:39:03.027844+00:00"
+  },
+  "publication_status": "NOT_PUBLISHED_PROCESS_INCOMPLETE",
+  "full_cost_usd": "0.2445611328",
+  "pilot_cost_usd": "0.0340914924",
+  "combined_known_cost_usd": "0.2786526252",
+  "accepted_financial_captures": 22,
+  "financial_captures": 22,
+  "navigation_captures": 2,
+  "source_pages": 38,
+  "paid_gemini_calls": 0,
+  "preservation": {
+    "checked_utc": "2026-10-28T14:43:35.291377+00:00",
+    "production_all_tables_unchanged": true,
+    "sources_unchanged": true,
+    "original_files_unchanged": true
+  },
+  "independent_review": "Preliminary Codex audit:corrections required;manual Gemini review pending",
+  "codex_audit": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261028T145027Z_codex_logical_trial_review\\audit.md"
+}

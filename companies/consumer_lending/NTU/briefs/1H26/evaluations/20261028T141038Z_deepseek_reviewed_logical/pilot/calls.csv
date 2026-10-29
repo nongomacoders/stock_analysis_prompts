@@ -1,0 +1,6 @@
+label,generation_id,success,cost_usd,cost_source,prompt_tokens,completion_tokens,reasoning_tokens,cached_prompt_tokens,estimated_nonreasoning_completion_tokens,elapsed_seconds,time_to_first_content_seconds,provider,generation_time_ms,latency_ms,finish_reason,metadata_status
+page25_scope_recheck_v2,gen-1793197046-AJTIz7v4beAUyOsX64SJ,True,0.0049925148,response_usage,4402,5307,4405,1894,902,20.349,17.719,Fireworks,18752,1568,stop,retrieved
+section_15_uncapped_v4,gen-1793196712-bePMeVnkMhZVxWvDAikQ,True,0.0105279888,response_usage,5121,11330,10128,314,1202,40.839,37.974,Fireworks,39250,1101,stop,retrieved
+section_16_uncapped_v4,gen-1793196758-WMpj0NGiHMnkgheCh2Ks,True,0.0083502888,response_usage,3467,9151,8097,314,1054,31.276,28.747,Fireworks,30673,921,stop,retrieved
+section_16_uncapped_v4_repair,gen-1793196795-N6ogbLFycGIdbrQrLDWI,True,0.0032547312,response_usage,4616,3538,2930,3336,608,13.825,12.537,Fireworks,13088,1889,stop,retrieved
+section_17_uncapped_v4,gen-1793196814-obSyN0vjKsWls3hYy1XD,True,0.0069659688,response_usage,4111,7342,6453,314,889,25.763,23.545,Fireworks,25173,970,stop,retrieved

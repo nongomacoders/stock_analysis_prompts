@@ -1,0 +1,18 @@
+{
+  "values": {
+    "principal_close": 3845,
+    "other_close": 644,
+    "principal_prior_half": 3690,
+    "other_prior_half": 663,
+    "historical_full_year_loss": 259,
+    "trade_net": 369,
+    "trade_loss_rate_pct": 1.3368983957219251,
+    "portfolio_net_cash": 434,
+    "portfolio_income": 246,
+    "carrying_decline": 188,
+    "statutory_residual": 6,
+    "amortisation_components": 598,
+    "nav": 1.702425211547757
+  },
+  "source_basis": "Previously independently viewed identical-hash NTU source:physical8,12,13,24,25,31. No new PDF images inspected this run;no forecast/valuation validation."
+}

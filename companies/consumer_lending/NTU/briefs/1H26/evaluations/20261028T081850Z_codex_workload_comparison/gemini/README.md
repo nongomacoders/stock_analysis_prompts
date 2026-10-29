@@ -1,0 +1,13 @@
+# NTU 1H26 — Antigravity review
+
+Result type: **WITHHELD_RECOVERY_BRIEF_FULL_VALUATION_INCOMPLETE**. Financial validity awaits review.
+
+Start with [the concise Antigravity request](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T081850Z_codex_workload_comparison/gemini/START_HERE.md) and attach/access the original PDFs below. The [large bundled reference](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T081850Z_codex_workload_comparison/gemini/antigravity_evaluation_prompt.md) is available for selective consultation. It includes the required evidence protocol, preserved baseline note, new Stage 1/Stage 2 outputs, section analyses and full ledger. Source page presence is not source verification. Historical document-role registrations may be inaccurate; verify actual roles from the PDFs.
+
+- [nutunlimitedcondensedconsolidatedafs31march2026.pdf](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/sources/completed/1H26/nutunlimitedcondensedconsolidatedafs31march2026.pdf) — 38 physical pages; SHA-256 `9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc`.
+
+[Comparison metrics](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T081850Z_codex_workload_comparison/comparison_metrics.json) · [Stage 1](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T081850Z_codex_workload_comparison/outputs/stage1.md) · [Withholding/publication assessment](C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/20261028T081850Z_codex_workload_comparison/outputs/publication_assessment.json)
+
+If full Stage 2 exhausted its budget, the withheld recovery brief is a narrower task; do not treat it as a completed full valuation. Rejected ledger evidence, local fallbacks and repairs must be assessed separately from valid model answers. Check source signs/units, cash/debt/portfolio roll-forwards, valuation and sensitivity, unsupported missing-disclosure claims, and whether prior errors were fixed or repeated. Propose prompt/ledger/guardrail improvements separately; do not change the SQLite registry.
+
+Save Gemini's full response under `C:/Users/diond/Desktop/Projects/stock_analysis_prompts/companies/consumer_lending/NTU/briefs/1H26/evaluations/<current-UTC-timestamp>_gemini/audit.md`, preserving originals, and return the absolute path for Codex to review Gemini. No Gemini OpenRouter execution is part of this handoff.

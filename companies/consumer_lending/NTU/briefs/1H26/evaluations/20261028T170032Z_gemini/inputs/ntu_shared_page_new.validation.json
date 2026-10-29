@@ -1,0 +1,55 @@
+{
+  "case": "ntu_shared_page",
+  "version": "new",
+  "ledger_valid": true,
+  "errors": [],
+  "questions": [
+    {
+      "question_id": "Q-PILOT-ntu_shared_page",
+      "question": "What does this capture establish about trade-receivable credit losses and the applicable measurement basis? Keep unsupported policy conclusions open.",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "Current captured note",
+      "evidence_required": "Matching instrument,period,units and literal current-capture evidence.",
+      "closure_condition": "Answer the stated question with the captured evidence; remain partial when a required policy or cash-flow bridge is absent.",
+      "status": "partial",
+      "answer": "Capture shows trade-receivable ECL by aging bucket for 31 Mar 2026/2025 and 30 Sep 2025 (gross 374/419/364 Rm; allowance (5)/(6)/(10); net 369/413/354), with total loss rates 1.34%/1.43%/2.75% and >90-day 100%/85.71%/81.82%. Measurement described as past default experience plus forward-looking conditions, no separate receivable classes. Policy basis for 0.00% rates in current and <=90-day buckets, and any collections/cash-flow bridge, are not established.",
+      "evidence": [
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 25,
+          "quote": "Expected loss rate | 0.00% 0.00% 0.00%"
+        },
+        {
+          "source_sha256": "9a19b3b40ca26781100da0f0bd7d59a870fabd253a66ccac0c9926f14bc4fbbc",
+          "physical_page": 25,
+          "quote": "No separate classes of trade receivables have been"
+        }
+      ]
+    },
+    {
+      "question": "Why are expected loss rates 0.00% for current and <=90-day overdue trade receivables at 31 Mar 2026 and 31 Mar 2025, versus non-zero (0.06%/0.19%/6.67%) at 30 Sep 2025? Is this a change in provisioning methodology, a data/timing effect, or a genuine credit-quality improvement?",
+      "priority": "high",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "D003.12 / D003.11 (p.24-25) and D003.10 (p.21-23)",
+      "evidence_required": "ECL methodology note, staging/aging definitions, and any reconciliation of loss-rate movement between 30 Sep 2025 and 31 Mar 2026, in Rm and % with period labels.",
+      "closure_condition": "A stated reason for the loss-rate change is provided with matching period/units, or the methodology note confirms the basis; otherwise remain open.",
+      "question_id": "Q-a9cd1c23310849f5",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    },
+    {
+      "question": "What is the notional, maturity and hedge-effectiveness treatment of the USD/GBP foreign exchange contracts entered in the period for Nutun International receivables, and how much FX exposure remains unhedged?",
+      "priority": "medium",
+      "target_document": "nutunlimitedcondensedconsolidatedafs31march2026.pdf",
+      "target_section": "6.2 Currency risk (p.25-26)",
+      "evidence_required": "Hedge notional amounts, maturity, effectiveness assessment and residual unhedged exposure in Rm, with period labels.",
+      "closure_condition": "Notional and effectiveness/residual exposure disclosed with matching period/units; otherwise remain open.",
+      "question_id": "Q-caace240eae14de5",
+      "status": "open",
+      "answer": "",
+      "evidence": []
+    }
+  ]
+}

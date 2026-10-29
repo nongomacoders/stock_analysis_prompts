@@ -1,0 +1,70 @@
+{
+  "ntu": {
+    "single": {
+      "calls": 1,
+      "cost_usd": 0.00470211,
+      "prompt_tokens": 8675,
+      "completion_tokens": 3429,
+      "request_seconds": 18.457
+    },
+    "three_pass": {
+      "calls": 3,
+      "cost_usd": 0.01051743,
+      "prompt_tokens": 27675,
+      "completion_tokens": 5602,
+      "request_seconds": 29.956000000000003
+    },
+    "cost_ratio": 2.236746907239516,
+    "request_time_ratio": 1.623015658015929,
+    "single_ledger_valid": false,
+    "three_pass_ledger_valid": true,
+    "semantic_closure": "Both fail; three-pass literal-valid closure is still unsupported."
+  },
+  "pan": {
+    "single": {
+      "cost_usd": 0.004670988,
+      "prompt_tokens": 11107,
+      "completion_tokens": 2904,
+      "elapsed_seconds": 16.914
+    },
+    "three_pass": {
+      "cost_usd": 0.0111837432,
+      "prompt_tokens": 35391,
+      "completion_tokens": 4845,
+      "elapsed_seconds": 30.421
+    },
+    "single_ledger_valid": true,
+    "three_pass_ledger_valid": true,
+    "quality_verdict": "Pending independent Gemini review; literal validation is not financial validation."
+  },
+  "incremental": {
+    "cost_usd": 0.0094843224,
+    "prompt_tokens": 24747,
+    "completion_tokens": 5379,
+    "reasoning_tokens": 0,
+    "cached_prompt_tokens": 1122,
+    "elapsed_seconds": 32.149
+  },
+  "incremental_wall_seconds": 42.049247,
+  "combined_known_cost_usd": 0.031074271200000003,
+  "original_failed_request_cost": "unknown",
+  "new_attempts": [
+    {
+      "stage": "why",
+      "attempt": 1,
+      "outcome": "complete",
+      "label": "pan_dense_why_attempt1"
+    },
+    {
+      "stage": "single",
+      "attempt": 1,
+      "outcome": "complete",
+      "label": "pan_dense_single_attempt1"
+    }
+  ],
+  "reused": [
+    "PAN meaning/movement",
+    "NTU complete pair"
+  ],
+  "limitations": "One fresh sample per arm; extra calls/context/budget for three-pass. Continuation uses same exact previously failed PAN final request; single prompt unchanged. Interruption/elapsed time/cache differences prevent causal speed/cost benchmark."
+}

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from valuation_examples import ready_note
+
 from pathlib import Path
+import json
 import shutil
 import time
 
@@ -82,6 +85,8 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
     import section_capture.one_shot_view as osv
     monkeypatch.setattr(osv, "get_openrouter_api_key", lambda: "mock-test-api-key")
 
+    # Isolate orchestration from full-document coverage planning, tested separately.
+    monkeypatch.setattr('section_capture.capture_planner.partition_detected_ranges', lambda sections, total_pages: sections)
     # Mock extract_all_app_sections to return 2 fast sections for deterministic speed
     monkeypatch.setattr(
         osv,
@@ -93,13 +98,15 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
     )
 
     # Mock OpenRouterWorker to emit deterministic section, Stage 1, and Stage 2 responses
+    worker_options = []
     class DummyOpenRouterWorker(QThread):
         finished_query = Signal(str, float, dict)
         error_query = Signal(str)
 
-        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None):
+        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None, reasoning_effort="none"):
             super().__init__(parent)
             self.prompt = prompt
+            worker_options.append((reasoning_effort, max_tokens, timeout))
 
         def run(self):
             if "STAGE 1: INDEPENDENT COGNITIVE AUDIT" in self.prompt:
@@ -131,9 +138,13 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
                 resp = (
                     "### 1. Summary\nKey points noted.\n\n"
                     "### 4. Updated Open Questions Ledger\n"
-                    "- Q1 [High]: Verify capex reconciliation [p. 2].\n"
+                    "```json\n" + json.dumps(dict(ledger_version=1, updates=[], new_questions=[dict(
+                        question='Verify capex reconciliation.', priority='high', target_document='TST_FY26_results.pdf',
+                        target_section='D003', evidence_required='Signed capex components and source rows.',
+                        closure_condition='Components reproduce the statutory total.'
+                    )])) + "\n```\n"
                 )
-            self.finished_query.emit(resp, 0.2, {"total_tokens": 500, "cost_usd": 0.001})
+            self.finished_query.emit(ready_note(resp) if 'target_price_zar' in resp else resp, 0.2, {"total_tokens": 500, "cost_usd": 0.001})
 
     monkeypatch.setattr(osv, "OpenRouterWorker", DummyOpenRouterWorker)
     monkeypatch.setattr(
@@ -183,7 +194,7 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
     assert view.overall_progress.value() == 100
     assert "TST_FY26_results.pdf" in view.log_view.toPlainText()
     assert "AUTONOMOUS ANALYSIS COMPLETE" in view.log_view.toPlainText()
-    assert "Q1 [High]" in view.ledger_preview.toPlainText()
+    assert "Verify capex reconciliation." in view.ledger_preview.toPlainText()
     assert "Stage 1 Forensic Audit Determinations" in view.stage1_preview.toPlainText()
     assert "Stage 2 Institutional Valuation Note" in view.stage2_preview.toPlainText()
 
@@ -192,6 +203,8 @@ def test_one_shot_end_to_end_autonomous_pipeline(pdf_path, qapp, tmp_path, monke
     s2_file = comp_dir / "briefs" / "FY26" / "TST_FY26_stage2_valuation_note.md"
     assert s1_file.exists()
     assert s2_file.exists()
+    assert worker_options.count(("max", 65536, 900)) == 2
+    assert any(effort == "none" for effort, _, _ in worker_options)
 
     view.close()
     view.deleteLater()
@@ -315,7 +328,7 @@ def test_sector_guardrails_table_and_prompt_injection(tmp_path):
         stage1_audit_report="# Audited Stage 1 Determinations from SQLite",
         db_path=tmp_path,
     )
-    assert "AUDITED STAGE 1 FORENSIC DETERMINATIONS (GROUND TRUTH FROM SQLITE)" in sens_prompt
+    assert "STAGE 1 WORKING DETERMINATIONS (REOPEN CONTRADICTIONS FROM SQLITE)" in sens_prompt
     assert "# Audited Stage 1 Determinations from SQLite" in sens_prompt
     assert "MANDATORY ACCOUNTING & VALUATION GUARDRAILS REGISTRY (SECTOR: RETAIL)" in sens_prompt
 
@@ -342,7 +355,7 @@ def test_sanitize_stage2_valuation_markdown_repairs_degenerate_bands():
         "```\n\n"
         "## 1. Executive Summary\n"
     )
-    fixed = sanitize_stage2_valuation_markdown(bad_note, reference_price_hint=48.31)
+    fixed = sanitize_stage2_valuation_markdown(ready_note(bad_note), reference_price_hint=48.31)
     m = re.search(r"```json\s*(\{[\s\S]*?\})\s*```", fixed)
     assert m is not None
     data = json.loads(m.group(1))
@@ -420,7 +433,7 @@ def test_discover_archived_pdfs_and_sens_in_place_and_smart_sens_update(pdf_path
     briefs_dir.mkdir(parents=True, exist_ok=True)
     s2_note_file = briefs_dir / "SPP_1H26_stage2_valuation_note.md"
     s2_note_file.write_text("# Baseline Stage 2 Valuation Note\nTarget R50.00.", encoding="utf-8")
-    save_stage2_report(primary_sha, response=s2_note_file.read_text(encoding="utf-8"), db_path=tmp_path)
+    save_stage2_report(primary_sha, response=ready_note(s2_note_file.read_text(encoding="utf-8")), db_path=tmp_path)
 
     captured_prompts: list[str] = []
 
@@ -428,9 +441,10 @@ def test_discover_archived_pdfs_and_sens_in_place_and_smart_sens_update(pdf_path
         finished_query = Signal(str, float, dict)
         error_query = Signal(str)
 
-        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None):
+        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None, reasoning_effort="none"):
             super().__init__(parent)
             self.prompt = prompt
+            assert (reasoning_effort, max_tokens, timeout) == ("max", 65536, 900)
             captured_prompts.append(prompt)
 
         def run(self):
@@ -455,7 +469,7 @@ def test_discover_archived_pdfs_and_sens_in_place_and_smart_sens_update(pdf_path
                 "```\n\n"
                 "## 1. Executive Summary\nUpdated post-SENS note.\n"
             )
-            self.finished_query.emit(resp, 0.1, {"total_tokens": 400, "cost_usd": 0.001})
+            self.finished_query.emit(ready_note(resp) if 'target_price_zar' in resp else resp, 0.1, {"total_tokens": 400, "cost_usd": 0.001})
 
     monkeypatch.setattr(osv, "OpenRouterWorker", DummySensWorker)
     monkeypatch.setattr(osv, "find_company_dir", lambda ticker, sector=None: ("retail", comp_dir))
@@ -559,8 +573,11 @@ def test_resubmit_stage2_from_completed_pdfs_and_sqlite_stage1(pdf_path, qapp, t
         output_root=tmp_path,
     )
     src.close()
-    from section_capture.db import save_section_llm_response
-    save_section_llm_response(pkg.package_id, "### 1. Summary\nAudited section.", db_path=tmp_path)
+    from section_capture.db import save_section_llm_response, list_sections
+    # A logical capture request can create several packages; every cached package is done.
+    for saved in list_sections(sha, db_path=tmp_path):
+        save_section_llm_response(saved.package_id, '### 4. Updated Open Questions Ledger\n```json\n'
+                                 '{"ledger_version":1,"updates":[],"new_questions":[]}\n```', db_path=tmp_path)
     save_stage1_report(
         sha,
         prompt="S1 prompt",
@@ -574,9 +591,10 @@ def test_resubmit_stage2_from_completed_pdfs_and_sqlite_stage1(pdf_path, qapp, t
         finished_query = Signal(str, float, dict)
         error_query = Signal(str)
 
-        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None):
+        def __init__(self, prompt: str, model: str | None = None, parent=None, timeout: int = 180, max_tokens=None, reasoning_effort="none"):
             super().__init__(parent)
             self.prompt = prompt
+            assert (reasoning_effort, max_tokens, timeout) == ("max", 65536, 900)
             captured_s2_prompts.append(prompt)
 
         def run(self):
@@ -594,7 +612,7 @@ def test_resubmit_stage2_from_completed_pdfs_and_sqlite_stage1(pdf_path, qapp, t
                 "```\n\n"
                 "## 1. Executive Summary\nRebuilt Stage 2 from completed PDFs and SQLite Stage 1.\n"
             )
-            self.finished_query.emit(resp, 0.1, {"total_tokens": 500, "cost_usd": 0.001})
+            self.finished_query.emit(ready_note(resp) if 'target_price_zar' in resp else resp, 0.1, {"total_tokens": 500, "cost_usd": 0.001})
 
     monkeypatch.setattr(osv, "OpenRouterWorker", DummyStage2OnlyWorker)
     monkeypatch.setattr(osv, "find_company_dir", lambda ticker, sector=None: ("retail", comp_dir))

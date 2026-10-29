@@ -1,0 +1,13 @@
+{
+  "result": {
+    "status": "MISSING_NOTE",
+    "ticker": "NTU",
+    "period": "1H26",
+    "sector": "consumer_lending",
+    "live_price_zar": null,
+    "error": "Valuation note not found at C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\NTU_1H26_stage2_valuation_note.md",
+    "checks": {}
+  },
+  "network_disabled": true,
+  "scope": "Script checks only; no independent financial validation"
+}

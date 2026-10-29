@@ -1,0 +1,14 @@
+{
+  "label": "section_13",
+  "pages": [
+    18,
+    19
+  ],
+  "heading": "Loss per share — total, continuing and discontinued",
+  "ledger_valid": false,
+  "errors": [
+    "Evidence quote for Q-b18d8ce6d4804a50, physical page 18 is not literal: 'Loss for the purposes of basic and diluted loss per share | Rm (63) |  |  | (64) | (238)'. Use a short verbatim excerpt or keep this question open without claiming resolution."
+  ],
+  "questions_before": 17,
+  "questions_after": 17
+}

@@ -1,0 +1,10 @@
+{
+  "error": "Model reached completion limit (16,384 tokens); response is incomplete (finish_reason: length).",
+  "options": {
+    "max_tokens": 16384,
+    "reasoning_effort": "none",
+    "timeout": 180
+  },
+  "final_answer_saved": false,
+  "partial_answer_available": false
+}

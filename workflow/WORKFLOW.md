@@ -1,6 +1,65 @@
 # Working process
 
-## Standardized 3-Tier Analysis Architecture
+## Current analysis and evaluation flow
+
+1. The user downloads original company PDFs into the company's source folders.
+2. The app scans/maps sections; DeepSeek analyzes captured sections one at a time with the evolving question ledger.
+3. DeepSeek performs Stage 1, then Stage 2 including the final valuation.
+4. Gemini independently evaluates DeepSeek and proposes evidence-supported improvements and guardrails.
+5. Codex independently evaluates Gemini against original evidence, identifying supported findings, missed errors, and errors introduced by the evaluator.
+
+The user runs Gemini in Antigravity. Prepare its local evaluation prompt and evidence
+pack; do not submit Gemini calls through OpenRouter. Preserve the returned Gemini
+output for Codex's subsequent review.
+
+Automatic capture now splits oversized sections without discarding remainder pages.
+New automatic section prompts use persistent question records and validated ledger
+deltas; legacy captures retain compatibility. See [WORKLOAD_RELIABILITY.md](../docs/WORKLOAD_RELIABILITY.md)
+for coverage limits, evidence validation and the separate comparison-run fallback.
+
+Every evaluation automatically follows [the mandatory independent evaluation record](../docs/STOCK_EVALUATION_FORMAT.md#1a-mandatory-independent-evaluation-record-automatic). Save versioned evidence, calculations, coverage, findings, revisions, and handoff records alongside company briefs; preserve original model outputs before corrections. No repeated user prompt is required when the evaluator has access to these project instructions. This is a repository instruction workflow, not an automatic Gemini API integration. An external Gemini conversation must load these instructions through its project context. `evaluate_stock.py` supplies preliminary checks, not a substitute for independent review. The current flow supersedes historical model assignments below.
+
+## DeepSeek improvement objective
+
+Section briefs now use a shared four-part reading task plus concise conditional
+sector notes. Keep material facts/qualifications,useful arithmetic and evidence
+questions;do not require a full forensic audit of every capture. Structured JSON
+ledger semantics remain unchanged. See [SECTION_READING_PROMPT.md](../docs/SECTION_READING_PROMPT.md)
+for assembly,paired-pilot measurements and remaining model errors.
+The subsequent NTU source-order trial uses the refined common prompt with an empty
+ledger and no paid repairs. Raw briefs with rejected ledger deltas remain available;
+only validated deltas feed later ledger state. Report generation coverage separately
+from ledger validation and financial correctness. See the same document for results.
+
+The final goal is to make DeepSeek as robust as possible. Gemini reviews DeepSeek output and Codex reviews Gemini against original evidence; verified lessons feed back into stronger prompts, reusable guardrails and better questions in the evolving questions ledger. Trace failures to the earliest affected section or stage so later analyses ask for the right evidence and catch recurring errors earlier. Preserve original outputs and distinguish proposed improvements from implemented changes and demonstrated improvements.
+
+Ledger improvements should turn verified review findings into specific evidence requests and reconciliation questions, carry unresolved material questions forward with `Pending: [section]`, and require evidence before closure. Review completion alone does not establish improved DeepSeek performance; assess that separately when a comparison run is authorized.
+
+## Material-issue publication gate
+
+Stage 1 must carry unresolved material findings into Stage 2. A target and recommendation are optional: new Stage 2/SENS outputs require explicit readiness evidence and numerical reconciliations. Material failures or unsupported dependencies produce **VALUATION WITHHELD - MATERIAL ISSUES UNRESOLVED**, with null valuation fields and a list of required corrections. Raw candidates and previous notes are preserved; withholding clears stale production metrics and suppresses dynamic ratings. READY is not independent financial validation. See [VALUATION_WITHHOLDING.md](../docs/VALUATION_WITHHOLDING.md) for the contract, legacy behavior and implementation limits.
+
+## Stage reasoning policy
+
+DeepSeek requests through the shared OpenRouter client are restricted to Fireworks
+(`provider.only=["fireworks"]`, fallback disabled, supported parameters required).
+The default model is the base `deepseek/deepseek-v4.1-flash-1017` slug. This applies
+to section analysis and both stages; other model providers are not restricted by
+this DeepSeek preference. Request metadata records the requested provider settings.
+The provider change does not alter the stage reasoning/token policy below.
+Optional presentation-section clustering has a separate request path and uses the
+same Fireworks restriction. It groups slide titles/snippets; PDF text extraction
+and subsequent page capture remain local.
+
+Section capture, mapping and ticker lookups retain the fast client default (`reasoning.effort=none`, 16,384 maximum completion tokens unless overridden). Stage 1, Stage 2, Stage 2 SENS updates and `evaluate_stock.py --rerun` explicitly request `reasoning.effort=max`, a combined reasoning/final-answer ceiling of 65,536 tokens and a 900-second HTTP timeout. Stage diagnostic scripts use the same reasoning policy and allow timeout/token overrides. Policy constants live in `section_capture/openrouter.py`.
+
+Previously the API client hard-coded `none` for every request, including both analysis stages. The new policy requests max through OpenRouter's documented reasoning parameter and requires providers that support the requested parameters; retries and nitro fallback retain the policy. Provider mapping and actual reasoning consumption can vary, so requested effort is not proof of an achieved effort level or financial accuracy. Higher ceilings are limits, not guaranteed consumption; slower responses and higher output-token costs are expected when more reasoning is used.
+
+The client excludes raw reasoning from returned reports and refuses reasoning-only or completion-limit-truncated results. Successful GUI Stage 1/2/SENS runs and CLI reruns save a `.run.json` file alongside the Markdown note, containing generation/model identifiers, requested effort and token ceiling, finish reason, reported reasoning-token usage (null if not supplied), provider when returned, and token/cost statistics. These metadata files do not contain credentials or raw internal reasoning. Existing analyses are not automatically regenerated; compare a fresh run against the preserved NTU/Gemini/Codex evidence before claiming a quality improvement.
+
+Reference: [OpenRouter reasoning controls](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens). Request serialization, worker forwarding, retries, response completeness and GUI stage separation are verified with mocked API tests; no paid live valuation is part of the configuration change.
+
+## Historical 3-Tier Architecture (implementation background)
 
 The repository operates a multi-tiered pipeline that completely eliminates narrative fluff and whole-PDF hallucinations while removing manual bespoke modeling code:
 
@@ -49,4 +108,4 @@ The repository operates a multi-tiered pipeline that completely eliminates narra
 - Physical PDF pages are numbered from 1; printed page labels are stored only when explicitly entered by the user.
 - Area selections extract only characters fully inside the crop box and warn when boundaries cross text or when a region is image-only.
 - Report map availability shows what other sections exist for later reading; it does not imply those sections have already been inspected or verified.
-- Stage 1 determinations form strict ground truth for Stage 2 modeling; the model is prohibited from reverting to high-level PR narratives when audited reconciliations exist.
+- Stage 1 determinations are the working baseline for Stage 2. Reopen contradictions against primary evidence and track resulting corrections; an audit label does not make a finding authoritative.

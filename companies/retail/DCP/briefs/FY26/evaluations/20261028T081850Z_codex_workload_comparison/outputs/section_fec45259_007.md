@@ -1,0 +1,36 @@
+### 1. Answers to Stored Questions for This Section
+No stored questions can be resolved from this section. The supplied evidence (D001 pp. 17–18) is narrative overview material covering geographic footprint, markets served, and value-chain positioning. It contains no revenue tables, segmental splits, store portfolio tables, credit metrics, or financial figures beyond a chart axis (0–350 stores, FY2023–FY2026) with no printed data labels. All stored questions remain open and are carried forward in Section 4.
+
+### 2. Footnote & Qualification Deep-Dive
+No footnote markers (`[^1]`, `*`, note references) or table notes appear in the supplied evidence on pp. 17–18. The only quantitative content is the unlabeled bar/line chart on p. 17 ("Number of Dis-Chem stores" and "Growth in the number of Dis-Chem stores (%)", FY2023–FY2026) — axis scales only (0–350 stores; 0–12%), no printed values, no footnote defining whether the count includes or excludes Baby City, TLC franchise stores, or stores outside South Africa. This is a verification trigger (see Q below), not a resolvable figure.
+
+Other qualifications noted: "more than 1 600 independently owned pharmacies" served by the wholesale arm and "350" chart-axis ceiling are narrative/approximate, not audited figures; "TLC franchise stores" are referenced as served by CJ Distribution but consolidation treatment is not stated here.
+
+### 3. New Questions to Check in Future Sections
+
+| Q# | Priority | Target section (from Report Map) | Claim, anomaly, or footnote trigger `[D001, p. 17]` | Specific verification instruction (what exact figure/note/table to check in the target section) | Why it matters for the forecast |
+| --- | --- | --- | --- | --- | --- |
+| N1 | High | D002 Financial review / D003 (store portfolio table) | p. 17 chart "Number of Dis-Chem stores" FY2023–FY2026 has no printed values or footnote; scope (Baby City? TLC? cross-border?) undefined `[D001, p. 17]` | Extract the store portfolio table: opening count, openings, closures, relocations, closing count by brand (Dis-Chem Pharmacy, Baby City) and by country, FY2026 vs FY2025, with footnotes defining scope | Store count drives sales-per-store, trading density, occupancy and IFRS 16 lease forecasts |
+| N2 | Medium | D002 / D003 (segmental note) | "more than 1 600 independently owned pharmacies" served; TLC franchise stores referenced but consolidation/elimination treatment not stated `[D001, p. 17–18]` | Confirm external vs intergroup wholesale revenue split and whether TLC system-wide turnover is consolidated; extract amounts Rm both years | Determines revenue base and intergroup eliminations in the forecast |
+| N3 | Medium | D002 / D003 (revenue note) | DeliverD and PackMyMeds named as digital platforms; revenue classification not stated `[D001, p. 18]` | Confirm whether DeliverD/PackMyMeds/e-commerce revenue sits in merchandise sales or other/financial services revenue; extract disclosed values if any | Affects revenue mix and gross margin bridge |
+| N4 | Low | D002 / D003 (segmental note) | Cross-border markets (Namibia, Botswana per stored context) referenced only as "multiple, interconnected markets"; no FX disclosure here `[D001, p. 17]` | Confirm segment revenue by country and any FX exposure quantification | Cross-border FX sensitivity for forecast |
+
+### 4. Updated Open Questions Ledger
+```json
+{"ledger_version": 1, "updates": [], "new_questions": [
+{"question": "Extract the store portfolio table (opening, openings, closures, relocations, closing) by brand (Dis-Chem Pharmacy, Baby City) and country for FY2026 vs FY2025, with footnotes defining whether TLC franchise stores and cross-border stores are included; reconcile closing count to the p. 17 chart and to any stated total (e.g., 358).", "priority": "high", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 Financial review / D003 (store portfolio table)", "evidence_required": "Store portfolio table all rows/columns, both years, units stores and m2, with footnotes and page citations; chart values from p. 17 if printed elsewhere.", "closure_condition": "Closing store count reconciles to chart/stated total or discrepancy quantified; scope (Baby City, TLC, cross-border) confirmed with citation; net openings and trading space extracted both years."},
+{"question": "Confirm external vs intergroup wholesale revenue split (CJ Distribution) and whether TLC franchise system-wide turnover is consolidated or eliminated, with amounts in Rm for FY2026 vs FY2025 and page citations.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D003 (segmental note)", "evidence_required": "Segmental note showing wholesale external vs intergroup revenue, TLC treatment, elimination line, both years, Rm, with page citations.", "closure_condition": "Split and TLC consolidation treatment confirmed with citation; elimination consistent with group revenue reconciliation or discrepancy quantified; benign explanations allowed."},
+{"question": "Confirm revenue classification of DeliverD, PackMyMeds and e-commerce (merchandise sales vs other/financial services revenue) and extract any disclosed amounts and growth for FY2026 vs FY2025.", "priority": "medium", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D003 (revenue note)", "evidence_required": "Revenue note showing treatment of digital/delivery service revenue; amounts and growth both years with page citations, or explicit statement of non-disclosure.", "closure_condition": "Classification confirmed with citation; amounts extracted or non-disclosure explicitly stated."},
+{"question": "Confirm segment revenue by country (South Africa, Namibia, Botswana) and quantify any FX exposure for FY2026 vs FY2025.", "priority": "low", "target_document": "1785744572-DIS-CHEMIR2026INTERACTIVE.pdf", "target_section": "D002 / D003 (segmental note)", "evidence_required": "Country/segment revenue table both years with FX exposure disclosure or explicit absence statement, page citations.", "closure_condition": "Country split extracted with citation; FX exposure quantified or absence explicitly stated."}
+]}
+```
+
+### 5. Baseline Forecast Inputs Captured Here
+No hard financial figures are available in this capture. Only qualitative/approximate anchors:
+- Dis-Chem store count chart FY2023–FY2026: axis 0–350 stores; growth axis 0–12%; no printed values `[D001, p. 17]`.
+- Wholesale arm serves "more than 1 600" independently owned pharmacies `[D001, p. 17]`.
+- Markets: South Africa primary; retail, wholesale (CJ Distribution), digital (DeliverD, PackMyMeds), TLC franchise, in-store clinics `[D001, pp. 17–18]`.
+- No revenue, margin, debtor, lease, capex, HEPS or DPS figures in this section.
+
+### 6. Next Section to Capture
+`D002 Financial review` (physical pp. 103–107) — will resolve N1 (store portfolio), N2 (wholesale/TLC split), N3 (digital revenue classification), and the stored revenue/total-income table questions (Q-9dcda868ba3541df, Q-a0b5279a24d84ae3, Q-23076e0067ae413e).

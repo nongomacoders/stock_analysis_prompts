@@ -1,0 +1,393 @@
+{
+  "created_utc": "2026-10-27T18:23:48.538737+00:00",
+  "local_time": "2026-10-27T20:23:48.538757+02:00",
+  "subject": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison",
+  "files": [
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "d3429a17b544e5e4f47e1f32afa4435342cff5060e6b2e79e1b09037e850ab7a"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage1_response.md",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage1_response.md",
+      "sha256": "935ba791164eb4da3cf8bd4cce63d4c7936ce30f545e28de357d4f0dbac4a0d6"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage1_response.run.json",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage1_response.run.json",
+      "sha256": "9858e31ba23b6d43adb1f07f9cee163d84af964bc9b1dba43e84c61ea2844330"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage2_response.md",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage2_response.md",
+      "sha256": "f02b014f014c2277bbabe86b3db01e5be711bff60701446690687bb7cc1c1a8e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage2_response.run.json",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage2_response.run.json",
+      "sha256": "7bbdc440ed2276772b933e2c70ea35734e92ed7500aa5eb6e77289eb31b092c7"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "saved": "inputs\\fresh_run\\outputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "cf2dd10619907d442ec9eebd117667b0f13d1dc1ef3c25328f3081aadd1848b5"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\stage1_generation_full.json",
+      "saved": "inputs\\fresh_run\\outputs\\stage1_generation_full.json",
+      "sha256": "0ce507777b0acc7d2dc531e19d2e3faaa1fcfbf54095675e6d3ed3a4b79c584e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\stage1_generation_stats.json",
+      "saved": "inputs\\fresh_run\\outputs\\stage1_generation_stats.json",
+      "sha256": "4ba335c622e21d2775b9588393587a3139dcad9b7e7c0cddda1bd07cdfb6eb67"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\stage2_generation_full.json",
+      "saved": "inputs\\fresh_run\\outputs\\stage2_generation_full.json",
+      "sha256": "be82488e8b88d208d353ed113e43379528e4caf597484619dfc89a8db6f61733"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\outputs\\stage2_generation_stats.json",
+      "saved": "inputs\\fresh_run\\outputs\\stage2_generation_stats.json",
+      "sha256": "903d9792579a36533a4df5870fde944edd44b70abccac9b94dd4616031b82703"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_08.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_08.png",
+      "sha256": "ab26b8957c7e7a73620b3d3e2f590329ab350065e5c001082440c556cf345e29"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_12.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_12.png",
+      "sha256": "d4a13cb45b9bcce4698e017dd1d067c6ae86940ecf071e212468eae21f7cfd31"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_13.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_13.png",
+      "sha256": "9294e511dc837304dfb40e09e82e83f4c214abd501fdd77c62f5cac6f08af384"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_23.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_23.png",
+      "sha256": "a7dcb65e7909994f4be50438f08fd563149576e788b8f4b7030e946a9fea7df2"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_25.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_25.png",
+      "sha256": "b012cd7c4af93074716623e6e90d15eb0c68b3484714944e06060197997b801b"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\page_31.png",
+      "saved": "inputs\\fresh_run\\calculations\\page_31.png",
+      "sha256": "873f330eff9ccd6a9e237563625cddc7e9bb8d2fe8584a285fd8affd380b5178"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\reconciliations.py",
+      "saved": "inputs\\fresh_run\\calculations\\reconciliations.py",
+      "sha256": "6a6840eeeabccd1ce6561119de1cfe072b0e1d47668b8171de6277962814c156"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\reconciliations_output.json",
+      "saved": "inputs\\fresh_run\\calculations\\reconciliations_output.json",
+      "sha256": "1fd96241bd2670005bd13887097d7801a23301bf3a13b245d8a21af9ac0540b4"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\calculations\\source_pages.txt",
+      "saved": "inputs\\fresh_run\\calculations\\source_pages.txt",
+      "sha256": "1d045a35c33b4ea80240d50d430437dc26730e61e74f10f800b2fb89703b3e58"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\audit.md",
+      "saved": "inputs\\fresh_run\\audit.md",
+      "sha256": "62a2ca23a262a14c20234588d76011bd0a5c5942f98111cf1a5c5c9678921269"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\status.json",
+      "saved": "inputs\\fresh_run\\status.json",
+      "sha256": "672fc1c834ae5a31d6a13992282fea400a1aa58c340cbdbd2b5b660f74710822"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\independent_verification.json",
+      "saved": "inputs\\fresh_run\\independent_verification.json",
+      "sha256": "8f01a27c7bb845a99c0e0668c07523526ea1991c141307fb405f8f22853dd177"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\run_comparison.py",
+      "saved": "inputs\\fresh_run\\run_comparison.py",
+      "sha256": "dcf5bb2f26bef04e84058bf6b0b7258692b48b6a0e6410d60a3d714938bc96de"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\manifest.json",
+      "saved": "inputs\\fresh_run\\inputs\\manifest.json",
+      "sha256": "b20a858674a3b67d353d12026f172d384dbb2e7fc816b8f33cc34a50df206e55"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\sections_and_ledger.json",
+      "saved": "inputs\\fresh_run\\inputs\\sections_and_ledger.json",
+      "sha256": "3168e55c3c6a3841b437af56c35801545a920e14bbc196a3d18a61f64b64d80f"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\guardrails.json",
+      "saved": "inputs\\fresh_run\\inputs\\guardrails.json",
+      "sha256": "01fbb5301fe17ca1920a752b13c41a518742a1435a658f309eeb5843d6bc3c8c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\analysis_snapshot.sqlite",
+      "saved": "inputs\\fresh_run\\inputs\\analysis_snapshot.sqlite",
+      "sha256": "3116c59e6f3085c28947d5a3cc05bc52a7d343a3b5f2f7062a87b3dae0a1a68f"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "saved": "inputs\\baseline\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "saved": "inputs\\baseline\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "saved": "inputs\\baseline\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "saved": "inputs\\baseline\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\audit.md",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\audit.md",
+      "sha256": "0ceaced33bcbcd7f83b88749e3446e5a3a062f2bc47acc4117c6d8b217a55725"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\calculations\\reconciliations.py",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\calculations\\reconciliations.py",
+      "sha256": "c9d7cb83d0c77bcf5a81ecb792c3ce9a21ee82f554bb64795f4e88325803a7a0"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\calculations\\reconciliations_output.txt",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\calculations\\reconciliations_output.txt",
+      "sha256": "74b63038598f1424be0ce97e7618708bd575c6a2681776208819a93f43c53f9e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\inputs\\manifest.json",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\inputs\\manifest.json",
+      "sha256": "de38b4e0d0ad5224a5331c1f8a830d854393835d67e08d22eb74e1ecbad184e1"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "saved": "inputs\\baseline\\20261027T163950Z_gemini\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\audit.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\audit.md",
+      "sha256": "68f775ad9712a286a90887a1deb11525a455e45fa39d58ab1e7bc68979db006f"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\guardrails_codification.json",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\guardrails_codification.json",
+      "sha256": "5ec6ff5f76bd204717e2b3b18817c22e73208442ff0dbaea7e0d39d1912cf34d"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\extract_and_preserve.py",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\extract_and_preserve.py",
+      "sha256": "d39f76e0a2b83f67f55d8b5c3969e18a0799d8fc2249d8af262ec141dac789d7"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_03.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_03.txt",
+      "sha256": "f8ec0353b4e2305adecf0866e7532f6cfddbe00004dbec7c49cd67099a08887c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_05.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_05.txt",
+      "sha256": "b82129df7eb50855c26a7d4ff3df3354761d7ebb3e85923a1eccee8a82be4d80"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_08.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_08.txt",
+      "sha256": "ac9705a72d0236f4a68459ae924fe64d33af0abdf6dc475e914fbc5ce3cc6e54"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_09.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_09.txt",
+      "sha256": "da7cd59ac29485577e76191840751b26d47b2ee4debf35fcb1c15c479b18740e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_12.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_12.txt",
+      "sha256": "800bc64be5ea28add698f57a730b1083e8f6ecc440e34848c7e9d8b38c075494"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_13.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_13.txt",
+      "sha256": "0268658c55811ecab75559a9803ec225902184b0827c944560d046ef8af4cc44"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_14.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_14.txt",
+      "sha256": "c76786e2028e6f646e13e0d9b4fc7c3150fed700637dc496dd3ef481aa232693"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_15.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_15.txt",
+      "sha256": "1442ca5b56b6d965276c1eb0be45ed1e0d95936498b2b6b444c76942dbbe0280"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_16.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_16.txt",
+      "sha256": "b42e5ef5016fb6eacc39a3e44f543d27565d2aa16fbd4336acf036bee7524dd3"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_21.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_21.txt",
+      "sha256": "498f0926b4a6cf14a25a3fe91fb2e61f325e05034d1130008da04def9964d379"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_22.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_22.txt",
+      "sha256": "03d7a91a0b1f941a8c335ebe9ad48ead2ba3c50cce30632f1cdec051ea1eaf69"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_23.png",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_23.png",
+      "sha256": "d7e55fc16f9465b5d1f0edf180722cb18196af284da8ed8e2b11bf087c44c7c2"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_23.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_23.txt",
+      "sha256": "211c9c20ab223bd50d6f07e8d24c1015e790e08f7f08884cfd61d9806d5b09ce"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_24.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_24.txt",
+      "sha256": "056b77ca939f7f6b4087596c83c4d2a5cde795dbdee06ac6bd0825e5fc4ebf83"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_31.png",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_31.png",
+      "sha256": "19a5450248655b18ae814206d8ef98967f456da7f2d71b68a790867c9545308f"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_31.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_31.txt",
+      "sha256": "2145a33acc1c6fc99fe72c6a169ba844c910d4e776ece62ea6f3635fdaa1a0ff"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\page_36.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\page_36.txt",
+      "sha256": "6e5753609531fac6ffc330ad6ac3a059e57e422bd0468c0880a9511e63953e9c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\reconcile.py",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\reconcile.py",
+      "sha256": "a672c201ea39ec7fe30ea9c92c053625f36b68b9755bd17ac5c188c8d8be51f8"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\reconciliations_output.json",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\reconciliations_output.json",
+      "sha256": "d80a37ab243ec517e0037fbcfba25dd3a537ddfdf4d8fa7ceb30efacdf5bf12a"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\source_pages.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\source_pages.txt",
+      "sha256": "6a3d3585ef2f4f7cc6345fad0d01ebcb5ccd4be03f29ee220b49b2860239a481"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\calculations\\verify_handoff.py",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\calculations\\verify_handoff.py",
+      "sha256": "9cbbff3dd5adf7ad83d176bc7e71bcd6491c5f6ef1c23cb79053dd44cde22672"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\guardrails_snapshot.json",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\guardrails_snapshot.json",
+      "sha256": "c8956dd522f74b5f568e6eba785db331086654c3ff58b45c1cfea0b8e3cb66d8"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\manifest.json",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\manifest.json",
+      "sha256": "cd977ab649dd176d0c7365bacfa1d626e276181d075c8a4fb62a8fa3656b49b4"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\audit.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\audit.md",
+      "sha256": "0ceaced33bcbcd7f83b88749e3446e5a3a062f2bc47acc4117c6d8b217a55725"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\calculations\\reconciliations.py",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\calculations\\reconciliations.py",
+      "sha256": "c9d7cb83d0c77bcf5a81ecb792c3ce9a21ee82f554bb64795f4e88325803a7a0"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\calculations\\reconciliations_output.txt",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\calculations\\reconciliations_output.txt",
+      "sha256": "74b63038598f1424be0ce97e7618708bd575c6a2681776208819a93f43c53f9e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\manifest.json",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\manifest.json",
+      "sha256": "de38b4e0d0ad5224a5331c1f8a830d854393835d67e08d22eb74e1ecbad184e1"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage1_audit_response.md",
+      "sha256": "9487e50a4dd12a3c33e23b3784498477cb691cef0c32a65c83db4e041b5c766e"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage1_forensic_prompt.md",
+      "sha256": "c52f4c072248bc5e2423fb0eb9ba37d45819c18cc9ed69c4f5c763e6916783e5"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_note.md",
+      "sha256": "3ebf5454d048ab3eb8ee4c37e748a219dfda45cbb84f8ff95b0e4ebb1fd4f74c"
+    },
+    {
+      "original": "C:\\Users\\diond\\Desktop\\Projects\\stock_analysis_prompts\\companies\\consumer_lending\\NTU\\briefs\\1H26\\evaluations\\20261027T175621Z_codex_max_comparison\\inputs\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "saved": "inputs\\baseline\\20261027T164527Z_codex\\inputs\\gemini\\inputs\\NTU_1H26_stage2_valuation_prompt.md",
+      "sha256": "2807744b985483b0342b8b733046c9df954e6a4c9331aef8e79ad29eb651f6ff"
+    }
+  ],
+  "evaluator": "Codex; exact runtime model/settings not independently exposed"
+}

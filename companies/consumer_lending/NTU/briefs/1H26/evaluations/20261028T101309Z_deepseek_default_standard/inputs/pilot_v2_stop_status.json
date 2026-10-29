@@ -1,0 +1,10 @@
+{
+  "status": "stopped",
+  "stage": "section_06_compact_v2",
+  "calls": 8,
+  "last_dispatch_utc": "2026-10-28T10:20:01.102624+00:00",
+  "first_dispatch_utc": "2026-10-28T10:13:20.504898+00:00",
+  "error_type": "Incomplete",
+  "error": "Incomplete response: finish_reason=length",
+  "stopped_utc": "2026-10-28T10:21:21.363874+00:00"
+}
