@@ -11,6 +11,44 @@ intent is an *independent* check of a build whose own suite is green — the int
 
 ## 1. What to read, in this order
 
+**Evidence access.** Query `workflow/changes/20261029_agentic_report_build/build/report.sqlite` directly —
+you have a shell, and reading the database yourself is better than trusting a shaped extract. Python's
+`sqlite3` module is enough; no server needed.
+
+```python
+import sqlite3
+con = sqlite3.connect("workflow/changes/20261029_agentic_report_build/build/report.sqlite")
+con.execute("SELECT physical_page, COUNT(*) FROM cells GROUP BY physical_page ORDER BY 1").fetchall()
+```
+
+Schema (six tables):
+
+| Table | Key columns |
+|---|---|
+| `cells` | `physical_page`, `table_region`, `row_label`, `fiscal_year`, `column_index`, `column_label`, `value_raw`, `value_num`, `unit`, `row_index`, `extraction_commit` |
+| `conflicts` | `check_id`, `kind` (source_defect / extraction_defect / ambiguity), `physical_page`, `ledger_question_id`, `status`, `description` |
+| `questions` | `question_id`, `priority`, `status`, `target_section`, `question` |
+| `pages` | `physical_page`, `render_evidence_path`, `render_sha256` |
+| `sources` | `document`, `sha256`, `bytes` |
+| `runs` | `label`, `started_utc`, `commit_hash` |
+
+Starting queries:
+
+```sql
+-- what sections exist and how big
+SELECT table_region, physical_page, COUNT(*) FROM cells GROUP BY 1,2 ORDER BY 2;
+-- every conflict, grouped
+SELECT kind, COUNT(*) FROM conflicts GROUP BY kind;
+-- trace one figure to its printed glyph and page
+SELECT physical_page, row_label, value_raw, value_num, extraction_commit
+FROM cells WHERE value_raw LIKE '%196,926%';
+-- the unverified regions (no fiscal_year, no executed identity)
+SELECT table_region, COUNT(*) FROM cells WHERE fiscal_year IS NULL GROUP BY 1;
+```
+
+`reviews/p4_review_pack/*.csv` are convenience exports of the same data if you prefer flat files, but they
+are derived — prefer the database.
+
 | # | File | Why |
 |---|---|---|
 | 1 | `workflow/changes/20261029_agentic_report_build/CHARTER.md` | the covenants the build claims to obey |
