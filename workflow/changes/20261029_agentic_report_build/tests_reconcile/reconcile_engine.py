@@ -169,7 +169,7 @@ class Engine:
             cur = con.execute(
                 "SELECT physical_page, row_index, row_label, fiscal_year, unit, "
                 "column_index, value_raw FROM cells "
-                "WHERE table_region NOT LIKE 'primary_%' "
+                "WHERE table_region IN ('A_production','B_costs','C_financial_summary') "
                 "ORDER BY physical_page, row_index, fiscal_year")
             for page, row_index, label, fy, unit, col, raw in cur:
                 key = (row_index, page, label, fy)

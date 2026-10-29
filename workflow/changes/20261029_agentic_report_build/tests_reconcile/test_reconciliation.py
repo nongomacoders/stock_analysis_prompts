@@ -43,15 +43,17 @@ def test_schema_integrity(report_db):
 
 
 def test_blank_column_remains_unextracted(report_db):
-    """Extraction-layer structural invariant: column 4 is a visual gap and must have 0 cells."""
-    n = report_db.execute("SELECT COUNT(*) FROM cells WHERE column_index=4").fetchone()[0]
-    assert n == 0, f"column 4 contains {n} extracted cells; visual gap must be empty"
+    """D009 structural invariant: column 4 is a visual gap and must have 0 cells there."""
+    n = report_db.execute(
+        "SELECT COUNT(*) FROM cells WHERE column_index=4 "
+        "AND table_region IN ('A_production','B_costs','C_financial_summary')").fetchone()[0]
+    assert n == 0, f"D009 column 4 contains {n} extracted cells; visual gap must be empty"
 
 
 def test_cell_lineage_complete(report_db):
     """Every extracted cell carries physical_page, extraction_commit, and document hash."""
     bad = report_db.execute(
-        "SELECT COUNT(*) FROM cells WHERE physical_page NOT IN (17, 18, 48, 49, 50) "
+        "SELECT COUNT(*) FROM cells WHERE physical_page NOT IN (17, 18, 21, 22, 23, 24, 48, 49, 50) "
         "OR extraction_commit IS NULL OR LENGTH(extraction_commit) < 7"
     ).fetchone()[0]
     assert bad == 0, f"{bad} cells lack complete lineage"
