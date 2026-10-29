@@ -3,7 +3,8 @@
 **Source**: `companies/mining/PAN/sources/Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf`
 (SHA-256 `62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd`).
 **Sections covered**: D009 Group production summary (pp.48-50) · S006 primary statements (pp.17-18) ·
-S007 Note 3 segment analysis (pp.21-24) · APM (pp.40-47) · Notes 4, 7, 16, 17 (pp.25, 27-28, 32-34).
+S007 Note 3 segment analysis (pp.21-24) · APM (pp.40-47) · Notes 4, 7, 16 (pp.25, 27-28, 32-33) ·
+Note 18 acquisition rows on p.34.
 **Lineage**: every figure below is a printed cell in `build/report.sqlite` (4,800 cells). Every arithmetic
 statement is executed by `tests_reconcile/` (109 tests, exit 0). Nothing is quoted from model memory.
 
@@ -129,19 +130,23 @@ this build; it is now proved.
 
 ## 5. Ledger status
 
-| ID | Priority | State | Basis |
-|---|---|---|---|
-| `Q-e8c872e6edc94d18` | medium | **Resolved** | Evander total 27,829 = 26,748 + 1,081; the same 1,081 is inside group underground 93,724 |
-| `Q-a0b503d7ac044eee` | high | **Substantially resolved** | Segment-level bridge proved: mining ops 1,155,857 + ESG 594 = 1,156,451; ZAR translation basis still pending |
-| `Q-ced8d2566db6459c` | low | **Partial** | FY25 Tennant EBITDA swing decomposed (30,342 → 2,443 via 28,019 bargain purchase + 120 derivative); A$/kg swing separate |
-| `Q-c1e6100f7a674873` | high | **Partial** | Scope difference proved arithmetically; formal definition wording still to be quoted |
-| `Q-1f48aa6d4b884f09` | medium | **Open** | 10,000 oz Barberton discrepancy; conditional agreement only |
-| `Q-3e8730dbd1994205` | medium | **Open** | 5,763 oz MTR gap; arithmetic consistent, cause unproved |
-| `Q-f1a4ce3647724ed9` | medium | **Open** | Elikhulu 68,843 ZAR/kg magnitude anomaly |
-| `Q-c5e1b41b1cfe4dfb` | medium | **Open** | Tennant consolidation into group ZAR revenue |
+`questions.status` in the database is `open` for all eight, and this table must not claim more than
+arithmetic actually proves. Where an identity now executes, the question is marked *partial* with the
+arithmetic named — not *resolved*, because none of them is closed on management intent.
 
-**Next evidence**: Note 16 (pp.32-33) for the Funding swing; Note 3 (pp.21-24) for the Barberton column;
-APM definitions (p.39) for the wording of 5.
+| ID | Priority | DB status | What arithmetic shows | What it does **not** show |
+|---|---|---|---|---|
+| `Q-e8c872e6edc94d18` | medium | open | Evander total 27,829 = 26,748 + 1,081; the same 1,081 is inside group underground 93,724 | why management embedded buy-in gold in the underground column |
+| `Q-a0b503d7ac044eee` | high | open | revenue bridge is arithmetically complete: mining ops 1,155,857 + ESG 594 = 1,156,451 | the ZAR/US$ translation basis behind the p.50 table |
+| `Q-ced8d2566db6459c` | low | open | FY25 Tennant EBITDA 30,342 → 2,443 decomposes as 28,019 bargain purchase + 120 derivative | whether the A$/kg swing is the same phenomenon |
+| `Q-c1e6100f7a674873` | high | open | the 663.1 vs 609.4 gap is exactly the five non-operating columns (53,670) | the formal wording of the APM definitions |
+| `Q-1f48aa6d4b884f09` | medium | open | substituting 84,929 makes the operations sum tie 272,310 exactly | whether 94,929 or 84,929 is the operative figure |
+| `Q-3e8730dbd1994205` | medium | open | 25,043 + 5,763 = 30,806 and the tailings row balances | whether FY25 truly had no buy-in |
+| `Q-f1a4ce3647724ed9` | medium | open | 68,843 ZAR/kg is an order of magnitude below the ~684,658 implied by 1,172 US$/oz | which digit is missing, and whether it affects any total |
+| `Q-c5e1b41b1cfe4dfb` | medium | open | Tennant prints as its own segment column and capex line | how A$ revenue consolidates into group ZAR revenue |
+
+**Nothing here is closed.** Four questions have arithmetic that constrains the answer; none has evidence of
+management intent, which is what a closure condition requires.
 
 ---
 
