@@ -74,15 +74,20 @@ Seven known questions for this section carried over from the 2026-10-29 trial re
 (Eight rows; the table starts with seven above plus the tenant consolidation line — all from
 the 2026-10-29 preserved validation JSONs.)
 
-## 5. Environment decisions (made now, applied at P1+)
+## 5. Environment decisions (applied at P1+)
 
 - Interpreter: `C:\Users\diond\Desktop\Projects\stock_analysis_prompts\.venv\Scripts\python.exe`
   (worktree has no `.venv` — runbook).
-- Available in that env: `sqlite3`, `pytest`, `pypdfium2`, `PySide6` (verified this session).
-- **`openpyxl` is NOT available** (verified this session). Decision: P4 view layer is
-  **CSV-first** (stdlib `csv`, one file per region + one per conflicts/questions export).
-  Excel generation is deferred; installing openpyxl would mutate the locked environment and
-  requires explicit user authorization. If authorized, the CSVs remain canonical.
+- Verified available in that env: `sqlite3`, `pytest`, `pypdfium2`, `PySide6`.
+- **openpyxl 3.1.5 installed by user 2026-10-29 (after P0), verified end-to-end this session**
+  (create/save/cleanup probe OK). P4 therefore generates a **static values-only Excel view**
+  (tabs: cells / conflicts / questions) strictly from `report.sqlite` via a committed script —
+  **no formulas in any cell** (covenant 2: all arithmetic stays in the tested suite). CSVs
+  remain the canonical machine view; the workbook is a reading surface.
+- Environment drift to fix on the production side (user action): openpyxl is installed in the
+  venv but not recorded in either lockfile; a future `uv sync` would silently remove it. Pin
+  `openpyxl==3.1.5` in the dev lock before P4 depends on it. Do not mutate production
+  lockfiles from this branch.
 
 ## 6. P0 acceptance checklist
 
