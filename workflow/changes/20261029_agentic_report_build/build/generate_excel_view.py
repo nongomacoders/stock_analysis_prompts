@@ -121,6 +121,34 @@ def build_excel_view():
             str(r["extraction_commit"]),
         ])
 
+    # ---------------------------------------- 3b. APM Adjusted EBITDA Tab
+    ws_apm = wb.create_sheet(title="APM_EBITDA_p45")
+    headers_apm = [
+        "Cell ID", "Physical Page", "Fiscal Year", "Row Label", "Column Index",
+        "Operation", "Value Raw", "Value Num (USD m)", "Unit", "Extraction Commit"
+    ]
+    ws_apm.append(headers_apm)
+
+    q_apm = """
+        SELECT id, physical_page, fiscal_year, row_label, column_index, column_label,
+               value_raw, value_num, unit, extraction_commit
+        FROM cells WHERE table_region = 'apm_adjusted_ebitda'
+        ORDER BY row_index, fiscal_year, column_index
+    """
+    for r in con.execute(q_apm):
+        ws_apm.append([
+            int(r["id"]),
+            int(r["physical_page"]),
+            str(r["fiscal_year"]),
+            str(r["row_label"]),
+            int(r["column_index"]),
+            str(r["column_label"]),
+            str(r["value_raw"]),
+            float(r["value_num"]) if r["value_num"] is not None else None,
+            str(r["unit"]),
+            str(r["extraction_commit"]),
+        ])
+
     # --------------------------------------------------------- 4. Conflicts Tab
     ws_conflicts = wb.create_sheet(title="Conflicts")
     conflict_headers = [
@@ -168,7 +196,8 @@ def build_excel_view():
 
     # Style all sheets and auto-fit column widths
     for ws, fill in [(ws_primary, header_fill_green), (ws_d009, header_fill_blue),
-                     (ws_seg, header_fill_green), (ws_conflicts, header_fill_blue),
+                     (ws_seg, header_fill_green), (ws_apm, header_fill_blue),
+                     (ws_conflicts, header_fill_blue),
                      (ws_questions, header_fill_blue)]:
         ws.views.sheetView[0].showGridLines = True
         for col_idx in range(1, ws.max_column + 1):
@@ -194,6 +223,7 @@ def build_excel_view():
     print(f"Primary Statements cells: {ws_primary.max_row - 1}")
     print(f"Production & Costs cells: {ws_d009.max_row - 1}")
     print(f"Segment Analysis (Note 3) cells: {ws_seg.max_row - 1}")
+    print(f"APM EBITDA cells: {ws_apm.max_row - 1}")
     print(f"Conflicts: {ws_conflicts.max_row - 1}")
     print(f"Questions: {ws_questions.max_row - 1}")
 
