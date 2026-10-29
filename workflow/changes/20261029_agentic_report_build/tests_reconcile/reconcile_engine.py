@@ -36,6 +36,8 @@ def parse_value(value_raw: str):
     if s in {".", ""}:
         return None
     s2 = s.replace(" ", "").replace(",", "")
+    if s2.startswith("(") and s2.endswith(")"):
+        s2 = "-" + s2[1:-1]
     try:
         return Decimal(s2)
     except InvalidOperation as exc:  # pragma: no cover - structural, tested
@@ -166,7 +168,9 @@ class Engine:
         try:
             cur = con.execute(
                 "SELECT physical_page, row_index, row_label, fiscal_year, unit, "
-                "column_index, value_raw FROM cells ORDER BY physical_page, row_index, fiscal_year")
+                "column_index, value_raw FROM cells "
+                "WHERE table_region NOT LIKE 'primary_%' "
+                "ORDER BY physical_page, row_index, fiscal_year")
             for page, row_index, label, fy, unit, col, raw in cur:
                 key = (row_index, page, label, fy)
                 self.rows.setdefault(key, {})[col] = parse_value(raw)
