@@ -1,0 +1,84 @@
+17. SHARE-BASED PAYMENT OBLIGATIONS continued
+17.3 PAR Gold Long-term Incentive Plan
+ Fair values were calculated using the Monte Carlo simulation with the following key inputs:
+PAR Gold 
+G shares
+PAR Gold
+ I shares
+PAR Gold 
+J shares
+Number of shares 11,541,455 8,871,240 7,066,577
+Grant date 1 July 2023 1 July 2024 1 July 2025
+Vesting date 30 June 2026 30 June 2027 30 June 2028
+Share price at grant date (based on 90-day volume￾weighted average price (VWAP) (ZAR) 3.59 5.51 10.43
+90-day VWAP as at 30 June 2026 (ZAR) 30.69 30.69 30.69
+90-day VWAP as at 30 June 2025 (ZAR) 10.40 10.40 n/a
+Probability of vesting as at 30 June 2026 (%) 90 90 90
+Probability of vesting as at 30 June 2025 (%) 90 90 n/a
+Fair value per option as at 30 June 2026 (ZAR) 8.27 30.85 28.07
+Fair value per option as at 30 June 2025 (ZAR) 8.27 9.36 n/a
+18. ACQUISITIONS AND DISPOSALS
+18.1 Acquisition of Emmerson Resources Limited (Emmerson)
+The Group, through its wholly owned subsidiary Tennant company, acquired 100% of the issued shares 
+in Emmerson by way of an Australian Court-approved scheme of arrangement ( scheme) in accordance 
+with Part 5.1 of the Australian Corporations Act 2001. Tennant company obtained control of Emmerson 
+on 22 June 2026 as the scheme came into effect and was legally enforceable and binding on all parties on 
+22 June 2026, as determined by section 411(10) of the Corporations Act 2001.
+The acquisition represents Pan African’s next step since acquiring Tennant company in FY25 and consolidates 
+its position in the TCMF. In addition, Emmerson has been a joint venture partner since establishing the Tennant 
+Creek Joint Venture in 2020. Bringing the assets under single ownership allows Pan African to optimise project 
+sequencing and capital allocation across the region, effectively facilitating economies of scale by eliminating the 
+complexity of joint venture arrangements, and positions Pan African to capture the full value of Tennant Creek 
+through consolidation, ultimately maximising value for all shareholders. 
+Under the terms of the scheme, Emmerson shareholders were entitled to receive 0.1493 new Pan African shares, 
+in the form of ASX-listed Pan African CDIs, for each Emmerson share held. The scheme was implemented and 
+Pan African shares were allotted to the Emmerson shareholders on 1 July 2026.
+Furthermore, in conjunction with the scheme, Pan African listed on the ASX by way of a Foreign Exempt Listing, 
+providing Emmerson shareholders with the ability to trade Pan African CDIs on the ASX. Pan African’s shares 
+continue to trade, as a dual primary issuer, on the LSE and JSE following the ASX listing.
+The purchase price, determined by way of a fixed exchange rate, was settled on 1 July 2026. 
+102,641,421 Pan African shares were issued at GBP1.09 (US$1.44) per share resulting in a purchase price of 
+US$148.2 million. As control arose on 22 June 2026 and the purchase price settled on 1 July 2026, being after 
+the reporting date, a reserve for shares to be issued was recognised as at 30 June 2026; refer to note 14.
+While Tennant company obtained control of Emmerson on 22 June 2026, for practical purposes and given that 
+there were no significant transactions or movements in fair values between 22 June 2026 and 30 June 2026, 
+Emmerson has been consolidated from 30 June 2026.
+Included in the identifiable assets acquired are inputs in the form of mineral rights. However, no active operations, 
+assets or a skilled workforce to extract gold or generate income from ordinary activities were identified on the 
+date of acquisition. The acquisition of Emmerson, therefore, did not constitute the acquisition of a business as 
+there was no integrated set of activities in place capable of being managed to convert the acquired inputs into 
+outputs. As such, the acquisition was recognised as an asset acquisition.
+ On acquisition, Tennant company was required to identify and recognise the individual assets and liabilities 
+acquired. The purchase price was allocated to the assets acquired and liabilities assumed based on their fair 
+values at the date of acquisition, resulting in the excess purchase consideration over net identifiable asset 
+value being allocated to the exploration assets. This allocation reflects the concentration of value in the mineral 
+extraction and exploration rights acquired. Since the transaction did not constitute the acquisition of a business, 
+no goodwill was recognised.
+Details of the purchase price and allocation are as follows:
+Purchase price
+Note US$ thousand
+Ordinary shares to be issued (102,641,421 at GBP1.09 per share) 14 148,218 
+Directly attributable transaction costs capitalised 11,879 
+Total cost of the acquisition 160,097
+Allocation of the cost of the acquisition
+Note US$ thousand
+Property, plant and equipment 7 142,436 
+– Exploration assets 142,244
+– Buildings – leased 112
+– Other 80
+Investment 86
+Trade and other receivables 6,427
+Cash and cash equivalents 12,796
+Lease liability (133)
+Trade and other payables (1,515)
+Total net assets acquired 160,097
+ 18.2 Disposals
+There were no disposals during the current or previous reporting period.
+NOTES TO THE SUMMARISED CONSOLIDATED 
+ANNUAL FINANCIAL STATEMENTS continued
+for the year ended 30 June 2026
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+64 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+65

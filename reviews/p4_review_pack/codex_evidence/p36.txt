@@ -1,0 +1,82 @@
+20. FINANCIAL INSTRUMENTS continued
+ 20.2 Fair value information continued
+Fair value hierarchy
+US$ thousand Notes Level 1 Level 2 Level 3 Total
+FY26
+Investment1 9 12,705 – – 12,705 
+Environmental rehabilitation 
+obligation fund2 – 34,617 – 34,617 
+Short-term investments3 13 – 137,867 – 137,867 
+FY25
+Environmental rehabilitation 
+obligation fund2 – 29,118 – 29,118 
+Derivative financial liability – (1,848) – (1,848)
+1 The investment in CuFe is included as Level 1 as the shares are traded on the ASX.
+2 The environmental rehabilitation obligation fund is included as Level 2 per the fair value hierarchy as the premiums are invested 
+in interest-bearing short-term deposits and equity share portfolios held in an insurance investment product which is managed 
+by independent fund managers.
+3 The short-term investments are included as Level 2 in the fair value hierarchy as they are valued using the net asset value per unit, 
+which is derived from observable market inputs for the underlying money market and short-term instruments held by each fund.
+21. COMMITMENTS, CONTINGENT LIABILITIES AND GUARANTEES
+US$ thousand FY26 FY25
+Outstanding open orders 94,580 36,500
+Board-approved commitments, not yet contracted for 309,076 106,300
+IFRS 16 lease commitments – due within the next 12 months 3,214 1,050
+Financial liability commitment – due within the next 12 months 418 2,370
+Guarantees – Eskom Holdings SOC Limited 5,134 3,761
+Department of Mineral and Petroleum Resources 39,566 37,628
+Power purchase agreement
+The Company entered into a PPA on 3 July 2025 with NOA Group Trading Proprietary Limited. The PPA is for 
+the supply of wheeled power for 10 years, with the option to extend it for another five years. The underlying solar 
+plant remains under construction with various supply agreements remaining outstanding for the plant to become 
+operational. The accounting treatment of recognising the PPA as an executory contract is unchanged from the 
+prior reporting period.
+Contingent liabilities
+The Group identified no material contingent liabilities in the current or previous reporting period.
+22. RELATED PARTY TRANSACTIONS
+The related party transactions are summarised as follows:
+• Intra-Group interest and management fees – refer to segment analysis note 3
+• Intra-Group loans have no specific repayment terms, are repayable on demand and bear interest in relation 
+to the treasury function provided by Funding Company
+• Intra-Group PAR Gold reciprocal dividend – refer to the summarised consolidated statement of changes 
+in equity
+• Intra-Group electricity charge between Evander Solar Solutions Proprietary Limited and Evander Mines for 
+the electricity produced by the solar plant and utilised by Elikhulu – refer to segment analysis note 3.
+No further material related party transactions occurred, either with third parties or with Group entities, during 
+the current or previous reporting period.
+23. LITIGATION AND CLAIMS
+Evander Mines and MPC
+Evander Mines terminated the contract mining agreement (CMA) with its 8 Shaft contractor during the 2024 
+reporting period due to disputes over specific clauses in the CMA. Evander Mines referred this matter to 
+arbitration and the proceedings are still ongoing. The likelihood of any outflow of economic benefits is remote.
+Department of Forestry, Fisheries and the Environment – alleged offences in the 
+Barberton Nature Reserve
+On 22 May 2025, the South African state served a summons on Barberton Mines and its environmental health 
+and safety manager for alleged contraventions of the National Environmental Management: Protected Areas 
+Act, 57 of 2003, and related regulations. The charges relate to (i) conducting commercial prospecting in a 
+nature reserve and (ii) the unauthorised widening and upgrading of a road within a nature reserve. Barberton 
+Mines denies the merits of the charges and submitted formal written representations to the National Prosecuting 
+Authority (NPA) on 17 September 2025, requesting the NPA to, inter alia, withdraw the charges. The NPA is still 
+considering the representation and has been directed by the Court to provide Barberton Mines with a response 
+on the representation by 29 September 2026. The likelihood of any outflow of economic benefits is remote.
+Barberton Mines land claim
+Barberton Mines is aware of a land claim, lodged by individuals purporting to be part of communities surrounding 
+Barberton Mines’ Sheba Mine, pertaining to two portions of land, over which Barberton Mines holds two 
+converted mining rights. Barberton Mines is formally opposing the land claim and has reasonable prospects to 
+successfully challenge the claim. The Group’s legal counsel has advised that, irrespective of the merits of the 
+claim, there should be no impact on the Company’s ability to exercise its mining right and continue operations.
+24. EVENTS AFTER THE REPORTING PERIOD
+As announced on the SENS, on 1 July 2026, the Company issued 102,641,421 new Pan African shares (in the 
+form of ASX-listed Pan African CDIs) to eligible Emmerson shareholders in settlement for the acquisition of 100% 
+of the issued shares in Emmerson.
+There were no other events that could have a material impact on the financial results of the Group after 
+30 June 2026 up to the date on which the Group financial statements for the reporting period ended 
+30 June 2026 were authorised for issue.
+NOTES TO THE SUMMARISED CONSOLIDATED 
+ANNUAL FINANCIAL STATEMENTS continued
+for the year ended 30 June 2026
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+68 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+69

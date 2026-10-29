@@ -1,0 +1,63 @@
+NET ADJUSTED EBITDA
+Net adjusted EBITDA starts with adjusted EBITDA adjusted for any entries made to unrealised fair value gains or 
+losses on financial derivatives that are entered into in the normal course of business as part of the Group’s financial risk 
+management process.
+FREE CASH FLOW
+Free cash flow starts with adjusted EBITDA and is adjusted for changes in net working capital, non-cash flow items as 
+determined by IAS 7, capital expenditure less capital funded through permitted indebtedness and tax payments.
+HEADLINE EARNINGS
+Headline earnings, a JSE-defined performance measure (as defined by Circular 2023/1 issued by SAICA), are reconciled 
+from profit/(loss) after tax in note 13 to the summarised financial statements.
+RATIOS
+Return on shareholder funds
+This ratio measures returns to equity shareholders as a percentage of the capital invested in the Group. It is calculated as 
+profit/(loss) after tax expressed as a percentage of the average total equity for the current and previous reporting periods.
+Net debt-to-equity ratio
+This ratio measures the degree to which the Group finances its operations through debt relative to equity and is calculated 
+as net debt divided by total equity.
+Net debt-to-net adjusted EBITDA ratio
+This ratio measures the number of years it would take the Group to repay its net debt from net adjusted EBITDA, 
+assuming both variables are held consistent, and is calculated as net debt divided by net adjusted EBITDA.
+Interest cover ratio
+This ratio measures the Group’s ability to pay interest on its outstanding senior debt from net adjusted EBITDA and is 
+calculated as total net adjusted EBITDA divided by finance costs incurred on interest-bearing debt.
+Debt service cover ratio
+This ratio measures the cash flow available for debt service relative to the Group’s obligatory principal and interest debt 
+obligations and is calculated as free cash flow available for debt service divided by principal and interest-debt obligations. 
+NET ASSET VALUE PER SHARE
+This is calculated as total equity divided by the total number of shares in issue less treasury shares held by the Group.
+Unit FY26 FY25
+Total equity US$ million 1,036.0 546.7
+Shares in issue million 2,333.7 2,335.7
+Treasury shares million (306.4) (306.4)
+Net asset value per share US cents 51.10 26.94
+LEVERED FREE CASH FLOW 
+Levered free cash flow measures the cash available after the Group’s financial obligations have been met including 
+interest payments and debt. It represents the cash flow available to shareholders. 
+Unit FY26 FY25
+Adjusted EBITDA US$ million 609.4 226.6 
+Finance costs paid US$ million (15.0) (21.4)
+Income tax paid US$ million (74.1) (20.1)
+Net working capital movement US$ million 46.6 (2.0)
+Capital expenditure US$ million (215.8) (157.9)
+Proceeds from borrowings US$ million – 139.5 
+Repayment of borrowings US$ million (149.3) (117.2)
+Levered free cash flow US$ million 201.8 47.5 
+Shares in issue number million 2,333.7 2,335.7
+Treasury shares number million (306.4) (306.4)
+Total number of shares number million 2,027.3 2,029.3
+Attributable cash flow per share US cents per share 9.95 2.34
+LEVERED FREE CASH FLOW YIELD PER SHARE
+This is calculated as the levered free cash flow per share expressed as a percentage of the last traded price per 
+Pan African share as at 30 June.
+Unit FY26 FY25
+Attributable cash flow per share US cents per share 9.95 2.34
+Last traded price per Pan African share1 US cents per share 125.09 62.48
+Cash flow yield per share % 7.96 3.75
+1 Amounts converted at the 30 June 2026 closing exchange rate of US$/ZAR:16.46 (FY25: US$/ZAR:17.75).
+ALTERNATIVE PERFORMANCE MEASURES continued
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+88 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+89

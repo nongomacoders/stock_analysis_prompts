@@ -1,0 +1,47 @@
+PAGE 24
+[('Excluding: unrealised fair value loss on derivatives', 1, '–'), ('Excluding: unrealised fair value loss on derivatives', 2, '–'), ('Excluding: unrealised fair value loss on derivatives', 3, '–'), ('Excluding: unrealised fair value loss on derivatives', 4, '120'), ('Excluding: unrealised fair value loss on derivatives', 5, '1,925'), ('Excluding: unrealised fair value loss on derivatives', 6, '–'), ('Excluding: unrealised fair value loss on derivatives', 7, '–'), ('Excluding: unrealised fair value loss on derivatives', 8, '–'), ('Excluding: unrealised fair value loss on derivatives', 9, '–'), ('Excluding: unrealised fair value loss on derivatives', 10, '1,925'), ('Adjusted EBITDA4', 0, '93,798'), ('Adjusted EBITDA4', 1, '97,761'), ('Adjusted EBITDA4', 2, '(754)'), ('Adjusted EBITDA4', 3, '51,763'), ('Adjusted EBITDA4', 4, '2,443'), ('Adjusted EBITDA4', 5, '245,011'), ('Adjusted EBITDA4', 6, '(604)'), ('Adjusted EBITDA4', 7, '(369)'), ('Adjusted EBITDA4', 8, '(17,653)'), ('Adjusted EBITDA4', 9, '199'), ('Adjusted EBITDA4', 10, '226,584'), ('1 The segment assets and liabilities above exclude intra-Group balances. 2 Capital expenditure comprises additions to property, plant and equipment, 3 EBITDA comprises earnings before interest, tax, depreciation and amortisation. 4 Adjusted EBITDA comprises earnings before interest, tax, depreciation and bargain purchase gains and unrealised fair value losses on derivatives. Geographical information The Group’s non-current assets based on the location of the assets, located as follows: South Africa', 2, '740,819'), ('Australia', 2, '155,716'), ('Other countries', 2, '445')]
+PAGE 36
+[('Derivative financial liability – (1,848)', 0, '–'), ('Derivative financial liability – (1,848)', 1, '(1,848)'), ('Outstanding open orders', 0, '94,580'), ('Outstanding open orders', 1, '36,500'), ('Board-approved commitments, not yet contracted for', 0, '309,076'), ('Board-approved commitments, not yet contracted for', 1, '106,300'), ('IFRS 16 lease commitments – due within the next 12 months', 0, '3,214'), ('IFRS 16 lease commitments – due within the next 12 months', 1, '1,050'), ('Financial liability commitment – due within the next 12 months', 0, '418'), ('Financial liability commitment – due within the next 12 months', 1, '2,370'), ('Guarantees – Eskom Holdings SOC Limited', 0, '5,134'), ('Guarantees – Eskom Holdings SOC Limited', 1, '3,761'), ('Department of Mineral and Petroleum Resources', 0, '39,566'), ('Department of Mineral and Petroleum Resources', 1, '37,628')]
+GEO 911962 []
+GEO 365207 []
+GEO 480 []
+GEO 1277649 []
+GEO 740819 [(3216, 24, '1 The segment assets and liabilities above exclude intra-Group balances. 2 Capital expenditure comprises additions to property, plant and equipment, 3 EBITDA comprises earnings before interest, tax, depreciation and amortisation. 4 Adjusted EBITDA comprises earnings before interest, tax, depreciation and bargain purchase gains and unrealised fair value losses on derivatives. Geographical information The Group’s non-current assets based on the location of the assets, located as follows: South Africa')]
+GEO 155716 [(3217, 24, 'Australia')]
+GEO 445 [(3218, 24, 'Other countries')]
+GEO 896980 []
+CONFLICT []
+PAGE 17 US$ thousand Notes FY26 FY25 | ASSETS | Non-current assets | Property, plant and equipment 7 1,196,474 824,450 
+PAGE 18 SUMMARISED CONSOLIDATED STATEMENT  | OF CASH FLOWS | for the year ended 30 June 2026 | US$ thousand Notes FY26 FY25
+PAGE 19 NOTES TO THE SUMMARISED CONSOLIDATED | ANNUAL FINANCIAL STATEMENTS | for the year ended 30 June 2026 | 1. BASIS OF PREPARATION
+PAGE 20 when temporary differences will be utilised. The  | respective rates are calculated based on management’s  | best estimate through which the temporary difference will  | be realised over the life of the mining operations.
+PAGE 21 3. SEGMENT ANALYSIS continued | The segment results have been presented based on Exco’s reporting format, in accordance with the disclosures  | presented as follows: | FY26 FY26 FY26
+PAGE 22 3. SEGMENT ANALYSIS continued | FY26 FY26 FY26 | US$ thousand Note |  Barberton 
+PAGE 23 3. SEGMENT ANALYSIS continued | FY25 FY25 FY25 | US$ thousand Notes | Barberton 
+PAGE 24 3. SEGMENT ANALYSIS continued | FY25 FY25 FY25 | US$ thousand Note | Barberton 
+PAGE 25 4. REVENUE | Disaggregation of revenue | The Group’s sources of revenue are: | US$ thousand FY26 FY25
+PAGE 26 6. INCOME TAX continued | 6.2 Deferred tax | Deferred tax rates applied within the Group | % FY26 FY25
+PAGE 27 7. PROPERTY, PLANT AND EQUIPMENT | US$ thousand Land | Mineral  | rights
+PAGE 28 7. PROPERTY, PLANT AND EQUIPMENT continued | US$ thousand Land | Mineral  | rights
+PAGE 29 8. CAPITAL EXPENDITURE | US$ thousand | Sustaining | capital 
+PAGE 30 12. TRADE AND OTHER PAYABLES  | US$ thousand FY26 FY25 | Trade payables 76,064 44,012  | Other payables1 50,305 20,825 
+PAGE 31 15. SHARE PREMIUM | The movement in share premium for the reporting period is as follows: | US$ thousand FY26 FY25 | Balance as at 1 July 10,877 235,063 
+PAGE 32 16. BORROWINGS continued | 16.3 DMTN bonds | The movement on the DMTN bonds is as follows: | US$ thousand FY26 FY25
+PAGE 33 16. BORROWINGS continued | 16.7 Credit facilities | The Group has the following credit facilities, guarantees and derivative trading facilities in place: | US$ thousand FY26 FY25
+PAGE 34 17. SHARE-BASED PAYMENT OBLIGATIONS continued | 17.3 PAR Gold Long-term Incentive Plan |  Fair values were calculated using the Monte Carlo simulation with the following key inputs: | PAR Gold 
+PAGE 35 19. RECONCILIATION OF PROFIT BEFORE TAX TO CASH GENERATED BY OPERATIONS | US$ thousand Notes FY26 FY25 | Profit before tax 534,368 196,633  | Adjusted for: 143,482 30,079 
+PAGE 36 20. FINANCIAL INSTRUMENTS continued |  20.2 Fair value information continued | Fair value hierarchy | US$ thousand Notes Level 1 Level 2 Level 3 Total
+PAGE 37 Pan African experienced  | a record-breaking year. | Alternative performance measures 72 | Group production summary 92
+PAGE 38 INTRODUCTION | When assessing and discussing Pan African’s reported financial performance, financial position and cash flows,  | management makes reference to alternative performance measures (APMs) of historical or future financial performance,  | financial position or cash flows that are not defined or specified under IFRS Accounting Standards.
+PAGE 39 Group APM | Related IFRS  | Accounting  | Standards 
+PAGE 40 ALL-IN COSTS | This includes additional costs which relate to the growth of the Group. AIC starts with AISC and adds additional costs  | which relate to the growth of the Group, including non-sustaining capital expenditure not associated with current  | operations and costs such as voluntary severance pay.
+PAGE 41 ALTERNATIVE PERFORMANCE MEASURES continued | ALL-IN COSTS continued | Mining operations Tailings operations Tailings operations Total operations | FY25 
+PAGE 42 ALL-IN COSTS continued | Mining operations Tailings operations Tailings operations Total operations | FY26 Unit | Barberton
+PAGE 43 ALL-IN COSTS continued | Mining operations Tailings operations Tailings operations Total operations | FY25 Unit | Barberton
+PAGE 44 SUSTAINING CAPITAL | Sustaining capital is the capital needed to sustain the current production base. | EXPANSION CAPITAL | Expansion capital relates to capital expenditure for the growth of the production base.
+PAGE 45 ADJUSTED EBITDA | Adjusted EBITDA is a measure of the Group’s operating performance and is calculated as net profit or loss for the  | Group before finance income and finance costs and tax, before any amount attributable to the amortisation of intangible  | assets and the depreciation of tangible assets and before any extraordinary items or the impairment of non-financial 
+PAGE 46 NET ADJUSTED EBITDA | Net adjusted EBITDA starts with adjusted EBITDA adjusted for any entries made to unrealised fair value gains or  | losses on financial derivatives that are entered into in the normal course of business as part of the Group’s financial risk  | management process.
+PAGE 47 RETURN ON CAPITAL EMPLOYED | This ratio measures the profitability of the capital employed by the Group in its operations. It demonstrates how  | effectively profits are generated on both debt and equity capital and is calculated by dividing earnings before finance  | costs and tax by the sum of the average equity for the current and previous reporting period and the average debt 
+PAGE 48 Mining operations | Surface  | operations Surface operations Total operations | Unit
+PAGE 49 Mining operations | Surface  | operations Surface operations Total operations | Unit
+PAGE 50 GROUP PRODUCTION SUMMARY continued | Mining operations | Surface  | operations Surface operations Total operations

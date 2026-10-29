@@ -1,0 +1,73 @@
+16. BORROWINGS continued
+16.7 Credit facilities
+The Group has the following credit facilities, guarantees and derivative trading facilities in place:
+US$ thousand FY26 FY25
+South Africa
+RCF 60,753 56,388 
+Term facility – 69,577 
+Guarantees1
+Eskom Holdings SOC Limited 5,271 3,761 
+DMPR – Cenviro Solutions insurance investment product 40,575 37,626 
+General banking facility2 18,226 7,887 
+Pre-settlement splits
+Forward exchange contract limit facility 2,430 2,535 
+Precious metals hedging facility 2,430 2,254 
+Gold hedging facility 5,772 15,211 
+US$ gold and derivatives trading facilities3 58,931 35,003 
+Gold loan facility 25,557 16,338 
+Credit cards 119 167 
+Other credit facilities 486 282 
+Australia
+Realside facility – 31,020 
+Northern Territory of Australia facility – 6,600 
+National Australia Bank loan – 2,310 
+Total credit facilities 220,550 286,959 
+1 The guarantees issued to Eskom Holdings SOC Limited relate to the supply of electricity. RMB issued a guarantee to Eskom 
+on behalf of MTR resulting in an increase in the Eskom guarantee. The guarantees issued to the DMPR relate to the Group’s 
+environmental rehabilitation obligation.
+2 The Nedbank Limited and RMB general banking facilities are unsecured and were unutilised in the current and previous reporting 
+periods. These facilities, when utilised, bear interest at rates linked to the South African prime interest rate.
+3 The US$ gold and derivative trading facilities are used by the Group for the purpose of trading gold inventory and subsequent 
+conversion of US$ sales proceeds into ZAR. The facilities are held at Absa Bank Limited, Nedbank Limited, Rand Merchant Bank 
+Limited and Investec Bank Limited.
+17. SHARE-BASED PAYMENT OBLIGATIONS
+ 17.1 Cash-settled share-based obligation
+The reconciliation of the cash-settled share-based payment obligation is as follows:
+US$ thousand FY26 FY25
+Balance as at 1 July 21,486 10,965 
+Expense recognised in profit or loss 57,272 13,358 
+Expense capitalised to plant and equipment 1,463 6,325 
+Payments made (18,200) (9,600)
+Foreign currency translation reserve movement 2,331 438 
+Balance as at 30 June 64,352 21,486 
+Less: current portion (43,969) (11,190)
+Non-current portion 20,383 10,296 
+The Group recognised cash-settled share-based payment expenses on each scheme as follows:
+US$ thousand FY26 FY25
+Group cash-settled share options - Pan African Share Appreciation 
+Bonus Plan 20,555 5,553 
+PAR Gold Long-term Incentive Plan 36,717 11,408 
+Total expense recognised in profit or loss 57,272 16,961 
+17.2 Assumptions and estimates
+The determination of the fair value of a cash-settled share-based payment obligation is subject to management 
+applying key assumptions and estimates. The fair value is calculated using actuarial valuations. The following 
+tables provide details regarding the cash-settled share-based payment obligations and the inputs used in 
+the models.
+Fair values were calculated using the binomial pricing model with the following key inputs:
+FY26 FY25
+Weighted average share price (ZAR) 15.17 3.92 
+Weighted average exercise/strike price (ZAR) 5.21 3.81
+Exercise price (ZAR) 3.19 – 20.95 1.36 – 8.05
+Expected volatility (%) 45.6 – 51.9 42 – 44
+Expected life (years) 3 – 6 3 – 6
+Weighted average remaining life (years) 3.41 3.88
+Risk-free rate (%) 7.49 – 7.60 7.15 – 7.57
+Expected dividend yield (%) 3 3
+NOTES TO THE SUMMARISED CONSOLIDATED 
+ANNUAL FINANCIAL STATEMENTS continued
+for the year ended 30 June 2026
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+62 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+63

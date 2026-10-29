@@ -1,0 +1,74 @@
+RETURN ON CAPITAL EMPLOYED
+This ratio measures the profitability of the capital employed by the Group in its operations. It demonstrates how 
+effectively profits are generated on both debt and equity capital and is calculated by dividing earnings before finance 
+costs and tax by the sum of the average equity for the current and previous reporting period and the average debt 
+provided by financial institutions for this same period.
+Unit FY26 FY25
+Net income before finance income and finance costs US$ million 545.8 215.9
+Average equity US$ million 791.3 455.4
+Average borrowings US$ million 120.8 158.9
+Return on capital employed % 59.8 35.1
+ADJUSTED EBITDA MARGIN
+This is calculated as adjusted EBITDA divided by revenue.
+GROSS PROFIT MARGIN
+This is calculated as gross profit divided by revenue.
+CURRENT RATIO
+The liquidity ratio that measures the Group’s ability to pay its current liabilities from current assets, and is calculated 
+as current assets divided by current liabilities.
+PRICE EARNINGS RATIO
+This is calculated as the last sale price for the year divided by the earnings per share either in ZA cents or in GB pence 
+per the table below.
+FY26
+cents
+FY26
+pence
+FY25
+cents
+FY25
+pence
+FY24
+cents
+FY24
+pence
+FY23
+cents
+FY23
+pence
+FY22
+cents
+FY22
+pence
+Earnings 
+per share 298.12 13.36 131.91 5.63 77.49 3.37 56.69 2.65 59.16 2.92
+DIVIDEND YIELD AT THE LAST TRADED SHARE PRICE
+This is calculated as the dividend per share either in ZA cents or GB pence per the table below expressed as a 
+percentage of the last price per share traded.
+FY26
+cents1
+FY26
+pence1
+FY25
+cents
+FY25
+pence
+FY24
+cents
+FY24
+pence
+FY23
+cents
+FY23
+pence
+FY22
+cents
+FY22
+pence
+Dividends 
+per share 77.00 3.53 37.00 1.52 22.00 0.96 18.00 0.75 18.00 0.92
+1 Includes the maiden interim dividend of ZA 12.00 cents (0.55 pence) per share.
+ALTERNATIVE PERFORMANCE MEASURES continued
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+90 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+91

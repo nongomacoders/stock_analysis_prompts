@@ -1,0 +1,66 @@
+6. INCOME TAX continued
+6.2 Deferred tax
+Deferred tax rates applied within the Group
+% FY26 FY25
+Barberton Mines 28.29 24.00
+Evander Mines (other and mining rights) 29.03 28.00
+MTR operation 29.95 28.00
+Tennant Mines 30.00 30.00
+Other Group companies 27.00 27.00
+Deferred tax balances and reconciliations
+Deferred tax balances at the reporting date are as follows:
+US$ thousand FY26 FY25
+Deferred tax liabilities
+Arising from temporary differences relating to:
+Inventory 2,577 9,080 
+Property, plant and equipment 255,589 136,460 
+Employee obligations1 (2,628) (2,283)
+Cash-settled share-based payment obligation1 (4,715) (1,768)
+Expected credit loss allowance1 (56) (48)
+Other payables1 (172) (28)
+Prepayments 34 (40)
+Assessed loss – (169)
+Leases (637) (174)
+Fair value adjustment on investment 569 – 
+Other1 (81) (524)
+Net deferred tax liabilities 250,480 140,506 
+1 In the previous reporting period, employee obligations, cash-settled share-based payment obligations and the expected credit 
+loss allowance were incorrectly classified as an environmental rehabilitation obligation. These items have been disaggregated in 
+the current reporting period, with comparative figures restated accordingly. 
+US$ thousand FY26 FY25
+Reconciliation of deferred tax liabilities
+Net deferred tax liabilities as at 1 July 140,506 85,353 
+Deferred tax recognised at acquisition – 14,439 
+Deferred tax recognised in profit or loss 97,377 37,750 
+Transferred from deferred tax assets (486) (44)
+Foreign currency translation reserve movement 13,083 3,008 
+Net deferred tax liabilities as at 30 June 250,480 140,506 
+Deferred tax assets
+Arising from temporary differences relating to:
+Property, plant and equipment – (5,936)
+Assessed loss 3 6,729 
+Other payables2 91 545 
+Leases 15 2 
+Prepayments (42) (19)
+Employee obligations1 789 626 
+Cash-settled share-based payment obligation 1,065 125 
+Net deferred tax assets 1,921 2,072 
+Reconciliation of deferred tax assets
+Net deferred tax assets as at 1 July 2,072 631 
+Deferred tax recognised in profit or loss 205 1,441 
+Transferred to deferred tax liability (486) (44)
+Foreign currency translation reserve movement 130 44 
+Net deferred tax assets as at 30 June 1,921 2,072 
+1 Other payables previously included the temporary difference arising from the accrual for employee benefits and leave pay liability. 
+This amount has been disaggregated in the current reporting period, with comparative figures restated accordingly.
+Deferred tax assets have only been recognised, where applicable, on the basis that the individual Group 
+companies will be able to generate future taxable economic benefits to utilise current deductible temporary 
+differences.
+NOTES TO THE SUMMARISED CONSOLIDATED 
+ANNUAL FINANCIAL STATEMENTS continued
+for the year ended 30 June 2026
+PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+48 PAN AFRICAN RESOURCES PLC 
+Summarised audited results 2026
+49

@@ -1,0 +1,20 @@
+PAGE 24
+(3216, 1, '1 The segment assets and liabilities above exclude intra-Group balances. 2 Capital expenditure comprises additions to property, plant and equipment, 3 EBITDA comprises earnings before interest, tax, depreciation and amortisation. 4 Adjusted EBITDA comprises earnings before interest, tax, depreciation and bargain purchase gains and unrealised fair value losses on derivatives. Geographical information The Group’s non-current assets based on the location of the assets, located as follows: South Africa', 'FY25', 2, 'Solar projects', '740,819', 740819.0)
+(3217, 2, 'Australia', 'FY25', 2, 'Solar projects', '155,716', 155716.0)
+(3218, 3, 'Other countries', 'FY25', 2, 'Solar projects', '445', 445.0)
+PAGE 36
+(9948, 1, 'Derivative financial liability – (1,848)', None, 0, 'col0', '–', None)
+(9949, 1, 'Derivative financial liability – (1,848)', None, 1, 'col1', '(1,848)', -1848.0)
+(9950, 2, 'Outstanding open orders', None, 0, 'col0', '94,580', 94580.0)
+(9951, 2, 'Outstanding open orders', None, 1, 'col1', '36,500', 36500.0)
+(9952, 3, 'Board-approved commitments, not yet contracted for', None, 0, 'col0', '309,076', 309076.0)
+(9953, 3, 'Board-approved commitments, not yet contracted for', None, 1, 'col1', '106,300', 106300.0)
+(9954, 4, 'IFRS 16 lease commitments – due within the next 12 months', None, 0, 'col0', '3,214', 3214.0)
+(9955, 4, 'IFRS 16 lease commitments – due within the next 12 months', None, 1, 'col1', '1,050', 1050.0)
+(9956, 5, 'Financial liability commitment – due within the next 12 months', None, 0, 'col0', '418', 418.0)
+(9957, 5, 'Financial liability commitment – due within the next 12 months', None, 1, 'col1', '2,370', 2370.0)
+(9958, 6, 'Guarantees – Eskom Holdings SOC Limited', None, 0, 'col0', '5,134', 5134.0)
+(9959, 6, 'Guarantees – Eskom Holdings SOC Limited', None, 1, 'col1', '3,761', 3761.0)
+(9960, 7, 'Department of Mineral and Petroleum Resources', None, 0, 'col0', '39,566', 39566.0)
+(9961, 7, 'Department of Mineral and Petroleum Resources', None, 1, 'col1', '37,628', 37628.0)
+p29 totals []

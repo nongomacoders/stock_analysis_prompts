@@ -1,0 +1,87 @@
+{
+  "FY26 SBP": {
+    "actual": 64352,
+    "expected": 64352,
+    "delta": 0
+  },
+  "FY25 SBP": {
+    "actual": 21486,
+    "expected": 21486,
+    "delta": 0
+  },
+  "FY26 capex": {
+    "actual": 223995,
+    "expected": 223995,
+    "delta": 0
+  },
+  "FY25 capex": {
+    "actual": 167909,
+    "expected": 167909,
+    "delta": 0
+  },
+  "FY26 geography": {
+    "actual": 1277649,
+    "expected": 1277649,
+    "delta": 0
+  },
+  "FY25 geography": {
+    "actual": 896980,
+    "expected": 896980,
+    "delta": 0
+  },
+  "Acquisition consideration": {
+    "actual": 160097,
+    "expected": 160097,
+    "delta": 0
+  },
+  "Acquisition PPE": {
+    "actual": 142436,
+    "expected": 142436,
+    "delta": 0
+  },
+  "Acquisition allocation": {
+    "actual": 160097,
+    "expected": 160097,
+    "delta": 0
+  },
+  "FY26 adjustments": {
+    "actual": 143482,
+    "expected": 143482,
+    "delta": 0
+  },
+  "FY25 adjustments": {
+    "actual": 30079,
+    "expected": 30079,
+    "delta": 0
+  },
+  "FY26 working capital": {
+    "actual": 46559,
+    "expected": 46559,
+    "delta": 0
+  },
+  "FY25 working capital": {
+    "actual": -2113,
+    "expected": -2113,
+    "delta": 0
+  },
+  "FY26 Note19": {
+    "actual": 712119,
+    "expected": 712119,
+    "delta": 0
+  },
+  "FY25 Note19": {
+    "actual": 223184,
+    "expected": 223184,
+    "delta": 0
+  },
+  "FY26 statutory operating cash": {
+    "actual": 556991,
+    "expected": 556991,
+    "delta": 0
+  },
+  "FY25 statutory operating cash": {
+    "actual": 154860,
+    "expected": 154860,
+    "delta": 0
+  }
+}
