@@ -21,13 +21,16 @@ Last updated: 2026-10-29 (Africa/Johannesburg).
 - **PRIMARY FINANCIAL STATEMENTS P0 & P1 COMPLETE (2026-10-29, commit `a6c86c2`)**: Scoped and extracted Section S006 Primary Financial Statements (physical pages 17 and 18, printed pages 30–33):
   * **P0 Blueprint**: `WORKPLAN_PRIMARY_STATEMENTS.md` targeting Balance Sheet, Profit or Loss, and Cash Flows.
   * **P1 Extraction**: `build/extraction/extract_pan_primary_statements.py` and `build/extraction/render_primary_pages.py`. Extracted **192 cells** across 4 primary statements (Assets: 32 cells, Equity & Liabilities: 50 cells, Income Statement: 52 cells, Cash Flows: 58 cells) into `build/report.sqlite`. Total cells in DB: **1,388**. Rendered physical pages 17 and 18 to high-res PNGs and recorded paths/hashes in `pages` table (5 pages now tracked). Receipts saved in `build/receipts_primary_p1.json`.
-- **PRIMARY FINANCIAL STATEMENTS P2 COMPLETE (2026-10-29)**: Executable reconciliation suite expanded with `tests_reconcile/test_primary_statements.py` (**34/34 tests green** across full suite in 0.08s):
+- **PRIMARY FINANCIAL STATEMENTS P2 COMPLETE (2026-10-29, commit `826373c`)**: Executable reconciliation suite expanded with `tests_reconcile/test_primary_statements.py` (**34/34 tests green** across full suite in 0.08s):
   * Proved fundamental Balance Sheet equality ($1,608,075\text{k} == 1,608,075\text{k}$ FY26; $1,004,509\text{k} == 1,004,509\text{k}$ FY25).
   * Proved asset and liability subtotal builds (Non-current $1,279,570\text{k} + Current $328,505\text{k} = Total Assets $1,608,075\text{k}$; Equity $1,035,997\text{k} + Non-current Liabilities $349,328\text{k} + Current Liabilities $222,750\text{k} = Total Equity & Liabilities $1,608,075\text{k}$).
   * Proved Income Statement roll-downs: Gross profit ($1,156,451 - 514,297 = 642,154$), Operating profit ($545,838$), Profit before tax ($534,368$), and Net profit ($356,911$).
   * Proved Cash Flow roll-up ($556,991 - 352,144 - 155,874 = 48,973$) and full cash roll-forward ($49,532 + 48,973 + 9,807 = 108,312$).
   * Proved cross-statement cash tie: Balance Sheet Cash (p.17) == Cash Flow Statement Closing Cash (p.18) ($108,312\text{k} == 108,312\text{k}$).
-  * Proved cross-section tie connecting to open ledger question `Q-a0b503d7ac044eee`: IFRS Revenue ($1,156,451\text{k} US$) at average exchange rate 16.90 US$/ZAR implies 19,544.0 ZARm vs D009 production revenue 17,249.1 ZARm ($\Delta 2,294.9\text{ ZARm}$). Next: **P3 & P4** primary statements Excel view & hypotheses.
+  * Proved cross-section tie connecting to open ledger question `Q-a0b503d7ac044eee`: IFRS Revenue ($1,156,451\text{k} US$) at average exchange rate 16.90 US$/ZAR implies 19,544.0 ZARm vs D009 production revenue 17,249.1 ZARm ($\Delta 2,294.9\text{ ZARm}$).
+- **PRIMARY FINANCIAL STATEMENTS P3 & P4 COMPLETE (2026-10-29)**: View layer and hypotheses recorded:
+  * **P3 Hypotheses**: Evaluated Footnote 1 reciprocal dividend cash flow re-presentation ($49,532k comparative roll-forward holds) and documented the ZAR 2,294.9m IFRS revenue bridge in `HYPOTHESES.md`.
+  * **P4 View Layer**: Updated `build/generate_excel_view.py` and regenerated `build/report_view.xlsx` with a new `Primary_Statements` tab containing all 192 extracted cells (US$ thousand). 0 formulas in any cell (Covenant 2 preserved). Generated dedicated reading brief `READING_BRIEF_PRIMARY_STATEMENTS.md`. Next: **P5 & P6** Primary Statements review gates & audit update.
 
 ## Project summary and commit preparation (2026-10-29)
 

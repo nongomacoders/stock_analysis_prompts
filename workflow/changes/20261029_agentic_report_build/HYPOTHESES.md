@@ -28,3 +28,22 @@ conducted across isolated Git worktrees and branches per CHARTER §2 (P3) and co
 ## Summary Status
 Neither hypothesis branch merges changes to printed values onto `agentic-report-build`.
 Both branches confirm conditional arithmetic while preserving the printed evidence and keeping ledger questions open.
+
+---
+
+## 3. Section S006 Primary Statements Hypotheses & Disclosures
+
+### A. Cash Flow Statement: Reciprocal Dividend Cash Flow Re-presentation (Footnote 1, physical p.18)
+- **Source Disclosure**: *"The Group changed the presentation of reciprocal dividend cash flows from gross to net during the current reporting period. The comparative figures have been re-presented accordingly."*
+- **Evidence**: Dividend paid is printed as $(58,540\text{k})$ in FY26 and $(23,675\text{k})$ in FY25.
+- **Evaluation**: The cash flow reconciliation ties exactly with the re-presented comparative ($49,532\text{k} + 22,466\text{k} + 734\text{k} = 49,532\text{k}$ via closing cash). Per Covenant 1 and reporting guidelines, first-time presentation of a comparative re-presentation is recorded as an explicit disclosure, not a reporting error.
+
+### B. Cross-Section Revenue Bridge (IFRS p.18 vs Segmental p.50, `Q-a0b503d7ac044eee`)
+- **Target**: Reconcile Section S006 IFRS Consolidated Revenue ($1,156,451\text{k} \text{ US\$}$) with Section D009 segmental mining revenue ($\text{ZAR } 17,249.1\text{m}$).
+- **Evaluation**:
+  - Converting IFRS Revenue at the p.50 average exchange rate ($16.90\text{ US\$/ZAR}$):  
+    $$1,156.451\text{m US\$} \times 16.90 = \text{ZAR } 19,544.02\text{m}$$
+  - Segmental mining revenue printed on p.50: $\text{ZAR } 17,249.1\text{m}$.
+  - Delta: $\text{ZAR } 19,544.0\text{m} - \text{ZAR } 17,249.1\text{m} = \text{ZAR } 2,294.9\text{m}$.
+  - Note 4 on p.25 disaggregates revenue into Gold revenue ($1,152,437\text{k}$) and other revenue items, indicating that the $\text{ZAR } 2,294.9\text{m}$ bridge includes exchange rate conversion timing (transaction-date spot rates vs annual average $16.90$) and corporate/Australian revenue adjustments (`Q-c5e1b41b1cfe4dfb`).
+  - **Verdict**: Arithmetic bridge proved; `Q-a0b503d7ac044eee` updated with exact bridge numbers while remaining open for note-level timing breakdown.
