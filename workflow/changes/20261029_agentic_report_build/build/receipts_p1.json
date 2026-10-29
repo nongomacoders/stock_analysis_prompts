@@ -1,0 +1,237 @@
+{
+  "generated_utc": "2026-10-29T13:49:46Z",
+  "purpose": "P1 extraction receipts; runbook requires row-count receipt in the commit message",
+  "source": {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_prompts_agentic\\companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd"
+  },
+  "db": {
+    "path": "C:\\Users\\diond\\Desktop\\Projects\\stock_prompts_agentic\\workflow\\changes\\20261029_agentic_report_build\\build\\report.sqlite",
+    "sha256": "9e9bcb55674506477c9e690456a7cf486f79d0d5ab3a7e55d678e1f89d38c69f",
+    "bytes": 446464
+  },
+  "scripts": {
+    "extract_pan_d009.py": "a63a267887e203f8490d0d6e7ea518971d252666cc07db4d20239c67b05ba8f8",
+    "render_pages.py": "e28237b4f565ba971cb902d27f25f13dbac7c4fd9b1fbaac346774a9eb5240cd",
+    "words.py": "dbeb4409652a324152346f0c476250af8eb2d50f8590a3b4622020e9c92e1802"
+  },
+  "renders": {
+    "48": {
+      "path": "C:\\Users\\diond\\AppData\\Local\\Temp\\opencode\\agentic_build_p1_renders\\PAN_48_p1.png",
+      "sha256": "d69b324807a625f4fd8715bc60c773b0c622454425a4185eceebb25e7f735b8a",
+      "width_px": 2518,
+      "height_px": 1786
+    },
+    "49": {
+      "path": "C:\\Users\\diond\\AppData\\Local\\Temp\\opencode\\agentic_build_p1_renders\\PAN_49_p1.png",
+      "sha256": "4729df5d550f4615396cefc29611aa884d2ad025985ac301f42a58ec2fd67292",
+      "width_px": 2518,
+      "height_px": 1786
+    },
+    "50": {
+      "path": "C:\\Users\\diond\\AppData\\Local\\Temp\\opencode\\agentic_build_p1_renders\\PAN_50_p1.png",
+      "sha256": "d2ec389ebae18dddefa36f03b21e21de656413786d827861cdbc786ff1622020",
+      "width_px": 2518,
+      "height_px": 1786
+    }
+  },
+  "counts": {
+    "rows": 46,
+    "rows_p48": 17,
+    "rows_p49": 16,
+    "rows_p50": 13,
+    "cells": 1196
+  },
+  "columns_by_page": [
+    {
+      "page": 48,
+      "columns": [
+        {
+          "edge": 266.3,
+          "label": "Mining operations | Barberton Mines"
+        },
+        {
+          "edge": 305.9,
+          "label": "Mining operations | Evander Mines"
+        },
+        {
+          "edge": 345.5,
+          "label": "Mining operations | Total"
+        },
+        {
+          "edge": 385.3,
+          "label": "Surface operations | BTRP"
+        },
+        {
+          "edge": 436.3,
+          "label": "Surface operations | (blank unlabelled - no header text, no printed values)"
+        },
+        {
+          "edge": 487.3,
+          "label": "Surface operations | Elikhulu"
+        },
+        {
+          "edge": 527.0,
+          "label": "Surface operations | MTR operation"
+        },
+        {
+          "edge": 566.8,
+          "label": "Surface operations | Tennant Mines"
+        },
+        {
+          "edge": 606.3,
+          "label": "Surface operations | Total"
+        },
+        {
+          "edge": 646.0,
+          "label": "Total operations | Barberton Mines total"
+        },
+        {
+          "edge": 685.6,
+          "label": "Total operations | Evander Mines total"
+        },
+        {
+          "edge": 725.4,
+          "label": "Total operations | MTR operation total"
+        },
+        {
+          "edge": 765.2,
+          "label": "Total operations | Tennant Mines total"
+        },
+        {
+          "edge": 804.7,
+          "label": "Total operations | Group total"
+        }
+      ]
+    },
+    {
+      "page": 49,
+      "columns": [
+        {
+          "edge": 266.2,
+          "label": "Mining operations | Barberton Mines"
+        },
+        {
+          "edge": 305.9,
+          "label": "Mining operations | Evander Mines"
+        },
+        {
+          "edge": 345.6,
+          "label": "Mining operations | Total"
+        },
+        {
+          "edge": 385.2,
+          "label": "Surface operations | BTRP"
+        },
+        {
+          "edge": 436.2,
+          "label": "Surface operations | (blank unlabelled - no header text, no printed values)"
+        },
+        {
+          "edge": 487.2,
+          "label": "Surface operations | Elikhulu"
+        },
+        {
+          "edge": 527.0,
+          "label": "Surface operations | MTR operation"
+        },
+        {
+          "edge": 566.6,
+          "label": "Surface operations | Tennant Mines"
+        },
+        {
+          "edge": 606.2,
+          "label": "Surface operations | Total"
+        },
+        {
+          "edge": 646.1,
+          "label": "Total operations | Barberton Mines total"
+        },
+        {
+          "edge": 685.7,
+          "label": "Total operations | Evander Mines total"
+        },
+        {
+          "edge": 725.4,
+          "label": "Total operations | MTR operation total"
+        },
+        {
+          "edge": 765.0,
+          "label": "Total operations | Tennant Mines total"
+        },
+        {
+          "edge": 804.6,
+          "label": "Total operations | Group total"
+        }
+      ]
+    },
+    {
+      "page": 50,
+      "columns": [
+        {
+          "edge": 266.2,
+          "label": "Mining operations | Barberton Mines"
+        },
+        {
+          "edge": 305.9,
+          "label": "Mining operations | Evander Mines"
+        },
+        {
+          "edge": 345.6,
+          "label": "Mining operations | Total"
+        },
+        {
+          "edge": 385.3,
+          "label": "Surface operations | BTRP"
+        },
+        {
+          "edge": 436.3,
+          "label": "Surface operations | (blank unlabelled - no header text, no printed values)"
+        },
+        {
+          "edge": 487.3,
+          "label": "Surface operations | Elikhulu"
+        },
+        {
+          "edge": 527.0,
+          "label": "Surface operations | MTR operation"
+        },
+        {
+          "edge": 566.7,
+          "label": "Surface operations | Tennant Mines"
+        },
+        {
+          "edge": 606.3,
+          "label": "Surface operations | Total"
+        },
+        {
+          "edge": 645.9,
+          "label": "Total operations | Barberton Mines total"
+        },
+        {
+          "edge": 685.7,
+          "label": "Total operations | Evander Mines total"
+        },
+        {
+          "edge": 725.4,
+          "label": "Total operations | MTR operation total"
+        },
+        {
+          "edge": 765.1,
+          "label": "Total operations | Tennant Mines total"
+        },
+        {
+          "edge": 804.7,
+          "label": "Total operations | Group total"
+        }
+      ]
+    }
+  ],
+  "conflicts": {
+    "P1_geometry": 3,
+    "P1_no_year_line": 6
+  },
+  "unassigned_tokens": 3,
+  "questions_imported": 8,
+  "fixture_guard": "no code path reads the scoring fixture; verifiable by grep"
+}
