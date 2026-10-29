@@ -52,24 +52,11 @@ def test_ppe_roll_forward(report_db, which):
 def test_ppe_cost_total_printed(report_db):
     """The FY26 closing row's rightmost column is total cost: 1,536,566.
 
-    The carrying amount (1,196,474 on the balance sheet) is NOT on this page - it prints in
-    the continuation on physical p.28, which is still deferred (see WORKPLAN_APM.md). So the
-    closing cost total is asserted here and the carrying-amount tie is explicitly reported
-    as not yet possible rather than approximated.
+    The carrying-amount tie now lives in test_ppe_accumulated.py, since p.28 (the Note 7
+    continuation) is extracted; this test keeps the cost anchor that the bridge needs.
     """
     rows = _rows(report_db)
     last = _balance_rows(rows)[-1]
     label, cells = rows[last]
     assert label == "Balance as at 30 June 2026"
     assert cells[max(cells)] == Decimal("1536566")
-    bs = Decimal(str(report_db.execute(
-        "SELECT value_num FROM cells WHERE table_region='primary_balance_sheet_assets' "
-        "AND physical_page=17 AND row_label='Property, plant and equipment' "
-        "AND fiscal_year='FY26'").fetchone()[0]))
-    assert bs == Decimal("1196474")
-    assert bs not in cells.values(), (
-        "carrying amount unexpectedly present on p.27; if this fires, the p.28 rows have "
-        "been extracted and a real tie can be asserted")
-    carried = report_db.execute(
-        "SELECT COUNT(*) FROM cells WHERE table_region='note_p28'").fetchone()[0]
-    assert carried == 0, "p.28 now extracted - replace this test with a real carrying-amount tie"
