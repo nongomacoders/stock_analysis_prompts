@@ -95,3 +95,28 @@ All checks were executed locally with the verified Python interpreter:
 - **Note 3 (S007)**: 880 cells / 72 segment rows; all 72 rows tie on both horizontal identities at zero tolerance, and all seven cross-section ties to the primary statements hold. Two conflicts recorded (APM scope, intra-group block). Reviews: `reviews/20261029T165125Z_{gemini,codex}/`.
 - **Residual risks accepted at S007**: the 594 revenue cell is assigned to Agricultural ESG by geometry alone (arithmetic cannot distinguish it from Corporate since only one is non-zero); the D009 ZAR-to-USD translation basis is not evidenced in pp.21-24 and is left pending; each new section brings its own identity set rather than reusing one generic engine.
 - **Open User Action**: Pin `openpyxl==3.1.5` in the production dev lockfile to prevent environment drift on future `uv sync`.
+
+
+---
+
+### 6. Six-section coverage (P4 consolidation, commit 636be8a)
+
+| Section | Pages | Cells | Executed identities |
+|---|---|---|---|
+| D009 Group production summary | 48-50 | 1,196 | matrix rows, leaf-sums, cross-currency |
+| S006 Primary statements | 17-18 | 192 | balance sheet, P&L cascade, cash roll-forward, cash tie |
+| S007 Note 3 segments | 21-24 | 880 | 72 horizontal rows, 7 cross-section ties |
+| APM pp.40-47 | 40-47 | 1,113 | AISC/AIC chain, EBITDA bridge, NAV/FCF/yield, ROCE, capital, net debt |
+| Notes 4, 7, 16, 17 | 25, 27-28, 32-34 | 659 | revenue disaggregation, PPE bridge, instrument roll-forwards, facilities |
+| Extracted, unverified | 4, 6, 9, 10, 19, 26, 29-31, 34-36, 39 | remainder | none |
+| No figures | 37 (contents), 38, 51 (glossary) | 0 | n/a |
+
+**Totals**: 4,800 cells; 97 conflicts (all open, none auto-resolved); 109 tests green in 0.23s;
+cost US.00 (no paid inference anywhere in the build).
+
+**Review status - honest statement**: the Gemini-role and Codex-role files under 
+eviews/20261029T*
+are self-authored role-play by the agent that built this artifact. They are drafts, not independent
+review. An external review pack is provided at 
+eviews/p4_review_pack/PROMPT.md for a real
+Gemini (Antigravity) and Codex pass.
