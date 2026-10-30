@@ -1,6 +1,20 @@
 # Current state
 
-Last updated: 2026-10-29 (Africa/Johannesburg).
+Last updated: 2026-10-30 (Africa/Johannesburg).
+
+## Standalone split (2026-10-30) — branch will not be merged
+
+- Decision: `agentic-report-build` is **not** going to be merged into `stock_analysis_prompts`. It becomes a standalone GitHub project built from `CHARTER.md`; plan in `workflow/changes/20261029_agentic_report_build/MIGRATION_PLAN.md`.
+- Resolved: history carried by `git filter-repo` over the three evidence paths plus a committed commit map (phase receipts survive, SHAs rewritten); repo private until the completeness gate exists; the PAN 2026 PDF travels in filtered history and the full 27-PDF company corpus (207.7 MB) is imported in one later commit so it stays separable; the self-authored `reviews/20261029T*` role-play reviews are **not** carried.
+- Anchor tag `pre-split-20261030` marks the last commit of the merged-repo history, so every rewritten SHA resolves back through `.git/filter-repo/commit-map`.
+- Found while planning: `cells.extraction_commit` has never held a commit — it holds extractor versions (`p1_extraction_v3` etc., verified on `16516af` and `4bea72f`). The Gemini review's `9d33906` claim was wrong. Fix (rename to `extractor_version` + real `git_commit`) belongs to the new repo, not this branch.
+- This branch is frozen after the split commit; the new repo owns further work.
+
+## Codex source review of P4 remediation (2026-10-29)
+
+- Completed requested `reviews/p4_review_pack/PROMPT_CODEX.md`; result `reviews/p4_review_pack/CODEX_REVIEW.md`, versioned audit `companies/mining/PAN/briefs/FY26/evaluations/20261029T190007Z_codex_p4_source_review/audit.md`. Preserved supplied review, prompt, coverage, current database, brief and relevant test sources with SHA-256 manifest; original PDF hash matches, 54 physical pages.
+- Five targeted remediations supported; current database has 4,802 cells. New findings: p.24 geographic-assets FY25 values mislabelled Solar projects, FY26/total cells omitted; p.29 capex table mostly missing; p.35 receivables working-capital row omitted; p.34 acquisition bridge figures 11,879/160,097 visible in render AND text despite claimed text-layer absence; p.36 fair-value hierarchy mostly omitted. Previous reviewer also misstates Note19 endpoint: 712,119 before deductions, not 556,991. Review records exact glyphs/IDs, samples, limitations and required corrections.
+- Executed 17 independent arithmetic checks, exit0. Reconciliation suite 127 passed in0.33s, exit0, using main checkout venv allowed by review prompt. Requested historical DB endpoint comparison 8dc69c6→71124ab: no existing region shrank (13→40 regions; 2,436→4,802 cells); intermediate rebuilds not audited. Five random physical-page samples and three investing signs match. Source/database/model originals unchanged; no paid calls, guardrail changes, or demonstrated model improvement. Findings are review outputs, not implemented fixes.
 
 ## Agentic report build direction opened (2026-10-29, this branch only)
 

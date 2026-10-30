@@ -1,0 +1,42 @@
+[
+  {
+    "path": "reviews\\p4_review_pack\\PROMPT_CODEX.md",
+    "preserved": "inputs\\00_PROMPT_CODEX.md",
+    "sha256": "d166042635a3fd98e268cc5a09da2236833ff59dff6be19f7126e630582b0a85"
+  },
+  {
+    "path": "reviews\\p4_review_pack\\INDEPENDENT_REVIEW.md",
+    "preserved": "inputs\\01_INDEPENDENT_REVIEW.md",
+    "sha256": "26ef193f565d9863b87e80702517d5d6e4082f90b4a3ef8c58c42d81151c0177"
+  },
+  {
+    "path": "reviews\\p4_review_pack\\COVERAGE.md",
+    "preserved": "inputs\\02_COVERAGE.md",
+    "sha256": "9f8278f78deaaa0ee302be714f3c7b69811e5cbaa8b1dde4b105b8abc83fb9c8"
+  },
+  {
+    "path": "workflow\\changes\\20261029_agentic_report_build\\build\\report.sqlite",
+    "preserved": "inputs\\03_report.sqlite",
+    "sha256": "0a2fe10622ccf1ee4779972b8b6a8346c2c5ef5c5e4228c4c46c949157e5e7f6"
+  },
+  {
+    "path": "workflow\\changes\\20261029_agentic_report_build\\READING_BRIEF_CONSOLIDATED.md",
+    "preserved": "inputs\\04_READING_BRIEF_CONSOLIDATED.md",
+    "sha256": "11b1375c605a1aa0202ce36c75ef4cc29a9302a51e99e32e2a5c774929f418f8"
+  },
+  {
+    "path": "workflow\\changes\\20261029_agentic_report_build\\tests_reconcile\\test_review_fixes.py",
+    "preserved": "inputs\\05_test_review_fixes.py",
+    "sha256": "c396389e6ce0403730a9422322368078c3679d8ef551a82fad1fbbc0d9d19db3"
+  },
+  {
+    "path": "workflow\\changes\\20261029_agentic_report_build\\tests_reconcile\\test_notes.py",
+    "preserved": "inputs\\06_test_notes.py",
+    "sha256": "9d471dfd422439c41527e554a8f83cec1915847c511e8316351476556cd38995"
+  },
+  {
+    "path": "companies\\mining\\PAN\\sources\\Pan-African-Resources-year-end-results-SENS-announcement-2026.pdf",
+    "sha256": "62b10bcd8e6216c00bbe005ae85a3c3341e01e82fd24af0516de18bf69c9b4dd",
+    "preserved": "original unchanged; reference only"
+  }
+]

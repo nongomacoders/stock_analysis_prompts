@@ -1,5 +1,11 @@
 # Agent Tooling Cheatsheet & Gotchas
 
+### P4 Codex source-review tool retrospective (2026-10-29)
+* Worktree `.venv` exists but lacks `pypdfium2`; initial inspection exited1. The explicitly documented main-checkout venv supplies it; retry exited0. Check the actual interpreter's imports before assuming an existing venv has the production dependencies.
+* PDFium's default rendered bitmap here has three BGR channels. Wrapping it in `QImage.Format_RGB32` made `save()` return false without raising; the subsequent image-view call failed. Select `Format_BGR888` for three channels, copy the buffer, and assert every save returns true. Corrected renders exited0 and were visually inspected.
+* A command using relative review-script paths was accidentally run with the reconciliation directory as cwd: Get-Content and the render invocation failed, but the subsequent successful pytest made the combined shell exit0. Run root-relative rendering separately with explicit cwd; record the failed subcommands as well as the suite's actual result (127 passed, exit0). Corrected rendering exited0.
+* A guessed `test_brief_assertions.py` filename did not exist; inventory showed the actual `test_review_fixes.py`. List files before reading guessed test names. Initial combined documentation reads also truncated; use bounded reads. No original evidence was modified by these inspection failures.
+
 Keep interventions fast, lean, and error-free on Windows + PowerShell.
 
 ---
