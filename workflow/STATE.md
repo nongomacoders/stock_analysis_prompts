@@ -10,7 +10,8 @@ Last updated: 2026-10-30 (Africa/Johannesburg).
 - Found while planning: `cells.extraction_commit` has never held a commit — it holds extractor versions (`p1_extraction_v3` etc., verified on `16516af` and `4bea72f`). The Gemini review's `9d33906` claim was wrong. Fix (rename to `extractor_version` + real `git_commit`) belongs to the new repo, not this branch.
 - This branch is frozen after the split commit; the new repo owns further work.
 - **Split completed and published 2026-10-30:** `https://github.com/nongomacoders/agentic-report-build` (private, default branch `main`, first pushed at `733e349`). 47 local commits: 39 carried by `filter-repo` plus paths, hygiene, docs, lineage, corpus and CI. Gate run in the working tree and in a cold clone: 134 tests green, 4,802 cells, 97 conflicts, 8 open questions, PAN PDF hash `62b10bcd…` intact, 0 absolute paths in `*.py`. Corpus committed as 25 unique documents (201.4 MiB, 2,176 pages) under `sources/<TICKER>/` with `sources/MANIFEST.csv`; 27 files collapsed because two were byte-identical duplicates.
-- Still pending in the new repo: the CI workflow commit (`e5c8a77`, held locally because the OAuth token lacks the `workflow` scope), branch protection, and the completeness test that gates going public (F001–F005 remain open). Nothing further will change on this branch.
+- Still pending in the new repo: the completeness test that gates going public (F001–F005 remain open). Nothing further will change on this branch.
+- CI is live: `.github/workflows/reconcile.yml` runs the full suite on Python 3.11 and 3.13 on a pinned `ubuntu-24.04`, plus a step that re-hashes all 25 corpus files. Three runs green. Branch `main` is protected (required checks `python 3.11` / `python 3.13`, force-push and deletion blocked); direct commits remain allowed for the owner, so requiring pull requests is a separate decision.
 
 ## Codex source review of P4 remediation (2026-10-29)
 
